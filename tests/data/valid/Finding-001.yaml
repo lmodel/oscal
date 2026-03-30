@@ -1,0 +1,9 @@
+uuid: 66666666-6666-4666-8666-666666666666
+title: Objective satisfied
+description: The sampled evidence satisfied the tested objective.
+target:
+  type: objective-id
+  target_id: ac-1.1
+  status:
+    state: satisfied
+    reason: pass

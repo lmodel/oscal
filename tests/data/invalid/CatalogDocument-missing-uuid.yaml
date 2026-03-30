@@ -1,0 +1,8 @@
+---
+# INVALID: CatalogDocument missing the required 'uuid' field on the catalog
+catalog:
+  metadata:
+    title: Catalog Without UUID
+    last-modified: "2026-01-01T00:00:00Z"
+    version: "1.0.0"
+    oscal-version: "1.1.2"

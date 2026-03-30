@@ -1,0 +1,260 @@
+---
+id: https://w3id.org/lmodel/oscal_component
+name: oscal_component
+title: oscal_component
+description: |-
+  OSCAL Component Definition Model: LinkML Schema
+license: Apache-2.0
+source: http://csrc.nist.gov/ns/oscal/1.2.1/oscal-component-definition-schema.json
+version: 1.2.1
+see_also:
+  - https://pages.nist.gov/OSCAL/learn/concepts/layer/implementation/component-definition/
+  - https://pages.nist.gov/OSCAL-Reference/models/v1.2.1/component-definition/json-reference/
+  - https://pages.nist.gov/OSCAL-Reference/models/v1.2.1/component-definition/json-definitions/
+annotations:
+  uuid: b9ad4bc1-3032-4fdc-9cf5-7b56487aa652
+  last-modified: "2026-03-27T10:00:00Z"
+notes:
+  - Every time the content of an OSCAL file changes, the following must also change:
+  - A new UUID value must be generated and assigned to the root element's uuid.
+  - The last-modified field in metadata must be assigned with the date and time at the moment the file is saved with the modified content.
+  - These are two mechanisms by which tools can quickly know if a file has changed since it was last encountered. This document level UUID is the only UUID in OSCAL associated with version control.
+  - When converting between formats, such as XML to JSON, these values should remain the same. This enables tools to know the content within the two formats is equivalent.
+
+prefixes:
+  oscal_component: https://w3id.org/lmodel/oscal_component/
+  oscal_assessment_plan: https://w3id.org/lmodel/oscal_assessment_plan/
+  oscal_catalog: https://w3id.org/lmodel/oscal_catalog/
+  linkml: https://w3id.org/linkml/
+default_prefix: oscal_component
+default_range: string
+
+imports:
+  - linkml:types
+  - ./oscal_catalog
+  - ./oscal_assessment_plan
+
+subsets:
+  component_definition:
+    description: >-
+      Classes that form the root OSCAL Component Definition document and
+      component-definition-specific structural containers.
+
+slots:
+  component-definition:
+    range: ComponentDefinition
+    inlined: true
+    description: The root component-definition object.
+
+  import-component-definitions:
+    range: ImportComponentDefinition
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: Component-definition resources imported into this document.
+
+  capabilities:
+    range: Capability
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: Capability groupings for the defined components.
+
+  source:
+    range: URIReferenceType
+    description: Reference to an external catalog or profile resource.
+
+  control-implementations:
+    range: ControlImplementationSet
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: Control implementation sets for a component or capability.
+
+  incorporates-components:
+    range: IncorporatesComponent
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: Component references incorporated by a capability.
+
+classes:
+  ComponentDefinitionDocument:
+    is_a: OscalDocument
+    description: Root wrapper for an OSCAL Component Definition document.
+    slots:
+      - component-definition
+    slot_usage:
+      component-definition:
+        required: true
+    in_subset:
+      - component_definition
+
+  ComponentDefinition:
+    description: >-
+      A collection of component descriptions, which may optionally be grouped
+      by capability.
+    slots:
+      - uuid
+      - metadata
+      - import-component-definitions
+      - components
+      - capabilities
+      - back-matter
+    slot_usage:
+      uuid:
+        required: true
+      metadata:
+        required: true
+      components:
+        range: DefinedComponent
+    in_subset:
+      - component_definition
+
+  ImportComponentDefinition:
+    description: Loads a component definition from another resource.
+    slots:
+      - href
+      - remarks
+    slot_usage:
+      href:
+        required: true
+    in_subset:
+      - component_definition
+
+  DefinedComponent:
+    description: A defined component that can be part of an implemented system.
+    mixins:
+      - OscalCommon
+      - HasResponsibleRoles
+    slots:
+      - uuid
+      - type
+      - title
+      - description
+      - purpose
+      - protocols
+      - control-implementations
+    slot_usage:
+      uuid:
+        required: true
+      type:
+        range: string
+        required: true
+      title:
+        required: true
+      description:
+        required: true
+    in_subset:
+      - component_definition
+
+  Capability:
+    description: A grouping of other components and/or capabilities.
+    mixins:
+      - OscalCommon
+    slots:
+      - uuid
+      - name
+      - description
+      - incorporates-components
+      - control-implementations
+    slot_usage:
+      uuid:
+        required: true
+      name:
+        range: string
+        required: true
+      description:
+        required: true
+    in_subset:
+      - component_definition
+
+  IncorporatesComponent:
+    description: The collection of components comprising a capability.
+    slots:
+      - component-uuid
+      - description
+    slot_usage:
+      component-uuid:
+        required: true
+      description:
+        required: true
+    in_subset:
+      - component_definition
+
+  ControlImplementationSet:
+    description: Defines how the component or capability supports a set of controls.
+    mixins:
+      - HasPropsAndLinks
+    slots:
+      - uuid
+      - source
+      - description
+      - set-parameters
+      - implemented-requirements
+    slot_usage:
+      set-parameters:
+        range: SetParameter
+        description: >-
+          Parameter values applied in the containing implementation context.
+      implemented-requirements:
+        range: ImplementedRequirement
+        required: true
+      uuid:
+        required: true
+      source:
+        required: true
+      description:
+        required: true
+    in_subset:
+      - component_definition
+
+  ImplementedRequirement:
+    description: >-
+      Describes how the containing component or capability implements an
+      individual control.
+    mixins:
+      - HasPropsAndLinks
+      - HasResponsibleRoles
+    slots:
+      - uuid
+      - control-id
+      - description
+      - set-parameters
+      - statements
+      - remarks
+    slot_usage:
+      set-parameters:
+        range: SetParameter
+        description: >-
+          Parameter values applied in the containing implementation context.
+      statements:
+        range: ImplementedControlStatement
+      uuid:
+        required: true
+      control-id:
+        required: true
+      description:
+        required: true
+    in_subset:
+      - component_definition
+
+  ImplementedControlStatement:
+    description: Identifies which statements within a control are addressed.
+    mixins:
+      - HasPropsAndLinks
+      - HasResponsibleRoles
+    slots:
+      - statement-id
+      - uuid
+      - description
+      - remarks
+    slot_usage:
+      statement-id:
+        required: true
+      uuid:
+        required: true
+      description:
+        required: true
+    in_subset:
+      - component_definition

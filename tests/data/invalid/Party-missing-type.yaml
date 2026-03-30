@@ -1,0 +1,4 @@
+---
+# INVALID: Party missing required 'type' field
+uuid: "ffffffff-9999-4000-8000-ffffffffffff"
+name: Unknown Organization

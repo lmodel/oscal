@@ -1,0 +1,22 @@
+---
+# An organization Party with address and external ID
+uuid: "dddddddd-4444-4000-8000-dddddddddddd"
+type: organization
+name: National Institute of Standards and Technology
+short_name: NIST
+email_addresses:
+  - oscal@nist.gov
+telephone_numbers:
+  - type: office
+    number: "+1-301-975-6478"
+addresses:
+  - type: work
+    addr_lines:
+      - 100 Bureau Drive
+    city: Gaithersburg
+    state: MD
+    postal_code: "20899"
+    country: US
+external_ids:
+  - scheme: https://ror.org
+    id: "05xpvk416"

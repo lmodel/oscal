@@ -1,0 +1,3 @@
+uuid: aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa
+title: Invalid component missing type
+description: This fixture intentionally omits required type and should fail.

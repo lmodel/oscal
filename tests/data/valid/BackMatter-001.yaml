@@ -1,0 +1,17 @@
+---
+# BackMatter with multiple resources: one with rlinks+hashes, one with base64
+resources:
+  - uuid: "ffffffff-1111-4000-8000-ffffffffffff"
+    title: NIST SP 800-53 Rev 5
+    description: Security and Privacy Controls for Information Systems and Organizations.
+    rlinks:
+      - href: https://doi.org/10.6028/NIST.SP.800-53r5
+        media_type: application/pdf
+      - href: https://csrc.nist.gov/projects/risk-management/sp800-53-controls
+        media_type: text/html
+  - uuid: "11111111-aaaa-4000-8000-111111111111"
+    title: Supplemental Guidance Document
+    description: Supplemental guidance in encoded form.
+    base64:
+      media_type: application/pdf
+      value: "SGVsbG8gV29ybGQ="

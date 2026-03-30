@@ -1,0 +1,151 @@
+---
+id: https://w3id.org/lmodel/oscal_poam
+name: oscal_poam
+title: oscal_poam
+description: |-
+  OSCAL Plan of Action and Milestones (POA&M) Model: LinkML Schema
+license: Apache-2.0
+see_also:
+  - https://pages.nist.gov/OSCAL/learn/concepts/layer/assessment/poam/
+source: http://csrc.nist.gov/ns/oscal/1.2.1/oscal-poam-schema.json
+version: 1.2.1
+annotations:
+  uuid: cd71a122-9aa3-407d-a8a7-0cdb3c7b6d65
+  last-modified: "2026-03-27T10:00:00Z"
+notes:
+  - Every time the content of an OSCAL file changes, the following must also change:
+  - A new UUID value must be generated and assigned to the root element's uuid.
+  - The last-modified field in metadata must be assigned with the date and time at the moment the file is saved with the modified content.
+  - These are two mechanisms by which tools can quickly know if a file has changed since it was last encountered. This document level UUID is the only UUID in OSCAL associated with version control.
+  - When converting between formats, such as XML to JSON, these values should remain the same. This enables tools to know the content within the two formats is equivalent.
+
+prefixes:
+  oscal_poam: https://w3id.org/lmodel/oscal_poam/
+  oscal_assessment_plan: https://w3id.org/lmodel/oscal_assessment_plan/
+  oscal_catalog: https://w3id.org/lmodel/oscal_catalog/
+  linkml: https://w3id.org/linkml/
+default_prefix: oscal_poam
+default_range: string
+
+imports:
+  - linkml:types
+  - ./oscal_catalog
+  - ./oscal_assessment_plan
+
+subsets:
+  poam:
+    description: >-
+      Classes that form the root OSCAL Plan of Action and Milestones document
+      and its POA&M-specific structural containers.
+
+slots:
+  plan-of-action-and-milestones:
+    range: PlanOfActionAndMilestones
+    inlined: true
+    description: The root plan of action and milestones object.
+
+  system-id:
+    range: SystemId
+    inlined: true
+    description: A human-oriented, globally unique identifier for a system.
+
+  poam-items:
+    range: PoamItem
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: A collection of POA&M items.
+
+  related-findings:
+    range: RelatedFinding
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: Relates a POA&M item to one or more findings.
+
+  finding-uuid:
+    range: UUIDType
+    description: A UUID reference to a finding.
+
+classes:
+  PoamDocument:
+    is_a: OscalDocument
+    description: Root wrapper for an OSCAL Plan of Action and Milestones document.
+    slots:
+      - plan-of-action-and-milestones
+    slot_usage:
+      plan-of-action-and-milestones:
+        required: true
+    in_subset:
+      - poam
+
+  PlanOfActionAndMilestones:
+    description: >-
+      A plan of action and milestones that identifies initial and residual
+      risks, deviations, and disposition.
+    slots:
+      - uuid
+      - metadata
+      - import-ssp
+      - system-id
+      - local-definitions
+      - observations
+      - risks
+      - findings
+      - poam-items
+      - back-matter
+    slot_usage:
+      uuid:
+        required: true
+      metadata:
+        required: true
+      local-definitions:
+        range: PoamLocalDefinitions
+        inlined: true
+      poam-items:
+        required: true
+    in_subset:
+      - poam
+
+  PoamLocalDefinitions:
+    description: >-
+      Allows components and inventory items to be defined within the POA&M for
+      cases where no OSCAL SSP is available with the POA&M.
+    slots:
+      - components
+      - inventory-items
+      - assessment-assets
+      - remarks
+    in_subset:
+      - poam
+
+  PoamItem:
+    description: Describes an individual POA&M item.
+    mixins:
+      - OscalCommon
+    slots:
+      - uuid
+      - title
+      - description
+      - origins
+      - related-findings
+      - related-observations
+      - related-risks
+    slot_usage:
+      title:
+        required: true
+      description:
+        required: true
+    in_subset:
+      - poam
+
+  RelatedFinding:
+    description: Relates a POA&M item to a referenced finding.
+    slots:
+      - finding-uuid
+      - remarks
+    slot_usage:
+      finding-uuid:
+        required: true
+    in_subset:
+      - poam

@@ -1,0 +1,1164 @@
+---
+id: https://w3id.org/lmodel/oscal_ssp
+name: oscal_ssp
+title: oscal_ssp
+description: |-
+  OSCAL System Security Plan (SSP) Model: LinkML Schema
+license: Apache-2.0
+see_also:
+  - https://pages.nist.gov/OSCAL/learn/concepts/layer/implementation/ssp/
+source: http://csrc.nist.gov/ns/oscal/1.2.1/oscal-ssp-schema.json
+version: 1.2.1
+annotations:
+  uuid: 8e44bf95-e930-455b-a098-3c5e967c3c4f
+  last-modified: "2026-03-27T10:00:00Z"
+notes:
+  - Every time the content of an OSCAL file changes, the following must also change:
+  - A new UUID value must be generated and assigned to the root element's uuid.
+  - The last-modified field in metadata must be assigned with the date and time at the moment the file is saved with the modified content.
+  - These are two mechanisms by which tools can quickly know if a file has changed since it was last encountered. This document level UUID is the only UUID in OSCAL associated with version control.
+  - When converting between formats, such as XML to JSON, these values should remain the same. This enables tools to know the content within the two formats is equivalent.
+
+prefixes:
+  oscal_ssp: https://w3id.org/lmodel/oscal_ssp/
+  oscal_assessment_plan: https://w3id.org/lmodel/oscal_assessment_plan/
+  oscal_catalog: https://w3id.org/lmodel/oscal_catalog/
+  linkml: https://w3id.org/linkml/
+default_prefix: oscal_ssp
+default_range: string
+
+imports:
+  - linkml:types
+  - ./oscal_catalog
+  - ./oscal_assessment_plan
+
+subsets:
+  ssp:
+    description: >-
+      Classes that form the root OSCAL System Security Plan document
+      and its SSP-specific structural containers.
+
+enums:
+  SystemOperatingStatusEnum:
+    description: Allowable operational states for an OSCAL-described system.
+    permissible_values:
+      operational:
+        description: The system is currently operating in production.
+      under-development:
+        description: The system is being designed, developed, or implemented.
+      under-major-modification:
+        description: The system is undergoing a major change, development, or transition.
+      disposition:
+        description: The system is no longer operational.
+      other:
+        description: Some other state.
+
+  SystemCharacteristicsPropNameEnum:
+    description: OSCAL-defined property names used within system characteristics.
+    permissible_values:
+      identity-assurance-level:
+      authenticator-assurance-level:
+      federation-assurance-level:
+      cloud-deployment-model:
+      cloud-service-model:
+
+  AssuranceLevelValueEnum:
+    description: NIST SP 800-63 assurance level values.
+    permissible_values:
+      "1":
+      "2":
+      "3":
+
+  CloudDeploymentModelEnum:
+    description: Cloud deployment model values used by OSCAL SSP properties.
+    permissible_values:
+      public-cloud:
+      private-cloud:
+      community-cloud:
+      hybrid-cloud:
+      government-only-cloud:
+      other:
+
+  CloudServiceModelEnum:
+    description: Cloud service model values used by OSCAL SSP properties.
+    permissible_values:
+      saas:
+      paas:
+      iaas:
+      other:
+
+  SystemCharacteristicsResponsibleRoleIdEnum:
+    annotations:
+      allow_any: true
+    description: >-
+      Curated role identifiers for system characteristics responsible parties.
+      Other values are permitted (OSCAL allow-other="yes").
+    permissible_values:
+      authorizing-official:
+      authorizing-official-poc:
+      system-owner:
+      system-poc-management:
+      system-poc-technical:
+      system-poc-other:
+      information-system-security-officer:
+      privacy-poc:
+
+  InformationTypeCategorizationSystemEnum:
+    annotations:
+      allow_any: true
+    description: >-
+      Curated information type categorization system URIs. Other values are
+      permitted (OSCAL allow-other="yes").
+    permissible_values:
+      http://doi.org/10.6028/NIST.SP.800-60v2r1:
+
+  SystemInformationPropNameEnum:
+    description: OSCAL-defined property names used within system information.
+    permissible_values:
+      privacy-designation:
+
+  PrivacyDesignationEnum:
+    description: Privacy designation property values.
+    permissible_values:
+      "yes":
+      "no":
+
+  SystemInformationLinkRelEnum:
+    annotations:
+      allow_any: true
+    description: >-
+      Curated relation values for links in system information. Other values are
+      permitted (OSCAL allow-other="yes").
+    permissible_values:
+      privacy-impact-assessment:
+
+  Fips199ImpactLevelEnum:
+    annotations:
+      allow_any: true
+    description: >-
+      Curated FIPS 199 impact level values. Other values are permitted (OSCAL
+      allow-other="yes").
+    permissible_values:
+      fips-199-low:
+      fips-199-moderate:
+      fips-199-high:
+
+  DiagramLinkRelEnum:
+    annotations:
+      allow_any: true
+    description: >-
+      Curated relation values for links in diagram objects. Other values are
+      permitted (OSCAL allow-other="yes").
+    permissible_values:
+      diagram:
+
+  LeveragedAuthorizationLinkRelEnum:
+    annotations:
+      allow_any: true
+    description: >-
+      Curated relation values for links in leveraged authorization objects.
+      Other values are permitted (OSCAL allow-other="yes").
+    permissible_values:
+      system-security-plan:
+
+  AllowsAuthenticatedScanEnum:
+    description: Values for allows-authenticated-scan property in SSP component and inventory contexts.
+    permissible_values:
+      "yes":
+      "no":
+
+  ControlOriginationPropNameEnum:
+    description: OSCAL-defined property names used in implementation statements.
+    permissible_values:
+      control-origination:
+
+  ControlOriginationValueEnum:
+    description: Control origination values.
+    permissible_values:
+      organization:
+      system-specific:
+      customer-configured:
+      customer-provided:
+      inherited:
+
+  ImplementedRequirementResponsibleRoleIdEnum:
+    annotations:
+      allow_any: true
+    description: >-
+      Curated role identifiers for implemented requirement and statement
+      responsible roles. Other values are permitted (OSCAL allow-other="yes").
+    permissible_values:
+      asset-owner:
+      asset-administrator:
+      security-operations:
+      network-operations:
+      incident-response:
+      help-desk:
+      configuration-management:
+
+  ByComponentLinkRelEnum:
+    annotations:
+      allow_any: true
+    description: >-
+      Curated relation values for links in by-component objects. Other values
+      are permitted (OSCAL allow-other="yes").
+    permissible_values:
+      imported-from:
+      provided-by:
+
+  ByComponentResponsibleRoleIdEnum:
+    annotations:
+      allow_any: true
+    description: >-
+      Curated role identifiers for by-component responsible roles. Other values
+      are permitted (OSCAL allow-other="yes").
+    permissible_values:
+      asset-owner:
+      asset-administrator:
+      security-operations:
+      network-operations:
+      incident-response:
+      help-desk:
+      configuration-management:
+      maintainer:
+      provider:
+
+slots:
+  # ── Document root ────────────────────────────────────────────────────────────
+  system-security-plan:
+    range: SystemSecurityPlan
+    inlined: true
+    description: A system security plan, such as those described in NIST SP 800-18.
+
+  # ── SSP top-level sub-slots ──────────────────────────────────────────────────
+  import-profile:
+    range: ImportProfile
+    inlined: true
+    description: Used to import the OSCAL profile representing the system's control baseline.
+
+  system-characteristics:
+    range: SystemCharacteristics
+    inlined: true
+    description: >-
+      Contains the characteristics of the system, such as its name, purpose,
+      and security impact level.
+
+  system-implementation:
+    range: SystemImplementation
+    inlined: true
+    description: Provides information as to how the system is implemented.
+
+  control-implementation:
+    range: SspControlImplementation
+    inlined: true
+    description: Describes how the system satisfies a set of controls.
+
+  # ── SystemCharacteristics sub-slots ─────────────────────────────────────────
+  system-ids:
+    range: SystemId
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: Unique identifiers for the system.
+
+  system-name:
+    range: string
+    description: The full name of the system.
+
+  system-name-short:
+    range: string
+    description: >-
+      A short name for the system, such as an acronym, that is suitable for
+      display in a data table or summary list.
+
+  date-authorized:
+    range: string
+    description: The date the system received its authorization.
+
+  security-sensitivity-level:
+    range: string
+    description: >-
+      The overall information system sensitivity categorization, such as
+      defined by FIPS-199.
+
+  system-information:
+    range: SystemInformation
+    inlined: true
+    description: >-
+      Contains details about all information types that are stored, processed,
+      or transmitted by the system.
+
+  security-impact-level:
+    range: SecurityImpactLevel
+    inlined: true
+    description: >-
+      The overall level of expected impact resulting from unauthorized
+      disclosure, modification, or loss of access to information.
+
+  system-status:
+    range: SystemStatus
+    inlined: true
+    description: Describes the operational status of the system.
+
+  authorization-boundary:
+    range: AuthorizationBoundary
+    inlined: true
+    description: >-
+      A description of this system's authorization boundary, optionally
+      supplemented with diagrams that illustrate the authorization boundary.
+
+  network-architecture:
+    range: NetworkArchitecture
+    inlined: true
+    description: >-
+      A description of the system's network architecture, optionally
+      supplemented with diagrams that illustrate the network architecture.
+
+  data-flow:
+    range: DataFlow
+    inlined: true
+    description: >-
+      A description of the logical flow of information within the system and
+      across its boundaries, optionally supplemented with diagrams.
+
+  # ── SystemInformation sub-slots ──────────────────────────────────────────────
+  information-types:
+    range: InformationType
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: >-
+      Contains details about one information type that is stored, processed,
+      or transmitted by the system.
+
+  categorizations:
+    range: InformationTypeCategorization
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: >-
+      A set of information type identifiers qualified by the given
+      identification system used.
+
+  information-type-ids:
+    range: string
+    multivalued: true
+    description: >-
+      An identifier qualified by the given identification system used, such as
+      NIST SP 800-60.
+
+  # ── ImpactLevel sub-slots ────────────────────────────────────────────────────
+  confidentiality-impact:
+    range: ImpactLevel
+    inlined: true
+    description: >-
+      The expected level of impact resulting from the unauthorized disclosure
+      of the described information.
+
+  integrity-impact:
+    range: ImpactLevel
+    inlined: true
+    description: >-
+      The expected level of impact resulting from the unauthorized modification
+      of the described information.
+
+  availability-impact:
+    range: ImpactLevel
+    inlined: true
+    description: >-
+      The expected level of impact resulting from the disruption of access to
+      or use of the described information or the information system.
+
+  base:
+    range: string
+    description: >-
+      The prescribed base (Confidentiality, Integrity, or Availability)
+      security impact level.
+
+  selected:
+    range: string
+    description: >-
+      The selected (Confidentiality, Integrity, or Availability) security
+      impact level.
+
+  adjustment-justification:
+    range: string
+    description: >-
+      If the selected security level is different from the base security level,
+      this contains the justification for the change.
+
+  # ── SecurityImpactLevel sub-slots ─────────────────────────────────────────────
+  security-objective-confidentiality:
+    range: string
+    description: >-
+      A target-level of confidentiality for the system, based on the
+      sensitivity of information within the system.
+
+  security-objective-integrity:
+    range: string
+    description: >-
+      A target-level of integrity for the system, based on the sensitivity
+      of information within the system.
+
+  security-objective-availability:
+    range: string
+    description: >-
+      A target-level of availability for the system, based on the sensitivity
+      of information within the system.
+
+  # ── Boundary / architecture / data-flow diagram sub-slots ────────────────────
+  diagrams:
+    range: Diagram
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: A collection of diagrams that visually depict the subject.
+
+  caption:
+    range: string
+    description: A brief caption to annotate the diagram.
+
+  # ── SystemImplementation sub-slots ───────────────────────────────────────────
+  leveraged-authorizations:
+    range: LeveragedAuthorization
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: >-
+      A description of another authorized system from which this system
+      inherits capabilities that satisfy security requirements.
+
+  # ── ControlImplementation / ImplementedRequirement sub-slots ─────────────────
+  by-components:
+    range: ByComponent
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: Defines how the referenced component implements a set of controls.
+
+  # ── ByComponent sub-slots ────────────────────────────────────────────────────
+  export:
+    range: Export
+    inlined: true
+    description: >-
+      Defines a set of control implementations that are provided as reference
+      implementations for use by organizations implementing the leveraged system.
+
+  provided:
+    range: ProvidedControlImplementation
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: Describes a capability which may be inherited by a leveraging system.
+
+  responsibilities:
+    range: ControlResponsibility
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: >-
+      Describes a control implementation responsibility imposed on a leveraging
+      system.
+
+  inherited:
+    range: InheritedControlImplementation
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: Describes a control implementation inherited by a leveraging system.
+
+  satisfied:
+    range: SatisfiedControlImplementation
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: >-
+      Describes how this system satisfies a responsibility imposed by a
+      leveraged system.
+
+  provided-uuid:
+    range: UUIDType
+    description: >-
+      Machine-oriented identifier reference to an inherited control
+      implementation that a leveraging system is implementing.
+
+  responsibility-uuid:
+    range: UUIDType
+    description: >-
+      Machine-oriented identifier reference to a control implementation
+      responsibility imposed by a leveraged system.
+
+classes:
+  # ── Root document wrapper ─────────────────────────────────────────────────────
+  SspDocument:
+    is_a: OscalDocument
+    description: Root wrapper for an OSCAL System Security Plan document.
+    slots:
+      - system-security-plan
+    slot_usage:
+      system-security-plan:
+        required: true
+    in_subset:
+      - ssp
+
+  # ── SSP root object ───────────────────────────────────────────────────────────
+  SystemSecurityPlan:
+    description: >-
+      A system security plan, such as those described in NIST SP 800-18.
+    slots:
+      - uuid
+      - metadata
+      - import-profile
+      - system-characteristics
+      - system-implementation
+      - control-implementation
+      - back-matter
+    slot_usage:
+      uuid:
+        required: true
+      metadata:
+        required: true
+      import-profile:
+        required: true
+      system-characteristics:
+        required: true
+      system-implementation:
+        required: true
+      control-implementation:
+        required: true
+    in_subset:
+      - ssp
+
+  # ── Import profile ────────────────────────────────────────────────────────────
+  ImportProfile:
+    description: >-
+      Used to import the OSCAL profile representing the system's control
+      baseline.
+    slots:
+      - href
+      - remarks
+    slot_usage:
+      href:
+        required: true
+    in_subset:
+      - ssp
+
+  # ── System characteristics tree ───────────────────────────────────────────────
+  SystemCharacteristics:
+    description: >-
+      Contains the characteristics of the system, such as its name, purpose,
+      and security impact level.
+    slots:
+      - system-ids
+      - system-name
+      - system-name-short
+      - description
+      - date-authorized
+      - security-sensitivity-level
+      - system-information
+      - security-impact-level
+      - system-status
+      - authorization-boundary
+      - network-architecture
+      - data-flow
+      - responsible-parties
+      - remarks
+    slot_usage:
+      system-ids:
+        required: true
+      system-name:
+        required: true
+      description:
+        required: true
+      system-information:
+        required: true
+      system-status:
+        required: true
+      authorization-boundary:
+        required: true
+      props:
+        range: SspSystemCharacteristicsProp
+      responsible-parties:
+        range: SspSystemCharacteristicsResponsibleParty
+    in_subset:
+      - ssp
+
+  SystemInformation:
+    description: >-
+      Contains details about all information types that are stored, processed,
+      or transmitted by the system, such as privacy information.
+    slots:
+      - props
+      - links
+      - information-types
+    slot_usage:
+      information-types:
+        required: true
+      props:
+        range: SspSystemInformationProp
+      links:
+        range: SspSystemInformationLink
+    in_subset:
+      - ssp
+
+  InformationType:
+    description: >-
+      Contains details about one information type that is stored, processed, or
+      transmitted by the system, such as privacy information, and its impact
+      level.
+    slots:
+      - uuid
+      - title
+      - description
+      - categorizations
+      - props
+      - links
+      - confidentiality-impact
+      - integrity-impact
+      - availability-impact
+    slot_usage:
+      title:
+        required: true
+      description:
+        required: true
+    in_subset:
+      - ssp
+
+  InformationTypeCategorization:
+    description: >-
+      A set of information type identifiers qualified by the given
+      identification system used.
+    attributes:
+      system:
+        any_of:
+          - range: InformationTypeCategorizationSystemEnum
+          - range: URIType
+        required: true
+        description: >-
+          Specifies the information type identification system used. Recommended
+          values are in InformationTypeCategorizationSystemEnum; other values
+          are permitted (OSCAL allow-other="yes").
+      information-type-ids:
+        range: string
+        multivalued: true
+        description: >-
+          An identifier qualified by the given identification system used, such
+          as NIST SP 800-60.
+    in_subset:
+      - ssp
+
+  ImpactLevel:
+    description: >-
+      The expected level of impact resulting from the described information's
+      confidentiality, integrity, or availability affect.
+    slots:
+      - props
+      - links
+      - base
+      - selected
+      - adjustment-justification
+    slot_usage:
+      base:
+        any_of:
+          - range: Fips199ImpactLevelEnum
+          - range: string
+        required: true
+      selected:
+        any_of:
+          - range: Fips199ImpactLevelEnum
+          - range: string
+    in_subset:
+      - ssp
+
+  SecurityImpactLevel:
+    description: >-
+      The overall level of expected impact resulting from unauthorized
+      disclosure, modification, or loss of access to information.
+    slots:
+      - security-objective-confidentiality
+      - security-objective-integrity
+      - security-objective-availability
+    slot_usage:
+      security-objective-confidentiality:
+        required: true
+      security-objective-integrity:
+        required: true
+      security-objective-availability:
+        required: true
+    in_subset:
+      - ssp
+
+  SystemStatus:
+    description: Describes the operational status of the system.
+    attributes:
+      state:
+        range: SystemOperatingStatusEnum
+        required: true
+        description: The current operating status of the system.
+    slots:
+      - remarks
+    in_subset:
+      - ssp
+
+  # ── Authorization boundary / network architecture / data-flow ─────────────────
+  AuthorizationBoundary:
+    description: >-
+      A description of this system's authorization boundary, optionally
+      supplemented with diagrams that illustrate the authorization boundary.
+    slots:
+      - description
+      - props
+      - links
+      - diagrams
+      - remarks
+    slot_usage:
+      description:
+        required: true
+    in_subset:
+      - ssp
+
+  Diagram:
+    description: >-
+      A graphic that provides a visual representation the system, or some
+      aspect of it.
+    slots:
+      - uuid
+      - description
+      - props
+      - links
+      - caption
+      - remarks
+    slot_usage:
+      uuid:
+        required: true
+      links:
+        range: SspDiagramLink
+    in_subset:
+      - ssp
+
+  NetworkArchitecture:
+    description: >-
+      A description of the system's network architecture, optionally
+      supplemented with diagrams that illustrate the network architecture.
+    slots:
+      - description
+      - props
+      - links
+      - diagrams
+      - remarks
+    slot_usage:
+      description:
+        required: true
+    in_subset:
+      - ssp
+
+  DataFlow:
+    description: >-
+      A description of the logical flow of information within the system and
+      across its boundaries, optionally supplemented with diagrams.
+    slots:
+      - description
+      - props
+      - links
+      - diagrams
+      - remarks
+    slot_usage:
+      description:
+        required: true
+    in_subset:
+      - ssp
+
+  # ── System implementation ─────────────────────────────────────────────────────
+  SystemImplementation:
+    description: Provides information as to how the system is implemented.
+    slots:
+      - props
+      - links
+      - leveraged-authorizations
+      - users
+      - components
+      - inventory-items
+      - remarks
+    slot_usage:
+      components:
+        required: true
+        range: SspSystemComponent
+      inventory-items:
+        range: SspInventoryItem
+    in_subset:
+      - ssp
+
+  LeveragedAuthorization:
+    description: >-
+      A description of another authorized system from which this system
+      inherits capabilities that satisfy security requirements. Another
+      term for this concept is a common control provider.
+    slots:
+      - uuid
+      - title
+      - props
+      - links
+      - party-uuid
+      - date-authorized
+      - remarks
+    slot_usage:
+      uuid:
+        required: true
+      title:
+        required: true
+      party-uuid:
+        required: true
+      date-authorized:
+        required: true
+      links:
+        range: SspLeveragedAuthorizationLink
+    in_subset:
+      - ssp
+
+  # ── Control implementation ────────────────────────────────────────────────────
+  SspControlImplementation:
+    description: Describes how the system satisfies a set of controls.
+    slots:
+      - description
+      - set-parameters
+      - implemented-requirements
+    slot_usage:
+      set-parameters:
+        range: SetParameter
+        description: >-
+          Identifies the parameter that will be set by the enclosed value.
+      implemented-requirements:
+        range: SspImplementedRequirement
+        required: true
+      description:
+        required: true
+    in_subset:
+      - ssp
+
+  SspImplementedRequirement:
+    description: Describes how the system satisfies an individual control.
+    slots:
+      - uuid
+      - control-id
+      - props
+      - links
+      - set-parameters
+      - responsible-roles
+      - statements
+      - by-components
+      - remarks
+    slot_usage:
+      set-parameters:
+        range: SetParameter
+        description: >-
+          Identifies the parameter that will be set by the enclosed value.
+      statements:
+        range: SspStatement
+      uuid:
+        required: true
+      control-id:
+        required: true
+      props:
+        range: SspControlOriginationProp
+      responsible-roles:
+        range: SspImplementedRequirementResponsibleRole
+    in_subset:
+      - ssp
+
+  SspStatement:
+    description: Identifies which statements within a control are addressed.
+    slots:
+      - statement-id
+      - uuid
+      - props
+      - links
+      - responsible-roles
+      - by-components
+      - remarks
+    slot_usage:
+      statement-id:
+        required: true
+      uuid:
+        required: true
+      props:
+        range: SspControlOriginationProp
+      responsible-roles:
+        range: SspImplementedRequirementResponsibleRole
+    in_subset:
+      - ssp
+
+  # ── By-component (inheritance chain) ─────────────────────────────────────────
+  ByComponent:
+    description: Defines how the referenced component implements a set of controls.
+    slots:
+      - component-uuid
+      - uuid
+      - description
+      - props
+      - links
+      - set-parameters
+      - implementation-status
+      - export
+      - inherited
+      - satisfied
+      - responsible-roles
+      - remarks
+    slot_usage:
+      set-parameters:
+        range: SetParameter
+        description: >-
+          Identifies the parameter that will be set by the enclosed value.
+      component-uuid:
+        required: true
+      uuid:
+        required: true
+      description:
+        required: true
+      props:
+        range: SspControlOriginationProp
+      links:
+        range: SspByComponentLink
+      responsible-roles:
+        range: SspByComponentResponsibleRole
+    in_subset:
+      - ssp
+
+  Export:
+    description: >-
+      Defines a set of control implementations that are provided as reference
+      implementations for use by organizations implementing the leveraged
+      system.
+    slots:
+      - description
+      - props
+      - links
+      - provided
+      - responsibilities
+    in_subset:
+      - ssp
+
+  ProvidedControlImplementation:
+    description: Describes a capability which may be inherited by a leveraging system.
+    slots:
+      - uuid
+      - description
+      - props
+      - links
+      - responsible-roles
+      - remarks
+    slot_usage:
+      uuid:
+        required: true
+      description:
+        required: true
+      responsible-roles:
+        range: SspByComponentResponsibleRole
+    in_subset:
+      - ssp
+
+  ControlResponsibility:
+    description: >-
+      Describes a control implementation responsibility imposed on a leveraging
+      system.
+    slots:
+      - uuid
+      - provided-uuid
+      - description
+      - props
+      - links
+      - responsible-roles
+      - remarks
+    slot_usage:
+      uuid:
+        required: true
+      description:
+        required: true
+      responsible-roles:
+        range: SspByComponentResponsibleRole
+    in_subset:
+      - ssp
+
+  InheritedControlImplementation:
+    description: Describes a control implementation inherited by a leveraging system.
+    slots:
+      - uuid
+      - provided-uuid
+      - description
+      - props
+      - links
+      - responsible-roles
+      - remarks
+    slot_usage:
+      uuid:
+        required: true
+      description:
+        required: true
+      responsible-roles:
+        range: SspByComponentResponsibleRole
+    in_subset:
+      - ssp
+
+  SatisfiedControlImplementation:
+    description: >-
+      Describes how this system satisfies a responsibility imposed by a
+      leveraged system.
+    slots:
+      - uuid
+      - responsibility-uuid
+      - description
+      - props
+      - links
+      - responsible-roles
+      - remarks
+    slot_usage:
+      uuid:
+        required: true
+      description:
+        required: true
+      responsible-roles:
+        range: SspByComponentResponsibleRole
+    in_subset:
+      - ssp
+
+  SspSystemCharacteristicsProp:
+    is_a: Property
+    description: SSP-scoped property used in system characteristics.
+    slot_usage:
+      name:
+        range: SystemCharacteristicsPropNameEnum
+      value:
+        any_of:
+          - range: AssuranceLevelValueEnum
+          - range: CloudDeploymentModelEnum
+          - range: CloudServiceModelEnum
+          - range: string
+    in_subset:
+      - ssp
+
+  SspSystemInformationProp:
+    is_a: Property
+    description: SSP-scoped property used in system information.
+    slot_usage:
+      name:
+        range: SystemInformationPropNameEnum
+      value:
+        range: PrivacyDesignationEnum
+    in_subset:
+      - ssp
+
+  SspControlOriginationProp:
+    is_a: Property
+    description: SSP-scoped property used in implemented requirement and by-component contexts.
+    slot_usage:
+      name:
+        range: ControlOriginationPropNameEnum
+      value:
+        range: ControlOriginationValueEnum
+    in_subset:
+      - ssp
+
+  SspAllowsAuthenticatedScanProp:
+    is_a: Property
+    description: SSP-scoped property used for component and inventory allows-authenticated-scan.
+    slot_usage:
+      name:
+        range: string
+      value:
+        range: AllowsAuthenticatedScanEnum
+    in_subset:
+      - ssp
+
+  SspSystemInformationLink:
+    is_a: Link
+    description: SSP-scoped link used in system information.
+    slot_usage:
+      rel:
+        any_of:
+          - range: SystemInformationLinkRelEnum
+          - range: string
+    in_subset:
+      - ssp
+
+  SspDiagramLink:
+    is_a: Link
+    description: SSP-scoped link used in diagram objects.
+    slot_usage:
+      rel:
+        any_of:
+          - range: DiagramLinkRelEnum
+          - range: string
+    in_subset:
+      - ssp
+
+  SspLeveragedAuthorizationLink:
+    is_a: Link
+    description: SSP-scoped link used in leveraged authorization objects.
+    slot_usage:
+      rel:
+        any_of:
+          - range: LeveragedAuthorizationLinkRelEnum
+          - range: string
+    in_subset:
+      - ssp
+
+  SspByComponentLink:
+    is_a: Link
+    description: SSP-scoped link used in by-component contexts.
+    slot_usage:
+      rel:
+        any_of:
+          - range: ByComponentLinkRelEnum
+          - range: string
+    in_subset:
+      - ssp
+
+  SspSystemCharacteristicsResponsibleParty:
+    is_a: ResponsibleParty
+    description: SSP-scoped responsible party for system characteristics.
+    slot_usage:
+      role-id:
+        any_of:
+          - range: SystemCharacteristicsResponsibleRoleIdEnum
+          - range: TokenType
+    in_subset:
+      - ssp
+
+  SspImplementedRequirementResponsibleRole:
+    is_a: ResponsibleRole
+    description: SSP-scoped responsible role used by implemented requirement and statement contexts.
+    slot_usage:
+      role-id:
+        any_of:
+          - range: ImplementedRequirementResponsibleRoleIdEnum
+          - range: TokenType
+    in_subset:
+      - ssp
+
+  SspByComponentResponsibleRole:
+    is_a: ResponsibleRole
+    description: SSP-scoped responsible role used by by-component contexts.
+    slot_usage:
+      role-id:
+        any_of:
+          - range: ByComponentResponsibleRoleIdEnum
+          - range: TokenType
+    in_subset:
+      - ssp
+
+  SspSystemComponent:
+    is_a: SystemComponent
+    description: SSP-scoped system component with allows-authenticated-scan property typing.
+    slot_usage:
+      props:
+        range: SspAllowsAuthenticatedScanProp
+    in_subset:
+      - ssp
+
+  SspInventoryItem:
+    is_a: InventoryItem
+    description: SSP-scoped inventory item with allows-authenticated-scan property typing.
+    slot_usage:
+      props:
+        range: SspAllowsAuthenticatedScanProp
+    in_subset:
+      - ssp

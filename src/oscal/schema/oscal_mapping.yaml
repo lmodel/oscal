@@ -1,0 +1,464 @@
+---
+id: https://w3id.org/lmodel/oscal_mapping
+name: oscal_mapping
+title: oscal_mapping
+description: |-
+  OSCAL Mapping Collection Model: LinkML Schema
+license: Apache-2.0
+see_also:
+  - https://pages.nist.gov/OSCAL/
+  - https://pages.nist.gov/OSCAL/learn/concepts/layer/mapping/
+source: http://csrc.nist.gov/ns/oscal/1.2.1/oscal-mapping-schema.json
+version: 1.2.1
+annotations:
+  uuid: fb0aef69-f6c8-4dfa-abb8-e8be0700d426
+  last-modified: "2026-03-27T10:00:00Z"
+notes:
+  - Every time the content of an OSCAL file changes, the following must also change:
+  - A new UUID value must be generated and assigned to the root element's uuid.
+  - The last-modified field in metadata must be assigned with the date and time at the moment the file is saved with the modified content.
+  - These are two mechanisms by which tools can quickly know if a file has changed since it was last encountered. This document level UUID is the only UUID in OSCAL associated with version control.
+  - When converting between formats, such as XML to JSON, these values should remain the same. This enables tools to know the content within the two formats is equivalent.
+
+prefixes:
+  oscal_mapping: https://w3id.org/lmodel/oscal_mapping/
+  oscal_catalog: https://w3id.org/lmodel/oscal_catalog/
+  linkml: https://w3id.org/linkml/
+default_prefix: oscal_mapping
+default_range: string
+
+imports:
+  - linkml:types
+  - ./oscal_catalog
+
+subsets:
+  mapping_collection:
+    description: >-
+      Classes that form the root OSCAL Mapping Collection document and
+      mapping-specific structural containers.
+
+enums:
+  MappingMethodEnum:
+    permissible_values:
+      human:
+      automation:
+      hybrid:
+
+  MatchingRationaleEnum:
+    permissible_values:
+      syntactic:
+      semantic:
+      functional:
+
+  MappingStatusEnum:
+    permissible_values:
+      complete:
+      not-complete:
+      draft:
+      deprecated:
+      superseded:
+
+  MappingSubjectTypeEnum:
+    permissible_values:
+      control:
+      statement:
+
+  QualifierSubjectEnum:
+    permissible_values:
+      source:
+      target:
+      both:
+
+  QualifierPredicateEnum:
+    permissible_values:
+      has-requirement:
+      has-incompatibility:
+
+  QualifierCategoryEnum:
+    permissible_values:
+      restricted:
+      addressable:
+      blocked:
+
+  RelationshipEnum:
+    description: Relationship values used for mapping entries in the OSCAL namespace.
+    permissible_values:
+      equivalent-to:
+      equal-to:
+      subset-of:
+      superset-of:
+      intersects-with:
+      no-relationship:
+
+  MappingResourceTypeEnum:
+    annotations:
+      allow_any: true
+    description: >-
+      Curated mapped resource type values. Other values are permitted
+      (OSCAL allow-other="yes").
+    permissible_values:
+      catalog:
+      profile:
+
+  ConfidenceCategoryEnum:
+    annotations:
+      allow_any: true
+    description: >-
+      Curated confidence category values for OSCAL mappings. Other values are
+      permitted (OSCAL allow-other="yes").
+    permissible_values:
+      unspecified:
+      high:
+      medium:
+      low:
+
+  CoverageGenerationMethodEnum:
+    annotations:
+      allow_any: true
+    description: >-
+      Curated coverage generation method values. Other values are permitted
+      (OSCAL allow-other="yes").
+    permissible_values:
+      arbitrary:
+
+slots:
+  mapping-collection:
+    range: MappingCollection
+    inlined: true
+    description: The root mapping collection object.
+
+  provenance:
+    range: MappingProvenance
+    inlined: true
+    description: Global provenance and mapping method metadata.
+
+  mappings:
+    range: Mapping
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: A collection of control mappings.
+
+  matching-rationale:
+    range: MatchingRationaleEnum
+    description: The rationale method used to relate mapped items.
+
+  source-resource:
+    range: MappingResourceReference
+    inlined: true
+    description: Reference to the mapping source resource.
+
+  target-resource:
+    range: MappingResourceReference
+    inlined: true
+    description: Reference to the mapping target resource.
+
+  maps:
+    range: Map
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: Mapping entries relating source items to target items.
+
+  mapping-description:
+    range: MarkupMultilineType
+    description: Description of the context and intended use of the mapping.
+
+  source-gap-summary:
+    range: GapSummary
+    inlined: true
+    description: Summary of unmapped source controls.
+
+  target-gap-summary:
+    range: GapSummary
+    inlined: true
+    description: Summary of unmapped target controls.
+
+  confidence-score:
+    range: ConfidenceScore
+    inlined: true
+    description: Confidence descriptor for a mapping.
+
+  coverage:
+    range: Coverage
+    inlined: true
+    description: Coverage metadata for a mapping.
+
+  relationship:
+    any_of:
+      - range: RelationshipEnum
+      - range: TokenType
+    description: >-
+      Relationship type for a mapping entry. OSCAL namespace values are defined
+      by RelationshipEnum.
+
+  targets:
+    range: MappingItem
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: Target subjects participating in a mapping entry.
+
+  qualifiers:
+    range: QualifierItem
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: Qualifier statements for a mapping entry.
+
+  id-ref:
+    range: string
+    description: Identifier reference of a source/target subject.
+
+  subject:
+    range: QualifierSubjectEnum
+    description: Subject to which the qualifier applies.
+
+  predicate:
+    range: QualifierPredicateEnum
+    description: Predicate describing qualifier semantics.
+
+  category:
+    range: string
+    description: Confidence category label or qualifier category value.
+
+  unmapped-controls:
+    range: SelectControlById
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: Controls that remain unmapped.
+
+  percentage:
+    range: float
+    minimum_value: 0
+    maximum_value: 1
+    description: A decimal percentage value in the range 0 to 1.
+
+  generation-method:
+    any_of:
+      - range: CoverageGenerationMethodEnum
+      - range: string
+    description: >-
+      Method used to determine the coverage value. Recommended values are in
+      CoverageGenerationMethodEnum; other values are permitted.
+
+  target-coverage:
+    range: float
+    minimum_value: 0
+    maximum_value: 1
+    description: Percentage coverage of targets by sources.
+
+classes:
+  MappingCollectionDocument:
+    is_a: OscalDocument
+    description: Root wrapper for an OSCAL Mapping Collection document.
+    slots:
+      - mapping-collection
+    slot_usage:
+      mapping-collection:
+        required: true
+    in_subset:
+      - mapping_collection
+
+  MappingCollection:
+    description: A collection of control mappings between source and target resources.
+    slots:
+      - uuid
+      - metadata
+      - provenance
+      - mappings
+      - back-matter
+    slot_usage:
+      uuid:
+        required: true
+      metadata:
+        required: true
+      provenance:
+        required: true
+      mappings:
+        required: true
+    in_subset:
+      - mapping_collection
+
+  MappingProvenance:
+    description: Mapping-level provenance details and mapping defaults.
+    mixins:
+      - OscalCommon
+      - HasResponsibleParties
+    slots:
+      - method
+      - matching-rationale
+      - status
+      - confidence-score
+      - coverage
+      - mapping-description
+    slot_usage:
+      method:
+        range: MappingMethodEnum
+        required: true
+      matching-rationale:
+        required: true
+      status:
+        range: MappingStatusEnum
+        required: true
+      mapping-description:
+        required: true
+    in_subset:
+      - mapping_collection
+
+  Mapping:
+    description: A mapping between two mapped resources.
+    mixins:
+      - OscalCommon
+    slots:
+      - uuid
+      - method
+      - matching-rationale
+      - status
+      - source-resource
+      - target-resource
+      - maps
+      - mapping-description
+      - source-gap-summary
+      - target-gap-summary
+      - confidence-score
+      - coverage
+    slot_usage:
+      uuid:
+        required: true
+      method:
+        range: MappingMethodEnum
+      status:
+        range: MappingStatusEnum
+      source-resource:
+        required: true
+      target-resource:
+        required: true
+      maps:
+        required: true
+    in_subset:
+      - mapping_collection
+
+  Map:
+    description: A relationship-based mapping entry between source and target sets.
+    mixins:
+      - OscalCommon
+    slots:
+      - uuid
+      - ns
+      - matching-rationale
+      - relationship
+      - sources
+      - targets
+      - qualifiers
+      - confidence-score
+      - coverage
+    slot_usage:
+      uuid:
+        required: true
+      relationship:
+        required: true
+      sources:
+        range: MappingItem
+        required: true
+      targets:
+        required: true
+    in_subset:
+      - mapping_collection
+
+  MappingItem:
+    description: A source or target item participating in a mapping entry.
+    mixins:
+      - OscalCommon
+    slots:
+      - type
+      - id-ref
+    slot_usage:
+      type:
+        range: MappingSubjectTypeEnum
+        required: true
+      id-ref:
+        required: true
+    in_subset:
+      - mapping_collection
+
+  MappingResourceReference:
+    description: A reference to the source or target resource for a mapping.
+    mixins:
+      - OscalCommon
+    slots:
+      - ns
+      - type
+      - href
+    slot_usage:
+      type:
+        any_of:
+          - range: MappingResourceTypeEnum
+          - range: TokenType
+        required: true
+        description: >-
+          The semantic type of the referenced resource. OSCAL defines catalog and
+          profile, while locally defined values are also permitted.
+      href:
+        required: true
+    in_subset:
+      - mapping_collection
+
+  QualifierItem:
+    description: A qualifier describing requirements or incompatibilities.
+    slots:
+      - subject
+      - predicate
+      - category
+      - description
+      - remarks
+    slot_usage:
+      category:
+        range: QualifierCategoryEnum
+        required: true
+      description:
+        required: true
+      predicate:
+        required: true
+      subject:
+        required: true
+    in_subset:
+      - mapping_collection
+
+  GapSummary:
+    description: A summary of controls that were not mapped.
+    slots:
+      - uuid
+      - unmapped-controls
+    slot_usage:
+      uuid:
+        required: true
+      unmapped-controls:
+        required: true
+    in_subset:
+      - mapping_collection
+
+  ConfidenceScore:
+    description: Confidence represented as a category and/or percentage value.
+    slots:
+      - category
+      - percentage
+    slot_usage:
+      category:
+        any_of:
+          - range: ConfidenceCategoryEnum
+          - range: string
+    in_subset:
+      - mapping_collection
+
+  Coverage:
+    description: A percentage representing target coverage by source mappings.
+    slots:
+      - generation-method
+      - target-coverage
+    slot_usage:
+      target-coverage:
+        required: true
+    in_subset:
+      - mapping_collection

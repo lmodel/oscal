@@ -1,0 +1,8 @@
+---
+# INVALID: Control missing required 'id' field
+title: Account Management
+parts:
+  - id: ac-2_smt
+    name: statement
+    prose: >-
+      The organization manages information system accounts.

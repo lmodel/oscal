@@ -1,0 +1,230 @@
+---
+id: https://w3id.org/lmodel/oscal_assessment_results
+name: oscal_assessment_results
+title: oscal_assessment_results
+description: |-
+  OSCAL Assessment Results Model: LinkML Schema
+license: Apache-2.0
+see_also:
+  - https://pages.nist.gov/OSCAL/learn/concepts/layer/assessment/assessment-results/
+source: http://csrc.nist.gov/ns/oscal/1.2.1/oscal-ar-schema.json
+version: 1.2.1
+annotations:
+  uuid: 0b4113f1-f134-44d8-927b-34d721ed1d8a
+  last-modified: "2026-03-27T10:00:00Z"
+notes:
+  - Every time the content of an OSCAL file changes, the following must also change:
+  - A new UUID value must be generated and assigned to the root element's uuid.
+  - The last-modified field in metadata must be assigned with the date and time at the moment the file is saved with the modified content.
+  - These are two mechanisms by which tools can quickly know if a file has changed since it was last encountered. This document level UUID is the only UUID in OSCAL associated with version control.
+  - When converting between formats, such as XML to JSON, these values should remain the same. This enables tools to know the content within the two formats is equivalent.
+
+prefixes:
+  oscal_assessment_results: https://w3id.org/lmodel/oscal_assessment_results/
+  oscal_assessment_plan: https://w3id.org/lmodel/oscal_assessment_plan/
+  oscal_catalog: https://w3id.org/lmodel/oscal_catalog/
+  linkml: https://w3id.org/linkml/
+default_prefix: oscal_assessment_results
+default_range: string
+
+imports:
+  - linkml:types
+  - ./oscal_catalog
+  - ./oscal_assessment_plan
+
+subsets:
+  assessment_results:
+    description: >-
+      Classes that form the root OSCAL Assessment Results document and its
+      assessment-results-specific structural containers.
+
+slots:
+  assessment-results:
+    range: AssessmentResults
+    inlined: true
+    description: The root assessment results object.
+
+  import-ap:
+    range: ImportAssessmentPlan
+    inlined: true
+    description: Used to import information about the governing assessment plan.
+
+  results:
+    range: Result
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: A collection of assessment results.
+
+  attestations:
+    range: Attestation
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: A set of attestation statements for the result.
+
+  assessment-log:
+    range: AssessmentLog
+    inlined: true
+    description: A log of assessment-related actions taken.
+
+classes:
+  AssessmentResultsDocument:
+    is_a: OscalDocument
+    description: Root wrapper for an OSCAL Assessment Results document.
+    slots:
+      - assessment-results
+    slot_usage:
+      assessment-results:
+        required: true
+    in_subset:
+      - assessment_results
+
+  AssessmentResults:
+    description: >-
+      Security assessment results, such as those provided by a FedRAMP assessor
+      in a security assessment report.
+    slots:
+      - uuid
+      - metadata
+      - import-ap
+      - local-definitions
+      - results
+      - back-matter
+    slot_usage:
+      uuid:
+        required: true
+        description: Assessment Results Universally Unique Identifier.
+      metadata:
+        required: true
+      import-ap:
+        required: true
+      local-definitions:
+        range: AssessmentResultsLocalDefinitions
+        inlined: true
+      results:
+        required: true
+    in_subset:
+      - assessment_results
+
+  ImportAssessmentPlan:
+    description: >-
+      Used by assessment-results to import information about the original plan
+      for assessing the system.
+    slots:
+      - href
+      - remarks
+    slot_usage:
+      href:
+        required: true
+    in_subset:
+      - assessment_results
+
+  AssessmentResultsLocalDefinitions:
+    description: >-
+      Used to define data objects that are referenced by the assessment results
+      but do not appear in the imported assessment plan.
+    slots:
+      - objectives-and-methods
+      - activities
+      - remarks
+    in_subset:
+      - assessment_results
+
+  Result:
+    description: >-
+      Identifies all of the assessment observations and findings, initial and
+      residual risks, deviations, and disposition for a particular execution of
+      the assessment.
+    mixins:
+      - OscalCommon
+    slots:
+      - uuid
+      - title
+      - description
+      - start
+      - end
+      - local-definitions
+      - reviewed-controls
+      - attestations
+      - assessment-log
+      - observations
+      - risks
+      - findings
+    slot_usage:
+      uuid:
+        required: true
+      title:
+        required: true
+      description:
+        required: true
+      start:
+        required: true
+      local-definitions:
+        range: ResultLocalDefinitions
+        inlined: true
+      reviewed-controls:
+        required: true
+      assessment-log:
+        inlined: true
+    in_subset:
+      - assessment_results
+
+  ResultLocalDefinitions:
+    description: >-
+      Used to define local implementation and assessment assets referenced by a
+      result that do not appear in the imported system security plan.
+    slots:
+      - components
+      - inventory-items
+      - users
+      - assessment-assets
+      - tasks
+    in_subset:
+      - assessment_results
+
+  Attestation:
+    description: A set of textual attestation statements, typically written by the assessor.
+    mixins:
+      - HasResponsibleParties
+    slots:
+      - parts
+    slot_usage:
+      parts:
+        range: AssessmentPart
+        required: true
+    in_subset:
+      - assessment_results
+
+  AssessmentLog:
+    description: A log of all assessment-related actions taken.
+    slots:
+      - entries
+    slot_usage:
+      entries:
+        range: AssessmentLogEntry
+        required: true
+    in_subset:
+      - assessment_results
+
+  AssessmentLogEntry:
+    description: >-
+      Identifies the result of an action and/or task that occurred as part of
+      executing an assessment plan or assessment event.
+    mixins:
+      - OscalCommon
+    slots:
+      - uuid
+      - title
+      - description
+      - start
+      - end
+      - logged-by
+      - related-tasks
+    slot_usage:
+      uuid:
+        required: true
+      start:
+        required: true
+    in_subset:
+      - assessment_results

@@ -1,0 +1,35 @@
+---
+# A standalone Group containing nested controls
+id: si
+title: System and Information Integrity
+params:
+  - id: si-rate
+    label: organization-defined frequency
+controls:
+  - id: si-1
+    title: Policy and Procedures
+    parts:
+      - id: si-1_smt
+        name: statement
+        prose: >-
+          The organization develops, documents, and disseminates a system
+          and information integrity policy.
+  - id: si-2
+    title: Flaw Remediation
+    parts:
+      - id: si-2_smt
+        name: statement
+        prose: >-
+          The organization identifies, reports, and corrects information
+          system flaws.
+groups:
+  - id: si-enhanced
+    title: SI Enhanced Controls
+    controls:
+      - id: si-2.1
+        title: Flaw Remediation | Central Management
+        parts:
+          - id: si-2.1_smt
+            name: statement
+            prose: >-
+              The organization centrally manages the flaw remediation process.

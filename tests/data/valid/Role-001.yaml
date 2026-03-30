@@ -1,0 +1,8 @@
+---
+# A Role with all common fields
+id: catalog-author
+title: Catalog Author
+short_name: Author
+description: >-
+  The individual or organization responsible for authoring the catalog
+  content and maintaining its accuracy.

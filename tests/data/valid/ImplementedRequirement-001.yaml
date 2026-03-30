@@ -1,0 +1,7 @@
+uuid: 66666666-6666-4666-8666-666666666666
+control_id: ac-2
+description: Example implementation guidance for AC-2.
+statements:
+  - statement_id: ac-2_smt.a
+    uuid: 77777777-7777-4777-8777-777777777777
+    description: Component satisfies statement AC-2_smt.a through centralized access control workflow.

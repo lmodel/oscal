@@ -1,0 +1,75 @@
+---
+# Full OSCAL Catalog document with groups, controls, parameters, and back-matter
+catalog:
+  uuid: "aabbccdd-1234-4000-8000-aabbccddeeff"
+  metadata:
+    title: Sample Security Controls Catalog
+    last_modified: "2026-03-01T12:00:00Z"
+    version: "2.0.0"
+    oscal_version: "1.1.2"
+    revisions:
+      - version: "1.0.0"
+        last_modified: "2025-01-01T00:00:00Z"
+        oscal_version: "1.1.2"
+    roles:
+      - id: catalog-author
+        title: Catalog Author
+    parties:
+      - uuid: "aaaaaaaa-1111-4000-8000-aaaaaaaaaaaa"
+        type: organization
+        name: Example Standards Body
+  params:
+    - id: ac-1_prm_1
+      label: organization-defined personnel or roles
+      usage: >-
+        Specify the personnel or roles responsible for the development,
+        implementation, and review of the access control policy.
+  groups:
+    - id: ac
+      title: Access Control
+      params:
+        - id: ac-common-rate
+          label: organization-defined frequency
+      controls:
+        - id: ac-1
+          title: Policy and Procedures
+          params:
+            - id: ac-1_prm_1
+              label: organization-defined personnel or roles
+          parts:
+            - id: ac-1_smt
+              name: statement
+              prose: >-
+                The organization develops, documents, and disseminates to
+                {{ insert: param, ac-1_prm_1 }} an access control policy.
+            - id: ac-1_gdn
+              name: guidance
+              prose: >-
+                Access control policy and procedures address the controls in
+                the AC family.
+        - id: ac-2
+          title: Account Management
+          parts:
+            - id: ac-2_smt
+              name: statement
+              prose: >-
+                The organization manages information system accounts including
+                establishing, activating, modifying, reviewing, disabling, and
+                removing accounts.
+    - id: ia
+      title: Identification and Authentication
+      controls:
+        - id: ia-1
+          title: Identification and Authentication Policy and Procedures
+          parts:
+            - id: ia-1_smt
+              name: statement
+              prose: >-
+                The organization develops, documents, and disseminates an
+                identification and authentication policy.
+  back_matter:
+    resources:
+      - uuid: "bbbbbbbb-2222-4000-8000-bbbbbbbbbbbb"
+        title: NIST SP 800-53 Rev 5
+        rlinks:
+          - href: https://doi.org/10.6028/NIST.SP.800-53r5

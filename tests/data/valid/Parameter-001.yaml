@@ -1,0 +1,27 @@
+---
+# A standalone Parameter with constraints and a selection
+id: au-2_prm_1
+label: organization-defined event types
+usage: >-
+  Specify the types of events that the organization determines the system
+  is capable of auditing.
+constraints:
+  - description: >-
+      Events must be selected from the organization-defined list of auditable
+      event types.
+    tests:
+      - expression: "count(.) > 0"
+        remarks: At least one event type must be specified.
+guidelines:
+  - prose: >-
+      Coordinate the event types selected for audit with other organizations
+      requiring audit-related information.
+select:
+  how_many: one-or-more
+  choice:
+    - logon and logoff events
+    - object access events
+    - policy change events
+    - privilege use events
+    - process tracking events
+    - system events

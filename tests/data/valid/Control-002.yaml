@@ -1,0 +1,46 @@
+---
+# Control with enhanced (child) controls and a constraint
+id: ac-2
+title: Account Management
+_class: proactive
+params:
+  - id: ac-2_prm_1
+    label: organization-defined account types
+  - id: ac-2_prm_2
+    label: organization-defined personnel or roles
+    constraints:
+      - description: Must reference defined roles in the organization.
+        tests:
+          - expression: "string-length(.) > 0"
+            remarks: Parameter value must be a non-empty string.
+parts:
+  - id: ac-2_smt
+    name: statement
+    prose: >-
+      The organization manages information system accounts, including establishing,
+      activating, modifying, reviewing, disabling, and removing accounts.
+  - id: ac-2_gdn
+    name: guidance
+    prose: >-
+      This control applies to all types of accounts including user, shared,
+      group, system, guest, anonymous, emergency, developer, and temporary.
+controls:
+  - id: ac-2.1
+    title: Account Management | Automated System Account Management
+    parts:
+      - id: ac-2.1_smt
+        name: statement
+        prose: >-
+          The organization employs automated mechanisms to support the management
+          of information system accounts.
+  - id: ac-2.2
+    title: Account Management | Removal of Temporary or Emergency Accounts
+    params:
+      - id: ac-2.2_prm_1
+        label: organization-defined time period
+    parts:
+      - id: ac-2.2_smt
+        name: statement
+        prose: >-
+          The information system automatically removes or disables temporary and
+          emergency accounts after {{ insert: param, ac-2.2_prm_1 }}.

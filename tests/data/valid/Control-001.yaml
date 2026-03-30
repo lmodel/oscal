@@ -1,0 +1,34 @@
+---
+# A standalone Control with parts and a parameter
+id: sc-28
+title: Protection of Information at Rest
+params:
+  - id: sc-28_prm_1
+    label: organization-defined information system components
+    usage: >-
+      Specify the information system components that protect the
+      confidentiality and integrity of information at rest.
+parts:
+  - id: sc-28_smt
+    name: statement
+    prose: >-
+      The information system protects the confidentiality and integrity of
+      information at rest on {{ insert: param, sc-28_prm_1 }}.
+  - id: sc-28_gdn
+    name: guidance
+    prose: >-
+      This control addresses the confidentiality and integrity of information
+      at rest and covers user information and system information.
+  - id: sc-28_obj
+    name: objective
+    parts:
+      - id: sc-28_obj.1
+        name: objective
+        prose: >-
+          Determine if the information system protects the confidentiality
+          of information at rest.
+      - id: sc-28_obj.2
+        name: objective
+        prose: >-
+          Determine if the information system protects the integrity of
+          information at rest.

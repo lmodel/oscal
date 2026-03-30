@@ -1,0 +1,2670 @@
+---
+id: https://w3id.org/lmodel/oscal_assessment_plan
+name: oscal_assessment_plan
+title: oscal_assessment_plan
+description: |-
+  OSCAL Assessment Plan Model: LinkML Schema
+license: Apache-2.0
+see_also:
+  - https://lmodel.github.io/oscal_assessment_plan
+  - https://pages.nist.gov/OSCAL/learn/concepts/layer/assessment/assessment-plan/
+  - https://medium.com/@gregelin/an-orientation-to-oscal-in-the-devsecops-pipeline-b51e45f8503b
+source: http://csrc.nist.gov/ns/oscal/1.2.1/oscal-ap-schema.json
+version: 1.2.1
+annotations:
+  uuid: 64ef4098-cb23-4767-9e2a-2a8606756e39
+  last-modified: "2026-03-27T10:00:00Z"
+notes:
+  - Every time the content of an OSCAL file changes, the following must also change:
+  - A new UUID value must be generated and assigned to the root element's uuid.
+  - The last-modified field in metadata must be assigned with the date and time at the moment the file is saved with the modified content.
+  - These are two mechanisms by which tools can quickly know if a file has changed since it was last encountered. This document level UUID is the only UUID in OSCAL associated with version control.
+  - When converting between formats, such as XML to JSON, these values should remain the same. This enables tools to know the content within the two formats is equivalent.
+
+prefixes:
+  oscal_assessment_plan: https://w3id.org/lmodel/oscal_assessment_plan/
+  oscal_catalog: https://w3id.org/lmodel/oscal_catalog/
+  linkml: https://w3id.org/linkml/
+default_prefix: oscal_assessment_plan
+default_range: string
+
+imports:
+  - linkml:types
+  - ./oscal_catalog
+
+types:
+  NonNegativeIntegerType:
+    uri: xsd:nonNegativeInteger
+    base: int
+    description: A non-negative integer value (>= 0), as used for port range boundaries.
+
+  PositiveIntegerType:
+    uri: xsd:positiveInteger
+    base: int
+    description: A positive integer value (>= 1), as used for task recurrence periods.
+
+enums:
+  TaskTypeEnum:
+    annotations:
+      allow_any: true
+    description: >
+      Curated task type values. Other values are permitted (OSCAL allow-other="yes").
+    permissible_values:
+      milestone:
+      action:
+
+  TimingUnitEnum:
+    permissible_values:
+      seconds:
+      minutes:
+      hours:
+      days:
+      months:
+      years:
+
+  AssessmentSubjectTypeEnum:
+    annotations:
+      allow_any: true
+    description: >
+      Curated assessment subject type values. Other values are permitted (OSCAL allow-other="yes").
+    permissible_values:
+      component:
+      inventory-item:
+      location:
+      party:
+      user:
+
+  SelectSubjectTypeEnum:
+    annotations:
+      allow_any: true
+    description: >
+      Curated subject type values for subject selection. Other values are permitted (OSCAL allow-other="yes").
+    permissible_values:
+      component:
+      inventory-item:
+      location:
+      party:
+      user:
+      resource:
+
+  OriginActorTypeEnum:
+    permissible_values:
+      tool:
+      assessment-platform:
+      party:
+
+  ObservationMethodEnum:
+    annotations:
+      allow_any: true
+    description: >
+      Curated observation method values. Other values are permitted (OSCAL allow-other="yes").
+    permissible_values:
+      EXAMINE:
+      INTERVIEW:
+      TEST:
+      UNKNOWN:
+
+  ObservationTypeEnum:
+    annotations:
+      allow_any: true
+    description: >
+      Curated observation type values. Other values are permitted (OSCAL allow-other="yes").
+    permissible_values:
+      ssp-statement-issue:
+      control-objective:
+      mitigation:
+      finding:
+        deprecated: "Deprecated since OSCAL 1.1.4. Use 'discovery' instead."
+      discovery:
+      historic:
+
+  RiskStatusEnum:
+    annotations:
+      allow_any: true
+    description: >
+      Curated risk status values. Other values are permitted (OSCAL allow-other="yes").
+    permissible_values:
+      open:
+      investigating:
+      remediating:
+      deviation-requested:
+      deviation-approved:
+      closed:
+
+  FindingTargetTypeEnum:
+    permissible_values:
+      statement-id:
+      objective-id:
+
+  ObjectiveStatusStateEnum:
+    permissible_values:
+      satisfied:
+      not-satisfied:
+
+  ObjectiveStatusReasonEnum:
+    annotations:
+      allow_any: true
+    description: >
+      Curated objective status reason values. Other values are permitted (OSCAL allow-other="yes").
+    permissible_values:
+      pass:
+      fail:
+      other:
+
+  ImplementationStatusStateEnum:
+    annotations:
+      allow_any: true
+    description: >
+      Curated implementation status state values. Other values are permitted (OSCAL allow-other="yes").
+    permissible_values:
+      implemented:
+      partial:
+      planned:
+      alternative:
+      not-applicable:
+
+  ComponentTypeEnum:
+    annotations:
+      allow_any: true
+    description: >
+      Curated component type values. Other values are permitted (OSCAL allow-other="yes").
+    permissible_values:
+      this-system:
+      system:
+      interconnection:
+      software:
+      hardware:
+      service:
+      policy:
+      physical:
+      process-procedure:
+      plan:
+      guidance:
+      standard:
+      validation:
+      network:
+
+  ComponentStateEnum:
+    permissible_values:
+      under-development:
+      operational:
+      disposition:
+      other:
+
+  TransportEnum:
+    permissible_values:
+      TCP:
+      UDP:
+
+  ImplementationPropNameEnum:
+    description: Allowed OSCAL implementation-common property names.
+    permissible_values:
+      implementation-point:
+      leveraged-authorization-uuid:
+      inherited-uuid:
+      asset-type:
+      asset-id:
+      asset-tag:
+      public:
+      virtual:
+      vlan-id:
+      network-id:
+      label:
+      sort-id:
+      baseline-configuration-name:
+      allows-authenticated-scan:
+      function:
+      hardware-model:
+      model:
+      os-name:
+      os-version:
+      software-name:
+      software-version:
+      software-patch-level:
+      version:
+      patch-level:
+      release-date:
+      validation-type:
+      validation-reference:
+      vendor-name:
+      software-identifier:
+      isa-title:
+      isa-date:
+      isa-remote-system-name:
+      ipv4-address:
+      ipv6-address:
+      direction:
+      uri:
+      fqdn:
+      serial-number:
+      netbios-name:
+      mac-address:
+      physical-location:
+      is-scanned:
+      type:
+      privilege-level:
+
+  ImplementationLinkRelEnum:
+    annotations:
+      allow_any: true
+    description: >-
+      Curated implementation-common link relation values. Other values are
+      permitted (OSCAL allow-other="yes").
+    permissible_values:
+      depends-on:
+      validation:
+      proof-of-compliance:
+      baseline-template:
+      uses-service:
+      system-security-plan:
+      uses-network:
+      imported-from:
+      validation-details:
+      provided-by:
+      used-by:
+      isa-agreement:
+
+  ImplementationAssetTypeEnum:
+    annotations:
+      allow_any: true
+    description: >-
+      Curated implementation asset type values. Other values are permitted
+      (OSCAL allow-other="yes").
+    permissible_values:
+      operating-system:
+      database:
+      web-server:
+      dns-server:
+      email-server:
+      directory-server:
+      pbx:
+      firewall:
+      router:
+      switch:
+      storage-array:
+      appliance:
+
+  ImplementationPointEnum:
+    permissible_values:
+      internal:
+      external:
+
+  ImplementationIpAddressClassEnum:
+    permissible_values:
+      local:
+      remote:
+
+  ImplementationDirectionEnum:
+    permissible_values:
+      incoming:
+      outgoing:
+
+  UserTypeEnum:
+    permissible_values:
+      internal:
+      external:
+      general-public:
+
+  UserPrivilegeLevelEnum:
+    permissible_values:
+      privileged:
+      non-privileged:
+      no-logical-access:
+
+  InterconnectionResponsibleRoleIdEnum:
+    annotations:
+      allow_any: true
+    description: >-
+      Curated interconnection responsible-role identifiers. Other values are
+      permitted (OSCAL allow-other="yes").
+    permissible_values:
+      isa-poc-local:
+      isa-poc-remote:
+      isa-authorizing-official-local:
+      isa-authorizing-official-remote:
+
+  ImplementationResponsibleRoleIdEnum:
+    annotations:
+      allow_any: true
+    description: >-
+      Curated implementation-common role identifiers used in responsible role
+      and responsible party contexts. Other values are permitted (OSCAL
+      allow-other="yes").
+    permissible_values:
+      asset-owner:
+      asset-administrator:
+      security-operations:
+      network-operations:
+      incident-response:
+      help-desk:
+      configuration-management:
+      maintainer:
+      provider:
+
+  ImplementationYesNoEnum:
+    description: Implementation-common yes/no value set used by several properties.
+    permissible_values:
+      "yes":
+      "no":
+
+  SystemIdentifierTypeEnum:
+    annotations:
+      allow_any: true
+    description: >-
+      Curated system identifier type URIs. Other values are permitted (OSCAL
+      allow-other="yes").
+    permissible_values:
+      http://fedramp.gov:
+      http://fedramp.gov/ns/oscal:
+      https://ietf.org/rfc/rfc4122:
+      http://ietf.org/rfc/rfc4122:
+      http://datatracker.ietf.org/doc/html/rfc4122:
+
+  AssessmentPartNameEnum:
+    annotations:
+      allow_any: true
+    description: >
+      Curated assessment part name values. Other values are permitted (OSCAL allow-other="yes").
+    permissible_values:
+      asset:
+      method:
+      objective:
+
+  TermsAndConditionsPartNameEnum:
+    description: Allowed part names in assessment plan terms-and-conditions.
+    permissible_values:
+      rules-of-engagement:
+      disclosures:
+      assessment-inclusions:
+      assessment-exclusions:
+      results-delivery:
+      assumptions:
+      methodology:
+
+  OscalAssessmentObjectiveTypesEnum:
+    description: Values from assessment-common set oscal-assessment-objective-types.
+    permissible_values:
+      "objective":
+      "assessment":
+      "assessment-objective":
+      "assessment-method":
+
+  OscalRiskPropTypeValuesEnum:
+    description: Values from assessment-common set oscal-risk-prop-type-values.
+    annotations:
+      allow_any: true
+    permissible_values:
+      "vendor-check-in":
+      "status-update":
+      "milestone-complete":
+      "mitigation":
+      "remediated":
+      "closed":
+      "dr-submission":
+      "dr-updated":
+      "dr-approved":
+      "dr-rejected":
+
+  OscalRiskPropNameValuesEnum:
+    description: Values from assessment-common set oscal-risk-prop-name-values.
+    permissible_values:
+      "false-positive":
+      "accepted":
+      "risk-adjusted":
+      "priority":
+
+  OscalCharacterizationFacetNameSystemValuesEnum:
+    description: Values from assessment-common set oscal-characterization-facet-name-system-values.
+    annotations:
+      allow_any: true
+    permissible_values:
+      "http://fedramp.gov":
+      "http://fedramp.gov/ns/oscal":
+      "http://csrc.nist.gov/ns/oscal":
+      "http://csrc.nist.gov/ns/oscal/unknown":
+      "http://cve.mitre.org":
+      "http://www.first.org/cvss/v2.0":
+      "http://www.first.org/cvss/v3.0":
+      "http://www.first.org/cvss/v3.1":
+      "https://www.first.org/cvss/v4-0":
+
+  OscalFacetPropNameValuesEnum:
+    description: Values from assessment-common set oscal-facet-prop-name-values.
+    permissible_values:
+      "state":
+
+  OscalFacetPropStateValuesEnum:
+    description: Values from assessment-common set oscal-facet-prop-state-values.
+    permissible_values:
+      "initial":
+      "adjusted":
+
+  OscalFacetNameCoreValuesEnum:
+    description: Values from assessment-common set oscal-facet-name-core-values.
+    permissible_values:
+      "likelihood":
+      "impact":
+      "risk":
+      "severity":
+
+  OscalFacetFedrampValuesEnum:
+    description: Values from assessment-common set oscal-facet-fedramp-values.
+    permissible_values:
+      "likelihood":
+      "impact":
+      "risk":
+
+  OscalFacetCveValuesEnum:
+    description: Values from assessment-common set oscal-facet-cve-values.
+    permissible_values:
+      "cve-id":
+
+  OscalFacetCvss2NameValuesEnum:
+    description: Values from assessment-common set oscal-facet-cvss2-name-values.
+    permissible_values:
+      "access-vector":
+      "access-complexity":
+      "authentication":
+      "confidentiality-impact":
+      "integrity-impact":
+      "availability-impact":
+      "exploitability":
+      "remediation-level":
+      "report-confidence":
+      "collateral-damage-potential":
+      "target-distribution":
+      "confidentiality-requirement":
+      "integrity-requirement":
+      "availability-requirement":
+
+  OscalFacetCvss2AccessVectorValuesEnum:
+    description: Values from assessment-common set oscal-facet-cvss2-access-vector-values.
+    permissible_values:
+      "local":
+      "adjacent-network":
+      "network":
+
+  OscalFacetCvss2AccessComplexityValuesEnum:
+    description: Values from assessment-common set oscal-facet-cvss2-access-complexity-values.
+    permissible_values:
+      "high":
+      "medium":
+      "low":
+
+  OscalFacetCvss2AuthenticationValuesEnum:
+    description: Values from assessment-common set oscal-facet-cvss2-authentication-values.
+    permissible_values:
+      "multiple":
+      "single":
+      "none":
+
+  OscalFacetCvss2ConfidentialityImpactValuesEnum:
+    description: Values from assessment-common set oscal-facet-cvss2-confidentiality-impact-values.
+    permissible_values:
+      "none":
+      "partial":
+      "complete":
+
+  OscalFacetCvss2ExploitabilityValuesEnum:
+    description: Values from assessment-common set oscal-facet-cvss2-exploitability-values.
+    permissible_values:
+      "unproven":
+      "proof-of-concept":
+      "functional":
+      "high":
+      "not-defined":
+
+  OscalFacetCvss2RemediationLevelValuesEnum:
+    description: Values from assessment-common set oscal-facet-cvss2-remediation-level-values.
+    permissible_values:
+      "official-fix":
+      "temporary-fix":
+      "workaround":
+      "unavailable":
+      "not-defined":
+
+  OscalFacetCvss2ReportConfidenceValuesEnum:
+    description: Values from assessment-common set oscal-facet-cvss2-report-confidence-values.
+    permissible_values:
+      "unconfirmed":
+      "uncorroborated":
+      "confirmed":
+      "not-defined":
+
+  OscalFacetCvss2CollateralDamagePotentialValuesEnum:
+    description: Values from assessment-common set oscal-facet-cvss2-collateral-damage-potential-values.
+    permissible_values:
+      "none":
+      "low":
+      "low-medium":
+      "medium-high":
+      "high":
+      "not-defined":
+
+  OscalFacetCvss2CiaRequirementValuesEnum:
+    description: Values from assessment-common set oscal-facet-cvss2-cia-requirement-values.
+    permissible_values:
+      "none":
+      "low":
+      "medium":
+      "high":
+      "not-defined":
+
+  OscalFacetCvss3NameValuesEnum:
+    description: Values from assessment-common set oscal-facet-cvss3-name-values.
+    permissible_values:
+      "attack-vector":
+      "access-complexity":
+      "privileges-required":
+      "user-interaction":
+      "scope":
+      "confidentiality-impact":
+      "integrity-impact":
+      "availability-impact":
+      "exploit-code-maturity":
+      "remediation-level":
+      "report-confidence":
+      "modified-attack-vector":
+      "modified-attack-complexity":
+      "modified-privileges-required":
+      "modified-user-interaction":
+      "modified-scope":
+      "modified-confidentiality":
+      "modified-integrity":
+      "modified-availability":
+      "confidentiality-requirement":
+      "integrity-requirement":
+      "availability-requirement":
+
+  OscalFacetCvss3AccessVectorValuesEnum:
+    description: Values from assessment-common set oscal-facet-cvss3-access-vector-values.
+    permissible_values:
+      "network":
+      "adjacent":
+      "local":
+      "physical":
+
+  OscalFacetCvss3AccessComplexityValuesEnum:
+    description: Values from assessment-common set oscal-facet-cvss3-access-complexity-values.
+    permissible_values:
+      "high":
+      "low":
+
+  OscalFacetCvss3CiaImpactValuesEnum:
+    description: Values from assessment-common set oscal-facet-cvss3-cia-impact-values.
+    permissible_values:
+      "none":
+      "low":
+      "high":
+
+  OscalFacetCvss3UserInteractionEnum:
+    description: Values from assessment-common set oscal-facet-cvss3-user-interaction.
+    permissible_values:
+      "none":
+      "required":
+
+  OscalFacetCvss3ScopeEnum:
+    description: Values from assessment-common set oscal-facet-cvss3-scope.
+    permissible_values:
+      "unchanged":
+      "changed":
+
+  OscalFacetCvss3ExploitCodeMaturityValuesEnum:
+    description: Values from assessment-common set oscal-facet-cvss3-exploit-code-maturity-values.
+    permissible_values:
+      "not-defined":
+      "unproven":
+      "proof-of-concept":
+      "functional":
+      "high":
+
+  OscalFacetCvss3RemediationLevelEnum:
+    description: Values from assessment-common set oscal-facet-cvss3-remediation-level.
+    permissible_values:
+      "not-defined":
+      "official-fix":
+      "temporary-fix":
+      "workaround":
+      "unavailable":
+
+  OscalFacetCvss3ReportConfidenceValuesEnum:
+    description: Values from assessment-common set oscal-facet-cvss3-report-confidence-values.
+    permissible_values:
+      "not-defined":
+      "unknown":
+      "reasonable":
+      "confirmed":
+
+  OscalFacetCvss3CiaRequirementValuesEnum:
+    description: Values from assessment-common set oscal-facet-cvss3-cia-requirement-values.
+    permissible_values:
+      "not-defined":
+      "low":
+      "medium":
+      "high":
+
+  OscalFacetCvss3ModifiedAttackVectorValuesEnum:
+    description: Values from assessment-common set oscal-facet-cvss3-modified-attack-vector-values.
+    permissible_values:
+      "not-defined":
+      "network":
+      "adjacent":
+      "local":
+      "physical":
+
+  OscalFacetCvss3ModifiedAttackComplexityValuesEnum:
+    description: Values from assessment-common set oscal-facet-cvss3-modified-attack-complexity-values.
+    permissible_values:
+      "not-defined":
+      "high":
+      "low":
+
+  OscalFacetCvss3ModifiedCiaValuesEnum:
+    description: Values from assessment-common set oscal-facet-cvss3-modified-cia-values.
+    permissible_values:
+      "not-defined":
+      "none":
+      "low":
+      "high":
+
+  OscalFacetCvss3ModifiedUserInteractionValuesEnum:
+    description: Values from assessment-common set oscal-facet-cvss3-modified-user-interaction-values.
+    permissible_values:
+      "not-defined":
+      "none":
+      "required":
+
+  OscalFacetCvss3ModifiedScopeValuesEnum:
+    description: Values from assessment-common set oscal-facet-cvss3-modified-scope-values.
+    permissible_values:
+      "not-defined":
+      "unchanged":
+      "changed":
+
+  OscalCvssV40VectorsEnum:
+    description: Values from assessment-common set oscal-cvss-v4.0-vectors.
+    permissible_values:
+      "av":
+      "ac":
+      "at":
+      "pr":
+      "ui":
+      "vc":
+      "vi":
+      "va":
+      "sc":
+      "si":
+      "sa":
+      "s":
+      "au":
+      "r":
+      "v":
+      "re":
+      "u":
+      "mav":
+      "mac":
+      "mat":
+      "mpr":
+      "mui":
+      "mvc":
+      "mvi":
+      "mva":
+      "msc":
+      "msi":
+      "msa":
+      "cr":
+      "ir":
+      "ar":
+      "e":
+
+  OscalCvssV40AvValuesEnum:
+    description: Values from assessment-common set oscal-cvss-v4.0-av-values.
+    permissible_values:
+      "n":
+      "a":
+      "l":
+      "p":
+
+  OscalCvssV40AcValuesEnum:
+    description: Values from assessment-common set oscal-cvss-v4.0-ac-values.
+    permissible_values:
+      "h":
+      "l":
+
+  OscalCvssV40AtValuesEnum:
+    description: Values from assessment-common set oscal-cvss-v4.0-at-values.
+    permissible_values:
+      "n":
+      "p":
+
+  OscalCvssV40PrCiaValuesEnum:
+    description: Values from assessment-common set oscal-cvss-v4.0-pr-cia-values.
+    permissible_values:
+      "n":
+      "l":
+      "h":
+
+  OscalCvssV40UiValuesEnum:
+    description: Values from assessment-common set oscal-cvss-v4.0-ui-values.
+    permissible_values:
+      "n":
+      "p":
+      "a":
+
+  OscalCvssV40SValuesEnum:
+    description: Values from assessment-common set oscal-cvss-v4.0-s-values.
+    permissible_values:
+      "x":
+      "n":
+      "p":
+
+  OscalCvssV40AuValuesEnum:
+    description: Values from assessment-common set oscal-cvss-v4.0-au-values.
+    permissible_values:
+      "x":
+      "n":
+      "y":
+
+  OscalCvssV40RValuesEnum:
+    description: Values from assessment-common set oscal-cvss-v4.0-r-values.
+    permissible_values:
+      "x":
+      "a":
+      "u":
+      "i":
+
+  OscalCvssV40VValuesEnum:
+    description: Values from assessment-common set oscal-cvss-v4.0-v-values.
+    permissible_values:
+      "x":
+      "a":
+      "u":
+      "i":
+
+  OscalCvssV40ReValuesEnum:
+    description: Values from assessment-common set oscal-cvss-v4.0-re-values.
+    permissible_values:
+      "x":
+      "l":
+      "m":
+      "h":
+
+  OscalCvssV40UValuesEnum:
+    description: Values from assessment-common set oscal-cvss-v4.0-u-values.
+    permissible_values:
+      "x":
+      "clear":
+      "green":
+      "amber":
+      "red":
+
+  OscalCvssV40MavValuesEnum:
+    description: Values from assessment-common set oscal-cvss-v4.0-mav-values.
+    permissible_values:
+      "x":
+      "n":
+      "a":
+      "l":
+      "p":
+
+  OscalCvssV40MacValuesEnum:
+    description: Values from assessment-common set oscal-cvss-v4.0-mac-values.
+    permissible_values:
+      "x":
+      "h":
+      "l":
+
+  OscalCvssV40MatValuesEnum:
+    description: Values from assessment-common set oscal-cvss-v4.0-mat-values.
+    permissible_values:
+      "x":
+      "n":
+      "p":
+
+  OscalCvssV40MprMvsCiaValuesEnum:
+    description: Values from assessment-common set oscal-cvss-v4.0-mpr-mvs-cia-values.
+    permissible_values:
+      "x":
+      "n":
+      "l":
+      "h":
+
+  OscalCvssV40MuiValuesEnum:
+    description: Values from assessment-common set oscal-cvss-v4.0-mui-values.
+    permissible_values:
+      "x":
+      "n":
+      "p":
+      "a":
+
+  OscalCvssV40MscValuesEnum:
+    description: Values from assessment-common set oscal-cvss-v4.0-msc-values.
+    permissible_values:
+      "x":
+      "n":
+      "l":
+      "h":
+
+  OscalCvssV40MsiMsaCiaValuesEnum:
+    description: Values from assessment-common set oscal-cvss-v4.0-msi-msa-cia-values.
+    permissible_values:
+      "x":
+      "n":
+      "l":
+      "h":
+      "s":
+
+  OscalCvssV40EnvCiaValuesEnum:
+    description: Values from assessment-common set oscal-cvss-v4.0-env-cia-values.
+    permissible_values:
+      "x":
+      "l":
+      "m":
+      "h":
+
+  OscalCvssV40EValuesEnum:
+    description: Values from assessment-common set oscal-cvss-v4.0-e-values.
+    permissible_values:
+      "x":
+      "a":
+      "p":
+      "u":
+
+  OscalResponsePropTypeValueEnum:
+    description: Values from assessment-common set oscal-response-prop-type-value.
+    permissible_values:
+      "avoid":
+      "mitigate":
+      "transfer":
+      "accept":
+      "share":
+      "contingency":
+      "none":
+
+  ResponseLifecycleEnum:
+    annotations:
+      allow_any: true
+    description: >
+      Curated response lifecycle values. Other values are permitted (OSCAL allow-other="yes").
+    permissible_values:
+      recommendation:
+      planned:
+      completed:
+
+
+subsets:
+  assessment_plan:
+    description: >-
+      Classes that form the root Assessment Plan document and its direct
+      structural containers (local-definitions, terms-and-conditions).
+
+  assessment_common:
+    description: >-
+      Classes originating from the oscal-assessment-common namespace: subjects,
+      assets, activities, tasks, findings, observations, risks, and related
+      helper types.
+
+  implementation_common:
+    description: >-
+      Classes originating from the oscal-implementation-common namespace:
+      system components, protocols, inventory items, users, and set-parameter.
+
+
+# ------------------------------------------------------------------------------
+# Top-level slots (AP-specific; shared catalog slots are available via import)
+# ------------------------------------------------------------------------------
+
+slots:
+  subject-uuid:
+    range: UUIDType
+    description: A UUID reference to the identified subject.
+
+  task-uuid:
+    range: UUIDType
+    description: A UUID reference to a task.
+
+  activity-uuid:
+    range: UUIDType
+    description: A UUID reference to an activity.
+
+  component-uuid:
+    range: UUIDType
+    description: A UUID reference to a component.
+
+  subjects:
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: Assessment subjects or subject references for this object.
+
+  origins:
+    range: Origin
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: Identifies the source of observations, findings, or risks.
+
+  reviewed-controls:
+    range: ReviewedControls
+    inlined: true
+    description: Identifies the controls being assessed and their control objectives.
+
+  tasks:
+    range: Task
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: A collection of tasks.
+
+  components:
+    range: SystemComponent
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: A collection of system components.
+
+  related-observations:
+    range: RelatedObservation
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: Relates the containing object to a set of referenced observations.
+
+  related-tasks:
+    range: RelatedTask
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: Identifies tasks for which the containing object is a consequence.
+
+  start:
+    range: DateTimeWithTimezoneType
+    description: The start date/time.
+
+  end:
+    range: DateTimeWithTimezoneType
+    description: The end date/time.
+
+  # AssessmentPlanDocument
+  assessment-plan:
+    range: AssessmentPlan
+    inlined: true
+    description: The root assessment plan object.
+
+  # AssessmentPlan
+  import-ssp:
+    range: ImportSSP
+    inlined: true
+    description: Used to import information about the system from an SSP.
+
+  local-definitions:
+    range: LocalDefinitions
+    inlined: true
+    description: Used to define data objects that do not appear in the referenced SSP.
+
+  terms-and-conditions:
+    range: TermsAndConditions
+    inlined: true
+    description: Terms and conditions under which an assessment can be performed.
+
+  assessment-subjects:
+    range: AssessmentSubject
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: Identifies system elements being assessed.
+
+  assessment-assets:
+    range: AssessmentAssets
+    inlined: true
+    description: Identifies the assets used to perform this assessment.
+
+  # LocalDefinitions
+  inventory-items:
+    range: InventoryItem
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: A collection of inventory items.
+
+  users:
+    range: SystemUser
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: A collection of system users.
+
+  objectives-and-methods:
+    range: LocalObjective
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: A collection of locally-defined control objectives.
+
+  activities:
+    range: Activity
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: A collection of activities.
+
+  # ReviewedControls
+  control-selections:
+    range: ControlSelection
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: Identifies the controls being assessed.
+
+  control-objective-selections:
+    range: ControlObjectiveSelection
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: Identifies the control objectives of the assessment.
+
+  # ControlSelection
+  # ControlObjectiveSelection
+  include-objectives:
+    range: SelectObjectiveById
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: Objectives to include in the assessment.
+
+  exclude-objectives:
+    range: SelectObjectiveById
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: Objectives to exclude from the assessment.
+
+  # AssessmentSelectControlById
+  statement-ids:
+    range: TokenType
+    multivalued: true
+    description: Statement IDs for control selection.
+
+  # SelectObjectiveById
+  objective-id:
+    range: TokenType
+    description: Reference to a control objective by its identifier.
+
+  # AssessmentSubject
+  include-subjects:
+    range: SelectSubjectById
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: Assessment subjects to include.
+
+  exclude-subjects:
+    range: SelectSubjectById
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: Assessment subjects to exclude.
+
+  observations:
+    range: Observation
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: A collection of observations captured in the containing context.
+
+  risks:
+    range: Risk
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: A collection of risks captured in the containing context.
+
+  findings:
+    range: Finding
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: A collection of findings captured in the containing context.
+
+  # AssessmentAssets
+  assessment-platforms:
+    range: AssessmentPlatform
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: A collection of assessment platforms.
+
+  # AssessmentPlatform
+  uses-components:
+    range: UsesComponent
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: The set of components used by the assessment platform.
+
+  # AssessmentMethod
+  part:
+    range: AssessmentPart
+    inlined: true
+    description: An assessment part.
+
+  # Activity
+  steps:
+    range: Step
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: A collection of steps in an activity.
+
+  related-controls:
+    range: ReviewedControls
+    inlined: true
+    description: A reference to reviewed controls for this activity or step.
+
+  # Task
+  timing:
+    range: EventTiming
+    inlined: true
+    description: The timing under which a task is intended to occur.
+
+  dependencies:
+    range: TaskDependency
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: Tasks that this task depends on.
+
+  associated-activities:
+    range: AssociatedActivity
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: Activities associated with this task.
+
+  # EventTiming
+  on-date:
+    range: OnDateCondition
+    inlined: true
+    description: The task is intended to occur on the specified date.
+
+  within-date-range:
+    range: WithinDateRange
+    inlined: true
+    description: The task is intended to occur within the specified date range.
+
+  at-frequency:
+    range: AtFrequency
+    inlined: true
+    description: The task is intended to occur at the specified frequency.
+
+  # AtFrequency
+  period:
+    range: PositiveIntegerType
+    description: The task must occur every period (in the given units).
+
+  unit:
+    range: TimingUnitEnum
+    description: The unit of time for the period.
+
+  # SystemComponent
+  purpose:
+    range: MarkupLineType
+    description: A summary of the technological or business purpose of the component.
+
+  protocols:
+    range: Protocol
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: Information about the protocol used to provide a service.
+
+  # Protocol
+  port-ranges:
+    range: PortRange
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: Where applicable, the transport layer protocol port range.
+
+  # PortRange
+  transport:
+    range: TransportEnum
+    description: Indicates the transport type.
+
+  # SystemUser
+  role-ids:
+    range: TokenType
+    multivalued: true
+    description: Role identifiers associated with the user.
+
+  authorized-privileges:
+    range: AuthorizedPrivilege
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: A collection of authorized privileges.
+
+  # AuthorizedPrivilege
+  functions-performed:
+    range: string
+    multivalued: true
+    description: Describes a function performed for a given authorized privilege.
+
+  # InventoryItem
+  implemented-components:
+    range: ImplementedComponent
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: A collection of implemented components.
+
+  # SystemId
+  identifier-type:
+    any_of:
+      - range: SystemIdentifierTypeEnum
+      - range: URIType
+    description: >-
+      A human-readable label for a specific identifier scheme. Recommended
+      values are in SystemIdentifierTypeEnum; other URI values are permitted
+      (OSCAL allow-other="yes").
+
+  # Origin
+  actors:
+    range: OriginActor
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: The actor that produces an observation, a finding, or a risk.
+
+  # OriginActor
+  actor-uuid:
+    range: UUIDType
+    description: A machine-oriented identifier reference to the tool or person based on the associated type.
+
+  # RelatedTask
+  identified-subject:
+    range: IdentifiedSubject
+    inlined: true
+    description: Used to detail assessment subjects that were identified by this task.
+
+  # IdentifiedSubject
+  subject-placeholder-uuid:
+    range: UUIDType
+    description: A reference to an assessment subject placeholder defined in the assessment plan.
+
+  # Observation
+  methods:
+    any_of:
+      - range: ObservationMethodEnum
+      - range: string
+    multivalued: true
+    description: >-
+      Identifies how the observation was made. Recommended values are in
+      ObservationMethodEnum; other values are permitted (OSCAL allow-other="yes").
+
+  types:
+    any_of:
+      - range: ObservationTypeEnum
+      - range: string
+    multivalued: true
+    description: >-
+      Identifies the nature of the observation. Recommended values are in
+      ObservationTypeEnum; other values are permitted (OSCAL allow-other="yes").
+
+  relevant-evidence:
+    range: RelevantEvidence
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: Links the observation to relevant evidence.
+
+  collected:
+    range: DateTimeWithTimezoneType
+    description: Date/time stamp identifying when the finding information was collected.
+
+  expires:
+    range: DateTimeWithTimezoneType
+    description: Date/time identifying when the finding information is no longer considered valid.
+
+  # Finding
+  target:
+    range: FindingTarget
+    inlined: true
+    description: Identifies the target of a finding.
+
+  implementation-statement-uuid:
+    range: UUIDType
+    description: A reference to the implementation statement in the SSP to which this finding is related.
+
+  related-risks:
+    range: AssociatedRisk
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: Relates the finding to a set of referenced risks.
+
+  # FindingTarget
+  target-id:
+    range: TokenType
+    description: Identifies the specific target qualified by the type.
+
+  implementation-status:
+    range: ImplementationStatus
+    inlined: true
+    description: Identifies the implementation status of the control.
+
+  # ObjectiveStatus
+  reason:
+    any_of:
+      - range: ObjectiveStatusReasonEnum
+      - range: string
+    description: >-
+      The reason the objective was given its status. Recommended values are in
+      ObjectiveStatusReasonEnum; other values are permitted (OSCAL allow-other="yes").
+
+  # RelatedObservation
+  observation-uuid:
+    range: UUIDType
+    description: A machine-oriented identifier reference to an observation defined in the list of observations.
+
+  # AssociatedRisk
+  risk-uuid:
+    range: UUIDType
+    description: A machine-oriented identifier reference to a risk defined in the list of risks.
+
+  # Risk
+  statement:
+    range: MarkupMultilineType
+    description: An assessor's summary of the risk, in narrative form.
+
+  threat-ids:
+    range: ThreatId
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: The referenced threat identifiers.
+
+  characterizations:
+    range: Characterization
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: Supporting information about the risk and how it relates to the system.
+
+  mitigating-factors:
+    range: MitigatingFactor
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: Describes existing mitigating factors that may affect the overall determination of the risk.
+
+  deadline:
+    range: DateTimeWithTimezoneType
+    description: The date/time by which the risk must be resolved.
+
+  remediations:
+    range: Response
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: Describes either recommended or actual responses to a risk.
+
+  risk-log:
+    range: RiskLog
+    inlined: true
+    description: A log of all risk-related tasks taken.
+
+  # Characterization
+  origin:
+    range: Origin
+    inlined: true
+    description: The source of the finding.
+
+  facets:
+    range: Facet
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: An individual characteristic that is part of a larger set produced by the same actor.
+
+  # MitigatingFactor
+  implementation-uuid:
+    range: UUIDType
+    description: A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this implementation statement elsewhere in this or other OSCAL instances.
+
+  # Response
+  lifecycle:
+    any_of:
+      - range: ResponseLifecycleEnum
+      - range: string
+    description: >-
+      Identifies whether this is a recommendation or an actual plan. Recommended
+      values are in ResponseLifecycleEnum; other values are permitted (OSCAL allow-other="yes").
+
+  required-assets:
+    range: RequiredAsset
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: Identifies an asset required to achieve remediation.
+
+  # RiskLog
+  entries:
+    range: RiskLogEntry
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: Identifies an individual risk response that occurred as part of managing an identified risk.
+
+  # RiskLogEntry
+  logged-by:
+    range: LoggedBy
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: Used to indicate who created a log entry in what role.
+
+  status-change:
+    any_of:
+      - range: RiskStatusEnum
+      - range: string
+    description: >-
+      Identifies the risk change that prompted the log entry. Recommended values
+      are in RiskStatusEnum; other values are permitted (OSCAL allow-other="yes").
+
+  related-responses:
+    range: RiskResponseReference
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: Identifies an individual risk response that this log entry is for.
+
+  # LoggedBy
+  party-uuid:
+    range: UUIDType
+    description: A machine-oriented identifier reference to the party who is making the log entry.
+
+  # RiskResponseReference
+  response-uuid:
+    range: UUIDType
+    description: A machine-oriented identifier reference to a unique risk response.
+
+# ------------------------------------------------------------------------------
+# Classes
+# ------------------------------------------------------------------------------
+
+classes:
+  # -- Root document -----------------------------------------------------------
+
+  AssessmentPlanDocument:
+    is_a: OscalDocument
+    description: Root wrapper for an OSCAL Assessment Plan document.
+    slots:
+      - assessment-plan
+    slot_usage:
+      assessment-plan:
+        required: true
+    in_subset:
+      - assessment_plan
+
+  # -- Top-level Assessment Plan -----------------------------------------------
+
+  AssessmentPlan:
+    description: >-
+      An assessment plan, such as those provided by a FedRAMP assessor.
+    slots:
+      - uuid
+      - metadata
+      - import-ssp
+      - local-definitions
+      - terms-and-conditions
+      - assessment-subjects
+      - assessment-assets
+      - reviewed-controls
+      - tasks
+      - back-matter
+    slot_usage:
+      uuid:
+        required: true
+        description: Assessment Plan Universally Unique Identifier.
+      metadata:
+        required: true
+      import-ssp:
+        required: true
+      reviewed-controls:
+        required: true
+    in_subset:
+      - assessment_plan
+
+  # -- Assessment-specific common ----------------------------------------------
+
+  ImportSSP:
+    description: Used by the assessment plan and POA&M to import information about the system.
+    slots:
+      - href
+      - remarks
+    slot_usage:
+      href:
+        required: true
+    in_subset:
+      - assessment_common
+
+  LocalDefinitions:
+    description: >-
+      Used to define data objects that are used in the assessment plan, that do
+      not appear in the referenced SSP.
+    slots:
+      - components
+      - inventory-items
+      - users
+      - objectives-and-methods
+      - activities
+      - remarks
+    in_subset:
+      - assessment_plan
+
+  TermsAndConditions:
+    description: >-
+      Used to define various terms and conditions under which an assessment can
+      be performed.
+    slots:
+      - parts
+    slot_usage:
+      parts:
+        range: TermsAndConditionsPart
+    in_subset:
+      - assessment_plan
+
+  ReviewedControls:
+    description: Identifies the controls being assessed and their control objectives.
+    mixins:
+      - OscalCommon
+    slots:
+      - description
+      - control-selections
+      - control-objective-selections
+    slot_usage:
+      control-selections:
+        required: true
+    in_subset:
+      - assessment_common
+
+  ControlSelection:
+    description: Identifies the controls being assessed.
+    mixins:
+      - OscalCommon
+    slots:
+      - description
+      - include-all
+      - include-controls
+      - exclude-controls
+    slot_usage:
+      include-controls:
+        range: AssessmentSelectControlById
+      exclude-controls:
+        range: AssessmentSelectControlById
+    in_subset:
+      - assessment_common
+
+  ControlObjectiveSelection:
+    description: Identifies the control objectives of the assessment.
+    mixins:
+      - OscalCommon
+    slots:
+      - description
+      - include-all
+      - include-objectives
+      - exclude-objectives
+    in_subset:
+      - assessment_common
+
+  AssessmentSelectControlById:
+    description: >-
+      Select a specific control for inclusion/exclusion in the assessment by
+      literal control ID and optional statement IDs.
+    slots:
+      - control-id
+      - statement-ids
+    slot_usage:
+      control-id:
+        required: true
+    in_subset:
+      - assessment_common
+
+  SelectObjectiveById:
+    description: Used to select a control objective for inclusion/exclusion.
+    slots:
+      - objective-id
+      - remarks
+    slot_usage:
+      objective-id:
+        required: true
+    in_subset:
+      - assessment_common
+
+  AssessmentSubject:
+    description: >-
+      Identifies system elements being assessed, such as components, inventory
+      items, and locations.
+    mixins:
+      - OscalCommon
+    slots:
+      - type
+      - description
+      - include-all
+      - include-subjects
+      - exclude-subjects
+    slot_usage:
+      type:
+        any_of:
+          - range: AssessmentSubjectTypeEnum
+          - range: string
+        required: true
+    in_subset:
+      - assessment_common
+
+  SelectSubjectById:
+    description: Identifies a set of assessment subjects to include/exclude by UUID.
+    mixins:
+      - OscalCommon
+    slots:
+      - subject-uuid
+      - type
+    slot_usage:
+      subject-uuid:
+        required: true
+      type:
+        any_of:
+          - range: SelectSubjectTypeEnum
+          - range: string
+        required: true
+    in_subset:
+      - assessment_common
+
+  SubjectReference:
+    description: >-
+      A human-oriented identifier reference to a resource. Use type to indicate
+      whether the identified resource is a component, inventory item, location,
+      user, or something else.
+    mixins:
+      - OscalCommon
+    slots:
+      - subject-uuid
+      - type
+      - title
+    slot_usage:
+      subject-uuid:
+        required: true
+      type:
+        any_of:
+          - range: SelectSubjectTypeEnum
+          - range: string
+        required: true
+    in_subset:
+      - assessment_common
+
+  AssessmentSubjectPlaceholder:
+    description: >-
+      Used when the assessment subjects will be determined as part of one or more
+      other assessment activities.
+    mixins:
+      - OscalCommon
+    slots:
+      - uuid
+      - description
+      - sources
+    slot_usage:
+      uuid:
+        required: true
+      sources:
+        range: AssessmentSubjectSource
+        required: true
+    in_subset:
+      - assessment_common
+
+  AssessmentSubjectSource:
+    description: Assessment subjects will be identified while conducting the referenced activity.
+    slots:
+      - task-uuid
+      - remarks
+    slot_usage:
+      task-uuid:
+        required: true
+    in_subset:
+      - assessment_common
+
+  AssessmentAssets:
+    description: Identifies the assets used to perform this assessment.
+    slots:
+      - components
+      - assessment-platforms
+    slot_usage:
+      assessment-platforms:
+        required: true
+    in_subset:
+      - assessment_common
+
+  AssessmentPlatform:
+    description: Used to represent the toolset used to perform aspects of the assessment.
+    mixins:
+      - OscalCommon
+    slots:
+      - uuid
+      - title
+      - uses-components
+    slot_usage:
+      uuid:
+        required: true
+    in_subset:
+      - assessment_common
+
+  UsesComponent:
+    description: The set of components that are used by the assessment platform.
+    mixins:
+      - OscalCommon
+      - HasResponsibleParties
+    slots:
+      - component-uuid
+    slot_usage:
+      component-uuid:
+        required: true
+    in_subset:
+      - assessment_common
+
+  # -- Activities and Tasks ----------------------------------------------------
+
+  LocalObjective:
+    description: >-
+      A local definition of a control objective for this assessment. Uses catalog
+      syntax for control objective and assessment actions.
+    mixins:
+      - OscalCommon
+    slots:
+      - control-id
+      - description
+      - parts
+    slot_usage:
+      control-id:
+        required: true
+      parts:
+        range: ControlPart
+        required: true
+    in_subset:
+      - assessment_common
+
+  AssessmentMethod:
+    description: A local definition of a control objective.
+    mixins:
+      - OscalCommon
+    slots:
+      - uuid
+      - description
+      - part
+    slot_usage:
+      uuid:
+        required: true
+      part:
+        required: true
+    in_subset:
+      - assessment_common
+
+  Activity:
+    description: >-
+      Identifies an assessment or related process that can be performed. In the
+      assessment plan, this is an intended activity.
+    mixins:
+      - OscalCommon
+      - HasResponsibleRoles
+    slots:
+      - uuid
+      - title
+      - description
+      - steps
+      - related-controls
+    slot_usage:
+      uuid:
+        required: true
+      description:
+        required: true
+    in_subset:
+      - assessment_common
+
+  Step:
+    description: >-
+      Identifies an individual step in a series of steps related to an activity,
+      such as an assessment test or examination procedure.
+    mixins:
+      - OscalCommon
+      - HasResponsibleRoles
+    slots:
+      - uuid
+      - title
+      - description
+      - reviewed-controls
+    slot_usage:
+      uuid:
+        required: true
+      description:
+        required: true
+    in_subset:
+      - assessment_common
+
+  Task:
+    description: >-
+      Represents a scheduled event or milestone, which may be associated with a
+      series of assessment actions.
+    mixins:
+      - OscalCommon
+      - HasResponsibleRoles
+    slots:
+      - uuid
+      - type
+      - title
+      - description
+      - timing
+      - dependencies
+      - associated-activities
+      - tasks
+      - subjects
+    slot_usage:
+      uuid:
+        required: true
+      type:
+        any_of:
+          - range: TaskTypeEnum
+          - range: string
+        required: true
+      title:
+        required: true
+      subjects:
+        range: AssessmentSubject
+    in_subset:
+      - assessment_common
+
+  EventTiming:
+    description: The timing under which the task is intended to occur.
+    slots:
+      - on-date
+      - within-date-range
+      - at-frequency
+    in_subset:
+      - assessment_common
+
+  OnDateCondition:
+    description: The task is intended to occur on the specified date.
+    slots:
+      - date
+      - remarks
+    slot_usage:
+      date:
+        required: true
+    in_subset:
+      - assessment_common
+
+  WithinDateRange:
+    description: The task is intended to occur within the specified date range.
+    slots:
+      - start
+      - end
+      - remarks
+    slot_usage:
+      start:
+        required: true
+      end:
+        required: true
+    in_subset:
+      - assessment_common
+
+  AtFrequency:
+    description: The task is intended to occur at the specified frequency.
+    slots:
+      - period
+      - unit
+      - remarks
+    slot_usage:
+      period:
+        required: true
+      unit:
+        required: true
+    in_subset:
+      - assessment_common
+
+  TaskDependency:
+    description: Used to indicate that a task is dependent on another task.
+    slots:
+      - task-uuid
+      - remarks
+    slot_usage:
+      task-uuid:
+        required: true
+    in_subset:
+      - assessment_common
+
+  AssociatedActivity:
+    description: Identifies an individual activity to be performed as part of a task.
+    mixins:
+      - OscalCommon
+      - HasResponsibleRoles
+    slots:
+      - activity-uuid
+      - subjects
+    slot_usage:
+      activity-uuid:
+        required: true
+      subjects:
+        range: AssessmentSubject
+        required: true
+    in_subset:
+      - assessment_common
+
+  # -- Assessment Part / Control Part ------------------------------------------
+
+  AssessmentPart:
+    description: A partition of an assessment plan or results or a child of another part.
+    mixins:
+      - HasPropsAndLinks
+    slots:
+      - uuid
+      - name
+      - ns
+      - _class
+      - title
+      - prose
+      - parts
+    slot_usage:
+      name:
+        any_of:
+          - range: AssessmentPartNameEnum
+          - range: string
+        required: true
+      parts:
+        range: AssessmentPart
+    in_subset:
+      - assessment_common
+
+  TermsAndConditionsPart:
+    is_a: AssessmentPart
+    description: A terms-and-conditions scoped assessment part.
+    slot_usage:
+      name:
+        range: TermsAndConditionsPartNameEnum
+        required: true
+      parts:
+        range: TermsAndConditionsPart
+    in_subset:
+      - assessment_plan
+
+  ControlPart:
+    description: >-
+      An annotated, markup-based textual element of a control's or catalog group's
+      definition, or a child of another part.
+    mixins:
+      - HasPropsAndLinks
+    slots:
+      - id
+      - name
+      - ns
+      - _class
+      - title
+      - prose
+      - parts
+    slot_usage:
+      name:
+        required: true
+      parts:
+        range: ControlPart
+    in_subset:
+      - oscal_control_common
+
+  # -- Control Common ----------------------------------------------------------
+
+  SetParameter:
+    description: Identifies the parameter that will be set by the enclosed value.
+    slots:
+      - param-id
+      - values
+      - remarks
+    slot_usage:
+      param-id:
+        required: true
+      values:
+        required: true
+    in_subset:
+      - implementation_common
+
+  # -- Implementation Common ---------------------------------------------------
+
+  SystemComponent:
+    description: A defined component that can be part of an implemented system.
+    mixins:
+      - OscalCommon
+      - HasResponsibleRoles
+    slots:
+      - uuid
+      - type
+      - title
+      - description
+      - purpose
+      - protocols
+      - status
+    slot_usage:
+      uuid:
+        required: true
+      type:
+        any_of:
+          - range: ComponentTypeEnum
+          - range: string
+        required: true
+      title:
+        required: true
+      description:
+        required: true
+      status:
+        range: ComponentStatus
+        required: true
+        inlined: true
+      props:
+        range: ImplementationCommonProperty
+      links:
+        range: ImplementationCommonLink
+      responsible-roles:
+        range: ImplementationResponsibleRole
+    in_subset:
+      - implementation_common
+
+  ComponentStatus:
+    description: Describes the operational status of the system component.
+    slots:
+      - state
+      - remarks
+    slot_usage:
+      state:
+        range: ComponentStateEnum
+        required: true
+        description: The operational status.
+    in_subset:
+      - implementation_common
+
+  Protocol:
+    description: Information about the protocol used to provide a service.
+    slots:
+      - uuid
+      - name
+      - title
+      - port-ranges
+    slot_usage:
+      name:
+        range: string
+    in_subset:
+      - implementation_common
+
+  PortRange:
+    description: Where applicable, the transport layer protocol port range.
+    slots:
+      - start
+      - end
+      - transport
+      - remarks
+    slot_usage:
+      start:
+        range: NonNegativeIntegerType
+      end:
+        range: NonNegativeIntegerType
+    in_subset:
+      - implementation_common
+
+  ImplementationStatus:
+    description: Indicates the degree to which a given control is implemented.
+    slots:
+      - state
+      - remarks
+    slot_usage:
+      state:
+        any_of:
+          - range: ImplementationStatusStateEnum
+          - range: string
+        required: true
+        description: >-
+          Identifies the implementation status of the control or control objective.
+          Recommended values are in ImplementationStatusStateEnum; other values
+          are permitted (OSCAL allow-other="yes").
+    in_subset:
+      - implementation_common
+
+  SystemUser:
+    description: A type of user that interacts with the system based on an associated role.
+    mixins:
+      - OscalCommon
+    slots:
+      - uuid
+      - title
+      - short-name
+      - description
+      - role-ids
+      - authorized-privileges
+    slot_usage:
+      uuid:
+        required: true
+      props:
+        range: ImplementationCommonProperty
+      links:
+        range: ImplementationCommonLink
+    in_subset:
+      - implementation_common
+
+  AuthorizedPrivilege:
+    description: >-
+      Identifies a specific system privilege held by the user, along with an
+      associated description and/or rationale for the privilege.
+    slots:
+      - title
+      - description
+      - functions-performed
+    slot_usage:
+      title:
+        required: true
+      functions-performed:
+        required: true
+    in_subset:
+      - implementation_common
+
+  InventoryItem:
+    description: A single managed inventory item within the system.
+    mixins:
+      - OscalCommon
+      - HasResponsibleParties
+    slots:
+      - uuid
+      - description
+      - implemented-components
+    slot_usage:
+      uuid:
+        required: true
+      description:
+        required: true
+      props:
+        range: ImplementationCommonProperty
+      links:
+        range: ImplementationCommonLink
+      responsible-parties:
+        range: ImplementationResponsibleParty
+    in_subset:
+      - implementation_common
+
+  ImplementedComponent:
+    description: The set of components that are implemented in a given system inventory item.
+    mixins:
+      - OscalCommon
+      - HasResponsibleParties
+    slots:
+      - component-uuid
+    slot_usage:
+      component-uuid:
+        required: true
+      props:
+        range: ImplementationCommonProperty
+      links:
+        range: ImplementationCommonLink
+      responsible-parties:
+        range: ImplementationResponsibleParty
+    in_subset:
+      - implementation_common
+
+  SystemId:
+    description: A human-oriented, globally unique identifier for a system.
+    slots:
+      - id
+      - identifier-type
+    slot_usage:
+      id:
+        range: string
+        required: true
+      identifier-type:
+        any_of:
+          - range: SystemIdentifierTypeEnum
+          - range: URIType
+    in_subset:
+      - implementation_common
+
+  ImplementationCommonProperty:
+    is_a: Property
+    description: Implementation-common scoped OSCAL property.
+    slot_usage:
+      name:
+        range: ImplementationPropNameEnum
+      value:
+        any_of:
+          - range: ImplementationYesNoEnum
+          - range: ImplementationAssetTypeEnum
+          - range: ImplementationPointEnum
+          - range: ImplementationIpAddressClassEnum
+          - range: ImplementationDirectionEnum
+          - range: UserTypeEnum
+          - range: UserPrivilegeLevelEnum
+          - range: string
+    in_subset:
+      - implementation_common
+
+  ImplementationCommonLink:
+    is_a: Link
+    description: Implementation-common scoped OSCAL link.
+    slot_usage:
+      rel:
+        any_of:
+          - range: ImplementationLinkRelEnum
+          - range: TokenType
+    in_subset:
+      - implementation_common
+
+  ImplementationResponsibleRole:
+    is_a: ResponsibleRole
+    description: Implementation-common scoped responsible role.
+    slot_usage:
+      role-id:
+        any_of:
+          - range: ImplementationResponsibleRoleIdEnum
+          - range: TokenType
+    in_subset:
+      - implementation_common
+
+  ImplementationResponsibleParty:
+    is_a: ResponsibleParty
+    description: Implementation-common scoped responsible party.
+    slot_usage:
+      role-id:
+        any_of:
+          - range: ImplementationResponsibleRoleIdEnum
+          - range: TokenType
+    in_subset:
+      - implementation_common
+
+  # -- Findings, Observations, Risks -------------------------------------------
+
+  Origin:
+    description: Identifies the source of the finding, such as a tool, interviewed person, or activity.
+    slots:
+      - actors
+      - related-tasks
+    slot_usage:
+      actors:
+        required: true
+    in_subset:
+      - assessment_common
+
+  OriginActor:
+    description: The actor that produces an observation, a finding, or a risk.
+    mixins:
+      - HasPropsAndLinks
+    slots:
+      - type
+      - actor-uuid
+      - role-id
+    slot_usage:
+      type:
+        range: OriginActorTypeEnum
+        required: true
+      actor-uuid:
+        required: true
+    in_subset:
+      - assessment_common
+
+  RelatedTask:
+    description: Identifies an individual task for which the containing object is a consequence of.
+    mixins:
+      - OscalCommon
+      - HasResponsibleParties
+    slots:
+      - task-uuid
+      - subjects
+      - identified-subject
+    slot_usage:
+      task-uuid:
+        required: true
+      subjects:
+        range: AssessmentSubject
+    in_subset:
+      - assessment_common
+
+  IdentifiedSubject:
+    description: Used to detail assessment subjects that were identified by this task.
+    slots:
+      - subject-placeholder-uuid
+      - subjects
+    slot_usage:
+      subject-placeholder-uuid:
+        required: true
+      subjects:
+        range: AssessmentSubject
+        required: true
+    in_subset:
+      - assessment_common
+
+  Observation:
+    description: Describes an individual observation.
+    mixins:
+      - OscalCommon
+    slots:
+      - uuid
+      - title
+      - description
+      - methods
+      - types
+      - origins
+      - subjects
+      - relevant-evidence
+      - collected
+      - expires
+    slot_usage:
+      uuid:
+        required: true
+      description:
+        required: true
+      subjects:
+        range: SubjectReference
+      methods:
+        required: true
+      collected:
+        required: true
+    in_subset:
+      - assessment_common
+
+  RelevantEvidence:
+    description: Links this observation to relevant evidence.
+    mixins:
+      - OscalCommon
+    slots:
+      - href
+      - description
+    slot_usage:
+      description:
+        required: true
+    in_subset:
+      - assessment_common
+
+  Finding:
+    description: Describes an individual finding.
+    mixins:
+      - OscalCommon
+    slots:
+      - uuid
+      - title
+      - description
+      - target
+      - implementation-statement-uuid
+      - origins
+      - related-observations
+      - related-risks
+    slot_usage:
+      uuid:
+        required: true
+      title:
+        required: true
+      description:
+        required: true
+      target:
+        required: true
+    in_subset:
+      - assessment_common
+
+  FindingTarget:
+    description: Captures an assessor's conclusions regarding the degree to which an objective is satisfied.
+    mixins:
+      - OscalCommon
+    slots:
+      - type
+      - target-id
+      - title
+      - description
+      - implementation-status
+      - status
+    slot_usage:
+      type:
+        range: FindingTargetTypeEnum
+        required: true
+      target-id:
+        required: true
+      status:
+        range: ObjectiveStatus
+        required: true
+        inlined: true
+    in_subset:
+      - assessment_common
+
+  ObjectiveStatus:
+    description: A determination of if the objective is satisfied or not within a given system.
+    slots:
+      - state
+      - reason
+      - remarks
+    slot_usage:
+      state:
+        range: ObjectiveStatusStateEnum
+        required: true
+        description: An indication as to whether the objective is satisfied or not.
+    in_subset:
+      - assessment_common
+
+  RelatedObservation:
+    description: Relates the identified element to a set of referenced observations.
+    slots:
+      - observation-uuid
+      - remarks
+    slot_usage:
+      observation-uuid:
+        required: true
+    in_subset:
+      - assessment_common
+
+  AssociatedRisk:
+    description: Relates the finding to a set of referenced risks.
+    slots:
+      - risk-uuid
+      - remarks
+    slot_usage:
+      risk-uuid:
+        required: true
+    in_subset:
+      - assessment_common
+
+  Risk:
+    description: An identified risk.
+    mixins:
+      - HasPropsAndLinks
+    slots:
+      - uuid
+      - title
+      - description
+      - statement
+      - origins
+      - threat-ids
+      - characterizations
+      - mitigating-factors
+      - deadline
+      - remediations
+      - risk-log
+      - related-observations
+      - status
+    slot_usage:
+      uuid:
+        required: true
+      title:
+        required: true
+      description:
+        required: true
+      statement:
+        required: true
+      status:
+        any_of:
+          - range: RiskStatusEnum
+          - range: string
+        required: true
+    in_subset:
+      - assessment_common
+
+  ThreatId:
+    description: A pointer, by ID, to an externally-defined threat.
+    slots:
+      - href
+      - system
+      - id
+    slot_usage:
+      system:
+        required: true
+        description: Specifies the system or scheme from which the identifier originates.
+      id:
+        range: URIType
+        required: true
+    in_subset:
+      - assessment_common
+
+  Characterization:
+    description: A collection of descriptive data about the containing object from a specific origin.
+    mixins:
+      - HasPropsAndLinks
+    slots:
+      - origin
+      - facets
+    slot_usage:
+      origin:
+        required: true
+      facets:
+        required: true
+    in_subset:
+      - assessment_common
+
+  Facet:
+    description: An individual characteristic that is part of a larger set produced by the same actor.
+    mixins:
+      - OscalCommon
+    slots:
+      - name
+      - value
+      - system
+    slot_usage:
+      name:
+        required: true
+      value:
+        required: true
+      system:
+        required: true
+        description: Specifies the system or scheme from which the identifier originates.
+    in_subset:
+      - assessment_common
+
+  MitigatingFactor:
+    description: Describes an existing mitigating factor that may affect the overall determination of the risk.
+    mixins:
+      - HasPropsAndLinks
+    slots:
+      - uuid
+      - description
+      - implementation-uuid
+      - subjects
+    slot_usage:
+      uuid:
+        required: true
+      description:
+        required: true
+      subjects:
+        range: SubjectReference
+    in_subset:
+      - assessment_common
+
+  Response:
+    description: Describes either recommended or an actual plan for addressing the risk.
+    mixins:
+      - OscalCommon
+    slots:
+      - uuid
+      - title
+      - description
+      - lifecycle
+      - origins
+      - required-assets
+      - tasks
+    slot_usage:
+      uuid:
+        required: true
+      title:
+        required: true
+      description:
+        required: true
+      lifecycle:
+        required: true
+    in_subset:
+      - assessment_common
+
+  RequiredAsset:
+    description: Identifies an asset required to achieve remediation.
+    mixins:
+      - OscalCommon
+    slots:
+      - uuid
+      - title
+      - description
+      - subjects
+    slot_usage:
+      uuid:
+        required: true
+      description:
+        required: true
+      subjects:
+        range: SubjectReference
+    in_subset:
+      - assessment_common
+
+  RiskLog:
+    description: A log of all risk-related tasks taken.
+    slots:
+      - entries
+    slot_usage:
+      entries:
+        required: true
+    in_subset:
+      - assessment_common
+
+  RiskLogEntry:
+    description: Identifies an individual risk response that occurred as part of managing an identified risk.
+    mixins:
+      - OscalCommon
+    slots:
+      - uuid
+      - title
+      - description
+      - start
+      - end
+      - logged-by
+      - status-change
+      - related-responses
+    slot_usage:
+      uuid:
+        required: true
+      start:
+        required: true
+    in_subset:
+      - assessment_common
+
+  LoggedBy:
+    description: Used to indicate who created a log entry in what role.
+    slots:
+      - party-uuid
+      - role-id
+      - remarks
+    slot_usage:
+      party-uuid:
+        required: true
+    in_subset:
+      - assessment_common
+
+  RiskResponseReference:
+    description: Identifies an individual risk response that this log entry is for.
+    mixins:
+      - OscalCommon
+    slots:
+      - response-uuid
+      - related-tasks
+    slot_usage:
+      response-uuid:
+        required: true
+    in_subset:
+      - assessment_common

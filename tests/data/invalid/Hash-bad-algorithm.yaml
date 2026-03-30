@@ -1,0 +1,3 @@
+---
+# INVALID: Hash missing required 'value' field
+algorithm: SHA-256

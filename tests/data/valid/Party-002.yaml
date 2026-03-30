@@ -1,0 +1,11 @@
+---
+# A person Party with member-of-organizations and location reference
+uuid: "eeeeeeee-5555-4000-8000-eeeeeeeeeeee"
+type: person
+name: Jane Smith
+email_addresses:
+  - jane.smith@example.org
+member_of_organizations:
+  - "dddddddd-4444-4000-8000-dddddddddddd"
+location_uuids:
+  - "cccccccc-3333-4000-8000-cccccccccccc"

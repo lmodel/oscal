@@ -1,0 +1,6 @@
+---
+# A Link referencing a back-matter resource
+href: "#resource-1"
+rel: reference
+media_type: application/oscal.catalog+yaml
+text: NIST SP 800-53 Rev 5

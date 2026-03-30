@@ -1,0 +1,10 @@
+---
+# A Property with all fields populated
+name: marking
+value: controlled-unclassified
+ns: https://fedramp.gov/ns/oscal
+_class: information-type
+group: fedramp
+remarks: >-
+  This property marks the document as Controlled Unclassified Information
+  per FedRAMP requirements.

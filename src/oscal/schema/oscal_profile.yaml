@@ -1,0 +1,409 @@
+---
+id: https://w3id.org/lmodel/oscal_profile
+name: oscal_profile
+title: oscal_profile
+description: |-
+  OSCAL Profile Model: LinkML Schema
+license: Apache-2.0
+see_also:
+  - https://pages.nist.gov/OSCAL/learn/concepts/layer/control/profile/
+source: http://csrc.nist.gov/ns/oscal/1.2.1/oscal-profile-schema.json
+version: 1.2.1
+annotations:
+  uuid: 14ceda98-46ea-4d3f-84dc-acf070a12fc5
+  last-modified: "2026-03-27T10:00:00Z"
+notes:
+  - Every time the content of an OSCAL file changes, the following must also change:
+  - A new UUID value must be generated and assigned to the root element's uuid.
+  - The last-modified field in metadata must be assigned with the date and time at the moment the file is saved with the modified content.
+  - These are two mechanisms by which tools can quickly know if a file has changed since it was last encountered. This document level UUID is the only UUID in OSCAL associated with version control.
+  - When converting between formats, such as XML to JSON, these values should remain the same. This enables tools to know the content within the two formats is equivalent.
+
+prefixes:
+  oscal_profile: https://w3id.org/lmodel/oscal_profile/
+  oscal_catalog: https://w3id.org/lmodel/oscal_catalog/
+  linkml: https://w3id.org/linkml/
+default_prefix: oscal_profile
+default_range: string
+
+imports:
+  - linkml:types
+  - ./oscal_catalog
+
+subsets:
+  profile:
+    description: >-
+      Classes that form the root OSCAL Profile document and its
+      profile-specific structural containers.
+
+enums:
+  InsertOrderEnum:
+    description: Ordering options for a selection of controls.
+    permissible_values:
+      keep:
+      ascending:
+      descending:
+
+  AdditionPositionEnum:
+    description: Where new content is added relative to the targeted element.
+    permissible_values:
+      before:
+      after:
+      starting:
+      ending:
+
+  ByItemNameEnum:
+    description: Identifies content to remove by the item's object type name.
+    permissible_values:
+      param:
+      prop:
+      link:
+      part:
+      mapping:
+      map:
+
+  CombinationMethodEnum:
+    description: Methods for resolving duplicate control instances during merge.
+    permissible_values:
+      use-first:
+      merge:
+        deprecated: "Deprecated since OSCAL 1.0.1."
+      keep:
+
+  AlterationPropNameEnum:
+    description: Allowed OSCAL property names for profile modification additions.
+    permissible_values:
+      label:
+      sort-id:
+      alt-identifier:
+
+slots:
+  profile:
+    range: Profile
+    inlined: true
+    description: The root profile object.
+
+  imports:
+    range: ProfileImport
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: >-
+      Designates source catalog or profile resources to be imported into the
+      profile.
+
+  merge:
+    range: ProfileMerge
+    inlined: true
+    description: >-
+      Structuring directives for how controls are organized after profile
+      resolution.
+
+  modify:
+    range: ProfileModify
+    inlined: true
+    description: Set parameters or amend controls in resolution.
+
+  insert-controls:
+    range: InsertControls
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: Specifies which controls to use in the containing context.
+
+  order:
+    range: InsertOrderEnum
+    description: A designation of how a selection of controls is to be ordered.
+
+  combine:
+    range: CombinationRule
+    inlined: true
+    description: Defines how to resolve duplicate instances of the same control.
+
+  flat:
+    range: MergeFlat
+    inlined: true
+    description: Directs that controls appear without any grouping structure.
+
+  as-is:
+    range: boolean
+    description: >-
+      When true, retain the original grouping structure as defined in the
+      import source.
+
+  custom:
+    range: MergeCustom
+    inlined: true
+    description: >-
+      Provides an alternate grouping structure that selected controls will be
+      placed in.
+
+  alters:
+    range: Alteration
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: Specifies changes to be made to included controls in resolution.
+
+  removes:
+    range: Removal
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: Specifies objects to be removed from a control in resolution.
+
+  adds:
+    range: Addition
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: Specifies content to be added into a control in resolution.
+
+  by-name:
+    range: TokenType
+    description: Identify items to remove by their assigned name.
+
+  by-class:
+    range: TokenType
+    description: Identify items to remove by their class label.
+
+  by-id:
+    range: TokenType
+    description: Identify or target items by their id value.
+
+  by-item-name:
+    range: ByItemNameEnum
+    description: >-
+      Identify items to remove by the item's information object type name.
+
+  by-ns:
+    range: URIType
+    description: Identify items to remove by the item's namespace.
+
+  position:
+    range: AdditionPositionEnum
+    description: Where to add new content relative to the targeted element.
+
+classes:
+  ProfileDocument:
+    is_a: OscalDocument
+    description: Root wrapper for an OSCAL Profile document.
+    slots:
+      - profile
+    slot_usage:
+      profile:
+        required: true
+    in_subset:
+      - profile
+
+  Profile:
+    description: >-
+      An OSCAL Profile that designates a set of controls from one or more
+      catalogs or profiles, optionally restructures and modifies them, to
+      describe a basis for a security standard or body of practice.
+    slots:
+      - uuid
+      - metadata
+      - imports
+      - merge
+      - modify
+      - back-matter
+    slot_usage:
+      uuid:
+        required: true
+      metadata:
+        required: true
+      imports:
+        required: true
+    in_subset:
+      - profile
+
+  ProfileImport:
+    description: >-
+      Designates a referenced source catalog or profile that provides a source
+      of control information for use in creating a new overlay or baseline.
+    slots:
+      - href
+      - include-all
+      - include-controls
+      - exclude-controls
+    slot_usage:
+      href:
+        required: true
+      include-controls:
+        range: SelectControlById
+      exclude-controls:
+        range: SelectControlById
+    in_subset:
+      - profile
+
+  ProfileMerge:
+    description: >-
+      Provides structuring directives that instruct how controls are organized
+      after profile resolution.
+    slots:
+      - combine
+      - flat
+      - as-is
+      - custom
+    in_subset:
+      - profile
+
+  CombinationRule:
+    description: >-
+      Defines how to resolve duplicate instances of the same control (e.g.,
+      controls with the same ID) encountered in a profile merge.
+    slots:
+      - method
+    slot_usage:
+      method:
+        range: CombinationMethodEnum
+    in_subset:
+      - profile
+
+  MergeFlat:
+    description: >-
+      Directs that controls appear without any grouping structure after profile
+      resolution.
+    in_subset:
+      - profile
+
+  MergeCustom:
+    description: >-
+      Provides an alternate grouping structure that selected controls will be
+      placed in after profile resolution.
+    slots:
+      - groups
+      - insert-controls
+    slot_usage:
+      groups:
+        range: ProfileGroup
+    in_subset:
+      - profile
+
+  ProfileGroup:
+    description: >-
+      A group of (selected) controls or of groups of controls within a profile
+      custom merge structure.
+    mixins:
+      - OscalCommon
+    slots:
+      - id
+      - _class
+      - title
+      - params
+      - parts
+      - groups
+      - insert-controls
+    slot_usage:
+      title:
+        required: true
+      groups:
+        range: ProfileGroup
+    in_subset:
+      - profile
+
+  ProfileModify:
+    description: Set parameters or amend controls in resolution.
+    slots:
+      - set-parameters
+      - alters
+    slot_usage:
+      set-parameters:
+        range: ParameterSetting
+        description: >-
+          A parameter setting to be propagated to points of insertion.
+    in_subset:
+      - profile
+
+  ParameterSetting:
+    description: >-
+      A parameter setting to be propagated to points of insertion in a
+      resolved profile.
+    mixins:
+      - HasPropsAndLinks
+    slots:
+      - param-id
+      - _class
+      - depends-on
+      - label
+      - usage
+      - constraints
+      - guidelines
+      - values
+      - select
+    slot_usage:
+      param-id:
+        required: true
+    in_subset:
+      - profile
+
+  Alteration:
+    description: >-
+      Specifies changes to be made to an included control when a profile is
+      resolved.
+    slots:
+      - control-id
+      - removes
+      - adds
+    slot_usage:
+      control-id:
+        required: true
+    in_subset:
+      - profile
+
+  Removal:
+    description: >-
+      Specifies objects to be removed from a control based on aspects of the
+      object that must all match.
+    slots:
+      - by-name
+      - by-class
+      - by-id
+      - by-item-name
+      - by-ns
+      - remarks
+    in_subset:
+      - profile
+
+  Addition:
+    description: Specifies content to be added into controls in resolution.
+    slots:
+      - position
+      - by-id
+      - title
+      - params
+      - props
+      - links
+      - parts
+    slot_usage:
+      props:
+        range: ProfileAlterationProperty
+    in_subset:
+      - profile
+
+  ProfileAlterationProperty:
+    is_a: Property
+    description: OSCAL property entries allowed in profile modify additions.
+    slot_usage:
+      name:
+        range: AlterationPropNameEnum
+    in_subset:
+      - profile
+
+  InsertControls:
+    description: >-
+      Specifies which controls to use in the containing context (as part of a
+      group or custom merge structure).
+    slots:
+      - order
+      - include-all
+      - include-controls
+      - exclude-controls
+    slot_usage:
+      include-controls:
+        range: SelectControlById
+      exclude-controls:
+        range: SelectControlById
+    in_subset:
+      - profile

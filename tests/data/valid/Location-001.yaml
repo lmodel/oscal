@@ -1,0 +1,17 @@
+---
+# A Location with address, telephone numbers, and URLs
+uuid: "cccccccc-3333-4000-8000-cccccccccccc"
+title: NIST Headquarters
+address:
+  type: work
+  addr_lines:
+    - 100 Bureau Drive
+  city: Gaithersburg
+  state: MD
+  postal_code: "20899"
+  country: US
+telephone_numbers:
+  - type: office
+    number: "+1-301-975-6478"
+urls:
+  - https://www.nist.gov

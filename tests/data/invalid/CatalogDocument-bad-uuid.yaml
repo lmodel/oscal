@@ -1,0 +1,9 @@
+---
+# INVALID: CatalogDocument with a malformed UUID (not type 4/5 hex format)
+catalog:
+  uuid: "not-a-valid-uuid-format-here"
+  metadata:
+    title: Catalog With Invalid UUID
+    last-modified: "2026-01-01T00:00:00Z"
+    version: "1.0.0"
+    oscal-version: "1.1.2"

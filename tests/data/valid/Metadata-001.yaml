@@ -1,0 +1,30 @@
+---
+# Metadata with revisions, roles, parties, and locations
+title: Example Security Catalog
+published: "2025-06-01T00:00:00Z"
+last_modified: "2026-03-24T00:00:00Z"
+version: "3.0.0"
+oscal_version: "1.1.2"
+revisions:
+  - version: "2.0.0"
+    last_modified: "2025-01-01T00:00:00Z"
+    oscal_version: "1.1.2"
+  - version: "1.0.0"
+    last_modified: "2024-01-01T00:00:00Z"
+    oscal_version: "1.1.2"
+roles:
+  - id: creator
+    title: Document Creator
+  - id: contact
+    title: Contact
+    short_name: POC
+parties:
+  - uuid: "aaaaaaaa-bbbb-4000-8000-aaaaaaaabbbb"
+    type: organization
+    name: Example Corp
+  - uuid: "bbbbbbbb-cccc-4000-8000-bbbbbbbbcccc"
+    type: person
+    name: Alice Example
+document_ids:
+  - scheme: https://www.doi.org/
+    identifier: "10.1234/example-catalog-v3"
