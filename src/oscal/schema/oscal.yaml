@@ -3,7 +3,7 @@ id: https://w3id.org/lmodel/oscal
 name: oscal
 title: oscal
 description: |-
-  OSCAL Model of Models: LinkML Schema
+  OSCAL: Open Security Controls Assessment Language: LinkML Schema
 license: Apache-2.0
 see_also:
   - https://lmodel.github.io/oscal

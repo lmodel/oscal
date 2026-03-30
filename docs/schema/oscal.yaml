@@ -423,6 +423,7 @@ types:
     from_schema: https://w3id.org/lmodel/oscal_catalog
     base: str
     uri: xsd:dateTime
+    pattern: ^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\.[0-9]+)?(Z|[+-]([01][0-9]|2[0-3]):[0-5][0-9])$
   MarkupLineType:
     name: MarkupLineType
     definition_uri: https://w3id.org/lmodel/oscal_catalog/MarkupLineType
@@ -13882,6 +13883,8 @@ classes:
     definition_uri: https://w3id.org/lmodel/oscal_catalog/HasPropsAndLinks
     description: Mixin providing the props and links slots that are common to many
       OSCAL objects.
+    in_subset:
+    - oscal_catalog
     from_schema: https://w3id.org/lmodel/oscal_catalog
     mixin: true
     slots:
@@ -13893,6 +13896,8 @@ classes:
     definition_uri: https://w3id.org/lmodel/oscal_catalog/OscalCommon
     description: Mixin providing props, links, and remarks slots common to most OSCAL
       objects. Extends HasPropsAndLinks.
+    in_subset:
+    - oscal_catalog
     from_schema: https://w3id.org/lmodel/oscal_catalog
     mixin: true
     mixins:
@@ -13907,6 +13912,8 @@ classes:
     definition_uri: https://w3id.org/lmodel/oscal_catalog/HasResponsibleRoles
     description: Mixin providing the responsible-roles slot for objects that carry
       role assignments.
+    in_subset:
+    - oscal_catalog
     from_schema: https://w3id.org/lmodel/oscal_catalog
     mixin: true
     slots:
@@ -13917,6 +13924,8 @@ classes:
     definition_uri: https://w3id.org/lmodel/oscal_catalog/HasResponsibleParties
     description: Mixin providing the responsible-parties slot for objects that carry
       party assignments.
+    in_subset:
+    - oscal_catalog
     from_schema: https://w3id.org/lmodel/oscal_catalog
     mixin: true
     slots:
@@ -13927,6 +13936,8 @@ classes:
     definition_uri: https://w3id.org/lmodel/oscal_catalog/OscalDocument
     description: A root wrapper for an OSCAL document, which may be of any OSCAL document
       type (e.g. Catalog, Profile, Assessment Plan, SSP).
+    in_subset:
+    - oscal_catalog
     from_schema: https://w3id.org/lmodel/oscal_catalog
     class_uri: oscal_catalog:OscalDocument
     tree_root: true
@@ -18726,7 +18737,7 @@ classes:
     class_uri: oscal_poam:RelatedFinding
 metamodel_version: 1.7.0
 source_file: oscal.yaml
-source_file_date: '2026-03-30T23:53:26'
-source_file_size: 1368
-generation_date: '2026-03-31T00:37:43'
+source_file_date: '2026-03-31T00:50:26'
+source_file_size: 1348
+generation_date: '2026-03-31T14:49:29'
 

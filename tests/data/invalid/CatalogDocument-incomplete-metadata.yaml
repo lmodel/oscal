@@ -4,5 +4,5 @@ catalog:
   uuid: "12345678-1234-4567-8901-123456789abc"
   metadata:
     title: Catalog With Incomplete Metadata
-    last-modified: "2026-01-01T00:00:00Z"
+    last_modified: "2026-01-01T00:00:00Z"
     # missing required 'version' and 'oscal-version'

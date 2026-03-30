@@ -85,7 +85,7 @@ deploy: site
 
 # Run all tests
 [group('model development')]
-test: _test-schema _test-python _test-examples
+test: _test-schema _test-python _test-examples _test-linkml-validate
 
 # Run linting
 [group('model development')]
@@ -193,6 +193,7 @@ _test-python: gen-python
 # Run example tests
 _test-examples: _ensure_examples_output
   uv run linkml-run-examples \
+    --no-use-type-designators \
     --input-formats json \
     --input-formats yaml \
     --output-formats json \

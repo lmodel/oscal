@@ -1,0 +1,5 @@
+---
+# INVALID: Party type must be one of the strict PartyTypeEnum values
+uuid: "ffffffff-9999-4000-8000-ffffffffffff"
+type: spacecraft
+name: Example Org

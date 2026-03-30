@@ -1,7 +1,7 @@
 uuid: 22222222-2222-4222-8222-222222222222
 title: Initial assessment execution
 description: Evidence collected during the initial assessment execution.
-start: 2026-03-27T09:00:00Z
+start: "2026-03-27T09:00:00Z"
 reviewed_controls:
   control_selections:
     - description: Controls reviewed during the assessment.

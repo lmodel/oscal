@@ -1,7 +1,7 @@
 uuid: "7d7a8ae0-d49c-4e0a-8000-000000000001"
 metadata:
   title: "Test Assessment Plan"
-  last_modified: "2026-01-15T12:00:00.000Z"
+  last_modified: "2026-01-15 12:00:00"
   version: "1.0.0"
   oscal_version: "1.1.2"
   roles:
@@ -22,15 +22,3 @@ reviewed_controls:
     - include_all: {}
   control_objective_selections:
     - include_all: {}
-local_definitions:
-  activities:
-    - uuid: "7d7a8ae0-d49c-4e0a-8001-000000000001"
-      description: "Review access control policies."
-      steps:
-        - uuid: "7d7a8ae0-d49c-4e0a-8002-000000000001"
-          description: "Collect policy documents."
-tasks:
-  - uuid: "7d7a8ae0-d49c-4e0a-8003-000000000001"
-    type: action
-    title: "Review Access Controls"
-    description: "Assess AC family controls."

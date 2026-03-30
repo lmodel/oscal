@@ -2,7 +2,7 @@
 
 # oscal
 
-OSCAL Model of Models: LinkML Schema
+OSCAL: Open Security Controls Assessment Language: LinkML Schema
 
 ## Documentation Website
 

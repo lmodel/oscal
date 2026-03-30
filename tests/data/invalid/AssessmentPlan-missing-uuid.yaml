@@ -1,11 +1,11 @@
 # AssessmentPlan missing required 'uuid' field
 metadata:
   title: "Invalid Assessment Plan"
-  last-modified: "2026-01-15T12:00:00.000Z"
+  last_modified: "2026-01-15T12:00:00.000Z"
   version: "1.0.0"
-  oscal-version: "1.1.2"
-import-ssp:
+  oscal_version: "1.1.2"
+import_ssp:
   href: "https://example.com/ssp/system-security-plan.json"
-reviewed-controls:
-  control-selections:
-    - include-all: {}
+reviewed_controls:
+  control_selections:
+    - include_all: {}

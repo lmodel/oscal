@@ -9,7 +9,7 @@ protocols:
   - uuid: "7d7a8ae0-d49c-4e0a-8010-000000000002"
     name: "https"
     title: "HTTPS"
-    port-ranges:
+    port_ranges:
       - start: 443
         end: 443
         transport: TCP

@@ -1,7 +1,7 @@
 uuid: 77777777-7777-4777-8777-777777777777
 metadata:
   title: Nested assessment results
-  last_modified: 2026-03-27T10:15:00Z
+  last_modified: "2026-03-27T10:15:00Z"
   version: "1.1"
   oscal_version: "1.2.1"
 import_ap:
@@ -10,7 +10,7 @@ results:
   - uuid: 88888888-8888-4888-8888-888888888888
     title: Nested result set
     description: Result set with observations, findings, and log entries.
-    start: 2026-03-27T09:00:00Z
+    start: "2026-03-27T09:00:00Z"
     reviewed_controls:
       control_selections:
         - description: Controls reviewed during the assessment.
@@ -20,14 +20,14 @@ results:
         - uuid: 99999999-9999-4999-8999-999999999999
           title: Interview session
           description: Conducted assessor interview.
-          start: 2026-03-27T09:15:00Z
+          start: "2026-03-27T09:15:00Z"
     observations:
       - uuid: bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb
         title: Interview observation
         description: Interview responses confirmed the documented approval workflow.
         methods:
           - INTERVIEW
-        collected: 2026-03-27T09:30:00Z
+        collected: "2026-03-27T09:30:00Z"
         types:
           - discovery
     findings:

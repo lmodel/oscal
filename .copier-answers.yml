@@ -9,7 +9,7 @@ gh_action_docs_preview: true
 gh_action_pypi: true
 github_org: lmodel
 license: Apache-2.0
-project_description: 'OSCAL Model of Models: LinkML Schema'
+project_description: 'OSCAL: Open Security Controls Assessment Language: LinkML Schema'
 project_name: oscal
 project_slug: oscal
 

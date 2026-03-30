@@ -8,7 +8,7 @@
 # - just works fine with quoted variables of dot-env files like this one
 LINKML_SCHEMA_NAME="oscal"
 LINKML_SCHEMA_AUTHOR="Noel McLoughlin <noel.mcloughlin@gmail.com>"
-LINKML_SCHEMA_DESCRIPTION="OSCAL Model of Models: LinkML Schema"
+LINKML_SCHEMA_DESCRIPTION="OSCAL: Open Security Controls Assessment Language: LinkML Schema"
 LINKML_SCHEMA_SOURCE_DIR="src/oscal/schema"
 
 ###### linkml generator variables, used by justfile

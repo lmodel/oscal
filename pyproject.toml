@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "oscal"
-description = "OSCAL Model of Models: LinkML Schema"
+description = "OSCAL: Open Security Controls Assessment Language: LinkML Schema"
 authors = [
   {name = "Noel McLoughlin", email = "noel.mcloughlin@gmail.com"},
 ]
@@ -20,6 +20,7 @@ dependencies = [
 
 [dependency-groups]
 dev = [
+  "jsonschema>=4.23.0",
     "linkml>=1.9.3",
     "mkdocs-material>=8.2.8",
     "mkdocs-mermaid2-plugin>=1.1.1",

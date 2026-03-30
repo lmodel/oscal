@@ -57,6 +57,7 @@ types:
     base: str
     description: >-
       A string representing a point in time with a required timezone.
+    pattern: "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\\.[0-9]+)?(Z|[+-]([01][0-9]|2[0-3]):[0-5][0-9])$"
 
   MarkupLineType:
     uri: xsd:string
@@ -952,6 +953,8 @@ classes:
     slots:
       - props
       - links
+    in_subset:
+      - oscal_catalog
 
   OscalCommon:
     mixin: true
@@ -962,6 +965,8 @@ classes:
       - HasPropsAndLinks
     slots:
       - remarks
+    in_subset:
+      - oscal_catalog
 
   HasResponsibleRoles:
     mixin: true
@@ -970,6 +975,8 @@ classes:
       assignments.
     slots:
       - responsible-roles
+    in_subset:
+      - oscal_catalog
 
   HasResponsibleParties:
     mixin: true
@@ -978,6 +985,8 @@ classes:
       assignments.
     slots:
       - responsible-parties
+    in_subset:
+      - oscal_catalog
 
   # Root document
 
@@ -986,6 +995,8 @@ classes:
       A root wrapper for an OSCAL document, which may be of any OSCAL document
       type (e.g. Catalog, Profile, Assessment Plan, SSP).
     tree_root: true
+    in_subset:
+      - oscal_catalog
   
   CatalogDocument:
     is_a: OscalDocument
