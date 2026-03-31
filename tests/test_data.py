@@ -107,8 +107,6 @@ def _validate_schema(filepath: str, target_class_name: str):
     * ``Risk``                     — ``RelatedObservation.observation_uuid``
     * ``AssessmentPlan``           — ``ResponsibleParty.role_id``
     * ``CatalogDocument``          — ``ResourceLink.href`` inside ``BackMatter``
-    * ``ControlImplementationSet`` — ``SetParameter.param_id``
-    * ``ImplementedRequirement``   — ``ImplementedControlStatement.statement_id``
     """
     target_class = getattr(oscal.datamodel.oscal, target_class_name)
 
@@ -359,16 +357,12 @@ def test_invalid_data_files_fail_generated_json_schema(filepath):
 
 def test_control_implementation_set_alias_conversion(tmp_path):
     """
-    The alias workaround for ControlImplementationSet injects the
-    hyphenated ``"param-id"`` key expected by the generated __post_init__.
+    Verify that ControlImplementationSet loads correctly from underscore-keyed
+    fixture YAML and that ``set_parameters`` items expose ``param_id``.
 
-    I raised upstream issues/PR to address this in LinkML project.
-
-    Background: the LinkML generator emits ``__post_init__`` code that reads
-    ``self.__dict__["param-id"]`` to set up the keyed list for ``set_parameters``.
-    Since fixture YAML uses the underscore form ``param_id``, we must manually
-    copy the value under the hyphenated key after constructing each SetParameter.
-    This workaround lives in :func:`_validate_schema`'s alias fallback branch.
+    The generated ``__post_init__`` previously read ``self.__dict__["param-id"]``
+    which required a workaround in :func:`_validate_schema`.  The codegen was
+    fixed upstream; ``yaml_loader.load`` now succeeds directly.
     """
     fixture = tmp_path / "ControlImplementationSet-test.yaml"
     fixture.write_text(
@@ -388,14 +382,17 @@ def test_control_implementation_set_alias_conversion(tmp_path):
     obj = _validate_schema(str(fixture), "ControlImplementationSet")
 
     assert len(obj.set_parameters) == 1
-    assert obj.set_parameters[0].__dict__["param-id"] == "p-1"
+    assert obj.set_parameters[0].param_id == "p-1"
 
 
 def test_implemented_requirement_alias_conversion(tmp_path):
     """
-    The alias workaround for ImplementedRequirement injects the hyphenated
-    ``"statement-id"`` key expected by the generated __post_init__.
-    This workaround lives in :func:`_validate_schema`'s alias fallback branch.
+    Verify that ImplementedRequirement loads correctly from underscore-keyed
+    fixture YAML and that ``statements`` items expose ``statement_id``.
+
+    The generated ``__post_init__`` previously read ``self.__dict__["statement-id"]``
+    which required a workaround in :func:`_validate_schema`.  The codegen was
+    fixed upstream; ``yaml_loader.load`` now succeeds directly.
     """
     fixture = tmp_path / "ImplementedRequirement-test.yaml"
     fixture.write_text(
@@ -411,7 +408,7 @@ def test_implemented_requirement_alias_conversion(tmp_path):
     obj = _validate_schema(str(fixture), "ImplementedRequirement")
 
     assert len(obj.statements) == 1
-    assert obj.statements[0].__dict__["statement-id"] == "s-1"
+    assert obj.statements[0].statement_id == "s-1"
 
 
 # ---------------------------------------------------------------------------
