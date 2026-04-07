@@ -85,7 +85,7 @@ deploy: site
 
 # Run all tests
 [group('model development')]
-test: _test-schema _test-python _test-examples _test-linkml-validate
+test: _test-schema _test-python _test-examples _test-linkml-validate test-luigi-carpio
 
 # Run linting
 [group('model development')]
