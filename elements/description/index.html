@@ -502,93 +502,28 @@ Alias: description</p>
 </thead>
 <tbody>
 <tr>
+<td><a href="../RiskLogEntry/">RiskLogEntry</a></td>
+<td>Identifies an individual risk response that occurred as part of managing an i...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../RequiredAsset/">RequiredAsset</a></td>
+<td>Identifies an asset required to achieve remediation</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../Activity/">Activity</a></td>
+<td>Identifies an assessment or related process that can be performed</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../MitigatingFactor/">MitigatingFactor</a></td>
+<td>Describes an existing mitigating factor that may affect the overall determina...</td>
+<td>yes</td>
+</tr>
+<tr>
 <td><a href="../ControlImplementationSet/">ControlImplementationSet</a></td>
 <td>Defines how the component or capability supports a set of controls</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../Task/">Task</a></td>
-<td>Represents a scheduled event or milestone, which may be associated with a ser...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../SystemComponent/">SystemComponent</a></td>
-<td>A defined component that can be part of an implemented system</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../QualifierItem/">QualifierItem</a></td>
-<td>A qualifier describing requirements or incompatibilities</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../Step/">Step</a></td>
-<td>Identifies an individual step in a series of steps related to an activity, su...</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../ImplementedRequirement/">ImplementedRequirement</a></td>
-<td>Describes how the containing component or capability implements an individual...</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../AssessmentLogEntry/">AssessmentLogEntry</a></td>
-<td>Identifies the result of an action and/or task that occurred as part of execu...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../LocalObjective/">LocalObjective</a></td>
-<td>A local definition of a control objective for this assessment</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../SspControlImplementation/">SspControlImplementation</a></td>
-<td>Describes how the system satisfies a set of controls</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../ReviewedControls/">ReviewedControls</a></td>
-<td>Identifies the controls being assessed and their control objectives</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../FindingTarget/">FindingTarget</a></td>
-<td>Captures an assessor's conclusions regarding the degree to which an objective...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Capability/">Capability</a></td>
-<td>A grouping of other components and/or capabilities</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../AssessmentMethod/">AssessmentMethod</a></td>
-<td>A local definition of a control objective</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../SspSystemComponent/">SspSystemComponent</a></td>
-<td>SSP-scoped system component with allows-authenticated-scan property typing</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ByComponent/">ByComponent</a></td>
-<td>Defines how the referenced component implements a set of controls</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../AssessmentSubjectPlaceholder/">AssessmentSubjectPlaceholder</a></td>
-<td>Used when the assessment subjects will be determined as part of one or more o...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../AssessmentSubject/">AssessmentSubject</a></td>
-<td>Identifies system elements being assessed, such as components, inventory item...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Resource/">Resource</a></td>
-<td>A resource associated with content in the containing document instance</td>
 <td>yes</td>
 </tr>
 <tr>
@@ -597,18 +532,43 @@ Alias: description</p>
 <td>yes</td>
 </tr>
 <tr>
+<td><a href="../ControlObjectiveSelection/">ControlObjectiveSelection</a></td>
+<td>Identifies the control objectives of the assessment</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../SspInventoryItem/">SspInventoryItem</a></td>
+<td>SSP-scoped inventory item with allows-authenticated-scan property typing</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../DataFlow/">DataFlow</a></td>
+<td>A description of the logical flow of information within the system and across...</td>
+<td>yes</td>
+</tr>
+<tr>
 <td><a href="../ControlSelection/">ControlSelection</a></td>
 <td>Identifies the controls being assessed</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../MitigatingFactor/">MitigatingFactor</a></td>
-<td>Describes an existing mitigating factor that may affect the overall determina...</td>
+<td><a href="../QualifierItem/">QualifierItem</a></td>
+<td>A qualifier describing requirements or incompatibilities</td>
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../Result/">Result</a></td>
-<td>Identifies all of the assessment observations and findings, initial and resid...</td>
+<td><a href="../SystemCharacteristics/">SystemCharacteristics</a></td>
+<td>Contains the characteristics of the system, such as its name, purpose, and se...</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../AssessmentLogEntry/">AssessmentLogEntry</a></td>
+<td>Identifies the result of an action and/or task that occurred as part of execu...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../SspControlImplementation/">SspControlImplementation</a></td>
+<td>Describes how the system satisfies a set of controls</td>
 <td>yes</td>
 </tr>
 <tr>
@@ -617,19 +577,39 @@ Alias: description</p>
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../RelevantEvidence/">RelevantEvidence</a></td>
-<td>Links this observation to relevant evidence</td>
+<td><a href="../NetworkArchitecture/">NetworkArchitecture</a></td>
+<td>A description of the system's network architecture, optionally supplemented w...</td>
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../SatisfiedControlImplementation/">SatisfiedControlImplementation</a></td>
-<td>Describes how this system satisfies a responsibility imposed by a leveraged s...</td>
+<td><a href="../ControlResponsibility/">ControlResponsibility</a></td>
+<td>Describes a control implementation responsibility imposed on a leveraging sys...</td>
 <td>yes</td>
 </tr>
 <tr>
 <td><a href="../Finding/">Finding</a></td>
 <td>Describes an individual finding</td>
 <td>yes</td>
+</tr>
+<tr>
+<td><a href="../AuthorizedPrivilege/">AuthorizedPrivilege</a></td>
+<td>Identifies a specific system privilege held by the user, along with an associ...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../InventoryItem/">InventoryItem</a></td>
+<td>A single managed inventory item within the system</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../RelevantEvidence/">RelevantEvidence</a></td>
+<td>Links this observation to relevant evidence</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../FindingTarget/">FindingTarget</a></td>
+<td>Captures an assessor's conclusions regarding the degree to which an objective...</td>
+<td>no</td>
 </tr>
 <tr>
 <td><a href="../InformationType/">InformationType</a></td>
@@ -642,29 +622,9 @@ Alias: description</p>
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../Risk/">Risk</a></td>
-<td>An identified risk</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../DefinedComponent/">DefinedComponent</a></td>
-<td>A defined component that can be part of an implemented system</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../AuthorizedPrivilege/">AuthorizedPrivilege</a></td>
-<td>Identifies a specific system privilege held by the user, along with an associ...</td>
+<td><a href="../LocalObjective/">LocalObjective</a></td>
+<td>A local definition of a control objective for this assessment</td>
 <td>no</td>
-</tr>
-<tr>
-<td><a href="../Export/">Export</a></td>
-<td>Defines a set of control implementations that are provided as reference imple...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../InheritedControlImplementation/">InheritedControlImplementation</a></td>
-<td>Describes a control implementation inherited by a leveraging system</td>
-<td>yes</td>
 </tr>
 <tr>
 <td><a href="../SystemUser/">SystemUser</a></td>
@@ -672,43 +632,13 @@ Alias: description</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../RiskLogEntry/">RiskLogEntry</a></td>
-<td>Identifies an individual risk response that occurred as part of managing an i...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../RequiredAsset/">RequiredAsset</a></td>
-<td>Identifies an asset required to achieve remediation</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../Response/">Response</a></td>
-<td>Describes either recommended or an actual plan for addressing the risk</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../InventoryItem/">InventoryItem</a></td>
-<td>A single managed inventory item within the system</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../ControlResponsibility/">ControlResponsibility</a></td>
-<td>Describes a control implementation responsibility imposed on a leveraging sys...</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../ImplementedControlStatement/">ImplementedControlStatement</a></td>
-<td>Identifies which statements within a control are addressed</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../NetworkArchitecture/">NetworkArchitecture</a></td>
-<td>A description of the system's network architecture, optionally supplemented w...</td>
-<td>yes</td>
-</tr>
-<tr>
 <td><a href="../ProvidedControlImplementation/">ProvidedControlImplementation</a></td>
 <td>Describes a capability which may be inherited by a leveraging system</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../Result/">Result</a></td>
+<td>Identifies all of the assessment observations and findings, initial and resid...</td>
 <td>yes</td>
 </tr>
 <tr>
@@ -717,8 +647,63 @@ Alias: description</p>
 <td>yes</td>
 </tr>
 <tr>
+<td><a href="../SystemComponent/">SystemComponent</a></td>
+<td>A defined component that can be part of an implemented system</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../Risk/">Risk</a></td>
+<td>An identified risk</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../AssessmentMethod/">AssessmentMethod</a></td>
+<td>A local definition of a control objective</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../DefinedComponent/">DefinedComponent</a></td>
+<td>A defined component that can be part of an implemented system</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../Task/">Task</a></td>
+<td>Represents a scheduled event or milestone, which may be associated with a ser...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Step/">Step</a></td>
+<td>Identifies an individual step in a series of steps related to an activity, su...</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../Export/">Export</a></td>
+<td>Defines a set of control implementations that are provided as reference imple...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ReviewedControls/">ReviewedControls</a></td>
+<td>Identifies the controls being assessed and their control objectives</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ImplementedControlStatement/">ImplementedControlStatement</a></td>
+<td>Identifies which statements within a control are addressed</td>
+<td>yes</td>
+</tr>
+<tr>
 <td><a href="../Role/">Role</a></td>
 <td>Defines a function, which might be assigned to a party in a specific situatio...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ImplementedRequirement/">ImplementedRequirement</a></td>
+<td>Describes how the containing component or capability implements an individual...</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../AssessmentSubject/">AssessmentSubject</a></td>
+<td>Identifies system elements being assessed, such as components, inventory item...</td>
 <td>no</td>
 </tr>
 <tr>
@@ -727,34 +712,49 @@ Alias: description</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../SspInventoryItem/">SspInventoryItem</a></td>
-<td>SSP-scoped inventory item with allows-authenticated-scan property typing</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../SystemCharacteristics/">SystemCharacteristics</a></td>
-<td>Contains the characteristics of the system, such as its name, purpose, and se...</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../Activity/">Activity</a></td>
-<td>Identifies an assessment or related process that can be performed</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../DataFlow/">DataFlow</a></td>
-<td>A description of the logical flow of information within the system and across...</td>
-<td>yes</td>
-</tr>
-<tr>
 <td><a href="../Observation/">Observation</a></td>
 <td>Describes an individual observation</td>
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../ControlObjectiveSelection/">ControlObjectiveSelection</a></td>
-<td>Identifies the control objectives of the assessment</td>
+<td><a href="../ByComponent/">ByComponent</a></td>
+<td>Defines how the referenced component implements a set of controls</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../InheritedControlImplementation/">InheritedControlImplementation</a></td>
+<td>Describes a control implementation inherited by a leveraging system</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../SatisfiedControlImplementation/">SatisfiedControlImplementation</a></td>
+<td>Describes how this system satisfies a responsibility imposed by a leveraged s...</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../SspSystemComponent/">SspSystemComponent</a></td>
+<td>SSP-scoped system component with allows-authenticated-scan property typing</td>
 <td>no</td>
+</tr>
+<tr>
+<td><a href="../AssessmentSubjectPlaceholder/">AssessmentSubjectPlaceholder</a></td>
+<td>Used when the assessment subjects will be determined as part of one or more o...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Resource/">Resource</a></td>
+<td>A resource associated with content in the containing document instance</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../Capability/">Capability</a></td>
+<td>A grouping of other components and/or capabilities</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../Response/">Response</a></td>
+<td>Describes either recommended or an actual plan for addressing the risk</td>
+<td>yes</td>
 </tr>
 </tbody>
 </table>
