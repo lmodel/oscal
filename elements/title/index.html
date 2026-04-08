@@ -502,29 +502,34 @@ Alias: title</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../RiskLogEntry/">RiskLogEntry</a></td>
-<td>Identifies an individual risk response that occurred as part of managing an i...</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../LeveragedAuthorization/">LeveragedAuthorization</a></td>
 <td>A description of another authorized system from which this system inherits ca...</td>
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../RequiredAsset/">RequiredAsset</a></td>
-<td>Identifies an asset required to achieve remediation</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Activity/">Activity</a></td>
-<td>Identifies an assessment or related process that can be performed</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ProfileGroup/">ProfileGroup</a></td>
-<td>A group of (selected) controls or of groups of controls within a profile cust...</td>
+<td><a href="../Role/">Role</a></td>
+<td>Defines a function, which might be assigned to a party in a specific situatio...</td>
 <td>yes</td>
+</tr>
+<tr>
+<td><a href="../RiskLogEntry/">RiskLogEntry</a></td>
+<td>Identifies an individual risk response that occurred as part of managing an i...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Protocol/">Protocol</a></td>
+<td>Information about the protocol used to provide a service</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Task/">Task</a></td>
+<td>Represents a scheduled event or milestone, which may be associated with a ser...</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../SspSystemComponent/">SspSystemComponent</a></td>
+<td>SSP-scoped system component with allows-authenticated-scan property typing</td>
+<td>no</td>
 </tr>
 <tr>
 <td><a href="../Control/">Control</a></td>
@@ -532,13 +537,53 @@ Alias: title</p>
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../AssessmentLogEntry/">AssessmentLogEntry</a></td>
-<td>Identifies the result of an action and/or task that occurred as part of execu...</td>
+<td><a href="../AssessmentPlatform/">AssessmentPlatform</a></td>
+<td>Used to represent the toolset used to perform aspects of the assessment</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../TermsAndConditionsPart/">TermsAndConditionsPart</a></td>
-<td>A terms-and-conditions scoped assessment part</td>
+<td><a href="../Location/">Location</a></td>
+<td>A physical point of presence, which may be associated with people, organizati...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Resource/">Resource</a></td>
+<td>A resource associated with content in the containing document instance</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../SystemComponent/">SystemComponent</a></td>
+<td>A defined component that can be part of an implemented system</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../Addition/">Addition</a></td>
+<td>Specifies content to be added into controls in resolution</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../PoamItem/">PoamItem</a></td>
+<td>Describes an individual POA&amp;M item</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../Group/">Group</a></td>
+<td>A group of controls, or of groups of controls</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../AssessmentPart/">AssessmentPart</a></td>
+<td>A partition of an assessment plan or results or a child of another part</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../SubjectReference/">SubjectReference</a></td>
+<td>A human-oriented identifier reference to a resource</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Revision/">Revision</a></td>
+<td>An entry in a sequential list of revisions to the containing document</td>
 <td>no</td>
 </tr>
 <tr>
@@ -547,13 +592,13 @@ Alias: title</p>
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../AuthorizedPrivilege/">AuthorizedPrivilege</a></td>
-<td>Identifies a specific system privilege held by the user, along with an associ...</td>
-<td>yes</td>
+<td><a href="../RequiredAsset/">RequiredAsset</a></td>
+<td>Identifies an asset required to achieve remediation</td>
+<td>no</td>
 </tr>
 <tr>
-<td><a href="../InformationType/">InformationType</a></td>
-<td>Contains details about one information type that is stored, processed, or tra...</td>
+<td><a href="../Risk/">Risk</a></td>
+<td>An identified risk</td>
 <td>yes</td>
 </tr>
 <tr>
@@ -567,38 +612,38 @@ Alias: title</p>
 <td>no</td>
 </tr>
 <tr>
+<td><a href="../Part/">Part</a></td>
+<td>An annotated, markup-based textual element of a control's or catalog group's ...</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../AuthorizedPrivilege/">AuthorizedPrivilege</a></td>
+<td>Identifies a specific system privilege held by the user, along with an associ...</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../Observation/">Observation</a></td>
+<td>Describes an individual observation</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../AssessmentLogEntry/">AssessmentLogEntry</a></td>
+<td>Identifies the result of an action and/or task that occurred as part of execu...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Metadata/">Metadata</a></td>
+<td>Provides information about the containing document, and defines concepts shar...</td>
+<td>yes</td>
+</tr>
+<tr>
 <td><a href="../SystemUser/">SystemUser</a></td>
 <td>A type of user that interacts with the system based on an associated role</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../Result/">Result</a></td>
-<td>Identifies all of the assessment observations and findings, initial and resid...</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../Group/">Group</a></td>
-<td>A group of controls, or of groups of controls</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../PoamItem/">PoamItem</a></td>
-<td>Describes an individual POA&amp;M item</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../SystemComponent/">SystemComponent</a></td>
-<td>A defined component that can be part of an implemented system</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../Risk/">Risk</a></td>
-<td>An identified risk</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../AssessmentPlatform/">AssessmentPlatform</a></td>
-<td>Used to represent the toolset used to perform aspects of the assessment</td>
+<td><a href="../TermsAndConditionsPart/">TermsAndConditionsPart</a></td>
+<td>A terms-and-conditions scoped assessment part</td>
 <td>no</td>
 </tr>
 <tr>
@@ -607,78 +652,33 @@ Alias: title</p>
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../Task/">Task</a></td>
-<td>Represents a scheduled event or milestone, which may be associated with a ser...</td>
-<td>yes</td>
-</tr>
-<tr>
 <td><a href="../Step/">Step</a></td>
 <td>Identifies an individual step in a series of steps related to an activity, su...</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../Role/">Role</a></td>
-<td>Defines a function, which might be assigned to a party in a specific situatio...</td>
+<td><a href="../InformationType/">InformationType</a></td>
+<td>Contains details about one information type that is stored, processed, or tra...</td>
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../SubjectReference/">SubjectReference</a></td>
-<td>A human-oriented identifier reference to a resource</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Protocol/">Protocol</a></td>
-<td>Information about the protocol used to provide a service</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../AssessmentPart/">AssessmentPart</a></td>
-<td>A partition of an assessment plan or results or a child of another part</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Observation/">Observation</a></td>
-<td>Describes an individual observation</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Revision/">Revision</a></td>
-<td>An entry in a sequential list of revisions to the containing document</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../SspSystemComponent/">SspSystemComponent</a></td>
-<td>SSP-scoped system component with allows-authenticated-scan property typing</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Resource/">Resource</a></td>
-<td>A resource associated with content in the containing document instance</td>
+<td><a href="../Result/">Result</a></td>
+<td>Identifies all of the assessment observations and findings, initial and resid...</td>
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../Part/">Part</a></td>
-<td>An annotated, markup-based textual element of a control's or catalog group's ...</td>
+<td><a href="../ProfileGroup/">ProfileGroup</a></td>
+<td>A group of (selected) controls or of groups of controls within a profile cust...</td>
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../Addition/">Addition</a></td>
-<td>Specifies content to be added into controls in resolution</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Location/">Location</a></td>
-<td>A physical point of presence, which may be associated with people, organizati...</td>
+<td><a href="../Activity/">Activity</a></td>
+<td>Identifies an assessment or related process that can be performed</td>
 <td>no</td>
 </tr>
 <tr>
 <td><a href="../Response/">Response</a></td>
 <td>Describes either recommended or an actual plan for addressing the risk</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../Metadata/">Metadata</a></td>
-<td>Provides information about the containing document, and defines concepts shar...</td>
 <td>yes</td>
 </tr>
 </tbody>
