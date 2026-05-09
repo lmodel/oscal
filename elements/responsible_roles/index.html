@@ -502,9 +502,24 @@ Alias: responsible_roles</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../SspStatement/">SspStatement</a></td>
-<td>Identifies which statements within a control are addressed</td>
-<td>yes</td>
+<td><a href="../ImplementedRequirement/">ImplementedRequirement</a></td>
+<td>Describes how the containing component or capability implements an individual...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Step/">Step</a></td>
+<td>Identifies an individual step in a series of steps related to an activity, su...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HasResponsibleRoles/">HasResponsibleRoles</a></td>
+<td>Mixin providing the responsible-roles slot for objects that carry role assign...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../AssociatedActivity/">AssociatedActivity</a></td>
+<td>Identifies an individual activity to be performed as part of a task</td>
+<td>no</td>
 </tr>
 <tr>
 <td><a href="../ImplementedControlStatement/">ImplementedControlStatement</a></td>
@@ -512,23 +527,8 @@ Alias: responsible_roles</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../SystemComponent/">SystemComponent</a></td>
-<td>A defined component that can be part of an implemented system</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../ImplementedRequirement/">ImplementedRequirement</a></td>
-<td>Describes how the containing component or capability implements an individual...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../InheritedControlImplementation/">InheritedControlImplementation</a></td>
-<td>Describes a control implementation inherited by a leveraging system</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../ControlResponsibility/">ControlResponsibility</a></td>
-<td>Describes a control implementation responsibility imposed on a leveraging sys...</td>
+<td><a href="../SspStatement/">SspStatement</a></td>
+<td>Identifies which statements within a control are addressed</td>
 <td>yes</td>
 </tr>
 <tr>
@@ -537,19 +537,19 @@ Alias: responsible_roles</p>
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../Step/">Step</a></td>
-<td>Identifies an individual step in a series of steps related to an activity, su...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ByComponent/">ByComponent</a></td>
-<td>Defines how the referenced component implements a set of controls</td>
+<td><a href="../ControlResponsibility/">ControlResponsibility</a></td>
+<td>Describes a control implementation responsibility imposed on a leveraging sys...</td>
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../AssociatedActivity/">AssociatedActivity</a></td>
-<td>Identifies an individual activity to be performed as part of a task</td>
-<td>no</td>
+<td><a href="../SystemComponent/">SystemComponent</a></td>
+<td>A defined component that can be part of an implemented system</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../InheritedControlImplementation/">InheritedControlImplementation</a></td>
+<td>Describes a control implementation inherited by a leveraging system</td>
+<td>yes</td>
 </tr>
 <tr>
 <td><a href="../Task/">Task</a></td>
@@ -557,23 +557,8 @@ Alias: responsible_roles</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../SspImplementedRequirement/">SspImplementedRequirement</a></td>
-<td>Describes how the system satisfies an individual control</td>
-<td>yes</td>
-</tr>
-<tr>
 <td><a href="../SspSystemComponent/">SspSystemComponent</a></td>
 <td>SSP-scoped system component with allows-authenticated-scan property typing</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ProvidedControlImplementation/">ProvidedControlImplementation</a></td>
-<td>Describes a capability which may be inherited by a leveraging system</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../HasResponsibleRoles/">HasResponsibleRoles</a></td>
-<td>Mixin providing the responsible-roles slot for objects that carry role assign...</td>
 <td>no</td>
 </tr>
 <tr>
@@ -585,6 +570,21 @@ Alias: responsible_roles</p>
 <td><a href="../DefinedComponent/">DefinedComponent</a></td>
 <td>A defined component that can be part of an implemented system</td>
 <td>no</td>
+</tr>
+<tr>
+<td><a href="../ByComponent/">ByComponent</a></td>
+<td>Defines how the referenced component implements a set of controls</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../SspImplementedRequirement/">SspImplementedRequirement</a></td>
+<td>Describes how the system satisfies an individual control</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../ProvidedControlImplementation/">ProvidedControlImplementation</a></td>
+<td>Describes a capability which may be inherited by a leveraging system</td>
+<td>yes</td>
 </tr>
 </tbody>
 </table>
