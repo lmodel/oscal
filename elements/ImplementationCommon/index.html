@@ -358,53 +358,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#identifier-and-mapping-information" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Identifier and Mapping Information
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Identifier and Mapping Information">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#schema-source" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Schema Source
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#classes-in-subset" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Classes in subset
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -426,89 +379,750 @@
 
 <h1 id="subset-implementationcommon">Subset: ImplementationCommon</h1>
 <p><em>Classes originating from the oscal-implementation-common namespace: system components, protocols, inventory items, users, and set-parameter.</em></p>
-<p>URI: <a href="./">ImplementationCommon</a></p>
-<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="schema-source">Schema Source</h3>
-<ul>
-<li>from schema: https://w3id.org/lmodel/oscal</li>
-</ul>
-<h2 id="classes-in-subset">Classes in subset</h2>
-<table>
-<thead>
-<tr>
-<th>Class</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../AuthorizedPrivilege/">AuthorizedPrivilege</a></td>
-<td>Identifies a specific system privilege held by the user, along with an associ...</td>
-</tr>
-<tr>
-<td><a href="../ComponentStatus/">ComponentStatus</a></td>
-<td>Describes the operational status of the system component</td>
-</tr>
-<tr>
-<td><a href="../ImplementationCommonLink/">ImplementationCommonLink</a></td>
-<td>Implementation-common scoped OSCAL link</td>
-</tr>
-<tr>
-<td><a href="../ImplementationCommonProperty/">ImplementationCommonProperty</a></td>
-<td>Implementation-common scoped OSCAL property</td>
-</tr>
-<tr>
-<td><a href="../ImplementationResponsibleParty/">ImplementationResponsibleParty</a></td>
-<td>Implementation-common scoped responsible party</td>
-</tr>
-<tr>
-<td><a href="../ImplementationResponsibleRole/">ImplementationResponsibleRole</a></td>
-<td>Implementation-common scoped responsible role</td>
-</tr>
-<tr>
-<td><a href="../ImplementationStatus/">ImplementationStatus</a></td>
-<td>Indicates the degree to which a given control is implemented</td>
-</tr>
-<tr>
-<td><a href="../ImplementedComponent/">ImplementedComponent</a></td>
-<td>The set of components that are implemented in a given system inventory item</td>
-</tr>
-<tr>
-<td><a href="../InventoryItem/">InventoryItem</a></td>
-<td>A single managed inventory item within the system</td>
-</tr>
-<tr>
-<td><a href="../PortRange/">PortRange</a></td>
-<td>Where applicable, the transport layer protocol port range</td>
-</tr>
-<tr>
-<td><a href="../Protocol/">Protocol</a></td>
-<td>Information about the protocol used to provide a service</td>
-</tr>
-<tr>
-<td><a href="../SetParameter/">SetParameter</a></td>
-<td>Identifies the parameter that will be set by the enclosed value</td>
-</tr>
-<tr>
-<td><a href="../SystemComponent/">SystemComponent</a></td>
-<td>A defined component that can be part of an implemented system</td>
-</tr>
-<tr>
-<td><a href="../SystemId/">SystemId</a></td>
-<td>A human-oriented, globally unique identifier for a system</td>
-</tr>
-<tr>
-<td><a href="../SystemUser/">SystemUser</a></td>
-<td>A type of user that interacts with the system based on an associated role</td>
-</tr>
-</tbody>
-</table>
+<div data-search-exclude markdown="1">
+
+URI: [ImplementationCommon](ImplementationCommon.md)
 
 
 
 
 
 
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://w3id.org/lmodel/oscal
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Classes in subset
+
+| Class | Description |
+| --- | --- |
+| [AuthorizedPrivilege](AuthorizedPrivilege.md) | Identifies a specific system privilege held by the user, along with an associ... |
+| [ComponentStatus](ComponentStatus.md) | Describes the operational status of the system component |
+| [ImplementationCommonLink](ImplementationCommonLink.md) | Implementation-common scoped OSCAL link |
+| [ImplementationCommonProperty](ImplementationCommonProperty.md) | Implementation-common scoped OSCAL property |
+| [ImplementationResponsibleParty](ImplementationResponsibleParty.md) | Implementation-common scoped responsible party |
+| [ImplementationResponsibleRole](ImplementationResponsibleRole.md) | Implementation-common scoped responsible role |
+| [ImplementationStatus](ImplementationStatus.md) | Indicates the degree to which a given control is implemented |
+| [ImplementedComponent](ImplementedComponent.md) | The set of components that are implemented in a given system inventory item |
+| [InventoryItem](InventoryItem.md) | A single managed inventory item within the system |
+| [PortRange](PortRange.md) | Where applicable, the transport layer protocol port range |
+| [Protocol](Protocol.md) | Information about the protocol used to provide a service |
+| [SetParameter](SetParameter.md) | Identifies the parameter that will be set by the enclosed value |
+| [SystemComponent](SystemComponent.md) | A defined component that can be part of an implemented system |
+| [SystemId](SystemId.md) | A human-oriented, globally unique identifier for a system |
+| [SystemUser](SystemUser.md) | A type of user that interacts with the system based on an associated role |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+  
+  
 
 
 

@@ -358,114 +358,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#applicable-classes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Applicable Classes
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#properties" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Properties
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Properties">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#type-and-range" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Type and Range
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cardinality-and-requirements" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Cardinality and Requirements
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#identifier-and-mapping-information" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Identifier and Mapping Information
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Identifier and Mapping Information">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#schema-source" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Schema Source
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#mappings" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Mappings
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#linkml-source" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        LinkML Source
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -487,108 +379,85 @@
 
 <h1 id="slot-system">Slot: system</h1>
 <p><em>Specifies the action type system used.</em></p>
-<p>URI: <a href="https://w3id.org/lmodel/oscal/system">oscal:system</a>
-Alias: system</p>
+<div data-search-exclude markdown="1">
+
+
+
+URI: [oscal:system](https://w3id.org/lmodel/oscal/system)
 <!-- no inheritance hierarchy -->
 
-<h2 id="applicable-classes">Applicable Classes</h2>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Modifies Slot</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../ThreatId/">ThreatId</a></td>
-<td>A pointer, by ID, to an externally-defined threat</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../Action/">Action</a></td>
-<td>An action applied by a role within a given party to the content</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../InformationTypeCategorization/">InformationTypeCategorization</a></td>
-<td>A set of information type identifiers qualified by the given identification s...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Facet/">Facet</a></td>
-<td>An individual characteristic that is part of a larger set produced by the sam...</td>
-<td>yes</td>
-</tr>
-</tbody>
-</table>
-<h2 id="properties">Properties</h2>
-<h3 id="type-and-range">Type and Range</h3>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Range</td>
-<td><a href="../URIType/">URIType</a></td>
-</tr>
-<tr>
-<td>Domain Of</td>
-<td><a href="../Action/">Action</a>, <a href="../ThreatId/">ThreatId</a>, <a href="../Facet/">Facet</a>, <a href="../InformationTypeCategorization/">InformationTypeCategorization</a></td>
-</tr>
-</tbody>
-</table>
-<h3 id="cardinality-and-requirements">Cardinality and Requirements</h3>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="schema-source">Schema Source</h3>
-<ul>
-<li>from schema: https://w3id.org/lmodel/oscal</li>
-</ul>
-<h2 id="mappings">Mappings</h2>
-<table>
-<thead>
-<tr>
-<th>Mapping Type</th>
-<th>Mapped Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>self</td>
-<td>oscal:system</td>
-</tr>
-<tr>
-<td>native</td>
-<td>oscal:system</td>
-</tr>
-</tbody>
-</table>
-<h2 id="linkml-source">LinkML Source</h2>
+
+
+
+
+## Applicable Classes
+
+| Name | Description | Modifies Slot |
+| --- | --- | --- |
+| [Action](Action.md) | An action applied by a role within a given party to the content |  yes  |
+| [ThreatId](ThreatId.md) | A pointer, by ID, to an externally-defined threat |  yes  |
+| [Facet](Facet.md) | An individual characteristic that is part of a larger set produced by the sam... |  yes  |
+| [InformationTypeCategorization](InformationTypeCategorization.md) | A set of information type identifiers qualified by the given identification s... |  no  |
+
+
+
+
+
+
+## Properties
+
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [URIType](URIType.md) |
+| Domain Of | [Action](Action.md), [ThreatId](ThreatId.md), [Facet](Facet.md), [InformationTypeCategorization](InformationTypeCategorization.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://w3id.org/lmodel/oscal
+
+
+
+
+## Mappings
+
+| Mapping Type | Mapped Value |
+| ---  | ---  |
+| self | oscal:system |
+| native | oscal:system |
+
+
+
+
+## LinkML Source
+
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Specifies the action type system used.</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/lmodel/oscal</span>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system</span>
 <span class="nt">domain_of</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Action</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ThreatId</span>
@@ -596,13 +465,16 @@ Alias: system</p>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">InformationTypeCategorization</span>
 <span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">URIType</span>
 </code></pre></div>
-</details>
+</details></div>
 
 
 
 
 
 
+
+  
+  
 
 
 

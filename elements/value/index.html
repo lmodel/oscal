@@ -358,114 +358,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#applicable-classes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Applicable Classes
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#properties" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Properties
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Properties">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#type-and-range" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Type and Range
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cardinality-and-requirements" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Cardinality and Requirements
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#identifier-and-mapping-information" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Identifier and Mapping Information
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Identifier and Mapping Information">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#schema-source" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Schema Source
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#mappings" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Mappings
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#linkml-source" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        LinkML Source
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -487,173 +379,98 @@
 
 <h1 id="slot-value">Slot: value</h1>
 <p><em>The value associated with the containing object.</em></p>
-<p>URI: <a href="https://w3id.org/lmodel/oscal/value">oscal:value</a>
-Alias: value</p>
+<div data-search-exclude markdown="1">
+
+
+
+URI: [oscal:value](https://w3id.org/lmodel/oscal/value)
 <!-- no inheritance hierarchy -->
 
-<h2 id="applicable-classes">Applicable Classes</h2>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Modifies Slot</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../Base64Resource/">Base64Resource</a></td>
-<td>A resource encoded using the Base64 alphabet defined by RFC 2045</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../RevisionProperty/">RevisionProperty</a></td>
-<td>Revision-scoped OSCAL property</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ImplementationCommonProperty/">ImplementationCommonProperty</a></td>
-<td>Implementation-common scoped OSCAL property</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../ParameterProperty/">ParameterProperty</a></td>
-<td>Control-common parameter-scoped OSCAL property</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Facet/">Facet</a></td>
-<td>An individual characteristic that is part of a larger set produced by the sam...</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../PartProperty/">PartProperty</a></td>
-<td>Control-common part-scoped OSCAL property</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../SspSystemCharacteristicsProp/">SspSystemCharacteristicsProp</a></td>
-<td>SSP-scoped property used in system characteristics</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../Property/">Property</a></td>
-<td>An attribute, characteristic, or quality of the containing object expressed a...</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../SspSystemInformationProp/">SspSystemInformationProp</a></td>
-<td>SSP-scoped property used in system information</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../ResourceProperty/">ResourceProperty</a></td>
-<td>Back-matter resource-scoped OSCAL property</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../Hash/">Hash</a></td>
-<td>A representation of a cryptographic digest generated over a resource using a ...</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../ProfileAlterationProperty/">ProfileAlterationProperty</a></td>
-<td>OSCAL property entries allowed in profile modify additions</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../PartyProperty/">PartyProperty</a></td>
-<td>Party-scoped OSCAL property</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../LocationProperty/">LocationProperty</a></td>
-<td>Location-scoped OSCAL property</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../SspAllowsAuthenticatedScanProp/">SspAllowsAuthenticatedScanProp</a></td>
-<td>SSP-scoped property used for component and inventory allows-authenticated-sca...</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../SspControlOriginationProp/">SspControlOriginationProp</a></td>
-<td>SSP-scoped property used in implemented requirement and by-component contexts</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../MetadataProperty/">MetadataProperty</a></td>
-<td>Metadata-scoped OSCAL property</td>
-<td>no</td>
-</tr>
-</tbody>
-</table>
-<h2 id="properties">Properties</h2>
-<h3 id="type-and-range">Type and Range</h3>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Range</td>
-<td><a href="../String/">String</a></td>
-</tr>
-<tr>
-<td>Domain Of</td>
-<td><a href="../Hash/">Hash</a>, <a href="../Property/">Property</a>, <a href="../Base64Resource/">Base64Resource</a>, <a href="../Facet/">Facet</a></td>
-</tr>
-</tbody>
-</table>
-<h3 id="cardinality-and-requirements">Cardinality and Requirements</h3>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="schema-source">Schema Source</h3>
-<ul>
-<li>from schema: https://w3id.org/lmodel/oscal</li>
-</ul>
-<h2 id="mappings">Mappings</h2>
-<table>
-<thead>
-<tr>
-<th>Mapping Type</th>
-<th>Mapped Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>self</td>
-<td>oscal:value</td>
-</tr>
-<tr>
-<td>native</td>
-<td>oscal:value</td>
-</tr>
-</tbody>
-</table>
-<h2 id="linkml-source">LinkML Source</h2>
+
+
+
+
+## Applicable Classes
+
+| Name | Description | Modifies Slot |
+| --- | --- | --- |
+| [Hash](Hash.md) | A representation of a cryptographic digest generated over a resource using a ... |  yes  |
+| [Property](Property.md) | An attribute, characteristic, or quality of the containing object expressed a... |  yes  |
+| [Base64Resource](Base64Resource.md) | A resource encoded using the Base64 alphabet defined by RFC 2045 |  yes  |
+| [Facet](Facet.md) | An individual characteristic that is part of a larger set produced by the sam... |  yes  |
+| [MetadataProperty](MetadataProperty.md) | Metadata-scoped OSCAL property |  no  |
+| [RevisionProperty](RevisionProperty.md) | Revision-scoped OSCAL property |  no  |
+| [LocationProperty](LocationProperty.md) | Location-scoped OSCAL property |  yes  |
+| [PartyProperty](PartyProperty.md) | Party-scoped OSCAL property |  no  |
+| [ResourceProperty](ResourceProperty.md) | Back-matter resource-scoped OSCAL property |  yes  |
+| [PartProperty](PartProperty.md) | Control-common part-scoped OSCAL property |  no  |
+| [ParameterProperty](ParameterProperty.md) | Control-common parameter-scoped OSCAL property |  no  |
+| [ProfileAlterationProperty](ProfileAlterationProperty.md) | OSCAL property entries allowed in profile modify additions |  no  |
+| [ImplementationCommonProperty](ImplementationCommonProperty.md) | Implementation-common scoped OSCAL property |  yes  |
+| [SspSystemCharacteristicsProp](SspSystemCharacteristicsProp.md) | SSP-scoped property used in system characteristics |  yes  |
+| [SspSystemInformationProp](SspSystemInformationProp.md) | SSP-scoped property used in system information |  yes  |
+| [SspControlOriginationProp](SspControlOriginationProp.md) | SSP-scoped property used in implemented requirement and by-component contexts |  yes  |
+| [SspAllowsAuthenticatedScanProp](SspAllowsAuthenticatedScanProp.md) | SSP-scoped property used for component and inventory allows-authenticated-sca... |  yes  |
+
+
+
+
+
+
+## Properties
+
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [String](String.md) |
+| Domain Of | [Hash](Hash.md), [Property](Property.md), [Base64Resource](Base64Resource.md), [Facet](Facet.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://w3id.org/lmodel/oscal
+
+
+
+
+## Mappings
+
+| Mapping Type | Mapped Value |
+| ---  | ---  |
+| self | oscal:value |
+| native | oscal:value |
+
+
+
+
+## LinkML Source
+
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">value</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The value associated with the containing object.</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/lmodel/oscal</span>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">value</span>
 <span class="nt">domain_of</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Hash</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Property</span>
@@ -661,13 +478,16 @@ Alias: value</p>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Facet</span>
 <span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
 </code></pre></div>
-</details>
+</details></div>
 
 
 
 
 
 
+
+  
+  
 
 
 

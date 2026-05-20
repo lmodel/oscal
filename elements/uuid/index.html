@@ -358,114 +358,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#applicable-classes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Applicable Classes
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#properties" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Properties
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Properties">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#type-and-range" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Type and Range
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cardinality-and-requirements" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Cardinality and Requirements
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#identifier-and-mapping-information" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Identifier and Mapping Information
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Identifier and Mapping Information">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#schema-source" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Schema Source
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#mappings" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Mappings
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#linkml-source" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        LinkML Source
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -487,429 +379,150 @@
 
 <h1 id="slot-uuid">Slot: uuid</h1>
 <p><em>A machine-oriented, globally unique identifier with a cross-instance scope.</em></p>
-<p>URI: <a href="https://w3id.org/lmodel/oscal/uuid">oscal:uuid</a>
-Alias: uuid</p>
+<div data-search-exclude markdown="1">
+
+
+
+URI: [oscal:uuid](https://w3id.org/lmodel/oscal/uuid)
 <!-- no inheritance hierarchy -->
 
-<h2 id="applicable-classes">Applicable Classes</h2>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Modifies Slot</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../Observation/">Observation</a></td>
-<td>Describes an individual observation</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../RequiredAsset/">RequiredAsset</a></td>
-<td>Identifies an asset required to achieve remediation</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../ProvidedControlImplementation/">ProvidedControlImplementation</a></td>
-<td>Describes a capability which may be inherited by a leveraging system</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../ControlImplementationSet/">ControlImplementationSet</a></td>
-<td>Defines how the component or capability supports a set of controls</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../PartProperty/">PartProperty</a></td>
-<td>Control-common part-scoped OSCAL property</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../PoamItem/">PoamItem</a></td>
-<td>Describes an individual POA&amp;M item</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../AssessmentMethod/">AssessmentMethod</a></td>
-<td>A local definition of a control objective</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../Step/">Step</a></td>
-<td>Identifies an individual step in a series of steps related to an activity, su...</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../Task/">Task</a></td>
-<td>Represents a scheduled event or milestone, which may be associated with a ser...</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../AssessmentPlatform/">AssessmentPlatform</a></td>
-<td>Used to represent the toolset used to perform aspects of the assessment</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../InventoryItem/">InventoryItem</a></td>
-<td>A single managed inventory item within the system</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../AssessmentLogEntry/">AssessmentLogEntry</a></td>
-<td>Identifies the result of an action and/or task that occurred as part of execu...</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../LocationProperty/">LocationProperty</a></td>
-<td>Location-scoped OSCAL property</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../AssessmentSubjectPlaceholder/">AssessmentSubjectPlaceholder</a></td>
-<td>Used when the assessment subjects will be determined as part of one or more o...</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../Protocol/">Protocol</a></td>
-<td>Information about the protocol used to provide a service</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ProfileAlterationProperty/">ProfileAlterationProperty</a></td>
-<td>OSCAL property entries allowed in profile modify additions</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../MetadataProperty/">MetadataProperty</a></td>
-<td>Metadata-scoped OSCAL property</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../SspControlOriginationProp/">SspControlOriginationProp</a></td>
-<td>SSP-scoped property used in implemented requirement and by-component contexts</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../PlanOfActionAndMilestones/">PlanOfActionAndMilestones</a></td>
-<td>A plan of action and milestones that identifies initial and residual risks, d...</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../ComponentDefinition/">ComponentDefinition</a></td>
-<td>A collection of component descriptions, which may optionally be grouped by ca...</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../Finding/">Finding</a></td>
-<td>Describes an individual finding</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../Location/">Location</a></td>
-<td>A physical point of presence, which may be associated with people, organizati...</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../RevisionProperty/">RevisionProperty</a></td>
-<td>Revision-scoped OSCAL property</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ImplementationCommonProperty/">ImplementationCommonProperty</a></td>
-<td>Implementation-common scoped OSCAL property</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../InformationType/">InformationType</a></td>
-<td>Contains details about one information type that is stored, processed, or tra...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../TermsAndConditionsPart/">TermsAndConditionsPart</a></td>
-<td>A terms-and-conditions scoped assessment part</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Capability/">Capability</a></td>
-<td>A grouping of other components and/or capabilities</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../Party/">Party</a></td>
-<td>An organization or person, which may be associated with roles or other concep...</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../AssessmentPart/">AssessmentPart</a></td>
-<td>A partition of an assessment plan or results or a child of another part</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../SystemComponent/">SystemComponent</a></td>
-<td>A defined component that can be part of an implemented system</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../Property/">Property</a></td>
-<td>An attribute, characteristic, or quality of the containing object expressed a...</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../RiskLogEntry/">RiskLogEntry</a></td>
-<td>Identifies an individual risk response that occurred as part of managing an i...</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../Diagram/">Diagram</a></td>
-<td>A graphic that provides a visual representation the system, or some aspect of...</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../Mapping/">Mapping</a></td>
-<td>A mapping between two mapped resources</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../SspAllowsAuthenticatedScanProp/">SspAllowsAuthenticatedScanProp</a></td>
-<td>SSP-scoped property used for component and inventory allows-authenticated-sca...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../AssessmentResults/">AssessmentResults</a></td>
-<td>Security assessment results, such as those provided by a FedRAMP assessor in ...</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../Risk/">Risk</a></td>
-<td>An identified risk</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../Response/">Response</a></td>
-<td>Describes either recommended or an actual plan for addressing the risk</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../SspImplementedRequirement/">SspImplementedRequirement</a></td>
-<td>Describes how the system satisfies an individual control</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../MitigatingFactor/">MitigatingFactor</a></td>
-<td>Describes an existing mitigating factor that may affect the overall determina...</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../SystemUser/">SystemUser</a></td>
-<td>A type of user that interacts with the system based on an associated role</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../DefinedComponent/">DefinedComponent</a></td>
-<td>A defined component that can be part of an implemented system</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../LeveragedAuthorization/">LeveragedAuthorization</a></td>
-<td>A description of another authorized system from which this system inherits ca...</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../GapSummary/">GapSummary</a></td>
-<td>A summary of controls that were not mapped</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../SspSystemCharacteristicsProp/">SspSystemCharacteristicsProp</a></td>
-<td>SSP-scoped property used in system characteristics</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Result/">Result</a></td>
-<td>Identifies all of the assessment observations and findings, initial and resid...</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../Resource/">Resource</a></td>
-<td>A resource associated with content in the containing document instance</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../InheritedControlImplementation/">InheritedControlImplementation</a></td>
-<td>Describes a control implementation inherited by a leveraging system</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../SspSystemInformationProp/">SspSystemInformationProp</a></td>
-<td>SSP-scoped property used in system information</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../PartyProperty/">PartyProperty</a></td>
-<td>Party-scoped OSCAL property</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ByComponent/">ByComponent</a></td>
-<td>Defines how the referenced component implements a set of controls</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../ControlResponsibility/">ControlResponsibility</a></td>
-<td>Describes a control implementation responsibility imposed on a leveraging sys...</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../Action/">Action</a></td>
-<td>An action applied by a role within a given party to the content</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../SspInventoryItem/">SspInventoryItem</a></td>
-<td>SSP-scoped inventory item with allows-authenticated-scan property typing</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ImplementedRequirement/">ImplementedRequirement</a></td>
-<td>Describes how the containing component or capability implements an individual...</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../ImplementedControlStatement/">ImplementedControlStatement</a></td>
-<td>Identifies which statements within a control are addressed</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../ParameterProperty/">ParameterProperty</a></td>
-<td>Control-common parameter-scoped OSCAL property</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../SystemSecurityPlan/">SystemSecurityPlan</a></td>
-<td>A system security plan, such as those described in NIST SP 800-18</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../Profile/">Profile</a></td>
-<td>An OSCAL Profile that designates a set of controls from one or more catalogs ...</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../MappingCollection/">MappingCollection</a></td>
-<td>A collection of control mappings between source and target resources</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../Map/">Map</a></td>
-<td>A relationship-based mapping entry between source and target sets</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../AssessmentPlan/">AssessmentPlan</a></td>
-<td>An assessment plan, such as those provided by a FedRAMP assessor</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../ResourceProperty/">ResourceProperty</a></td>
-<td>Back-matter resource-scoped OSCAL property</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Activity/">Activity</a></td>
-<td>Identifies an assessment or related process that can be performed</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../Catalog/">Catalog</a></td>
-<td>A structured, organized collection of control information</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../SatisfiedControlImplementation/">SatisfiedControlImplementation</a></td>
-<td>Describes how this system satisfies a responsibility imposed by a leveraged s...</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../SspStatement/">SspStatement</a></td>
-<td>Identifies which statements within a control are addressed</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../SspSystemComponent/">SspSystemComponent</a></td>
-<td>SSP-scoped system component with allows-authenticated-scan property typing</td>
-<td>no</td>
-</tr>
-</tbody>
-</table>
-<h2 id="properties">Properties</h2>
-<h3 id="type-and-range">Type and Range</h3>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Range</td>
-<td><a href="../UUIDType/">UUIDType</a></td>
-</tr>
-<tr>
-<td>Domain Of</td>
-<td><a href="../Catalog/">Catalog</a>, <a href="../Location/">Location</a>, <a href="../Party/">Party</a>, <a href="../Action/">Action</a>, <a href="../Property/">Property</a>, <a href="../Resource/">Resource</a>, <a href="../Profile/">Profile</a>, <a href="../AssessmentPlan/">AssessmentPlan</a>, <a href="../AssessmentSubjectPlaceholder/">AssessmentSubjectPlaceholder</a>, <a href="../AssessmentPlatform/">AssessmentPlatform</a>, <a href="../AssessmentMethod/">AssessmentMethod</a>, <a href="../Activity/">Activity</a>, <a href="../Step/">Step</a>, <a href="../Task/">Task</a>, <a href="../AssessmentPart/">AssessmentPart</a>, <a href="../SystemComponent/">SystemComponent</a>, <a href="../Protocol/">Protocol</a>, <a href="../SystemUser/">SystemUser</a>, <a href="../InventoryItem/">InventoryItem</a>, <a href="../Observation/">Observation</a>, <a href="../Finding/">Finding</a>, <a href="../Risk/">Risk</a>, <a href="../MitigatingFactor/">MitigatingFactor</a>, <a href="../Response/">Response</a>, <a href="../RequiredAsset/">RequiredAsset</a>, <a href="../RiskLogEntry/">RiskLogEntry</a>, <a href="../SystemSecurityPlan/">SystemSecurityPlan</a>, <a href="../InformationType/">InformationType</a>, <a href="../Diagram/">Diagram</a>, <a href="../LeveragedAuthorization/">LeveragedAuthorization</a>, <a href="../SspImplementedRequirement/">SspImplementedRequirement</a>, <a href="../SspStatement/">SspStatement</a>, <a href="../ByComponent/">ByComponent</a>, <a href="../ProvidedControlImplementation/">ProvidedControlImplementation</a>, <a href="../ControlResponsibility/">ControlResponsibility</a>, <a href="../InheritedControlImplementation/">InheritedControlImplementation</a>, <a href="../SatisfiedControlImplementation/">SatisfiedControlImplementation</a>, <a href="../AssessmentResults/">AssessmentResults</a>, <a href="../Result/">Result</a>, <a href="../AssessmentLogEntry/">AssessmentLogEntry</a>, <a href="../ComponentDefinition/">ComponentDefinition</a>, <a href="../DefinedComponent/">DefinedComponent</a>, <a href="../Capability/">Capability</a>, <a href="../ControlImplementationSet/">ControlImplementationSet</a>, <a href="../ImplementedRequirement/">ImplementedRequirement</a>, <a href="../ImplementedControlStatement/">ImplementedControlStatement</a>, <a href="../MappingCollection/">MappingCollection</a>, <a href="../Mapping/">Mapping</a>, <a href="../Map/">Map</a>, <a href="../GapSummary/">GapSummary</a>, <a href="../PlanOfActionAndMilestones/">PlanOfActionAndMilestones</a>, <a href="../PoamItem/">PoamItem</a></td>
-</tr>
-</tbody>
-</table>
-<h3 id="cardinality-and-requirements">Cardinality and Requirements</h3>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="schema-source">Schema Source</h3>
-<ul>
-<li>from schema: https://w3id.org/lmodel/oscal</li>
-</ul>
-<h2 id="mappings">Mappings</h2>
-<table>
-<thead>
-<tr>
-<th>Mapping Type</th>
-<th>Mapped Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>self</td>
-<td>oscal:uuid</td>
-</tr>
-<tr>
-<td>native</td>
-<td>oscal:uuid</td>
-</tr>
-</tbody>
-</table>
-<h2 id="linkml-source">LinkML Source</h2>
+
+
+
+
+## Applicable Classes
+
+| Name | Description | Modifies Slot |
+| --- | --- | --- |
+| [Catalog](Catalog.md) | A structured, organized collection of control information |  yes  |
+| [Location](Location.md) | A physical point of presence, which may be associated with people, organizati... |  yes  |
+| [Party](Party.md) | An organization or person, which may be associated with roles or other concep... |  yes  |
+| [Action](Action.md) | An action applied by a role within a given party to the content |  yes  |
+| [Property](Property.md) | An attribute, characteristic, or quality of the containing object expressed a... |  yes  |
+| [Resource](Resource.md) | A resource associated with content in the containing document instance |  yes  |
+| [Profile](Profile.md) | An OSCAL Profile that designates a set of controls from one or more catalogs ... |  yes  |
+| [AssessmentPlan](AssessmentPlan.md) | An assessment plan, such as those provided by a FedRAMP assessor |  yes  |
+| [AssessmentSubjectPlaceholder](AssessmentSubjectPlaceholder.md) | Used when the assessment subjects will be determined as part of one or more o... |  yes  |
+| [AssessmentPlatform](AssessmentPlatform.md) | Used to represent the toolset used to perform aspects of the assessment |  yes  |
+| [AssessmentMethod](AssessmentMethod.md) | A local definition of a control objective |  yes  |
+| [Activity](Activity.md) | Identifies an assessment or related process that can be performed |  yes  |
+| [Step](Step.md) | Identifies an individual step in a series of steps related to an activity, su... |  yes  |
+| [Task](Task.md) | Represents a scheduled event or milestone, which may be associated with a ser... |  yes  |
+| [AssessmentPart](AssessmentPart.md) | A partition of an assessment plan or results or a child of another part |  no  |
+| [SystemComponent](SystemComponent.md) | A defined component that can be part of an implemented system |  yes  |
+| [Protocol](Protocol.md) | Information about the protocol used to provide a service |  no  |
+| [SystemUser](SystemUser.md) | A type of user that interacts with the system based on an associated role |  yes  |
+| [InventoryItem](InventoryItem.md) | A single managed inventory item within the system |  yes  |
+| [Observation](Observation.md) | Describes an individual observation |  yes  |
+| [Finding](Finding.md) | Describes an individual finding |  yes  |
+| [Risk](Risk.md) | An identified risk |  yes  |
+| [MitigatingFactor](MitigatingFactor.md) | Describes an existing mitigating factor that may affect the overall determina... |  yes  |
+| [Response](Response.md) | Describes either recommended or an actual plan for addressing the risk |  yes  |
+| [RequiredAsset](RequiredAsset.md) | Identifies an asset required to achieve remediation |  yes  |
+| [RiskLogEntry](RiskLogEntry.md) | Identifies an individual risk response that occurred as part of managing an i... |  yes  |
+| [SystemSecurityPlan](SystemSecurityPlan.md) | A system security plan, such as those described in NIST SP 800-18 |  yes  |
+| [InformationType](InformationType.md) | Contains details about one information type that is stored, processed, or tra... |  no  |
+| [Diagram](Diagram.md) | A graphic that provides a visual representation the system, or some aspect of... |  yes  |
+| [LeveragedAuthorization](LeveragedAuthorization.md) | A description of another authorized system from which this system inherits ca... |  yes  |
+| [SspImplementedRequirement](SspImplementedRequirement.md) | Describes how the system satisfies an individual control |  yes  |
+| [SspStatement](SspStatement.md) | Identifies which statements within a control are addressed |  yes  |
+| [ByComponent](ByComponent.md) | Defines how the referenced component implements a set of controls |  yes  |
+| [ProvidedControlImplementation](ProvidedControlImplementation.md) | Describes a capability which may be inherited by a leveraging system |  yes  |
+| [ControlResponsibility](ControlResponsibility.md) | Describes a control implementation responsibility imposed on a leveraging sys... |  yes  |
+| [InheritedControlImplementation](InheritedControlImplementation.md) | Describes a control implementation inherited by a leveraging system |  yes  |
+| [SatisfiedControlImplementation](SatisfiedControlImplementation.md) | Describes how this system satisfies a responsibility imposed by a leveraged s... |  yes  |
+| [AssessmentResults](AssessmentResults.md) | Security assessment results, such as those provided by a FedRAMP assessor in ... |  yes  |
+| [Result](Result.md) | Identifies all of the assessment observations and findings, initial and resid... |  yes  |
+| [AssessmentLogEntry](AssessmentLogEntry.md) | Identifies the result of an action and/or task that occurred as part of execu... |  yes  |
+| [ComponentDefinition](ComponentDefinition.md) | A collection of component descriptions, which may optionally be grouped by ca... |  yes  |
+| [DefinedComponent](DefinedComponent.md) | A defined component that can be part of an implemented system |  yes  |
+| [Capability](Capability.md) | A grouping of other components and/or capabilities |  yes  |
+| [ControlImplementationSet](ControlImplementationSet.md) | Defines how the component or capability supports a set of controls |  yes  |
+| [ImplementedRequirement](ImplementedRequirement.md) | Describes how the containing component or capability implements an individual... |  yes  |
+| [ImplementedControlStatement](ImplementedControlStatement.md) | Identifies which statements within a control are addressed |  yes  |
+| [MappingCollection](MappingCollection.md) | A collection of control mappings between source and target resources |  yes  |
+| [Mapping](Mapping.md) | A mapping between two mapped resources |  yes  |
+| [Map](Map.md) | A relationship-based mapping entry between source and target sets |  yes  |
+| [GapSummary](GapSummary.md) | A summary of controls that were not mapped |  yes  |
+| [PlanOfActionAndMilestones](PlanOfActionAndMilestones.md) | A plan of action and milestones that identifies initial and residual risks, d... |  yes  |
+| [PoamItem](PoamItem.md) | Describes an individual POA&M item |  no  |
+| [MetadataProperty](MetadataProperty.md) | Metadata-scoped OSCAL property |  no  |
+| [RevisionProperty](RevisionProperty.md) | Revision-scoped OSCAL property |  no  |
+| [LocationProperty](LocationProperty.md) | Location-scoped OSCAL property |  no  |
+| [PartyProperty](PartyProperty.md) | Party-scoped OSCAL property |  no  |
+| [ResourceProperty](ResourceProperty.md) | Back-matter resource-scoped OSCAL property |  no  |
+| [PartProperty](PartProperty.md) | Control-common part-scoped OSCAL property |  no  |
+| [ParameterProperty](ParameterProperty.md) | Control-common parameter-scoped OSCAL property |  no  |
+| [ProfileAlterationProperty](ProfileAlterationProperty.md) | OSCAL property entries allowed in profile modify additions |  no  |
+| [TermsAndConditionsPart](TermsAndConditionsPart.md) | A terms-and-conditions scoped assessment part |  no  |
+| [ImplementationCommonProperty](ImplementationCommonProperty.md) | Implementation-common scoped OSCAL property |  no  |
+| [SspSystemCharacteristicsProp](SspSystemCharacteristicsProp.md) | SSP-scoped property used in system characteristics |  no  |
+| [SspSystemInformationProp](SspSystemInformationProp.md) | SSP-scoped property used in system information |  no  |
+| [SspControlOriginationProp](SspControlOriginationProp.md) | SSP-scoped property used in implemented requirement and by-component contexts |  no  |
+| [SspAllowsAuthenticatedScanProp](SspAllowsAuthenticatedScanProp.md) | SSP-scoped property used for component and inventory allows-authenticated-sca... |  no  |
+| [SspSystemComponent](SspSystemComponent.md) | SSP-scoped system component with allows-authenticated-scan property typing |  no  |
+| [SspInventoryItem](SspInventoryItem.md) | SSP-scoped inventory item with allows-authenticated-scan property typing |  no  |
+
+
+
+
+
+
+## Properties
+
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [UUIDType](UUIDType.md) |
+| Domain Of | [Catalog](Catalog.md), [Location](Location.md), [Party](Party.md), [Action](Action.md), [Property](Property.md), [Resource](Resource.md), [Profile](Profile.md), [AssessmentPlan](AssessmentPlan.md), [AssessmentSubjectPlaceholder](AssessmentSubjectPlaceholder.md), [AssessmentPlatform](AssessmentPlatform.md), [AssessmentMethod](AssessmentMethod.md), [Activity](Activity.md), [Step](Step.md), [Task](Task.md), [AssessmentPart](AssessmentPart.md), [SystemComponent](SystemComponent.md), [Protocol](Protocol.md), [SystemUser](SystemUser.md), [InventoryItem](InventoryItem.md), [Observation](Observation.md), [Finding](Finding.md), [Risk](Risk.md), [MitigatingFactor](MitigatingFactor.md), [Response](Response.md), [RequiredAsset](RequiredAsset.md), [RiskLogEntry](RiskLogEntry.md), [SystemSecurityPlan](SystemSecurityPlan.md), [InformationType](InformationType.md), [Diagram](Diagram.md), [LeveragedAuthorization](LeveragedAuthorization.md), [SspImplementedRequirement](SspImplementedRequirement.md), [SspStatement](SspStatement.md), [ByComponent](ByComponent.md), [ProvidedControlImplementation](ProvidedControlImplementation.md), [ControlResponsibility](ControlResponsibility.md), [InheritedControlImplementation](InheritedControlImplementation.md), [SatisfiedControlImplementation](SatisfiedControlImplementation.md), [AssessmentResults](AssessmentResults.md), [Result](Result.md), [AssessmentLogEntry](AssessmentLogEntry.md), [ComponentDefinition](ComponentDefinition.md), [DefinedComponent](DefinedComponent.md), [Capability](Capability.md), [ControlImplementationSet](ControlImplementationSet.md), [ImplementedRequirement](ImplementedRequirement.md), [ImplementedControlStatement](ImplementedControlStatement.md), [MappingCollection](MappingCollection.md), [Mapping](Mapping.md), [Map](Map.md), [GapSummary](GapSummary.md), [PlanOfActionAndMilestones](PlanOfActionAndMilestones.md), [PoamItem](PoamItem.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://w3id.org/lmodel/oscal
+
+
+
+
+## Mappings
+
+| Mapping Type | Mapped Value |
+| ---  | ---  |
+| self | oscal:uuid |
+| native | oscal:uuid |
+
+
+
+
+## LinkML Source
+
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uuid</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A machine-oriented, globally unique identifier with a cross-instance</span>
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">scope.</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/lmodel/oscal</span>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uuid</span>
 <span class="nt">domain_of</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Catalog</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Location</span>
@@ -965,13 +578,16 @@ Alias: uuid</p>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PoamItem</span>
 <span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">UUIDType</span>
 </code></pre></div>
-</details>
+</details></div>
 
 
 
 
 
 
+
+  
+  
 
 
 

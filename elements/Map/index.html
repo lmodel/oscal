@@ -184,110 +184,6 @@
 <div class="md-sidebar__scrollwrap">
 <div class="md-sidebar__inner">
 <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
-<label class="md-nav__title" for="__toc">
-<span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#inheritance">
-<span class="md-ellipsis">
-      
-        Inheritance
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#slots">
-<span class="md-ellipsis">
-      
-        Slots
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#usages">
-<span class="md-ellipsis">
-      
-        Usages
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#in-subsets">
-<span class="md-ellipsis">
-      
-        In Subsets
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#identifier-and-mapping-information">
-<span class="md-ellipsis">
-      
-        Identifier and Mapping Information
-      
-    </span>
-</a>
-<nav aria-label="Identifier and Mapping Information" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#schema-source">
-<span class="md-ellipsis">
-      
-        Schema Source
-      
-    </span>
-</a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#mappings">
-<span class="md-ellipsis">
-      
-        Mappings
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#linkml-source">
-<span class="md-ellipsis">
-      
-        LinkML Source
-      
-    </span>
-</a>
-<nav aria-label="LinkML Source" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#direct">
-<span class="md-ellipsis">
-      
-        Direct
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#induced">
-<span class="md-ellipsis">
-      
-        Induced
-      
-    </span>
-</a>
-</li>
-</ul>
-</nav>
-</li>
-</ul>
 </nav>
 </div>
 </div>
@@ -296,7 +192,16 @@
 <article class="md-content__inner md-typeset">
 <h1 id="class-map">Class: Map</h1>
 <p><em>A relationship-based mapping entry between source and target sets.</em></p>
-<p>URI: <a href="https://w3id.org/lmodel/oscal/Map">oscal:Map</a></p>
+<div data-search-exclude="" markdown="1">
+
+
+
+URI: [oscal:Map](https://w3id.org/lmodel/oscal/Map)
+
+
+
+
+
 <pre class="mermaid"><code> classDiagram
     class Map
     click Map href "../Map/"
@@ -400,145 +305,91 @@
       Map : uuid
 
 </code></pre>
-<h2 id="inheritance">Inheritance</h2>
-<ul>
-<li><strong>Map</strong> [ <a href="../OscalCommon/">OscalCommon</a>]</li>
-</ul>
-<h2 id="slots">Slots</h2>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Cardinality and Range</th>
-<th>Description</th>
-<th>Inheritance</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../uuid/">uuid</a></td>
-<td>1 <br/> <a href="../UUIDType/">UUIDType</a></td>
-<td>A machine-oriented, globally unique identifier with a cross-instance scope</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../ns/">ns</a></td>
-<td>0..1 <br/> <a href="../URIType/">URIType</a></td>
-<td>An optional namespace qualifying a name</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../matching_rationale/">matching_rationale</a></td>
-<td>0..1 <br/> <a href="../MatchingRationaleEnum/">MatchingRationaleEnum</a></td>
-<td>The rationale method used to relate mapped items</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../relationship/">relationship</a></td>
-<td>1 <br/> <a href="../String/">String</a> or <br/><a href="../RelationshipEnum/">RelationshipEnum</a> or <br/><a href="../TokenType/">TokenType</a></td>
-<td>Relationship type for a mapping entry</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../sources/">sources</a></td>
-<td>1..* <br/> <a href="../MappingItem/">MappingItem</a></td>
-<td>Source references or source-participation entries in the containing OSCAL con...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../targets/">targets</a></td>
-<td>1..* <br/> <a href="../MappingItem/">MappingItem</a></td>
-<td>Target subjects participating in a mapping entry</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../qualifiers/">qualifiers</a></td>
-<td>* <br/> <a href="../QualifierItem/">QualifierItem</a></td>
-<td>Qualifier statements for a mapping entry</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../confidence_score/">confidence_score</a></td>
-<td>0..1 <br/> <a href="../ConfidenceScore/">ConfidenceScore</a></td>
-<td>Confidence descriptor for a mapping</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../coverage/">coverage</a></td>
-<td>0..1 <br/> <a href="../Coverage/">Coverage</a></td>
-<td>Coverage metadata for a mapping</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../remarks/">remarks</a></td>
-<td>0..1 <br/> <a href="../MarkupMultilineType/">MarkupMultilineType</a></td>
-<td>Additional commentary about the containing object</td>
-<td><a href="../OscalCommon/">OscalCommon</a></td>
-</tr>
-<tr>
-<td><a href="../props/">props</a></td>
-<td>* <br/> <a href="../Property/">Property</a></td>
-<td>A list of properties</td>
-<td><a href="../HasPropsAndLinks/">HasPropsAndLinks</a></td>
-</tr>
-<tr>
-<td><a href="../links/">links</a></td>
-<td>* <br/> <a href="../Link/">Link</a></td>
-<td>A list of links</td>
-<td><a href="../HasPropsAndLinks/">HasPropsAndLinks</a></td>
-</tr>
-</tbody>
-</table>
-<h2 id="usages">Usages</h2>
-<table>
-<thead>
-<tr>
-<th>used by</th>
-<th>used in</th>
-<th>type</th>
-<th>used</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../Mapping/">Mapping</a></td>
-<td><a href="../maps/">maps</a></td>
-<td>range</td>
-<td><a href="./">Map</a></td>
-</tr>
-</tbody>
-</table>
-<h2 id="in-subsets">In Subsets</h2>
-<ul>
-<li><a href="../MappingCollection/">MappingCollection</a></li>
-</ul>
-<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="schema-source">Schema Source</h3>
-<ul>
-<li>from schema: https://w3id.org/lmodel/oscal</li>
-</ul>
-<h2 id="mappings">Mappings</h2>
-<table>
-<thead>
-<tr>
-<th>Mapping Type</th>
-<th>Mapped Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>self</td>
-<td>oscal:Map</td>
-</tr>
-<tr>
-<td>native</td>
-<td>oscal:Map</td>
-</tr>
-</tbody>
-</table>
-<h2 id="linkml-source">LinkML Source</h2>
+
+
+
+
+
+## Inheritance
+* **Map** [ [OscalCommon](OscalCommon.md)]
+
+
+## Slots
+
+| Name | Cardinality and Range | Description | Inheritance |
+| ---  | --- | --- | --- |
+| [uuid](uuid.md) | 1 <br/> [UUIDType](UUIDType.md) | A machine-oriented, globally unique identifier with a cross-instance scope | direct |
+| [ns](ns.md) | 0..1 <br/> [URIType](URIType.md) | An optional namespace qualifying a name | direct |
+| [matching_rationale](matching_rationale.md) | 0..1 <br/> [MatchingRationaleEnum](MatchingRationaleEnum.md) | The rationale method used to relate mapped items | direct |
+| [relationship](relationship.md) | 1 <br/> [String](String.md) or <br/>[RelationshipEnum](RelationshipEnum.md) or <br/>[TokenType](TokenType.md) | Relationship type for a mapping entry | direct |
+| [sources](sources.md) | 1..* <br/> [MappingItem](MappingItem.md) | Source references or source-participation entries in the containing OSCAL con... | direct |
+| [targets](targets.md) | 1..* <br/> [MappingItem](MappingItem.md) | Target subjects participating in a mapping entry | direct |
+| [qualifiers](qualifiers.md) | * <br/> [QualifierItem](QualifierItem.md) | Qualifier statements for a mapping entry | direct |
+| [confidence_score](confidence_score.md) | 0..1 <br/> [ConfidenceScore](ConfidenceScore.md) | Confidence descriptor for a mapping | direct |
+| [coverage](coverage.md) | 0..1 <br/> [Coverage](Coverage.md) | Coverage metadata for a mapping | direct |
+| [remarks](remarks.md) | 0..1 <br/> [MarkupMultilineType](MarkupMultilineType.md) | Additional commentary about the containing object | [OscalCommon](OscalCommon.md) |
+| [props](props.md) | * <br/> [Property](Property.md) | A list of properties | [HasPropsAndLinks](HasPropsAndLinks.md) |
+| [links](links.md) | * <br/> [Link](Link.md) | A list of links | [HasPropsAndLinks](HasPropsAndLinks.md) |
+
+
+
+
+
+## Usages
+
+| used by | used in | type | used |
+| ---  | --- | --- | --- |
+| [Mapping](Mapping.md) | [maps](maps.md) | range | [Map](Map.md) |
+
+
+
+
+
+
+
+
+## In Subsets
+
+
+* [MappingCollection](MappingCollection.md)
+
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://w3id.org/lmodel/oscal
+
+
+
+
+## Mappings
+
+| Mapping Type | Mapped Value |
+| ---  | ---  |
+| self | oscal:Map |
+| native | oscal:Map |
+
+
+
+
+
+
+## LinkML Source
+
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
-<h3 id="direct">Direct</h3>
+
+### Direct
+
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Map</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A relationship-based mapping entry between source and target sets.</span>
@@ -573,7 +424,9 @@
 <span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
 </details>
-<h3 id="induced">Induced</h3>
+
+### Induced
+
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Map</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A relationship-based mapping entry between source and target sets.</span>
@@ -603,7 +456,6 @@
 <span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">scope.</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/lmodel/oscal</span>
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uuid</span>
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Map</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Catalog</span>
@@ -666,7 +518,6 @@
 <span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">to associate distinct semantics with the same name.</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/lmodel/oscal</span>
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ns</span>
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Map</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Property</span>
@@ -694,7 +545,6 @@
 <span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">defined by RelationshipEnum.</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/lmodel/oscal</span>
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">relationship</span>
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Map</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Map</span>
@@ -709,7 +559,6 @@
 <span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">OSCAL context. The concrete entry class is selected by class-level slot_usage.</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/lmodel/oscal</span>
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sources</span>
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Map</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AssessmentSubjectPlaceholder</span>
@@ -724,7 +573,6 @@
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Target subjects participating in a mapping entry.</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/lmodel/oscal</span>
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">targets</span>
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Map</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Map</span>
@@ -738,7 +586,6 @@
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Qualifier statements for a mapping entry.</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/lmodel/oscal</span>
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">qualifiers</span>
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Map</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Map</span>
@@ -764,7 +611,6 @@
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Coverage metadata for a mapping.</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/lmodel/oscal</span>
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">coverage</span>
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Map</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MappingProvenance</span>
@@ -777,7 +623,6 @@
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Additional commentary about the containing object.</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/lmodel/oscal</span>
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">remarks</span>
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Map</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OscalCommon</span>
@@ -832,7 +677,6 @@
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A list of properties.</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/lmodel/oscal</span>
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">props</span>
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Map</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HasPropsAndLinks</span>
@@ -864,7 +708,6 @@
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A list of links.</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/lmodel/oscal</span>
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">links</span>
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Map</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HasPropsAndLinks</span>
@@ -891,7 +734,7 @@
 <span class="w">    </span><span class="nt">inlined</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">    </span><span class="nt">inlined_as_list</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
-</details>
+</details></div>
 </article>
 </div>
 <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>

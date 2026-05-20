@@ -358,114 +358,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#applicable-classes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Applicable Classes
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#properties" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Properties
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Properties">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#type-and-range" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Type and Range
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cardinality-and-requirements" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Cardinality and Requirements
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#identifier-and-mapping-information" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Identifier and Mapping Information
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Identifier and Mapping Information">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#schema-source" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Schema Source
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#mappings" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Mappings
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#linkml-source" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        LinkML Source
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -487,112 +379,85 @@
 
 <h1 id="slot-set_parameters">Slot: set_parameters</h1>
 <p><em>Parameter-setting entries applied in the containing OSCAL context. The concrete entry class is selected by class-level slot_usage.</em></p>
-<p>URI: <a href="https://w3id.org/lmodel/oscal/set_parameters">oscal:set_parameters</a>
-Alias: set_parameters</p>
+<div data-search-exclude markdown="1">
+
+
+
+URI: [oscal:set_parameters](https://w3id.org/lmodel/oscal/set_parameters)
+Alias: set_parameters
+
 <!-- no inheritance hierarchy -->
 
-<h2 id="applicable-classes">Applicable Classes</h2>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Modifies Slot</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../SspControlImplementation/">SspControlImplementation</a></td>
-<td>Describes how the system satisfies a set of controls</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../SspImplementedRequirement/">SspImplementedRequirement</a></td>
-<td>Describes how the system satisfies an individual control</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../ImplementedRequirement/">ImplementedRequirement</a></td>
-<td>Describes how the containing component or capability implements an individual...</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../ProfileModify/">ProfileModify</a></td>
-<td>Set parameters or amend controls in resolution</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../ControlImplementationSet/">ControlImplementationSet</a></td>
-<td>Defines how the component or capability supports a set of controls</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../ByComponent/">ByComponent</a></td>
-<td>Defines how the referenced component implements a set of controls</td>
-<td>yes</td>
-</tr>
-</tbody>
-</table>
-<h2 id="properties">Properties</h2>
-<h3 id="type-and-range">Type and Range</h3>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Range</td>
-<td><a href="../String/">String</a></td>
-</tr>
-<tr>
-<td>Domain Of</td>
-<td><a href="../ProfileModify/">ProfileModify</a>, <a href="../SspControlImplementation/">SspControlImplementation</a>, <a href="../SspImplementedRequirement/">SspImplementedRequirement</a>, <a href="../ByComponent/">ByComponent</a>, <a href="../ControlImplementationSet/">ControlImplementationSet</a>, <a href="../ImplementedRequirement/">ImplementedRequirement</a></td>
-</tr>
-</tbody>
-</table>
-<h3 id="cardinality-and-requirements">Cardinality and Requirements</h3>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Multivalued</td>
-<td>Yes</td>
-</tr>
-</tbody>
-</table>
-<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="schema-source">Schema Source</h3>
-<ul>
-<li>from schema: https://w3id.org/lmodel/oscal</li>
-</ul>
-<h2 id="mappings">Mappings</h2>
-<table>
-<thead>
-<tr>
-<th>Mapping Type</th>
-<th>Mapped Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>self</td>
-<td>oscal:set_parameters</td>
-</tr>
-<tr>
-<td>native</td>
-<td>oscal:set_parameters</td>
-</tr>
-</tbody>
-</table>
-<h2 id="linkml-source">LinkML Source</h2>
+
+
+
+
+## Applicable Classes
+
+| Name | Description | Modifies Slot |
+| --- | --- | --- |
+| [ProfileModify](ProfileModify.md) | Set parameters or amend controls in resolution |  yes  |
+| [SspControlImplementation](SspControlImplementation.md) | Describes how the system satisfies a set of controls |  yes  |
+| [SspImplementedRequirement](SspImplementedRequirement.md) | Describes how the system satisfies an individual control |  yes  |
+| [ByComponent](ByComponent.md) | Defines how the referenced component implements a set of controls |  yes  |
+| [ControlImplementationSet](ControlImplementationSet.md) | Defines how the component or capability supports a set of controls |  yes  |
+| [ImplementedRequirement](ImplementedRequirement.md) | Describes how the containing component or capability implements an individual... |  yes  |
+
+
+
+
+
+
+## Properties
+
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [String](String.md) |
+| Domain Of | [ProfileModify](ProfileModify.md), [SspControlImplementation](SspControlImplementation.md), [SspImplementedRequirement](SspImplementedRequirement.md), [ByComponent](ByComponent.md), [ControlImplementationSet](ControlImplementationSet.md), [ImplementedRequirement](ImplementedRequirement.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+| Multivalued | Yes |
+
+
+
+
+
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://w3id.org/lmodel/oscal
+
+
+
+
+## Mappings
+
+| Mapping Type | Mapped Value |
+| ---  | ---  |
+| self | oscal:set_parameters |
+| native | oscal:set_parameters |
+
+
+
+
+## LinkML Source
+
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">set-parameters</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Parameter-setting entries applied in the containing OSCAL context. The</span>
@@ -612,13 +477,16 @@ Alias: set_parameters</p>
 <span class="nt">inlined</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="nt">inlined_as_list</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
-</details>
+</details></div>
 
 
 
 
 
 
+
+  
+  
 
 
 

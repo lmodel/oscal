@@ -358,114 +358,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#applicable-classes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Applicable Classes
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#properties" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Properties
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Properties">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#type-and-range" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Type and Range
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cardinality-and-requirements" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Cardinality and Requirements
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#identifier-and-mapping-information" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Identifier and Mapping Information
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Identifier and Mapping Information">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#schema-source" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Schema Source
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#mappings" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Mappings
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#linkml-source" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        LinkML Source
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -487,167 +379,96 @@
 
 <h1 id="slot-responsible_roles">Slot: responsible_roles</h1>
 <p><em>Responsible role assignments.</em></p>
-<p>URI: <a href="https://w3id.org/lmodel/oscal/responsible_roles">oscal:responsible_roles</a>
-Alias: responsible_roles</p>
+<div data-search-exclude markdown="1">
+
+
+
+URI: [oscal:responsible_roles](https://w3id.org/lmodel/oscal/responsible_roles)
+Alias: responsible_roles
+
 <!-- no inheritance hierarchy -->
 
-<h2 id="applicable-classes">Applicable Classes</h2>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Modifies Slot</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../AssociatedActivity/">AssociatedActivity</a></td>
-<td>Identifies an individual activity to be performed as part of a task</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ControlResponsibility/">ControlResponsibility</a></td>
-<td>Describes a control implementation responsibility imposed on a leveraging sys...</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../ProvidedControlImplementation/">ProvidedControlImplementation</a></td>
-<td>Describes a capability which may be inherited by a leveraging system</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../SspImplementedRequirement/">SspImplementedRequirement</a></td>
-<td>Describes how the system satisfies an individual control</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../ImplementedRequirement/">ImplementedRequirement</a></td>
-<td>Describes how the containing component or capability implements an individual...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ImplementedControlStatement/">ImplementedControlStatement</a></td>
-<td>Identifies which statements within a control are addressed</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../DefinedComponent/">DefinedComponent</a></td>
-<td>A defined component that can be part of an implemented system</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../SystemComponent/">SystemComponent</a></td>
-<td>A defined component that can be part of an implemented system</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../Step/">Step</a></td>
-<td>Identifies an individual step in a series of steps related to an activity, su...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../InheritedControlImplementation/">InheritedControlImplementation</a></td>
-<td>Describes a control implementation inherited by a leveraging system</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../Activity/">Activity</a></td>
-<td>Identifies an assessment or related process that can be performed</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Task/">Task</a></td>
-<td>Represents a scheduled event or milestone, which may be associated with a ser...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../HasResponsibleRoles/">HasResponsibleRoles</a></td>
-<td>Mixin providing the responsible-roles slot for objects that carry role assign...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../SatisfiedControlImplementation/">SatisfiedControlImplementation</a></td>
-<td>Describes how this system satisfies a responsibility imposed by a leveraged s...</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../ByComponent/">ByComponent</a></td>
-<td>Defines how the referenced component implements a set of controls</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../SspStatement/">SspStatement</a></td>
-<td>Identifies which statements within a control are addressed</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../SspSystemComponent/">SspSystemComponent</a></td>
-<td>SSP-scoped system component with allows-authenticated-scan property typing</td>
-<td>no</td>
-</tr>
-</tbody>
-</table>
-<h2 id="properties">Properties</h2>
-<h3 id="type-and-range">Type and Range</h3>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Range</td>
-<td><a href="../ResponsibleRole/">ResponsibleRole</a></td>
-</tr>
-<tr>
-<td>Domain Of</td>
-<td><a href="../HasResponsibleRoles/">HasResponsibleRoles</a>, <a href="../SspImplementedRequirement/">SspImplementedRequirement</a>, <a href="../SspStatement/">SspStatement</a>, <a href="../ByComponent/">ByComponent</a>, <a href="../ProvidedControlImplementation/">ProvidedControlImplementation</a>, <a href="../ControlResponsibility/">ControlResponsibility</a>, <a href="../InheritedControlImplementation/">InheritedControlImplementation</a>, <a href="../SatisfiedControlImplementation/">SatisfiedControlImplementation</a></td>
-</tr>
-</tbody>
-</table>
-<h3 id="cardinality-and-requirements">Cardinality and Requirements</h3>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Multivalued</td>
-<td>Yes</td>
-</tr>
-</tbody>
-</table>
-<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="schema-source">Schema Source</h3>
-<ul>
-<li>from schema: https://w3id.org/lmodel/oscal</li>
-</ul>
-<h2 id="mappings">Mappings</h2>
-<table>
-<thead>
-<tr>
-<th>Mapping Type</th>
-<th>Mapped Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>self</td>
-<td>oscal:responsible_roles</td>
-</tr>
-<tr>
-<td>native</td>
-<td>oscal:responsible_roles</td>
-</tr>
-</tbody>
-</table>
-<h2 id="linkml-source">LinkML Source</h2>
+
+
+
+
+## Applicable Classes
+
+| Name | Description | Modifies Slot |
+| --- | --- | --- |
+| [HasResponsibleRoles](HasResponsibleRoles.md) | Mixin providing the responsible-roles slot for objects that carry role assign... |  no  |
+| [SspImplementedRequirement](SspImplementedRequirement.md) | Describes how the system satisfies an individual control |  yes  |
+| [SspStatement](SspStatement.md) | Identifies which statements within a control are addressed |  yes  |
+| [ByComponent](ByComponent.md) | Defines how the referenced component implements a set of controls |  yes  |
+| [ProvidedControlImplementation](ProvidedControlImplementation.md) | Describes a capability which may be inherited by a leveraging system |  yes  |
+| [ControlResponsibility](ControlResponsibility.md) | Describes a control implementation responsibility imposed on a leveraging sys... |  yes  |
+| [InheritedControlImplementation](InheritedControlImplementation.md) | Describes a control implementation inherited by a leveraging system |  yes  |
+| [SatisfiedControlImplementation](SatisfiedControlImplementation.md) | Describes how this system satisfies a responsibility imposed by a leveraged s... |  yes  |
+| [Activity](Activity.md) | Identifies an assessment or related process that can be performed |  no  |
+| [Step](Step.md) | Identifies an individual step in a series of steps related to an activity, su... |  no  |
+| [Task](Task.md) | Represents a scheduled event or milestone, which may be associated with a ser... |  no  |
+| [AssociatedActivity](AssociatedActivity.md) | Identifies an individual activity to be performed as part of a task |  no  |
+| [SystemComponent](SystemComponent.md) | A defined component that can be part of an implemented system |  yes  |
+| [SspSystemComponent](SspSystemComponent.md) | SSP-scoped system component with allows-authenticated-scan property typing |  no  |
+| [DefinedComponent](DefinedComponent.md) | A defined component that can be part of an implemented system |  no  |
+| [ImplementedRequirement](ImplementedRequirement.md) | Describes how the containing component or capability implements an individual... |  no  |
+| [ImplementedControlStatement](ImplementedControlStatement.md) | Identifies which statements within a control are addressed |  no  |
+
+
+
+
+
+
+## Properties
+
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [ResponsibleRole](ResponsibleRole.md) |
+| Domain Of | [HasResponsibleRoles](HasResponsibleRoles.md), [SspImplementedRequirement](SspImplementedRequirement.md), [SspStatement](SspStatement.md), [ByComponent](ByComponent.md), [ProvidedControlImplementation](ProvidedControlImplementation.md), [ControlResponsibility](ControlResponsibility.md), [InheritedControlImplementation](InheritedControlImplementation.md), [SatisfiedControlImplementation](SatisfiedControlImplementation.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+| Multivalued | Yes |
+
+
+
+
+
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://w3id.org/lmodel/oscal
+
+
+
+
+## Mappings
+
+| Mapping Type | Mapped Value |
+| ---  | ---  |
+| self | oscal:responsible_roles |
+| native | oscal:responsible_roles |
+
+
+
+
+## LinkML Source
+
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">responsible-roles</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Responsible role assignments.</span>
@@ -668,13 +489,16 @@ Alias: responsible_roles</p>
 <span class="nt">inlined</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="nt">inlined_as_list</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
-</details>
+</details></div>
 
 
 
 
 
 
+
+  
+  
 
 
 

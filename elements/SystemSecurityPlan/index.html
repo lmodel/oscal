@@ -184,101 +184,6 @@
 <div class="md-sidebar__scrollwrap">
 <div class="md-sidebar__inner">
 <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
-<label class="md-nav__title" for="__toc">
-<span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#slots">
-<span class="md-ellipsis">
-      
-        Slots
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#usages">
-<span class="md-ellipsis">
-      
-        Usages
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#in-subsets">
-<span class="md-ellipsis">
-      
-        In Subsets
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#identifier-and-mapping-information">
-<span class="md-ellipsis">
-      
-        Identifier and Mapping Information
-      
-    </span>
-</a>
-<nav aria-label="Identifier and Mapping Information" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#schema-source">
-<span class="md-ellipsis">
-      
-        Schema Source
-      
-    </span>
-</a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#mappings">
-<span class="md-ellipsis">
-      
-        Mappings
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#linkml-source">
-<span class="md-ellipsis">
-      
-        LinkML Source
-      
-    </span>
-</a>
-<nav aria-label="LinkML Source" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#direct">
-<span class="md-ellipsis">
-      
-        Direct
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#induced">
-<span class="md-ellipsis">
-      
-        Induced
-      
-    </span>
-</a>
-</li>
-</ul>
-</nav>
-</li>
-</ul>
 </nav>
 </div>
 </div>
@@ -287,7 +192,16 @@
 <article class="md-content__inner md-typeset">
 <h1 id="class-systemsecurityplan">Class: SystemSecurityPlan</h1>
 <p><em>A system security plan, such as those described in NIST SP 800-18.</em></p>
-<p>URI: <a href="https://w3id.org/lmodel/oscal/SystemSecurityPlan">oscal:SystemSecurityPlan</a></p>
+<div data-search-exclude="" markdown="1">
+
+
+
+URI: [oscal:SystemSecurityPlan](https://w3id.org/lmodel/oscal/SystemSecurityPlan)
+
+
+
+
+
 <pre class="mermaid"><code> classDiagram
     class SystemSecurityPlan
     click SystemSecurityPlan href "../SystemSecurityPlan/"
@@ -361,111 +275,78 @@
 
 </code></pre>
 <!-- no inheritance hierarchy -->
-<h2 id="slots">Slots</h2>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Cardinality and Range</th>
-<th>Description</th>
-<th>Inheritance</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../uuid/">uuid</a></td>
-<td>1 <br/> <a href="../UUIDType/">UUIDType</a></td>
-<td>A machine-oriented, globally unique identifier with a cross-instance scope</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../metadata/">metadata</a></td>
-<td>1 <br/> <a href="../Metadata/">Metadata</a></td>
-<td>Provides information about the containing document, and defines concepts shar...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../import_profile/">import_profile</a></td>
-<td>1 <br/> <a href="../ImportProfile/">ImportProfile</a></td>
-<td>Used to import the OSCAL profile representing the system's control baseline</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../system_characteristics/">system_characteristics</a></td>
-<td>1 <br/> <a href="../SystemCharacteristics/">SystemCharacteristics</a></td>
-<td>Contains the characteristics of the system, such as its name, purpose, and se...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../system_implementation/">system_implementation</a></td>
-<td>1 <br/> <a href="../SystemImplementation/">SystemImplementation</a></td>
-<td>Provides information as to how the system is implemented</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../control_implementation/">control_implementation</a></td>
-<td>1 <br/> <a href="../SspControlImplementation/">SspControlImplementation</a></td>
-<td>Describes how the system satisfies a set of controls</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../back_matter/">back_matter</a></td>
-<td>0..1 <br/> <a href="../BackMatter/">BackMatter</a></td>
-<td>A collection of resources that may be referenced from within the OSCAL docume...</td>
-<td>direct</td>
-</tr>
-</tbody>
-</table>
-<h2 id="usages">Usages</h2>
-<table>
-<thead>
-<tr>
-<th>used by</th>
-<th>used in</th>
-<th>type</th>
-<th>used</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../SspDocument/">SspDocument</a></td>
-<td><a href="../system_security_plan/">system_security_plan</a></td>
-<td>range</td>
-<td><a href="./">SystemSecurityPlan</a></td>
-</tr>
-</tbody>
-</table>
-<h2 id="in-subsets">In Subsets</h2>
-<ul>
-<li><a href="../Ssp/">Ssp</a></li>
-</ul>
-<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="schema-source">Schema Source</h3>
-<ul>
-<li>from schema: https://w3id.org/lmodel/oscal</li>
-</ul>
-<h2 id="mappings">Mappings</h2>
-<table>
-<thead>
-<tr>
-<th>Mapping Type</th>
-<th>Mapped Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>self</td>
-<td>oscal:SystemSecurityPlan</td>
-</tr>
-<tr>
-<td>native</td>
-<td>oscal:SystemSecurityPlan</td>
-</tr>
-</tbody>
-</table>
-<h2 id="linkml-source">LinkML Source</h2>
+
+## Slots
+
+| Name | Cardinality and Range | Description | Inheritance |
+| ---  | --- | --- | --- |
+| [uuid](uuid.md) | 1 <br/> [UUIDType](UUIDType.md) | A machine-oriented, globally unique identifier with a cross-instance scope | direct |
+| [metadata](metadata.md) | 1 <br/> [Metadata](Metadata.md) | Provides information about the containing document, and defines concepts shar... | direct |
+| [import_profile](import_profile.md) | 1 <br/> [ImportProfile](ImportProfile.md) | Used to import the OSCAL profile representing the system's control baseline | direct |
+| [system_characteristics](system_characteristics.md) | 1 <br/> [SystemCharacteristics](SystemCharacteristics.md) | Contains the characteristics of the system, such as its name, purpose, and se... | direct |
+| [system_implementation](system_implementation.md) | 1 <br/> [SystemImplementation](SystemImplementation.md) | Provides information as to how the system is implemented | direct |
+| [control_implementation](control_implementation.md) | 1 <br/> [SspControlImplementation](SspControlImplementation.md) | Describes how the system satisfies a set of controls | direct |
+| [back_matter](back_matter.md) | 0..1 <br/> [BackMatter](BackMatter.md) | A collection of resources that may be referenced from within the OSCAL docume... | direct |
+
+
+
+
+
+## Usages
+
+| used by | used in | type | used |
+| ---  | --- | --- | --- |
+| [SspDocument](SspDocument.md) | [system_security_plan](system_security_plan.md) | range | [SystemSecurityPlan](SystemSecurityPlan.md) |
+
+
+
+
+
+
+
+
+## In Subsets
+
+
+* [Ssp](Ssp.md)
+
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://w3id.org/lmodel/oscal
+
+
+
+
+## Mappings
+
+| Mapping Type | Mapped Value |
+| ---  | ---  |
+| self | oscal:SystemSecurityPlan |
+| native | oscal:SystemSecurityPlan |
+
+
+
+
+
+
+## LinkML Source
+
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
-<h3 id="direct">Direct</h3>
+
+### Direct
+
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SystemSecurityPlan</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A system security plan, such as those described in NIST SP 800-18.</span>
@@ -501,7 +382,9 @@
 <span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
 </details>
-<h3 id="induced">Induced</h3>
+
+### Induced
+
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SystemSecurityPlan</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A system security plan, such as those described in NIST SP 800-18.</span>
@@ -534,7 +417,6 @@
 <span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">scope.</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/lmodel/oscal</span>
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uuid</span>
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SystemSecurityPlan</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Catalog</span>
@@ -597,7 +479,6 @@
 <span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">shared across the document.</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/lmodel/oscal</span>
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">metadata</span>
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SystemSecurityPlan</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Catalog</span>
@@ -681,7 +562,7 @@
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BackMatter</span>
 <span class="w">    </span><span class="nt">inlined</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
-</details>
+</details></div>
 </article>
 </div>
 <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
