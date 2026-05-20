@@ -1,0 +1,25 @@
+package None;
+
+/* metamodel_version: 1.11.0 */
+/* version: 1.2.1 */
+import java.net.URI;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.ZonedDateTime;
+import java.util.List;
+import lombok.*;
+
+/**
+  Information about the protocol used to provide a service.
+**/
+@Data
+@EqualsAndHashCode(callSuper=false)
+public class Protocol  {
+
+  private String uuid;
+  private String name;
+  private String title;
+  private List<PortRange> port-ranges;
+
+
+}

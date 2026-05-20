@@ -202,7 +202,7 @@ test-luigi-carpio-strict:
 # ============== Supplemental generator recipes (beyond gen-project defaults) ==============
 # gen-project already covers: graphql, jsonldcontext, jsonld, jsonschema, owl,
 # prefixmap, proto, python, shex, shacl, sqlddl, excel, typescript.
-# Explicit in main justfile: java, typescript (dup), owl (dup), pydantic (→ datamodel/).
+# Explicit in main justfile: java (patched here), typescript (dup), owl (dup), pydantic (→ datamodel/).
 # The recipes below cover the remaining available generators.
 # Run all at once with: just gen-project-extended
 
@@ -324,6 +324,15 @@ gen-typedb-artifact:
 
 # ---- Language bindings ----
 
+# gen-java in the main justfile calls gen-java without mergeimports, so the root
+# schema's classes (all defined in imported subschemas) are invisible and zero
+# files are generated.  The patched script calls merge_imports() first.
+# Generate Java classes (one .java file per class)
+[group('model development - extended')]
+gen-java-artifact:
+  mkdir -p {{dest}}/java
+  uv run python3 scripts/issues/gen_java_patched.py --output-directory {{dest}}/java {{source_schema_path}}
+
 # Generate Go structs (stdout → single file)
 [group('model development - extended')]
 gen-golang-artifact:
@@ -387,6 +396,7 @@ gen-project-extended: \
   gen-sqlvalidation-artifact \
   gen-terminusdb-artifact \
   gen-typedb-artifact \
+  gen-java-artifact \
   gen-golang-artifact \
   gen-rust-artifact \
   gen-cpp-artifact \

@@ -1,0 +1,27 @@
+package None;
+
+/* metamodel_version: 1.11.0 */
+/* version: 1.2.1 */
+import java.net.URI;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.ZonedDateTime;
+import java.util.List;
+import lombok.*;
+
+/**
+  Used to define data objects that are used in the assessment plan, that do not appear in the referenced SSP.
+**/
+@Data
+@EqualsAndHashCode(callSuper=false)
+public class LocalDefinitions  {
+
+  private List<SystemComponent> components;
+  private List<InventoryItem> inventory-items;
+  private List<SystemUser> users;
+  private List<LocalObjective> objectives-and-methods;
+  private List<Activity> activities;
+  private String remarks;
+
+
+}

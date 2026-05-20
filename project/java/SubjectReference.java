@@ -1,0 +1,27 @@
+package None;
+
+/* metamodel_version: 1.11.0 */
+/* version: 1.2.1 */
+import java.net.URI;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.ZonedDateTime;
+import java.util.List;
+import lombok.*;
+
+/**
+  A human-oriented identifier reference to a resource. Use type to indicate whether the identified resource is a component, inventory item, location, user, or something else.
+**/
+@Data
+@EqualsAndHashCode(callSuper=false)
+public class SubjectReference  {
+
+  private String subject-uuid;
+  private String type;
+  private String title;
+  private String remarks;
+  private List<Property> props;
+  private List<Link> links;
+
+
+}

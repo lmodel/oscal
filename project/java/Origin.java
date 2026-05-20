@@ -1,0 +1,23 @@
+package None;
+
+/* metamodel_version: 1.11.0 */
+/* version: 1.2.1 */
+import java.net.URI;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.ZonedDateTime;
+import java.util.List;
+import lombok.*;
+
+/**
+  Identifies the source of the finding, such as a tool, interviewed person, or activity.
+**/
+@Data
+@EqualsAndHashCode(callSuper=false)
+public class Origin  {
+
+  private List<OriginActor> actors;
+  private List<RelatedTask> related-tasks;
+
+
+}

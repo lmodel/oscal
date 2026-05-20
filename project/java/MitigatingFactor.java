@@ -1,0 +1,27 @@
+package None;
+
+/* metamodel_version: 1.11.0 */
+/* version: 1.2.1 */
+import java.net.URI;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.ZonedDateTime;
+import java.util.List;
+import lombok.*;
+
+/**
+  Describes an existing mitigating factor that may affect the overall determination of the risk.
+**/
+@Data
+@EqualsAndHashCode(callSuper=false)
+public class MitigatingFactor  {
+
+  private String uuid;
+  private String description;
+  private String implementation-uuid;
+  private List<SubjectReference> subjects;
+  private List<Property> props;
+  private List<Link> links;
+
+
+}
