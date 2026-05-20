@@ -1,0 +1,44 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: Group
+schema_generating: true
+description: A group of controls, or of groups of controls.
+display_name: Group
+document_category: Group
+weight: 20
+fields:
+- id: id
+  description: Identifies the group for the purpose of cross-linking within the defining
+    instance or from other instances that reference the catalog.
+  display_name: Group_id
+- id: _class
+  description: A textual label that provides a sub-type or characterization of the
+    group.
+  display_name: Group__class
+- id: title
+  description: A name given to the group, which may be used by a tool for display
+    and navigation.
+  display_name: Group_title
+- id: params
+  description: Parameters providing a mechanism for the dynamic assignment of value(s)
+    in a control.
+  display_name: params
+  cardinality: multi
+- id: parts
+  description: A collection of parts.
+  display_name: parts
+  cardinality: multi
+- id: groups
+  description: A collection of control groups.
+  display_name: groups
+  cardinality: multi
+- id: controls
+  description: A collection of controls.
+  display_name: controls
+  cardinality: multi
+- id: props
+  description: A list of properties.
+  display_name: props
+  cardinality: multi
+- id: links
+  description: A list of links.
+  display_name: links
+  cardinality: multi

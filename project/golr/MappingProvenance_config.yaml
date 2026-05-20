@@ -1,0 +1,42 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: MappingProvenance
+schema_generating: true
+description: Mapping-level provenance details and mapping defaults.
+display_name: MappingProvenance
+document_category: MappingProvenance
+weight: 20
+fields:
+- id: method
+  description: Method indicator used by the containing OSCAL context. Allowed values
+    are constrained by class-level slot_usage.
+  display_name: MappingProvenance_method
+- id: matching_rationale
+  description: The rationale method used to relate mapped items.
+  display_name: MappingProvenance_matching-rationale
+- id: status
+  description: Status indicator used by the containing OSCAL context. Allowed values
+    are constrained by class-level slot_usage.
+  display_name: MappingProvenance_status
+- id: confidence_score
+  description: Confidence descriptor for a mapping.
+  display_name: confidence-score
+- id: coverage
+  description: Coverage metadata for a mapping.
+  display_name: coverage
+- id: mapping_description
+  description: Description of the context and intended use of the mapping.
+  display_name: MappingProvenance_mapping-description
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks
+- id: props
+  description: A list of properties.
+  display_name: props
+  cardinality: multi
+- id: links
+  description: A list of links.
+  display_name: links
+  cardinality: multi
+- id: responsible_parties
+  description: Responsible party assignments.
+  display_name: responsible-parties
+  cardinality: multi

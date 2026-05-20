@@ -1,0 +1,32 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: ComponentDefinition
+schema_generating: true
+description: A collection of component descriptions, which may optionally be grouped
+  by capability.
+display_name: ComponentDefinition
+document_category: ComponentDefinition
+weight: 20
+fields:
+- id: uuid
+  description: A machine-oriented, globally unique identifier with a cross-instance
+    scope.
+  display_name: ComponentDefinition_uuid
+- id: metadata
+  description: Provides information about the containing document, and defines concepts
+    shared across the document.
+  display_name: ComponentDefinition_metadata
+- id: import_component_definitions
+  description: Component-definition resources imported into this document.
+  display_name: import-component-definitions
+  cardinality: multi
+- id: components
+  description: A collection of system components.
+  display_name: ComponentDefinition_components
+  cardinality: multi
+- id: capabilities
+  description: Capability groupings for the defined components.
+  display_name: capabilities
+  cardinality: multi
+- id: back_matter
+  description: A collection of resources that may be referenced from within the OSCAL
+    document instance.
+  display_name: back-matter

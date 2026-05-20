@@ -1,0 +1,32 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: MitigatingFactor
+schema_generating: true
+description: Describes an existing mitigating factor that may affect the overall determination
+  of the risk.
+display_name: MitigatingFactor
+document_category: MitigatingFactor
+weight: 20
+fields:
+- id: uuid
+  description: A machine-oriented, globally unique identifier with a cross-instance
+    scope.
+  display_name: MitigatingFactor_uuid
+- id: description
+  description: A human-readable description.
+  display_name: MitigatingFactor_description
+- id: implementation_uuid
+  description: A machine-oriented, globally unique identifier with cross-instance
+    scope that can be used to reference this implementation statement elsewhere in
+    this or other OSCAL instances.
+  display_name: implementation-uuid
+- id: subjects
+  description: Assessment subjects or subject references for this object.
+  display_name: MitigatingFactor_subjects
+  cardinality: multi
+- id: props
+  description: A list of properties.
+  display_name: props
+  cardinality: multi
+- id: links
+  description: A list of links.
+  display_name: links
+  cardinality: multi

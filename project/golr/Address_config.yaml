@@ -1,0 +1,27 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: Address
+schema_generating: true
+description: A postal address for the location.
+display_name: Address
+document_category: Address
+weight: 20
+fields:
+- id: type
+  description: 'Indicates the type of address. Recommended values: home, work. Other
+    values are permitted (OSCAL allow-other="yes").'
+  display_name: Address_type
+- id: addr_lines
+  description: A single line of an address.
+  display_name: addr-lines
+  cardinality: multi
+- id: city
+  description: City, town or geographical region for the mailing address.
+  display_name: city
+- id: state
+  description: State, province or analogous geographical region for a mailing address.
+  display_name: state
+- id: postal_code
+  description: Postal or ZIP code for mailing address.
+  display_name: postal-code
+- id: country
+  description: The ISO 3166-1 alpha-2 country code for the mailing address.
+  display_name: country

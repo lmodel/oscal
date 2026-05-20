@@ -1,0 +1,14 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: ParameterConstraint
+schema_generating: true
+description: A formal or informal expression of a constraint or test.
+display_name: ParameterConstraint
+document_category: ParameterConstraint
+weight: 20
+fields:
+- id: description
+  description: A textual summary of the constraint to be applied.
+  display_name: ParameterConstraint_description
+- id: tests
+  description: A test expression which is expected to be evaluated by a tool.
+  display_name: tests
+  cardinality: multi

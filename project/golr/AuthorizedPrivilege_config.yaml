@@ -1,0 +1,18 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: AuthorizedPrivilege
+schema_generating: true
+description: Identifies a specific system privilege held by the user, along with an
+  associated description and/or rationale for the privilege.
+display_name: AuthorizedPrivilege
+document_category: AuthorizedPrivilege
+weight: 20
+fields:
+- id: title
+  description: A human-readable name or title.
+  display_name: AuthorizedPrivilege_title
+- id: description
+  description: A human-readable description.
+  display_name: description
+- id: functions_performed
+  description: Describes a function performed for a given authorized privilege.
+  display_name: AuthorizedPrivilege_functions-performed
+  cardinality: multi

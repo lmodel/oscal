@@ -1,0 +1,47 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: Finding
+schema_generating: true
+description: Describes an individual finding.
+display_name: Finding
+document_category: Finding
+weight: 20
+fields:
+- id: uuid
+  description: A machine-oriented, globally unique identifier with a cross-instance
+    scope.
+  display_name: Finding_uuid
+- id: title
+  description: A human-readable name or title.
+  display_name: Finding_title
+- id: description
+  description: A human-readable description.
+  display_name: Finding_description
+- id: target
+  description: Identifies the target of a finding.
+  display_name: Finding_target
+- id: implementation_statement_uuid
+  description: A reference to the implementation statement in the SSP to which this
+    finding is related.
+  display_name: implementation-statement-uuid
+- id: origins
+  description: Identifies the source of observations, findings, or risks.
+  display_name: origins
+  cardinality: multi
+- id: related_observations
+  description: Relates the containing object to a set of referenced observations.
+  display_name: related-observations
+  cardinality: multi
+- id: related_risks
+  description: Relates the finding to a set of referenced risks.
+  display_name: related-risks
+  cardinality: multi
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks
+- id: props
+  description: A list of properties.
+  display_name: props
+  cardinality: multi
+- id: links
+  description: A list of links.
+  display_name: links
+  cardinality: multi

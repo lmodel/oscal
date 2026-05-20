@@ -1,0 +1,14 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: ImportSSP
+schema_generating: true
+description: Used by the assessment plan and POA&M to import information about the
+  system.
+display_name: ImportSSP
+document_category: ImportSSP
+weight: 20
+fields:
+- id: href
+  description: A resolvable URL reference to a resource.
+  display_name: ImportSSP_href
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks

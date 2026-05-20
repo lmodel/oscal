@@ -1,0 +1,19 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: Alteration
+schema_generating: true
+description: Specifies changes to be made to an included control when a profile is
+  resolved.
+display_name: Alteration
+document_category: Alteration
+weight: 20
+fields:
+- id: control_id
+  description: A reference to a control by its identifier.
+  display_name: Alteration_control-id
+- id: removes
+  description: Specifies objects to be removed from a control in resolution.
+  display_name: removes
+  cardinality: multi
+- id: adds
+  description: Specifies content to be added into a control in resolution.
+  display_name: adds
+  cardinality: multi

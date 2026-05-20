@@ -1,0 +1,13 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: OnDateCondition
+schema_generating: true
+description: The task is intended to occur on the specified date.
+display_name: OnDateCondition
+document_category: OnDateCondition
+weight: 20
+fields:
+- id: date
+  description: The date and time when the action occurred.
+  display_name: OnDateCondition_date
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks

@@ -100,7 +100,7 @@ class PatchedRDFGenerator(RDFGenerator):
                 return ""
             with open(output, "w", encoding="UTF-8") as outf:
                 outf.write(out)
-            return out
+            return ""
         return self._data(graph)
 
 
@@ -120,7 +120,10 @@ def cli(yamlfile, **kwargs):
 
     See scripts/gen_rdf_patched.py for full explanation.
     """
-    print(PatchedRDFGenerator(yamlfile, **kwargs).serialize(**kwargs))
+    gen = PatchedRDFGenerator(yamlfile, **kwargs)
+    result = gen.serialize(**kwargs)
+    if not kwargs.get("output"):
+        print(result)
 
 
 if __name__ == "__main__":

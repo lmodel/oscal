@@ -1,0 +1,27 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: ResponsibleRole
+schema_generating: true
+description: A reference to a role with responsibility for performing a function relative
+  to the containing object, optionally associated with a set of persons and/or organizations
+  that perform that role.
+display_name: ResponsibleRole
+document_category: ResponsibleRole
+weight: 20
+fields:
+- id: role_id
+  description: A human-oriented identifier reference to a role performed.
+  display_name: ResponsibleRole_role-id
+- id: party_uuids
+  description: References to party UUIDs.
+  display_name: party-uuids
+  cardinality: multi
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks
+- id: props
+  description: A list of properties.
+  display_name: props
+  cardinality: multi
+- id: links
+  description: A list of links.
+  display_name: links
+  cardinality: multi

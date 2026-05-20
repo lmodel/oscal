@@ -1,0 +1,18 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: InformationTypeCategorization
+schema_generating: true
+description: A set of information type identifiers qualified by the given identification
+  system used.
+display_name: InformationTypeCategorization
+document_category: InformationTypeCategorization
+weight: 20
+fields:
+- id: system
+  description: Specifies the information type identification system used. Recommended
+    values are in InformationTypeCategorizationSystemEnum; other values are permitted
+    (OSCAL allow-other="yes").
+  display_name: informationTypeCategorization__system
+- id: information_type_ids
+  description: An identifier qualified by the given identification system used, such
+    as NIST SP 800-60.
+  display_name: informationTypeCategorization__information_type_ids
+  cardinality: multi

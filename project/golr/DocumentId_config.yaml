@@ -1,0 +1,13 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: DocumentId
+schema_generating: true
+description: A document identifier qualified by an identifier scheme.
+display_name: DocumentId
+document_category: DocumentId
+weight: 20
+fields:
+- id: scheme
+  description: Qualifies the kind of identifier using a URI.
+  display_name: DocumentId_scheme
+- id: identifier
+  description: A document identifier value.
+  display_name: DocumentId_identifier

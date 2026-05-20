@@ -1,0 +1,25 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: SspByComponentResponsibleRole
+schema_generating: true
+description: SSP-scoped responsible role used by by-component contexts.
+display_name: SspByComponentResponsibleRole
+document_category: SspByComponentResponsibleRole
+weight: 20
+fields:
+- id: party_uuids
+  description: References to party UUIDs.
+  display_name: party-uuids
+  cardinality: multi
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks
+- id: props
+  description: A list of properties.
+  display_name: props
+  cardinality: multi
+- id: links
+  description: A list of links.
+  display_name: links
+  cardinality: multi
+- id: role_id
+  description: A reference to a role by its identifier.
+  display_name: SspByComponentResponsibleRole_role-id

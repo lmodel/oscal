@@ -1,0 +1,13 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: RelatedFinding
+schema_generating: true
+description: Relates a POA&M item to a referenced finding.
+display_name: RelatedFinding
+document_category: RelatedFinding
+weight: 20
+fields:
+- id: finding_uuid
+  description: A UUID reference to a finding.
+  display_name: RelatedFinding_finding-uuid
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks

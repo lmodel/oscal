@@ -1,0 +1,1569 @@
+@startuml
+skinparam nodesep 10
+hide circle
+hide empty members
+class "EventTiming" [[{The timing under which the task is intended to occur.}]] {
+
+}
+class "WithinDateRange" [[{The task is intended to occur within the specified date range.}]] {
+    {field} start : DateTimeWithTimezoneType  
+    {field} end : DateTimeWithTimezoneType  
+    {field} remarks : MarkupMultilineType  
+}
+"EventTiming" *--> "0..1" "WithinDateRange" : "within-date-range"
+class "AssessmentPlatform" [[{Used to represent the toolset used to perform aspects of the assessment.}]] {
+    {field} uuid : UUIDType  
+    {field} title : MarkupLineType  
+    {field} remarks : MarkupMultilineType  
+}
+class "UsesComponent" [[{The set of components that are used by the assessment platform.}]] {
+    {field} component_uuid : UUIDType  
+    {field} remarks : MarkupMultilineType  
+}
+class "OscalCommon" [[{Mixin providing props, links, and remarks slots common to most OSCAL objects. Extends HasPropsAndLinks.}]] {
+    {field} remarks : MarkupMultilineType  
+}
+class "HasResponsibleParties" [[{Mixin providing the responsible-parties slot for objects that carry party assignments.}]] {
+
+}
+"AssessmentPlatform" *--> "0..*" "UsesComponent" : "uses-components"
+"OscalCommon" ^.. "UsesComponent"
+"HasResponsibleParties" ^.. "UsesComponent"
+class "Risk" [[{An identified risk.}]] {
+    {field} uuid : UUIDType  
+    {field} title : MarkupLineType  
+    {field} description : MarkupMultilineType  
+    {field} statement : MarkupMultilineType  
+    {field} deadline : DateTimeWithTimezoneType  
+    {field} status : string  
+}
+class "ThreatId" [[{A pointer, by ID, to an externally-defined threat.}]] {
+    {field} href : URIReferenceType  
+    {field} system : URIType  
+    {field} id : URIType  
+}
+"Risk" *--> "0..*" "ThreatId" : "threat-ids"
+class "TermsAndConditions" [[{Used to define various terms and conditions under which an assessment can be performed.}]] {
+
+}
+class "TermsAndConditionsPart" [[{A terms-and-conditions scoped assessment part.}]] {
+    {field} name : TermsAndConditionsPartNameEnum  
+    {field} uuid(i) : UUIDType  
+    {field} ns(i) : URIType  
+    {field} _class(i) : TokenType  
+    {field} title(i) : MarkupLineType  
+    {field} prose(i) : MarkupMultilineType  
+}
+class "AssessmentPlan" [[{An assessment plan, such as those provided by a FedRAMP assessor.}]] {
+    {field} uuid : UUIDType  
+}
+"TermsAndConditions" *--> "0..*" "TermsAndConditionsPart" : "parts"
+"AssessmentPlan" *--> "0..1" "TermsAndConditions" : "terms-and-conditions"
+class "AssessmentPart" [[{A partition of an assessment plan or results or a child of another part.}]] {
+    {field} uuid : UUIDType  
+    {field} name : TokenType  
+    {field} ns : URIType  
+    {field} _class : TokenType  
+    {field} title : MarkupLineType  
+    {field} prose : MarkupMultilineType  
+}
+"TermsAndConditionsPart" *--> "0..*" "TermsAndConditionsPart" : "parts"
+"AssessmentPart" ^-- "TermsAndConditionsPart"
+class "Location" [[{A physical point of presence, which may be associated with people, organizations, or other concepts within the current or linked OSCAL document.}]] {
+    {field} uuid : UUIDType  
+    {field} title : MarkupLineType  
+    {field} email_addresses : EmailAddressType  [0..*]
+    {field} urls : URIType  [0..*]
+    {field} remarks : MarkupMultilineType  
+}
+class "TelephoneNumber" [[{A telephone service number as defined by ITU-T E.164.}]] {
+    {field} type : string  
+    {field} number : string  
+}
+class "Party" [[{An organization or person, which may be associated with roles or other concepts within the current or linked OSCAL document.}]] {
+    {field} uuid : UUIDType  
+    {field} type : PartyTypeEnum  
+    {field} name : string  
+    {field} short_name : string  
+    {field} email_addresses : EmailAddressType  [0..*]
+    {field} location_uuids : UUIDType  [0..*]
+    {field} member_of_organizations : UUIDType  [0..*]
+    {field} remarks : MarkupMultilineType  
+}
+"Location" *--> "0..*" "TelephoneNumber" : "telephone-numbers"
+"Party" *--> "0..*" "TelephoneNumber" : "telephone-numbers"
+class "Task" [[{Represents a scheduled event or milestone, which may be associated with a series of assessment actions.}]] {
+    {field} uuid : UUIDType  
+    {field} type : string  
+    {field} title : MarkupLineType  
+    {field} description : MarkupMultilineType  
+    {field} remarks : MarkupMultilineType  
+}
+class "TaskDependency" [[{Used to indicate that a task is dependent on another task.}]] {
+    {field} task_uuid : UUIDType  
+    {field} remarks : MarkupMultilineType  
+}
+"Task" *--> "0..*" "TaskDependency" : "dependencies"
+class "AssessmentSubject" [[{Identifies system elements being assessed, such as components, inventory items, and locations.}]] {
+    {field} type : string  
+    {field} description : MarkupMultilineType  
+    {field} remarks : MarkupMultilineType  
+}
+class "AssociatedActivity" [[{Identifies an individual activity to be performed as part of a task.}]] {
+    {field} activity_uuid : UUIDType  
+    {field} remarks : MarkupMultilineType  
+}
+class "HasResponsibleRoles" [[{Mixin providing the responsible-roles slot for objects that carry role assignments.}]] {
+
+}
+"Task" *--> "0..*" "AssessmentSubject" : "subjects"
+"Task" *--> "0..*" "Task" : "tasks"
+"Task" *--> "0..*" "AssociatedActivity" : "associated-activities"
+"Task" *--> "0..1" "EventTiming" : "timing"
+"OscalCommon" ^.. "Task"
+"HasResponsibleRoles" ^.. "Task"
+class "SystemUser" [[{A type of user that interacts with the system based on an associated role.}]] {
+    {field} uuid : UUIDType  
+    {field} title : MarkupLineType  
+    {field} short_name : string  
+    {field} description : MarkupMultilineType  
+    {field} role_ids : TokenType  [0..*]
+    {field} remarks : MarkupMultilineType  
+}
+class "ImplementationCommonLink" [[{Implementation-common scoped OSCAL link.}]] {
+    {field} rel : TokenType  
+    {field} href(i) : URIReferenceType  
+    {field} resource_fragment(i) : string  
+    {field} media_type(i) : string  
+    {field} text(i) : MarkupLineType  
+}
+class "ImplementationCommonProperty" [[{Implementation-common scoped OSCAL property.}]] {
+    {field} name : ImplementationPropNameEnum  
+    {field} value : string  
+    {field} uuid(i) : UUIDType  
+    {field} ns(i) : URIType  
+    {field} _class(i) : TokenType  
+    {field} remarks(i) : MarkupMultilineType  
+    {field} group(i) : TokenType  
+}
+class "AuthorizedPrivilege" [[{Identifies a specific system privilege held by the user, along with an associated description and/or rationale for the privilege.}]] {
+    {field} title : MarkupLineType  
+    {field} description : MarkupMultilineType  
+    {field} functions_performed : string  [1..*]
+}
+class "SystemImplementation" [[{Provides information as to how the system is implemented.}]] {
+    {field} remarks : MarkupMultilineType  
+}
+class "LocalDefinitions" [[{Used to define data objects that are used in the assessment plan, that do not appear in the referenced SSP.}]] {
+    {field} remarks : MarkupMultilineType  
+}
+class "ResultLocalDefinitions" [[{Used to define local implementation and assessment assets referenced by a result that do not appear in the imported system security plan.}]] {
+
+}
+"SystemUser" *--> "0..*" "ImplementationCommonLink" : "links"
+"SystemUser" *--> "0..*" "ImplementationCommonProperty" : "props"
+"SystemUser" *--> "0..*" "AuthorizedPrivilege" : "authorized-privileges"
+"SystemImplementation" *--> "0..*" "SystemUser" : "users"
+"LocalDefinitions" *--> "0..*" "SystemUser" : "users"
+"ResultLocalDefinitions" *--> "0..*" "SystemUser" : "users"
+"OscalCommon" ^.. "SystemUser"
+class "SystemCharacteristics" [[{Contains the characteristics of the system, such as its name, purpose, and security impact level.}]] {
+    {field} system_name : string  
+    {field} system_name_short : string  
+    {field} description : MarkupMultilineType  
+    {field} date_authorized : string  
+    {field} security_sensitivity_level : string  
+    {field} remarks : MarkupMultilineType  
+}
+class "SystemStatus" [[{Describes the operational status of the system.}]] {
+    {field} remarks : MarkupMultilineType  
+    {field} state : SystemOperatingStatusEnum  
+}
+"SystemCharacteristics" *--> "1" "SystemStatus" : "system-status"
+"SystemCharacteristics" *--> "0..1" "SystemStatus" : "system-status"(i)
+class "SystemSecurityPlan" [[{A system security plan, such as those described in NIST SP 800-18.}]] {
+    {field} uuid : UUIDType  
+}
+class "BackMatter" [[{A collection of resources that may be referenced from within the OSCAL document instance.}]] {
+
+}
+class "SspControlImplementation" [[{Describes how the system satisfies a set of controls.}]] {
+    {field} description : MarkupMultilineType  
+}
+class "ImportProfile" [[{Used to import the OSCAL profile representing the system's control baseline.}]] {
+    {field} href : URIReferenceType  
+    {field} remarks : MarkupMultilineType  
+}
+class "Metadata" [[{Provides information about the containing document, and defines concepts shared across the document.}]] {
+    {field} title : MarkupLineType  
+    {field} published : DateTimeWithTimezoneType  
+    {field} last_modified : DateTimeWithTimezoneType  
+    {field} version : string  
+    {field} oscal_version : string  
+    {field} remarks : MarkupMultilineType  
+}
+class "SspDocument" [[{Root wrapper for an OSCAL System Security Plan document.}]] {
+
+}
+"SystemSecurityPlan" *--> "0..1" "BackMatter" : "back-matter"
+"SystemSecurityPlan" *--> "1" "SspControlImplementation" : "control-implementation"
+"SystemSecurityPlan" *--> "1" "SystemImplementation" : "system-implementation"
+"SystemSecurityPlan" *--> "1" "SystemCharacteristics" : "system-characteristics"
+"SystemSecurityPlan" *--> "1" "ImportProfile" : "import-profile"
+"SystemSecurityPlan" *--> "1" "Metadata" : "metadata"
+"SspDocument" *--> "1" "SystemSecurityPlan" : "system-security-plan"
+"SspDocument" *--> "0..1" "SystemSecurityPlan" : "system-security-plan"(i)
+class "SystemInformation" [[{Contains details about all information types that are stored, processed, or transmitted by the system, such as privacy information.}]] {
+
+}
+class "InformationType" [[{Contains details about one information type that is stored, processed, or transmitted by the system, such as privacy information, and its impact level.}]] {
+    {field} uuid : UUIDType  
+    {field} title : MarkupLineType  
+    {field} description : MarkupMultilineType  
+}
+class "SspSystemInformationLink" [[{SSP-scoped link used in system information.}]] {
+    {field} rel : TokenType  
+    {field} href(i) : URIReferenceType  
+    {field} resource_fragment(i) : string  
+    {field} media_type(i) : string  
+    {field} text(i) : MarkupLineType  
+}
+class "SspSystemInformationProp" [[{SSP-scoped property used in system information.}]] {
+    {field} name : SystemInformationPropNameEnum  
+    {field} value : PrivacyDesignationEnum  
+    {field} uuid(i) : UUIDType  
+    {field} ns(i) : URIType  
+    {field} _class(i) : TokenType  
+    {field} remarks(i) : MarkupMultilineType  
+    {field} group(i) : TokenType  
+}
+"SystemInformation" *--> "1..*" "InformationType" : "information-types"
+"SystemInformation" *--> "0..*" "SspSystemInformationLink" : "links"
+"SystemInformation" *--> "0..*" "SspSystemInformationProp" : "props"
+"SystemCharacteristics" *--> "1" "SystemInformation" : "system-information"
+"SystemCharacteristics" *--> "0..1" "SystemInformation" : "system-information"(i)
+class "SspInventoryItem" [[{SSP-scoped inventory item with allows-authenticated-scan property typing.}]] {
+    {field} uuid(i) : UUIDType  
+    {field} description(i) : MarkupMultilineType  
+    {field} remarks(i) : MarkupMultilineType  
+}
+class "SspSystemComponent" [[{SSP-scoped system component with allows-authenticated-scan property typing.}]] {
+    {field} uuid(i) : UUIDType  
+    {field} type(i) : string  
+    {field} title(i) : MarkupLineType  
+    {field} description(i) : MarkupMultilineType  
+    {field} purpose(i) : MarkupLineType  
+    {field} remarks(i) : MarkupMultilineType  
+}
+class "LeveragedAuthorization" [[{A description of another authorized system from which this system inherits capabilities that satisfy security requirements. Another term for this concept is a common control provider.}]] {
+    {field} uuid : UUIDType  
+    {field} title : MarkupLineType  
+    {field} party_uuid : UUIDType  
+    {field} date_authorized : string  
+    {field} remarks : MarkupMultilineType  
+}
+class "Link" [[{A reference to a local or remote resource, that has a specific relation to the containing object.}]] {
+    {field} href : URIReferenceType  
+    {field} rel : TokenType  
+    {field} resource_fragment : string  
+    {field} media_type : string  
+    {field} text : MarkupLineType  
+}
+class "Property" [[{An attribute, characteristic, or quality of the containing object expressed as a namespace qualified name/value pair.}]] {
+    {field} name : TokenType  
+    {field} uuid : UUIDType  
+    {field} ns : URIType  
+    {field} value : string  
+    {field} _class : TokenType  
+    {field} remarks : MarkupMultilineType  
+    {field} group : TokenType  
+}
+"SystemImplementation" *--> "0..*" "SspInventoryItem" : "inventory-items"
+"SystemImplementation" *--> "1..*" "SspSystemComponent" : "components"
+"SystemImplementation" *--> "0..*" "LeveragedAuthorization" : "leveraged-authorizations"
+"SystemImplementation" *--> "0..*" "Link" : "links"
+"SystemImplementation" *--> "0..*" "Property" : "props"
+"SystemSecurityPlan" *--> "0..1" "SystemImplementation" : "system-implementation"(i)
+class "SystemId" [[{A human-oriented, globally unique identifier for a system.}]] {
+    {field} id : string  
+    {field} identifier_type : string  
+}
+class "PlanOfActionAndMilestones" [[{A plan of action and milestones that identifies initial and residual risks, deviations, and disposition.}]] {
+    {field} uuid : UUIDType  
+}
+"SystemCharacteristics" *--> "1..*" "SystemId" : "system-ids"
+"PlanOfActionAndMilestones" *--> "0..1" "SystemId" : "system-id"
+"SystemCharacteristics" *--> "0..*" "SystemId" : "system-ids"(i)
+class "SystemComponent" [[{A defined component that can be part of an implemented system.}]] {
+    {field} uuid : UUIDType  
+    {field} type : string  
+    {field} title : MarkupLineType  
+    {field} description : MarkupMultilineType  
+    {field} purpose : MarkupLineType  
+    {field} remarks : MarkupMultilineType  
+}
+class "ImplementationResponsibleRole" [[{Implementation-common scoped responsible role.}]] {
+    {field} role_id : TokenType  
+    {field} party_uuids(i) : UUIDType  [0..*]
+    {field} remarks(i) : MarkupMultilineType  
+}
+class "ComponentStatus" [[{Describes the operational status of the system component.}]] {
+    {field} state : ComponentStateEnum  
+    {field} remarks : MarkupMultilineType  
+}
+class "Protocol" [[{Information about the protocol used to provide a service.}]] {
+    {field} uuid : UUIDType  
+    {field} name : string  
+    {field} title : MarkupLineType  
+}
+class "AssessmentAssets" [[{Identifies the assets used to perform this assessment.}]] {
+
+}
+class "ComponentDefinition" [[{A collection of component descriptions, which may optionally be grouped by capability.}]] {
+    {field} uuid : UUIDType  
+}
+class "PoamLocalDefinitions" [[{Allows components and inventory items to be defined within the POA&M for cases where no OSCAL SSP is available with the POA&M.}]] {
+    {field} remarks : MarkupMultilineType  
+}
+"SystemComponent" *--> "0..*" "ImplementationResponsibleRole" : "responsible-roles"
+"SystemComponent" *--> "0..*" "ImplementationCommonLink" : "links"
+"SystemComponent" *--> "0..*" "ImplementationCommonProperty" : "props"
+"SystemComponent" *--> "1" "ComponentStatus" : "status"
+"SystemComponent" *--> "0..*" "Protocol" : "protocols"
+"SystemImplementation" *--> "0..*" "SystemComponent" : "components"(i)
+"LocalDefinitions" *--> "0..*" "SystemComponent" : "components"
+"AssessmentAssets" *--> "0..*" "SystemComponent" : "components"
+"ResultLocalDefinitions" *--> "0..*" "SystemComponent" : "components"
+"ComponentDefinition" *--> "0..*" "SystemComponent" : "components"(i)
+"PoamLocalDefinitions" *--> "0..*" "SystemComponent" : "components"
+"OscalCommon" ^.. "SystemComponent"
+"HasResponsibleRoles" ^.. "SystemComponent"
+"SystemComponent" ^-- "SspSystemComponent"
+class "SspSystemCharacteristicsProp" [[{SSP-scoped property used in system characteristics.}]] {
+    {field} name : SystemCharacteristicsPropNameEnum  
+    {field} value : string  
+    {field} uuid(i) : UUIDType  
+    {field} ns(i) : URIType  
+    {field} _class(i) : TokenType  
+    {field} remarks(i) : MarkupMultilineType  
+    {field} group(i) : TokenType  
+}
+class "SspSystemCharacteristicsResponsibleParty" [[{SSP-scoped responsible party for system characteristics.}]] {
+    {field} role_id : TokenType  
+    {field} party_uuids(i) : UUIDType  [1..*]
+    {field} remarks(i) : MarkupMultilineType  
+}
+class "DataFlow" [[{A description of the logical flow of information within the system and across its boundaries, optionally supplemented with diagrams.}]] {
+    {field} description : MarkupMultilineType  
+    {field} remarks : MarkupMultilineType  
+}
+class "NetworkArchitecture" [[{A description of the system's network architecture, optionally supplemented with diagrams that illustrate the network architecture.}]] {
+    {field} description : MarkupMultilineType  
+    {field} remarks : MarkupMultilineType  
+}
+class "AuthorizationBoundary" [[{A description of this system's authorization boundary, optionally supplemented with diagrams that illustrate the authorization boundary.}]] {
+    {field} description : MarkupMultilineType  
+    {field} remarks : MarkupMultilineType  
+}
+class "SecurityImpactLevel" [[{The overall level of expected impact resulting from unauthorized disclosure, modification, or loss of access to information.}]] {
+    {field} security_objective_confidentiality : string  
+    {field} security_objective_integrity : string  
+    {field} security_objective_availability : string  
+}
+"SystemCharacteristics" *--> "0..*" "SspSystemCharacteristicsProp" : "props"
+"SystemCharacteristics" *--> "0..*" "SspSystemCharacteristicsResponsibleParty" : "responsible-parties"
+"SystemCharacteristics" *--> "0..1" "DataFlow" : "data-flow"
+"SystemCharacteristics" *--> "0..1" "NetworkArchitecture" : "network-architecture"
+"SystemCharacteristics" *--> "1" "AuthorizationBoundary" : "authorization-boundary"
+"SystemCharacteristics" *--> "0..1" "SecurityImpactLevel" : "security-impact-level"
+"SystemSecurityPlan" *--> "0..1" "SystemCharacteristics" : "system-characteristics"(i)
+class "MitigatingFactor" [[{Describes an existing mitigating factor that may affect the overall determination of the risk.}]] {
+    {field} uuid : UUIDType  
+    {field} description : MarkupMultilineType  
+    {field} implementation_uuid : UUIDType  
+}
+class "SubjectReference" [[{A human-oriented identifier reference to a resource. Use type to indicate whether the identified resource is a component, inventory item, location, user, or something else.}]] {
+    {field} subject_uuid : UUIDType  
+    {field} type : string  
+    {field} title : MarkupLineType  
+    {field} remarks : MarkupMultilineType  
+}
+class "Observation" [[{Describes an individual observation.}]] {
+    {field} uuid : UUIDType  
+    {field} title : MarkupLineType  
+    {field} description : MarkupMultilineType  
+    {field} methods : string  [1..*]
+    {field} types : string  [0..*]
+    {field} collected : DateTimeWithTimezoneType  
+    {field} expires : DateTimeWithTimezoneType  
+    {field} remarks : MarkupMultilineType  
+}
+class "RequiredAsset" [[{Identifies an asset required to achieve remediation.}]] {
+    {field} uuid : UUIDType  
+    {field} title : MarkupLineType  
+    {field} description : MarkupMultilineType  
+    {field} remarks : MarkupMultilineType  
+}
+"MitigatingFactor" *--> "0..*" "SubjectReference" : "subjects"
+"Observation" *--> "0..*" "SubjectReference" : "subjects"
+"RequiredAsset" *--> "0..*" "SubjectReference" : "subjects"
+"OscalCommon" ^.. "SubjectReference"
+class "Step" [[{Identifies an individual step in a series of steps related to an activity, such as an assessment test or examination procedure.}]] {
+    {field} uuid : UUIDType  
+    {field} title : MarkupLineType  
+    {field} description : MarkupMultilineType  
+    {field} remarks : MarkupMultilineType  
+}
+class "ReviewedControls" [[{Identifies the controls being assessed and their control objectives.}]] {
+    {field} description : MarkupMultilineType  
+    {field} remarks : MarkupMultilineType  
+}
+class "Activity" [[{Identifies an assessment or related process that can be performed. In the assessment plan, this is an intended activity.}]] {
+    {field} uuid : UUIDType  
+    {field} title : MarkupLineType  
+    {field} description : MarkupMultilineType  
+    {field} remarks : MarkupMultilineType  
+}
+"Step" *--> "0..1" "ReviewedControls" : "reviewed-controls"
+"Activity" *--> "0..*" "Step" : "steps"
+"OscalCommon" ^.. "Step"
+"HasResponsibleRoles" ^.. "Step"
+"Property" ^-- "SspSystemInformationProp"
+"Link" ^-- "SspSystemInformationLink"
+class "SspAllowsAuthenticatedScanProp" [[{SSP-scoped property used for component and inventory allows-authenticated-scan.}]] {
+    {field} name : string  
+    {field} value : AllowsAuthenticatedScanEnum  
+    {field} uuid(i) : UUIDType  
+    {field} ns(i) : URIType  
+    {field} _class(i) : TokenType  
+    {field} remarks(i) : MarkupMultilineType  
+    {field} group(i) : TokenType  
+}
+"SspSystemComponent" *--> "0..*" "SspAllowsAuthenticatedScanProp" : "props"
+class "ResponsibleParty" [[{A reference to a set of persons and/or organizations that have responsibility for performing the referenced role in the context of the containing object.}]] {
+    {field} role_id : TokenType  
+    {field} party_uuids : UUIDType  [1..*]
+    {field} remarks : MarkupMultilineType  
+}
+"ResponsibleParty" ^-- "SspSystemCharacteristicsResponsibleParty"
+"Property" ^-- "SspSystemCharacteristicsProp"
+class "SspStatement" [[{Identifies which statements within a control are addressed.}]] {
+    {field} statement_id : TokenType  
+    {field} uuid : UUIDType  
+    {field} remarks : MarkupMultilineType  
+}
+class "ByComponent" [[{Defines how the referenced component implements a set of controls.}]] {
+    {field} component_uuid : UUIDType  
+    {field} uuid : UUIDType  
+    {field} description : MarkupMultilineType  
+    {field} remarks : MarkupMultilineType  
+}
+class "SspImplementedRequirementResponsibleRole" [[{SSP-scoped responsible role used by implemented requirement and statement contexts.}]] {
+    {field} role_id : TokenType  
+    {field} party_uuids(i) : UUIDType  [0..*]
+    {field} remarks(i) : MarkupMultilineType  
+}
+class "SspControlOriginationProp" [[{SSP-scoped property used in implemented requirement and by-component contexts.}]] {
+    {field} name : ControlOriginationPropNameEnum  
+    {field} value : ControlOriginationValueEnum  
+    {field} uuid(i) : UUIDType  
+    {field} ns(i) : URIType  
+    {field} _class(i) : TokenType  
+    {field} remarks(i) : MarkupMultilineType  
+    {field} group(i) : TokenType  
+}
+class "SspImplementedRequirement" [[{Describes how the system satisfies an individual control.}]] {
+    {field} uuid : UUIDType  
+    {field} control_id : TokenType  
+    {field} remarks : MarkupMultilineType  
+}
+"SspStatement" *--> "0..*" "ByComponent" : "by-components"
+"SspStatement" *--> "0..*" "SspImplementedRequirementResponsibleRole" : "responsible-roles"
+"SspStatement" *--> "0..*" "Link" : "links"
+"SspStatement" *--> "0..*" "SspControlOriginationProp" : "props"
+"SspImplementedRequirement" *--> "0..*" "SspStatement" : "statements"
+class "InventoryItem" [[{A single managed inventory item within the system.}]] {
+    {field} uuid : UUIDType  
+    {field} description : MarkupMultilineType  
+    {field} remarks : MarkupMultilineType  
+}
+"SspInventoryItem" *--> "0..*" "SspAllowsAuthenticatedScanProp" : "props"
+"InventoryItem" ^-- "SspInventoryItem"
+class "ResponsibleRole" [[{A reference to a role with responsibility for performing a function relative to the containing object, optionally associated with a set of persons and/or organizations that perform that role.}]] {
+    {field} role_id : TokenType  
+    {field} party_uuids : UUIDType  [0..*]
+    {field} remarks : MarkupMultilineType  
+}
+"SspImplementedRequirement" *--> "0..*" "SspImplementedRequirementResponsibleRole" : "responsible-roles"
+"ResponsibleRole" ^-- "SspImplementedRequirementResponsibleRole"
+class "SetParameter" [[{Identifies the parameter that will be set by the enclosed value.}]] {
+    {field} param_id : TokenType  
+    {field} values : string  [1..*]
+    {field} remarks : MarkupMultilineType  
+}
+"SspImplementedRequirement" *--> "0..*" "ByComponent" : "by-components"
+"SspImplementedRequirement" *--> "0..*" "SetParameter" : "set-parameters"
+"SspImplementedRequirement" *--> "0..*" "Link" : "links"
+"SspImplementedRequirement" *--> "0..*" "SspControlOriginationProp" : "props"
+"SspControlImplementation" *--> "1..*" "SspImplementedRequirement" : "implemented-requirements"
+class "OscalDocument" [[{A root wrapper for an OSCAL document, which may be of any OSCAL document type (e.g. Catalog, Profile, Assessment Plan, SSP).}]] {
+
+}
+"OscalDocument" ^-- "SspDocument"
+"ByComponent" *--> "0..*" "SspControlOriginationProp" : "props"
+"Property" ^-- "SspControlOriginationProp"
+"SspControlImplementation" *--> "0..*" "SetParameter" : "set-parameters"
+"SystemSecurityPlan" *--> "0..1" "SspControlImplementation" : "control-implementation"(i)
+"Property" ^-- "SspAllowsAuthenticatedScanProp"
+class "ControlImplementationSet" [[{Defines how the component or capability supports a set of controls.}]] {
+    {field} uuid : UUIDType  
+    {field} source : URIReferenceType  
+    {field} description : MarkupMultilineType  
+}
+class "ImplementedRequirement" [[{Describes how the containing component or capability implements an individual control.}]] {
+    {field} uuid : UUIDType  
+    {field} control_id : TokenType  
+    {field} description : MarkupMultilineType  
+    {field} remarks : MarkupMultilineType  
+}
+"ByComponent" *--> "0..*" "SetParameter" : "set-parameters"
+"ControlImplementationSet" *--> "0..*" "SetParameter" : "set-parameters"
+"ImplementedRequirement" *--> "0..*" "SetParameter" : "set-parameters"
+class "SelectSubjectById" [[{Identifies a set of assessment subjects to include/exclude by UUID.}]] {
+    {field} subject_uuid : UUIDType  
+    {field} type : string  
+    {field} remarks : MarkupMultilineType  
+}
+"AssessmentSubject" *--> "0..*" "SelectSubjectById" : "exclude-subjects"
+"AssessmentSubject" *--> "0..*" "SelectSubjectById" : "include-subjects"
+"OscalCommon" ^.. "SelectSubjectById"
+class "ControlObjectiveSelection" [[{Identifies the control objectives of the assessment.}]] {
+    {field} description : MarkupMultilineType  
+    {field} remarks : MarkupMultilineType  
+}
+class "SelectObjectiveById" [[{Used to select a control objective for inclusion/exclusion.}]] {
+    {field} objective_id : TokenType  
+    {field} remarks : MarkupMultilineType  
+}
+"ControlObjectiveSelection" *--> "0..*" "SelectObjectiveById" : "exclude-objectives"
+"ControlObjectiveSelection" *--> "0..*" "SelectObjectiveById" : "include-objectives"
+class "SelectControlById" [[{Select a control or controls from an imported control set.}]] {
+    {field} with_child_controls : WithChildControlsEnum  
+    {field} with_ids : TokenType  [0..*]
+}
+class "ControlMatching" [[{Selecting a set of controls by matching their IDs with a wildcard pattern.}]] {
+    {field} remarks : MarkupMultilineType  
+    {field} pattern : string  
+}
+class "GapSummary" [[{A summary of controls that were not mapped.}]] {
+    {field} uuid : UUIDType  
+}
+class "InsertControls" [[{Specifies which controls to use in the containing context (as part of a group or custom merge structure).}]] {
+    {field} order : InsertOrderEnum  
+}
+class "ProfileImport" [[{Designates a referenced source catalog or profile that provides a source of control information for use in creating a new overlay or baseline.}]] {
+    {field} href : URIReferenceType  
+}
+"SelectControlById" *--> "0..*" "ControlMatching" : "matching"
+"GapSummary" *--> "1..*" "SelectControlById" : "unmapped-controls"
+"InsertControls" *--> "0..*" "SelectControlById" : "exclude-controls"
+"InsertControls" *--> "0..*" "SelectControlById" : "include-controls"
+"ProfileImport" *--> "0..*" "SelectControlById" : "exclude-controls"
+"ProfileImport" *--> "0..*" "SelectControlById" : "include-controls"
+"GapSummary" *--> "0..*" "SelectControlById" : "unmapped-controls"(i)
+class "SatisfiedControlImplementation" [[{Describes how this system satisfies a responsibility imposed by a leveraged system.}]] {
+    {field} uuid : UUIDType  
+    {field} responsibility_uuid : UUIDType  
+    {field} description : MarkupMultilineType  
+    {field} remarks : MarkupMultilineType  
+}
+class "SspByComponentResponsibleRole" [[{SSP-scoped responsible role used by by-component contexts.}]] {
+    {field} role_id : TokenType  
+    {field} party_uuids(i) : UUIDType  [0..*]
+    {field} remarks(i) : MarkupMultilineType  
+}
+"SatisfiedControlImplementation" *--> "0..*" "SspByComponentResponsibleRole" : "responsible-roles"
+"SatisfiedControlImplementation" *--> "0..*" "Link" : "links"
+"SatisfiedControlImplementation" *--> "0..*" "Property" : "props"
+"ByComponent" *--> "0..*" "SatisfiedControlImplementation" : "satisfied"
+class "ControlResponsibility" [[{Describes a control implementation responsibility imposed on a leveraging system.}]] {
+    {field} uuid : UUIDType  
+    {field} provided_uuid : UUIDType  
+    {field} description : MarkupMultilineType  
+    {field} remarks : MarkupMultilineType  
+}
+class "InheritedControlImplementation" [[{Describes a control implementation inherited by a leveraging system.}]] {
+    {field} uuid : UUIDType  
+    {field} provided_uuid : UUIDType  
+    {field} description : MarkupMultilineType  
+    {field} remarks : MarkupMultilineType  
+}
+class "ProvidedControlImplementation" [[{Describes a capability which may be inherited by a leveraging system.}]] {
+    {field} uuid : UUIDType  
+    {field} description : MarkupMultilineType  
+    {field} remarks : MarkupMultilineType  
+}
+"ByComponent" *--> "0..*" "SspByComponentResponsibleRole" : "responsible-roles"
+"ControlResponsibility" *--> "0..*" "SspByComponentResponsibleRole" : "responsible-roles"
+"InheritedControlImplementation" *--> "0..*" "SspByComponentResponsibleRole" : "responsible-roles"
+"ProvidedControlImplementation" *--> "0..*" "SspByComponentResponsibleRole" : "responsible-roles"
+"ResponsibleRole" ^-- "SspByComponentResponsibleRole"
+class "Role" [[{Defines a function, which might be assigned to a party in a specific situation.}]] {
+    {field} id : TokenType  
+    {field} title : MarkupLineType  
+    {field} short_name : string  
+    {field} description : MarkupMultilineType  
+    {field} remarks : MarkupMultilineType  
+}
+"Metadata" *--> "0..*" "Role" : "roles"
+"OscalCommon" ^.. "Role"
+class "RiskResponseReference" [[{Identifies an individual risk response that this log entry is for.}]] {
+    {field} response_uuid : UUIDType  
+    {field} remarks : MarkupMultilineType  
+}
+class "RelatedTask" [[{Identifies an individual task for which the containing object is a consequence of.}]] {
+    {field} task_uuid : UUIDType  
+    {field} remarks : MarkupMultilineType  
+}
+class "RiskLogEntry" [[{Identifies an individual risk response that occurred as part of managing an identified risk.}]] {
+    {field} uuid : UUIDType  
+    {field} title : MarkupLineType  
+    {field} description : MarkupMultilineType  
+    {field} start : DateTimeWithTimezoneType  
+    {field} end : DateTimeWithTimezoneType  
+    {field} status_change : string  
+    {field} remarks : MarkupMultilineType  
+}
+"RiskResponseReference" *--> "0..*" "RelatedTask" : "related-tasks"
+"RiskLogEntry" *--> "0..*" "RiskResponseReference" : "related-responses"
+"OscalCommon" ^.. "RiskResponseReference"
+class "LoggedBy" [[{Used to indicate who created a log entry in what role.}]] {
+    {field} party_uuid : UUIDType  
+    {field} role_id : TokenType  
+    {field} remarks : MarkupMultilineType  
+}
+class "RiskLog" [[{A log of all risk-related tasks taken.}]] {
+
+}
+class "AssessmentLog" [[{A log of all assessment-related actions taken.}]] {
+
+}
+"RiskLogEntry" *--> "0..*" "LoggedBy" : "logged-by"
+"RiskLog" *--> "1..*" "RiskLogEntry" : "entries"
+"RiskLog" *--> "0..*" "RiskLogEntry" : "entries"(i)
+"AssessmentLog" *--> "0..*" "RiskLogEntry" : "entries"(i)
+"OscalCommon" ^.. "RiskLogEntry"
+"Risk" *--> "0..1" "RiskLog" : "risk-log"
+class "RelatedObservation" [[{Relates the identified element to a set of referenced observations.}]] {
+    {field} observation_uuid : UUIDType  
+    {field} remarks : MarkupMultilineType  
+}
+class "Response" [[{Describes either recommended or an actual plan for addressing the risk.}]] {
+    {field} uuid : UUIDType  
+    {field} title : MarkupLineType  
+    {field} description : MarkupMultilineType  
+    {field} lifecycle : string  
+    {field} remarks : MarkupMultilineType  
+}
+class "Characterization" [[{A collection of descriptive data about the containing object from a specific origin.}]] {
+
+}
+class "Origin" [[{Identifies the source of the finding, such as a tool, interviewed person, or activity.}]] {
+
+}
+class "Result" [[{Identifies all of the assessment observations and findings, initial and residual risks, deviations, and disposition for a particular execution of the assessment.}]] {
+    {field} uuid : UUIDType  
+    {field} title : MarkupLineType  
+    {field} description : MarkupMultilineType  
+    {field} start : DateTimeWithTimezoneType  
+    {field} end : DateTimeWithTimezoneType  
+    {field} remarks : MarkupMultilineType  
+}
+class "HasPropsAndLinks" [[{Mixin providing the props and links slots that are common to many OSCAL objects.}]] {
+
+}
+"Risk" *--> "0..*" "RelatedObservation" : "related-observations"
+"Risk" *--> "0..*" "Response" : "remediations"
+"Risk" *--> "0..*" "MitigatingFactor" : "mitigating-factors"
+"Risk" *--> "0..*" "Characterization" : "characterizations"
+"Risk" *--> "0..*" "Origin" : "origins"
+"Result" *--> "0..*" "Risk" : "risks"
+"PlanOfActionAndMilestones" *--> "0..*" "Risk" : "risks"
+"HasPropsAndLinks" ^.. "Risk"
+class "Revision" [[{An entry in a sequential list of revisions to the containing document.}]] {
+    {field} title : MarkupLineType  
+    {field} published : DateTimeWithTimezoneType  
+    {field} last_modified : DateTimeWithTimezoneType  
+    {field} version : string  
+    {field} oscal_version : string  
+    {field} remarks : MarkupMultilineType  
+}
+class "RevisionProperty" [[{Revision-scoped OSCAL property.}]] {
+    {field} name : RevisionPropNameEnum  
+    {field} uuid(i) : UUIDType  
+    {field} ns(i) : URIType  
+    {field} value(i) : string  
+    {field} _class(i) : TokenType  
+    {field} remarks(i) : MarkupMultilineType  
+    {field} group(i) : TokenType  
+}
+"Revision" *--> "0..*" "Link" : "links"
+"Revision" *--> "0..*" "RevisionProperty" : "props"
+"Metadata" *--> "0..*" "Revision" : "revisions"
+"OscalCommon" ^.. "Revision"
+"Property" ^-- "RevisionProperty"
+class "ControlSelection" [[{Identifies the controls being assessed.}]] {
+    {field} description : MarkupMultilineType  
+    {field} remarks : MarkupMultilineType  
+}
+"ReviewedControls" *--> "0..*" "ControlObjectiveSelection" : "control-objective-selections"
+"ReviewedControls" *--> "1..*" "ControlSelection" : "control-selections"
+"AssessmentPlan" *--> "1" "ReviewedControls" : "reviewed-controls"
+"Result" *--> "1" "ReviewedControls" : "reviewed-controls"
+"Activity" *--> "0..1" "ReviewedControls" : "related-controls"
+"AssessmentPlan" *--> "0..1" "ReviewedControls" : "reviewed-controls"(i)
+"Result" *--> "0..1" "ReviewedControls" : "reviewed-controls"(i)
+"OscalCommon" ^.. "ReviewedControls"
+"ResultLocalDefinitions" *--> "0..1" "AssessmentAssets" : "assessment-assets"
+"ResultLocalDefinitions" *--> "0..*" "InventoryItem" : "inventory-items"
+"Result" *--> "0..1" "ResultLocalDefinitions" : "local-definitions"
+class "Finding" [[{Describes an individual finding.}]] {
+    {field} uuid : UUIDType  
+    {field} title : MarkupLineType  
+    {field} description : MarkupMultilineType  
+    {field} implementation_statement_uuid : UUIDType  
+    {field} remarks : MarkupMultilineType  
+}
+class "Attestation" [[{A set of textual attestation statements, typically written by the assessor.}]] {
+
+}
+class "AssessmentResults" [[{Security assessment results, such as those provided by a FedRAMP assessor in a security assessment report.}]] {
+    {field} uuid : UUIDType  
+}
+"Result" *--> "0..*" "Finding" : "findings"
+"Result" *--> "0..*" "Observation" : "observations"
+"Result" *--> "0..1" "AssessmentLog" : "assessment-log"
+"Result" *--> "0..*" "Attestation" : "attestations"
+"AssessmentResults" *--> "1..*" "Result" : "results"
+"AssessmentResults" *--> "0..*" "Result" : "results"(i)
+"OscalCommon" ^.. "Result"
+"HasResponsibleRoles" *--> "0..*" "ResponsibleRole" : "responsible-roles"
+"SspImplementedRequirement" *--> "0..*" "ResponsibleRole" : "responsible-roles"(i)
+"SspStatement" *--> "0..*" "ResponsibleRole" : "responsible-roles"(i)
+"ByComponent" *--> "0..*" "ResponsibleRole" : "responsible-roles"(i)
+"ProvidedControlImplementation" *--> "0..*" "ResponsibleRole" : "responsible-roles"(i)
+"ControlResponsibility" *--> "0..*" "ResponsibleRole" : "responsible-roles"(i)
+"InheritedControlImplementation" *--> "0..*" "ResponsibleRole" : "responsible-roles"(i)
+"SatisfiedControlImplementation" *--> "0..*" "ResponsibleRole" : "responsible-roles"(i)
+"OscalCommon" ^.. "ResponsibleRole"
+"ResponsibleRole" ^-- "ImplementationResponsibleRole"
+class "ImplementationResponsibleParty" [[{Implementation-common scoped responsible party.}]] {
+    {field} role_id : TokenType  
+    {field} party_uuids(i) : UUIDType  [1..*]
+    {field} remarks(i) : MarkupMultilineType  
+}
+"HasResponsibleParties" *--> "0..*" "ResponsibleParty" : "responsible-parties"
+"SystemCharacteristics" *--> "0..*" "ResponsibleParty" : "responsible-parties"(i)
+"OscalCommon" ^.. "ResponsibleParty"
+"ResponsibleParty" ^-- "ImplementationResponsibleParty"
+"Response" *--> "0..*" "RequiredAsset" : "required-assets"
+"Response" *--> "0..*" "Origin" : "origins"
+"OscalCommon" ^.. "Response"
+class "ResourceLink" [[{A URL-based pointer to an external resource with an optional hash for verification and change detection.}]] {
+    {field} href : URIReferenceType  
+    {field} media_type : string  
+}
+class "Hash" [[{A representation of a cryptographic digest generated over a resource using a specified hash algorithm.}]] {
+    {field} value : string  
+    {field} algorithm : string  
+}
+class "Resource" [[{A resource associated with content in the containing document instance. A resource may be directly included in the document using base64 encoding or may point to one or more equivalent internet resources.}]] {
+    {field} uuid : UUIDType  
+    {field} title : MarkupLineType  
+    {field} description : MarkupMultilineType  
+    {field} remarks : MarkupMultilineType  
+}
+"ResourceLink" *--> "0..*" "Hash" : "hashes"
+"Resource" *--> "0..*" "ResourceLink" : "rlinks"
+class "Base64Resource" [[{A resource encoded using the Base64 alphabet defined by RFC 2045.}]] {
+    {field} media_type : string  
+    {field} value : Base64Type  
+    {field} filename : TokenType  
+}
+class "Citation" [[{An optional citation consisting of end note text using structured markup.}]] {
+    {field} text : MarkupLineType  
+}
+class "DocumentId" [[{A document identifier qualified by an identifier scheme.}]] {
+    {field} scheme : URIType  
+    {field} identifier : string  
+}
+class "ResourceProperty" [[{Back-matter resource-scoped OSCAL property.}]] {
+    {field} name : ResourcePropNameEnum  
+    {field} value : string  
+    {field} uuid(i) : UUIDType  
+    {field} ns(i) : URIType  
+    {field} _class(i) : TokenType  
+    {field} remarks(i) : MarkupMultilineType  
+    {field} group(i) : TokenType  
+}
+"Resource" *--> "0..1" "Base64Resource" : "base64"
+"Resource" *--> "0..1" "Citation" : "citation"
+"Resource" *--> "0..*" "DocumentId" : "document-ids"
+"Resource" *--> "0..*" "ResourceProperty" : "props"
+"BackMatter" *--> "0..*" "Resource" : "resources"
+"Property" ^-- "ResourceProperty"
+"OscalCommon" ^.. "RequiredAsset"
+class "Alteration" [[{Specifies changes to be made to an included control when a profile is resolved.}]] {
+    {field} control_id : TokenType  
+}
+class "Removal" [[{Specifies objects to be removed from a control based on aspects of the object that must all match.}]] {
+    {field} by_name : TokenType  
+    {field} by_class : TokenType  
+    {field} by_id : TokenType  
+    {field} by_item_name : ByItemNameEnum  
+    {field} by_ns : URIType  
+    {field} remarks : MarkupMultilineType  
+}
+"Alteration" *--> "0..*" "Removal" : "removes"
+class "RelevantEvidence" [[{Links this observation to relevant evidence.}]] {
+    {field} href : URIReferenceType  
+    {field} description : MarkupMultilineType  
+    {field} remarks : MarkupMultilineType  
+}
+"Observation" *--> "0..*" "RelevantEvidence" : "relevant-evidence"
+"OscalCommon" ^.. "RelevantEvidence"
+class "IdentifiedSubject" [[{Used to detail assessment subjects that were identified by this task.}]] {
+    {field} subject_placeholder_uuid : UUIDType  
+}
+class "AssessmentLogEntry" [[{Identifies the result of an action and/or task that occurred as part of executing an assessment plan or assessment event.}]] {
+    {field} uuid : UUIDType  
+    {field} title : MarkupLineType  
+    {field} description : MarkupMultilineType  
+    {field} start : DateTimeWithTimezoneType  
+    {field} end : DateTimeWithTimezoneType  
+    {field} remarks : MarkupMultilineType  
+}
+"RelatedTask" *--> "0..1" "IdentifiedSubject" : "identified-subject"
+"RelatedTask" *--> "0..*" "AssessmentSubject" : "subjects"
+"Origin" *--> "0..*" "RelatedTask" : "related-tasks"
+"AssessmentLogEntry" *--> "0..*" "RelatedTask" : "related-tasks"
+"OscalCommon" ^.. "RelatedTask"
+"HasResponsibleParties" ^.. "RelatedTask"
+class "PoamItem" [[{Describes an individual POA&M item.}]] {
+    {field} uuid : UUIDType  
+    {field} title : MarkupLineType  
+    {field} description : MarkupMultilineType  
+    {field} remarks : MarkupMultilineType  
+}
+"Finding" *--> "0..*" "RelatedObservation" : "related-observations"
+"PoamItem" *--> "0..*" "RelatedObservation" : "related-observations"
+class "RelatedFinding" [[{Relates a POA&M item to a referenced finding.}]] {
+    {field} finding_uuid : UUIDType  
+    {field} remarks : MarkupMultilineType  
+}
+"PoamItem" *--> "0..*" "RelatedFinding" : "related-findings"
+class "Map" [[{A relationship-based mapping entry between source and target sets.}]] {
+    {field} uuid : UUIDType  
+    {field} ns : URIType  
+    {field} matching_rationale : MatchingRationaleEnum  
+    {field} relationship : string  
+    {field} remarks : MarkupMultilineType  
+}
+class "QualifierItem" [[{A qualifier describing requirements or incompatibilities.}]] {
+    {field} subject : QualifierSubjectEnum  
+    {field} predicate : QualifierPredicateEnum  
+    {field} category : QualifierCategoryEnum  
+    {field} description : MarkupMultilineType  
+    {field} remarks : MarkupMultilineType  
+}
+"Map" *--> "0..*" "QualifierItem" : "qualifiers"
+class "Export" [[{Defines a set of control implementations that are provided as reference implementations for use by organizations implementing the leveraged system.}]] {
+    {field} description : MarkupMultilineType  
+}
+"ProvidedControlImplementation" *--> "0..*" "Link" : "links"
+"ProvidedControlImplementation" *--> "0..*" "Property" : "props"
+"Export" *--> "0..*" "ProvidedControlImplementation" : "provided"
+class "PortRange" [[{Where applicable, the transport layer protocol port range.}]] {
+    {field} start : NonNegativeIntegerType  
+    {field} end : NonNegativeIntegerType  
+    {field} transport : TransportEnum  
+    {field} remarks : MarkupMultilineType  
+}
+class "DefinedComponent" [[{A defined component that can be part of an implemented system.}]] {
+    {field} uuid : UUIDType  
+    {field} type : string  
+    {field} title : MarkupLineType  
+    {field} description : MarkupMultilineType  
+    {field} purpose : MarkupLineType  
+    {field} remarks : MarkupMultilineType  
+}
+"Protocol" *--> "0..*" "PortRange" : "port-ranges"
+"DefinedComponent" *--> "0..*" "Protocol" : "protocols"
+class "Addition" [[{Specifies content to be added into controls in resolution.}]] {
+    {field} position : AdditionPositionEnum  
+    {field} by_id : TokenType  
+    {field} title : MarkupLineType  
+}
+class "ImpactLevel" [[{The expected level of impact resulting from the described information's confidentiality, integrity, or availability affect.}]] {
+    {field} base : string  
+    {field} selected : string  
+    {field} adjustment_justification : string  
+}
+class "Diagram" [[{A graphic that provides a visual representation the system, or some aspect of it.}]] {
+    {field} uuid : UUIDType  
+    {field} description : MarkupMultilineType  
+    {field} caption : string  
+    {field} remarks : MarkupMultilineType  
+}
+class "ProfileAlterationProperty" [[{OSCAL property entries allowed in profile modify additions.}]] {
+    {field} name : AlterationPropNameEnum  
+    {field} uuid(i) : UUIDType  
+    {field} ns(i) : URIType  
+    {field} value(i) : string  
+    {field} _class(i) : TokenType  
+    {field} remarks(i) : MarkupMultilineType  
+    {field} group(i) : TokenType  
+}
+class "PartyProperty" [[{Party-scoped OSCAL property.}]] {
+    {field} name : PartyPropNameEnum  
+    {field} uuid(i) : UUIDType  
+    {field} ns(i) : URIType  
+    {field} value(i) : string  
+    {field} _class(i) : TokenType  
+    {field} remarks(i) : MarkupMultilineType  
+    {field} group(i) : TokenType  
+}
+class "PartProperty" [[{Control-common part-scoped OSCAL property.}]] {
+    {field} name : PartPropNameEnum  
+    {field} uuid(i) : UUIDType  
+    {field} ns(i) : URIType  
+    {field} value(i) : string  
+    {field} _class(i) : TokenType  
+    {field} remarks(i) : MarkupMultilineType  
+    {field} group(i) : TokenType  
+}
+class "ParameterProperty" [[{Control-common parameter-scoped OSCAL property.}]] {
+    {field} name : TokenType  
+    {field} uuid(i) : UUIDType  
+    {field} ns(i) : URIType  
+    {field} value(i) : string  
+    {field} _class(i) : TokenType  
+    {field} remarks(i) : MarkupMultilineType  
+    {field} group(i) : TokenType  
+}
+class "MetadataProperty" [[{Metadata-scoped OSCAL property.}]] {
+    {field} name : MetadataPropNameEnum  
+    {field} uuid(i) : UUIDType  
+    {field} ns(i) : URIType  
+    {field} value(i) : string  
+    {field} _class(i) : TokenType  
+    {field} remarks(i) : MarkupMultilineType  
+    {field} group(i) : TokenType  
+}
+class "LocationProperty" [[{Location-scoped OSCAL property.}]] {
+    {field} name : LocationPropNameEnum  
+    {field} value : string  
+    {field} _class : TokenType  
+    {field} uuid(i) : UUIDType  
+    {field} ns(i) : URIType  
+    {field} remarks(i) : MarkupMultilineType  
+    {field} group(i) : TokenType  
+}
+"HasPropsAndLinks" *--> "0..*" "Property" : "props"
+"Resource" *--> "0..*" "Property" : "props"(i)
+"Addition" *--> "0..*" "Property" : "props"(i)
+"SystemInformation" *--> "0..*" "Property" : "props"(i)
+"InformationType" *--> "0..*" "Property" : "props"
+"ImpactLevel" *--> "0..*" "Property" : "props"
+"AuthorizationBoundary" *--> "0..*" "Property" : "props"
+"Diagram" *--> "0..*" "Property" : "props"
+"NetworkArchitecture" *--> "0..*" "Property" : "props"
+"DataFlow" *--> "0..*" "Property" : "props"
+"LeveragedAuthorization" *--> "0..*" "Property" : "props"
+"SspImplementedRequirement" *--> "0..*" "Property" : "props"(i)
+"SspStatement" *--> "0..*" "Property" : "props"(i)
+"ByComponent" *--> "0..*" "Property" : "props"(i)
+"Export" *--> "0..*" "Property" : "props"
+"ControlResponsibility" *--> "0..*" "Property" : "props"
+"InheritedControlImplementation" *--> "0..*" "Property" : "props"
+"Property" ^-- "ProfileAlterationProperty"
+"Property" ^-- "PartyProperty"
+"Property" ^-- "PartProperty"
+"Property" ^-- "ParameterProperty"
+"Property" ^-- "MetadataProperty"
+"Property" ^-- "LocationProperty"
+"Property" ^-- "ImplementationCommonProperty"
+class "ProfileModify" [[{Set parameters or amend controls in resolution.}]] {
+
+}
+class "ParameterSetting" [[{A parameter setting to be propagated to points of insertion in a resolved profile.}]] {
+    {field} param_id : TokenType  
+    {field} _class : TokenType  
+    {field} depends_on : TokenType  
+    {field} label : MarkupLineType  
+    {field} usage : MarkupMultilineType  
+    {field} values : string  [0..*]
+}
+class "Profile" [[{An OSCAL Profile that designates a set of controls from one or more catalogs or profiles, optionally restructures and modifies them, to describe a basis for a security standard or body of practice.}]] {
+    {field} uuid : UUIDType  
+}
+"ProfileModify" *--> "0..*" "Alteration" : "alters"
+"ProfileModify" *--> "0..*" "ParameterSetting" : "set-parameters"
+"Profile" *--> "0..1" "ProfileModify" : "modify"
+class "ProfileMerge" [[{Provides structuring directives that instruct how controls are organized after profile resolution.}]] {
+    {field} as_is : boolean  
+}
+class "MergeCustom" [[{Provides an alternate grouping structure that selected controls will be placed in after profile resolution.}]] {
+
+}
+class "MergeFlat" [[{Directs that controls appear without any grouping structure after profile resolution.}]] {
+
+}
+class "CombinationRule" [[{Defines how to resolve duplicate instances of the same control (e.g., controls with the same ID) encountered in a profile merge.}]] {
+    {field} method : CombinationMethodEnum  
+}
+"ProfileMerge" *--> "0..1" "MergeCustom" : "custom"
+"ProfileMerge" *--> "0..1" "MergeFlat" : "flat"
+"ProfileMerge" *--> "0..1" "CombinationRule" : "combine"
+"Profile" *--> "0..1" "ProfileMerge" : "merge"
+class "IncludeAll" [[{Include all controls from the imported catalog or profile resources.}]] {
+
+}
+"ProfileImport" *--> "0..1" "IncludeAll" : "include-all"
+"Profile" *--> "1..*" "ProfileImport" : "imports"
+"Profile" *--> "0..*" "ProfileImport" : "imports"(i)
+class "ProfileGroup" [[{A group of (selected) controls or of groups of controls within a profile custom merge structure.}]] {
+    {field} id : TokenType  
+    {field} _class : TokenType  
+    {field} title : MarkupLineType  
+    {field} remarks : MarkupMultilineType  
+}
+class "Part" [[{An annotated, markup-based textual element of a control's or catalog group's definition, or a child of another part.}]] {
+    {field} id : TokenType  
+    {field} name : TokenType  
+    {field} ns : URIType  
+    {field} _class : TokenType  
+    {field} title : MarkupLineType  
+    {field} prose : MarkupMultilineType  
+}
+class "Parameter" [[{Parameters provide a mechanism for the dynamic assignment of value(s) in a control.}]] {
+    {field} id : TokenType  
+    {field} _class : TokenType  
+    {field} depends_on : TokenType  
+    {field} label : MarkupLineType  
+    {field} usage : MarkupMultilineType  
+    {field} values : string  [0..*]
+    {field} remarks : MarkupMultilineType  
+}
+"ProfileGroup" *--> "0..*" "InsertControls" : "insert-controls"
+"ProfileGroup" *--> "0..*" "ProfileGroup" : "groups"
+"ProfileGroup" *--> "0..*" "Part" : "parts"
+"ProfileGroup" *--> "0..*" "Parameter" : "params"
+"MergeCustom" *--> "0..*" "ProfileGroup" : "groups"
+"OscalCommon" ^.. "ProfileGroup"
+"Addition" *--> "0..*" "ProfileAlterationProperty" : "props"
+class "ProfileDocument" [[{Root wrapper for an OSCAL Profile document.}]] {
+
+}
+"Profile" *--> "0..1" "BackMatter" : "back-matter"
+"Profile" *--> "1" "Metadata" : "metadata"
+"ProfileDocument" *--> "1" "Profile" : "profile"
+"ProfileDocument" *--> "0..1" "Profile" : "profile"(i)
+"OscalDocument" ^-- "ProfileDocument"
+"PoamLocalDefinitions" *--> "0..1" "AssessmentAssets" : "assessment-assets"
+"PoamLocalDefinitions" *--> "0..*" "InventoryItem" : "inventory-items"
+"PlanOfActionAndMilestones" *--> "0..1" "PoamLocalDefinitions" : "local-definitions"
+class "AssociatedRisk" [[{Relates the finding to a set of referenced risks.}]] {
+    {field} risk_uuid : UUIDType  
+    {field} remarks : MarkupMultilineType  
+}
+"PoamItem" *--> "0..*" "AssociatedRisk" : "related-risks"
+"PoamItem" *--> "0..*" "Origin" : "origins"
+"PlanOfActionAndMilestones" *--> "1..*" "PoamItem" : "poam-items"
+"PlanOfActionAndMilestones" *--> "0..*" "PoamItem" : "poam-items"(i)
+"OscalCommon" ^.. "PoamItem"
+class "ImportSSP" [[{Used by the assessment plan and POA&M to import information about the system.}]] {
+    {field} href : URIReferenceType  
+    {field} remarks : MarkupMultilineType  
+}
+class "PoamDocument" [[{Root wrapper for an OSCAL Plan of Action and Milestones document.}]] {
+
+}
+"PlanOfActionAndMilestones" *--> "0..1" "BackMatter" : "back-matter"
+"PlanOfActionAndMilestones" *--> "0..*" "Finding" : "findings"
+"PlanOfActionAndMilestones" *--> "0..*" "Observation" : "observations"
+"PlanOfActionAndMilestones" *--> "0..1" "ImportSSP" : "import-ssp"
+"PlanOfActionAndMilestones" *--> "1" "Metadata" : "metadata"
+"PoamDocument" *--> "1" "PlanOfActionAndMilestones" : "plan-of-action-and-milestones"
+"PoamDocument" *--> "0..1" "PlanOfActionAndMilestones" : "plan-of-action-and-milestones"(i)
+"OscalDocument" ^-- "PoamDocument"
+"Party" *--> "0..*" "PartyProperty" : "props"
+class "PartyExternalId" [[{An identifier for a person or organization using a designated scheme, e.g. an Open Researcher and Contributor ID (ORCID).}]] {
+    {field} scheme : URIType  
+    {field} id : string  
+}
+class "MetadataPartyExternalId" [[{Metadata-scoped external identifier.}]] {
+    {field} scheme(i) : URIType  
+    {field} id(i) : string  
+}
+"Party" *--> "0..*" "PartyExternalId" : "external-ids"(i)
+"PartyExternalId" ^-- "MetadataPartyExternalId"
+class "Address" [[{A postal address for the location.}]] {
+    {field} type : string  
+    {field} addr_lines : string  [0..*]
+    {field} city : string  
+    {field} state : string  
+    {field} postal_code : string  
+    {field} country : string  
+}
+"Party" *--> "0..*" "Address" : "addresses"
+"Party" *--> "0..*" "MetadataPartyExternalId" : "external-ids"
+"Metadata" *--> "0..*" "Party" : "parties"
+"OscalCommon" ^.. "Party"
+"Part" *--> "0..*" "PartProperty" : "props"
+"Part" *--> "0..*" "Part" : "parts"
+"HasPropsAndLinks" ^.. "Part"
+class "ParameterSelection" [[{Presenting a choice among alternatives.}]] {
+    {field} how_many : ParameterCardinalityEnum  
+    {field} choice : MarkupLineType  [0..*]
+}
+class "ParameterGuideline" [[{A prose statement that provides a recommendation for the use of a parameter.}]] {
+    {field} prose : MarkupMultilineType  
+}
+class "ParameterConstraint" [[{A formal or informal expression of a constraint or test.}]] {
+    {field} description : MarkupMultilineType  
+}
+"ParameterSetting" *--> "0..1" "ParameterSelection" : "select"
+"ParameterSetting" *--> "0..*" "ParameterGuideline" : "guidelines"
+"ParameterSetting" *--> "0..*" "ParameterConstraint" : "constraints"
+"HasPropsAndLinks" ^.. "ParameterSetting"
+"Parameter" *--> "0..1" "ParameterSelection" : "select"
+"Parameter" *--> "0..*" "ParameterProperty" : "props"
+"Parameter" *--> "0..*" "ParameterGuideline" : "guidelines"
+class "ConstraintTest" [[{A test expression which is expected to be evaluated by a tool.}]] {
+    {field} remarks : MarkupMultilineType  
+    {field} expression : string  
+}
+"ParameterConstraint" *--> "0..*" "ConstraintTest" : "tests"
+"Parameter" *--> "0..*" "ParameterConstraint" : "constraints"
+class "Catalog" [[{A structured, organized collection of control information.}]] {
+    {field} uuid : UUIDType  
+}
+class "Group" [[{A group of controls, or of groups of controls.}]] {
+    {field} id : TokenType  
+    {field} _class : TokenType  
+    {field} title : MarkupLineType  
+}
+class "Control" [[{A structured object representing a requirement or guideline, which when implemented will reduce an aspect of risk related to an information system and its information.}]] {
+    {field} id : TokenType  
+    {field} _class : TokenType  
+    {field} title : MarkupLineType  
+}
+"Catalog" *--> "0..*" "Parameter" : "params"
+"Group" *--> "0..*" "Parameter" : "params"
+"Control" *--> "0..*" "Parameter" : "params"
+"Addition" *--> "0..*" "Parameter" : "params"
+"OscalCommon" ^.. "Parameter"
+class "MappingCollectionDocument" [[{Root wrapper for an OSCAL Mapping Collection document.}]] {
+
+}
+class "ComponentDefinitionDocument" [[{Root wrapper for an OSCAL Component Definition document.}]] {
+
+}
+class "CatalogDocument" [[{Root wrapper for an OSCAL Catalog document.}]] {
+
+}
+class "AssessmentResultsDocument" [[{Root wrapper for an OSCAL Assessment Results document.}]] {
+
+}
+class "AssessmentPlanDocument" [[{Root wrapper for an OSCAL Assessment Plan document.}]] {
+
+}
+"OscalDocument" ^-- "MappingCollectionDocument"
+"OscalDocument" ^-- "ComponentDefinitionDocument"
+"OscalDocument" ^-- "CatalogDocument"
+"OscalDocument" ^-- "AssessmentResultsDocument"
+"OscalDocument" ^-- "AssessmentPlanDocument"
+class "MappingResourceReference" [[{A reference to the source or target resource for a mapping.}]] {
+    {field} ns : URIType  
+    {field} type : string  
+    {field} href : URIReferenceType  
+    {field} remarks : MarkupMultilineType  
+}
+class "MappingProvenance" [[{Mapping-level provenance details and mapping defaults.}]] {
+    {field} method : MappingMethodEnum  
+    {field} matching_rationale : MatchingRationaleEnum  
+    {field} status : MappingStatusEnum  
+    {field} mapping_description : MarkupMultilineType  
+    {field} remarks : MarkupMultilineType  
+}
+class "MappingItem" [[{A source or target item participating in a mapping entry.}]] {
+    {field} type : MappingSubjectTypeEnum  
+    {field} id_ref : string  
+    {field} remarks : MarkupMultilineType  
+}
+class "Mapping" [[{A mapping between two mapped resources.}]] {
+    {field} uuid : UUIDType  
+    {field} method : MappingMethodEnum  
+    {field} matching_rationale : MatchingRationaleEnum  
+    {field} status : MappingStatusEnum  
+    {field} mapping_description : MarkupMultilineType  
+    {field} remarks : MarkupMultilineType  
+}
+class "LocalObjective" [[{A local definition of a control objective for this assessment. Uses catalog syntax for control objective and assessment actions.}]] {
+    {field} control_id : TokenType  
+    {field} description : MarkupMultilineType  
+    {field} remarks : MarkupMultilineType  
+}
+class "ImplementedComponent" [[{The set of components that are implemented in a given system inventory item.}]] {
+    {field} component_uuid : UUIDType  
+    {field} remarks : MarkupMultilineType  
+}
+class "FindingTarget" [[{Captures an assessor's conclusions regarding the degree to which an objective is satisfied.}]] {
+    {field} type : FindingTargetTypeEnum  
+    {field} target_id : TokenType  
+    {field} title : MarkupLineType  
+    {field} description : MarkupMultilineType  
+    {field} remarks : MarkupMultilineType  
+}
+class "Facet" [[{An individual characteristic that is part of a larger set produced by the same actor.}]] {
+    {field} name : TokenType  
+    {field} value : string  
+    {field} system : URIType  
+    {field} remarks : MarkupMultilineType  
+}
+class "Capability" [[{A grouping of other components and/or capabilities.}]] {
+    {field} uuid : UUIDType  
+    {field} name : string  
+    {field} description : MarkupMultilineType  
+    {field} remarks : MarkupMultilineType  
+}
+class "AssessmentSubjectPlaceholder" [[{Used when the assessment subjects will be determined as part of one or more other assessment activities.}]] {
+    {field} uuid : UUIDType  
+    {field} description : MarkupMultilineType  
+    {field} remarks : MarkupMultilineType  
+}
+class "AssessmentMethod" [[{A local definition of a control objective.}]] {
+    {field} uuid : UUIDType  
+    {field} description : MarkupMultilineType  
+    {field} remarks : MarkupMultilineType  
+}
+class "Action" [[{An action applied by a role within a given party to the content.}]] {
+    {field} uuid : UUIDType  
+    {field} type : ActionTypeEnum  
+    {field} date : DateTimeWithTimezoneType  
+    {field} system : URIType  
+    {field} remarks : MarkupMultilineType  
+}
+"HasPropsAndLinks" ^.. "OscalCommon"
+"OscalCommon" ^.. "Observation"
+"OscalCommon" ^.. "Metadata"
+"OscalCommon" ^.. "MappingResourceReference"
+"OscalCommon" ^.. "MappingProvenance"
+"OscalCommon" ^.. "MappingItem"
+"OscalCommon" ^.. "Mapping"
+"OscalCommon" ^.. "Map"
+"OscalCommon" ^.. "Location"
+"OscalCommon" ^.. "LocalObjective"
+"OscalCommon" ^.. "InventoryItem"
+"OscalCommon" ^.. "ImplementedComponent"
+"OscalCommon" ^.. "FindingTarget"
+"OscalCommon" ^.. "Finding"
+"OscalCommon" ^.. "Facet"
+"OscalCommon" ^.. "DefinedComponent"
+"OscalCommon" ^.. "ControlSelection"
+"OscalCommon" ^.. "ControlObjectiveSelection"
+"OscalCommon" ^.. "Capability"
+"OscalCommon" ^.. "AssociatedActivity"
+"OscalCommon" ^.. "AssessmentSubjectPlaceholder"
+"OscalCommon" ^.. "AssessmentSubject"
+"OscalCommon" ^.. "AssessmentPlatform"
+"OscalCommon" ^.. "AssessmentMethod"
+"OscalCommon" ^.. "AssessmentLogEntry"
+"OscalCommon" ^.. "Activity"
+"OscalCommon" ^.. "Action"
+class "OriginActor" [[{The actor that produces an observation, a finding, or a risk.}]] {
+    {field} type : OriginActorTypeEnum  
+    {field} actor_uuid : UUIDType  
+    {field} role_id : TokenType  
+}
+"Origin" *--> "1..*" "OriginActor" : "actors"
+"Origin" *--> "0..*" "OriginActor" : "actors"(i)
+"HasPropsAndLinks" ^.. "OriginActor"
+"Characterization" *--> "1" "Origin" : "origin"
+"Characterization" *--> "0..1" "Origin" : "origin"(i)
+"Observation" *--> "0..*" "Origin" : "origins"
+"Finding" *--> "0..*" "Origin" : "origins"
+class "OnDateCondition" [[{The task is intended to occur on the specified date.}]] {
+    {field} date : DateTimeWithTimezoneType  
+    {field} remarks : MarkupMultilineType  
+}
+"EventTiming" *--> "0..1" "OnDateCondition" : "on-date"
+class "ObjectiveStatus" [[{A determination of if the objective is satisfied or not within a given system.}]] {
+    {field} state : ObjectiveStatusStateEnum  
+    {field} reason : string  
+    {field} remarks : MarkupMultilineType  
+}
+"FindingTarget" *--> "1" "ObjectiveStatus" : "status"
+"NetworkArchitecture" *--> "0..*" "Diagram" : "diagrams"
+"NetworkArchitecture" *--> "0..*" "Link" : "links"
+"HasPropsAndLinks" ^.. "MitigatingFactor"
+"Metadata" *--> "0..*" "MetadataProperty" : "props"
+class "MappingCollection" [[{A collection of control mappings between source and target resources.}]] {
+    {field} uuid : UUIDType  
+}
+"Metadata" *--> "0..*" "Link" : "links"
+"Metadata" *--> "0..*" "Action" : "actions"
+"Metadata" *--> "0..*" "Location" : "locations"
+"Metadata" *--> "0..*" "DocumentId" : "document-ids"
+"AssessmentPlan" *--> "1" "Metadata" : "metadata"
+"AssessmentResults" *--> "1" "Metadata" : "metadata"
+"Catalog" *--> "1" "Metadata" : "metadata"
+"ComponentDefinition" *--> "1" "Metadata" : "metadata"
+"MappingCollection" *--> "1" "Metadata" : "metadata"
+"Catalog" *--> "0..1" "Metadata" : "metadata"(i)
+"Profile" *--> "0..1" "Metadata" : "metadata"(i)
+"SystemSecurityPlan" *--> "0..1" "Metadata" : "metadata"(i)
+"AssessmentPlan" *--> "0..1" "Metadata" : "metadata"(i)
+"AssessmentResults" *--> "0..1" "Metadata" : "metadata"(i)
+"ComponentDefinition" *--> "0..1" "Metadata" : "metadata"(i)
+"MappingCollection" *--> "0..1" "Metadata" : "metadata"(i)
+"PlanOfActionAndMilestones" *--> "0..1" "Metadata" : "metadata"(i)
+"HasResponsibleParties" ^.. "Metadata"
+"MergeCustom" *--> "0..*" "InsertControls" : "insert-controls"
+"Mapping" *--> "1" "MappingResourceReference" : "source-resource"
+"Mapping" *--> "1" "MappingResourceReference" : "target-resource"
+"Mapping" *--> "0..1" "MappingResourceReference" : "source-resource"(i)
+"Mapping" *--> "0..1" "MappingResourceReference" : "target-resource"(i)
+class "Coverage" [[{A percentage representing target coverage by source mappings.}]] {
+    {field} generation_method : string  
+    {field} target_coverage : float  
+}
+class "ConfidenceScore" [[{Confidence represented as a category and/or percentage value.}]] {
+    {field} category : string  
+    {field} percentage : float  
+}
+"MappingProvenance" *--> "0..1" "Coverage" : "coverage"
+"MappingProvenance" *--> "0..1" "ConfidenceScore" : "confidence-score"
+"MappingCollection" *--> "1" "MappingProvenance" : "provenance"
+"MappingCollection" *--> "0..1" "MappingProvenance" : "provenance"(i)
+"HasResponsibleParties" ^.. "MappingProvenance"
+"Map" *--> "1..*" "MappingItem" : "sources"
+"Map" *--> "1..*" "MappingItem" : "targets"
+"Map" *--> "0..*" "MappingItem" : "targets"(i)
+"MappingCollectionDocument" *--> "1" "MappingCollection" : "mapping-collection"
+"MappingCollection" *--> "0..1" "BackMatter" : "back-matter"
+"MappingCollection" *--> "1..*" "Mapping" : "mappings"
+"MappingCollectionDocument" *--> "0..1" "MappingCollection" : "mapping-collection"(i)
+"Mapping" *--> "0..1" "Coverage" : "coverage"
+"Mapping" *--> "0..1" "ConfidenceScore" : "confidence-score"
+"Mapping" *--> "0..1" "GapSummary" : "target-gap-summary"
+"Mapping" *--> "0..1" "GapSummary" : "source-gap-summary"
+"Mapping" *--> "1..*" "Map" : "maps"
+"MappingCollection" *--> "0..*" "Mapping" : "mappings"(i)
+"Map" *--> "0..1" "Coverage" : "coverage"
+"Map" *--> "0..1" "ConfidenceScore" : "confidence-score"
+"Mapping" *--> "0..*" "Map" : "maps"(i)
+"AssessmentLogEntry" *--> "0..*" "LoggedBy" : "logged-by"
+"Location" *--> "0..*" "LocationProperty" : "props"
+"Location" *--> "0..1" "Address" : "address"
+class "ControlPart" [[{An annotated, markup-based textual element of a control's or catalog group's definition, or a child of another part.}]] {
+    {field} id : TokenType  
+    {field} name : TokenType  
+    {field} ns : URIType  
+    {field} _class : TokenType  
+    {field} title : MarkupLineType  
+    {field} prose : MarkupMultilineType  
+}
+class "AssessmentResultsLocalDefinitions" [[{Used to define data objects that are referenced by the assessment results but do not appear in the imported assessment plan.}]] {
+    {field} remarks : MarkupMultilineType  
+}
+"LocalObjective" *--> "1..*" "ControlPart" : "parts"
+"LocalDefinitions" *--> "0..*" "LocalObjective" : "objectives-and-methods"
+"AssessmentResultsLocalDefinitions" *--> "0..*" "LocalObjective" : "objectives-and-methods"
+"LocalDefinitions" *--> "0..*" "Activity" : "activities"
+"LocalDefinitions" *--> "0..*" "InventoryItem" : "inventory-items"
+"AssessmentPlan" *--> "0..1" "LocalDefinitions" : "local-definitions"
+"AssessmentResults" *--> "0..1" "LocalDefinitions" : "local-definitions"(i)
+"Result" *--> "0..1" "LocalDefinitions" : "local-definitions"(i)
+"PlanOfActionAndMilestones" *--> "0..1" "LocalDefinitions" : "local-definitions"(i)
+class "SspLeveragedAuthorizationLink" [[{SSP-scoped link used in leveraged authorization objects.}]] {
+    {field} rel : TokenType  
+    {field} href(i) : URIReferenceType  
+    {field} resource_fragment(i) : string  
+    {field} media_type(i) : string  
+    {field} text(i) : MarkupLineType  
+}
+class "SspDiagramLink" [[{SSP-scoped link used in diagram objects.}]] {
+    {field} rel : TokenType  
+    {field} href(i) : URIReferenceType  
+    {field} resource_fragment(i) : string  
+    {field} media_type(i) : string  
+    {field} text(i) : MarkupLineType  
+}
+class "SspByComponentLink" [[{SSP-scoped link used in by-component contexts.}]] {
+    {field} rel : TokenType  
+    {field} href(i) : URIReferenceType  
+    {field} resource_fragment(i) : string  
+    {field} media_type(i) : string  
+    {field} text(i) : MarkupLineType  
+}
+"Citation" *--> "0..*" "Link" : "links"
+"HasPropsAndLinks" *--> "0..*" "Link" : "links"
+"Addition" *--> "0..*" "Link" : "links"
+"SystemInformation" *--> "0..*" "Link" : "links"(i)
+"InformationType" *--> "0..*" "Link" : "links"
+"ImpactLevel" *--> "0..*" "Link" : "links"
+"AuthorizationBoundary" *--> "0..*" "Link" : "links"
+"Diagram" *--> "0..*" "Link" : "links"(i)
+"DataFlow" *--> "0..*" "Link" : "links"
+"LeveragedAuthorization" *--> "0..*" "Link" : "links"(i)
+"ByComponent" *--> "0..*" "Link" : "links"(i)
+"Export" *--> "0..*" "Link" : "links"
+"ControlResponsibility" *--> "0..*" "Link" : "links"
+"InheritedControlImplementation" *--> "0..*" "Link" : "links"
+"Link" ^-- "SspLeveragedAuthorizationLink"
+"Link" ^-- "SspDiagramLink"
+"Link" ^-- "SspByComponentLink"
+"Link" ^-- "ImplementationCommonLink"
+"LeveragedAuthorization" *--> "0..*" "SspLeveragedAuthorizationLink" : "links"
+"Diagram" *--> "0..*" "SspDiagramLink" : "links"
+"ByComponent" *--> "0..*" "SspByComponentLink" : "links"
+"InventoryItem" *--> "0..*" "ImplementationResponsibleParty" : "responsible-parties"
+"InventoryItem" *--> "0..*" "ImplementationCommonLink" : "links"
+"InventoryItem" *--> "0..*" "ImplementationCommonProperty" : "props"
+"InventoryItem" *--> "0..*" "ImplementedComponent" : "implemented-components"
+"SystemImplementation" *--> "0..*" "InventoryItem" : "inventory-items"(i)
+"HasResponsibleParties" ^.. "InventoryItem"
+"InsertControls" *--> "0..1" "IncludeAll" : "include-all"
+"ByComponent" *--> "0..*" "InheritedControlImplementation" : "inherited"
+class "InformationTypeCategorization" [[{A set of information type identifiers qualified by the given identification system used.}]] {
+    {field} system : string  
+    {field} information_type_ids : string  [0..*]
+}
+"InformationType" *--> "0..*" "InformationTypeCategorization" : "categorizations"
+"InformationType" *--> "0..1" "ImpactLevel" : "availability-impact"
+"InformationType" *--> "0..1" "ImpactLevel" : "integrity-impact"
+"InformationType" *--> "0..1" "ImpactLevel" : "confidentiality-impact"
+"SystemInformation" *--> "0..*" "InformationType" : "information-types"(i)
+class "IncorporatesComponent" [[{The collection of components comprising a capability.}]] {
+    {field} component_uuid : UUIDType  
+    {field} description : MarkupMultilineType  
+}
+"Capability" *--> "0..*" "IncorporatesComponent" : "incorporates-components"
+"ControlSelection" *--> "0..1" "IncludeAll" : "include-all"
+"ControlObjectiveSelection" *--> "0..1" "IncludeAll" : "include-all"
+"AssessmentSubject" *--> "0..1" "IncludeAll" : "include-all"
+"AssessmentPlan" *--> "1" "ImportSSP" : "import-ssp"
+"AssessmentPlan" *--> "0..1" "ImportSSP" : "import-ssp"(i)
+"SystemSecurityPlan" *--> "0..1" "ImportProfile" : "import-profile"(i)
+class "ImportComponentDefinition" [[{Loads a component definition from another resource.}]] {
+    {field} href : URIReferenceType  
+    {field} remarks : MarkupMultilineType  
+}
+"ComponentDefinition" *--> "0..*" "ImportComponentDefinition" : "import-component-definitions"
+class "ImportAssessmentPlan" [[{Used by assessment-results to import information about the original plan for assessing the system.}]] {
+    {field} href : URIReferenceType  
+    {field} remarks : MarkupMultilineType  
+}
+"AssessmentResults" *--> "1" "ImportAssessmentPlan" : "import-ap"
+"AssessmentResults" *--> "0..1" "ImportAssessmentPlan" : "import-ap"(i)
+class "ImplementedControlStatement" [[{Identifies which statements within a control are addressed.}]] {
+    {field} statement_id : TokenType  
+    {field} uuid : UUIDType  
+    {field} description : MarkupMultilineType  
+    {field} remarks : MarkupMultilineType  
+}
+"ImplementedRequirement" *--> "0..*" "ImplementedControlStatement" : "statements"
+"ControlImplementationSet" *--> "1..*" "ImplementedRequirement" : "implemented-requirements"
+"HasPropsAndLinks" ^.. "ImplementedRequirement"
+"HasResponsibleRoles" ^.. "ImplementedRequirement"
+"HasPropsAndLinks" ^.. "ImplementedControlStatement"
+"HasResponsibleRoles" ^.. "ImplementedControlStatement"
+"ImplementedComponent" *--> "0..*" "ImplementationResponsibleParty" : "responsible-parties"
+"ImplementedComponent" *--> "0..*" "ImplementationCommonLink" : "links"
+"ImplementedComponent" *--> "0..*" "ImplementationCommonProperty" : "props"
+"HasResponsibleParties" ^.. "ImplementedComponent"
+class "ImplementationStatus" [[{Indicates the degree to which a given control is implemented.}]] {
+    {field} state : string  
+    {field} remarks : MarkupMultilineType  
+}
+"ByComponent" *--> "0..1" "ImplementationStatus" : "implementation-status"
+"FindingTarget" *--> "0..1" "ImplementationStatus" : "implementation-status"
+"IdentifiedSubject" *--> "1..*" "AssessmentSubject" : "subjects"
+"HasResponsibleRoles" ^.. "DefinedComponent"
+"HasResponsibleRoles" ^.. "AssociatedActivity"
+"HasResponsibleRoles" ^.. "Activity"
+"HasResponsibleParties" ^.. "Attestation"
+"HasResponsibleParties" ^.. "Action"
+"HasPropsAndLinks" ^.. "Group"
+"HasPropsAndLinks" ^.. "ControlPart"
+"HasPropsAndLinks" ^.. "ControlImplementationSet"
+"HasPropsAndLinks" ^.. "Control"
+"HasPropsAndLinks" ^.. "Citation"
+"HasPropsAndLinks" ^.. "Characterization"
+"HasPropsAndLinks" ^.. "AssessmentPart"
+"Group" *--> "0..*" "Control" : "controls"
+"Group" *--> "0..*" "Group" : "groups"
+"Finding" *--> "1" "FindingTarget" : "target"
+"Finding" *--> "0..1" "FindingTarget" : "target"(i)
+"Finding" *--> "0..*" "AssociatedRisk" : "related-risks"
+"Characterization" *--> "1..*" "Facet" : "facets"
+"Characterization" *--> "0..*" "Facet" : "facets"(i)
+"Export" *--> "0..*" "ControlResponsibility" : "responsibilities"
+"ByComponent" *--> "0..1" "Export" : "export"
+class "AtFrequency" [[{The task is intended to occur at the specified frequency.}]] {
+    {field} period : PositiveIntegerType  
+    {field} unit : TimingUnitEnum  
+    {field} remarks : MarkupMultilineType  
+}
+"EventTiming" *--> "0..1" "AtFrequency" : "at-frequency"
+"Resource" *--> "0..*" "DocumentId" : "document-ids"(i)
+"AuthorizationBoundary" *--> "0..*" "Diagram" : "diagrams"
+"DataFlow" *--> "0..*" "Diagram" : "diagrams"
+"DefinedComponent" *--> "0..*" "ControlImplementationSet" : "control-implementations"
+"ComponentDefinition" *--> "0..*" "DefinedComponent" : "components"
+class "AssessmentSelectControlById" [[{Select a specific control for inclusion/exclusion in the assessment by literal control ID and optional statement IDs.}]] {
+    {field} control_id : TokenType  
+    {field} statement_ids : TokenType  [0..*]
+}
+"ControlSelection" *--> "0..*" "AssessmentSelectControlById" : "exclude-controls"
+"ControlSelection" *--> "0..*" "AssessmentSelectControlById" : "include-controls"
+"ReviewedControls" *--> "0..*" "ControlSelection" : "control-selections"(i)
+"ControlPart" *--> "0..*" "ControlPart" : "parts"
+"Capability" *--> "0..*" "ControlImplementationSet" : "control-implementations"
+"Control" *--> "0..*" "Control" : "controls"
+"ComponentDefinitionDocument" *--> "1" "ComponentDefinition" : "component-definition"
+"ComponentDefinition" *--> "0..1" "BackMatter" : "back-matter"
+"ComponentDefinition" *--> "0..*" "Capability" : "capabilities"
+"ComponentDefinitionDocument" *--> "0..1" "ComponentDefinition" : "component-definition"(i)
+"CatalogDocument" *--> "1" "Catalog" : "catalog"
+"Catalog" *--> "0..1" "BackMatter" : "back-matter"
+"CatalogDocument" *--> "0..1" "Catalog" : "catalog"(i)
+"AssessmentPlan" *--> "0..1" "BackMatter" : "back-matter"
+"AssessmentResults" *--> "0..1" "BackMatter" : "back-matter"
+"SystemCharacteristics" *--> "0..1" "AuthorizationBoundary" : "authorization-boundary"(i)
+"Attestation" *--> "1..*" "AssessmentPart" : "parts"
+"AssociatedActivity" *--> "1..*" "AssessmentSubject" : "subjects"
+class "AssessmentSubjectSource" [[{Assessment subjects will be identified while conducting the referenced activity.}]] {
+    {field} task_uuid : UUIDType  
+    {field} remarks : MarkupMultilineType  
+}
+"AssessmentSubjectPlaceholder" *--> "1..*" "AssessmentSubjectSource" : "sources"
+"AssessmentPlan" *--> "0..*" "AssessmentSubject" : "assessment-subjects"
+"AssessmentResultsLocalDefinitions" *--> "0..*" "Activity" : "activities"
+"AssessmentResults" *--> "0..1" "AssessmentResultsLocalDefinitions" : "local-definitions"
+"AssessmentResultsDocument" *--> "1" "AssessmentResults" : "assessment-results"
+"AssessmentResultsDocument" *--> "0..1" "AssessmentResults" : "assessment-results"(i)
+"AssessmentAssets" *--> "1..*" "AssessmentPlatform" : "assessment-platforms"
+"AssessmentAssets" *--> "0..*" "AssessmentPlatform" : "assessment-platforms"(i)
+"AssessmentPlanDocument" *--> "1" "AssessmentPlan" : "assessment-plan"
+"AssessmentPlan" *--> "0..1" "AssessmentAssets" : "assessment-assets"
+"AssessmentPlanDocument" *--> "0..1" "AssessmentPlan" : "assessment-plan"(i)
+"AssessmentPart" *--> "0..*" "AssessmentPart" : "parts"
+"AssessmentMethod" *--> "1" "AssessmentPart" : "part"
+"AssessmentMethod" *--> "0..1" "AssessmentPart" : "part"(i)
+"AssessmentLog" *--> "1..*" "AssessmentLogEntry" : "entries"
+"Result" *--> "0..1" "AssessmentLog" : "assessment-log"(i)
+"Alteration" *--> "0..*" "Addition" : "adds"
+@enduml

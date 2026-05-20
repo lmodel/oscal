@@ -1,0 +1,16 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: MergeCustom
+schema_generating: true
+description: Provides an alternate grouping structure that selected controls will
+  be placed in after profile resolution.
+display_name: MergeCustom
+document_category: MergeCustom
+weight: 20
+fields:
+- id: groups
+  description: A collection of control groups.
+  display_name: MergeCustom_groups
+  cardinality: multi
+- id: insert_controls
+  description: Specifies which controls to use in the containing context.
+  display_name: insert-controls
+  cardinality: multi

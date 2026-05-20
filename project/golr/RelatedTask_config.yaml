@@ -1,0 +1,33 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: RelatedTask
+schema_generating: true
+description: Identifies an individual task for which the containing object is a consequence
+  of.
+display_name: RelatedTask
+document_category: RelatedTask
+weight: 20
+fields:
+- id: task_uuid
+  description: A UUID reference to a task.
+  display_name: RelatedTask_task-uuid
+- id: subjects
+  description: Assessment subjects or subject references for this object.
+  display_name: RelatedTask_subjects
+  cardinality: multi
+- id: identified_subject
+  description: Used to detail assessment subjects that were identified by this task.
+  display_name: identified-subject
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks
+- id: props
+  description: A list of properties.
+  display_name: props
+  cardinality: multi
+- id: links
+  description: A list of links.
+  display_name: links
+  cardinality: multi
+- id: responsible_parties
+  description: Responsible party assignments.
+  display_name: responsible-parties
+  cardinality: multi

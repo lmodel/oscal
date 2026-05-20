@@ -1,0 +1,29 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: LocalObjective
+schema_generating: true
+description: A local definition of a control objective for this assessment. Uses catalog
+  syntax for control objective and assessment actions.
+display_name: LocalObjective
+document_category: LocalObjective
+weight: 20
+fields:
+- id: control_id
+  description: A reference to a control by its identifier.
+  display_name: LocalObjective_control-id
+- id: description
+  description: A human-readable description.
+  display_name: description
+- id: parts
+  description: A collection of parts.
+  display_name: LocalObjective_parts
+  cardinality: multi
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks
+- id: props
+  description: A list of properties.
+  display_name: props
+  cardinality: multi
+- id: links
+  description: A list of links.
+  display_name: links
+  cardinality: multi

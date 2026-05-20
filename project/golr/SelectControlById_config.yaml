@@ -1,0 +1,19 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: SelectControlById
+schema_generating: true
+description: Select a control or controls from an imported control set.
+display_name: SelectControlById
+document_category: SelectControlById
+weight: 20
+fields:
+- id: with_child_controls
+  description: When a control is included, whether its child (dependent) controls
+    are also included.
+  display_name: with-child-controls
+- id: with_ids
+  description: Selecting a control by its ID given as a literal.
+  display_name: with-ids
+  cardinality: multi
+- id: matching
+  description: Selecting a set of controls by matching their IDs with a wildcard pattern.
+  display_name: matching
+  cardinality: multi

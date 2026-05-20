@@ -1,0 +1,13 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: ControlMatching
+schema_generating: true
+description: Selecting a set of controls by matching their IDs with a wildcard pattern.
+display_name: ControlMatching
+document_category: ControlMatching
+weight: 20
+fields:
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks
+- id: pattern
+  description: A glob expression matching the IDs of one or more controls to be selected.
+  display_name: pattern

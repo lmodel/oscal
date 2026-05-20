@@ -1,0 +1,52 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: Map
+schema_generating: true
+description: A relationship-based mapping entry between source and target sets.
+display_name: Map
+document_category: Map
+weight: 20
+fields:
+- id: uuid
+  description: A machine-oriented, globally unique identifier with a cross-instance
+    scope.
+  display_name: Map_uuid
+- id: ns
+  description: An optional namespace qualifying a name. Allows different organizations
+    to associate distinct semantics with the same name.
+  display_name: ns
+- id: matching_rationale
+  description: The rationale method used to relate mapped items.
+  display_name: matching-rationale
+- id: relationship
+  description: Relationship type for a mapping entry. OSCAL namespace values are defined
+    by RelationshipEnum.
+  display_name: Map_relationship
+- id: sources
+  description: Source references or source-participation entries in the containing
+    OSCAL context. The concrete entry class is selected by class-level slot_usage.
+  display_name: Map_sources
+  cardinality: multi
+- id: targets
+  description: Target subjects participating in a mapping entry.
+  display_name: Map_targets
+  cardinality: multi
+- id: qualifiers
+  description: Qualifier statements for a mapping entry.
+  display_name: qualifiers
+  cardinality: multi
+- id: confidence_score
+  description: Confidence descriptor for a mapping.
+  display_name: confidence-score
+- id: coverage
+  description: Coverage metadata for a mapping.
+  display_name: coverage
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks
+- id: props
+  description: A list of properties.
+  display_name: props
+  cardinality: multi
+- id: links
+  description: A list of links.
+  display_name: links
+  cardinality: multi

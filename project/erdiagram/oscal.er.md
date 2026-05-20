@@ -1,0 +1,7 @@
+erDiagram
+OscalDocument {
+
+}
+
+
+

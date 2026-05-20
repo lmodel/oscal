@@ -1,0 +1,26 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: ResponsibleParty
+schema_generating: true
+description: A reference to a set of persons and/or organizations that have responsibility
+  for performing the referenced role in the context of the containing object.
+display_name: ResponsibleParty
+document_category: ResponsibleParty
+weight: 20
+fields:
+- id: role_id
+  description: A reference to a role performed by a party.
+  display_name: ResponsibleParty_role-id
+- id: party_uuids
+  description: References to party UUIDs.
+  display_name: ResponsibleParty_party-uuids
+  cardinality: multi
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks
+- id: props
+  description: A list of properties.
+  display_name: props
+  cardinality: multi
+- id: links
+  description: A list of links.
+  display_name: links
+  cardinality: multi

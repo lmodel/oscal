@@ -1,0 +1,15 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: AssessmentSelectControlById
+schema_generating: true
+description: Select a specific control for inclusion/exclusion in the assessment by
+  literal control ID and optional statement IDs.
+display_name: AssessmentSelectControlById
+document_category: AssessmentSelectControlById
+weight: 20
+fields:
+- id: control_id
+  description: A reference to a control by its identifier.
+  display_name: AssessmentSelectControlById_control-id
+- id: statement_ids
+  description: Statement IDs for control selection.
+  display_name: statement-ids
+  cardinality: multi

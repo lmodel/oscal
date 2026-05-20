@@ -1,0 +1,38 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: FindingTarget
+schema_generating: true
+description: Captures an assessor's conclusions regarding the degree to which an objective
+  is satisfied.
+display_name: FindingTarget
+document_category: FindingTarget
+weight: 20
+fields:
+- id: type
+  description: Indicates the nature or kind of the containing object.
+  display_name: FindingTarget_type
+- id: target_id
+  description: Identifies the specific target qualified by the type.
+  display_name: FindingTarget_target-id
+- id: title
+  description: A human-readable name or title.
+  display_name: title
+- id: description
+  description: A human-readable description.
+  display_name: description
+- id: implementation_status
+  description: Identifies the implementation status of the control.
+  display_name: implementation-status
+- id: status
+  description: Status indicator used by the containing OSCAL context. Allowed values
+    are constrained by class-level slot_usage.
+  display_name: FindingTarget_status
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks
+- id: props
+  description: A list of properties.
+  display_name: props
+  cardinality: multi
+- id: links
+  description: A list of links.
+  display_name: links
+  cardinality: multi

@@ -1,0 +1,22 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: QualifierItem
+schema_generating: true
+description: A qualifier describing requirements or incompatibilities.
+display_name: QualifierItem
+document_category: QualifierItem
+weight: 20
+fields:
+- id: subject
+  description: Subject to which the qualifier applies.
+  display_name: QualifierItem_subject
+- id: predicate
+  description: Predicate describing qualifier semantics.
+  display_name: QualifierItem_predicate
+- id: category
+  description: Confidence category label or qualifier category value.
+  display_name: QualifierItem_category
+- id: description
+  description: A human-readable description.
+  display_name: QualifierItem_description
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks

@@ -1,0 +1,13 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: ImportProfile
+schema_generating: true
+description: Used to import the OSCAL profile representing the system's control baseline.
+display_name: ImportProfile
+document_category: ImportProfile
+weight: 20
+fields:
+- id: href
+  description: A resolvable URL reference to a resource.
+  display_name: ImportProfile_href
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks

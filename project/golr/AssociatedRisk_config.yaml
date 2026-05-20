@@ -1,0 +1,14 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: AssociatedRisk
+schema_generating: true
+description: Relates the finding to a set of referenced risks.
+display_name: AssociatedRisk
+document_category: AssociatedRisk
+weight: 20
+fields:
+- id: risk_uuid
+  description: A machine-oriented identifier reference to a risk defined in the list
+    of risks.
+  display_name: AssociatedRisk_risk-uuid
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks

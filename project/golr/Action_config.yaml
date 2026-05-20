@@ -1,0 +1,35 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: Action
+schema_generating: true
+description: An action applied by a role within a given party to the content.
+display_name: Action
+document_category: Action
+weight: 20
+fields:
+- id: uuid
+  description: A unique identifier that can be used to reference this defined action
+    elsewhere in an OSCAL document.
+  display_name: Action_uuid
+- id: type
+  description: The type of action documented by the assembly, such as an approval.
+  display_name: Action_type
+- id: date
+  description: The date and time when the action occurred.
+  display_name: date
+- id: system
+  description: Specifies the action type system used.
+  display_name: Action_system
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks
+- id: props
+  description: A list of properties.
+  display_name: props
+  cardinality: multi
+- id: links
+  description: A list of links.
+  display_name: links
+  cardinality: multi
+- id: responsible_parties
+  description: Responsible party assignments.
+  display_name: responsible-parties
+  cardinality: multi

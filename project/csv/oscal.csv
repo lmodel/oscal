@@ -1,0 +1,204 @@
+id,mappings,description
+Action,,An action applied by a role within a given party to the content.
+Activity,,"Identifies an assessment or related process that can be performed. In the assessment plan, this is an intended activity."
+Addition,,Specifies content to be added into controls in resolution.
+Address,,A postal address for the location.
+Alteration,,Specifies changes to be made to an included control when a profile is resolved.
+AssessmentAssets,,Identifies the assets used to perform this assessment.
+AssessmentLog,,A log of all assessment-related actions taken.
+AssessmentLogEntry,,Identifies the result of an action and/or task that occurred as part of executing an assessment plan or assessment event.
+AssessmentMethod,,A local definition of a control objective.
+AssessmentPart,,A partition of an assessment plan or results or a child of another part.
+AssessmentPlan,,"An assessment plan, such as those provided by a FedRAMP assessor."
+AssessmentPlanDocument,,Root wrapper for an OSCAL Assessment Plan document.
+AssessmentPlatform,,Used to represent the toolset used to perform aspects of the assessment.
+AssessmentResults,,"Security assessment results, such as those provided by a FedRAMP assessor in a security assessment report."
+AssessmentResultsDocument,,Root wrapper for an OSCAL Assessment Results document.
+AssessmentResultsLocalDefinitions,,Used to define data objects that are referenced by the assessment results but do not appear in the imported assessment plan.
+AssessmentSelectControlById,,Select a specific control for inclusion/exclusion in the assessment by literal control ID and optional statement IDs.
+AssessmentSubject,,"Identifies system elements being assessed, such as components, inventory items, and locations."
+AssessmentSubjectPlaceholder,,Used when the assessment subjects will be determined as part of one or more other assessment activities.
+AssessmentSubjectSource,,Assessment subjects will be identified while conducting the referenced activity.
+AssociatedActivity,,Identifies an individual activity to be performed as part of a task.
+AssociatedRisk,,Relates the finding to a set of referenced risks.
+AtFrequency,,The task is intended to occur at the specified frequency.
+Attestation,,"A set of textual attestation statements, typically written by the assessor."
+AuthorizationBoundary,,"A description of this system's authorization boundary, optionally supplemented with diagrams that illustrate the authorization boundary."
+AuthorizedPrivilege,,"Identifies a specific system privilege held by the user, along with an associated description and/or rationale for the privilege."
+BackMatter,,A collection of resources that may be referenced from within the OSCAL document instance.
+Base64Resource,,A resource encoded using the Base64 alphabet defined by RFC 2045.
+ByComponent,,Defines how the referenced component implements a set of controls.
+Capability,,A grouping of other components and/or capabilities.
+Catalog,,"A structured, organized collection of control information."
+CatalogDocument,,Root wrapper for an OSCAL Catalog document.
+Characterization,,A collection of descriptive data about the containing object from a specific origin.
+Citation,,An optional citation consisting of end note text using structured markup.
+CombinationRule,,"Defines how to resolve duplicate instances of the same control (e.g., controls with the same ID) encountered in a profile merge."
+ComponentDefinition,,"A collection of component descriptions, which may optionally be grouped by capability."
+ComponentDefinitionDocument,,Root wrapper for an OSCAL Component Definition document.
+ComponentStatus,,Describes the operational status of the system component.
+ConfidenceScore,,Confidence represented as a category and/or percentage value.
+ConstraintTest,,A test expression which is expected to be evaluated by a tool.
+Control,,"A structured object representing a requirement or guideline, which when implemented will reduce an aspect of risk related to an information system and its information."
+ControlImplementationSet,,Defines how the component or capability supports a set of controls.
+ControlMatching,,Selecting a set of controls by matching their IDs with a wildcard pattern.
+ControlObjectiveSelection,,Identifies the control objectives of the assessment.
+ControlPart,,"An annotated, markup-based textual element of a control's or catalog group's definition, or a child of another part."
+ControlResponsibility,,Describes a control implementation responsibility imposed on a leveraging system.
+ControlSelection,,Identifies the controls being assessed.
+Coverage,,A percentage representing target coverage by source mappings.
+DataFlow,,"A description of the logical flow of information within the system and across its boundaries, optionally supplemented with diagrams."
+DefinedComponent,,A defined component that can be part of an implemented system.
+Diagram,,"A graphic that provides a visual representation the system, or some aspect of it."
+DocumentId,,A document identifier qualified by an identifier scheme.
+EventTiming,,The timing under which the task is intended to occur.
+Export,,Defines a set of control implementations that are provided as reference implementations for use by organizations implementing the leveraged system.
+Facet,,An individual characteristic that is part of a larger set produced by the same actor.
+Finding,,Describes an individual finding.
+FindingTarget,,Captures an assessor's conclusions regarding the degree to which an objective is satisfied.
+GapSummary,,A summary of controls that were not mapped.
+Group,,"A group of controls, or of groups of controls."
+Hash,,A representation of a cryptographic digest generated over a resource using a specified hash algorithm.
+HasPropsAndLinks,,Mixin providing the props and links slots that are common to many OSCAL objects.
+HasResponsibleParties,,Mixin providing the responsible-parties slot for objects that carry party assignments.
+HasResponsibleRoles,,Mixin providing the responsible-roles slot for objects that carry role assignments.
+IdentifiedSubject,,Used to detail assessment subjects that were identified by this task.
+ImpactLevel,,"The expected level of impact resulting from the described information's confidentiality, integrity, or availability affect."
+ImplementationCommonLink,,Implementation-common scoped OSCAL link.
+ImplementationCommonProperty,,Implementation-common scoped OSCAL property.
+ImplementationResponsibleParty,,Implementation-common scoped responsible party.
+ImplementationResponsibleRole,,Implementation-common scoped responsible role.
+ImplementationStatus,,Indicates the degree to which a given control is implemented.
+ImplementedComponent,,The set of components that are implemented in a given system inventory item.
+ImplementedControlStatement,,Identifies which statements within a control are addressed.
+ImplementedRequirement,,Describes how the containing component or capability implements an individual control.
+ImportAssessmentPlan,,Used by assessment-results to import information about the original plan for assessing the system.
+ImportComponentDefinition,,Loads a component definition from another resource.
+ImportProfile,,Used to import the OSCAL profile representing the system's control baseline.
+ImportSSP,,Used by the assessment plan and POA&M to import information about the system.
+IncludeAll,,Include all controls from the imported catalog or profile resources.
+IncorporatesComponent,,The collection of components comprising a capability.
+InformationType,,"Contains details about one information type that is stored, processed, or transmitted by the system, such as privacy information, and its impact level."
+InformationTypeCategorization,,A set of information type identifiers qualified by the given identification system used.
+InheritedControlImplementation,,Describes a control implementation inherited by a leveraging system.
+InsertControls,,Specifies which controls to use in the containing context (as part of a group or custom merge structure).
+InventoryItem,,A single managed inventory item within the system.
+LeveragedAuthorization,,A description of another authorized system from which this system inherits capabilities that satisfy security requirements. Another term for this concept is a common control provider.
+Link,,"A reference to a local or remote resource, that has a specific relation to the containing object."
+LocalDefinitions,,"Used to define data objects that are used in the assessment plan, that do not appear in the referenced SSP."
+LocalObjective,,A local definition of a control objective for this assessment. Uses catalog syntax for control objective and assessment actions.
+Location,,"A physical point of presence, which may be associated with people, organizations, or other concepts within the current or linked OSCAL document."
+LocationProperty,,Location-scoped OSCAL property.
+LoggedBy,,Used to indicate who created a log entry in what role.
+Map,,A relationship-based mapping entry between source and target sets.
+Mapping,,A mapping between two mapped resources.
+MappingCollection,,A collection of control mappings between source and target resources.
+MappingCollectionDocument,,Root wrapper for an OSCAL Mapping Collection document.
+MappingItem,,A source or target item participating in a mapping entry.
+MappingProvenance,,Mapping-level provenance details and mapping defaults.
+MappingResourceReference,,A reference to the source or target resource for a mapping.
+MergeCustom,,Provides an alternate grouping structure that selected controls will be placed in after profile resolution.
+MergeFlat,,Directs that controls appear without any grouping structure after profile resolution.
+Metadata,,"Provides information about the containing document, and defines concepts shared across the document."
+MetadataPartyExternalId,,Metadata-scoped external identifier.
+MetadataProperty,,Metadata-scoped OSCAL property.
+MitigatingFactor,,Describes an existing mitigating factor that may affect the overall determination of the risk.
+NetworkArchitecture,,"A description of the system's network architecture, optionally supplemented with diagrams that illustrate the network architecture."
+ObjectiveStatus,,A determination of if the objective is satisfied or not within a given system.
+Observation,,Describes an individual observation.
+OnDateCondition,,The task is intended to occur on the specified date.
+Origin,,"Identifies the source of the finding, such as a tool, interviewed person, or activity."
+OriginActor,,"The actor that produces an observation, a finding, or a risk."
+OscalCommon,,"Mixin providing props, links, and remarks slots common to most OSCAL objects. Extends HasPropsAndLinks."
+OscalDocument,,"A root wrapper for an OSCAL document, which may be of any OSCAL document type (e.g. Catalog, Profile, Assessment Plan, SSP)."
+Parameter,,Parameters provide a mechanism for the dynamic assignment of value(s) in a control.
+ParameterConstraint,,A formal or informal expression of a constraint or test.
+ParameterGuideline,,A prose statement that provides a recommendation for the use of a parameter.
+ParameterProperty,,Control-common parameter-scoped OSCAL property.
+ParameterSelection,,Presenting a choice among alternatives.
+ParameterSetting,,A parameter setting to be propagated to points of insertion in a resolved profile.
+Part,,"An annotated, markup-based textual element of a control's or catalog group's definition, or a child of another part."
+PartProperty,,Control-common part-scoped OSCAL property.
+Party,,"An organization or person, which may be associated with roles or other concepts within the current or linked OSCAL document."
+PartyExternalId,,"An identifier for a person or organization using a designated scheme, e.g. an Open Researcher and Contributor ID (ORCID)."
+PartyProperty,,Party-scoped OSCAL property.
+PlanOfActionAndMilestones,,"A plan of action and milestones that identifies initial and residual risks, deviations, and disposition."
+PoamDocument,,Root wrapper for an OSCAL Plan of Action and Milestones document.
+PoamItem,,Describes an individual POA&M item.
+PoamLocalDefinitions,,Allows components and inventory items to be defined within the POA&M for cases where no OSCAL SSP is available with the POA&M.
+PortRange,,"Where applicable, the transport layer protocol port range."
+Profile,,"An OSCAL Profile that designates a set of controls from one or more catalogs or profiles, optionally restructures and modifies them, to describe a basis for a security standard or body of practice."
+ProfileAlterationProperty,,OSCAL property entries allowed in profile modify additions.
+ProfileDocument,,Root wrapper for an OSCAL Profile document.
+ProfileGroup,,A group of (selected) controls or of groups of controls within a profile custom merge structure.
+ProfileImport,,Designates a referenced source catalog or profile that provides a source of control information for use in creating a new overlay or baseline.
+ProfileMerge,,Provides structuring directives that instruct how controls are organized after profile resolution.
+ProfileModify,,Set parameters or amend controls in resolution.
+Property,,"An attribute, characteristic, or quality of the containing object expressed as a namespace qualified name/value pair."
+Protocol,,Information about the protocol used to provide a service.
+ProvidedControlImplementation,,Describes a capability which may be inherited by a leveraging system.
+QualifierItem,,A qualifier describing requirements or incompatibilities.
+RelatedFinding,,Relates a POA&M item to a referenced finding.
+RelatedObservation,,Relates the identified element to a set of referenced observations.
+RelatedTask,,Identifies an individual task for which the containing object is a consequence of.
+RelevantEvidence,,Links this observation to relevant evidence.
+Removal,,Specifies objects to be removed from a control based on aspects of the object that must all match.
+RequiredAsset,,Identifies an asset required to achieve remediation.
+Resource,,A resource associated with content in the containing document instance. A resource may be directly included in the document using base64 encoding or may point to one or more equivalent internet resources.
+ResourceLink,,A URL-based pointer to an external resource with an optional hash for verification and change detection.
+ResourceProperty,,Back-matter resource-scoped OSCAL property.
+Response,,Describes either recommended or an actual plan for addressing the risk.
+ResponsibleParty,,A reference to a set of persons and/or organizations that have responsibility for performing the referenced role in the context of the containing object.
+ResponsibleRole,,"A reference to a role with responsibility for performing a function relative to the containing object, optionally associated with a set of persons and/or organizations that perform that role."
+Result,,"Identifies all of the assessment observations and findings, initial and residual risks, deviations, and disposition for a particular execution of the assessment."
+ResultLocalDefinitions,,Used to define local implementation and assessment assets referenced by a result that do not appear in the imported system security plan.
+ReviewedControls,,Identifies the controls being assessed and their control objectives.
+Revision,,An entry in a sequential list of revisions to the containing document.
+RevisionProperty,,Revision-scoped OSCAL property.
+Risk,,An identified risk.
+RiskLog,,A log of all risk-related tasks taken.
+RiskLogEntry,,Identifies an individual risk response that occurred as part of managing an identified risk.
+RiskResponseReference,,Identifies an individual risk response that this log entry is for.
+Role,,"Defines a function, which might be assigned to a party in a specific situation."
+SatisfiedControlImplementation,,Describes how this system satisfies a responsibility imposed by a leveraged system.
+SecurityImpactLevel,,"The overall level of expected impact resulting from unauthorized disclosure, modification, or loss of access to information."
+SelectControlById,,Select a control or controls from an imported control set.
+SelectObjectiveById,,Used to select a control objective for inclusion/exclusion.
+SelectSubjectById,,Identifies a set of assessment subjects to include/exclude by UUID.
+SetParameter,,Identifies the parameter that will be set by the enclosed value.
+SspAllowsAuthenticatedScanProp,,SSP-scoped property used for component and inventory allows-authenticated-scan.
+SspByComponentLink,,SSP-scoped link used in by-component contexts.
+SspByComponentResponsibleRole,,SSP-scoped responsible role used by by-component contexts.
+SspControlImplementation,,Describes how the system satisfies a set of controls.
+SspControlOriginationProp,,SSP-scoped property used in implemented requirement and by-component contexts.
+SspDiagramLink,,SSP-scoped link used in diagram objects.
+SspDocument,,Root wrapper for an OSCAL System Security Plan document.
+SspImplementedRequirement,,Describes how the system satisfies an individual control.
+SspImplementedRequirementResponsibleRole,,SSP-scoped responsible role used by implemented requirement and statement contexts.
+SspInventoryItem,,SSP-scoped inventory item with allows-authenticated-scan property typing.
+SspLeveragedAuthorizationLink,,SSP-scoped link used in leveraged authorization objects.
+SspStatement,,Identifies which statements within a control are addressed.
+SspSystemCharacteristicsProp,,SSP-scoped property used in system characteristics.
+SspSystemCharacteristicsResponsibleParty,,SSP-scoped responsible party for system characteristics.
+SspSystemComponent,,SSP-scoped system component with allows-authenticated-scan property typing.
+SspSystemInformationLink,,SSP-scoped link used in system information.
+SspSystemInformationProp,,SSP-scoped property used in system information.
+Step,,"Identifies an individual step in a series of steps related to an activity, such as an assessment test or examination procedure."
+SubjectReference,,"A human-oriented identifier reference to a resource. Use type to indicate whether the identified resource is a component, inventory item, location, user, or something else."
+SystemCharacteristics,,"Contains the characteristics of the system, such as its name, purpose, and security impact level."
+SystemComponent,,A defined component that can be part of an implemented system.
+SystemId,,"A human-oriented, globally unique identifier for a system."
+SystemImplementation,,Provides information as to how the system is implemented.
+SystemInformation,,"Contains details about all information types that are stored, processed, or transmitted by the system, such as privacy information."
+SystemSecurityPlan,,"A system security plan, such as those described in NIST SP 800-18."
+SystemStatus,,Describes the operational status of the system.
+SystemUser,,A type of user that interacts with the system based on an associated role.
+Task,,"Represents a scheduled event or milestone, which may be associated with a series of assessment actions."
+TaskDependency,,Used to indicate that a task is dependent on another task.
+TelephoneNumber,,A telephone service number as defined by ITU-T E.164.
+TermsAndConditions,,Used to define various terms and conditions under which an assessment can be performed.
+TermsAndConditionsPart,,A terms-and-conditions scoped assessment part.
+ThreatId,,"A pointer, by ID, to an externally-defined threat."
+UsesComponent,,The set of components that are used by the assessment platform.
+WithinDateRange,,The task is intended to occur within the specified date range.
+

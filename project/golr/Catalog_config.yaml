@@ -1,0 +1,31 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: Catalog
+schema_generating: true
+description: A structured, organized collection of control information.
+display_name: Catalog
+document_category: Catalog
+weight: 20
+fields:
+- id: uuid
+  description: Provides a globally unique means to identify a given catalog instance.
+  display_name: Catalog_uuid
+- id: metadata
+  description: Provides information about the containing document, and defines concepts
+    shared across the document.
+  display_name: Catalog_metadata
+- id: back_matter
+  description: A collection of resources that may be referenced from within the OSCAL
+    document instance.
+  display_name: back-matter
+- id: params
+  description: Parameters providing a mechanism for the dynamic assignment of value(s)
+    in a control.
+  display_name: params
+  cardinality: multi
+- id: controls
+  description: A collection of controls.
+  display_name: controls
+  cardinality: multi
+- id: groups
+  description: A collection of control groups.
+  display_name: groups
+  cardinality: multi

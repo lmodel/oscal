@@ -1,0 +1,34 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: ControlResponsibility
+schema_generating: true
+description: Describes a control implementation responsibility imposed on a leveraging
+  system.
+display_name: ControlResponsibility
+document_category: ControlResponsibility
+weight: 20
+fields:
+- id: uuid
+  description: A machine-oriented, globally unique identifier with a cross-instance
+    scope.
+  display_name: ControlResponsibility_uuid
+- id: provided_uuid
+  description: Machine-oriented identifier reference to an inherited control implementation
+    that a leveraging system is implementing.
+  display_name: provided-uuid
+- id: description
+  description: A human-readable description.
+  display_name: ControlResponsibility_description
+- id: props
+  description: A list of properties.
+  display_name: props
+  cardinality: multi
+- id: links
+  description: A list of links.
+  display_name: links
+  cardinality: multi
+- id: responsible_roles
+  description: Responsible role assignments.
+  display_name: ControlResponsibility_responsible-roles
+  cardinality: multi
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks

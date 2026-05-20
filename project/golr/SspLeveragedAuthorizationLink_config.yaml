@@ -1,0 +1,26 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: SspLeveragedAuthorizationLink
+schema_generating: true
+description: SSP-scoped link used in leveraged authorization objects.
+display_name: SspLeveragedAuthorizationLink
+document_category: SspLeveragedAuthorizationLink
+weight: 20
+fields:
+- id: href
+  description: A resolvable URL reference to a resource.
+  display_name: Link_href
+- id: resource_fragment
+  description: In case where the href points to a back-matter/resource, this value
+    will indicate the URI fragment to append to any rlink associated with the resource.
+    This value MUST be URI encoded.
+  display_name: resource-fragment
+- id: media_type
+  description: A label that indicates the nature of a resource, as a data serialization
+    or format.
+  display_name: media-type
+- id: text
+  description: A textual label to associate with the containing object.
+  display_name: text
+- id: rel
+  description: Describes the type of relationship provided by the link's hypertext
+    reference. This can be an indicator of the link's purpose.
+  display_name: SspLeveragedAuthorizationLink_rel

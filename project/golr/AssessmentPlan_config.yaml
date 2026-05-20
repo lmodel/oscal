@@ -1,0 +1,41 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: AssessmentPlan
+schema_generating: true
+description: An assessment plan, such as those provided by a FedRAMP assessor.
+display_name: AssessmentPlan
+document_category: AssessmentPlan
+weight: 20
+fields:
+- id: uuid
+  description: Assessment Plan Universally Unique Identifier.
+  display_name: AssessmentPlan_uuid
+- id: metadata
+  description: Provides information about the containing document, and defines concepts
+    shared across the document.
+  display_name: AssessmentPlan_metadata
+- id: import_ssp
+  description: Used to import information about the system from an SSP.
+  display_name: AssessmentPlan_import-ssp
+- id: local_definitions
+  description: Used to define data objects that do not appear in the referenced SSP.
+  display_name: local-definitions
+- id: terms_and_conditions
+  description: Terms and conditions under which an assessment can be performed.
+  display_name: terms-and-conditions
+- id: assessment_subjects
+  description: Identifies system elements being assessed.
+  display_name: assessment-subjects
+  cardinality: multi
+- id: assessment_assets
+  description: Identifies the assets used to perform this assessment.
+  display_name: assessment-assets
+- id: reviewed_controls
+  description: Identifies the controls being assessed and their control objectives.
+  display_name: AssessmentPlan_reviewed-controls
+- id: tasks
+  description: A collection of tasks.
+  display_name: tasks
+  cardinality: multi
+- id: back_matter
+  description: A collection of resources that may be referenced from within the OSCAL
+    document instance.
+  display_name: back-matter

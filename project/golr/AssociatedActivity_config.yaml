@@ -1,0 +1,29 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: AssociatedActivity
+schema_generating: true
+description: Identifies an individual activity to be performed as part of a task.
+display_name: AssociatedActivity
+document_category: AssociatedActivity
+weight: 20
+fields:
+- id: activity_uuid
+  description: A UUID reference to an activity.
+  display_name: AssociatedActivity_activity-uuid
+- id: subjects
+  description: Assessment subjects or subject references for this object.
+  display_name: AssociatedActivity_subjects
+  cardinality: multi
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks
+- id: props
+  description: A list of properties.
+  display_name: props
+  cardinality: multi
+- id: links
+  description: A list of links.
+  display_name: links
+  cardinality: multi
+- id: responsible_roles
+  description: Responsible role assignments.
+  display_name: responsible-roles
+  cardinality: multi

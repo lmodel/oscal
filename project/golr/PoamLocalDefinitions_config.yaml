@@ -1,0 +1,22 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: PoamLocalDefinitions
+schema_generating: true
+description: Allows components and inventory items to be defined within the POA&M
+  for cases where no OSCAL SSP is available with the POA&M.
+display_name: PoamLocalDefinitions
+document_category: PoamLocalDefinitions
+weight: 20
+fields:
+- id: components
+  description: A collection of system components.
+  display_name: components
+  cardinality: multi
+- id: inventory_items
+  description: A collection of inventory items.
+  display_name: inventory-items
+  cardinality: multi
+- id: assessment_assets
+  description: Identifies the assets used to perform this assessment.
+  display_name: assessment-assets
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks

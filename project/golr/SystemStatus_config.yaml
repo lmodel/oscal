@@ -1,0 +1,13 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: SystemStatus
+schema_generating: true
+description: Describes the operational status of the system.
+display_name: SystemStatus
+document_category: SystemStatus
+weight: 20
+fields:
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks
+- id: state
+  description: The current operating status of the system.
+  display_name: systemStatus__state

@@ -1,0 +1,16 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: AtFrequency
+schema_generating: true
+description: The task is intended to occur at the specified frequency.
+display_name: AtFrequency
+document_category: AtFrequency
+weight: 20
+fields:
+- id: period
+  description: The task must occur every period (in the given units).
+  display_name: AtFrequency_period
+- id: unit
+  description: The unit of time for the period.
+  display_name: AtFrequency_unit
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks

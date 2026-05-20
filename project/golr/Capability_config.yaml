@@ -1,0 +1,36 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: Capability
+schema_generating: true
+description: A grouping of other components and/or capabilities.
+display_name: Capability
+document_category: Capability
+weight: 20
+fields:
+- id: uuid
+  description: A machine-oriented, globally unique identifier with a cross-instance
+    scope.
+  display_name: Capability_uuid
+- id: name
+  description: A textual label that uniquely identifies an attribute or semantic type.
+  display_name: Capability_name
+- id: description
+  description: A human-readable description.
+  display_name: Capability_description
+- id: incorporates_components
+  description: Component references incorporated by a capability.
+  display_name: incorporates-components
+  cardinality: multi
+- id: control_implementations
+  description: Control implementation sets for a component or capability.
+  display_name: control-implementations
+  cardinality: multi
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks
+- id: props
+  description: A list of properties.
+  display_name: props
+  cardinality: multi
+- id: links
+  description: A list of links.
+  display_name: links
+  cardinality: multi

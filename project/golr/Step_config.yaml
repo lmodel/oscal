@@ -1,0 +1,36 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: Step
+schema_generating: true
+description: Identifies an individual step in a series of steps related to an activity,
+  such as an assessment test or examination procedure.
+display_name: Step
+document_category: Step
+weight: 20
+fields:
+- id: uuid
+  description: A machine-oriented, globally unique identifier with a cross-instance
+    scope.
+  display_name: Step_uuid
+- id: title
+  description: A human-readable name or title.
+  display_name: title
+- id: description
+  description: A human-readable description.
+  display_name: Step_description
+- id: reviewed_controls
+  description: Identifies the controls being assessed and their control objectives.
+  display_name: reviewed-controls
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks
+- id: props
+  description: A list of properties.
+  display_name: props
+  cardinality: multi
+- id: links
+  description: A list of links.
+  display_name: links
+  cardinality: multi
+- id: responsible_roles
+  description: Responsible role assignments.
+  display_name: responsible-roles
+  cardinality: multi

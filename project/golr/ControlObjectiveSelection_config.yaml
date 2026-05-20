@@ -1,0 +1,32 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: ControlObjectiveSelection
+schema_generating: true
+description: Identifies the control objectives of the assessment.
+display_name: ControlObjectiveSelection
+document_category: ControlObjectiveSelection
+weight: 20
+fields:
+- id: description
+  description: A human-readable description.
+  display_name: description
+- id: include_all
+  description: Include all selectable objects in the containing OSCAL selection context.
+  display_name: include-all
+- id: include_objectives
+  description: Objectives to include in the assessment.
+  display_name: include-objectives
+  cardinality: multi
+- id: exclude_objectives
+  description: Objectives to exclude from the assessment.
+  display_name: exclude-objectives
+  cardinality: multi
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks
+- id: props
+  description: A list of properties.
+  display_name: props
+  cardinality: multi
+- id: links
+  description: A list of links.
+  display_name: links
+  cardinality: multi

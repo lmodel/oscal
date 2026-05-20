@@ -1,0 +1,24 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: ProfileImport
+schema_generating: true
+description: Designates a referenced source catalog or profile that provides a source
+  of control information for use in creating a new overlay or baseline.
+display_name: ProfileImport
+document_category: ProfileImport
+weight: 20
+fields:
+- id: href
+  description: A resolvable URL reference to a resource.
+  display_name: ProfileImport_href
+- id: include_all
+  description: Include all selectable objects in the containing OSCAL selection context.
+  display_name: include-all
+- id: include_controls
+  description: Control-selection entries to include in the containing OSCAL context.
+    The concrete entry class is selected by class-level slot_usage.
+  display_name: ProfileImport_include-controls
+  cardinality: multi
+- id: exclude_controls
+  description: Control-selection entries to exclude in the containing OSCAL context.
+    The concrete entry class is selected by class-level slot_usage.
+  display_name: ProfileImport_exclude-controls
+  cardinality: multi

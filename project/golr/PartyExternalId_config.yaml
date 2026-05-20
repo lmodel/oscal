@@ -1,0 +1,14 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: PartyExternalId
+schema_generating: true
+description: An identifier for a person or organization using a designated scheme,
+  e.g. an Open Researcher and Contributor ID (ORCID).
+display_name: PartyExternalId
+document_category: PartyExternalId
+weight: 20
+fields:
+- id: scheme
+  description: Indicates the type of external identifier.
+  display_name: PartyExternalId_scheme
+- id: id
+  description: A unique human-oriented identifier within a particular context.
+  display_name: PartyExternalId_id

@@ -1,0 +1,58 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: Party
+schema_generating: true
+description: An organization or person, which may be associated with roles or other
+  concepts within the current or linked OSCAL document.
+display_name: Party
+document_category: Party
+weight: 20
+fields:
+- id: uuid
+  description: A machine-oriented, globally unique identifier with a cross-instance
+    scope.
+  display_name: Party_uuid
+- id: type
+  description: A category describing the kind of party the object describes.
+  display_name: Party_type
+- id: name
+  description: The full name of the party.
+  display_name: Party_name
+- id: short_name
+  description: A short common name, abbreviation, or acronym.
+  display_name: short-name
+- id: email_addresses
+  description: Email addresses associated with the containing object.
+  display_name: email-addresses
+  cardinality: multi
+- id: telephone_numbers
+  description: Telephone numbers associated with the containing object.
+  display_name: telephone-numbers
+  cardinality: multi
+- id: external_ids
+  description: An identifier for a person or organization using a designated scheme,
+    e.g. an Open Researcher and Contributor ID (ORCID).
+  display_name: Party_external-ids
+  cardinality: multi
+- id: addresses
+  description: Postal addresses associated with the containing object.
+  display_name: addresses
+  cardinality: multi
+- id: location_uuids
+  description: Reference to a location by UUID.
+  display_name: location-uuids
+  cardinality: multi
+- id: member_of_organizations
+  description: A reference to another party by UUID, typically an organization, that
+    this subject is associated with.
+  display_name: member-of-organizations
+  cardinality: multi
+- id: props
+  description: A list of properties.
+  display_name: Party_props
+  cardinality: multi
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks
+- id: links
+  description: A list of links.
+  display_name: links
+  cardinality: multi

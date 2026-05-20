@@ -1,0 +1,66 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: Metadata
+schema_generating: true
+description: Provides information about the containing document, and defines concepts
+  shared across the document.
+display_name: Metadata
+document_category: Metadata
+weight: 20
+fields:
+- id: title
+  description: A name given to the document.
+  display_name: Metadata_title
+- id: published
+  description: The date and time the document was last made available.
+  display_name: published
+- id: last_modified
+  description: The date and time the document was last stored for later retrieval.
+  display_name: Metadata_last-modified
+- id: version
+  description: Used to distinguish a specific revision of an OSCAL document.
+  display_name: Metadata_version
+- id: oscal_version
+  description: The OSCAL model version the document was authored against.
+  display_name: Metadata_oscal-version
+- id: document_ids
+  description: Document identifiers qualified by an identifier scheme.
+  display_name: document-ids
+  cardinality: multi
+- id: revisions
+  description: An entry in a sequential list of revisions to the containing document,
+    expected to be in reverse chronological order (i.e. latest first).
+  display_name: revisions
+  cardinality: multi
+- id: roles
+  description: Defines a function, which might be assigned to a party in a specific
+    situation.
+  display_name: roles
+  cardinality: multi
+- id: locations
+  description: A physical point of presence, which may be associated with people,
+    organizations, or other concepts within the current or linked OSCAL document.
+  display_name: locations
+  cardinality: multi
+- id: parties
+  description: An organization or person, which may be associated with roles or other
+    concepts within the current or linked OSCAL document.
+  display_name: parties
+  cardinality: multi
+- id: actions
+  description: An action applied by a role within a given party to the content.
+  display_name: actions
+  cardinality: multi
+- id: props
+  description: A list of properties.
+  display_name: Metadata_props
+  cardinality: multi
+- id: links
+  description: A list of links.
+  display_name: Metadata_links
+  cardinality: multi
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks
+- id: responsible_parties
+  description: Responsible party assignments.
+  display_name: responsible-parties
+  cardinality: multi

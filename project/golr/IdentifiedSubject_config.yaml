@@ -1,0 +1,15 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: IdentifiedSubject
+schema_generating: true
+description: Used to detail assessment subjects that were identified by this task.
+display_name: IdentifiedSubject
+document_category: IdentifiedSubject
+weight: 20
+fields:
+- id: subject_placeholder_uuid
+  description: A reference to an assessment subject placeholder defined in the assessment
+    plan.
+  display_name: IdentifiedSubject_subject-placeholder-uuid
+- id: subjects
+  description: Assessment subjects or subject references for this object.
+  display_name: IdentifiedSubject_subjects
+  cardinality: multi

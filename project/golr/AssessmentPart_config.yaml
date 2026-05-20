@@ -1,0 +1,39 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: AssessmentPart
+schema_generating: true
+description: A partition of an assessment plan or results or a child of another part.
+display_name: AssessmentPart
+document_category: AssessmentPart
+weight: 20
+fields:
+- id: uuid
+  description: A machine-oriented, globally unique identifier with a cross-instance
+    scope.
+  display_name: uuid
+- id: name
+  description: A textual label that uniquely identifies an attribute or semantic type.
+  display_name: AssessmentPart_name
+- id: ns
+  description: An optional namespace qualifying a name. Allows different organizations
+    to associate distinct semantics with the same name.
+  display_name: ns
+- id: _class
+  description: A textual label that provides a sub-type or characterization.
+  display_name: _class
+- id: title
+  description: A human-readable name or title.
+  display_name: title
+- id: prose
+  description: Permits multiple paragraphs, lists, tables etc.
+  display_name: prose
+- id: parts
+  description: A collection of parts.
+  display_name: AssessmentPart_parts
+  cardinality: multi
+- id: props
+  description: A list of properties.
+  display_name: props
+  cardinality: multi
+- id: links
+  description: A list of links.
+  display_name: links
+  cardinality: multi

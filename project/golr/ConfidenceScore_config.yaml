@@ -1,0 +1,13 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: ConfidenceScore
+schema_generating: true
+description: Confidence represented as a category and/or percentage value.
+display_name: ConfidenceScore
+document_category: ConfidenceScore
+weight: 20
+fields:
+- id: category
+  description: Confidence category label or qualifier category value.
+  display_name: ConfidenceScore_category
+- id: percentage
+  description: A decimal percentage value in the range 0 to 1.
+  display_name: percentage

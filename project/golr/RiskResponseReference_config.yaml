@@ -1,0 +1,25 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: RiskResponseReference
+schema_generating: true
+description: Identifies an individual risk response that this log entry is for.
+display_name: RiskResponseReference
+document_category: RiskResponseReference
+weight: 20
+fields:
+- id: response_uuid
+  description: A machine-oriented identifier reference to a unique risk response.
+  display_name: RiskResponseReference_response-uuid
+- id: related_tasks
+  description: Identifies tasks for which the containing object is a consequence.
+  display_name: related-tasks
+  cardinality: multi
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks
+- id: props
+  description: A list of properties.
+  display_name: props
+  cardinality: multi
+- id: links
+  description: A list of links.
+  display_name: links
+  cardinality: multi

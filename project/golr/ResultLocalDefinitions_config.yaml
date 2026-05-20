@@ -1,0 +1,27 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: ResultLocalDefinitions
+schema_generating: true
+description: Used to define local implementation and assessment assets referenced
+  by a result that do not appear in the imported system security plan.
+display_name: ResultLocalDefinitions
+document_category: ResultLocalDefinitions
+weight: 20
+fields:
+- id: components
+  description: A collection of system components.
+  display_name: components
+  cardinality: multi
+- id: inventory_items
+  description: A collection of inventory items.
+  display_name: inventory-items
+  cardinality: multi
+- id: users
+  description: A collection of system users.
+  display_name: users
+  cardinality: multi
+- id: assessment_assets
+  description: Identifies the assets used to perform this assessment.
+  display_name: assessment-assets
+- id: tasks
+  description: A collection of tasks.
+  display_name: tasks
+  cardinality: multi

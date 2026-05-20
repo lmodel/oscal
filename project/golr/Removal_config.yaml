@@ -1,0 +1,26 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: Removal
+schema_generating: true
+description: Specifies objects to be removed from a control based on aspects of the
+  object that must all match.
+display_name: Removal
+document_category: Removal
+weight: 20
+fields:
+- id: by_name
+  description: Identify items to remove by their assigned name.
+  display_name: by-name
+- id: by_class
+  description: Identify items to remove by their class label.
+  display_name: by-class
+- id: by_id
+  description: Identify or target items by their id value.
+  display_name: by-id
+- id: by_item_name
+  description: Identify items to remove by the item's information object type name.
+  display_name: by-item-name
+- id: by_ns
+  description: Identify items to remove by the item's namespace.
+  display_name: by-ns
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks

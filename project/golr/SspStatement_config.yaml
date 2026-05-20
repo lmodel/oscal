@@ -1,0 +1,33 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: SspStatement
+schema_generating: true
+description: Identifies which statements within a control are addressed.
+display_name: SspStatement
+document_category: SspStatement
+weight: 20
+fields:
+- id: statement_id
+  description: A reference to a control statement identifier.
+  display_name: SspStatement_statement-id
+- id: uuid
+  description: A machine-oriented, globally unique identifier with a cross-instance
+    scope.
+  display_name: SspStatement_uuid
+- id: props
+  description: A list of properties.
+  display_name: SspStatement_props
+  cardinality: multi
+- id: links
+  description: A list of links.
+  display_name: links
+  cardinality: multi
+- id: responsible_roles
+  description: Responsible role assignments.
+  display_name: SspStatement_responsible-roles
+  cardinality: multi
+- id: by_components
+  description: Defines how the referenced component implements a set of controls.
+  display_name: by-components
+  cardinality: multi
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks

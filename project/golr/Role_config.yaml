@@ -1,0 +1,31 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: Role
+schema_generating: true
+description: Defines a function, which might be assigned to a party in a specific
+  situation.
+display_name: Role
+document_category: Role
+weight: 20
+fields:
+- id: id
+  description: A unique identifier for the role.
+  display_name: Role_id
+- id: title
+  description: A human-readable name or title.
+  display_name: Role_title
+- id: short_name
+  description: A short common name, abbreviation, or acronym.
+  display_name: short-name
+- id: description
+  description: A human-readable description.
+  display_name: description
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks
+- id: props
+  description: A list of properties.
+  display_name: props
+  cardinality: multi
+- id: links
+  description: A list of links.
+  display_name: links
+  cardinality: multi

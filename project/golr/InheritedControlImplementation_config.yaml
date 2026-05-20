@@ -1,0 +1,33 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: InheritedControlImplementation
+schema_generating: true
+description: Describes a control implementation inherited by a leveraging system.
+display_name: InheritedControlImplementation
+document_category: InheritedControlImplementation
+weight: 20
+fields:
+- id: uuid
+  description: A machine-oriented, globally unique identifier with a cross-instance
+    scope.
+  display_name: InheritedControlImplementation_uuid
+- id: provided_uuid
+  description: Machine-oriented identifier reference to an inherited control implementation
+    that a leveraging system is implementing.
+  display_name: provided-uuid
+- id: description
+  description: A human-readable description.
+  display_name: InheritedControlImplementation_description
+- id: props
+  description: A list of properties.
+  display_name: props
+  cardinality: multi
+- id: links
+  description: A list of links.
+  display_name: links
+  cardinality: multi
+- id: responsible_roles
+  description: Responsible role assignments.
+  display_name: InheritedControlImplementation_responsible-roles
+  cardinality: multi
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks

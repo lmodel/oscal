@@ -1,0 +1,30 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: ResourceProperty
+schema_generating: true
+description: Back-matter resource-scoped OSCAL property.
+display_name: ResourceProperty
+document_category: ResourceProperty
+weight: 20
+fields:
+- id: uuid
+  description: A unique identifier for a property.
+  display_name: Property_uuid
+- id: ns
+  description: A namespace qualifying the property's name. This allows different organizations
+    to associate distinct semantics with the same name.
+  display_name: Property_ns
+- id: _class
+  description: A textual label that provides a sub-type or characterization of the
+    property's name.
+  display_name: Property__class
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks
+- id: group
+  description: An identifier for relating distinct sets of properties.
+  display_name: group
+- id: name
+  description: A textual label that uniquely identifies an attribute or semantic type.
+  display_name: ResourceProperty_name
+- id: value
+  description: The value associated with the containing object.
+  display_name: ResourceProperty_value

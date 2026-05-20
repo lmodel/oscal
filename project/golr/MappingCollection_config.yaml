@@ -1,0 +1,26 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: MappingCollection
+schema_generating: true
+description: A collection of control mappings between source and target resources.
+display_name: MappingCollection
+document_category: MappingCollection
+weight: 20
+fields:
+- id: uuid
+  description: A machine-oriented, globally unique identifier with a cross-instance
+    scope.
+  display_name: MappingCollection_uuid
+- id: metadata
+  description: Provides information about the containing document, and defines concepts
+    shared across the document.
+  display_name: MappingCollection_metadata
+- id: provenance
+  description: Global provenance and mapping method metadata.
+  display_name: MappingCollection_provenance
+- id: mappings
+  description: A collection of control mappings.
+  display_name: MappingCollection_mappings
+  cardinality: multi
+- id: back_matter
+  description: A collection of resources that may be referenced from within the OSCAL
+    document instance.
+  display_name: back-matter

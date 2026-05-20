@@ -1,0 +1,29 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: ReviewedControls
+schema_generating: true
+description: Identifies the controls being assessed and their control objectives.
+display_name: ReviewedControls
+document_category: ReviewedControls
+weight: 20
+fields:
+- id: description
+  description: A human-readable description.
+  display_name: description
+- id: control_selections
+  description: Identifies the controls being assessed.
+  display_name: ReviewedControls_control-selections
+  cardinality: multi
+- id: control_objective_selections
+  description: Identifies the control objectives of the assessment.
+  display_name: control-objective-selections
+  cardinality: multi
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks
+- id: props
+  description: A list of properties.
+  display_name: props
+  cardinality: multi
+- id: links
+  description: A list of links.
+  display_name: links
+  cardinality: multi

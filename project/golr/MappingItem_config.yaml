@@ -1,0 +1,24 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: MappingItem
+schema_generating: true
+description: A source or target item participating in a mapping entry.
+display_name: MappingItem
+document_category: MappingItem
+weight: 20
+fields:
+- id: type
+  description: Indicates the nature or kind of the containing object.
+  display_name: MappingItem_type
+- id: id_ref
+  description: Identifier reference of a source/target subject.
+  display_name: MappingItem_id-ref
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks
+- id: props
+  description: A list of properties.
+  display_name: props
+  cardinality: multi
+- id: links
+  description: A list of links.
+  display_name: links
+  cardinality: multi

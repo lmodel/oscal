@@ -1,0 +1,33 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: InventoryItem
+schema_generating: true
+description: A single managed inventory item within the system.
+display_name: InventoryItem
+document_category: InventoryItem
+weight: 20
+fields:
+- id: uuid
+  description: A machine-oriented, globally unique identifier with a cross-instance
+    scope.
+  display_name: InventoryItem_uuid
+- id: description
+  description: A human-readable description.
+  display_name: InventoryItem_description
+- id: implemented_components
+  description: A collection of implemented components.
+  display_name: implemented-components
+  cardinality: multi
+- id: props
+  description: A list of properties.
+  display_name: InventoryItem_props
+  cardinality: multi
+- id: links
+  description: A list of links.
+  display_name: InventoryItem_links
+  cardinality: multi
+- id: responsible_parties
+  description: Responsible party assignments.
+  display_name: InventoryItem_responsible-parties
+  cardinality: multi
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks

@@ -1,0 +1,63 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: SystemCharacteristics
+schema_generating: true
+description: Contains the characteristics of the system, such as its name, purpose,
+  and security impact level.
+display_name: SystemCharacteristics
+document_category: SystemCharacteristics
+weight: 20
+fields:
+- id: system_ids
+  description: Unique identifiers for the system.
+  display_name: SystemCharacteristics_system-ids
+  cardinality: multi
+- id: system_name
+  description: The full name of the system.
+  display_name: SystemCharacteristics_system-name
+- id: system_name_short
+  description: A short name for the system, such as an acronym, that is suitable for
+    display in a data table or summary list.
+  display_name: system-name-short
+- id: description
+  description: A human-readable description.
+  display_name: SystemCharacteristics_description
+- id: date_authorized
+  description: The date the system received its authorization.
+  display_name: date-authorized
+- id: security_sensitivity_level
+  description: The overall information system sensitivity categorization, such as
+    defined by FIPS-199.
+  display_name: security-sensitivity-level
+- id: system_information
+  description: Contains details about all information types that are stored, processed,
+    or transmitted by the system.
+  display_name: SystemCharacteristics_system-information
+- id: security_impact_level
+  description: The overall level of expected impact resulting from unauthorized disclosure,
+    modification, or loss of access to information.
+  display_name: security-impact-level
+- id: system_status
+  description: Describes the operational status of the system.
+  display_name: SystemCharacteristics_system-status
+- id: authorization_boundary
+  description: A description of this system's authorization boundary, optionally supplemented
+    with diagrams that illustrate the authorization boundary.
+  display_name: SystemCharacteristics_authorization-boundary
+- id: network_architecture
+  description: A description of the system's network architecture, optionally supplemented
+    with diagrams that illustrate the network architecture.
+  display_name: network-architecture
+- id: data_flow
+  description: A description of the logical flow of information within the system
+    and across its boundaries, optionally supplemented with diagrams.
+  display_name: data-flow
+- id: responsible_parties
+  description: Responsible party assignments.
+  display_name: SystemCharacteristics_responsible-parties
+  cardinality: multi
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks
+- id: props
+  description: A list of properties.
+  display_name: SystemCharacteristics_props
+  cardinality: multi

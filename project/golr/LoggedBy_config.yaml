@@ -1,0 +1,17 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: LoggedBy
+schema_generating: true
+description: Used to indicate who created a log entry in what role.
+display_name: LoggedBy
+document_category: LoggedBy
+weight: 20
+fields:
+- id: party_uuid
+  description: A machine-oriented identifier reference to the party who is making
+    the log entry.
+  display_name: LoggedBy_party-uuid
+- id: role_id
+  description: A reference to a role by its identifier.
+  display_name: role-id
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks

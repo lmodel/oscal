@@ -1,0 +1,30 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: RevisionProperty
+schema_generating: true
+description: Revision-scoped OSCAL property.
+display_name: RevisionProperty
+document_category: RevisionProperty
+weight: 20
+fields:
+- id: uuid
+  description: A unique identifier for a property.
+  display_name: Property_uuid
+- id: ns
+  description: A namespace qualifying the property's name. This allows different organizations
+    to associate distinct semantics with the same name.
+  display_name: Property_ns
+- id: value
+  description: Indicates the value of the attribute, characteristic, or quality.
+  display_name: Property_value
+- id: _class
+  description: A textual label that provides a sub-type or characterization of the
+    property's name.
+  display_name: Property__class
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks
+- id: group
+  description: An identifier for relating distinct sets of properties.
+  display_name: group
+- id: name
+  description: A textual label that uniquely identifies an attribute or semantic type.
+  display_name: RevisionProperty_name

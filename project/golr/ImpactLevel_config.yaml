@@ -1,0 +1,28 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: ImpactLevel
+schema_generating: true
+description: The expected level of impact resulting from the described information's
+  confidentiality, integrity, or availability affect.
+display_name: ImpactLevel
+document_category: ImpactLevel
+weight: 20
+fields:
+- id: props
+  description: A list of properties.
+  display_name: props
+  cardinality: multi
+- id: links
+  description: A list of links.
+  display_name: links
+  cardinality: multi
+- id: base
+  description: The prescribed base (Confidentiality, Integrity, or Availability) security
+    impact level.
+  display_name: ImpactLevel_base
+- id: selected
+  description: The selected (Confidentiality, Integrity, or Availability) security
+    impact level.
+  display_name: ImpactLevel_selected
+- id: adjustment_justification
+  description: If the selected security level is different from the base security
+    level, this contains the justification for the change.
+  display_name: adjustment-justification

@@ -1,0 +1,39 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: ControlPart
+schema_generating: true
+description: An annotated, markup-based textual element of a control's or catalog
+  group's definition, or a child of another part.
+display_name: ControlPart
+document_category: ControlPart
+weight: 20
+fields:
+- id: id
+  description: A unique human-oriented identifier within a particular context.
+  display_name: id
+- id: name
+  description: A textual label that uniquely identifies an attribute or semantic type.
+  display_name: ControlPart_name
+- id: ns
+  description: An optional namespace qualifying a name. Allows different organizations
+    to associate distinct semantics with the same name.
+  display_name: ns
+- id: _class
+  description: A textual label that provides a sub-type or characterization.
+  display_name: _class
+- id: title
+  description: A human-readable name or title.
+  display_name: title
+- id: prose
+  description: Permits multiple paragraphs, lists, tables etc.
+  display_name: prose
+- id: parts
+  description: A collection of parts.
+  display_name: ControlPart_parts
+  cardinality: multi
+- id: props
+  description: A list of properties.
+  display_name: props
+  cardinality: multi
+- id: links
+  description: A list of links.
+  display_name: links
+  cardinality: multi

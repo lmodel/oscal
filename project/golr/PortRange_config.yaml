@@ -1,0 +1,19 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: PortRange
+schema_generating: true
+description: Where applicable, the transport layer protocol port range.
+display_name: PortRange
+document_category: PortRange
+weight: 20
+fields:
+- id: start
+  description: The start date/time.
+  display_name: PortRange_start
+- id: end
+  description: The end date/time.
+  display_name: PortRange_end
+- id: transport
+  description: Indicates the transport type.
+  display_name: transport
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks

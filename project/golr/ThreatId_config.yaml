@@ -1,0 +1,16 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: ThreatId
+schema_generating: true
+description: A pointer, by ID, to an externally-defined threat.
+display_name: ThreatId
+document_category: ThreatId
+weight: 20
+fields:
+- id: href
+  description: A resolvable URL reference to a resource.
+  display_name: href
+- id: system
+  description: Specifies the system or scheme from which the identifier originates.
+  display_name: ThreatId_system
+- id: id
+  description: A unique human-oriented identifier within a particular context.
+  display_name: ThreatId_id

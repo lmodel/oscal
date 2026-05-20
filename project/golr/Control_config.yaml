@@ -1,0 +1,42 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: Control
+schema_generating: true
+description: A structured object representing a requirement or guideline, which when
+  implemented will reduce an aspect of risk related to an information system and its
+  information.
+display_name: Control
+document_category: Control
+weight: 20
+fields:
+- id: id
+  description: Identifies a control such that it can be referenced in the defining
+    catalog and other OSCAL instances (e.g., profiles).
+  display_name: Control_id
+- id: _class
+  description: A textual label that provides a sub-type or characterization of the
+    control.
+  display_name: Control__class
+- id: title
+  description: A name given to the control, which may be used by a tool for display
+    and navigation.
+  display_name: Control_title
+- id: params
+  description: Parameters providing a mechanism for the dynamic assignment of value(s)
+    in a control.
+  display_name: params
+  cardinality: multi
+- id: parts
+  description: A collection of parts.
+  display_name: parts
+  cardinality: multi
+- id: controls
+  description: A collection of controls.
+  display_name: controls
+  cardinality: multi
+- id: props
+  description: A list of properties.
+  display_name: props
+  cardinality: multi
+- id: links
+  description: A list of links.
+  display_name: links
+  cardinality: multi

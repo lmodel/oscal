@@ -1,0 +1,19 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: SspControlImplementation
+schema_generating: true
+description: Describes how the system satisfies a set of controls.
+display_name: SspControlImplementation
+document_category: SspControlImplementation
+weight: 20
+fields:
+- id: description
+  description: A human-readable description.
+  display_name: SspControlImplementation_description
+- id: set_parameters
+  description: Identifies the parameter that will be set by the enclosed value.
+  display_name: SspControlImplementation_set-parameters
+  cardinality: multi
+- id: implemented_requirements
+  description: Control implementation requirement entries in the containing OSCAL
+    context. The concrete entry class is selected by class-level slot_usage.
+  display_name: SspControlImplementation_implemented-requirements
+  cardinality: multi

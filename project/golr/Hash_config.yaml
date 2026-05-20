@@ -1,0 +1,15 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: Hash
+schema_generating: true
+description: A representation of a cryptographic digest generated over a resource
+  using a specified hash algorithm.
+display_name: Hash
+document_category: Hash
+weight: 20
+fields:
+- id: value
+  description: The value associated with the containing object.
+  display_name: Hash_value
+- id: algorithm
+  description: The digest method by which a hash is derived. Recommended values are
+    in HashAlgorithmEnum; other values are permitted (OSCAL allow-other="yes").
+  display_name: Hash_algorithm

@@ -1,0 +1,42 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: Location
+schema_generating: true
+description: A physical point of presence, which may be associated with people, organizations,
+  or other concepts within the current or linked OSCAL document.
+display_name: Location
+document_category: Location
+weight: 20
+fields:
+- id: uuid
+  description: A machine-oriented, globally unique identifier with a cross-instance
+    scope.
+  display_name: Location_uuid
+- id: title
+  description: A human-readable name or title.
+  display_name: title
+- id: email_addresses
+  description: Email addresses associated with the containing object.
+  display_name: email-addresses
+  cardinality: multi
+- id: telephone_numbers
+  description: Telephone numbers associated with the containing object.
+  display_name: telephone-numbers
+  cardinality: multi
+- id: address
+  description: A postal address for the location.
+  display_name: address
+- id: urls
+  description: The uniform resource locator (URL) for a web site or other resource
+    associated with the location.
+  display_name: urls
+  cardinality: multi
+- id: props
+  description: A list of properties.
+  display_name: Location_props
+  cardinality: multi
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks
+- id: links
+  description: A list of links.
+  display_name: links
+  cardinality: multi

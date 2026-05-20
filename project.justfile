@@ -221,7 +221,7 @@ gen-merged-schema:
 [group('model development - extended')]
 gen-yaml-artifact:
   mkdir -p {{dest}}/yaml
-  uv run python scripts/gen_yaml_patched.py {{source_schema_path}} > {{dest}}/yaml/{{schema_name}}.yaml
+  uv run python scripts/issues/gen_yaml_patched.py {{source_schema_path}} > {{dest}}/yaml/{{schema_name}}.yaml
 
 # Generate SSSOM mapping TSV from schema slot_uri / mappings
 [group('model development - extended')]
@@ -276,7 +276,7 @@ gen-plantuml-artifact:
 [group('model development - extended')]
 gen-rdf-artifact:
   mkdir -p {{dest}}/rdf
-  uv run python scripts/gen_rdf_patched.py --mergeimports -o {{dest}}/rdf/{{schema_name}}.ttl {{source_schema_path}}
+  uv run python scripts/issues/gen_rdf_patched.py --mergeimports -o {{dest}}/rdf/{{schema_name}}.ttl {{source_schema_path}}
 
 # Generate a directory of SPARQL validation queries (one query per constraint)
 [group('model development - extended')]
@@ -296,7 +296,7 @@ gen-csv-artifact:
 [group('model development - extended')]
 gen-dbml-artifact:
   mkdir -p {{dest}}/dbml
-  uv run python3 scripts/gen_dbml_patched.py -s {{source_schema_path}} -o {{dest}}/dbml/{{schema_name}}.dbml
+  uv run python3 scripts/issues/gen_dbml_patched.py -s {{source_schema_path}} -o {{dest}}/dbml/{{schema_name}}.dbml
 
 # Generate SQLAlchemy ORM models
 [group('model development - extended')]
@@ -346,17 +346,17 @@ gen-cpp-artifact:
 [group('model development - extended')]
 gen-pandera-artifact:
   mkdir -p {{dest}}/pandera
-  uv run python3 scripts/gen_pandera_patched.py {{source_schema_path}} > {{dest}}/pandera/{{schema_name}}_pandera.py
+  uv run python3 scripts/issues/gen_pandera_patched.py {{source_schema_path}} > {{dest}}/pandera/{{schema_name}}_pandera.py
 
 # Generate Markdown data dictionary (single combined file)
 # NOTE Bug 12: gen-markdown-datadict creates a new ERDiagramGenerator (and
 # therefore re-loads the full CDM schema) for every one of the 2500+ CDM
-# classes, hanging indefinitely.  scripts/gen_markdown_datadict_patched.py
+# classes, hanging indefinitely.  scripts/issues/gen_markdown_datadict_patched.py
 # overrides _generate_class_diagram to cache one ERDiagramGenerator instance.
 [group('model development - extended')]
 gen-markdown-datadict-artifact:
   mkdir -p {{dest}}/markdown-datadict
-  uv run python3 scripts/gen_markdown_datadict_patched.py --mergeimports {{source_schema_path}} > {{dest}}/markdown-datadict/{{schema_name}}.md
+  uv run python3 scripts/issues/gen_markdown_datadict_patched.py --mergeimports {{source_schema_path}} > {{dest}}/markdown-datadict/{{schema_name}}.md
 
 # Generate GOLR (SOLR) view configurations (one JSON per class)
 [group('model development - extended')]

@@ -1,0 +1,33 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: Profile
+schema_generating: true
+description: An OSCAL Profile that designates a set of controls from one or more catalogs
+  or profiles, optionally restructures and modifies them, to describe a basis for
+  a security standard or body of practice.
+display_name: Profile
+document_category: Profile
+weight: 20
+fields:
+- id: uuid
+  description: A machine-oriented, globally unique identifier with a cross-instance
+    scope.
+  display_name: Profile_uuid
+- id: metadata
+  description: Provides information about the containing document, and defines concepts
+    shared across the document.
+  display_name: Profile_metadata
+- id: imports
+  description: Designates source catalog or profile resources to be imported into
+    the profile.
+  display_name: Profile_imports
+  cardinality: multi
+- id: merge
+  description: Structuring directives for how controls are organized after profile
+    resolution.
+  display_name: merge
+- id: modify
+  description: Set parameters or amend controls in resolution.
+  display_name: modify
+- id: back_matter
+  description: A collection of resources that may be referenced from within the OSCAL
+    document instance.
+  display_name: back-matter

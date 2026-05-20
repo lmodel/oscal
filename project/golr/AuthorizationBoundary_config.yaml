@@ -1,0 +1,26 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: AuthorizationBoundary
+schema_generating: true
+description: A description of this system's authorization boundary, optionally supplemented
+  with diagrams that illustrate the authorization boundary.
+display_name: AuthorizationBoundary
+document_category: AuthorizationBoundary
+weight: 20
+fields:
+- id: description
+  description: A human-readable description.
+  display_name: AuthorizationBoundary_description
+- id: props
+  description: A list of properties.
+  display_name: props
+  cardinality: multi
+- id: links
+  description: A list of links.
+  display_name: links
+  cardinality: multi
+- id: diagrams
+  description: A collection of diagrams that visually depict the subject.
+  display_name: diagrams
+  cardinality: multi
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks

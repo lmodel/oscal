@@ -1,0 +1,29 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: SubjectReference
+schema_generating: true
+description: A human-oriented identifier reference to a resource. Use type to indicate
+  whether the identified resource is a component, inventory item, location, user,
+  or something else.
+display_name: SubjectReference
+document_category: SubjectReference
+weight: 20
+fields:
+- id: subject_uuid
+  description: A UUID reference to the identified subject.
+  display_name: SubjectReference_subject-uuid
+- id: type
+  description: Indicates the nature or kind of the containing object.
+  display_name: SubjectReference_type
+- id: title
+  description: A human-readable name or title.
+  display_name: title
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks
+- id: props
+  description: A list of properties.
+  display_name: props
+  cardinality: multi
+- id: links
+  description: A list of links.
+  display_name: links
+  cardinality: multi

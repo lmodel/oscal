@@ -1,0 +1,15 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: Attestation
+schema_generating: true
+description: A set of textual attestation statements, typically written by the assessor.
+display_name: Attestation
+document_category: Attestation
+weight: 20
+fields:
+- id: parts
+  description: A collection of parts.
+  display_name: Attestation_parts
+  cardinality: multi
+- id: responsible_parties
+  description: Responsible party assignments.
+  display_name: responsible-parties
+  cardinality: multi

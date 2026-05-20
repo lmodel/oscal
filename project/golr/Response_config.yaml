@@ -1,0 +1,44 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: Response
+schema_generating: true
+description: Describes either recommended or an actual plan for addressing the risk.
+display_name: Response
+document_category: Response
+weight: 20
+fields:
+- id: uuid
+  description: A machine-oriented, globally unique identifier with a cross-instance
+    scope.
+  display_name: Response_uuid
+- id: title
+  description: A human-readable name or title.
+  display_name: Response_title
+- id: description
+  description: A human-readable description.
+  display_name: Response_description
+- id: lifecycle
+  description: Identifies whether this is a recommendation or an actual plan. Recommended
+    values are in ResponseLifecycleEnum; other values are permitted (OSCAL allow-other="yes").
+  display_name: Response_lifecycle
+- id: origins
+  description: Identifies the source of observations, findings, or risks.
+  display_name: origins
+  cardinality: multi
+- id: required_assets
+  description: Identifies an asset required to achieve remediation.
+  display_name: required-assets
+  cardinality: multi
+- id: tasks
+  description: A collection of tasks.
+  display_name: tasks
+  cardinality: multi
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks
+- id: props
+  description: A list of properties.
+  display_name: props
+  cardinality: multi
+- id: links
+  description: A list of links.
+  display_name: links
+  cardinality: multi

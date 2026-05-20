@@ -1,0 +1,24 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: Characterization
+schema_generating: true
+description: A collection of descriptive data about the containing object from a specific
+  origin.
+display_name: Characterization
+document_category: Characterization
+weight: 20
+fields:
+- id: origin
+  description: The source of the finding.
+  display_name: Characterization_origin
+- id: facets
+  description: An individual characteristic that is part of a larger set produced
+    by the same actor.
+  display_name: Characterization_facets
+  cardinality: multi
+- id: props
+  description: A list of properties.
+  display_name: props
+  cardinality: multi
+- id: links
+  description: A list of links.
+  display_name: links
+  cardinality: multi

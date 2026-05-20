@@ -1,0 +1,32 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: ImplementedControlStatement
+schema_generating: true
+description: Identifies which statements within a control are addressed.
+display_name: ImplementedControlStatement
+document_category: ImplementedControlStatement
+weight: 20
+fields:
+- id: statement_id
+  description: A reference to a control statement identifier.
+  display_name: ImplementedControlStatement_statement-id
+- id: uuid
+  description: A machine-oriented, globally unique identifier with a cross-instance
+    scope.
+  display_name: ImplementedControlStatement_uuid
+- id: description
+  description: A human-readable description.
+  display_name: ImplementedControlStatement_description
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks
+- id: props
+  description: A list of properties.
+  display_name: props
+  cardinality: multi
+- id: links
+  description: A list of links.
+  display_name: links
+  cardinality: multi
+- id: responsible_roles
+  description: Responsible role assignments.
+  display_name: responsible-roles
+  cardinality: multi

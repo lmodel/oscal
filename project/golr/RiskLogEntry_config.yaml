@@ -1,0 +1,47 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: RiskLogEntry
+schema_generating: true
+description: Identifies an individual risk response that occurred as part of managing
+  an identified risk.
+display_name: RiskLogEntry
+document_category: RiskLogEntry
+weight: 20
+fields:
+- id: uuid
+  description: A machine-oriented, globally unique identifier with a cross-instance
+    scope.
+  display_name: RiskLogEntry_uuid
+- id: title
+  description: A human-readable name or title.
+  display_name: title
+- id: description
+  description: A human-readable description.
+  display_name: description
+- id: start
+  description: The start date/time.
+  display_name: RiskLogEntry_start
+- id: end
+  description: The end date/time.
+  display_name: end
+- id: logged_by
+  description: Used to indicate who created a log entry in what role.
+  display_name: logged-by
+  cardinality: multi
+- id: status_change
+  description: Identifies the risk change that prompted the log entry. Recommended
+    values are in RiskStatusEnum; other values are permitted (OSCAL allow-other="yes").
+  display_name: status-change
+- id: related_responses
+  description: Identifies an individual risk response that this log entry is for.
+  display_name: related-responses
+  cardinality: multi
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks
+- id: props
+  description: A list of properties.
+  display_name: props
+  cardinality: multi
+- id: links
+  description: A list of links.
+  display_name: links
+  cardinality: multi

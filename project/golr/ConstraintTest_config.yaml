@@ -1,0 +1,13 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: ConstraintTest
+schema_generating: true
+description: A test expression which is expected to be evaluated by a tool.
+display_name: ConstraintTest
+document_category: ConstraintTest
+weight: 20
+fields:
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks
+- id: expression
+  description: A formal (executable) expression of a constraint.
+  display_name: ConstraintTest_expression

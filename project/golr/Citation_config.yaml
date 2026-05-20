@@ -1,0 +1,18 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: Citation
+schema_generating: true
+description: An optional citation consisting of end note text using structured markup.
+display_name: Citation
+document_category: Citation
+weight: 20
+fields:
+- id: text
+  description: A line of citation text.
+  display_name: Citation_text
+- id: links
+  description: A list of links.
+  display_name: Citation_links
+  cardinality: multi
+- id: props
+  description: A list of properties.
+  display_name: props
+  cardinality: multi

@@ -1,0 +1,34 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: ControlImplementationSet
+schema_generating: true
+description: Defines how the component or capability supports a set of controls.
+display_name: ControlImplementationSet
+document_category: ControlImplementationSet
+weight: 20
+fields:
+- id: uuid
+  description: A machine-oriented, globally unique identifier with a cross-instance
+    scope.
+  display_name: ControlImplementationSet_uuid
+- id: source
+  description: Reference to an external catalog or profile resource.
+  display_name: ControlImplementationSet_source
+- id: description
+  description: A human-readable description.
+  display_name: ControlImplementationSet_description
+- id: set_parameters
+  description: Parameter values applied in the containing implementation context.
+  display_name: ControlImplementationSet_set-parameters
+  cardinality: multi
+- id: implemented_requirements
+  description: Control implementation requirement entries in the containing OSCAL
+    context. The concrete entry class is selected by class-level slot_usage.
+  display_name: ControlImplementationSet_implemented-requirements
+  cardinality: multi
+- id: props
+  description: A list of properties.
+  display_name: props
+  cardinality: multi
+- id: links
+  description: A list of links.
+  display_name: links
+  cardinality: multi

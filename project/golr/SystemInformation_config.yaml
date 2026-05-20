@@ -1,0 +1,21 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: SystemInformation
+schema_generating: true
+description: Contains details about all information types that are stored, processed,
+  or transmitted by the system, such as privacy information.
+display_name: SystemInformation
+document_category: SystemInformation
+weight: 20
+fields:
+- id: props
+  description: A list of properties.
+  display_name: SystemInformation_props
+  cardinality: multi
+- id: links
+  description: A list of links.
+  display_name: SystemInformation_links
+  cardinality: multi
+- id: information_types
+  description: Contains details about one information type that is stored, processed,
+    or transmitted by the system.
+  display_name: SystemInformation_information-types
+  cardinality: multi

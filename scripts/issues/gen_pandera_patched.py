@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Wrapper for linkml gen-pandera that patches two upstream bugs.
+Wrapper for linkml gen-pandera that patches three upstream bugs.
 
 Bug A — No --mergeimports support (panderagen.py):
   gen-pandera does not expose --mergeimports; its DataframeGenerator base class
@@ -22,6 +22,17 @@ Bug B — ValueError on cyclic class dependencies (dependency_sorter.py):
   Fix: return instead of raising when a cycle node is encountered, allowing the
   dependency sort to produce a valid (if imperfect) ordering for all classes.
 
+Bug C — AttributeError in map_type when typeof chain leads to None
+  (dataframe_generator.py):
+  When a TypeDefinition has a URI not present in TYPE_MAP and no typeof fallback
+  (e.g. xsd:base64Binary, xsd:nonNegativeInteger, xsd:positiveInteger,
+  linkml:DateOrDatetime, shex:iri, shex:nonLiteral), map_type calls
+  get_type(t.typeof) with t.typeof=None which returns None, then recursively
+  calls map_type(None) which crashes on NoneType.uri.
+  Fix: (1) extend TYPE_MAP with common XSD/shex/linkml URIs that appear in
+  OSCAL-derived schemas; (2) patch map_type to guard against a None result
+  from get_type so it falls back to 'str' rather than crashing.
+
 Bugs raised upstream.
 
 See project.justfile gen-pandera-artifact for usage.
@@ -30,11 +41,13 @@ See project.justfile gen-pandera-artifact for usage.
 import sys
 
 import click
+from linkml.generators.panderagen.dataframe_generator import DataframeGenerator
 from linkml.generators.panderagen.dependency_sorter import DependencySorter
 from linkml.generators.panderagen.pandera.pandera_dataframe_generator import (
     PanderaDataframeGenerator,
 )
 from linkml.generators.panderagen.panderagen import DataframeGeneratorCli
+from linkml_runtime.linkml_model.meta import TypeDefinition
 
 # ---------------------------------------------------------------------------
 # Bug B fix: patch DependencySorter._visit to skip cycles instead of raising
@@ -49,6 +62,56 @@ def _patched_visit(self, node, visited, in_progress, result):
 
 
 DependencySorter._visit = _patched_visit
+
+# ---------------------------------------------------------------------------
+# Bug C fix: extend TYPE_MAP with missing URI mappings and patch map_type to
+# guard against None from get_type() when the typeof chain is exhausted.
+# ---------------------------------------------------------------------------
+_EXTRA_TYPE_MAP: dict[str, str] = {
+    "xsd:base64Binary": "str",
+    "xsd:nonNegativeInteger": "int",
+    "xsd:positiveInteger": "int",
+    "xsd:long": "int",
+    "xsd:short": "int",
+    "xsd:byte": "int",
+    "xsd:unsignedInt": "int",
+    "xsd:unsignedLong": "int",
+    "xsd:unsignedShort": "int",
+    "xsd:unsignedByte": "int",
+    "xsd:normalizedString": "str",
+    "xsd:token": "str",
+    "xsd:language": "str",
+    "xsd:Name": "str",
+    "xsd:NCName": "str",
+    "xsd:ID": "str",
+    "xsd:IDREF": "str",
+    "xsd:IDREFS": "str",
+    "xsd:ENTITIES": "str",
+    "xsd:NMTOKEN": "str",
+    "xsd:hexBinary": "str",
+    "linkml:DateOrDatetime": "str",
+    "linkml:Uriorcurie": "str",
+    "linkml:Uri": "str",
+    "linkml:Curie": "str",
+    "shex:iri": "str",
+    "shex:nonLiteral": "str",
+    "shex:IRI": "str",
+    "shex:bnode": "str",
+}
+
+_orig_map_type = DataframeGenerator.map_type
+
+
+def _patched_map_type(self, t: TypeDefinition, required: bool = False) -> str:
+    if t is None:
+        return "str"
+    # Merge extra entries into the instance TYPE_MAP on first call
+    for k, v in _EXTRA_TYPE_MAP.items():
+        self.TYPE_MAP.setdefault(k, v)
+    return _orig_map_type(self, t, required)
+
+
+DataframeGenerator.map_type = _patched_map_type
 
 
 @click.command()

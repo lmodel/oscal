@@ -1,0 +1,63 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: Risk
+schema_generating: true
+description: An identified risk.
+display_name: Risk
+document_category: Risk
+weight: 20
+fields:
+- id: uuid
+  description: A machine-oriented, globally unique identifier with a cross-instance
+    scope.
+  display_name: Risk_uuid
+- id: title
+  description: A human-readable name or title.
+  display_name: Risk_title
+- id: description
+  description: A human-readable description.
+  display_name: Risk_description
+- id: statement
+  description: An assessor's summary of the risk, in narrative form.
+  display_name: Risk_statement
+- id: origins
+  description: Identifies the source of observations, findings, or risks.
+  display_name: origins
+  cardinality: multi
+- id: threat_ids
+  description: The referenced threat identifiers.
+  display_name: threat-ids
+  cardinality: multi
+- id: characterizations
+  description: Supporting information about the risk and how it relates to the system.
+  display_name: characterizations
+  cardinality: multi
+- id: mitigating_factors
+  description: Describes existing mitigating factors that may affect the overall determination
+    of the risk.
+  display_name: mitigating-factors
+  cardinality: multi
+- id: deadline
+  description: The date/time by which the risk must be resolved.
+  display_name: deadline
+- id: remediations
+  description: Describes either recommended or actual responses to a risk.
+  display_name: remediations
+  cardinality: multi
+- id: risk_log
+  description: A log of all risk-related tasks taken.
+  display_name: risk-log
+- id: related_observations
+  description: Relates the containing object to a set of referenced observations.
+  display_name: related-observations
+  cardinality: multi
+- id: status
+  description: Status indicator used by the containing OSCAL context. Allowed values
+    are constrained by class-level slot_usage.
+  display_name: Risk_status
+- id: props
+  description: A list of properties.
+  display_name: props
+  cardinality: multi
+- id: links
+  description: A list of links.
+  display_name: links
+  cardinality: multi

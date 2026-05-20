@@ -1,0 +1,58 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: Mapping
+schema_generating: true
+description: A mapping between two mapped resources.
+display_name: Mapping
+document_category: Mapping
+weight: 20
+fields:
+- id: uuid
+  description: A machine-oriented, globally unique identifier with a cross-instance
+    scope.
+  display_name: Mapping_uuid
+- id: method
+  description: Method indicator used by the containing OSCAL context. Allowed values
+    are constrained by class-level slot_usage.
+  display_name: Mapping_method
+- id: matching_rationale
+  description: The rationale method used to relate mapped items.
+  display_name: matching-rationale
+- id: status
+  description: Status indicator used by the containing OSCAL context. Allowed values
+    are constrained by class-level slot_usage.
+  display_name: Mapping_status
+- id: source_resource
+  description: Reference to the mapping source resource.
+  display_name: Mapping_source-resource
+- id: target_resource
+  description: Reference to the mapping target resource.
+  display_name: Mapping_target-resource
+- id: maps
+  description: Mapping entries relating source items to target items.
+  display_name: Mapping_maps
+  cardinality: multi
+- id: mapping_description
+  description: Description of the context and intended use of the mapping.
+  display_name: mapping-description
+- id: source_gap_summary
+  description: Summary of unmapped source controls.
+  display_name: source-gap-summary
+- id: target_gap_summary
+  description: Summary of unmapped target controls.
+  display_name: target-gap-summary
+- id: confidence_score
+  description: Confidence descriptor for a mapping.
+  display_name: confidence-score
+- id: coverage
+  description: Coverage metadata for a mapping.
+  display_name: coverage
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks
+- id: props
+  description: A list of properties.
+  display_name: props
+  cardinality: multi
+- id: links
+  description: A list of links.
+  display_name: links
+  cardinality: multi

@@ -1,0 +1,17 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: SetParameter
+schema_generating: true
+description: Identifies the parameter that will be set by the enclosed value.
+display_name: SetParameter
+document_category: SetParameter
+weight: 20
+fields:
+- id: param_id
+  description: The identifier for the parameter being set or referenced.
+  display_name: SetParameter_param-id
+- id: values
+  description: A parameter value or set of values.
+  display_name: SetParameter_values
+  cardinality: multi
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks

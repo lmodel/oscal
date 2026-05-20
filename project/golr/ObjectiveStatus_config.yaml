@@ -1,0 +1,18 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: ObjectiveStatus
+schema_generating: true
+description: A determination of if the objective is satisfied or not within a given
+  system.
+display_name: ObjectiveStatus
+document_category: ObjectiveStatus
+weight: 20
+fields:
+- id: state
+  description: An indication as to whether the objective is satisfied or not.
+  display_name: ObjectiveStatus_state
+- id: reason
+  description: The reason the objective was given its status. Recommended values are
+    in ObjectiveStatusReasonEnum; other values are permitted (OSCAL allow-other="yes").
+  display_name: reason
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks

@@ -1,0 +1,14 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: RelatedObservation
+schema_generating: true
+description: Relates the identified element to a set of referenced observations.
+display_name: RelatedObservation
+document_category: RelatedObservation
+weight: 20
+fields:
+- id: observation_uuid
+  description: A machine-oriented identifier reference to an observation defined in
+    the list of observations.
+  display_name: RelatedObservation_observation-uuid
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks

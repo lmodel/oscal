@@ -1,0 +1,15 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: SystemId
+schema_generating: true
+description: A human-oriented, globally unique identifier for a system.
+display_name: SystemId
+document_category: SystemId
+weight: 20
+fields:
+- id: id
+  description: A unique human-oriented identifier within a particular context.
+  display_name: SystemId_id
+- id: identifier_type
+  description: A human-readable label for a specific identifier scheme. Recommended
+    values are in SystemIdentifierTypeEnum; other URI values are permitted (OSCAL
+    allow-other="yes").
+  display_name: SystemId_identifier-type

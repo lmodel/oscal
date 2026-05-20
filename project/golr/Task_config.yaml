@@ -1,0 +1,55 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: Task
+schema_generating: true
+description: Represents a scheduled event or milestone, which may be associated with
+  a series of assessment actions.
+display_name: Task
+document_category: Task
+weight: 20
+fields:
+- id: uuid
+  description: A machine-oriented, globally unique identifier with a cross-instance
+    scope.
+  display_name: Task_uuid
+- id: type
+  description: Indicates the nature or kind of the containing object.
+  display_name: Task_type
+- id: title
+  description: A human-readable name or title.
+  display_name: Task_title
+- id: description
+  description: A human-readable description.
+  display_name: description
+- id: timing
+  description: The timing under which a task is intended to occur.
+  display_name: timing
+- id: dependencies
+  description: Tasks that this task depends on.
+  display_name: dependencies
+  cardinality: multi
+- id: associated_activities
+  description: Activities associated with this task.
+  display_name: associated-activities
+  cardinality: multi
+- id: tasks
+  description: A collection of tasks.
+  display_name: tasks
+  cardinality: multi
+- id: subjects
+  description: Assessment subjects or subject references for this object.
+  display_name: Task_subjects
+  cardinality: multi
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks
+- id: props
+  description: A list of properties.
+  display_name: props
+  cardinality: multi
+- id: links
+  description: A list of links.
+  display_name: links
+  cardinality: multi
+- id: responsible_roles
+  description: Responsible role assignments.
+  display_name: responsible-roles
+  cardinality: multi

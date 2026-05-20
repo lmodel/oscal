@@ -1,0 +1,20 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: ResourceLink
+schema_generating: true
+description: A URL-based pointer to an external resource with an optional hash for
+  verification and change detection.
+display_name: ResourceLink
+document_category: ResourceLink
+weight: 20
+fields:
+- id: href
+  description: A resolvable URL pointing to the referenced resource.
+  display_name: ResourceLink_href
+- id: media_type
+  description: A label that indicates the nature of a resource, as a data serialization
+    or format.
+  display_name: media-type
+- id: hashes
+  description: A representation of a cryptographic digest generated over a resource
+    using a specified hash algorithm.
+  display_name: hashes
+  cardinality: multi

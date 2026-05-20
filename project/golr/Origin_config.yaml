@@ -1,0 +1,16 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: Origin
+schema_generating: true
+description: Identifies the source of the finding, such as a tool, interviewed person,
+  or activity.
+display_name: Origin
+document_category: Origin
+weight: 20
+fields:
+- id: actors
+  description: The actor that produces an observation, a finding, or a risk.
+  display_name: Origin_actors
+  cardinality: multi
+- id: related_tasks
+  description: Identifies tasks for which the containing object is a consequence.
+  display_name: related-tasks
+  cardinality: multi

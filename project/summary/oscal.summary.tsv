@@ -1,0 +1,1163 @@
+Class Name	Parent Class	YAML Class Name	Description	Flags	Slot Name	YAML Slot Name	Range	Card	Slot Description	URI
+Action		Action	An action applied by a role within a given party to the content.							
+					uuid	Action_uuid	str	1..1	A unique identifier that can be used to reference this defined action elsewhere in an OSCAL document.	oscal_catalog:uuid
+					type	Action_type	ActionTypeEnum	1..1	The type of action documented by the assembly, such as an approval.	oscal_catalog:type
+					date		str	0..1	The date and time when the action occurred.	oscal_catalog:date
+					system	Action_system	str	1..1	Specifies the action type system used.	oscal_catalog:system
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+					props		Property	0..*	A list of properties.	oscal_catalog:props
+					links		Link	0..*	A list of links.	oscal_catalog:links
+					responsible-parties		ResponsibleParty	0..*	Responsible party assignments.	oscal_catalog:responsible_parties
+Activity		Activity	Identifies an assessment or related process that can be performed. In the assessment plan, this is an intended activity.							
+					uuid	Activity_uuid	str	1..1	A machine-oriented, globally unique identifier with a cross-instance scope.	oscal_catalog:uuid
+					title		str	0..1	A human-readable name or title.	oscal_catalog:title
+					description	Activity_description	str	1..1	A human-readable description.	oscal_catalog:description
+					steps		Step	0..*	A collection of steps in an activity.	oscal_assessment_plan:steps
+					related-controls		ReviewedControls	0..1	A reference to reviewed controls for this activity or step.	oscal_assessment_plan:related_controls
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+					props		Property	0..*	A list of properties.	oscal_catalog:props
+					links		Link	0..*	A list of links.	oscal_catalog:links
+					responsible-roles		ResponsibleRole	0..*	Responsible role assignments.	oscal_catalog:responsible_roles
+Addition		Addition	Specifies content to be added into controls in resolution.							
+					position		AdditionPositionEnum	0..1	Where to add new content relative to the targeted element.	oscal_profile:position
+					by-id		str	0..1	Identify or target items by their id value.	oscal_profile:by_id
+					title		str	0..1	A human-readable name or title.	oscal_catalog:title
+					params		Parameter	0..*	Parameters providing a mechanism for the dynamic assignment of value(s) in a control.	oscal_catalog:params
+					props	Addition_props	ProfileAlterationProperty	0..*	A list of properties.	oscal_catalog:props
+					links		Link	0..*	A list of links.	oscal_catalog:links
+					parts		Part	0..*	A collection of parts.	oscal_catalog:parts
+Address		Address	A postal address for the location.							
+					type	Address_type	str	0..1	"Indicates the type of address. Recommended values: home, work. Other values are permitted (OSCAL allow-other=""yes"")."	oscal_catalog:type
+					addr-lines		str	0..*	A single line of an address.	oscal_catalog:addr_lines
+					city		str	0..1	City, town or geographical region for the mailing address.	oscal_catalog:city
+					state		str	0..1	State, province or analogous geographical region for a mailing address.	oscal_catalog:state
+					postal-code		str	0..1	Postal or ZIP code for mailing address.	oscal_catalog:postal_code
+					country		str	0..1	The ISO 3166-1 alpha-2 country code for the mailing address.	oscal_catalog:country
+Alteration		Alteration	Specifies changes to be made to an included control when a profile is resolved.							
+					control-id	Alteration_control-id	str	1..1	A reference to a control by its identifier.	oscal_catalog:control_id
+					removes		Removal	0..*	Specifies objects to be removed from a control in resolution.	oscal_profile:removes
+					adds		Addition	0..*	Specifies content to be added into a control in resolution.	oscal_profile:adds
+AssessmentAssets		AssessmentAssets	Identifies the assets used to perform this assessment.							
+					components		SystemComponent	0..*	A collection of system components.	oscal_assessment_plan:components
+					assessment-platforms	AssessmentAssets_assessment-platforms	AssessmentPlatform	1..*	A collection of assessment platforms.	oscal_assessment_plan:assessment_platforms
+AssessmentLog		AssessmentLog	A log of all assessment-related actions taken.							
+					entries	AssessmentLog_entries	AssessmentLogEntry	1..*	Identifies an individual risk response that occurred as part of managing an identified risk.	oscal_assessment_plan:entries
+AssessmentLogEntry		AssessmentLogEntry	Identifies the result of an action and/or task that occurred as part of executing an assessment plan or assessment event.							
+					uuid	AssessmentLogEntry_uuid	str	1..1	A machine-oriented, globally unique identifier with a cross-instance scope.	oscal_catalog:uuid
+					title		str	0..1	A human-readable name or title.	oscal_catalog:title
+					description		str	0..1	A human-readable description.	oscal_catalog:description
+					start	AssessmentLogEntry_start	str	1..1	The start date/time.	oscal_assessment_plan:start
+					end		str	0..1	The end date/time.	oscal_assessment_plan:end
+					logged-by		LoggedBy	0..*	Used to indicate who created a log entry in what role.	oscal_assessment_plan:logged_by
+					related-tasks		RelatedTask	0..*	Identifies tasks for which the containing object is a consequence.	oscal_assessment_plan:related_tasks
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+					props		Property	0..*	A list of properties.	oscal_catalog:props
+					links		Link	0..*	A list of links.	oscal_catalog:links
+AssessmentMethod		AssessmentMethod	A local definition of a control objective.							
+					uuid	AssessmentMethod_uuid	str	1..1	A machine-oriented, globally unique identifier with a cross-instance scope.	oscal_catalog:uuid
+					description		str	0..1	A human-readable description.	oscal_catalog:description
+					part	AssessmentMethod_part	AssessmentPart	1..1	An assessment part.	oscal_assessment_plan:part
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+					props		Property	0..*	A list of properties.	oscal_catalog:props
+					links		Link	0..*	A list of links.	oscal_catalog:links
+AssessmentPart		AssessmentPart	A partition of an assessment plan or results or a child of another part.							
+					uuid		str	0..1	A machine-oriented, globally unique identifier with a cross-instance scope.	oscal_catalog:uuid
+					name	AssessmentPart_name	str	1..1	A textual label that uniquely identifies an attribute or semantic type.	oscal_catalog:name
+					ns		str	0..1	An optional namespace qualifying a name. Allows different organizations to associate distinct semantics with the same name.	oscal_catalog:ns
+					_class		str	0..1	A textual label that provides a sub-type or characterization.	oscal_catalog:_class
+					title		str	0..1	A human-readable name or title.	oscal_catalog:title
+					prose		str	0..1	Permits multiple paragraphs, lists, tables etc.	oscal_catalog:prose
+					parts	AssessmentPart_parts	AssessmentPart	0..*	A collection of parts.	oscal_catalog:parts
+					props		Property	0..*	A list of properties.	oscal_catalog:props
+					links		Link	0..*	A list of links.	oscal_catalog:links
+AssessmentPlan		AssessmentPlan	An assessment plan, such as those provided by a FedRAMP assessor.							
+					uuid	AssessmentPlan_uuid	str	1..1	Assessment Plan Universally Unique Identifier.	oscal_catalog:uuid
+					metadata	AssessmentPlan_metadata	Metadata	1..1	Provides information about the containing document, and defines concepts shared across the document.	oscal_catalog:metadata
+					import-ssp	AssessmentPlan_import-ssp	ImportSSP	1..1	Used to import information about the system from an SSP.	oscal_assessment_plan:import_ssp
+					local-definitions		LocalDefinitions	0..1	Used to define data objects that do not appear in the referenced SSP.	oscal_assessment_plan:local_definitions
+					terms-and-conditions		TermsAndConditions	0..1	Terms and conditions under which an assessment can be performed.	oscal_assessment_plan:terms_and_conditions
+					assessment-subjects		AssessmentSubject	0..*	Identifies system elements being assessed.	oscal_assessment_plan:assessment_subjects
+					assessment-assets		AssessmentAssets	0..1	Identifies the assets used to perform this assessment.	oscal_assessment_plan:assessment_assets
+					reviewed-controls	AssessmentPlan_reviewed-controls	ReviewedControls	1..1	Identifies the controls being assessed and their control objectives.	oscal_assessment_plan:reviewed_controls
+					tasks		Task	0..*	A collection of tasks.	oscal_assessment_plan:tasks
+					back-matter		BackMatter	0..1	A collection of resources that may be referenced from within the OSCAL document instance.	oscal_catalog:back_matter
+AssessmentPlanDocument	OscalDocument	AssessmentPlanDocument	Root wrapper for an OSCAL Assessment Plan document.							
+					assessment-plan	AssessmentPlanDocument_assessment-plan	AssessmentPlan	1..1	The root assessment plan object.	oscal_assessment_plan:assessment_plan
+AssessmentPlatform		AssessmentPlatform	Used to represent the toolset used to perform aspects of the assessment.							
+					uuid	AssessmentPlatform_uuid	str	1..1	A machine-oriented, globally unique identifier with a cross-instance scope.	oscal_catalog:uuid
+					title		str	0..1	A human-readable name or title.	oscal_catalog:title
+					uses-components		UsesComponent	0..*	The set of components used by the assessment platform.	oscal_assessment_plan:uses_components
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+					props		Property	0..*	A list of properties.	oscal_catalog:props
+					links		Link	0..*	A list of links.	oscal_catalog:links
+AssessmentResults		AssessmentResults	Security assessment results, such as those provided by a FedRAMP assessor in a security assessment report.							
+					uuid	AssessmentResults_uuid	str	1..1	Assessment Results Universally Unique Identifier.	oscal_catalog:uuid
+					metadata	AssessmentResults_metadata	Metadata	1..1	Provides information about the containing document, and defines concepts shared across the document.	oscal_catalog:metadata
+					import-ap	AssessmentResults_import-ap	ImportAssessmentPlan	1..1	Used to import information about the governing assessment plan.	oscal_assessment_results:import_ap
+					local-definitions	AssessmentResults_local-definitions	AssessmentResultsLocalDefinitions	0..1	Used to define data objects that do not appear in the referenced SSP.	oscal_assessment_plan:local_definitions
+					results	AssessmentResults_results	Result	1..*	A collection of assessment results.	oscal_assessment_results:results
+					back-matter		BackMatter	0..1	A collection of resources that may be referenced from within the OSCAL document instance.	oscal_catalog:back_matter
+AssessmentResultsDocument	OscalDocument	AssessmentResultsDocument	Root wrapper for an OSCAL Assessment Results document.							
+					assessment-results	AssessmentResultsDocument_assessment-results	AssessmentResults	1..1	The root assessment results object.	oscal_assessment_results:assessment_results
+AssessmentResultsLocalDefinitions		AssessmentResultsLocalDefinitions	Used to define data objects that are referenced by the assessment results but do not appear in the imported assessment plan.							
+					objectives-and-methods		LocalObjective	0..*	A collection of locally-defined control objectives.	oscal_assessment_plan:objectives_and_methods
+					activities		Activity	0..*	A collection of activities.	oscal_assessment_plan:activities
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+AssessmentSelectControlById		AssessmentSelectControlById	Select a specific control for inclusion/exclusion in the assessment by literal control ID and optional statement IDs.							
+					control-id	AssessmentSelectControlById_control-id	str	1..1	A reference to a control by its identifier.	oscal_catalog:control_id
+					statement-ids		str	0..*	Statement IDs for control selection.	oscal_assessment_plan:statement_ids
+AssessmentSubject		AssessmentSubject	Identifies system elements being assessed, such as components, inventory items, and locations.							
+					type	AssessmentSubject_type	str	1..1	Indicates the nature or kind of the containing object.	oscal_catalog:type
+					description		str	0..1	A human-readable description.	oscal_catalog:description
+					include-all		IncludeAll	0..1	Include all selectable objects in the containing OSCAL selection context.	oscal_catalog:include_all
+					include-subjects		SelectSubjectById	0..*	Assessment subjects to include.	oscal_assessment_plan:include_subjects
+					exclude-subjects		SelectSubjectById	0..*	Assessment subjects to exclude.	oscal_assessment_plan:exclude_subjects
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+					props		Property	0..*	A list of properties.	oscal_catalog:props
+					links		Link	0..*	A list of links.	oscal_catalog:links
+AssessmentSubjectPlaceholder		AssessmentSubjectPlaceholder	Used when the assessment subjects will be determined as part of one or more other assessment activities.							
+					uuid	AssessmentSubjectPlaceholder_uuid	str	1..1	A machine-oriented, globally unique identifier with a cross-instance scope.	oscal_catalog:uuid
+					description		str	0..1	A human-readable description.	oscal_catalog:description
+					sources	AssessmentSubjectPlaceholder_sources	AssessmentSubjectSource	1..*	Source references or source-participation entries in the containing OSCAL context. The concrete entry class is selected by class-level slot_usage.	oscal_catalog:sources
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+					props		Property	0..*	A list of properties.	oscal_catalog:props
+					links		Link	0..*	A list of links.	oscal_catalog:links
+AssessmentSubjectSource		AssessmentSubjectSource	Assessment subjects will be identified while conducting the referenced activity.							
+					task-uuid	AssessmentSubjectSource_task-uuid	str	1..1	A UUID reference to a task.	oscal_assessment_plan:task_uuid
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+AssociatedActivity		AssociatedActivity	Identifies an individual activity to be performed as part of a task.							
+					activity-uuid	AssociatedActivity_activity-uuid	str	1..1	A UUID reference to an activity.	oscal_assessment_plan:activity_uuid
+					subjects	AssociatedActivity_subjects	AssessmentSubject	1..*	Assessment subjects or subject references for this object.	oscal_assessment_plan:subjects
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+					props		Property	0..*	A list of properties.	oscal_catalog:props
+					links		Link	0..*	A list of links.	oscal_catalog:links
+					responsible-roles		ResponsibleRole	0..*	Responsible role assignments.	oscal_catalog:responsible_roles
+AssociatedRisk		AssociatedRisk	Relates the finding to a set of referenced risks.							
+					risk-uuid	AssociatedRisk_risk-uuid	str	1..1	A machine-oriented identifier reference to a risk defined in the list of risks.	oscal_assessment_plan:risk_uuid
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+AtFrequency		AtFrequency	The task is intended to occur at the specified frequency.							
+					period	AtFrequency_period	int	1..1	The task must occur every period (in the given units).	oscal_assessment_plan:period
+					unit	AtFrequency_unit	TimingUnitEnum	1..1	The unit of time for the period.	oscal_assessment_plan:unit
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+Attestation		Attestation	A set of textual attestation statements, typically written by the assessor.							
+					parts	Attestation_parts	AssessmentPart	1..*	A collection of parts.	oscal_catalog:parts
+					responsible-parties		ResponsibleParty	0..*	Responsible party assignments.	oscal_catalog:responsible_parties
+AuthorizationBoundary		AuthorizationBoundary	A description of this system's authorization boundary, optionally supplemented with diagrams that illustrate the authorization boundary.							
+					description	AuthorizationBoundary_description	str	1..1	A human-readable description.	oscal_catalog:description
+					props		Property	0..*	A list of properties.	oscal_catalog:props
+					links		Link	0..*	A list of links.	oscal_catalog:links
+					diagrams		Diagram	0..*	A collection of diagrams that visually depict the subject.	oscal_ssp:diagrams
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+AuthorizedPrivilege		AuthorizedPrivilege	Identifies a specific system privilege held by the user, along with an associated description and/or rationale for the privilege.							
+					title	AuthorizedPrivilege_title	str	1..1	A human-readable name or title.	oscal_catalog:title
+					description		str	0..1	A human-readable description.	oscal_catalog:description
+					functions-performed	AuthorizedPrivilege_functions-performed	str	1..*	Describes a function performed for a given authorized privilege.	oscal_assessment_plan:functions_performed
+BackMatter		BackMatter	A collection of resources that may be referenced from within the OSCAL document instance.							
+					resources		Resource	0..*	A resource associated with content in the containing document instance. A resource may be directly included in the document using base64 encoding or may point to one or more equivalent internet resources.	oscal_catalog:resources
+Base64Resource		Base64Resource	A resource encoded using the Base64 alphabet defined by RFC 2045.							
+					media-type		str	0..1	A label that indicates the nature of a resource, as a data serialization or format.	oscal_catalog:media_type
+					value	Base64Resource_value	str	1..1	The value associated with the containing object.	oscal_catalog:value
+					filename		str	0..1	Name of the file before it was encoded as Base64 to be embedded in a resource.	oscal_catalog:filename
+ByComponent		ByComponent	Defines how the referenced component implements a set of controls.							
+					component-uuid	ByComponent_component-uuid	str	1..1	A UUID reference to a component.	oscal_assessment_plan:component_uuid
+					uuid	ByComponent_uuid	str	1..1	A machine-oriented, globally unique identifier with a cross-instance scope.	oscal_catalog:uuid
+					description	ByComponent_description	str	1..1	A human-readable description.	oscal_catalog:description
+					props	ByComponent_props	SspControlOriginationProp	0..*	A list of properties.	oscal_catalog:props
+					links	ByComponent_links	SspByComponentLink	0..*	A list of links.	oscal_catalog:links
+					set-parameters	ByComponent_set-parameters	SetParameter	0..*	Identifies the parameter that will be set by the enclosed value.	oscal_catalog:set_parameters
+					implementation-status		ImplementationStatus	0..1	Identifies the implementation status of the control.	oscal_assessment_plan:implementation_status
+					export		Export	0..1	Defines a set of control implementations that are provided as reference implementations for use by organizations implementing the leveraged system.	oscal_ssp:export
+					inherited		InheritedControlImplementation	0..*	Describes a control implementation inherited by a leveraging system.	oscal_ssp:inherited
+					satisfied		SatisfiedControlImplementation	0..*	Describes how this system satisfies a responsibility imposed by a leveraged system.	oscal_ssp:satisfied
+					responsible-roles	ByComponent_responsible-roles	SspByComponentResponsibleRole	0..*	Responsible role assignments.	oscal_catalog:responsible_roles
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+Capability		Capability	A grouping of other components and/or capabilities.							
+					uuid	Capability_uuid	str	1..1	A machine-oriented, globally unique identifier with a cross-instance scope.	oscal_catalog:uuid
+					name	Capability_name	str	1..1	A textual label that uniquely identifies an attribute or semantic type.	oscal_catalog:name
+					description	Capability_description	str	1..1	A human-readable description.	oscal_catalog:description
+					incorporates-components		IncorporatesComponent	0..*	Component references incorporated by a capability.	oscal_component:incorporates_components
+					control-implementations		ControlImplementationSet	0..*	Control implementation sets for a component or capability.	oscal_component:control_implementations
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+					props		Property	0..*	A list of properties.	oscal_catalog:props
+					links		Link	0..*	A list of links.	oscal_catalog:links
+Catalog		Catalog	A structured, organized collection of control information.							
+					uuid	Catalog_uuid	str	1..1	Provides a globally unique means to identify a given catalog instance.	oscal_catalog:uuid
+					metadata	Catalog_metadata	Metadata	1..1	Provides information about the containing document, and defines concepts shared across the document.	oscal_catalog:metadata
+					back-matter		BackMatter	0..1	A collection of resources that may be referenced from within the OSCAL document instance.	oscal_catalog:back_matter
+					params		Parameter	0..*	Parameters providing a mechanism for the dynamic assignment of value(s) in a control.	oscal_catalog:params
+					controls		Control	0..*	A collection of controls.	oscal_catalog:controls
+					groups		Group	0..*	A collection of control groups.	oscal_catalog:groups
+CatalogDocument	OscalDocument	CatalogDocument	Root wrapper for an OSCAL Catalog document.							
+					catalog	CatalogDocument_catalog	Catalog	1..1	Root catalog document.	oscal_catalog:catalog
+Characterization		Characterization	A collection of descriptive data about the containing object from a specific origin.							
+					origin	Characterization_origin	Origin	1..1	The source of the finding.	oscal_assessment_plan:origin
+					facets	Characterization_facets	Facet	1..*	An individual characteristic that is part of a larger set produced by the same actor.	oscal_assessment_plan:facets
+					props		Property	0..*	A list of properties.	oscal_catalog:props
+					links		Link	0..*	A list of links.	oscal_catalog:links
+Citation		Citation	An optional citation consisting of end note text using structured markup.							
+					text	Citation_text	str	1..1	A line of citation text.	oscal_catalog:text
+					links	Citation_links	Link	0..*	A list of links.	oscal_catalog:links
+					props		Property	0..*	A list of properties.	oscal_catalog:props
+CombinationRule		CombinationRule	Defines how to resolve duplicate instances of the same control (e.g., controls with the same ID) encountered in a profile merge.							
+					method	CombinationRule_method	CombinationMethodEnum	0..1	Method indicator used by the containing OSCAL context. Allowed values are constrained by class-level slot_usage.	oscal_catalog:method
+ComponentDefinition		ComponentDefinition	A collection of component descriptions, which may optionally be grouped by capability.							
+					uuid	ComponentDefinition_uuid	str	1..1	A machine-oriented, globally unique identifier with a cross-instance scope.	oscal_catalog:uuid
+					metadata	ComponentDefinition_metadata	Metadata	1..1	Provides information about the containing document, and defines concepts shared across the document.	oscal_catalog:metadata
+					import-component-definitions		ImportComponentDefinition	0..*	Component-definition resources imported into this document.	oscal_component:import_component_definitions
+					components	ComponentDefinition_components	DefinedComponent	0..*	A collection of system components.	oscal_assessment_plan:components
+					capabilities		Capability	0..*	Capability groupings for the defined components.	oscal_component:capabilities
+					back-matter		BackMatter	0..1	A collection of resources that may be referenced from within the OSCAL document instance.	oscal_catalog:back_matter
+ComponentDefinitionDocument	OscalDocument	ComponentDefinitionDocument	Root wrapper for an OSCAL Component Definition document.							
+					component-definition	ComponentDefinitionDocument_component-definition	ComponentDefinition	1..1	The root component-definition object.	oscal_component:component_definition
+ComponentStatus		ComponentStatus	Describes the operational status of the system component.							
+					state	ComponentStatus_state	ComponentStateEnum	1..1	The operational status.	oscal_catalog:state
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+ConfidenceScore		ConfidenceScore	Confidence represented as a category and/or percentage value.							
+					category	ConfidenceScore_category	str	0..1	Confidence category label or qualifier category value.	oscal_mapping:category
+					percentage		float	0..1	A decimal percentage value in the range 0 to 1.	oscal_mapping:percentage
+ConstraintTest		ConstraintTest	A test expression which is expected to be evaluated by a tool.							
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+					expression	ConstraintTest_expression	str	1..1	A formal (executable) expression of a constraint.	oscal_catalog:expression
+Control		Control	A structured object representing a requirement or guideline, which when implemented will reduce an aspect of risk related to an information system and its information.							
+					id	Control_id	str	1..1	Identifies a control such that it can be referenced in the defining catalog and other OSCAL instances (e.g., profiles).	oscal_catalog:id
+					_class	Control__class	str	0..1	A textual label that provides a sub-type or characterization of the control.	oscal_catalog:_class
+					title	Control_title	str	1..1	A name given to the control, which may be used by a tool for display and navigation.	oscal_catalog:title
+					params		Parameter	0..*	Parameters providing a mechanism for the dynamic assignment of value(s) in a control.	oscal_catalog:params
+					parts		Part	0..*	A collection of parts.	oscal_catalog:parts
+					controls		Control	0..*	A collection of controls.	oscal_catalog:controls
+					props		Property	0..*	A list of properties.	oscal_catalog:props
+					links		Link	0..*	A list of links.	oscal_catalog:links
+ControlImplementationSet		ControlImplementationSet	Defines how the component or capability supports a set of controls.							
+					uuid	ControlImplementationSet_uuid	str	1..1	A machine-oriented, globally unique identifier with a cross-instance scope.	oscal_catalog:uuid
+					source	ControlImplementationSet_source	str	1..1	Reference to an external catalog or profile resource.	oscal_component:source
+					description	ControlImplementationSet_description	str	1..1	A human-readable description.	oscal_catalog:description
+					set-parameters	ControlImplementationSet_set-parameters	SetParameter	0..*	Parameter values applied in the containing implementation context.	oscal_catalog:set_parameters
+					implemented-requirements	ControlImplementationSet_implemented-requirements	ImplementedRequirement	1..*	Control implementation requirement entries in the containing OSCAL context. The concrete entry class is selected by class-level slot_usage.	oscal_catalog:implemented_requirements
+					props		Property	0..*	A list of properties.	oscal_catalog:props
+					links		Link	0..*	A list of links.	oscal_catalog:links
+ControlMatching		ControlMatching	Selecting a set of controls by matching their IDs with a wildcard pattern.							
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+					pattern		str	0..1	A glob expression matching the IDs of one or more controls to be selected.	oscal_catalog:pattern
+ControlObjectiveSelection		ControlObjectiveSelection	Identifies the control objectives of the assessment.							
+					description		str	0..1	A human-readable description.	oscal_catalog:description
+					include-all		IncludeAll	0..1	Include all selectable objects in the containing OSCAL selection context.	oscal_catalog:include_all
+					include-objectives		SelectObjectiveById	0..*	Objectives to include in the assessment.	oscal_assessment_plan:include_objectives
+					exclude-objectives		SelectObjectiveById	0..*	Objectives to exclude from the assessment.	oscal_assessment_plan:exclude_objectives
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+					props		Property	0..*	A list of properties.	oscal_catalog:props
+					links		Link	0..*	A list of links.	oscal_catalog:links
+ControlPart		ControlPart	An annotated, markup-based textual element of a control's or catalog group's definition, or a child of another part.							
+					id		str	0..1	A unique human-oriented identifier within a particular context.	oscal_catalog:id
+					name	ControlPart_name	str	1..1	A textual label that uniquely identifies an attribute or semantic type.	oscal_catalog:name
+					ns		str	0..1	An optional namespace qualifying a name. Allows different organizations to associate distinct semantics with the same name.	oscal_catalog:ns
+					_class		str	0..1	A textual label that provides a sub-type or characterization.	oscal_catalog:_class
+					title		str	0..1	A human-readable name or title.	oscal_catalog:title
+					prose		str	0..1	Permits multiple paragraphs, lists, tables etc.	oscal_catalog:prose
+					parts	ControlPart_parts	ControlPart	0..*	A collection of parts.	oscal_catalog:parts
+					props		Property	0..*	A list of properties.	oscal_catalog:props
+					links		Link	0..*	A list of links.	oscal_catalog:links
+ControlResponsibility		ControlResponsibility	Describes a control implementation responsibility imposed on a leveraging system.							
+					uuid	ControlResponsibility_uuid	str	1..1	A machine-oriented, globally unique identifier with a cross-instance scope.	oscal_catalog:uuid
+					provided-uuid		str	0..1	Machine-oriented identifier reference to an inherited control implementation that a leveraging system is implementing.	oscal_ssp:provided_uuid
+					description	ControlResponsibility_description	str	1..1	A human-readable description.	oscal_catalog:description
+					props		Property	0..*	A list of properties.	oscal_catalog:props
+					links		Link	0..*	A list of links.	oscal_catalog:links
+					responsible-roles	ControlResponsibility_responsible-roles	SspByComponentResponsibleRole	0..*	Responsible role assignments.	oscal_catalog:responsible_roles
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+ControlSelection		ControlSelection	Identifies the controls being assessed.							
+					description		str	0..1	A human-readable description.	oscal_catalog:description
+					include-all		IncludeAll	0..1	Include all selectable objects in the containing OSCAL selection context.	oscal_catalog:include_all
+					include-controls	ControlSelection_include-controls	AssessmentSelectControlById	0..*	Control-selection entries to include in the containing OSCAL context. The concrete entry class is selected by class-level slot_usage.	oscal_catalog:include_controls
+					exclude-controls	ControlSelection_exclude-controls	AssessmentSelectControlById	0..*	Control-selection entries to exclude in the containing OSCAL context. The concrete entry class is selected by class-level slot_usage.	oscal_catalog:exclude_controls
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+					props		Property	0..*	A list of properties.	oscal_catalog:props
+					links		Link	0..*	A list of links.	oscal_catalog:links
+Coverage		Coverage	A percentage representing target coverage by source mappings.							
+					generation-method		str	0..1	Method used to determine the coverage value. Recommended values are in CoverageGenerationMethodEnum; other values are permitted.	oscal_mapping:generation_method
+					target-coverage	Coverage_target-coverage	float	1..1	Percentage coverage of targets by sources.	oscal_mapping:target_coverage
+DataFlow		DataFlow	A description of the logical flow of information within the system and across its boundaries, optionally supplemented with diagrams.							
+					description	DataFlow_description	str	1..1	A human-readable description.	oscal_catalog:description
+					props		Property	0..*	A list of properties.	oscal_catalog:props
+					links		Link	0..*	A list of links.	oscal_catalog:links
+					diagrams		Diagram	0..*	A collection of diagrams that visually depict the subject.	oscal_ssp:diagrams
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+DefinedComponent		DefinedComponent	A defined component that can be part of an implemented system.							
+					uuid	DefinedComponent_uuid	str	1..1	A machine-oriented, globally unique identifier with a cross-instance scope.	oscal_catalog:uuid
+					type	DefinedComponent_type	str	1..1	Indicates the nature or kind of the containing object.	oscal_catalog:type
+					title	DefinedComponent_title	str	1..1	A human-readable name or title.	oscal_catalog:title
+					description	DefinedComponent_description	str	1..1	A human-readable description.	oscal_catalog:description
+					purpose		str	0..1	A summary of the technological or business purpose of the component.	oscal_assessment_plan:purpose
+					protocols		Protocol	0..*	Information about the protocol used to provide a service.	oscal_assessment_plan:protocols
+					control-implementations		ControlImplementationSet	0..*	Control implementation sets for a component or capability.	oscal_component:control_implementations
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+					props		Property	0..*	A list of properties.	oscal_catalog:props
+					links		Link	0..*	A list of links.	oscal_catalog:links
+					responsible-roles		ResponsibleRole	0..*	Responsible role assignments.	oscal_catalog:responsible_roles
+Diagram		Diagram	A graphic that provides a visual representation the system, or some aspect of it.							
+					uuid	Diagram_uuid	str	1..1	A machine-oriented, globally unique identifier with a cross-instance scope.	oscal_catalog:uuid
+					description		str	0..1	A human-readable description.	oscal_catalog:description
+					props		Property	0..*	A list of properties.	oscal_catalog:props
+					links	Diagram_links	SspDiagramLink	0..*	A list of links.	oscal_catalog:links
+					caption		str	0..1	A brief caption to annotate the diagram.	oscal_ssp:caption
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+DocumentId		DocumentId	A document identifier qualified by an identifier scheme.							
+					scheme	DocumentId_scheme	str	0..1	Qualifies the kind of identifier using a URI.	oscal_catalog:scheme
+					identifier	DocumentId_identifier	str	1..1	A document identifier value.	oscal_catalog:identifier
+EventTiming		EventTiming	The timing under which the task is intended to occur.							
+					on-date		OnDateCondition	0..1	The task is intended to occur on the specified date.	oscal_assessment_plan:on_date
+					within-date-range		WithinDateRange	0..1	The task is intended to occur within the specified date range.	oscal_assessment_plan:within_date_range
+					at-frequency		AtFrequency	0..1	The task is intended to occur at the specified frequency.	oscal_assessment_plan:at_frequency
+Export		Export	Defines a set of control implementations that are provided as reference implementations for use by organizations implementing the leveraged system.							
+					description		str	0..1	A human-readable description.	oscal_catalog:description
+					props		Property	0..*	A list of properties.	oscal_catalog:props
+					links		Link	0..*	A list of links.	oscal_catalog:links
+					provided		ProvidedControlImplementation	0..*	Describes a capability which may be inherited by a leveraging system.	oscal_ssp:provided
+					responsibilities		ControlResponsibility	0..*	Describes a control implementation responsibility imposed on a leveraging system.	oscal_ssp:responsibilities
+Facet		Facet	An individual characteristic that is part of a larger set produced by the same actor.							
+					name	Facet_name	str	1..1	A textual label that uniquely identifies an attribute or semantic type.	oscal_catalog:name
+					value	Facet_value	str	1..1	The value associated with the containing object.	oscal_catalog:value
+					system	Facet_system	str	1..1	Specifies the system or scheme from which the identifier originates.	oscal_catalog:system
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+					props		Property	0..*	A list of properties.	oscal_catalog:props
+					links		Link	0..*	A list of links.	oscal_catalog:links
+Finding		Finding	Describes an individual finding.							
+					uuid	Finding_uuid	str	1..1	A machine-oriented, globally unique identifier with a cross-instance scope.	oscal_catalog:uuid
+					title	Finding_title	str	1..1	A human-readable name or title.	oscal_catalog:title
+					description	Finding_description	str	1..1	A human-readable description.	oscal_catalog:description
+					target	Finding_target	FindingTarget	1..1	Identifies the target of a finding.	oscal_assessment_plan:target
+					implementation-statement-uuid		str	0..1	A reference to the implementation statement in the SSP to which this finding is related.	oscal_assessment_plan:implementation_statement_uuid
+					origins		Origin	0..*	Identifies the source of observations, findings, or risks.	oscal_assessment_plan:origins
+					related-observations		RelatedObservation	0..*	Relates the containing object to a set of referenced observations.	oscal_assessment_plan:related_observations
+					related-risks		AssociatedRisk	0..*	Relates the finding to a set of referenced risks.	oscal_assessment_plan:related_risks
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+					props		Property	0..*	A list of properties.	oscal_catalog:props
+					links		Link	0..*	A list of links.	oscal_catalog:links
+FindingTarget		FindingTarget	Captures an assessor's conclusions regarding the degree to which an objective is satisfied.							
+					type	FindingTarget_type	FindingTargetTypeEnum	1..1	Indicates the nature or kind of the containing object.	oscal_catalog:type
+					target-id	FindingTarget_target-id	str	1..1	Identifies the specific target qualified by the type.	oscal_assessment_plan:target_id
+					title		str	0..1	A human-readable name or title.	oscal_catalog:title
+					description		str	0..1	A human-readable description.	oscal_catalog:description
+					implementation-status		ImplementationStatus	0..1	Identifies the implementation status of the control.	oscal_assessment_plan:implementation_status
+					status	FindingTarget_status	ObjectiveStatus	1..1	Status indicator used by the containing OSCAL context. Allowed values are constrained by class-level slot_usage.	oscal_catalog:status
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+					props		Property	0..*	A list of properties.	oscal_catalog:props
+					links		Link	0..*	A list of links.	oscal_catalog:links
+GapSummary		GapSummary	A summary of controls that were not mapped.							
+					uuid	GapSummary_uuid	str	1..1	A machine-oriented, globally unique identifier with a cross-instance scope.	oscal_catalog:uuid
+					unmapped-controls	GapSummary_unmapped-controls	SelectControlById	1..*	Controls that remain unmapped.	oscal_mapping:unmapped_controls
+Group		Group	A group of controls, or of groups of controls.							
+					id	Group_id	str	0..1	Identifies the group for the purpose of cross-linking within the defining instance or from other instances that reference the catalog.	oscal_catalog:id
+					_class	Group__class	str	0..1	A textual label that provides a sub-type or characterization of the group.	oscal_catalog:_class
+					title	Group_title	str	1..1	A name given to the group, which may be used by a tool for display and navigation.	oscal_catalog:title
+					params		Parameter	0..*	Parameters providing a mechanism for the dynamic assignment of value(s) in a control.	oscal_catalog:params
+					parts		Part	0..*	A collection of parts.	oscal_catalog:parts
+					groups		Group	0..*	A collection of control groups.	oscal_catalog:groups
+					controls		Control	0..*	A collection of controls.	oscal_catalog:controls
+					props		Property	0..*	A list of properties.	oscal_catalog:props
+					links		Link	0..*	A list of links.	oscal_catalog:links
+Hash		Hash	A representation of a cryptographic digest generated over a resource using a specified hash algorithm.							
+					value	Hash_value	str	1..1	The value associated with the containing object.	oscal_catalog:value
+					algorithm	Hash_algorithm	str	1..1	"The digest method by which a hash is derived. Recommended values are in HashAlgorithmEnum; other values are permitted (OSCAL allow-other=""yes"")."	oscal_catalog:algorithm
+HasPropsAndLinks		HasPropsAndLinks	Mixin providing the props and links slots that are common to many OSCAL objects.							
+					props		Property	0..*	A list of properties.	oscal_catalog:props
+					links		Link	0..*	A list of links.	oscal_catalog:links
+HasResponsibleParties		HasResponsibleParties	Mixin providing the responsible-parties slot for objects that carry party assignments.							
+					responsible-parties		ResponsibleParty	0..*	Responsible party assignments.	oscal_catalog:responsible_parties
+HasResponsibleRoles		HasResponsibleRoles	Mixin providing the responsible-roles slot for objects that carry role assignments.							
+					responsible-roles		ResponsibleRole	0..*	Responsible role assignments.	oscal_catalog:responsible_roles
+IdentifiedSubject		IdentifiedSubject	Used to detail assessment subjects that were identified by this task.							
+					subject-placeholder-uuid	IdentifiedSubject_subject-placeholder-uuid	str	1..1	A reference to an assessment subject placeholder defined in the assessment plan.	oscal_assessment_plan:subject_placeholder_uuid
+					subjects	IdentifiedSubject_subjects	AssessmentSubject	1..*	Assessment subjects or subject references for this object.	oscal_assessment_plan:subjects
+ImpactLevel		ImpactLevel	The expected level of impact resulting from the described information's confidentiality, integrity, or availability affect.							
+					props		Property	0..*	A list of properties.	oscal_catalog:props
+					links		Link	0..*	A list of links.	oscal_catalog:links
+					base	ImpactLevel_base	str	1..1	The prescribed base (Confidentiality, Integrity, or Availability) security impact level.	oscal_ssp:base
+					selected	ImpactLevel_selected	str	0..1	The selected (Confidentiality, Integrity, or Availability) security impact level.	oscal_ssp:selected
+					adjustment-justification		str	0..1	If the selected security level is different from the base security level, this contains the justification for the change.	oscal_ssp:adjustment_justification
+ImplementationCommonLink	Link	ImplementationCommonLink	Implementation-common scoped OSCAL link.							
+					rel	ImplementationCommonLink_rel	str	0..1	Describes the type of relationship provided by the link's hypertext reference. This can be an indicator of the link's purpose.	oscal_catalog:rel
+ImplementationCommonProperty	Property	ImplementationCommonProperty	Implementation-common scoped OSCAL property.							
+					name	ImplementationCommonProperty_name	ImplementationPropNameEnum	1..1	A textual label that uniquely identifies an attribute or semantic type.	oscal_catalog:name
+					value	ImplementationCommonProperty_value	str	1..1	The value associated with the containing object.	oscal_catalog:value
+ImplementationResponsibleParty	ResponsibleParty	ImplementationResponsibleParty	Implementation-common scoped responsible party.							
+					role-id	ImplementationResponsibleParty_role-id	str	1..1	A reference to a role by its identifier.	oscal_catalog:role_id
+ImplementationResponsibleRole	ResponsibleRole	ImplementationResponsibleRole	Implementation-common scoped responsible role.							
+					role-id	ImplementationResponsibleRole_role-id	str	1..1	A reference to a role by its identifier.	oscal_catalog:role_id
+ImplementationStatus		ImplementationStatus	Indicates the degree to which a given control is implemented.							
+					state	ImplementationStatus_state	str	1..1	"Identifies the implementation status of the control or control objective. Recommended values are in ImplementationStatusStateEnum; other values are permitted (OSCAL allow-other=""yes"")."	oscal_catalog:state
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+ImplementedComponent		ImplementedComponent	The set of components that are implemented in a given system inventory item.							
+					component-uuid	ImplementedComponent_component-uuid	str	1..1	A UUID reference to a component.	oscal_assessment_plan:component_uuid
+					props	ImplementedComponent_props	ImplementationCommonProperty	0..*	A list of properties.	oscal_catalog:props
+					links	ImplementedComponent_links	ImplementationCommonLink	0..*	A list of links.	oscal_catalog:links
+					responsible-parties	ImplementedComponent_responsible-parties	ImplementationResponsibleParty	0..*	Responsible party assignments.	oscal_catalog:responsible_parties
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+ImplementedControlStatement		ImplementedControlStatement	Identifies which statements within a control are addressed.							
+					statement-id	ImplementedControlStatement_statement-id	str	1..1	A reference to a control statement identifier.	oscal_catalog:statement_id
+					uuid	ImplementedControlStatement_uuid	str	1..1	A machine-oriented, globally unique identifier with a cross-instance scope.	oscal_catalog:uuid
+					description	ImplementedControlStatement_description	str	1..1	A human-readable description.	oscal_catalog:description
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+					props		Property	0..*	A list of properties.	oscal_catalog:props
+					links		Link	0..*	A list of links.	oscal_catalog:links
+					responsible-roles		ResponsibleRole	0..*	Responsible role assignments.	oscal_catalog:responsible_roles
+ImplementedRequirement		ImplementedRequirement	Describes how the containing component or capability implements an individual control.							
+					uuid	ImplementedRequirement_uuid	str	1..1	A machine-oriented, globally unique identifier with a cross-instance scope.	oscal_catalog:uuid
+					control-id	ImplementedRequirement_control-id	str	1..1	A reference to a control by its identifier.	oscal_catalog:control_id
+					description	ImplementedRequirement_description	str	1..1	A human-readable description.	oscal_catalog:description
+					set-parameters	ImplementedRequirement_set-parameters	SetParameter	0..*	Parameter values applied in the containing implementation context.	oscal_catalog:set_parameters
+					statements	ImplementedRequirement_statements	ImplementedControlStatement	0..*	Control statement implementation entries in the containing OSCAL context. The concrete entry class is selected by class-level slot_usage.	oscal_catalog:statements
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+					props		Property	0..*	A list of properties.	oscal_catalog:props
+					links		Link	0..*	A list of links.	oscal_catalog:links
+					responsible-roles		ResponsibleRole	0..*	Responsible role assignments.	oscal_catalog:responsible_roles
+ImportAssessmentPlan		ImportAssessmentPlan	Used by assessment-results to import information about the original plan for assessing the system.							
+					href	ImportAssessmentPlan_href	str	1..1	A resolvable URL reference to a resource.	oscal_catalog:href
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+ImportComponentDefinition		ImportComponentDefinition	Loads a component definition from another resource.							
+					href	ImportComponentDefinition_href	str	1..1	A resolvable URL reference to a resource.	oscal_catalog:href
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+ImportProfile		ImportProfile	Used to import the OSCAL profile representing the system's control baseline.							
+					href	ImportProfile_href	str	1..1	A resolvable URL reference to a resource.	oscal_catalog:href
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+ImportSSP		ImportSSP	Used by the assessment plan and POA&M to import information about the system.							
+					href	ImportSSP_href	str	1..1	A resolvable URL reference to a resource.	oscal_catalog:href
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+IncludeAll		IncludeAll	Include all controls from the imported catalog or profile resources.							
+IncorporatesComponent		IncorporatesComponent	The collection of components comprising a capability.							
+					component-uuid	IncorporatesComponent_component-uuid	str	1..1	A UUID reference to a component.	oscal_assessment_plan:component_uuid
+					description	IncorporatesComponent_description	str	1..1	A human-readable description.	oscal_catalog:description
+InformationType		InformationType	Contains details about one information type that is stored, processed, or transmitted by the system, such as privacy information, and its impact level.							
+					uuid		str	0..1	A machine-oriented, globally unique identifier with a cross-instance scope.	oscal_catalog:uuid
+					title	InformationType_title	str	1..1	A human-readable name or title.	oscal_catalog:title
+					description	InformationType_description	str	1..1	A human-readable description.	oscal_catalog:description
+					categorizations		InformationTypeCategorization	0..*	A set of information type identifiers qualified by the given identification system used.	oscal_ssp:categorizations
+					props		Property	0..*	A list of properties.	oscal_catalog:props
+					links		Link	0..*	A list of links.	oscal_catalog:links
+					confidentiality-impact		ImpactLevel	0..1	The expected level of impact resulting from the unauthorized disclosure of the described information.	oscal_ssp:confidentiality_impact
+					integrity-impact		ImpactLevel	0..1	The expected level of impact resulting from the unauthorized modification of the described information.	oscal_ssp:integrity_impact
+					availability-impact		ImpactLevel	0..1	The expected level of impact resulting from the disruption of access to or use of the described information or the information system.	oscal_ssp:availability_impact
+InformationTypeCategorization		InformationTypeCategorization	A set of information type identifiers qualified by the given identification system used.							
+					system	informationTypeCategorization__system	str	1..1	"Specifies the information type identification system used. Recommended values are in InformationTypeCategorizationSystemEnum; other values are permitted (OSCAL allow-other=""yes"")."	oscal_ssp:system
+					information-type-ids	informationTypeCategorization__information_type_ids	str	0..*	An identifier qualified by the given identification system used, such as NIST SP 800-60.	oscal_ssp:information_type_ids
+InheritedControlImplementation		InheritedControlImplementation	Describes a control implementation inherited by a leveraging system.							
+					uuid	InheritedControlImplementation_uuid	str	1..1	A machine-oriented, globally unique identifier with a cross-instance scope.	oscal_catalog:uuid
+					provided-uuid		str	0..1	Machine-oriented identifier reference to an inherited control implementation that a leveraging system is implementing.	oscal_ssp:provided_uuid
+					description	InheritedControlImplementation_description	str	1..1	A human-readable description.	oscal_catalog:description
+					props		Property	0..*	A list of properties.	oscal_catalog:props
+					links		Link	0..*	A list of links.	oscal_catalog:links
+					responsible-roles	InheritedControlImplementation_responsible-roles	SspByComponentResponsibleRole	0..*	Responsible role assignments.	oscal_catalog:responsible_roles
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+InsertControls		InsertControls	Specifies which controls to use in the containing context (as part of a group or custom merge structure).							
+					order		InsertOrderEnum	0..1	A designation of how a selection of controls is to be ordered.	oscal_profile:order
+					include-all		IncludeAll	0..1	Include all selectable objects in the containing OSCAL selection context.	oscal_catalog:include_all
+					include-controls	InsertControls_include-controls	SelectControlById	0..*	Control-selection entries to include in the containing OSCAL context. The concrete entry class is selected by class-level slot_usage.	oscal_catalog:include_controls
+					exclude-controls	InsertControls_exclude-controls	SelectControlById	0..*	Control-selection entries to exclude in the containing OSCAL context. The concrete entry class is selected by class-level slot_usage.	oscal_catalog:exclude_controls
+InventoryItem		InventoryItem	A single managed inventory item within the system.							
+					uuid	InventoryItem_uuid	str	1..1	A machine-oriented, globally unique identifier with a cross-instance scope.	oscal_catalog:uuid
+					description	InventoryItem_description	str	1..1	A human-readable description.	oscal_catalog:description
+					implemented-components		ImplementedComponent	0..*	A collection of implemented components.	oscal_assessment_plan:implemented_components
+					props	InventoryItem_props	ImplementationCommonProperty	0..*	A list of properties.	oscal_catalog:props
+					links	InventoryItem_links	ImplementationCommonLink	0..*	A list of links.	oscal_catalog:links
+					responsible-parties	InventoryItem_responsible-parties	ImplementationResponsibleParty	0..*	Responsible party assignments.	oscal_catalog:responsible_parties
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+LeveragedAuthorization		LeveragedAuthorization	A description of another authorized system from which this system inherits capabilities that satisfy security requirements. Another term for this concept is a common control provider.							
+					uuid	LeveragedAuthorization_uuid	str	1..1	A machine-oriented, globally unique identifier with a cross-instance scope.	oscal_catalog:uuid
+					title	LeveragedAuthorization_title	str	1..1	A human-readable name or title.	oscal_catalog:title
+					props		Property	0..*	A list of properties.	oscal_catalog:props
+					links	LeveragedAuthorization_links	SspLeveragedAuthorizationLink	0..*	A list of links.	oscal_catalog:links
+					party-uuid	LeveragedAuthorization_party-uuid	str	1..1	A machine-oriented identifier reference to the party who is making the log entry.	oscal_assessment_plan:party_uuid
+					date-authorized	LeveragedAuthorization_date-authorized	str	1..1	The date the system received its authorization.	oscal_ssp:date_authorized
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+Link		Link	A reference to a local or remote resource, that has a specific relation to the containing object.							
+					href	Link_href	str	1..1	A resolvable URL reference to a resource.	oscal_catalog:href
+					rel	Link_rel	str	0..1	Describes the type of relationship provided by the link's hypertext reference. This can be an indicator of the link's purpose.	oscal_catalog:rel
+					resource-fragment		str	0..1	In case where the href points to a back-matter/resource, this value will indicate the URI fragment to append to any rlink associated with the resource. This value MUST be URI encoded.	oscal_catalog:resource_fragment
+					media-type		str	0..1	A label that indicates the nature of a resource, as a data serialization or format.	oscal_catalog:media_type
+					text		str	0..1	A textual label to associate with the containing object.	oscal_catalog:text
+LocalDefinitions		LocalDefinitions	Used to define data objects that are used in the assessment plan, that do not appear in the referenced SSP.							
+					components		SystemComponent	0..*	A collection of system components.	oscal_assessment_plan:components
+					inventory-items		InventoryItem	0..*	A collection of inventory items.	oscal_assessment_plan:inventory_items
+					users		SystemUser	0..*	A collection of system users.	oscal_assessment_plan:users
+					objectives-and-methods		LocalObjective	0..*	A collection of locally-defined control objectives.	oscal_assessment_plan:objectives_and_methods
+					activities		Activity	0..*	A collection of activities.	oscal_assessment_plan:activities
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+LocalObjective		LocalObjective	A local definition of a control objective for this assessment. Uses catalog syntax for control objective and assessment actions.							
+					control-id	LocalObjective_control-id	str	1..1	A reference to a control by its identifier.	oscal_catalog:control_id
+					description		str	0..1	A human-readable description.	oscal_catalog:description
+					parts	LocalObjective_parts	ControlPart	1..*	A collection of parts.	oscal_catalog:parts
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+					props		Property	0..*	A list of properties.	oscal_catalog:props
+					links		Link	0..*	A list of links.	oscal_catalog:links
+Location		Location	A physical point of presence, which may be associated with people, organizations, or other concepts within the current or linked OSCAL document.							
+					uuid	Location_uuid	str	1..1	A machine-oriented, globally unique identifier with a cross-instance scope.	oscal_catalog:uuid
+					title		str	0..1	A human-readable name or title.	oscal_catalog:title
+					email-addresses		str	0..*	Email addresses associated with the containing object.	oscal_catalog:email_addresses
+					telephone-numbers		TelephoneNumber	0..*	Telephone numbers associated with the containing object.	oscal_catalog:telephone_numbers
+					address		Address	0..1	A postal address for the location.	oscal_catalog:address
+					urls		str	0..*	The uniform resource locator (URL) for a web site or other resource associated with the location.	oscal_catalog:urls
+					props	Location_props	LocationProperty	0..*	A list of properties.	oscal_catalog:props
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+					links		Link	0..*	A list of links.	oscal_catalog:links
+LocationProperty	Property	LocationProperty	Location-scoped OSCAL property.							
+					name	LocationProperty_name	LocationPropNameEnum	1..1	A textual label that uniquely identifies an attribute or semantic type.	oscal_catalog:name
+					value	LocationProperty_value	str	1..1	The value associated with the containing object.	oscal_catalog:value
+					_class	LocationProperty__class	str	0..1	A textual label that provides a sub-type or characterization.	oscal_catalog:_class
+LoggedBy		LoggedBy	Used to indicate who created a log entry in what role.							
+					party-uuid	LoggedBy_party-uuid	str	1..1	A machine-oriented identifier reference to the party who is making the log entry.	oscal_assessment_plan:party_uuid
+					role-id		str	0..1	A reference to a role by its identifier.	oscal_catalog:role_id
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+Map		Map	A relationship-based mapping entry between source and target sets.							
+					uuid	Map_uuid	str	1..1	A machine-oriented, globally unique identifier with a cross-instance scope.	oscal_catalog:uuid
+					ns		str	0..1	An optional namespace qualifying a name. Allows different organizations to associate distinct semantics with the same name.	oscal_catalog:ns
+					matching-rationale		MatchingRationaleEnum	0..1	The rationale method used to relate mapped items.	oscal_mapping:matching_rationale
+					relationship	Map_relationship	str	1..1	Relationship type for a mapping entry. OSCAL namespace values are defined by RelationshipEnum.	oscal_mapping:relationship
+					sources	Map_sources	MappingItem	1..*	Source references or source-participation entries in the containing OSCAL context. The concrete entry class is selected by class-level slot_usage.	oscal_catalog:sources
+					targets	Map_targets	MappingItem	1..*	Target subjects participating in a mapping entry.	oscal_mapping:targets
+					qualifiers		QualifierItem	0..*	Qualifier statements for a mapping entry.	oscal_mapping:qualifiers
+					confidence-score		ConfidenceScore	0..1	Confidence descriptor for a mapping.	oscal_mapping:confidence_score
+					coverage		Coverage	0..1	Coverage metadata for a mapping.	oscal_mapping:coverage
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+					props		Property	0..*	A list of properties.	oscal_catalog:props
+					links		Link	0..*	A list of links.	oscal_catalog:links
+Mapping		Mapping	A mapping between two mapped resources.							
+					uuid	Mapping_uuid	str	1..1	A machine-oriented, globally unique identifier with a cross-instance scope.	oscal_catalog:uuid
+					method	Mapping_method	MappingMethodEnum	0..1	Method indicator used by the containing OSCAL context. Allowed values are constrained by class-level slot_usage.	oscal_catalog:method
+					matching-rationale		MatchingRationaleEnum	0..1	The rationale method used to relate mapped items.	oscal_mapping:matching_rationale
+					status	Mapping_status	MappingStatusEnum	0..1	Status indicator used by the containing OSCAL context. Allowed values are constrained by class-level slot_usage.	oscal_catalog:status
+					source-resource	Mapping_source-resource	MappingResourceReference	1..1	Reference to the mapping source resource.	oscal_mapping:source_resource
+					target-resource	Mapping_target-resource	MappingResourceReference	1..1	Reference to the mapping target resource.	oscal_mapping:target_resource
+					maps	Mapping_maps	Map	1..*	Mapping entries relating source items to target items.	oscal_mapping:maps
+					mapping-description		str	0..1	Description of the context and intended use of the mapping.	oscal_mapping:mapping_description
+					source-gap-summary		GapSummary	0..1	Summary of unmapped source controls.	oscal_mapping:source_gap_summary
+					target-gap-summary		GapSummary	0..1	Summary of unmapped target controls.	oscal_mapping:target_gap_summary
+					confidence-score		ConfidenceScore	0..1	Confidence descriptor for a mapping.	oscal_mapping:confidence_score
+					coverage		Coverage	0..1	Coverage metadata for a mapping.	oscal_mapping:coverage
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+					props		Property	0..*	A list of properties.	oscal_catalog:props
+					links		Link	0..*	A list of links.	oscal_catalog:links
+MappingCollection		MappingCollection	A collection of control mappings between source and target resources.							
+					uuid	MappingCollection_uuid	str	1..1	A machine-oriented, globally unique identifier with a cross-instance scope.	oscal_catalog:uuid
+					metadata	MappingCollection_metadata	Metadata	1..1	Provides information about the containing document, and defines concepts shared across the document.	oscal_catalog:metadata
+					provenance	MappingCollection_provenance	MappingProvenance	1..1	Global provenance and mapping method metadata.	oscal_mapping:provenance
+					mappings	MappingCollection_mappings	Mapping	1..*	A collection of control mappings.	oscal_mapping:mappings
+					back-matter		BackMatter	0..1	A collection of resources that may be referenced from within the OSCAL document instance.	oscal_catalog:back_matter
+MappingCollectionDocument	OscalDocument	MappingCollectionDocument	Root wrapper for an OSCAL Mapping Collection document.							
+					mapping-collection	MappingCollectionDocument_mapping-collection	MappingCollection	1..1	The root mapping collection object.	oscal_mapping:mapping_collection
+MappingItem		MappingItem	A source or target item participating in a mapping entry.							
+					type	MappingItem_type	MappingSubjectTypeEnum	1..1	Indicates the nature or kind of the containing object.	oscal_catalog:type
+					id-ref	MappingItem_id-ref	str	1..1	Identifier reference of a source/target subject.	oscal_mapping:id_ref
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+					props		Property	0..*	A list of properties.	oscal_catalog:props
+					links		Link	0..*	A list of links.	oscal_catalog:links
+MappingProvenance		MappingProvenance	Mapping-level provenance details and mapping defaults.							
+					method	MappingProvenance_method	MappingMethodEnum	1..1	Method indicator used by the containing OSCAL context. Allowed values are constrained by class-level slot_usage.	oscal_catalog:method
+					matching-rationale	MappingProvenance_matching-rationale	MatchingRationaleEnum	1..1	The rationale method used to relate mapped items.	oscal_mapping:matching_rationale
+					status	MappingProvenance_status	MappingStatusEnum	1..1	Status indicator used by the containing OSCAL context. Allowed values are constrained by class-level slot_usage.	oscal_catalog:status
+					confidence-score		ConfidenceScore	0..1	Confidence descriptor for a mapping.	oscal_mapping:confidence_score
+					coverage		Coverage	0..1	Coverage metadata for a mapping.	oscal_mapping:coverage
+					mapping-description	MappingProvenance_mapping-description	str	1..1	Description of the context and intended use of the mapping.	oscal_mapping:mapping_description
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+					props		Property	0..*	A list of properties.	oscal_catalog:props
+					links		Link	0..*	A list of links.	oscal_catalog:links
+					responsible-parties		ResponsibleParty	0..*	Responsible party assignments.	oscal_catalog:responsible_parties
+MappingResourceReference		MappingResourceReference	A reference to the source or target resource for a mapping.							
+					ns		str	0..1	An optional namespace qualifying a name. Allows different organizations to associate distinct semantics with the same name.	oscal_catalog:ns
+					type	MappingResourceReference_type	str	1..1	The semantic type of the referenced resource. OSCAL defines catalog and profile, while locally defined values are also permitted.	oscal_catalog:type
+					href	MappingResourceReference_href	str	1..1	A resolvable URL reference to a resource.	oscal_catalog:href
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+					props		Property	0..*	A list of properties.	oscal_catalog:props
+					links		Link	0..*	A list of links.	oscal_catalog:links
+MergeCustom		MergeCustom	Provides an alternate grouping structure that selected controls will be placed in after profile resolution.							
+					groups	MergeCustom_groups	ProfileGroup	0..*	A collection of control groups.	oscal_catalog:groups
+					insert-controls		InsertControls	0..*	Specifies which controls to use in the containing context.	oscal_profile:insert_controls
+MergeFlat		MergeFlat	Directs that controls appear without any grouping structure after profile resolution.							
+Metadata		Metadata	Provides information about the containing document, and defines concepts shared across the document.							
+					title	Metadata_title	str	1..1	A name given to the document.	oscal_catalog:title
+					published		str	0..1	The date and time the document was last made available.	oscal_catalog:published
+					last-modified	Metadata_last-modified	str	1..1	The date and time the document was last stored for later retrieval.	oscal_catalog:last_modified
+					version	Metadata_version	str	1..1	Used to distinguish a specific revision of an OSCAL document.	oscal_catalog:version
+					oscal-version	Metadata_oscal-version	str	1..1	The OSCAL model version the document was authored against.	oscal_catalog:oscal_version
+					document-ids		DocumentId	0..*	Document identifiers qualified by an identifier scheme.	oscal_catalog:document_ids
+					revisions		Revision	0..*	An entry in a sequential list of revisions to the containing document, expected to be in reverse chronological order (i.e. latest first).	oscal_catalog:revisions
+					roles		Role	0..*	Defines a function, which might be assigned to a party in a specific situation.	oscal_catalog:roles
+					locations		Location	0..*	A physical point of presence, which may be associated with people, organizations, or other concepts within the current or linked OSCAL document.	oscal_catalog:locations
+					parties		Party	0..*	An organization or person, which may be associated with roles or other concepts within the current or linked OSCAL document.	oscal_catalog:parties
+					actions		Action	0..*	An action applied by a role within a given party to the content.	oscal_catalog:actions
+					props	Metadata_props	MetadataProperty	0..*	A list of properties.	oscal_catalog:props
+					links	Metadata_links	Link	0..*	A list of links.	oscal_catalog:links
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+					responsible-parties		ResponsibleParty	0..*	Responsible party assignments.	oscal_catalog:responsible_parties
+MetadataPartyExternalId	PartyExternalId	MetadataPartyExternalId	Metadata-scoped external identifier.							
+MetadataProperty	Property	MetadataProperty	Metadata-scoped OSCAL property.							
+					name	MetadataProperty_name	MetadataPropNameEnum	1..1	A textual label that uniquely identifies an attribute or semantic type.	oscal_catalog:name
+MitigatingFactor		MitigatingFactor	Describes an existing mitigating factor that may affect the overall determination of the risk.							
+					uuid	MitigatingFactor_uuid	str	1..1	A machine-oriented, globally unique identifier with a cross-instance scope.	oscal_catalog:uuid
+					description	MitigatingFactor_description	str	1..1	A human-readable description.	oscal_catalog:description
+					implementation-uuid		str	0..1	A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this implementation statement elsewhere in this or other OSCAL instances.	oscal_assessment_plan:implementation_uuid
+					subjects	MitigatingFactor_subjects	SubjectReference	0..*	Assessment subjects or subject references for this object.	oscal_assessment_plan:subjects
+					props		Property	0..*	A list of properties.	oscal_catalog:props
+					links		Link	0..*	A list of links.	oscal_catalog:links
+NetworkArchitecture		NetworkArchitecture	A description of the system's network architecture, optionally supplemented with diagrams that illustrate the network architecture.							
+					description	NetworkArchitecture_description	str	1..1	A human-readable description.	oscal_catalog:description
+					props		Property	0..*	A list of properties.	oscal_catalog:props
+					links		Link	0..*	A list of links.	oscal_catalog:links
+					diagrams		Diagram	0..*	A collection of diagrams that visually depict the subject.	oscal_ssp:diagrams
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+ObjectiveStatus		ObjectiveStatus	A determination of if the objective is satisfied or not within a given system.							
+					state	ObjectiveStatus_state	ObjectiveStatusStateEnum	1..1	An indication as to whether the objective is satisfied or not.	oscal_catalog:state
+					reason		str	0..1	"The reason the objective was given its status. Recommended values are in ObjectiveStatusReasonEnum; other values are permitted (OSCAL allow-other=""yes"")."	oscal_assessment_plan:reason
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+Observation		Observation	Describes an individual observation.							
+					uuid	Observation_uuid	str	1..1	A machine-oriented, globally unique identifier with a cross-instance scope.	oscal_catalog:uuid
+					title		str	0..1	A human-readable name or title.	oscal_catalog:title
+					description	Observation_description	str	1..1	A human-readable description.	oscal_catalog:description
+					methods	Observation_methods	str	1..*	"Identifies how the observation was made. Recommended values are in ObservationMethodEnum; other values are permitted (OSCAL allow-other=""yes"")."	oscal_assessment_plan:methods
+					types		str	0..*	"Identifies the nature of the observation. Recommended values are in ObservationTypeEnum; other values are permitted (OSCAL allow-other=""yes"")."	oscal_assessment_plan:types
+					origins		Origin	0..*	Identifies the source of observations, findings, or risks.	oscal_assessment_plan:origins
+					subjects	Observation_subjects	SubjectReference	0..*	Assessment subjects or subject references for this object.	oscal_assessment_plan:subjects
+					relevant-evidence		RelevantEvidence	0..*	Links the observation to relevant evidence.	oscal_assessment_plan:relevant_evidence
+					collected	Observation_collected	str	1..1	Date/time stamp identifying when the finding information was collected.	oscal_assessment_plan:collected
+					expires		str	0..1	Date/time identifying when the finding information is no longer considered valid.	oscal_assessment_plan:expires
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+					props		Property	0..*	A list of properties.	oscal_catalog:props
+					links		Link	0..*	A list of links.	oscal_catalog:links
+OnDateCondition		OnDateCondition	The task is intended to occur on the specified date.							
+					date	OnDateCondition_date	str	1..1	The date and time when the action occurred.	oscal_catalog:date
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+Origin		Origin	Identifies the source of the finding, such as a tool, interviewed person, or activity.							
+					actors	Origin_actors	OriginActor	1..*	The actor that produces an observation, a finding, or a risk.	oscal_assessment_plan:actors
+					related-tasks		RelatedTask	0..*	Identifies tasks for which the containing object is a consequence.	oscal_assessment_plan:related_tasks
+OriginActor		OriginActor	The actor that produces an observation, a finding, or a risk.							
+					type	OriginActor_type	OriginActorTypeEnum	1..1	Indicates the nature or kind of the containing object.	oscal_catalog:type
+					actor-uuid	OriginActor_actor-uuid	str	1..1	A machine-oriented identifier reference to the tool or person based on the associated type.	oscal_assessment_plan:actor_uuid
+					role-id		str	0..1	A reference to a role by its identifier.	oscal_catalog:role_id
+					props		Property	0..*	A list of properties.	oscal_catalog:props
+					links		Link	0..*	A list of links.	oscal_catalog:links
+OscalCommon		OscalCommon	Mixin providing props, links, and remarks slots common to most OSCAL objects. Extends HasPropsAndLinks.							
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+					props		Property	0..*	A list of properties.	oscal_catalog:props
+					links		Link	0..*	A list of links.	oscal_catalog:links
+OscalDocument		OscalDocument	A root wrapper for an OSCAL document, which may be of any OSCAL document type (e.g. Catalog, Profile, Assessment Plan, SSP).							
+Parameter		Parameter	Parameters provide a mechanism for the dynamic assignment of value(s) in a control.							
+					id	Parameter_id	str	1..1	A unique identifier for the parameter.	oscal_catalog:id
+					_class	Parameter__class	str	0..1	A textual label that provides a characterization of the type, purpose, use or scope of the parameter.	oscal_catalog:_class
+					depends-on		str	0..1	(deprecated) Another parameter invoking this one. This construct has been deprecated and should not be used.	oscal_catalog:depends_on
+					label		str	0..1	A short, placeholder name for the parameter, which can be used as a substitute for a value if no value is assigned.	oscal_catalog:label
+					usage		str	0..1	Describes the purpose and use of a parameter.	oscal_catalog:usage
+					constraints		ParameterConstraint	0..*	A formal or informal expression of a constraint or test.	oscal_catalog:constraints
+					guidelines		ParameterGuideline	0..*	A prose statement that provides a recommendation for the use of a parameter.	oscal_catalog:guidelines
+					values		str	0..*	A parameter value or set of values.	oscal_catalog:values
+					select		ParameterSelection	0..1	Presenting a choice among alternatives.	oscal_catalog:select
+					props	Parameter_props	ParameterProperty	0..*	A list of properties.	oscal_catalog:props
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+					links		Link	0..*	A list of links.	oscal_catalog:links
+ParameterConstraint		ParameterConstraint	A formal or informal expression of a constraint or test.							
+					description	ParameterConstraint_description	str	0..1	A textual summary of the constraint to be applied.	oscal_catalog:description
+					tests		ConstraintTest	0..*	A test expression which is expected to be evaluated by a tool.	oscal_catalog:tests
+ParameterGuideline		ParameterGuideline	A prose statement that provides a recommendation for the use of a parameter.							
+					prose	ParameterGuideline_prose	str	1..1	Prose permits multiple paragraphs, lists, tables etc.	oscal_catalog:prose
+ParameterProperty	Property	ParameterProperty	Control-common parameter-scoped OSCAL property.							
+					name	ParameterProperty_name	str	1..1	A textual label that uniquely identifies an attribute or semantic type.	oscal_catalog:name
+ParameterSelection		ParameterSelection	Presenting a choice among alternatives.							
+					how-many		ParameterCardinalityEnum	0..1	Describes the number of selections that must occur. Without this setting, only one value should be assumed to be permitted.	oscal_catalog:how_many
+					choice		str	0..*	A value selection among several such options.	oscal_catalog:choice
+ParameterSetting		ParameterSetting	A parameter setting to be propagated to points of insertion in a resolved profile.							
+					param-id	ParameterSetting_param-id	str	1..1	The identifier for the parameter being set or referenced.	oscal_catalog:param_id
+					_class		str	0..1	A textual label that provides a sub-type or characterization.	oscal_catalog:_class
+					depends-on		str	0..1	(deprecated) Another parameter invoking this one. This construct has been deprecated and should not be used.	oscal_catalog:depends_on
+					label		str	0..1	A short, placeholder name for the parameter, which can be used as a substitute for a value if no value is assigned.	oscal_catalog:label
+					usage		str	0..1	Describes the purpose and use of a parameter.	oscal_catalog:usage
+					constraints		ParameterConstraint	0..*	A formal or informal expression of a constraint or test.	oscal_catalog:constraints
+					guidelines		ParameterGuideline	0..*	A prose statement that provides a recommendation for the use of a parameter.	oscal_catalog:guidelines
+					values		str	0..*	A parameter value or set of values.	oscal_catalog:values
+					select		ParameterSelection	0..1	Presenting a choice among alternatives.	oscal_catalog:select
+					props		Property	0..*	A list of properties.	oscal_catalog:props
+					links		Link	0..*	A list of links.	oscal_catalog:links
+Part		Part	An annotated, markup-based textual element of a control's or catalog group's definition, or a child of another part.							
+					id	Part_id	str	0..1	A unique identifier for the part.	oscal_catalog:id
+					name	Part_name	str	1..1	A textual label that uniquely identifies the part's semantic type, which exists in a value space qualified by the ns.	oscal_catalog:name
+					ns	Part_ns	str	0..1	An optional namespace qualifying the part's name. This allows different organizations to associate distinct semantics with the same name.	oscal_catalog:ns
+					_class	Part__class	str	0..1	An optional textual providing a sub-type or characterization of the part's name, or a category to which the part belongs.	oscal_catalog:_class
+					title	Part_title	str	0..1	An optional name given to the part, which may be used by a tool for display and navigation.	oscal_catalog:title
+					prose	Part_prose	str	0..1	Permits multiple paragraphs, lists, tables etc.	oscal_catalog:prose
+					parts		Part	0..*	A collection of parts.	oscal_catalog:parts
+					props	Part_props	PartProperty	0..*	A list of properties.	oscal_catalog:props
+					links		Link	0..*	A list of links.	oscal_catalog:links
+PartProperty	Property	PartProperty	Control-common part-scoped OSCAL property.							
+					name	PartProperty_name	PartPropNameEnum	1..1	A textual label that uniquely identifies an attribute or semantic type.	oscal_catalog:name
+Party		Party	An organization or person, which may be associated with roles or other concepts within the current or linked OSCAL document.							
+					uuid	Party_uuid	str	1..1	A machine-oriented, globally unique identifier with a cross-instance scope.	oscal_catalog:uuid
+					type	Party_type	PartyTypeEnum	1..1	A category describing the kind of party the object describes.	oscal_catalog:type
+					name	Party_name	str	0..1	The full name of the party.	oscal_catalog:name
+					short-name		str	0..1	A short common name, abbreviation, or acronym.	oscal_catalog:short_name
+					email-addresses		str	0..*	Email addresses associated with the containing object.	oscal_catalog:email_addresses
+					telephone-numbers		TelephoneNumber	0..*	Telephone numbers associated with the containing object.	oscal_catalog:telephone_numbers
+					external-ids	Party_external-ids	MetadataPartyExternalId	0..*	An identifier for a person or organization using a designated scheme, e.g. an Open Researcher and Contributor ID (ORCID).	oscal_catalog:external_ids
+					addresses		Address	0..*	Postal addresses associated with the containing object.	oscal_catalog:addresses
+					location-uuids		str	0..*	Reference to a location by UUID.	oscal_catalog:location_uuids
+					member-of-organizations		str	0..*	A reference to another party by UUID, typically an organization, that this subject is associated with.	oscal_catalog:member_of_organizations
+					props	Party_props	PartyProperty	0..*	A list of properties.	oscal_catalog:props
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+					links		Link	0..*	A list of links.	oscal_catalog:links
+PartyExternalId		PartyExternalId	An identifier for a person or organization using a designated scheme, e.g. an Open Researcher and Contributor ID (ORCID).							
+					scheme	PartyExternalId_scheme	str	1..1	Indicates the type of external identifier.	oscal_catalog:scheme
+					id	PartyExternalId_id	str	1..1	A unique human-oriented identifier within a particular context.	oscal_catalog:id
+PartyProperty	Property	PartyProperty	Party-scoped OSCAL property.							
+					name	PartyProperty_name	PartyPropNameEnum	1..1	A textual label that uniquely identifies an attribute or semantic type.	oscal_catalog:name
+PlanOfActionAndMilestones		PlanOfActionAndMilestones	A plan of action and milestones that identifies initial and residual risks, deviations, and disposition.							
+					uuid	PlanOfActionAndMilestones_uuid	str	1..1	A machine-oriented, globally unique identifier with a cross-instance scope.	oscal_catalog:uuid
+					metadata	PlanOfActionAndMilestones_metadata	Metadata	1..1	Provides information about the containing document, and defines concepts shared across the document.	oscal_catalog:metadata
+					import-ssp		ImportSSP	0..1	Used to import information about the system from an SSP.	oscal_assessment_plan:import_ssp
+					system-id		SystemId	0..1	A human-oriented, globally unique identifier for a system.	oscal_poam:system_id
+					local-definitions	PlanOfActionAndMilestones_local-definitions	PoamLocalDefinitions	0..1	Used to define data objects that do not appear in the referenced SSP.	oscal_assessment_plan:local_definitions
+					observations		Observation	0..*	A collection of observations captured in the containing context.	oscal_assessment_plan:observations
+					risks		Risk	0..*	A collection of risks captured in the containing context.	oscal_assessment_plan:risks
+					findings		Finding	0..*	A collection of findings captured in the containing context.	oscal_assessment_plan:findings
+					poam-items	PlanOfActionAndMilestones_poam-items	PoamItem	1..*	A collection of POA&M items.	oscal_poam:poam_items
+					back-matter		BackMatter	0..1	A collection of resources that may be referenced from within the OSCAL document instance.	oscal_catalog:back_matter
+PoamDocument	OscalDocument	PoamDocument	Root wrapper for an OSCAL Plan of Action and Milestones document.							
+					plan-of-action-and-milestones	PoamDocument_plan-of-action-and-milestones	PlanOfActionAndMilestones	1..1	The root plan of action and milestones object.	oscal_poam:plan_of_action_and_milestones
+PoamItem		PoamItem	Describes an individual POA&M item.							
+					uuid		str	0..1	A machine-oriented, globally unique identifier with a cross-instance scope.	oscal_catalog:uuid
+					title	PoamItem_title	str	1..1	A human-readable name or title.	oscal_catalog:title
+					description	PoamItem_description	str	1..1	A human-readable description.	oscal_catalog:description
+					origins		Origin	0..*	Identifies the source of observations, findings, or risks.	oscal_assessment_plan:origins
+					related-findings		RelatedFinding	0..*	Relates a POA&M item to one or more findings.	oscal_poam:related_findings
+					related-observations		RelatedObservation	0..*	Relates the containing object to a set of referenced observations.	oscal_assessment_plan:related_observations
+					related-risks		AssociatedRisk	0..*	Relates the finding to a set of referenced risks.	oscal_assessment_plan:related_risks
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+					props		Property	0..*	A list of properties.	oscal_catalog:props
+					links		Link	0..*	A list of links.	oscal_catalog:links
+PoamLocalDefinitions		PoamLocalDefinitions	Allows components and inventory items to be defined within the POA&M for cases where no OSCAL SSP is available with the POA&M.							
+					components		SystemComponent	0..*	A collection of system components.	oscal_assessment_plan:components
+					inventory-items		InventoryItem	0..*	A collection of inventory items.	oscal_assessment_plan:inventory_items
+					assessment-assets		AssessmentAssets	0..1	Identifies the assets used to perform this assessment.	oscal_assessment_plan:assessment_assets
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+PortRange		PortRange	Where applicable, the transport layer protocol port range.							
+					start	PortRange_start	int	0..1	The start date/time.	oscal_assessment_plan:start
+					end	PortRange_end	int	0..1	The end date/time.	oscal_assessment_plan:end
+					transport		TransportEnum	0..1	Indicates the transport type.	oscal_assessment_plan:transport
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+Profile		Profile	An OSCAL Profile that designates a set of controls from one or more catalogs or profiles, optionally restructures and modifies them, to describe a basis for a security standard or body of practice.							
+					uuid	Profile_uuid	str	1..1	A machine-oriented, globally unique identifier with a cross-instance scope.	oscal_catalog:uuid
+					metadata	Profile_metadata	Metadata	1..1	Provides information about the containing document, and defines concepts shared across the document.	oscal_catalog:metadata
+					imports	Profile_imports	ProfileImport	1..*	Designates source catalog or profile resources to be imported into the profile.	oscal_profile:imports
+					merge		ProfileMerge	0..1	Structuring directives for how controls are organized after profile resolution.	oscal_profile:merge
+					modify		ProfileModify	0..1	Set parameters or amend controls in resolution.	oscal_profile:modify
+					back-matter		BackMatter	0..1	A collection of resources that may be referenced from within the OSCAL document instance.	oscal_catalog:back_matter
+ProfileAlterationProperty	Property	ProfileAlterationProperty	OSCAL property entries allowed in profile modify additions.							
+					name	ProfileAlterationProperty_name	AlterationPropNameEnum	1..1	A textual label that uniquely identifies an attribute or semantic type.	oscal_catalog:name
+ProfileDocument	OscalDocument	ProfileDocument	Root wrapper for an OSCAL Profile document.							
+					profile	ProfileDocument_profile	Profile	1..1	The root profile object.	oscal_profile:profile
+ProfileGroup		ProfileGroup	A group of (selected) controls or of groups of controls within a profile custom merge structure.							
+					id		str	0..1	A unique human-oriented identifier within a particular context.	oscal_catalog:id
+					_class		str	0..1	A textual label that provides a sub-type or characterization.	oscal_catalog:_class
+					title	ProfileGroup_title	str	1..1	A human-readable name or title.	oscal_catalog:title
+					params		Parameter	0..*	Parameters providing a mechanism for the dynamic assignment of value(s) in a control.	oscal_catalog:params
+					parts		Part	0..*	A collection of parts.	oscal_catalog:parts
+					groups	ProfileGroup_groups	ProfileGroup	0..*	A collection of control groups.	oscal_catalog:groups
+					insert-controls		InsertControls	0..*	Specifies which controls to use in the containing context.	oscal_profile:insert_controls
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+					props		Property	0..*	A list of properties.	oscal_catalog:props
+					links		Link	0..*	A list of links.	oscal_catalog:links
+ProfileImport		ProfileImport	Designates a referenced source catalog or profile that provides a source of control information for use in creating a new overlay or baseline.							
+					href	ProfileImport_href	str	1..1	A resolvable URL reference to a resource.	oscal_catalog:href
+					include-all		IncludeAll	0..1	Include all selectable objects in the containing OSCAL selection context.	oscal_catalog:include_all
+					include-controls	ProfileImport_include-controls	SelectControlById	0..*	Control-selection entries to include in the containing OSCAL context. The concrete entry class is selected by class-level slot_usage.	oscal_catalog:include_controls
+					exclude-controls	ProfileImport_exclude-controls	SelectControlById	0..*	Control-selection entries to exclude in the containing OSCAL context. The concrete entry class is selected by class-level slot_usage.	oscal_catalog:exclude_controls
+ProfileMerge		ProfileMerge	Provides structuring directives that instruct how controls are organized after profile resolution.							
+					combine		CombinationRule	0..1	Defines how to resolve duplicate instances of the same control.	oscal_profile:combine
+					flat		MergeFlat	0..1	Directs that controls appear without any grouping structure.	oscal_profile:flat
+					as-is		Bool	0..1	When true, retain the original grouping structure as defined in the import source.	oscal_profile:as_is
+					custom		MergeCustom	0..1	Provides an alternate grouping structure that selected controls will be placed in.	oscal_profile:custom
+ProfileModify		ProfileModify	Set parameters or amend controls in resolution.							
+					set-parameters	ProfileModify_set-parameters	ParameterSetting	0..*	A parameter setting to be propagated to points of insertion.	oscal_catalog:set_parameters
+					alters		Alteration	0..*	Specifies changes to be made to included controls in resolution.	oscal_profile:alters
+Property		Property	An attribute, characteristic, or quality of the containing object expressed as a namespace qualified name/value pair.							
+					name	Property_name	str	1..1	A textual label, within a namespace, that identifies a specific attribute, characteristic, or quality of the property's containing object.	oscal_catalog:name
+					uuid	Property_uuid	str	0..1	A unique identifier for a property.	oscal_catalog:uuid
+					ns	Property_ns	str	0..1	A namespace qualifying the property's name. This allows different organizations to associate distinct semantics with the same name.	oscal_catalog:ns
+					value	Property_value	str	1..1	Indicates the value of the attribute, characteristic, or quality.	oscal_catalog:value
+					_class	Property__class	str	0..1	A textual label that provides a sub-type or characterization of the property's name.	oscal_catalog:_class
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+					group		str	0..1	An identifier for relating distinct sets of properties.	oscal_catalog:group
+Protocol		Protocol	Information about the protocol used to provide a service.							
+					uuid		str	0..1	A machine-oriented, globally unique identifier with a cross-instance scope.	oscal_catalog:uuid
+					name	Protocol_name	str	0..1	A textual label that uniquely identifies an attribute or semantic type.	oscal_catalog:name
+					title		str	0..1	A human-readable name or title.	oscal_catalog:title
+					port-ranges		PortRange	0..*	Where applicable, the transport layer protocol port range.	oscal_assessment_plan:port_ranges
+ProvidedControlImplementation		ProvidedControlImplementation	Describes a capability which may be inherited by a leveraging system.							
+					uuid	ProvidedControlImplementation_uuid	str	1..1	A machine-oriented, globally unique identifier with a cross-instance scope.	oscal_catalog:uuid
+					description	ProvidedControlImplementation_description	str	1..1	A human-readable description.	oscal_catalog:description
+					props		Property	0..*	A list of properties.	oscal_catalog:props
+					links		Link	0..*	A list of links.	oscal_catalog:links
+					responsible-roles	ProvidedControlImplementation_responsible-roles	SspByComponentResponsibleRole	0..*	Responsible role assignments.	oscal_catalog:responsible_roles
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+QualifierItem		QualifierItem	A qualifier describing requirements or incompatibilities.							
+					subject	QualifierItem_subject	QualifierSubjectEnum	1..1	Subject to which the qualifier applies.	oscal_mapping:subject
+					predicate	QualifierItem_predicate	QualifierPredicateEnum	1..1	Predicate describing qualifier semantics.	oscal_mapping:predicate
+					category	QualifierItem_category	QualifierCategoryEnum	1..1	Confidence category label or qualifier category value.	oscal_mapping:category
+					description	QualifierItem_description	str	1..1	A human-readable description.	oscal_catalog:description
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+RelatedFinding		RelatedFinding	Relates a POA&M item to a referenced finding.							
+					finding-uuid	RelatedFinding_finding-uuid	str	1..1	A UUID reference to a finding.	oscal_poam:finding_uuid
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+RelatedObservation		RelatedObservation	Relates the identified element to a set of referenced observations.							
+					observation-uuid	RelatedObservation_observation-uuid	str	1..1	A machine-oriented identifier reference to an observation defined in the list of observations.	oscal_assessment_plan:observation_uuid
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+RelatedTask		RelatedTask	Identifies an individual task for which the containing object is a consequence of.							
+					task-uuid	RelatedTask_task-uuid	str	1..1	A UUID reference to a task.	oscal_assessment_plan:task_uuid
+					subjects	RelatedTask_subjects	AssessmentSubject	0..*	Assessment subjects or subject references for this object.	oscal_assessment_plan:subjects
+					identified-subject		IdentifiedSubject	0..1	Used to detail assessment subjects that were identified by this task.	oscal_assessment_plan:identified_subject
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+					props		Property	0..*	A list of properties.	oscal_catalog:props
+					links		Link	0..*	A list of links.	oscal_catalog:links
+					responsible-parties		ResponsibleParty	0..*	Responsible party assignments.	oscal_catalog:responsible_parties
+RelevantEvidence		RelevantEvidence	Links this observation to relevant evidence.							
+					href		str	0..1	A resolvable URL reference to a resource.	oscal_catalog:href
+					description	RelevantEvidence_description	str	1..1	A human-readable description.	oscal_catalog:description
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+					props		Property	0..*	A list of properties.	oscal_catalog:props
+					links		Link	0..*	A list of links.	oscal_catalog:links
+Removal		Removal	Specifies objects to be removed from a control based on aspects of the object that must all match.							
+					by-name		str	0..1	Identify items to remove by their assigned name.	oscal_profile:by_name
+					by-class		str	0..1	Identify items to remove by their class label.	oscal_profile:by_class
+					by-id		str	0..1	Identify or target items by their id value.	oscal_profile:by_id
+					by-item-name		ByItemNameEnum	0..1	Identify items to remove by the item's information object type name.	oscal_profile:by_item_name
+					by-ns		str	0..1	Identify items to remove by the item's namespace.	oscal_profile:by_ns
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+RequiredAsset		RequiredAsset	Identifies an asset required to achieve remediation.							
+					uuid	RequiredAsset_uuid	str	1..1	A machine-oriented, globally unique identifier with a cross-instance scope.	oscal_catalog:uuid
+					title		str	0..1	A human-readable name or title.	oscal_catalog:title
+					description	RequiredAsset_description	str	1..1	A human-readable description.	oscal_catalog:description
+					subjects	RequiredAsset_subjects	SubjectReference	0..*	Assessment subjects or subject references for this object.	oscal_assessment_plan:subjects
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+					props		Property	0..*	A list of properties.	oscal_catalog:props
+					links		Link	0..*	A list of links.	oscal_catalog:links
+Resource		Resource	A resource associated with content in the containing document instance. A resource may be directly included in the document using base64 encoding or may point to one or more equivalent internet resources.							
+					uuid	Resource_uuid	str	1..1	A unique identifier for a resource.	oscal_catalog:uuid
+					title	Resource_title	str	0..1	An optional name given to the resource, which may be used by a tool for display and navigation.	oscal_catalog:title
+					description	Resource_description	str	0..1	An optional short summary of the resource used to indicate the purpose of the resource.	oscal_catalog:description
+					props	Resource_props	ResourceProperty	0..*	A list of properties.	oscal_catalog:props
+					document-ids	Resource_document-ids	DocumentId	0..*	Document identifiers qualified by an identifier scheme.	oscal_catalog:document_ids
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+					citation		Citation	0..1	An optional citation consisting of end note text using structured markup.	oscal_catalog:citation
+					rlinks		ResourceLink	0..*	A URL-based pointer to an external resource with an optional hash for verification and change detection.	oscal_catalog:rlinks
+					base64		Base64Resource	0..1	A resource encoded using the Base64 alphabet defined by RFC 2045.	oscal_catalog:base64
+ResourceLink		ResourceLink	A URL-based pointer to an external resource with an optional hash for verification and change detection.							
+					href	ResourceLink_href	str	1..1	A resolvable URL pointing to the referenced resource.	oscal_catalog:href
+					media-type		str	0..1	A label that indicates the nature of a resource, as a data serialization or format.	oscal_catalog:media_type
+					hashes		Hash	0..*	A representation of a cryptographic digest generated over a resource using a specified hash algorithm.	oscal_catalog:hashes
+ResourceProperty	Property	ResourceProperty	Back-matter resource-scoped OSCAL property.							
+					name	ResourceProperty_name	ResourcePropNameEnum	1..1	A textual label that uniquely identifies an attribute or semantic type.	oscal_catalog:name
+					value	ResourceProperty_value	str	1..1	The value associated with the containing object.	oscal_catalog:value
+Response		Response	Describes either recommended or an actual plan for addressing the risk.							
+					uuid	Response_uuid	str	1..1	A machine-oriented, globally unique identifier with a cross-instance scope.	oscal_catalog:uuid
+					title	Response_title	str	1..1	A human-readable name or title.	oscal_catalog:title
+					description	Response_description	str	1..1	A human-readable description.	oscal_catalog:description
+					lifecycle	Response_lifecycle	str	1..1	"Identifies whether this is a recommendation or an actual plan. Recommended values are in ResponseLifecycleEnum; other values are permitted (OSCAL allow-other=""yes"")."	oscal_assessment_plan:lifecycle
+					origins		Origin	0..*	Identifies the source of observations, findings, or risks.	oscal_assessment_plan:origins
+					required-assets		RequiredAsset	0..*	Identifies an asset required to achieve remediation.	oscal_assessment_plan:required_assets
+					tasks		Task	0..*	A collection of tasks.	oscal_assessment_plan:tasks
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+					props		Property	0..*	A list of properties.	oscal_catalog:props
+					links		Link	0..*	A list of links.	oscal_catalog:links
+ResponsibleParty		ResponsibleParty	A reference to a set of persons and/or organizations that have responsibility for performing the referenced role in the context of the containing object.							
+					role-id	ResponsibleParty_role-id	str	1..1	A reference to a role performed by a party.	oscal_catalog:role_id
+					party-uuids	ResponsibleParty_party-uuids	str	1..*	References to party UUIDs.	oscal_catalog:party_uuids
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+					props		Property	0..*	A list of properties.	oscal_catalog:props
+					links		Link	0..*	A list of links.	oscal_catalog:links
+ResponsibleRole		ResponsibleRole	A reference to a role with responsibility for performing a function relative to the containing object, optionally associated with a set of persons and/or organizations that perform that role.							
+					role-id	ResponsibleRole_role-id	str	1..1	A human-oriented identifier reference to a role performed.	oscal_catalog:role_id
+					party-uuids		str	0..*	References to party UUIDs.	oscal_catalog:party_uuids
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+					props		Property	0..*	A list of properties.	oscal_catalog:props
+					links		Link	0..*	A list of links.	oscal_catalog:links
+Result		Result	Identifies all of the assessment observations and findings, initial and residual risks, deviations, and disposition for a particular execution of the assessment.							
+					uuid	Result_uuid	str	1..1	A machine-oriented, globally unique identifier with a cross-instance scope.	oscal_catalog:uuid
+					title	Result_title	str	1..1	A human-readable name or title.	oscal_catalog:title
+					description	Result_description	str	1..1	A human-readable description.	oscal_catalog:description
+					start	Result_start	str	1..1	The start date/time.	oscal_assessment_plan:start
+					end		str	0..1	The end date/time.	oscal_assessment_plan:end
+					local-definitions	Result_local-definitions	ResultLocalDefinitions	0..1	Used to define data objects that do not appear in the referenced SSP.	oscal_assessment_plan:local_definitions
+					reviewed-controls	Result_reviewed-controls	ReviewedControls	1..1	Identifies the controls being assessed and their control objectives.	oscal_assessment_plan:reviewed_controls
+					attestations		Attestation	0..*	A set of attestation statements for the result.	oscal_assessment_results:attestations
+					assessment-log	Result_assessment-log	AssessmentLog	0..1	A log of assessment-related actions taken.	oscal_assessment_results:assessment_log
+					observations		Observation	0..*	A collection of observations captured in the containing context.	oscal_assessment_plan:observations
+					risks		Risk	0..*	A collection of risks captured in the containing context.	oscal_assessment_plan:risks
+					findings		Finding	0..*	A collection of findings captured in the containing context.	oscal_assessment_plan:findings
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+					props		Property	0..*	A list of properties.	oscal_catalog:props
+					links		Link	0..*	A list of links.	oscal_catalog:links
+ResultLocalDefinitions		ResultLocalDefinitions	Used to define local implementation and assessment assets referenced by a result that do not appear in the imported system security plan.							
+					components		SystemComponent	0..*	A collection of system components.	oscal_assessment_plan:components
+					inventory-items		InventoryItem	0..*	A collection of inventory items.	oscal_assessment_plan:inventory_items
+					users		SystemUser	0..*	A collection of system users.	oscal_assessment_plan:users
+					assessment-assets		AssessmentAssets	0..1	Identifies the assets used to perform this assessment.	oscal_assessment_plan:assessment_assets
+					tasks		Task	0..*	A collection of tasks.	oscal_assessment_plan:tasks
+ReviewedControls		ReviewedControls	Identifies the controls being assessed and their control objectives.							
+					description		str	0..1	A human-readable description.	oscal_catalog:description
+					control-selections	ReviewedControls_control-selections	ControlSelection	1..*	Identifies the controls being assessed.	oscal_assessment_plan:control_selections
+					control-objective-selections		ControlObjectiveSelection	0..*	Identifies the control objectives of the assessment.	oscal_assessment_plan:control_objective_selections
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+					props		Property	0..*	A list of properties.	oscal_catalog:props
+					links		Link	0..*	A list of links.	oscal_catalog:links
+Revision		Revision	An entry in a sequential list of revisions to the containing document.							
+					title		str	0..1	A human-readable name or title.	oscal_catalog:title
+					published		str	0..1	The date and time the document was last made available.	oscal_catalog:published
+					last-modified		str	0..1	The date and time the document was last modified.	oscal_catalog:last_modified
+					version	Revision_version	str	1..1	Used to distinguish a specific revision of an OSCAL document from other previous and future versions.	oscal_catalog:version
+					oscal-version		str	0..1	The OSCAL model version the document was authored against and will conform to as valid.	oscal_catalog:oscal_version
+					props	Revision_props	RevisionProperty	0..*	A list of properties.	oscal_catalog:props
+					links	Revision_links	Link	0..*	A list of links.	oscal_catalog:links
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+RevisionProperty	Property	RevisionProperty	Revision-scoped OSCAL property.							
+					name	RevisionProperty_name	RevisionPropNameEnum	1..1	A textual label that uniquely identifies an attribute or semantic type.	oscal_catalog:name
+Risk		Risk	An identified risk.							
+					uuid	Risk_uuid	str	1..1	A machine-oriented, globally unique identifier with a cross-instance scope.	oscal_catalog:uuid
+					title	Risk_title	str	1..1	A human-readable name or title.	oscal_catalog:title
+					description	Risk_description	str	1..1	A human-readable description.	oscal_catalog:description
+					statement	Risk_statement	str	1..1	An assessor's summary of the risk, in narrative form.	oscal_assessment_plan:statement
+					origins		Origin	0..*	Identifies the source of observations, findings, or risks.	oscal_assessment_plan:origins
+					threat-ids		ThreatId	0..*	The referenced threat identifiers.	oscal_assessment_plan:threat_ids
+					characterizations		Characterization	0..*	Supporting information about the risk and how it relates to the system.	oscal_assessment_plan:characterizations
+					mitigating-factors		MitigatingFactor	0..*	Describes existing mitigating factors that may affect the overall determination of the risk.	oscal_assessment_plan:mitigating_factors
+					deadline		str	0..1	The date/time by which the risk must be resolved.	oscal_assessment_plan:deadline
+					remediations		Response	0..*	Describes either recommended or actual responses to a risk.	oscal_assessment_plan:remediations
+					risk-log		RiskLog	0..1	A log of all risk-related tasks taken.	oscal_assessment_plan:risk_log
+					related-observations		RelatedObservation	0..*	Relates the containing object to a set of referenced observations.	oscal_assessment_plan:related_observations
+					status	Risk_status	str	1..1	Status indicator used by the containing OSCAL context. Allowed values are constrained by class-level slot_usage.	oscal_catalog:status
+					props		Property	0..*	A list of properties.	oscal_catalog:props
+					links		Link	0..*	A list of links.	oscal_catalog:links
+RiskLog		RiskLog	A log of all risk-related tasks taken.							
+					entries	RiskLog_entries	RiskLogEntry	1..*	Identifies an individual risk response that occurred as part of managing an identified risk.	oscal_assessment_plan:entries
+RiskLogEntry		RiskLogEntry	Identifies an individual risk response that occurred as part of managing an identified risk.							
+					uuid	RiskLogEntry_uuid	str	1..1	A machine-oriented, globally unique identifier with a cross-instance scope.	oscal_catalog:uuid
+					title		str	0..1	A human-readable name or title.	oscal_catalog:title
+					description		str	0..1	A human-readable description.	oscal_catalog:description
+					start	RiskLogEntry_start	str	1..1	The start date/time.	oscal_assessment_plan:start
+					end		str	0..1	The end date/time.	oscal_assessment_plan:end
+					logged-by		LoggedBy	0..*	Used to indicate who created a log entry in what role.	oscal_assessment_plan:logged_by
+					status-change		str	0..1	"Identifies the risk change that prompted the log entry. Recommended values are in RiskStatusEnum; other values are permitted (OSCAL allow-other=""yes"")."	oscal_assessment_plan:status_change
+					related-responses		RiskResponseReference	0..*	Identifies an individual risk response that this log entry is for.	oscal_assessment_plan:related_responses
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+					props		Property	0..*	A list of properties.	oscal_catalog:props
+					links		Link	0..*	A list of links.	oscal_catalog:links
+RiskResponseReference		RiskResponseReference	Identifies an individual risk response that this log entry is for.							
+					response-uuid	RiskResponseReference_response-uuid	str	1..1	A machine-oriented identifier reference to a unique risk response.	oscal_assessment_plan:response_uuid
+					related-tasks		RelatedTask	0..*	Identifies tasks for which the containing object is a consequence.	oscal_assessment_plan:related_tasks
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+					props		Property	0..*	A list of properties.	oscal_catalog:props
+					links		Link	0..*	A list of links.	oscal_catalog:links
+Role		Role	Defines a function, which might be assigned to a party in a specific situation.							
+					id	Role_id	str	1..1	A unique identifier for the role.	oscal_catalog:id
+					title	Role_title	str	1..1	A human-readable name or title.	oscal_catalog:title
+					short-name		str	0..1	A short common name, abbreviation, or acronym.	oscal_catalog:short_name
+					description		str	0..1	A human-readable description.	oscal_catalog:description
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+					props		Property	0..*	A list of properties.	oscal_catalog:props
+					links		Link	0..*	A list of links.	oscal_catalog:links
+SatisfiedControlImplementation		SatisfiedControlImplementation	Describes how this system satisfies a responsibility imposed by a leveraged system.							
+					uuid	SatisfiedControlImplementation_uuid	str	1..1	A machine-oriented, globally unique identifier with a cross-instance scope.	oscal_catalog:uuid
+					responsibility-uuid		str	0..1	Machine-oriented identifier reference to a control implementation responsibility imposed by a leveraged system.	oscal_ssp:responsibility_uuid
+					description	SatisfiedControlImplementation_description	str	1..1	A human-readable description.	oscal_catalog:description
+					props		Property	0..*	A list of properties.	oscal_catalog:props
+					links		Link	0..*	A list of links.	oscal_catalog:links
+					responsible-roles	SatisfiedControlImplementation_responsible-roles	SspByComponentResponsibleRole	0..*	Responsible role assignments.	oscal_catalog:responsible_roles
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+SecurityImpactLevel		SecurityImpactLevel	The overall level of expected impact resulting from unauthorized disclosure, modification, or loss of access to information.							
+					security-objective-confidentiality	SecurityImpactLevel_security-objective-confidentiality	str	1..1	A target-level of confidentiality for the system, based on the sensitivity of information within the system.	oscal_ssp:security_objective_confidentiality
+					security-objective-integrity	SecurityImpactLevel_security-objective-integrity	str	1..1	A target-level of integrity for the system, based on the sensitivity of information within the system.	oscal_ssp:security_objective_integrity
+					security-objective-availability	SecurityImpactLevel_security-objective-availability	str	1..1	A target-level of availability for the system, based on the sensitivity of information within the system.	oscal_ssp:security_objective_availability
+SelectControlById		SelectControlById	Select a control or controls from an imported control set.							
+					with-child-controls		WithChildControlsEnum	0..1	When a control is included, whether its child (dependent) controls are also included.	oscal_catalog:with_child_controls
+					with-ids		str	0..*	Selecting a control by its ID given as a literal.	oscal_catalog:with_ids
+					matching		ControlMatching	0..*	Selecting a set of controls by matching their IDs with a wildcard pattern.	oscal_catalog:matching
+SelectObjectiveById		SelectObjectiveById	Used to select a control objective for inclusion/exclusion.							
+					objective-id	SelectObjectiveById_objective-id	str	1..1	Reference to a control objective by its identifier.	oscal_assessment_plan:objective_id
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+SelectSubjectById		SelectSubjectById	Identifies a set of assessment subjects to include/exclude by UUID.							
+					subject-uuid	SelectSubjectById_subject-uuid	str	1..1	A UUID reference to the identified subject.	oscal_assessment_plan:subject_uuid
+					type	SelectSubjectById_type	str	1..1	Indicates the nature or kind of the containing object.	oscal_catalog:type
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+					props		Property	0..*	A list of properties.	oscal_catalog:props
+					links		Link	0..*	A list of links.	oscal_catalog:links
+SetParameter		SetParameter	Identifies the parameter that will be set by the enclosed value.							
+					param-id	SetParameter_param-id	str	1..1	The identifier for the parameter being set or referenced.	oscal_catalog:param_id
+					values	SetParameter_values	str	1..*	A parameter value or set of values.	oscal_catalog:values
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+SspAllowsAuthenticatedScanProp	Property	SspAllowsAuthenticatedScanProp	SSP-scoped property used for component and inventory allows-authenticated-scan.							
+					name	SspAllowsAuthenticatedScanProp_name	str	1..1	A textual label that uniquely identifies an attribute or semantic type.	oscal_catalog:name
+					value	SspAllowsAuthenticatedScanProp_value	AllowsAuthenticatedScanEnum	1..1	The value associated with the containing object.	oscal_catalog:value
+SspByComponentLink	Link	SspByComponentLink	SSP-scoped link used in by-component contexts.							
+					rel	SspByComponentLink_rel	str	0..1	Describes the type of relationship provided by the link's hypertext reference. This can be an indicator of the link's purpose.	oscal_catalog:rel
+SspByComponentResponsibleRole	ResponsibleRole	SspByComponentResponsibleRole	SSP-scoped responsible role used by by-component contexts.							
+					role-id	SspByComponentResponsibleRole_role-id	str	1..1	A reference to a role by its identifier.	oscal_catalog:role_id
+SspControlImplementation		SspControlImplementation	Describes how the system satisfies a set of controls.							
+					description	SspControlImplementation_description	str	1..1	A human-readable description.	oscal_catalog:description
+					set-parameters	SspControlImplementation_set-parameters	SetParameter	0..*	Identifies the parameter that will be set by the enclosed value.	oscal_catalog:set_parameters
+					implemented-requirements	SspControlImplementation_implemented-requirements	SspImplementedRequirement	1..*	Control implementation requirement entries in the containing OSCAL context. The concrete entry class is selected by class-level slot_usage.	oscal_catalog:implemented_requirements
+SspControlOriginationProp	Property	SspControlOriginationProp	SSP-scoped property used in implemented requirement and by-component contexts.							
+					name	SspControlOriginationProp_name	ControlOriginationPropNameEnum	1..1	A textual label that uniquely identifies an attribute or semantic type.	oscal_catalog:name
+					value	SspControlOriginationProp_value	ControlOriginationValueEnum	1..1	The value associated with the containing object.	oscal_catalog:value
+SspDiagramLink	Link	SspDiagramLink	SSP-scoped link used in diagram objects.							
+					rel	SspDiagramLink_rel	str	0..1	Describes the type of relationship provided by the link's hypertext reference. This can be an indicator of the link's purpose.	oscal_catalog:rel
+SspDocument	OscalDocument	SspDocument	Root wrapper for an OSCAL System Security Plan document.							
+					system-security-plan	SspDocument_system-security-plan	SystemSecurityPlan	1..1	A system security plan, such as those described in NIST SP 800-18.	oscal_ssp:system_security_plan
+SspImplementedRequirement		SspImplementedRequirement	Describes how the system satisfies an individual control.							
+					uuid	SspImplementedRequirement_uuid	str	1..1	A machine-oriented, globally unique identifier with a cross-instance scope.	oscal_catalog:uuid
+					control-id	SspImplementedRequirement_control-id	str	1..1	A reference to a control by its identifier.	oscal_catalog:control_id
+					props	SspImplementedRequirement_props	SspControlOriginationProp	0..*	A list of properties.	oscal_catalog:props
+					links		Link	0..*	A list of links.	oscal_catalog:links
+					set-parameters	SspImplementedRequirement_set-parameters	SetParameter	0..*	Identifies the parameter that will be set by the enclosed value.	oscal_catalog:set_parameters
+					responsible-roles	SspImplementedRequirement_responsible-roles	SspImplementedRequirementResponsibleRole	0..*	Responsible role assignments.	oscal_catalog:responsible_roles
+					statements	SspImplementedRequirement_statements	SspStatement	0..*	Control statement implementation entries in the containing OSCAL context. The concrete entry class is selected by class-level slot_usage.	oscal_catalog:statements
+					by-components		ByComponent	0..*	Defines how the referenced component implements a set of controls.	oscal_ssp:by_components
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+SspImplementedRequirementResponsibleRole	ResponsibleRole	SspImplementedRequirementResponsibleRole	SSP-scoped responsible role used by implemented requirement and statement contexts.							
+					role-id	SspImplementedRequirementResponsibleRole_role-id	str	1..1	A reference to a role by its identifier.	oscal_catalog:role_id
+SspInventoryItem	InventoryItem	SspInventoryItem	SSP-scoped inventory item with allows-authenticated-scan property typing.							
+					props	SspInventoryItem_props	SspAllowsAuthenticatedScanProp	0..*	A list of properties.	oscal_catalog:props
+SspLeveragedAuthorizationLink	Link	SspLeveragedAuthorizationLink	SSP-scoped link used in leveraged authorization objects.							
+					rel	SspLeveragedAuthorizationLink_rel	str	0..1	Describes the type of relationship provided by the link's hypertext reference. This can be an indicator of the link's purpose.	oscal_catalog:rel
+SspStatement		SspStatement	Identifies which statements within a control are addressed.							
+					statement-id	SspStatement_statement-id	str	1..1	A reference to a control statement identifier.	oscal_catalog:statement_id
+					uuid	SspStatement_uuid	str	1..1	A machine-oriented, globally unique identifier with a cross-instance scope.	oscal_catalog:uuid
+					props	SspStatement_props	SspControlOriginationProp	0..*	A list of properties.	oscal_catalog:props
+					links		Link	0..*	A list of links.	oscal_catalog:links
+					responsible-roles	SspStatement_responsible-roles	SspImplementedRequirementResponsibleRole	0..*	Responsible role assignments.	oscal_catalog:responsible_roles
+					by-components		ByComponent	0..*	Defines how the referenced component implements a set of controls.	oscal_ssp:by_components
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+SspSystemCharacteristicsProp	Property	SspSystemCharacteristicsProp	SSP-scoped property used in system characteristics.							
+					name	SspSystemCharacteristicsProp_name	SystemCharacteristicsPropNameEnum	1..1	A textual label that uniquely identifies an attribute or semantic type.	oscal_catalog:name
+					value	SspSystemCharacteristicsProp_value	str	1..1	The value associated with the containing object.	oscal_catalog:value
+SspSystemCharacteristicsResponsibleParty	ResponsibleParty	SspSystemCharacteristicsResponsibleParty	SSP-scoped responsible party for system characteristics.							
+					role-id	SspSystemCharacteristicsResponsibleParty_role-id	str	1..1	A reference to a role by its identifier.	oscal_catalog:role_id
+SspSystemComponent	SystemComponent	SspSystemComponent	SSP-scoped system component with allows-authenticated-scan property typing.							
+					props	SspSystemComponent_props	SspAllowsAuthenticatedScanProp	0..*	A list of properties.	oscal_catalog:props
+SspSystemInformationLink	Link	SspSystemInformationLink	SSP-scoped link used in system information.							
+					rel	SspSystemInformationLink_rel	str	0..1	Describes the type of relationship provided by the link's hypertext reference. This can be an indicator of the link's purpose.	oscal_catalog:rel
+SspSystemInformationProp	Property	SspSystemInformationProp	SSP-scoped property used in system information.							
+					name	SspSystemInformationProp_name	SystemInformationPropNameEnum	1..1	A textual label that uniquely identifies an attribute or semantic type.	oscal_catalog:name
+					value	SspSystemInformationProp_value	PrivacyDesignationEnum	1..1	The value associated with the containing object.	oscal_catalog:value
+Step		Step	Identifies an individual step in a series of steps related to an activity, such as an assessment test or examination procedure.							
+					uuid	Step_uuid	str	1..1	A machine-oriented, globally unique identifier with a cross-instance scope.	oscal_catalog:uuid
+					title		str	0..1	A human-readable name or title.	oscal_catalog:title
+					description	Step_description	str	1..1	A human-readable description.	oscal_catalog:description
+					reviewed-controls		ReviewedControls	0..1	Identifies the controls being assessed and their control objectives.	oscal_assessment_plan:reviewed_controls
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+					props		Property	0..*	A list of properties.	oscal_catalog:props
+					links		Link	0..*	A list of links.	oscal_catalog:links
+					responsible-roles		ResponsibleRole	0..*	Responsible role assignments.	oscal_catalog:responsible_roles
+SubjectReference		SubjectReference	A human-oriented identifier reference to a resource. Use type to indicate whether the identified resource is a component, inventory item, location, user, or something else.							
+					subject-uuid	SubjectReference_subject-uuid	str	1..1	A UUID reference to the identified subject.	oscal_assessment_plan:subject_uuid
+					type	SubjectReference_type	str	1..1	Indicates the nature or kind of the containing object.	oscal_catalog:type
+					title		str	0..1	A human-readable name or title.	oscal_catalog:title
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+					props		Property	0..*	A list of properties.	oscal_catalog:props
+					links		Link	0..*	A list of links.	oscal_catalog:links
+SystemCharacteristics		SystemCharacteristics	Contains the characteristics of the system, such as its name, purpose, and security impact level.							
+					system-ids	SystemCharacteristics_system-ids	SystemId	1..*	Unique identifiers for the system.	oscal_ssp:system_ids
+					system-name	SystemCharacteristics_system-name	str	1..1	The full name of the system.	oscal_ssp:system_name
+					system-name-short		str	0..1	A short name for the system, such as an acronym, that is suitable for display in a data table or summary list.	oscal_ssp:system_name_short
+					description	SystemCharacteristics_description	str	1..1	A human-readable description.	oscal_catalog:description
+					date-authorized		str	0..1	The date the system received its authorization.	oscal_ssp:date_authorized
+					security-sensitivity-level		str	0..1	The overall information system sensitivity categorization, such as defined by FIPS-199.	oscal_ssp:security_sensitivity_level
+					system-information	SystemCharacteristics_system-information	SystemInformation	1..1	Contains details about all information types that are stored, processed, or transmitted by the system.	oscal_ssp:system_information
+					security-impact-level		SecurityImpactLevel	0..1	The overall level of expected impact resulting from unauthorized disclosure, modification, or loss of access to information.	oscal_ssp:security_impact_level
+					system-status	SystemCharacteristics_system-status	SystemStatus	1..1	Describes the operational status of the system.	oscal_ssp:system_status
+					authorization-boundary	SystemCharacteristics_authorization-boundary	AuthorizationBoundary	1..1	A description of this system's authorization boundary, optionally supplemented with diagrams that illustrate the authorization boundary.	oscal_ssp:authorization_boundary
+					network-architecture		NetworkArchitecture	0..1	A description of the system's network architecture, optionally supplemented with diagrams that illustrate the network architecture.	oscal_ssp:network_architecture
+					data-flow		DataFlow	0..1	A description of the logical flow of information within the system and across its boundaries, optionally supplemented with diagrams.	oscal_ssp:data_flow
+					responsible-parties	SystemCharacteristics_responsible-parties	SspSystemCharacteristicsResponsibleParty	0..*	Responsible party assignments.	oscal_catalog:responsible_parties
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+					props	SystemCharacteristics_props	SspSystemCharacteristicsProp	0..*	A list of properties.	oscal_catalog:props
+SystemComponent		SystemComponent	A defined component that can be part of an implemented system.							
+					uuid	SystemComponent_uuid	str	1..1	A machine-oriented, globally unique identifier with a cross-instance scope.	oscal_catalog:uuid
+					type	SystemComponent_type	str	1..1	Indicates the nature or kind of the containing object.	oscal_catalog:type
+					title	SystemComponent_title	str	1..1	A human-readable name or title.	oscal_catalog:title
+					description	SystemComponent_description	str	1..1	A human-readable description.	oscal_catalog:description
+					purpose		str	0..1	A summary of the technological or business purpose of the component.	oscal_assessment_plan:purpose
+					protocols		Protocol	0..*	Information about the protocol used to provide a service.	oscal_assessment_plan:protocols
+					status	SystemComponent_status	ComponentStatus	1..1	Status indicator used by the containing OSCAL context. Allowed values are constrained by class-level slot_usage.	oscal_catalog:status
+					props	SystemComponent_props	ImplementationCommonProperty	0..*	A list of properties.	oscal_catalog:props
+					links	SystemComponent_links	ImplementationCommonLink	0..*	A list of links.	oscal_catalog:links
+					responsible-roles	SystemComponent_responsible-roles	ImplementationResponsibleRole	0..*	Responsible role assignments.	oscal_catalog:responsible_roles
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+SystemId		SystemId	A human-oriented, globally unique identifier for a system.							
+					id	SystemId_id	str	1..1	A unique human-oriented identifier within a particular context.	oscal_catalog:id
+					identifier-type	SystemId_identifier-type	str	0..1	"A human-readable label for a specific identifier scheme. Recommended values are in SystemIdentifierTypeEnum; other URI values are permitted (OSCAL allow-other=""yes"")."	oscal_assessment_plan:identifier_type
+SystemImplementation		SystemImplementation	Provides information as to how the system is implemented.							
+					props		Property	0..*	A list of properties.	oscal_catalog:props
+					links		Link	0..*	A list of links.	oscal_catalog:links
+					leveraged-authorizations		LeveragedAuthorization	0..*	A description of another authorized system from which this system inherits capabilities that satisfy security requirements.	oscal_ssp:leveraged_authorizations
+					users		SystemUser	0..*	A collection of system users.	oscal_assessment_plan:users
+					components	SystemImplementation_components	SspSystemComponent	1..*	A collection of system components.	oscal_assessment_plan:components
+					inventory-items	SystemImplementation_inventory-items	SspInventoryItem	0..*	A collection of inventory items.	oscal_assessment_plan:inventory_items
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+SystemInformation		SystemInformation	Contains details about all information types that are stored, processed, or transmitted by the system, such as privacy information.							
+					props	SystemInformation_props	SspSystemInformationProp	0..*	A list of properties.	oscal_catalog:props
+					links	SystemInformation_links	SspSystemInformationLink	0..*	A list of links.	oscal_catalog:links
+					information-types	SystemInformation_information-types	InformationType	1..*	Contains details about one information type that is stored, processed, or transmitted by the system.	oscal_ssp:information_types
+SystemSecurityPlan		SystemSecurityPlan	A system security plan, such as those described in NIST SP 800-18.							
+					uuid	SystemSecurityPlan_uuid	str	1..1	A machine-oriented, globally unique identifier with a cross-instance scope.	oscal_catalog:uuid
+					metadata	SystemSecurityPlan_metadata	Metadata	1..1	Provides information about the containing document, and defines concepts shared across the document.	oscal_catalog:metadata
+					import-profile	SystemSecurityPlan_import-profile	ImportProfile	1..1	Used to import the OSCAL profile representing the system's control baseline.	oscal_ssp:import_profile
+					system-characteristics	SystemSecurityPlan_system-characteristics	SystemCharacteristics	1..1	Contains the characteristics of the system, such as its name, purpose, and security impact level.	oscal_ssp:system_characteristics
+					system-implementation	SystemSecurityPlan_system-implementation	SystemImplementation	1..1	Provides information as to how the system is implemented.	oscal_ssp:system_implementation
+					control-implementation	SystemSecurityPlan_control-implementation	SspControlImplementation	1..1	Describes how the system satisfies a set of controls.	oscal_ssp:control_implementation
+					back-matter		BackMatter	0..1	A collection of resources that may be referenced from within the OSCAL document instance.	oscal_catalog:back_matter
+SystemStatus		SystemStatus	Describes the operational status of the system.							
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+					state	systemStatus__state	SystemOperatingStatusEnum	1..1	The current operating status of the system.	oscal_ssp:state
+SystemUser		SystemUser	A type of user that interacts with the system based on an associated role.							
+					uuid	SystemUser_uuid	str	1..1	A machine-oriented, globally unique identifier with a cross-instance scope.	oscal_catalog:uuid
+					title		str	0..1	A human-readable name or title.	oscal_catalog:title
+					short-name		str	0..1	A short common name, abbreviation, or acronym.	oscal_catalog:short_name
+					description		str	0..1	A human-readable description.	oscal_catalog:description
+					role-ids		str	0..*	Role identifiers associated with the user.	oscal_assessment_plan:role_ids
+					authorized-privileges		AuthorizedPrivilege	0..*	A collection of authorized privileges.	oscal_assessment_plan:authorized_privileges
+					props	SystemUser_props	ImplementationCommonProperty	0..*	A list of properties.	oscal_catalog:props
+					links	SystemUser_links	ImplementationCommonLink	0..*	A list of links.	oscal_catalog:links
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+Task		Task	Represents a scheduled event or milestone, which may be associated with a series of assessment actions.							
+					uuid	Task_uuid	str	1..1	A machine-oriented, globally unique identifier with a cross-instance scope.	oscal_catalog:uuid
+					type	Task_type	str	1..1	Indicates the nature or kind of the containing object.	oscal_catalog:type
+					title	Task_title	str	1..1	A human-readable name or title.	oscal_catalog:title
+					description		str	0..1	A human-readable description.	oscal_catalog:description
+					timing		EventTiming	0..1	The timing under which a task is intended to occur.	oscal_assessment_plan:timing
+					dependencies		TaskDependency	0..*	Tasks that this task depends on.	oscal_assessment_plan:dependencies
+					associated-activities		AssociatedActivity	0..*	Activities associated with this task.	oscal_assessment_plan:associated_activities
+					tasks		Task	0..*	A collection of tasks.	oscal_assessment_plan:tasks
+					subjects	Task_subjects	AssessmentSubject	0..*	Assessment subjects or subject references for this object.	oscal_assessment_plan:subjects
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+					props		Property	0..*	A list of properties.	oscal_catalog:props
+					links		Link	0..*	A list of links.	oscal_catalog:links
+					responsible-roles		ResponsibleRole	0..*	Responsible role assignments.	oscal_catalog:responsible_roles
+TaskDependency		TaskDependency	Used to indicate that a task is dependent on another task.							
+					task-uuid	TaskDependency_task-uuid	str	1..1	A UUID reference to a task.	oscal_assessment_plan:task_uuid
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+TelephoneNumber		TelephoneNumber	A telephone service number as defined by ITU-T E.164.							
+					type	TelephoneNumber_type	str	0..1	"Indicates the type of phone number. Recommended values: home, office, mobile. Other values are permitted (OSCAL allow-other=""yes"")."	oscal_catalog:type
+					number	TelephoneNumber_number	str	1..1	A telephone number value.	oscal_catalog:number
+TermsAndConditions		TermsAndConditions	Used to define various terms and conditions under which an assessment can be performed.							
+					parts	TermsAndConditions_parts	TermsAndConditionsPart	0..*	A collection of parts.	oscal_catalog:parts
+TermsAndConditionsPart	AssessmentPart	TermsAndConditionsPart	A terms-and-conditions scoped assessment part.							
+					name	TermsAndConditionsPart_name	TermsAndConditionsPartNameEnum	1..1	A textual label that uniquely identifies an attribute or semantic type.	oscal_catalog:name
+					parts	TermsAndConditionsPart_parts	TermsAndConditionsPart	0..*	A collection of parts.	oscal_catalog:parts
+ThreatId		ThreatId	A pointer, by ID, to an externally-defined threat.							
+					href		str	0..1	A resolvable URL reference to a resource.	oscal_catalog:href
+					system	ThreatId_system	str	1..1	Specifies the system or scheme from which the identifier originates.	oscal_catalog:system
+					id	ThreatId_id	str	1..1	A unique human-oriented identifier within a particular context.	oscal_catalog:id
+UsesComponent		UsesComponent	The set of components that are used by the assessment platform.							
+					component-uuid	UsesComponent_component-uuid	str	1..1	A UUID reference to a component.	oscal_assessment_plan:component_uuid
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+					props		Property	0..*	A list of properties.	oscal_catalog:props
+					links		Link	0..*	A list of links.	oscal_catalog:links
+					responsible-parties		ResponsibleParty	0..*	Responsible party assignments.	oscal_catalog:responsible_parties
+WithinDateRange		WithinDateRange	The task is intended to occur within the specified date range.							
+					start	WithinDateRange_start	str	1..1	The start date/time.	oscal_assessment_plan:start
+					end	WithinDateRange_end	str	1..1	The end date/time.	oscal_assessment_plan:end
+					remarks		str	0..1	Additional commentary about the containing object.	oscal_catalog:remarks
+

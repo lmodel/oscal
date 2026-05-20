@@ -1,0 +1,60 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: Result
+schema_generating: true
+description: Identifies all of the assessment observations and findings, initial and
+  residual risks, deviations, and disposition for a particular execution of the assessment.
+display_name: Result
+document_category: Result
+weight: 20
+fields:
+- id: uuid
+  description: A machine-oriented, globally unique identifier with a cross-instance
+    scope.
+  display_name: Result_uuid
+- id: title
+  description: A human-readable name or title.
+  display_name: Result_title
+- id: description
+  description: A human-readable description.
+  display_name: Result_description
+- id: start
+  description: The start date/time.
+  display_name: Result_start
+- id: end
+  description: The end date/time.
+  display_name: end
+- id: local_definitions
+  description: Used to define data objects that do not appear in the referenced SSP.
+  display_name: Result_local-definitions
+- id: reviewed_controls
+  description: Identifies the controls being assessed and their control objectives.
+  display_name: Result_reviewed-controls
+- id: attestations
+  description: A set of attestation statements for the result.
+  display_name: attestations
+  cardinality: multi
+- id: assessment_log
+  description: A log of assessment-related actions taken.
+  display_name: Result_assessment-log
+- id: observations
+  description: A collection of observations captured in the containing context.
+  display_name: observations
+  cardinality: multi
+- id: risks
+  description: A collection of risks captured in the containing context.
+  display_name: risks
+  cardinality: multi
+- id: findings
+  description: A collection of findings captured in the containing context.
+  display_name: findings
+  cardinality: multi
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks
+- id: props
+  description: A list of properties.
+  display_name: props
+  cardinality: multi
+- id: links
+  description: A list of links.
+  display_name: links
+  cardinality: multi

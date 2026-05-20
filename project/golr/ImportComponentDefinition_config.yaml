@@ -1,0 +1,13 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: ImportComponentDefinition
+schema_generating: true
+description: Loads a component definition from another resource.
+display_name: ImportComponentDefinition
+document_category: ImportComponentDefinition
+weight: 20
+fields:
+- id: href
+  description: A resolvable URL reference to a resource.
+  display_name: ImportComponentDefinition_href
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks

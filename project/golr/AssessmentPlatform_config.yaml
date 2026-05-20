@@ -1,0 +1,29 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: AssessmentPlatform
+schema_generating: true
+description: Used to represent the toolset used to perform aspects of the assessment.
+display_name: AssessmentPlatform
+document_category: AssessmentPlatform
+weight: 20
+fields:
+- id: uuid
+  description: A machine-oriented, globally unique identifier with a cross-instance
+    scope.
+  display_name: AssessmentPlatform_uuid
+- id: title
+  description: A human-readable name or title.
+  display_name: title
+- id: uses_components
+  description: The set of components used by the assessment platform.
+  display_name: uses-components
+  cardinality: multi
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks
+- id: props
+  description: A list of properties.
+  display_name: props
+  cardinality: multi
+- id: links
+  description: A list of links.
+  display_name: links
+  cardinality: multi

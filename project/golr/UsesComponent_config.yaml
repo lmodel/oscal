@@ -1,0 +1,25 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: UsesComponent
+schema_generating: true
+description: The set of components that are used by the assessment platform.
+display_name: UsesComponent
+document_category: UsesComponent
+weight: 20
+fields:
+- id: component_uuid
+  description: A UUID reference to a component.
+  display_name: UsesComponent_component-uuid
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks
+- id: props
+  description: A list of properties.
+  display_name: props
+  cardinality: multi
+- id: links
+  description: A list of links.
+  display_name: links
+  cardinality: multi
+- id: responsible_parties
+  description: Responsible party assignments.
+  display_name: responsible-parties
+  cardinality: multi

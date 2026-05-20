@@ -1,0 +1,29 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: ProvidedControlImplementation
+schema_generating: true
+description: Describes a capability which may be inherited by a leveraging system.
+display_name: ProvidedControlImplementation
+document_category: ProvidedControlImplementation
+weight: 20
+fields:
+- id: uuid
+  description: A machine-oriented, globally unique identifier with a cross-instance
+    scope.
+  display_name: ProvidedControlImplementation_uuid
+- id: description
+  description: A human-readable description.
+  display_name: ProvidedControlImplementation_description
+- id: props
+  description: A list of properties.
+  display_name: props
+  cardinality: multi
+- id: links
+  description: A list of links.
+  display_name: links
+  cardinality: multi
+- id: responsible_roles
+  description: Responsible role assignments.
+  display_name: ProvidedControlImplementation_responsible-roles
+  cardinality: multi
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks

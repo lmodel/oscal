@@ -1,0 +1,15 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: ProfileModify
+schema_generating: true
+description: Set parameters or amend controls in resolution.
+display_name: ProfileModify
+document_category: ProfileModify
+weight: 20
+fields:
+- id: set_parameters
+  description: A parameter setting to be propagated to points of insertion.
+  display_name: ProfileModify_set-parameters
+  cardinality: multi
+- id: alters
+  description: Specifies changes to be made to included controls in resolution.
+  display_name: alters
+  cardinality: multi

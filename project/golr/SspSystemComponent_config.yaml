@@ -1,0 +1,46 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: SspSystemComponent
+schema_generating: true
+description: SSP-scoped system component with allows-authenticated-scan property typing.
+display_name: SspSystemComponent
+document_category: SspSystemComponent
+weight: 20
+fields:
+- id: uuid
+  description: A machine-oriented, globally unique identifier with a cross-instance
+    scope.
+  display_name: SystemComponent_uuid
+- id: type
+  description: Indicates the nature or kind of the containing object.
+  display_name: SystemComponent_type
+- id: title
+  description: A human-readable name or title.
+  display_name: SystemComponent_title
+- id: description
+  description: A human-readable description.
+  display_name: SystemComponent_description
+- id: purpose
+  description: A summary of the technological or business purpose of the component.
+  display_name: purpose
+- id: protocols
+  description: Information about the protocol used to provide a service.
+  display_name: protocols
+  cardinality: multi
+- id: status
+  description: Status indicator used by the containing OSCAL context. Allowed values
+    are constrained by class-level slot_usage.
+  display_name: SystemComponent_status
+- id: links
+  description: A list of links.
+  display_name: SystemComponent_links
+  cardinality: multi
+- id: responsible_roles
+  description: Responsible role assignments.
+  display_name: SystemComponent_responsible-roles
+  cardinality: multi
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks
+- id: props
+  description: A list of properties.
+  display_name: SspSystemComponent_props
+  cardinality: multi

@@ -1,0 +1,14 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: ImportAssessmentPlan
+schema_generating: true
+description: Used by assessment-results to import information about the original plan
+  for assessing the system.
+display_name: ImportAssessmentPlan
+document_category: ImportAssessmentPlan
+weight: 20
+fields:
+- id: href
+  description: A resolvable URL reference to a resource.
+  display_name: ImportAssessmentPlan_href
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks

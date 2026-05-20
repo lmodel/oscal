@@ -1,0 +1,15 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: GapSummary
+schema_generating: true
+description: A summary of controls that were not mapped.
+display_name: GapSummary
+document_category: GapSummary
+weight: 20
+fields:
+- id: uuid
+  description: A machine-oriented, globally unique identifier with a cross-instance
+    scope.
+  display_name: GapSummary_uuid
+- id: unmapped_controls
+  description: Controls that remain unmapped.
+  display_name: GapSummary_unmapped-controls
+  cardinality: multi

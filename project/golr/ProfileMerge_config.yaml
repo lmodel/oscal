@@ -1,0 +1,22 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: ProfileMerge
+schema_generating: true
+description: Provides structuring directives that instruct how controls are organized
+  after profile resolution.
+display_name: ProfileMerge
+document_category: ProfileMerge
+weight: 20
+fields:
+- id: combine
+  description: Defines how to resolve duplicate instances of the same control.
+  display_name: combine
+- id: flat
+  description: Directs that controls appear without any grouping structure.
+  display_name: flat
+- id: as_is
+  description: When true, retain the original grouping structure as defined in the
+    import source.
+  display_name: as-is
+- id: custom
+  description: Provides an alternate grouping structure that selected controls will
+    be placed in.
+  display_name: custom

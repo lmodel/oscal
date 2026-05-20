@@ -1,0 +1,43 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: InformationType
+schema_generating: true
+description: Contains details about one information type that is stored, processed,
+  or transmitted by the system, such as privacy information, and its impact level.
+display_name: InformationType
+document_category: InformationType
+weight: 20
+fields:
+- id: uuid
+  description: A machine-oriented, globally unique identifier with a cross-instance
+    scope.
+  display_name: uuid
+- id: title
+  description: A human-readable name or title.
+  display_name: InformationType_title
+- id: description
+  description: A human-readable description.
+  display_name: InformationType_description
+- id: categorizations
+  description: A set of information type identifiers qualified by the given identification
+    system used.
+  display_name: categorizations
+  cardinality: multi
+- id: props
+  description: A list of properties.
+  display_name: props
+  cardinality: multi
+- id: links
+  description: A list of links.
+  display_name: links
+  cardinality: multi
+- id: confidentiality_impact
+  description: The expected level of impact resulting from the unauthorized disclosure
+    of the described information.
+  display_name: confidentiality-impact
+- id: integrity_impact
+  description: The expected level of impact resulting from the unauthorized modification
+    of the described information.
+  display_name: integrity-impact
+- id: availability_impact
+  description: The expected level of impact resulting from the disruption of access
+    to or use of the described information or the information system.
+  display_name: availability-impact

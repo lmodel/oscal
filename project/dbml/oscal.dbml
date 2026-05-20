@@ -1,0 +1,1769 @@
+// DBML generated from LinkML schema
+
+Project {
+  name: 'oscal'
+}
+
+Table HasPropsAndLinks {
+props varchar
+links varchar
+}
+
+Table OscalCommon {
+remarks varchar
+props varchar
+links varchar
+}
+
+Table HasResponsibleRoles {
+responsible_roles varchar
+}
+
+Table HasResponsibleParties {
+responsible_parties varchar
+}
+
+Table OscalDocument {
+}
+
+Table CatalogDocument {
+CatalogDocument_catalog varchar [not null]
+}
+
+Table Catalog {
+Catalog_uuid varchar [not null]
+Catalog_metadata varchar [not null]
+back_matter varchar
+params varchar
+controls varchar
+groups varchar
+}
+
+Table Group {
+Group_id varchar
+Group__class varchar
+Group_title varchar [not null]
+params varchar
+parts varchar
+groups varchar
+controls varchar
+props varchar
+links varchar
+}
+
+Table Control {
+Control_id varchar [not null]
+Control__class varchar
+Control_title varchar [not null]
+params varchar
+parts varchar
+controls varchar
+props varchar
+links varchar
+}
+
+Table Metadata {
+Metadata_title varchar [not null]
+published varchar
+Metadata_last_modified varchar [not null]
+Metadata_version varchar [not null]
+Metadata_oscal_version varchar [not null]
+document_ids varchar
+revisions varchar
+roles varchar
+locations varchar
+parties varchar
+actions varchar
+Metadata_props varchar
+Metadata_links varchar
+remarks varchar
+responsible_parties varchar
+props varchar
+links varchar
+}
+
+Table Revision {
+title varchar
+published varchar
+last_modified varchar
+Revision_version varchar [not null]
+oscal_version varchar
+Revision_props varchar
+Revision_links varchar
+remarks varchar
+props varchar
+links varchar
+}
+
+Table DocumentId {
+DocumentId_scheme varchar
+DocumentId_identifier varchar [not null]
+}
+
+Table Role {
+Role_id varchar [not null]
+Role_title varchar [not null]
+short_name varchar
+description varchar
+remarks varchar
+props varchar
+links varchar
+}
+
+Table Location {
+Location_uuid varchar [not null]
+title varchar
+email_addresses varchar
+telephone_numbers varchar
+address varchar
+urls varchar
+Location_props varchar
+remarks varchar
+links varchar
+props varchar
+}
+
+Table Party {
+Party_uuid varchar [not null]
+Party_type varchar [not null]
+Party_name varchar
+short_name varchar
+email_addresses varchar
+telephone_numbers varchar
+Party_external_ids varchar
+addresses varchar
+location_uuids varchar
+member_of_organizations varchar
+Party_props varchar
+remarks varchar
+links varchar
+props varchar
+}
+
+Table PartyExternalId {
+PartyExternalId_scheme varchar [not null]
+PartyExternalId_id varchar [not null]
+}
+
+Table ResponsibleParty {
+ResponsibleParty_role_id varchar [not null]
+ResponsibleParty_party_uuids varchar [not null]
+remarks varchar
+props varchar
+links varchar
+}
+
+Table ResponsibleRole {
+ResponsibleRole_role_id varchar [not null]
+party_uuids varchar
+remarks varchar
+props varchar
+links varchar
+}
+
+Table Action {
+Action_uuid varchar [not null]
+Action_type varchar [not null]
+date varchar
+Action_system varchar [not null]
+remarks varchar
+props varchar
+links varchar
+responsible_parties varchar
+}
+
+Table TelephoneNumber {
+TelephoneNumber_type varchar
+TelephoneNumber_number varchar [not null]
+}
+
+Table Address {
+Address_type varchar
+addr_lines varchar
+city varchar
+state varchar
+postal_code varchar
+country varchar
+}
+
+Table Hash {
+Hash_value varchar [not null]
+Hash_algorithm varchar [not null]
+}
+
+Table Property {
+Property_name varchar [not null]
+Property_uuid varchar
+Property_ns varchar
+Property_value varchar [not null]
+Property__class varchar
+remarks varchar
+group varchar
+}
+
+Table MetadataProperty {
+Property_uuid varchar
+Property_ns varchar
+Property_value varchar [not null]
+Property__class varchar
+remarks varchar
+group varchar
+MetadataProperty_name varchar [not null]
+Property_name varchar [not null]
+}
+
+Table RevisionProperty {
+Property_uuid varchar
+Property_ns varchar
+Property_value varchar [not null]
+Property__class varchar
+remarks varchar
+group varchar
+RevisionProperty_name varchar [not null]
+Property_name varchar [not null]
+}
+
+Table LocationProperty {
+Property_uuid varchar
+Property_ns varchar
+remarks varchar
+group varchar
+LocationProperty_name varchar [not null]
+LocationProperty_value varchar [not null]
+LocationProperty__class varchar
+Property_name varchar [not null]
+Property_value varchar [not null]
+Property__class varchar
+}
+
+Table PartyProperty {
+Property_uuid varchar
+Property_ns varchar
+Property_value varchar [not null]
+Property__class varchar
+remarks varchar
+group varchar
+PartyProperty_name varchar [not null]
+Property_name varchar [not null]
+}
+
+Table ResourceProperty {
+Property_uuid varchar
+Property_ns varchar
+Property__class varchar
+remarks varchar
+group varchar
+ResourceProperty_name varchar [not null]
+ResourceProperty_value varchar [not null]
+Property_name varchar [not null]
+Property_value varchar [not null]
+}
+
+Table PartProperty {
+Property_uuid varchar
+Property_ns varchar
+Property_value varchar [not null]
+Property__class varchar
+remarks varchar
+group varchar
+PartProperty_name varchar [not null]
+Property_name varchar [not null]
+}
+
+Table ParameterProperty {
+Property_uuid varchar
+Property_ns varchar
+Property_value varchar [not null]
+Property__class varchar
+remarks varchar
+group varchar
+ParameterProperty_name varchar [not null]
+Property_name varchar [not null]
+}
+
+Table MetadataPartyExternalId {
+PartyExternalId_scheme varchar [not null]
+PartyExternalId_id varchar [not null]
+}
+
+Table Link {
+Link_href varchar [not null]
+Link_rel varchar
+resource_fragment varchar
+media_type varchar
+text varchar
+}
+
+Table BackMatter {
+resources varchar
+}
+
+Table Resource {
+Resource_uuid varchar [not null]
+Resource_title varchar
+Resource_description varchar
+Resource_props varchar
+Resource_document_ids varchar
+remarks varchar
+citation varchar
+rlinks varchar
+base64 varchar
+}
+
+Table Citation {
+Citation_text varchar [not null]
+Citation_links varchar
+props varchar
+links varchar
+}
+
+Table ResourceLink {
+ResourceLink_href varchar [not null]
+media_type varchar
+hashes varchar
+}
+
+Table Base64Resource {
+media_type varchar
+Base64Resource_value varchar [not null]
+filename varchar
+}
+
+Table Part {
+Part_id varchar
+Part_name varchar [not null]
+Part_ns varchar
+Part__class varchar
+Part_title varchar
+Part_prose varchar
+parts varchar
+Part_props varchar
+links varchar
+props varchar
+}
+
+Table Parameter {
+Parameter_id varchar [not null]
+Parameter__class varchar
+depends_on varchar
+label varchar
+usage varchar
+constraints varchar
+guidelines varchar
+values varchar
+select varchar
+Parameter_props varchar
+remarks varchar
+links varchar
+props varchar
+}
+
+Table ParameterConstraint {
+ParameterConstraint_description varchar
+tests varchar
+}
+
+Table ConstraintTest {
+remarks varchar
+ConstraintTest_expression varchar [not null]
+}
+
+Table ParameterGuideline {
+ParameterGuideline_prose varchar [not null]
+}
+
+Table ParameterSelection {
+how_many varchar
+choice varchar
+}
+
+Table IncludeAll {
+}
+
+Table ControlMatching {
+remarks varchar
+pattern varchar
+}
+
+Table SelectControlById {
+with_child_controls varchar
+with_ids varchar
+matching varchar
+}
+
+Table ProfileDocument {
+ProfileDocument_profile varchar [not null]
+}
+
+Table Profile {
+Profile_uuid varchar [not null]
+Profile_metadata varchar [not null]
+Profile_imports varchar [not null]
+merge varchar
+modify varchar
+back_matter varchar
+}
+
+Table ProfileImport {
+ProfileImport_href varchar [not null]
+include_all varchar
+ProfileImport_include_controls varchar
+ProfileImport_exclude_controls varchar
+}
+
+Table ProfileMerge {
+combine varchar
+flat varchar
+as_is boolean
+custom varchar
+}
+
+Table CombinationRule {
+CombinationRule_method varchar
+}
+
+Table MergeFlat {
+}
+
+Table MergeCustom {
+MergeCustom_groups varchar
+insert_controls varchar
+}
+
+Table ProfileGroup {
+id varchar
+_class varchar
+ProfileGroup_title varchar [not null]
+params varchar
+parts varchar
+ProfileGroup_groups varchar
+insert_controls varchar
+remarks varchar
+props varchar
+links varchar
+}
+
+Table ProfileModify {
+ProfileModify_set_parameters varchar
+alters varchar
+}
+
+Table ParameterSetting {
+ParameterSetting_param_id varchar [not null]
+_class varchar
+depends_on varchar
+label varchar
+usage varchar
+constraints varchar
+guidelines varchar
+values varchar
+select varchar
+props varchar
+links varchar
+}
+
+Table Alteration {
+Alteration_control_id varchar [not null]
+removes varchar
+adds varchar
+}
+
+Table Removal {
+by_name varchar
+by_class varchar
+by_id varchar
+by_item_name varchar
+by_ns varchar
+remarks varchar
+}
+
+Table Addition {
+position varchar
+by_id varchar
+title varchar
+params varchar
+Addition_props varchar
+links varchar
+parts varchar
+}
+
+Table ProfileAlterationProperty {
+Property_uuid varchar
+Property_ns varchar
+Property_value varchar [not null]
+Property__class varchar
+remarks varchar
+group varchar
+ProfileAlterationProperty_name varchar [not null]
+Property_name varchar [not null]
+}
+
+Table InsertControls {
+order varchar
+include_all varchar
+InsertControls_include_controls varchar
+InsertControls_exclude_controls varchar
+}
+
+Table AssessmentPlanDocument {
+AssessmentPlanDocument_assessment_plan varchar [not null]
+}
+
+Table AssessmentPlan {
+AssessmentPlan_uuid varchar [not null]
+AssessmentPlan_metadata varchar [not null]
+AssessmentPlan_import_ssp varchar [not null]
+local_definitions varchar
+terms_and_conditions varchar
+assessment_subjects varchar
+assessment_assets varchar
+AssessmentPlan_reviewed_controls varchar [not null]
+tasks varchar
+back_matter varchar
+}
+
+Table ImportSSP {
+ImportSSP_href varchar [not null]
+remarks varchar
+}
+
+Table LocalDefinitions {
+components varchar
+inventory_items varchar
+users varchar
+objectives_and_methods varchar
+activities varchar
+remarks varchar
+}
+
+Table TermsAndConditions {
+TermsAndConditions_parts varchar
+}
+
+Table ReviewedControls {
+description varchar
+ReviewedControls_control_selections varchar [not null]
+control_objective_selections varchar
+remarks varchar
+props varchar
+links varchar
+}
+
+Table ControlSelection {
+description varchar
+include_all varchar
+ControlSelection_include_controls varchar
+ControlSelection_exclude_controls varchar
+remarks varchar
+props varchar
+links varchar
+}
+
+Table ControlObjectiveSelection {
+description varchar
+include_all varchar
+include_objectives varchar
+exclude_objectives varchar
+remarks varchar
+props varchar
+links varchar
+}
+
+Table AssessmentSelectControlById {
+AssessmentSelectControlById_control_id varchar [not null]
+statement_ids varchar
+}
+
+Table SelectObjectiveById {
+SelectObjectiveById_objective_id varchar [not null]
+remarks varchar
+}
+
+Table AssessmentSubject {
+AssessmentSubject_type varchar [not null]
+description varchar
+include_all varchar
+include_subjects varchar
+exclude_subjects varchar
+remarks varchar
+props varchar
+links varchar
+}
+
+Table SelectSubjectById {
+SelectSubjectById_subject_uuid varchar [not null]
+SelectSubjectById_type varchar [not null]
+remarks varchar
+props varchar
+links varchar
+}
+
+Table SubjectReference {
+SubjectReference_subject_uuid varchar [not null]
+SubjectReference_type varchar [not null]
+title varchar
+remarks varchar
+props varchar
+links varchar
+}
+
+Table AssessmentSubjectPlaceholder {
+AssessmentSubjectPlaceholder_uuid varchar [not null]
+description varchar
+AssessmentSubjectPlaceholder_sources varchar [not null]
+remarks varchar
+props varchar
+links varchar
+}
+
+Table AssessmentSubjectSource {
+AssessmentSubjectSource_task_uuid varchar [not null]
+remarks varchar
+}
+
+Table AssessmentAssets {
+components varchar
+AssessmentAssets_assessment_platforms varchar [not null]
+}
+
+Table AssessmentPlatform {
+AssessmentPlatform_uuid varchar [not null]
+title varchar
+uses_components varchar
+remarks varchar
+props varchar
+links varchar
+}
+
+Table UsesComponent {
+UsesComponent_component_uuid varchar [not null]
+remarks varchar
+props varchar
+links varchar
+responsible_parties varchar
+}
+
+Table LocalObjective {
+LocalObjective_control_id varchar [not null]
+description varchar
+LocalObjective_parts varchar [not null]
+remarks varchar
+props varchar
+links varchar
+}
+
+Table AssessmentMethod {
+AssessmentMethod_uuid varchar [not null]
+description varchar
+AssessmentMethod_part varchar [not null]
+remarks varchar
+props varchar
+links varchar
+}
+
+Table Activity {
+Activity_uuid varchar [not null]
+title varchar
+Activity_description varchar [not null]
+steps varchar
+related_controls varchar
+remarks varchar
+props varchar
+links varchar
+responsible_roles varchar
+}
+
+Table Step {
+Step_uuid varchar [not null]
+title varchar
+Step_description varchar [not null]
+reviewed_controls varchar
+remarks varchar
+props varchar
+links varchar
+responsible_roles varchar
+}
+
+Table Task {
+Task_uuid varchar [not null]
+Task_type varchar [not null]
+Task_title varchar [not null]
+description varchar
+timing varchar
+dependencies varchar
+associated_activities varchar
+tasks varchar
+Task_subjects varchar
+remarks varchar
+props varchar
+links varchar
+responsible_roles varchar
+}
+
+Table EventTiming {
+on_date varchar
+within_date_range varchar
+at_frequency varchar
+}
+
+Table OnDateCondition {
+OnDateCondition_date varchar [not null]
+remarks varchar
+}
+
+Table WithinDateRange {
+WithinDateRange_start varchar [not null]
+WithinDateRange_end varchar [not null]
+remarks varchar
+}
+
+Table AtFrequency {
+AtFrequency_period varchar [not null]
+AtFrequency_unit varchar [not null]
+remarks varchar
+}
+
+Table TaskDependency {
+TaskDependency_task_uuid varchar [not null]
+remarks varchar
+}
+
+Table AssociatedActivity {
+AssociatedActivity_activity_uuid varchar [not null]
+AssociatedActivity_subjects varchar [not null]
+remarks varchar
+props varchar
+links varchar
+responsible_roles varchar
+}
+
+Table AssessmentPart {
+uuid varchar
+AssessmentPart_name varchar [not null]
+ns varchar
+_class varchar
+title varchar
+prose varchar
+AssessmentPart_parts varchar
+props varchar
+links varchar
+}
+
+Table TermsAndConditionsPart {
+uuid varchar
+ns varchar
+_class varchar
+title varchar
+prose varchar
+props varchar
+links varchar
+TermsAndConditionsPart_name varchar [not null]
+TermsAndConditionsPart_parts varchar
+AssessmentPart_name varchar [not null]
+AssessmentPart_parts varchar
+}
+
+Table ControlPart {
+id varchar
+ControlPart_name varchar [not null]
+ns varchar
+_class varchar
+title varchar
+prose varchar
+ControlPart_parts varchar
+props varchar
+links varchar
+}
+
+Table SetParameter {
+SetParameter_param_id varchar [not null]
+SetParameter_values varchar [not null]
+remarks varchar
+}
+
+Table SystemComponent {
+SystemComponent_uuid varchar [not null]
+SystemComponent_type varchar [not null]
+SystemComponent_title varchar [not null]
+SystemComponent_description varchar [not null]
+purpose varchar
+protocols varchar
+SystemComponent_status varchar [not null]
+SystemComponent_props varchar
+SystemComponent_links varchar
+SystemComponent_responsible_roles varchar
+remarks varchar
+props varchar
+links varchar
+responsible_roles varchar
+}
+
+Table ComponentStatus {
+ComponentStatus_state varchar [not null]
+remarks varchar
+}
+
+Table Protocol {
+uuid varchar
+Protocol_name varchar
+title varchar
+port_ranges varchar
+}
+
+Table PortRange {
+PortRange_start varchar
+PortRange_end varchar
+transport varchar
+remarks varchar
+}
+
+Table ImplementationStatus {
+ImplementationStatus_state varchar [not null]
+remarks varchar
+}
+
+Table SystemUser {
+SystemUser_uuid varchar [not null]
+title varchar
+short_name varchar
+description varchar
+role_ids varchar
+authorized_privileges varchar
+SystemUser_props varchar
+SystemUser_links varchar
+remarks varchar
+props varchar
+links varchar
+}
+
+Table AuthorizedPrivilege {
+AuthorizedPrivilege_title varchar [not null]
+description varchar
+AuthorizedPrivilege_functions_performed varchar [not null]
+}
+
+Table InventoryItem {
+InventoryItem_uuid varchar [not null]
+InventoryItem_description varchar [not null]
+implemented_components varchar
+InventoryItem_props varchar
+InventoryItem_links varchar
+InventoryItem_responsible_parties varchar
+remarks varchar
+props varchar
+links varchar
+responsible_parties varchar
+}
+
+Table ImplementedComponent {
+ImplementedComponent_component_uuid varchar [not null]
+ImplementedComponent_props varchar
+ImplementedComponent_links varchar
+ImplementedComponent_responsible_parties varchar
+remarks varchar
+props varchar
+links varchar
+responsible_parties varchar
+}
+
+Table SystemId {
+SystemId_id varchar [not null]
+SystemId_identifier_type varchar
+}
+
+Table ImplementationCommonProperty {
+Property_uuid varchar
+Property_ns varchar
+Property__class varchar
+remarks varchar
+group varchar
+ImplementationCommonProperty_name varchar [not null]
+ImplementationCommonProperty_value varchar [not null]
+Property_name varchar [not null]
+Property_value varchar [not null]
+}
+
+Table ImplementationCommonLink {
+Link_href varchar [not null]
+resource_fragment varchar
+media_type varchar
+text varchar
+ImplementationCommonLink_rel varchar
+Link_rel varchar
+}
+
+Table ImplementationResponsibleRole {
+party_uuids varchar
+remarks varchar
+props varchar
+links varchar
+ImplementationResponsibleRole_role_id varchar [not null]
+ResponsibleRole_role_id varchar [not null]
+}
+
+Table ImplementationResponsibleParty {
+ResponsibleParty_party_uuids varchar [not null]
+remarks varchar
+props varchar
+links varchar
+ImplementationResponsibleParty_role_id varchar [not null]
+ResponsibleParty_role_id varchar [not null]
+}
+
+Table Origin {
+Origin_actors varchar [not null]
+related_tasks varchar
+}
+
+Table OriginActor {
+OriginActor_type varchar [not null]
+OriginActor_actor_uuid varchar [not null]
+role_id varchar
+props varchar
+links varchar
+}
+
+Table RelatedTask {
+RelatedTask_task_uuid varchar [not null]
+RelatedTask_subjects varchar
+identified_subject varchar
+remarks varchar
+props varchar
+links varchar
+responsible_parties varchar
+}
+
+Table IdentifiedSubject {
+IdentifiedSubject_subject_placeholder_uuid varchar [not null]
+IdentifiedSubject_subjects varchar [not null]
+}
+
+Table Observation {
+Observation_uuid varchar [not null]
+title varchar
+Observation_description varchar [not null]
+Observation_methods varchar [not null]
+types varchar
+origins varchar
+Observation_subjects varchar
+relevant_evidence varchar
+Observation_collected varchar [not null]
+expires varchar
+remarks varchar
+props varchar
+links varchar
+}
+
+Table RelevantEvidence {
+href varchar
+RelevantEvidence_description varchar [not null]
+remarks varchar
+props varchar
+links varchar
+}
+
+Table Finding {
+Finding_uuid varchar [not null]
+Finding_title varchar [not null]
+Finding_description varchar [not null]
+Finding_target varchar [not null]
+implementation_statement_uuid varchar
+origins varchar
+related_observations varchar
+related_risks varchar
+remarks varchar
+props varchar
+links varchar
+}
+
+Table FindingTarget {
+FindingTarget_type varchar [not null]
+FindingTarget_target_id varchar [not null]
+title varchar
+description varchar
+implementation_status varchar
+FindingTarget_status varchar [not null]
+remarks varchar
+props varchar
+links varchar
+}
+
+Table ObjectiveStatus {
+ObjectiveStatus_state varchar [not null]
+reason varchar
+remarks varchar
+}
+
+Table RelatedObservation {
+RelatedObservation_observation_uuid varchar [not null]
+remarks varchar
+}
+
+Table AssociatedRisk {
+AssociatedRisk_risk_uuid varchar [not null]
+remarks varchar
+}
+
+Table Risk {
+Risk_uuid varchar [not null]
+Risk_title varchar [not null]
+Risk_description varchar [not null]
+Risk_statement varchar [not null]
+origins varchar
+threat_ids varchar
+characterizations varchar
+mitigating_factors varchar
+deadline varchar
+remediations varchar
+risk_log varchar
+related_observations varchar
+Risk_status varchar [not null]
+props varchar
+links varchar
+}
+
+Table ThreatId {
+href varchar
+ThreatId_system varchar [not null]
+ThreatId_id varchar [not null]
+}
+
+Table Characterization {
+Characterization_origin varchar [not null]
+Characterization_facets varchar [not null]
+props varchar
+links varchar
+}
+
+Table Facet {
+Facet_name varchar [not null]
+Facet_value varchar [not null]
+Facet_system varchar [not null]
+remarks varchar
+props varchar
+links varchar
+}
+
+Table MitigatingFactor {
+MitigatingFactor_uuid varchar [not null]
+MitigatingFactor_description varchar [not null]
+implementation_uuid varchar
+MitigatingFactor_subjects varchar
+props varchar
+links varchar
+}
+
+Table Response {
+Response_uuid varchar [not null]
+Response_title varchar [not null]
+Response_description varchar [not null]
+Response_lifecycle varchar [not null]
+origins varchar
+required_assets varchar
+tasks varchar
+remarks varchar
+props varchar
+links varchar
+}
+
+Table RequiredAsset {
+RequiredAsset_uuid varchar [not null]
+title varchar
+RequiredAsset_description varchar [not null]
+RequiredAsset_subjects varchar
+remarks varchar
+props varchar
+links varchar
+}
+
+Table RiskLog {
+RiskLog_entries varchar [not null]
+}
+
+Table RiskLogEntry {
+RiskLogEntry_uuid varchar [not null]
+title varchar
+description varchar
+RiskLogEntry_start varchar [not null]
+end varchar
+logged_by varchar
+status_change varchar
+related_responses varchar
+remarks varchar
+props varchar
+links varchar
+}
+
+Table LoggedBy {
+LoggedBy_party_uuid varchar [not null]
+role_id varchar
+remarks varchar
+}
+
+Table RiskResponseReference {
+RiskResponseReference_response_uuid varchar [not null]
+related_tasks varchar
+remarks varchar
+props varchar
+links varchar
+}
+
+Table SspDocument {
+SspDocument_system_security_plan varchar [not null]
+}
+
+Table SystemSecurityPlan {
+SystemSecurityPlan_uuid varchar [not null]
+SystemSecurityPlan_metadata varchar [not null]
+SystemSecurityPlan_import_profile varchar [not null]
+SystemSecurityPlan_system_characteristics varchar [not null]
+SystemSecurityPlan_system_implementation varchar [not null]
+SystemSecurityPlan_control_implementation varchar [not null]
+back_matter varchar
+}
+
+Table ImportProfile {
+ImportProfile_href varchar [not null]
+remarks varchar
+}
+
+Table SystemCharacteristics {
+SystemCharacteristics_system_ids varchar [not null]
+SystemCharacteristics_system_name varchar [not null]
+system_name_short varchar
+SystemCharacteristics_description varchar [not null]
+date_authorized varchar
+security_sensitivity_level varchar
+SystemCharacteristics_system_information varchar [not null]
+security_impact_level varchar
+SystemCharacteristics_system_status varchar [not null]
+SystemCharacteristics_authorization_boundary varchar [not null]
+network_architecture varchar
+data_flow varchar
+SystemCharacteristics_responsible_parties varchar
+remarks varchar
+SystemCharacteristics_props varchar
+}
+
+Table SystemInformation {
+SystemInformation_props varchar
+SystemInformation_links varchar
+SystemInformation_information_types varchar [not null]
+}
+
+Table InformationType {
+uuid varchar
+InformationType_title varchar [not null]
+InformationType_description varchar [not null]
+categorizations varchar
+props varchar
+links varchar
+confidentiality_impact varchar
+integrity_impact varchar
+availability_impact varchar
+}
+
+Table InformationTypeCategorization {
+informationTypeCategorization__system varchar [not null]
+informationTypeCategorization__information_type_ids varchar
+system varchar
+information_type_ids varchar
+}
+
+Table ImpactLevel {
+props varchar
+links varchar
+ImpactLevel_base varchar [not null]
+ImpactLevel_selected varchar
+adjustment_justification varchar
+}
+
+Table SecurityImpactLevel {
+SecurityImpactLevel_security_objective_confidentiality varchar [not null]
+SecurityImpactLevel_security_objective_integrity varchar [not null]
+SecurityImpactLevel_security_objective_availability varchar [not null]
+}
+
+Table SystemStatus {
+remarks varchar
+systemStatus__state varchar [not null]
+state varchar
+}
+
+Table AuthorizationBoundary {
+AuthorizationBoundary_description varchar [not null]
+props varchar
+links varchar
+diagrams varchar
+remarks varchar
+}
+
+Table Diagram {
+Diagram_uuid varchar [not null]
+description varchar
+props varchar
+Diagram_links varchar
+caption varchar
+remarks varchar
+}
+
+Table NetworkArchitecture {
+NetworkArchitecture_description varchar [not null]
+props varchar
+links varchar
+diagrams varchar
+remarks varchar
+}
+
+Table DataFlow {
+DataFlow_description varchar [not null]
+props varchar
+links varchar
+diagrams varchar
+remarks varchar
+}
+
+Table SystemImplementation {
+props varchar
+links varchar
+leveraged_authorizations varchar
+users varchar
+SystemImplementation_components varchar [not null]
+SystemImplementation_inventory_items varchar
+remarks varchar
+}
+
+Table LeveragedAuthorization {
+LeveragedAuthorization_uuid varchar [not null]
+LeveragedAuthorization_title varchar [not null]
+props varchar
+LeveragedAuthorization_links varchar
+LeveragedAuthorization_party_uuid varchar [not null]
+LeveragedAuthorization_date_authorized varchar [not null]
+remarks varchar
+}
+
+Table SspControlImplementation {
+SspControlImplementation_description varchar [not null]
+SspControlImplementation_set_parameters varchar
+SspControlImplementation_implemented_requirements varchar [not null]
+}
+
+Table SspImplementedRequirement {
+SspImplementedRequirement_uuid varchar [not null]
+SspImplementedRequirement_control_id varchar [not null]
+SspImplementedRequirement_props varchar
+links varchar
+SspImplementedRequirement_set_parameters varchar
+SspImplementedRequirement_responsible_roles varchar
+SspImplementedRequirement_statements varchar
+by_components varchar
+remarks varchar
+}
+
+Table SspStatement {
+SspStatement_statement_id varchar [not null]
+SspStatement_uuid varchar [not null]
+SspStatement_props varchar
+links varchar
+SspStatement_responsible_roles varchar
+by_components varchar
+remarks varchar
+}
+
+Table ByComponent {
+ByComponent_component_uuid varchar [not null]
+ByComponent_uuid varchar [not null]
+ByComponent_description varchar [not null]
+ByComponent_props varchar
+ByComponent_links varchar
+ByComponent_set_parameters varchar
+implementation_status varchar
+export varchar
+inherited varchar
+satisfied varchar
+ByComponent_responsible_roles varchar
+remarks varchar
+}
+
+Table Export {
+description varchar
+props varchar
+links varchar
+provided varchar
+responsibilities varchar
+}
+
+Table ProvidedControlImplementation {
+ProvidedControlImplementation_uuid varchar [not null]
+ProvidedControlImplementation_description varchar [not null]
+props varchar
+links varchar
+ProvidedControlImplementation_responsible_roles varchar
+remarks varchar
+}
+
+Table ControlResponsibility {
+ControlResponsibility_uuid varchar [not null]
+provided_uuid varchar
+ControlResponsibility_description varchar [not null]
+props varchar
+links varchar
+ControlResponsibility_responsible_roles varchar
+remarks varchar
+}
+
+Table InheritedControlImplementation {
+InheritedControlImplementation_uuid varchar [not null]
+provided_uuid varchar
+InheritedControlImplementation_description varchar [not null]
+props varchar
+links varchar
+InheritedControlImplementation_responsible_roles varchar
+remarks varchar
+}
+
+Table SatisfiedControlImplementation {
+SatisfiedControlImplementation_uuid varchar [not null]
+responsibility_uuid varchar
+SatisfiedControlImplementation_description varchar [not null]
+props varchar
+links varchar
+SatisfiedControlImplementation_responsible_roles varchar
+remarks varchar
+}
+
+Table SspSystemCharacteristicsProp {
+Property_uuid varchar
+Property_ns varchar
+Property__class varchar
+remarks varchar
+group varchar
+SspSystemCharacteristicsProp_name varchar [not null]
+SspSystemCharacteristicsProp_value varchar [not null]
+Property_name varchar [not null]
+Property_value varchar [not null]
+}
+
+Table SspSystemInformationProp {
+Property_uuid varchar
+Property_ns varchar
+Property__class varchar
+remarks varchar
+group varchar
+SspSystemInformationProp_name varchar [not null]
+SspSystemInformationProp_value varchar [not null]
+Property_name varchar [not null]
+Property_value varchar [not null]
+}
+
+Table SspControlOriginationProp {
+Property_uuid varchar
+Property_ns varchar
+Property__class varchar
+remarks varchar
+group varchar
+SspControlOriginationProp_name varchar [not null]
+SspControlOriginationProp_value varchar [not null]
+Property_name varchar [not null]
+Property_value varchar [not null]
+}
+
+Table SspAllowsAuthenticatedScanProp {
+Property_uuid varchar
+Property_ns varchar
+Property__class varchar
+remarks varchar
+group varchar
+SspAllowsAuthenticatedScanProp_name varchar [not null]
+SspAllowsAuthenticatedScanProp_value varchar [not null]
+Property_name varchar [not null]
+Property_value varchar [not null]
+}
+
+Table SspSystemInformationLink {
+Link_href varchar [not null]
+resource_fragment varchar
+media_type varchar
+text varchar
+SspSystemInformationLink_rel varchar
+Link_rel varchar
+}
+
+Table SspDiagramLink {
+Link_href varchar [not null]
+resource_fragment varchar
+media_type varchar
+text varchar
+SspDiagramLink_rel varchar
+Link_rel varchar
+}
+
+Table SspLeveragedAuthorizationLink {
+Link_href varchar [not null]
+resource_fragment varchar
+media_type varchar
+text varchar
+SspLeveragedAuthorizationLink_rel varchar
+Link_rel varchar
+}
+
+Table SspByComponentLink {
+Link_href varchar [not null]
+resource_fragment varchar
+media_type varchar
+text varchar
+SspByComponentLink_rel varchar
+Link_rel varchar
+}
+
+Table SspSystemCharacteristicsResponsibleParty {
+ResponsibleParty_party_uuids varchar [not null]
+remarks varchar
+props varchar
+links varchar
+SspSystemCharacteristicsResponsibleParty_role_id varchar [not null]
+ResponsibleParty_role_id varchar [not null]
+}
+
+Table SspImplementedRequirementResponsibleRole {
+party_uuids varchar
+remarks varchar
+props varchar
+links varchar
+SspImplementedRequirementResponsibleRole_role_id varchar [not null]
+ResponsibleRole_role_id varchar [not null]
+}
+
+Table SspByComponentResponsibleRole {
+party_uuids varchar
+remarks varchar
+props varchar
+links varchar
+SspByComponentResponsibleRole_role_id varchar [not null]
+ResponsibleRole_role_id varchar [not null]
+}
+
+Table SspSystemComponent {
+SystemComponent_uuid varchar [not null]
+SystemComponent_type varchar [not null]
+SystemComponent_title varchar [not null]
+SystemComponent_description varchar [not null]
+purpose varchar
+protocols varchar
+SystemComponent_status varchar [not null]
+SystemComponent_links varchar
+SystemComponent_responsible_roles varchar
+remarks varchar
+SspSystemComponent_props varchar
+SystemComponent_props varchar
+props varchar
+links varchar
+responsible_roles varchar
+}
+
+Table SspInventoryItem {
+InventoryItem_uuid varchar [not null]
+InventoryItem_description varchar [not null]
+implemented_components varchar
+InventoryItem_links varchar
+InventoryItem_responsible_parties varchar
+remarks varchar
+SspInventoryItem_props varchar
+InventoryItem_props varchar
+props varchar
+links varchar
+responsible_parties varchar
+}
+
+Table AssessmentResultsDocument {
+AssessmentResultsDocument_assessment_results varchar [not null]
+}
+
+Table AssessmentResults {
+AssessmentResults_uuid varchar [not null]
+AssessmentResults_metadata varchar [not null]
+AssessmentResults_import_ap varchar [not null]
+AssessmentResults_local_definitions varchar
+AssessmentResults_results varchar [not null]
+back_matter varchar
+}
+
+Table ImportAssessmentPlan {
+ImportAssessmentPlan_href varchar [not null]
+remarks varchar
+}
+
+Table AssessmentResultsLocalDefinitions {
+objectives_and_methods varchar
+activities varchar
+remarks varchar
+}
+
+Table Result {
+Result_uuid varchar [not null]
+Result_title varchar [not null]
+Result_description varchar [not null]
+Result_start varchar [not null]
+end varchar
+Result_local_definitions varchar
+Result_reviewed_controls varchar [not null]
+attestations varchar
+Result_assessment_log varchar
+observations varchar
+risks varchar
+findings varchar
+remarks varchar
+props varchar
+links varchar
+}
+
+Table ResultLocalDefinitions {
+components varchar
+inventory_items varchar
+users varchar
+assessment_assets varchar
+tasks varchar
+}
+
+Table Attestation {
+Attestation_parts varchar [not null]
+responsible_parties varchar
+}
+
+Table AssessmentLog {
+AssessmentLog_entries varchar [not null]
+}
+
+Table AssessmentLogEntry {
+AssessmentLogEntry_uuid varchar [not null]
+title varchar
+description varchar
+AssessmentLogEntry_start varchar [not null]
+end varchar
+logged_by varchar
+related_tasks varchar
+remarks varchar
+props varchar
+links varchar
+}
+
+Table ComponentDefinitionDocument {
+ComponentDefinitionDocument_component_definition varchar [not null]
+}
+
+Table ComponentDefinition {
+ComponentDefinition_uuid varchar [not null]
+ComponentDefinition_metadata varchar [not null]
+import_component_definitions varchar
+ComponentDefinition_components varchar
+capabilities varchar
+back_matter varchar
+}
+
+Table ImportComponentDefinition {
+ImportComponentDefinition_href varchar [not null]
+remarks varchar
+}
+
+Table DefinedComponent {
+DefinedComponent_uuid varchar [not null]
+DefinedComponent_type varchar [not null]
+DefinedComponent_title varchar [not null]
+DefinedComponent_description varchar [not null]
+purpose varchar
+protocols varchar
+control_implementations varchar
+remarks varchar
+props varchar
+links varchar
+responsible_roles varchar
+}
+
+Table Capability {
+Capability_uuid varchar [not null]
+Capability_name varchar [not null]
+Capability_description varchar [not null]
+incorporates_components varchar
+control_implementations varchar
+remarks varchar
+props varchar
+links varchar
+}
+
+Table IncorporatesComponent {
+IncorporatesComponent_component_uuid varchar [not null]
+IncorporatesComponent_description varchar [not null]
+}
+
+Table ControlImplementationSet {
+ControlImplementationSet_uuid varchar [not null]
+ControlImplementationSet_source varchar [not null]
+ControlImplementationSet_description varchar [not null]
+ControlImplementationSet_set_parameters varchar
+ControlImplementationSet_implemented_requirements varchar [not null]
+props varchar
+links varchar
+}
+
+Table ImplementedRequirement {
+ImplementedRequirement_uuid varchar [not null]
+ImplementedRequirement_control_id varchar [not null]
+ImplementedRequirement_description varchar [not null]
+ImplementedRequirement_set_parameters varchar
+ImplementedRequirement_statements varchar
+remarks varchar
+props varchar
+links varchar
+responsible_roles varchar
+}
+
+Table ImplementedControlStatement {
+ImplementedControlStatement_statement_id varchar [not null]
+ImplementedControlStatement_uuid varchar [not null]
+ImplementedControlStatement_description varchar [not null]
+remarks varchar
+props varchar
+links varchar
+responsible_roles varchar
+}
+
+Table MappingCollectionDocument {
+MappingCollectionDocument_mapping_collection varchar [not null]
+}
+
+Table MappingCollection {
+MappingCollection_uuid varchar [not null]
+MappingCollection_metadata varchar [not null]
+MappingCollection_provenance varchar [not null]
+MappingCollection_mappings varchar [not null]
+back_matter varchar
+}
+
+Table MappingProvenance {
+MappingProvenance_method varchar [not null]
+MappingProvenance_matching_rationale varchar [not null]
+MappingProvenance_status varchar [not null]
+confidence_score varchar
+coverage varchar
+MappingProvenance_mapping_description varchar [not null]
+remarks varchar
+props varchar
+links varchar
+responsible_parties varchar
+}
+
+Table Mapping {
+Mapping_uuid varchar [not null]
+Mapping_method varchar
+matching_rationale varchar
+Mapping_status varchar
+Mapping_source_resource varchar [not null]
+Mapping_target_resource varchar [not null]
+Mapping_maps varchar [not null]
+mapping_description varchar
+source_gap_summary varchar
+target_gap_summary varchar
+confidence_score varchar
+coverage varchar
+remarks varchar
+props varchar
+links varchar
+}
+
+Table Map {
+Map_uuid varchar [not null]
+ns varchar
+matching_rationale varchar
+Map_relationship varchar [not null]
+Map_sources varchar [not null]
+Map_targets varchar [not null]
+qualifiers varchar
+confidence_score varchar
+coverage varchar
+remarks varchar
+props varchar
+links varchar
+}
+
+Table MappingItem {
+MappingItem_type varchar [not null]
+MappingItem_id_ref varchar [not null]
+remarks varchar
+props varchar
+links varchar
+}
+
+Table MappingResourceReference {
+ns varchar
+MappingResourceReference_type varchar [not null]
+MappingResourceReference_href varchar [not null]
+remarks varchar
+props varchar
+links varchar
+}
+
+Table QualifierItem {
+QualifierItem_subject varchar [not null]
+QualifierItem_predicate varchar [not null]
+QualifierItem_category varchar [not null]
+QualifierItem_description varchar [not null]
+remarks varchar
+}
+
+Table GapSummary {
+GapSummary_uuid varchar [not null]
+GapSummary_unmapped_controls varchar [not null]
+}
+
+Table ConfidenceScore {
+ConfidenceScore_category varchar
+percentage float
+}
+
+Table Coverage {
+generation_method varchar
+Coverage_target_coverage float [not null]
+}
+
+Table PoamDocument {
+PoamDocument_plan_of_action_and_milestones varchar [not null]
+}
+
+Table PlanOfActionAndMilestones {
+PlanOfActionAndMilestones_uuid varchar [not null]
+PlanOfActionAndMilestones_metadata varchar [not null]
+import_ssp varchar
+system_id varchar
+PlanOfActionAndMilestones_local_definitions varchar
+observations varchar
+risks varchar
+findings varchar
+PlanOfActionAndMilestones_poam_items varchar [not null]
+back_matter varchar
+}
+
+Table PoamLocalDefinitions {
+components varchar
+inventory_items varchar
+assessment_assets varchar
+remarks varchar
+}
+
+Table PoamItem {
+uuid varchar
+PoamItem_title varchar [not null]
+PoamItem_description varchar [not null]
+origins varchar
+related_findings varchar
+related_observations varchar
+related_risks varchar
+remarks varchar
+props varchar
+links varchar
+}
+
+Table RelatedFinding {
+RelatedFinding_finding_uuid varchar [not null]
+remarks varchar
+}

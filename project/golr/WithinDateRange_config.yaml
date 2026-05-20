@@ -1,0 +1,16 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: WithinDateRange
+schema_generating: true
+description: The task is intended to occur within the specified date range.
+display_name: WithinDateRange
+document_category: WithinDateRange
+weight: 20
+fields:
+- id: start
+  description: The start date/time.
+  display_name: WithinDateRange_start
+- id: end
+  description: The end date/time.
+  display_name: WithinDateRange_end
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks

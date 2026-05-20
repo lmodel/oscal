@@ -1,0 +1,29 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: Diagram
+schema_generating: true
+description: A graphic that provides a visual representation the system, or some aspect
+  of it.
+display_name: Diagram
+document_category: Diagram
+weight: 20
+fields:
+- id: uuid
+  description: A machine-oriented, globally unique identifier with a cross-instance
+    scope.
+  display_name: Diagram_uuid
+- id: description
+  description: A human-readable description.
+  display_name: description
+- id: props
+  description: A list of properties.
+  display_name: props
+  cardinality: multi
+- id: links
+  description: A list of links.
+  display_name: Diagram_links
+  cardinality: multi
+- id: caption
+  description: A brief caption to annotate the diagram.
+  display_name: caption
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks

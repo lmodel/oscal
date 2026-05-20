@@ -1,0 +1,21 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: Protocol
+schema_generating: true
+description: Information about the protocol used to provide a service.
+display_name: Protocol
+document_category: Protocol
+weight: 20
+fields:
+- id: uuid
+  description: A machine-oriented, globally unique identifier with a cross-instance
+    scope.
+  display_name: uuid
+- id: name
+  description: A textual label that uniquely identifies an attribute or semantic type.
+  display_name: Protocol_name
+- id: title
+  description: A human-readable name or title.
+  display_name: title
+- id: port_ranges
+  description: Where applicable, the transport layer protocol port range.
+  display_name: port-ranges
+  cardinality: multi

@@ -1,0 +1,32 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: Property
+schema_generating: true
+description: An attribute, characteristic, or quality of the containing object expressed
+  as a namespace qualified name/value pair.
+display_name: Property
+document_category: Property
+weight: 20
+fields:
+- id: name
+  description: A textual label, within a namespace, that identifies a specific attribute,
+    characteristic, or quality of the property's containing object.
+  display_name: Property_name
+- id: uuid
+  description: A unique identifier for a property.
+  display_name: Property_uuid
+- id: ns
+  description: A namespace qualifying the property's name. This allows different organizations
+    to associate distinct semantics with the same name.
+  display_name: Property_ns
+- id: value
+  description: Indicates the value of the attribute, characteristic, or quality.
+  display_name: Property_value
+- id: _class
+  description: A textual label that provides a sub-type or characterization of the
+    property's name.
+  display_name: Property__class
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks
+- id: group
+  description: An identifier for relating distinct sets of properties.
+  display_name: group

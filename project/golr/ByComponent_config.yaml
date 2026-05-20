@@ -1,0 +1,52 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: ByComponent
+schema_generating: true
+description: Defines how the referenced component implements a set of controls.
+display_name: ByComponent
+document_category: ByComponent
+weight: 20
+fields:
+- id: component_uuid
+  description: A UUID reference to a component.
+  display_name: ByComponent_component-uuid
+- id: uuid
+  description: A machine-oriented, globally unique identifier with a cross-instance
+    scope.
+  display_name: ByComponent_uuid
+- id: description
+  description: A human-readable description.
+  display_name: ByComponent_description
+- id: props
+  description: A list of properties.
+  display_name: ByComponent_props
+  cardinality: multi
+- id: links
+  description: A list of links.
+  display_name: ByComponent_links
+  cardinality: multi
+- id: set_parameters
+  description: Identifies the parameter that will be set by the enclosed value.
+  display_name: ByComponent_set-parameters
+  cardinality: multi
+- id: implementation_status
+  description: Identifies the implementation status of the control.
+  display_name: implementation-status
+- id: export
+  description: Defines a set of control implementations that are provided as reference
+    implementations for use by organizations implementing the leveraged system.
+  display_name: export
+- id: inherited
+  description: Describes a control implementation inherited by a leveraging system.
+  display_name: inherited
+  cardinality: multi
+- id: satisfied
+  description: Describes how this system satisfies a responsibility imposed by a leveraged
+    system.
+  display_name: satisfied
+  cardinality: multi
+- id: responsible_roles
+  description: Responsible role assignments.
+  display_name: ByComponent_responsible-roles
+  cardinality: multi
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks

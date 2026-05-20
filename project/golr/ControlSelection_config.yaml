@@ -1,0 +1,34 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: ControlSelection
+schema_generating: true
+description: Identifies the controls being assessed.
+display_name: ControlSelection
+document_category: ControlSelection
+weight: 20
+fields:
+- id: description
+  description: A human-readable description.
+  display_name: description
+- id: include_all
+  description: Include all selectable objects in the containing OSCAL selection context.
+  display_name: include-all
+- id: include_controls
+  description: Control-selection entries to include in the containing OSCAL context.
+    The concrete entry class is selected by class-level slot_usage.
+  display_name: ControlSelection_include-controls
+  cardinality: multi
+- id: exclude_controls
+  description: Control-selection entries to exclude in the containing OSCAL context.
+    The concrete entry class is selected by class-level slot_usage.
+  display_name: ControlSelection_exclude-controls
+  cardinality: multi
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks
+- id: props
+  description: A list of properties.
+  display_name: props
+  cardinality: multi
+- id: links
+  description: A list of links.
+  display_name: links
+  cardinality: multi

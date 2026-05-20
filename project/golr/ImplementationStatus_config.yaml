@@ -1,0 +1,15 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: ImplementationStatus
+schema_generating: true
+description: Indicates the degree to which a given control is implemented.
+display_name: ImplementationStatus
+document_category: ImplementationStatus
+weight: 20
+fields:
+- id: state
+  description: Identifies the implementation status of the control or control objective.
+    Recommended values are in ImplementationStatusStateEnum; other values are permitted
+    (OSCAL allow-other="yes").
+  display_name: ImplementationStatus_state
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks

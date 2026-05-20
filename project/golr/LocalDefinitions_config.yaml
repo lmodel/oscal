@@ -1,0 +1,31 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: LocalDefinitions
+schema_generating: true
+description: Used to define data objects that are used in the assessment plan, that
+  do not appear in the referenced SSP.
+display_name: LocalDefinitions
+document_category: LocalDefinitions
+weight: 20
+fields:
+- id: components
+  description: A collection of system components.
+  display_name: components
+  cardinality: multi
+- id: inventory_items
+  description: A collection of inventory items.
+  display_name: inventory-items
+  cardinality: multi
+- id: users
+  description: A collection of system users.
+  display_name: users
+  cardinality: multi
+- id: objectives_and_methods
+  description: A collection of locally-defined control objectives.
+  display_name: objectives-and-methods
+  cardinality: multi
+- id: activities
+  description: A collection of activities.
+  display_name: activities
+  cardinality: multi
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks

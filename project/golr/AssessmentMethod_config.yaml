@@ -1,0 +1,28 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: AssessmentMethod
+schema_generating: true
+description: A local definition of a control objective.
+display_name: AssessmentMethod
+document_category: AssessmentMethod
+weight: 20
+fields:
+- id: uuid
+  description: A machine-oriented, globally unique identifier with a cross-instance
+    scope.
+  display_name: AssessmentMethod_uuid
+- id: description
+  description: A human-readable description.
+  display_name: description
+- id: part
+  description: An assessment part.
+  display_name: AssessmentMethod_part
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks
+- id: props
+  description: A list of properties.
+  display_name: props
+  cardinality: multi
+- id: links
+  description: A list of links.
+  display_name: links
+  cardinality: multi

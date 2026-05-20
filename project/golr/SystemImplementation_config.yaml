@@ -1,0 +1,35 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: SystemImplementation
+schema_generating: true
+description: Provides information as to how the system is implemented.
+display_name: SystemImplementation
+document_category: SystemImplementation
+weight: 20
+fields:
+- id: props
+  description: A list of properties.
+  display_name: props
+  cardinality: multi
+- id: links
+  description: A list of links.
+  display_name: links
+  cardinality: multi
+- id: leveraged_authorizations
+  description: A description of another authorized system from which this system inherits
+    capabilities that satisfy security requirements.
+  display_name: leveraged-authorizations
+  cardinality: multi
+- id: users
+  description: A collection of system users.
+  display_name: users
+  cardinality: multi
+- id: components
+  description: A collection of system components.
+  display_name: SystemImplementation_components
+  cardinality: multi
+- id: inventory_items
+  description: A collection of inventory items.
+  display_name: SystemImplementation_inventory-items
+  cardinality: multi
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks

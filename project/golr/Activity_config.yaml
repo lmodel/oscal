@@ -1,0 +1,40 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: Activity
+schema_generating: true
+description: Identifies an assessment or related process that can be performed. In
+  the assessment plan, this is an intended activity.
+display_name: Activity
+document_category: Activity
+weight: 20
+fields:
+- id: uuid
+  description: A machine-oriented, globally unique identifier with a cross-instance
+    scope.
+  display_name: Activity_uuid
+- id: title
+  description: A human-readable name or title.
+  display_name: title
+- id: description
+  description: A human-readable description.
+  display_name: Activity_description
+- id: steps
+  description: A collection of steps in an activity.
+  display_name: steps
+  cardinality: multi
+- id: related_controls
+  description: A reference to reviewed controls for this activity or step.
+  display_name: related-controls
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks
+- id: props
+  description: A list of properties.
+  display_name: props
+  cardinality: multi
+- id: links
+  description: A list of links.
+  display_name: links
+  cardinality: multi
+- id: responsible_roles
+  description: Responsible role assignments.
+  display_name: responsible-roles
+  cardinality: multi

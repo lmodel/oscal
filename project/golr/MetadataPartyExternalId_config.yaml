@@ -1,0 +1,13 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: MetadataPartyExternalId
+schema_generating: true
+description: Metadata-scoped external identifier.
+display_name: MetadataPartyExternalId
+document_category: MetadataPartyExternalId
+weight: 20
+fields:
+- id: scheme
+  description: Indicates the type of external identifier.
+  display_name: PartyExternalId_scheme
+- id: id
+  description: A unique human-oriented identifier within a particular context.
+  display_name: PartyExternalId_id

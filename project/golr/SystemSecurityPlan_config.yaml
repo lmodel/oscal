@@ -1,0 +1,33 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: SystemSecurityPlan
+schema_generating: true
+description: A system security plan, such as those described in NIST SP 800-18.
+display_name: SystemSecurityPlan
+document_category: SystemSecurityPlan
+weight: 20
+fields:
+- id: uuid
+  description: A machine-oriented, globally unique identifier with a cross-instance
+    scope.
+  display_name: SystemSecurityPlan_uuid
+- id: metadata
+  description: Provides information about the containing document, and defines concepts
+    shared across the document.
+  display_name: SystemSecurityPlan_metadata
+- id: import_profile
+  description: Used to import the OSCAL profile representing the system's control
+    baseline.
+  display_name: SystemSecurityPlan_import-profile
+- id: system_characteristics
+  description: Contains the characteristics of the system, such as its name, purpose,
+    and security impact level.
+  display_name: SystemSecurityPlan_system-characteristics
+- id: system_implementation
+  description: Provides information as to how the system is implemented.
+  display_name: SystemSecurityPlan_system-implementation
+- id: control_implementation
+  description: Describes how the system satisfies a set of controls.
+  display_name: SystemSecurityPlan_control-implementation
+- id: back_matter
+  description: A collection of resources that may be referenced from within the OSCAL
+    document instance.
+  display_name: back-matter

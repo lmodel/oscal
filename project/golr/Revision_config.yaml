@@ -1,0 +1,35 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: Revision
+schema_generating: true
+description: An entry in a sequential list of revisions to the containing document.
+display_name: Revision
+document_category: Revision
+weight: 20
+fields:
+- id: title
+  description: A human-readable name or title.
+  display_name: title
+- id: published
+  description: The date and time the document was last made available.
+  display_name: published
+- id: last_modified
+  description: The date and time the document was last modified.
+  display_name: last-modified
+- id: version
+  description: Used to distinguish a specific revision of an OSCAL document from other
+    previous and future versions.
+  display_name: Revision_version
+- id: oscal_version
+  description: The OSCAL model version the document was authored against and will
+    conform to as valid.
+  display_name: oscal-version
+- id: props
+  description: A list of properties.
+  display_name: Revision_props
+  cardinality: multi
+- id: links
+  description: A list of links.
+  display_name: Revision_links
+  cardinality: multi
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks

@@ -1,0 +1,45 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: ProfileGroup
+schema_generating: true
+description: A group of (selected) controls or of groups of controls within a profile
+  custom merge structure.
+display_name: ProfileGroup
+document_category: ProfileGroup
+weight: 20
+fields:
+- id: id
+  description: A unique human-oriented identifier within a particular context.
+  display_name: id
+- id: _class
+  description: A textual label that provides a sub-type or characterization.
+  display_name: _class
+- id: title
+  description: A human-readable name or title.
+  display_name: ProfileGroup_title
+- id: params
+  description: Parameters providing a mechanism for the dynamic assignment of value(s)
+    in a control.
+  display_name: params
+  cardinality: multi
+- id: parts
+  description: A collection of parts.
+  display_name: parts
+  cardinality: multi
+- id: groups
+  description: A collection of control groups.
+  display_name: ProfileGroup_groups
+  cardinality: multi
+- id: insert_controls
+  description: Specifies which controls to use in the containing context.
+  display_name: insert-controls
+  cardinality: multi
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks
+- id: props
+  description: A list of properties.
+  display_name: props
+  cardinality: multi
+- id: links
+  description: A list of links.
+  display_name: links
+  cardinality: multi

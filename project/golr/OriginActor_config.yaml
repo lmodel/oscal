@@ -1,0 +1,25 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: OriginActor
+schema_generating: true
+description: The actor that produces an observation, a finding, or a risk.
+display_name: OriginActor
+document_category: OriginActor
+weight: 20
+fields:
+- id: type
+  description: Indicates the nature or kind of the containing object.
+  display_name: OriginActor_type
+- id: actor_uuid
+  description: A machine-oriented identifier reference to the tool or person based
+    on the associated type.
+  display_name: OriginActor_actor-uuid
+- id: role_id
+  description: A reference to a role by its identifier.
+  display_name: role-id
+- id: props
+  description: A list of properties.
+  display_name: props
+  cardinality: multi
+- id: links
+  description: A list of links.
+  display_name: links
+  cardinality: multi

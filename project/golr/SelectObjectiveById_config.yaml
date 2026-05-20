@@ -1,0 +1,13 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: SelectObjectiveById
+schema_generating: true
+description: Used to select a control objective for inclusion/exclusion.
+display_name: SelectObjectiveById
+document_category: SelectObjectiveById
+weight: 20
+fields:
+- id: objective_id
+  description: Reference to a control objective by its identifier.
+  display_name: SelectObjectiveById_objective-id
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks

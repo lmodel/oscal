@@ -1,0 +1,33 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: Addition
+schema_generating: true
+description: Specifies content to be added into controls in resolution.
+display_name: Addition
+document_category: Addition
+weight: 20
+fields:
+- id: position
+  description: Where to add new content relative to the targeted element.
+  display_name: position
+- id: by_id
+  description: Identify or target items by their id value.
+  display_name: by-id
+- id: title
+  description: A human-readable name or title.
+  display_name: title
+- id: params
+  description: Parameters providing a mechanism for the dynamic assignment of value(s)
+    in a control.
+  display_name: params
+  cardinality: multi
+- id: props
+  description: A list of properties.
+  display_name: Addition_props
+  cardinality: multi
+- id: links
+  description: A list of links.
+  display_name: links
+  cardinality: multi
+- id: parts
+  description: A collection of parts.
+  display_name: parts
+  cardinality: multi

@@ -1,0 +1,24 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: SelectSubjectById
+schema_generating: true
+description: Identifies a set of assessment subjects to include/exclude by UUID.
+display_name: SelectSubjectById
+document_category: SelectSubjectById
+weight: 20
+fields:
+- id: subject_uuid
+  description: A UUID reference to the identified subject.
+  display_name: SelectSubjectById_subject-uuid
+- id: type
+  description: Indicates the nature or kind of the containing object.
+  display_name: SelectSubjectById_type
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks
+- id: props
+  description: A list of properties.
+  display_name: props
+  cardinality: multi
+- id: links
+  description: A list of links.
+  display_name: links
+  cardinality: multi

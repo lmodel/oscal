@@ -1,0 +1,24 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: InsertControls
+schema_generating: true
+description: Specifies which controls to use in the containing context (as part of
+  a group or custom merge structure).
+display_name: InsertControls
+document_category: InsertControls
+weight: 20
+fields:
+- id: order
+  description: A designation of how a selection of controls is to be ordered.
+  display_name: order
+- id: include_all
+  description: Include all selectable objects in the containing OSCAL selection context.
+  display_name: include-all
+- id: include_controls
+  description: Control-selection entries to include in the containing OSCAL context.
+    The concrete entry class is selected by class-level slot_usage.
+  display_name: InsertControls_include-controls
+  cardinality: multi
+- id: exclude_controls
+  description: Control-selection entries to exclude in the containing OSCAL context.
+    The concrete entry class is selected by class-level slot_usage.
+  display_name: InsertControls_exclude-controls
+  cardinality: multi

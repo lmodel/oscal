@@ -1,0 +1,20 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: SecurityImpactLevel
+schema_generating: true
+description: The overall level of expected impact resulting from unauthorized disclosure,
+  modification, or loss of access to information.
+display_name: SecurityImpactLevel
+document_category: SecurityImpactLevel
+weight: 20
+fields:
+- id: security_objective_confidentiality
+  description: A target-level of confidentiality for the system, based on the sensitivity
+    of information within the system.
+  display_name: SecurityImpactLevel_security-objective-confidentiality
+- id: security_objective_integrity
+  description: A target-level of integrity for the system, based on the sensitivity
+    of information within the system.
+  display_name: SecurityImpactLevel_security-objective-integrity
+- id: security_objective_availability
+  description: A target-level of availability for the system, based on the sensitivity
+    of information within the system.
+  display_name: SecurityImpactLevel_security-objective-availability

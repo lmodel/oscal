@@ -1,0 +1,36 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: AssessmentSubject
+schema_generating: true
+description: Identifies system elements being assessed, such as components, inventory
+  items, and locations.
+display_name: AssessmentSubject
+document_category: AssessmentSubject
+weight: 20
+fields:
+- id: type
+  description: Indicates the nature or kind of the containing object.
+  display_name: AssessmentSubject_type
+- id: description
+  description: A human-readable description.
+  display_name: description
+- id: include_all
+  description: Include all selectable objects in the containing OSCAL selection context.
+  display_name: include-all
+- id: include_subjects
+  description: Assessment subjects to include.
+  display_name: include-subjects
+  cardinality: multi
+- id: exclude_subjects
+  description: Assessment subjects to exclude.
+  display_name: exclude-subjects
+  cardinality: multi
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks
+- id: props
+  description: A list of properties.
+  display_name: props
+  cardinality: multi
+- id: links
+  description: A list of links.
+  display_name: links
+  cardinality: multi

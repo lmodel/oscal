@@ -1,0 +1,42 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: Resource
+schema_generating: true
+description: A resource associated with content in the containing document instance.
+  A resource may be directly included in the document using base64 encoding or may
+  point to one or more equivalent internet resources.
+display_name: Resource
+document_category: Resource
+weight: 20
+fields:
+- id: uuid
+  description: A unique identifier for a resource.
+  display_name: Resource_uuid
+- id: title
+  description: An optional name given to the resource, which may be used by a tool
+    for display and navigation.
+  display_name: Resource_title
+- id: description
+  description: An optional short summary of the resource used to indicate the purpose
+    of the resource.
+  display_name: Resource_description
+- id: props
+  description: A list of properties.
+  display_name: Resource_props
+  cardinality: multi
+- id: document_ids
+  description: Document identifiers qualified by an identifier scheme.
+  display_name: Resource_document-ids
+  cardinality: multi
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks
+- id: citation
+  description: An optional citation consisting of end note text using structured markup.
+  display_name: citation
+- id: rlinks
+  description: A URL-based pointer to an external resource with an optional hash for
+    verification and change detection.
+  display_name: rlinks
+  cardinality: multi
+- id: base64
+  description: A resource encoded using the Base64 alphabet defined by RFC 2045.
+  display_name: base64

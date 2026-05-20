@@ -1,0 +1,16 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: EventTiming
+schema_generating: true
+description: The timing under which the task is intended to occur.
+display_name: EventTiming
+document_category: EventTiming
+weight: 20
+fields:
+- id: on_date
+  description: The task is intended to occur on the specified date.
+  display_name: on-date
+- id: within_date_range
+  description: The task is intended to occur within the specified date range.
+  display_name: within-date-range
+- id: at_frequency
+  description: The task is intended to occur at the specified frequency.
+  display_name: at-frequency

@@ -1,0 +1,14 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: TelephoneNumber
+schema_generating: true
+description: A telephone service number as defined by ITU-T E.164.
+display_name: TelephoneNumber
+document_category: TelephoneNumber
+weight: 20
+fields:
+- id: type
+  description: 'Indicates the type of phone number. Recommended values: home, office,
+    mobile. Other values are permitted (OSCAL allow-other="yes").'
+  display_name: TelephoneNumber_type
+- id: number
+  description: A telephone number value.
+  display_name: TelephoneNumber_number

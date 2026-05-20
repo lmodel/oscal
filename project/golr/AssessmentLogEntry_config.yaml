@@ -1,0 +1,43 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: AssessmentLogEntry
+schema_generating: true
+description: Identifies the result of an action and/or task that occurred as part
+  of executing an assessment plan or assessment event.
+display_name: AssessmentLogEntry
+document_category: AssessmentLogEntry
+weight: 20
+fields:
+- id: uuid
+  description: A machine-oriented, globally unique identifier with a cross-instance
+    scope.
+  display_name: AssessmentLogEntry_uuid
+- id: title
+  description: A human-readable name or title.
+  display_name: title
+- id: description
+  description: A human-readable description.
+  display_name: description
+- id: start
+  description: The start date/time.
+  display_name: AssessmentLogEntry_start
+- id: end
+  description: The end date/time.
+  display_name: end
+- id: logged_by
+  description: Used to indicate who created a log entry in what role.
+  display_name: logged-by
+  cardinality: multi
+- id: related_tasks
+  description: Identifies tasks for which the containing object is a consequence.
+  display_name: related-tasks
+  cardinality: multi
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks
+- id: props
+  description: A list of properties.
+  display_name: props
+  cardinality: multi
+- id: links
+  description: A list of links.
+  display_name: links
+  cardinality: multi

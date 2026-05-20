@@ -1,0 +1,15 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: AssessmentAssets
+schema_generating: true
+description: Identifies the assets used to perform this assessment.
+display_name: AssessmentAssets
+document_category: AssessmentAssets
+weight: 20
+fields:
+- id: components
+  description: A collection of system components.
+  display_name: components
+  cardinality: multi
+- id: assessment_platforms
+  description: A collection of assessment platforms.
+  display_name: AssessmentAssets_assessment-platforms
+  cardinality: multi

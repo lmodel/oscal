@@ -1,0 +1,28 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: Export
+schema_generating: true
+description: Defines a set of control implementations that are provided as reference
+  implementations for use by organizations implementing the leveraged system.
+display_name: Export
+document_category: Export
+weight: 20
+fields:
+- id: description
+  description: A human-readable description.
+  display_name: description
+- id: props
+  description: A list of properties.
+  display_name: props
+  cardinality: multi
+- id: links
+  description: A list of links.
+  display_name: links
+  cardinality: multi
+- id: provided
+  description: Describes a capability which may be inherited by a leveraging system.
+  display_name: provided
+  cardinality: multi
+- id: responsibilities
+  description: Describes a control implementation responsibility imposed on a leveraging
+    system.
+  display_name: responsibilities
+  cardinality: multi

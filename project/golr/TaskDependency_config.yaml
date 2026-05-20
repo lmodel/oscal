@@ -1,0 +1,13 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: TaskDependency
+schema_generating: true
+description: Used to indicate that a task is dependent on another task.
+display_name: TaskDependency
+document_category: TaskDependency
+weight: 20
+fields:
+- id: task_uuid
+  description: A UUID reference to a task.
+  display_name: TaskDependency_task-uuid
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks

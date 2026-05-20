@@ -1,0 +1,48 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: ParameterSetting
+schema_generating: true
+description: A parameter setting to be propagated to points of insertion in a resolved
+  profile.
+display_name: ParameterSetting
+document_category: ParameterSetting
+weight: 20
+fields:
+- id: param_id
+  description: The identifier for the parameter being set or referenced.
+  display_name: ParameterSetting_param-id
+- id: _class
+  description: A textual label that provides a sub-type or characterization.
+  display_name: _class
+- id: depends_on
+  description: (deprecated) Another parameter invoking this one. This construct has
+    been deprecated and should not be used.
+  display_name: depends-on
+- id: label
+  description: A short, placeholder name for the parameter, which can be used as a
+    substitute for a value if no value is assigned.
+  display_name: label
+- id: usage
+  description: Describes the purpose and use of a parameter.
+  display_name: usage
+- id: constraints
+  description: A formal or informal expression of a constraint or test.
+  display_name: constraints
+  cardinality: multi
+- id: guidelines
+  description: A prose statement that provides a recommendation for the use of a parameter.
+  display_name: guidelines
+  cardinality: multi
+- id: values
+  description: A parameter value or set of values.
+  display_name: values
+  cardinality: multi
+- id: select
+  description: Presenting a choice among alternatives.
+  display_name: select
+- id: props
+  description: A list of properties.
+  display_name: props
+  cardinality: multi
+- id: links
+  description: A list of links.
+  display_name: links
+  cardinality: multi

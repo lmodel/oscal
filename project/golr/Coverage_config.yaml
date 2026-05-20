@@ -1,0 +1,14 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: Coverage
+schema_generating: true
+description: A percentage representing target coverage by source mappings.
+display_name: Coverage
+document_category: Coverage
+weight: 20
+fields:
+- id: generation_method
+  description: Method used to determine the coverage value. Recommended values are
+    in CoverageGenerationMethodEnum; other values are permitted.
+  display_name: generation-method
+- id: target_coverage
+  description: Percentage coverage of targets by sources.
+  display_name: Coverage_target-coverage

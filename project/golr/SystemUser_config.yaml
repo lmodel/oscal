@@ -1,0 +1,40 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: SystemUser
+schema_generating: true
+description: A type of user that interacts with the system based on an associated
+  role.
+display_name: SystemUser
+document_category: SystemUser
+weight: 20
+fields:
+- id: uuid
+  description: A machine-oriented, globally unique identifier with a cross-instance
+    scope.
+  display_name: SystemUser_uuid
+- id: title
+  description: A human-readable name or title.
+  display_name: title
+- id: short_name
+  description: A short common name, abbreviation, or acronym.
+  display_name: short-name
+- id: description
+  description: A human-readable description.
+  display_name: description
+- id: role_ids
+  description: Role identifiers associated with the user.
+  display_name: role-ids
+  cardinality: multi
+- id: authorized_privileges
+  description: A collection of authorized privileges.
+  display_name: authorized-privileges
+  cardinality: multi
+- id: props
+  description: A list of properties.
+  display_name: SystemUser_props
+  cardinality: multi
+- id: links
+  description: A list of links.
+  display_name: SystemUser_links
+  cardinality: multi
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks

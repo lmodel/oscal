@@ -1,0 +1,29 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: AssessmentResults
+schema_generating: true
+description: Security assessment results, such as those provided by a FedRAMP assessor
+  in a security assessment report.
+display_name: AssessmentResults
+document_category: AssessmentResults
+weight: 20
+fields:
+- id: uuid
+  description: Assessment Results Universally Unique Identifier.
+  display_name: AssessmentResults_uuid
+- id: metadata
+  description: Provides information about the containing document, and defines concepts
+    shared across the document.
+  display_name: AssessmentResults_metadata
+- id: import_ap
+  description: Used to import information about the governing assessment plan.
+  display_name: AssessmentResults_import-ap
+- id: local_definitions
+  description: Used to define data objects that do not appear in the referenced SSP.
+  display_name: AssessmentResults_local-definitions
+- id: results
+  description: A collection of assessment results.
+  display_name: AssessmentResults_results
+  cardinality: multi
+- id: back_matter
+  description: A collection of resources that may be referenced from within the OSCAL
+    document instance.
+  display_name: back-matter

@@ -1,0 +1,15 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: ParameterSelection
+schema_generating: true
+description: Presenting a choice among alternatives.
+display_name: ParameterSelection
+document_category: ParameterSelection
+weight: 20
+fields:
+- id: how_many
+  description: Describes the number of selections that must occur. Without this setting,
+    only one value should be assumed to be permitted.
+  display_name: how-many
+- id: choice
+  description: A value selection among several such options.
+  display_name: choice
+  cardinality: multi

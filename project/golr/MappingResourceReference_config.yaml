@@ -1,0 +1,29 @@
+# metamodel_version: 1.11.0# version: 1.2.1id: MappingResourceReference
+schema_generating: true
+description: A reference to the source or target resource for a mapping.
+display_name: MappingResourceReference
+document_category: MappingResourceReference
+weight: 20
+fields:
+- id: ns
+  description: An optional namespace qualifying a name. Allows different organizations
+    to associate distinct semantics with the same name.
+  display_name: ns
+- id: type
+  description: The semantic type of the referenced resource. OSCAL defines catalog
+    and profile, while locally defined values are also permitted.
+  display_name: MappingResourceReference_type
+- id: href
+  description: A resolvable URL reference to a resource.
+  display_name: MappingResourceReference_href
+- id: remarks
+  description: Additional commentary about the containing object.
+  display_name: remarks
+- id: props
+  description: A list of properties.
+  display_name: props
+  cardinality: multi
+- id: links
+  description: A list of links.
+  display_name: links
+  cardinality: multi
