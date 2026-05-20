@@ -8,6 +8,10 @@ license: Apache-2.0
 source: http://csrc.nist.gov/ns/oscal/1.2.1/oscal-catalog-schema.json
 version: 1.2.1
 
+comments:
+  - Core stays open.
+  - No assumptions about regime (i.e. FedRamp, etc).
+
 see_also:
   - https://lmodel.github.io/oscal_catalog
   - https://pages.nist.gov/OSCAL/learn/concepts/layer/control/catalog/
