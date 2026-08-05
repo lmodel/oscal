@@ -1,0 +1,24 @@
+# LOKF sidecar for OSCAL.
+#
+# A small Python "sidecar" that lets this repo validate and project its
+# knowledge/ bundle with the `lokf` toolkit. It does not affect the app build.
+#
+#   uv sync             # install lokf into a local .venv
+#   just lokf-validate  # validate knowledge/ against the LOKF schema
+[project]
+name = "oscal-knowledge"
+version = "0.1.0"
+description = "LOKF knowledge-bundle tooling for OSCAL."
+requires-python = ">=3.11"
+dependencies = [
+    "lokf[build]",
+]
+
+[tool.uv]
+package = false
+
+# `lokf validate` is a recent toolkit addition; if your `lokf` is not on a public
+# package index yet, pin it here instead of the plain `lokf` dependency above -
+# a git ref is the most portable option:
+#   [tool.uv.sources]
+#   lokf = { git = "https://github.com/nicholsn/lokf.git", rev = "<tag-or-sha>" }

@@ -1,0 +1,55 @@
+### LOKF SPARQL queries for the OSCAL knowledge bundle.
+###
+### Requires a VS Code "REST Client" extension (humao.rest-client).
+### Start the endpoint first (from this directory):
+###     just lokf-serve          # or: uv run lokf serve knowledge
+### Then click "Send Request" above any query below.
+###
+### The server presets the LOKF schema prefixes (lokf:, schema:, dcterms:,
+### prov:, org:, skos:, rdf:, rdfs:, ...), so no PREFIX lines are needed.
+
+@base = http://127.0.0.1:8000
+
+### 1. Inventory - count concepts by type
+POST {{base}}/sparql
+Content-Type: application/sparql-query
+
+SELECT ?type (COUNT(?s) AS ?count)
+WHERE { ?s a ?type . FILTER(?type != rdf:Statement) }
+GROUP BY ?type
+ORDER BY DESC(?count)
+
+### 2. All datasets and their source URLs
+POST {{base}}/sparql
+Content-Type: application/sparql-query
+
+SELECT ?title ?source
+WHERE { ?s a schema:Dataset ; schema:name ?title .
+        OPTIONAL { ?s dcterms:source ?source } }
+ORDER BY ?title
+
+### 3. All concepts derived from the NIST OSCAL standard
+POST {{base}}/sparql
+Content-Type: application/sparql-query
+
+SELECT ?title ?type
+WHERE { ?s prov:wasDerivedFrom <https://github.com/lmodel/oscal/knowledge/references/nist-oscal> ;
+           schema:name ?title ;
+           a ?type . }
+ORDER BY ?type ?title
+
+### 4. Dependency graph between schema modules
+POST {{base}}/sparql
+Content-Type: application/sparql-query
+
+SELECT ?fromTitle ?toTitle
+WHERE { ?from dcterms:isPartOf ?to ;
+              schema:name ?fromTitle .
+        ?to schema:name ?toTitle . }
+ORDER BY ?fromTitle
+
+### Bonus: whole graph as Turtle (CONSTRUCT -> text/turtle)
+POST {{base}}/sparql
+Content-Type: application/sparql-query
+
+CONSTRUCT { ?s ?p ?o } WHERE { ?s ?p ?o }

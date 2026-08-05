@@ -1,0 +1,35 @@
+---
+type: Playbook
+id: https://github.com/lmodel/oscal/knowledge/playbooks/knowledge-sources
+title: Knowledge Sources
+description: Map of all repository sources scraped in the bootstrap discovery pass to build this LOKF bundle. Each entry records the source path or URL, the class(es) it yielded, and how to re-verify it on the next refresh.
+timestamp: "2026-08-05T00:00:00Z"
+resource: https://github.com/lmodel/oscal
+---
+
+# Knowledge Sources
+
+This document records the knowledge sources used in the bootstrap discovery pass (2026-08-05). Steady-state refresh runs re-verify each source against its recorded concept.
+
+## Source Map
+
+| Source path / URL | Class(es) yielded | Concepts created | How to re-check |
+|---|---|---|---|
+| `src/oscal/schema/oscal.yaml` | `Dataset` | `datasets/oscal-schema` | Re-read file header for `id`, `version`, `description`; confirm imports list is reflected in `hasPart`. |
+| `src/oscal/schema/oscal_catalog.yaml` | `Dataset` | `datasets/oscal-catalog-schema` | Re-read `id`, `version`, `source`, `description`, `see_also`; confirm `isPartOf` → `oscal-schema`. |
+| `src/oscal/schema/oscal_profile.yaml` | `Dataset` | `datasets/oscal-profile-schema` | Re-read `id`, `version`, `source`, `description`, `see_also`; confirm `isPartOf`. |
+| `src/oscal/schema/oscal_ssp.yaml` | `Dataset` | `datasets/oscal-ssp-schema` | Re-read `id`, `version`, `source`, `description`, `see_also`; confirm `isPartOf`. |
+| `src/oscal/schema/oscal_assessment_plan.yaml` | `Dataset` | `datasets/oscal-assessment-plan-schema` | Re-read `id`, `version`, `source`, `description`; confirm `isPartOf`. |
+| `src/oscal/schema/oscal_assessment_results.yaml` | `Dataset` | `datasets/oscal-assessment-results-schema` | Re-read `id`, `version`, `source`, `description`; confirm `isPartOf`. |
+| `src/oscal/schema/oscal_component.yaml` | `Dataset` | `datasets/oscal-component-schema` | Re-read `id`, `version`, `source`, `description`; confirm `isPartOf`. |
+| `src/oscal/schema/oscal_mapping.yaml` | `Dataset` | `datasets/oscal-mapping-schema` | Re-read `id`, `version`, `description`; confirm `isPartOf`. |
+| `src/oscal/schema/oscal_poam.yaml` | `Dataset` | `datasets/oscal-poam-schema` | Re-read `id`, `version`, `source`, `description`; confirm `isPartOf`. |
+| `https://pages.nist.gov/OSCAL/` | `Reference` | `references/nist-oscal` | Verify NIST URL resolves; check latest OSCAL version number. |
+| `https://linkml.io/` | `Reference` | `references/linkml` | Verify URL resolves; no version pinning needed (framework reference). |
+| `pyproject.toml` (authors field) | `Organization` | `org/lmodel` | Verify lmodel GitHub org URL; update `name` if org changes. |
+
+## Gaps noted
+
+- `project/` (generated artifacts directory) contains ~20 format outputs (jsonschema, owl, shacl, rdf, typescript, golang, rust, protobuf, etc.). Each could become a `Dataset` concept with `derivedFrom` pointing to the schema. Not added in this pass - add when the generated formats themselves become objects of knowledge queries.
+- `tests/` and `scripts/` contain tooling code; no concept warranted in this pass.
+- No CODEOWNERS file present; ownership derived from `pyproject.toml` authors.

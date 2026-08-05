@@ -8,6 +8,8 @@ OSCAL: Open Security Controls Assessment Language: LinkML Schema
 
 [https://lmodel.github.io/oscal](https://lmodel.github.io/oscal)
 
+If you are a LLM visit [.lokf/knowledge/index.md](.lokf/knowledge/index.md).
+
 ## Repository Structure
 
 * [docs/](docs/) - mkdocs-managed documentation
