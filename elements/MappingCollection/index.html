@@ -17,7 +17,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -25,7 +25,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
       
 
@@ -358,6 +358,53 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#identifier-and-mapping-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Identifier and Mapping Information
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Identifier and Mapping Information">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#schema-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schema Source
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classes-in-subset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Classes in subset
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -379,728 +426,68 @@
 
 <h1 id="subset-mappingcollection">Subset: MappingCollection</h1>
 <p><em>Classes that form the root OSCAL Mapping Collection document and mapping-specific structural containers.</em></p>
-<div data-search-exclude markdown="1">
-
-URI: [MappingCollection](MappingCollection.md)
-
-
-
-
-
-
-
-
-## Identifier and Mapping Information
-
-
-
-
-
-### Schema Source
-
-
-* from schema: https://w3id.org/lmodel/oscal
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## Classes in subset
-
-| Class | Description |
-| --- | --- |
-| [ConfidenceScore](ConfidenceScore.md) | Confidence represented as a category and/or percentage value |
-| [Coverage](Coverage.md) | A percentage representing target coverage by source mappings |
-| [GapSummary](GapSummary.md) | A summary of controls that were not mapped |
-| [Map](Map.md) | A relationship-based mapping entry between source and target sets |
-| [Mapping](Mapping.md) | A mapping between two mapped resources |
-| [MappingCollection](MappingCollection.md) | A collection of control mappings between source and target resources |
-| [MappingCollectionDocument](MappingCollectionDocument.md) | Root wrapper for an OSCAL Mapping Collection document |
-| [MappingItem](MappingItem.md) | A source or target item participating in a mapping entry |
-| [MappingProvenance](MappingProvenance.md) | Mapping-level provenance details and mapping defaults |
-| [MappingResourceReference](MappingResourceReference.md) | A reference to the source or target resource for a mapping |
-| [QualifierItem](QualifierItem.md) | A qualifier describing requirements or incompatibilities |
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<div>
+<p>URI: <a href="./">MappingCollection</a></p>
+<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="schema-source">Schema Source</h3>
+<ul>
+<li>from schema: https://w3id.org/lmodel/oscal</li>
+</ul>
+<h2 id="classes-in-subset">Classes in subset</h2>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../ConfidenceScore/">ConfidenceScore</a></td>
+<td>Confidence represented as a category and/or percentage value</td>
+</tr>
+<tr>
+<td><a href="../Coverage/">Coverage</a></td>
+<td>A percentage representing target coverage by source mappings</td>
+</tr>
+<tr>
+<td><a href="../GapSummary/">GapSummary</a></td>
+<td>A summary of controls that were not mapped</td>
+</tr>
+<tr>
+<td><a href="../Map/">Map</a></td>
+<td>A relationship-based mapping entry between source and target sets</td>
+</tr>
+<tr>
+<td><a href="../Mapping/">Mapping</a></td>
+<td>A mapping between two mapped resources</td>
+</tr>
+<tr>
+<td><a href="./">MappingCollection</a></td>
+<td>A collection of control mappings between source and target resources</td>
+</tr>
+<tr>
+<td><a href="../MappingCollectionDocument/">MappingCollectionDocument</a></td>
+<td>Root wrapper for an OSCAL Mapping Collection document</td>
+</tr>
+<tr>
+<td><a href="../MappingItem/">MappingItem</a></td>
+<td>A source or target item participating in a mapping entry</td>
+</tr>
+<tr>
+<td><a href="../MappingProvenance/">MappingProvenance</a></td>
+<td>Mapping-level provenance details and mapping defaults</td>
+</tr>
+<tr>
+<td><a href="../MappingResourceReference/">MappingResourceReference</a></td>
+<td>A reference to the source or target resource for a mapping</td>
+</tr>
+<tr>
+<td><a href="../QualifierItem/">QualifierItem</a></td>
+<td>A qualifier describing requirements or incompatibilities</td>
+</tr>
+</tbody>
+</table>
 </div>
 
 
@@ -1170,7 +557,7 @@ URI: [MappingCollection](MappingCollection.md)
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.tabs.link", "header.autohide", "navigation.expand", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "search.suggest", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../../assets/pymdownx-extras/extra-loader-B5CKpNQx.js"></script>
       

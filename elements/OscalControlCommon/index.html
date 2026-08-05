@@ -17,7 +17,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -25,7 +25,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
       
 
@@ -358,6 +358,53 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#identifier-and-mapping-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Identifier and Mapping Information
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Identifier and Mapping Information">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#schema-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schema Source
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classes-in-subset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Classes in subset
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -379,731 +426,72 @@
 
 <h1 id="subset-oscalcontrolcommon">Subset: OscalControlCommon</h1>
 <p><em>Classes originating from the oscal-control-common namespace: parts, parameters, constraints, guidelines, selections, and control-matching helpers.</em></p>
-<div data-search-exclude markdown="1">
-
-URI: [OscalControlCommon](OscalControlCommon.md)
-
-
-
-
-
-
-
-
-## Identifier and Mapping Information
-
-
-
-
-
-### Schema Source
-
-
-* from schema: https://w3id.org/lmodel/oscal
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## Classes in subset
-
-| Class | Description |
-| --- | --- |
-| [ConstraintTest](ConstraintTest.md) | A test expression which is expected to be evaluated by a tool |
-| [ControlMatching](ControlMatching.md) | Selecting a set of controls by matching their IDs with a wildcard pattern |
-| [ControlPart](ControlPart.md) | An annotated, markup-based textual element of a control's or catalog group's ... |
-| [IncludeAll](IncludeAll.md) | Include all controls from the imported catalog or profile resources |
-| [Parameter](Parameter.md) | Parameters provide a mechanism for the dynamic assignment of value(s) in a co... |
-| [ParameterConstraint](ParameterConstraint.md) | A formal or informal expression of a constraint or test |
-| [ParameterGuideline](ParameterGuideline.md) | A prose statement that provides a recommendation for the use of a parameter |
-| [ParameterProperty](ParameterProperty.md) | Control-common parameter-scoped OSCAL property |
-| [ParameterSelection](ParameterSelection.md) | Presenting a choice among alternatives |
-| [Part](Part.md) | An annotated, markup-based textual element of a control's or catalog group's ... |
-| [PartProperty](PartProperty.md) | Control-common part-scoped OSCAL property |
-| [SelectControlById](SelectControlById.md) | Select a control or controls from an imported control set |
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<div>
+<p>URI: <a href="./">OscalControlCommon</a></p>
+<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="schema-source">Schema Source</h3>
+<ul>
+<li>from schema: https://w3id.org/lmodel/oscal</li>
+</ul>
+<h2 id="classes-in-subset">Classes in subset</h2>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../ConstraintTest/">ConstraintTest</a></td>
+<td>A test expression which is expected to be evaluated by a tool</td>
+</tr>
+<tr>
+<td><a href="../ControlMatching/">ControlMatching</a></td>
+<td>Selecting a set of controls by matching their IDs with a wildcard pattern</td>
+</tr>
+<tr>
+<td><a href="../ControlPart/">ControlPart</a></td>
+<td>An annotated, markup-based textual element of a control's or catalog group's ...</td>
+</tr>
+<tr>
+<td><a href="../IncludeAll/">IncludeAll</a></td>
+<td>Include all controls from the imported catalog or profile resources</td>
+</tr>
+<tr>
+<td><a href="../Parameter/">Parameter</a></td>
+<td>Parameters provide a mechanism for the dynamic assignment of value(s) in a co...</td>
+</tr>
+<tr>
+<td><a href="../ParameterConstraint/">ParameterConstraint</a></td>
+<td>A formal or informal expression of a constraint or test</td>
+</tr>
+<tr>
+<td><a href="../ParameterGuideline/">ParameterGuideline</a></td>
+<td>A prose statement that provides a recommendation for the use of a parameter</td>
+</tr>
+<tr>
+<td><a href="../ParameterProperty/">ParameterProperty</a></td>
+<td>Control-common parameter-scoped OSCAL property</td>
+</tr>
+<tr>
+<td><a href="../ParameterSelection/">ParameterSelection</a></td>
+<td>Presenting a choice among alternatives</td>
+</tr>
+<tr>
+<td><a href="../Part/">Part</a></td>
+<td>An annotated, markup-based textual element of a control's or catalog group's ...</td>
+</tr>
+<tr>
+<td><a href="../PartProperty/">PartProperty</a></td>
+<td>Control-common part-scoped OSCAL property</td>
+</tr>
+<tr>
+<td><a href="../SelectControlById/">SelectControlById</a></td>
+<td>Select a control or controls from an imported control set</td>
+</tr>
+</tbody>
+</table>
 </div>
 
 
@@ -1173,7 +561,7 @@ URI: [OscalControlCommon](OscalControlCommon.md)
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.tabs.link", "header.autohide", "navigation.expand", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "search.suggest", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../../assets/pymdownx-extras/extra-loader-B5CKpNQx.js"></script>
       

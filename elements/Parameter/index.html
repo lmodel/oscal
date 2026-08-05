@@ -7,9 +7,9 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://lmodel.github.io/oscal/elements/Parameter/" rel="canonical"/>
 <link href="../../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.6.1, mkdocs-material-9.7.6" name="generator"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.7" name="generator"/>
 <title>Class: Parameter - oscal</title>
-<link href="../../assets/stylesheets/main.484c7ddc.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/main.ec1eaa64.min.css" rel="stylesheet"/>
 <script src="../../assets/pymdownx-extras/material-extra-theme-2ek1P7jT.js" type="text/javascript"></script>
 <script src="../../assets/pymdownx-extras/material-extra-3rdparty-BUCF4rjN.js" type="text/javascript"></script>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -184,6 +184,141 @@
 <div class="md-sidebar__scrollwrap">
 <div class="md-sidebar__inner">
 <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#inheritance">
+<span class="md-ellipsis">
+      
+        Inheritance
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#slots">
+<span class="md-ellipsis">
+      
+        Slots
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#usages">
+<span class="md-ellipsis">
+      
+        Usages
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#rules">
+<span class="md-ellipsis">
+      
+        Rules
+      
+    </span>
+</a>
+<nav aria-label="Rules" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#values-xor-select">
+<span class="md-ellipsis">
+      
+        values-xor-select
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#select-xor-values">
+<span class="md-ellipsis">
+      
+        select-xor-values
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#in-subsets">
+<span class="md-ellipsis">
+      
+        In Subsets
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#identifier-and-mapping-information">
+<span class="md-ellipsis">
+      
+        Identifier and Mapping Information
+      
+    </span>
+</a>
+<nav aria-label="Identifier and Mapping Information" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#schema-source">
+<span class="md-ellipsis">
+      
+        Schema Source
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#mappings">
+<span class="md-ellipsis">
+      
+        Mappings
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#linkml-source">
+<span class="md-ellipsis">
+      
+        LinkML Source
+      
+    </span>
+</a>
+<nav aria-label="LinkML Source" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#direct">
+<span class="md-ellipsis">
+      
+        Direct
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#induced">
+<span class="md-ellipsis">
+      
+        Induced
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
 </nav>
 </div>
 </div>
@@ -192,16 +327,8 @@
 <article class="md-content__inner md-typeset">
 <h1 id="class-parameter">Class: Parameter</h1>
 <p><em>Parameters provide a mechanism for the dynamic assignment of value(s) in a control.</em></p>
-<div data-search-exclude="" markdown="1">
-
-
-
-URI: [oscal:Parameter](https://w3id.org/lmodel/oscal/Parameter)
-
-
-
-
-
+<div>
+<p>URI: <a href="https://w3id.org/lmodel/oscal/Parameter">oscal:Parameter</a></p>
 <pre class="mermaid"><code> classDiagram
     class Parameter
     click Parameter href "../Parameter/"
@@ -278,115 +405,208 @@ URI: [oscal:Parameter](https://w3id.org/lmodel/oscal/Parameter)
       Parameter : values
 
 </code></pre>
-
-
-
-
-
-## Inheritance
-* **Parameter** [ [OscalCommon](OscalCommon.md)]
-
-
-## Slots
-
-| Name | Cardinality and Range | Description | Inheritance |
-| ---  | --- | --- | --- |
-| [id](id.md) | 1 <br/> [TokenType](TokenType.md) | A unique identifier for the parameter | direct |
-| [_class](_class.md) | 0..1 <br/> [TokenType](TokenType.md) | A textual label that provides a characterization of the type, purpose, use or... | direct |
-| [depends_on](depends_on.md) | 0..1 <br/> [TokenType](TokenType.md) | (deprecated) Another parameter invoking this one | direct |
-| [label](label.md) | 0..1 <br/> [MarkupLineType](MarkupLineType.md) | A short, placeholder name for the parameter, which can be used as a substitut... | direct |
-| [usage](usage.md) | 0..1 <br/> [MarkupMultilineType](MarkupMultilineType.md) | Describes the purpose and use of a parameter | direct |
-| [constraints](constraints.md) | * <br/> [ParameterConstraint](ParameterConstraint.md) | A formal or informal expression of a constraint or test | direct |
-| [guidelines](guidelines.md) | * <br/> [ParameterGuideline](ParameterGuideline.md) | A prose statement that provides a recommendation for the use of a parameter | direct |
-| [values](values.md) | * <br/> [String](String.md) | A parameter value or set of values | direct |
-| [select](select.md) | 0..1 <br/> [ParameterSelection](ParameterSelection.md) | Presenting a choice among alternatives | direct |
-| [remarks](remarks.md) | 0..1 <br/> [MarkupMultilineType](MarkupMultilineType.md) | Additional commentary about the containing object | [OscalCommon](OscalCommon.md) |
-| [props](props.md) | * <br/> [ParameterProperty](ParameterProperty.md) | A list of properties | [HasPropsAndLinks](HasPropsAndLinks.md) |
-| [links](links.md) | * <br/> [Link](Link.md) | A list of links | [HasPropsAndLinks](HasPropsAndLinks.md) |
-
-
-
-
-
-## Usages
-
-| used by | used in | type | used |
-| ---  | --- | --- | --- |
-| [Catalog](Catalog.md) | [params](params.md) | range | [Parameter](Parameter.md) |
-| [Group](Group.md) | [params](params.md) | range | [Parameter](Parameter.md) |
-| [Control](Control.md) | [params](params.md) | range | [Parameter](Parameter.md) |
-| [ProfileGroup](ProfileGroup.md) | [params](params.md) | range | [Parameter](Parameter.md) |
-| [Addition](Addition.md) | [params](params.md) | range | [Parameter](Parameter.md) |
-
-
-
-
-## Rules
-
-
-### values-xor-select
-
-| Rule Applied | Preconditions | Postconditions | Elseconditions |
-|--------------|---------------|----------------|----------------|
-| slot_conditions |```{'values': {'value_presence': 'PRESENT'}}``` |```{'select': {'value_presence': 'ABSENT'}}``` | |
-
-
-
-### select-xor-values
-
-| Rule Applied | Preconditions | Postconditions | Elseconditions |
-|--------------|---------------|----------------|----------------|
-| slot_conditions |```{'select': {'value_presence': 'PRESENT'}}``` |```{'values': {'value_presence': 'ABSENT'}}``` | |
-
-
-
-
-
-
-
-
-## In Subsets
-
-
-* [OscalControlCommon](OscalControlCommon.md)
-
-
-
-
-
-
-## Identifier and Mapping Information
-
-
-
-
-
-### Schema Source
-
-
-* from schema: https://w3id.org/lmodel/oscal
-
-
-
-
-## Mappings
-
-| Mapping Type | Mapped Value |
-| ---  | ---  |
-| self | oscal:Parameter |
-| native | oscal:Parameter |
-
-
-
-
-
-
-## LinkML Source
-
+<h2 id="inheritance">Inheritance</h2>
+<ul>
+<li><strong>Parameter</strong> [ <a href="../OscalCommon/">OscalCommon</a>]</li>
+</ul>
+<h2 id="slots">Slots</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Cardinality and Range</th>
+<th>Description</th>
+<th>Inheritance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../id/">id</a></td>
+<td>1 <br/> <a href="../TokenType/">TokenType</a></td>
+<td>A unique identifier for the parameter</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../_class/">_class</a></td>
+<td>0..1 <br/> <a href="../TokenType/">TokenType</a></td>
+<td>A textual label that provides a characterization of the type, purpose, use or...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../depends_on/">depends_on</a></td>
+<td>0..1 <br/> <a href="../TokenType/">TokenType</a></td>
+<td>(deprecated) Another parameter invoking this one</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../label/">label</a></td>
+<td>0..1 <br/> <a href="../MarkupLineType/">MarkupLineType</a></td>
+<td>A short, placeholder name for the parameter, which can be used as a substitut...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../usage/">usage</a></td>
+<td>0..1 <br/> <a href="../MarkupMultilineType/">MarkupMultilineType</a></td>
+<td>Describes the purpose and use of a parameter</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../constraints/">constraints</a></td>
+<td>* <br/> <a href="../ParameterConstraint/">ParameterConstraint</a></td>
+<td>A formal or informal expression of a constraint or test</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../guidelines/">guidelines</a></td>
+<td>* <br/> <a href="../ParameterGuideline/">ParameterGuideline</a></td>
+<td>A prose statement that provides a recommendation for the use of a parameter</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../values/">values</a></td>
+<td>* <br/> <a href="../String/">String</a></td>
+<td>A parameter value or set of values</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../select/">select</a></td>
+<td>0..1 <br/> <a href="../ParameterSelection/">ParameterSelection</a></td>
+<td>Presenting a choice among alternatives</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../remarks/">remarks</a></td>
+<td>0..1 <br/> <a href="../MarkupMultilineType/">MarkupMultilineType</a></td>
+<td>Additional commentary about the containing object</td>
+<td><a href="../OscalCommon/">OscalCommon</a></td>
+</tr>
+<tr>
+<td><a href="../props/">props</a></td>
+<td>* <br/> <a href="../ParameterProperty/">ParameterProperty</a></td>
+<td>A list of properties</td>
+<td><a href="../HasPropsAndLinks/">HasPropsAndLinks</a></td>
+</tr>
+<tr>
+<td><a href="../links/">links</a></td>
+<td>* <br/> <a href="../Link/">Link</a></td>
+<td>A list of links</td>
+<td><a href="../HasPropsAndLinks/">HasPropsAndLinks</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="usages">Usages</h2>
+<table>
+<thead>
+<tr>
+<th>used by</th>
+<th>used in</th>
+<th>type</th>
+<th>used</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../Catalog/">Catalog</a></td>
+<td><a href="../params/">params</a></td>
+<td>range</td>
+<td><a href="./">Parameter</a></td>
+</tr>
+<tr>
+<td><a href="../Group/">Group</a></td>
+<td><a href="../params/">params</a></td>
+<td>range</td>
+<td><a href="./">Parameter</a></td>
+</tr>
+<tr>
+<td><a href="../Control/">Control</a></td>
+<td><a href="../params/">params</a></td>
+<td>range</td>
+<td><a href="./">Parameter</a></td>
+</tr>
+<tr>
+<td><a href="../ProfileGroup/">ProfileGroup</a></td>
+<td><a href="../params/">params</a></td>
+<td>range</td>
+<td><a href="./">Parameter</a></td>
+</tr>
+<tr>
+<td><a href="../Addition/">Addition</a></td>
+<td><a href="../params/">params</a></td>
+<td>range</td>
+<td><a href="./">Parameter</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="rules">Rules</h2>
+<h3 id="values-xor-select">values-xor-select</h3>
+<table>
+<thead>
+<tr>
+<th>Rule Applied</th>
+<th>Preconditions</th>
+<th>Postconditions</th>
+<th>Elseconditions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>slot_conditions</td>
+<td><code>{'values': {'value_presence': 'PRESENT'}}</code></td>
+<td><code>{'select': {'value_presence': 'ABSENT'}}</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="select-xor-values">select-xor-values</h3>
+<table>
+<thead>
+<tr>
+<th>Rule Applied</th>
+<th>Preconditions</th>
+<th>Postconditions</th>
+<th>Elseconditions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>slot_conditions</td>
+<td><code>{'select': {'value_presence': 'PRESENT'}}</code></td>
+<td><code>{'values': {'value_presence': 'ABSENT'}}</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="in-subsets">In Subsets</h2>
+<ul>
+<li><a href="../OscalControlCommon/">OscalControlCommon</a></li>
+</ul>
+<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="schema-source">Schema Source</h3>
+<ul>
+<li>from schema: https://w3id.org/lmodel/oscal</li>
+</ul>
+<h2 id="mappings">Mappings</h2>
+<table>
+<thead>
+<tr>
+<th>Mapping Type</th>
+<th>Mapped Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>self</td>
+<td>oscal:Parameter</td>
+</tr>
+<tr>
+<td>native</td>
+<td>oscal:Parameter</td>
+</tr>
+</tbody>
+</table>
+<h2 id="linkml-source">LinkML Source</h2>
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
-
-### Direct
-
+<h3 id="direct">Direct</h3>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Parameter</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Parameters provide a mechanism for the dynamic assignment of value(s)</span>
@@ -445,9 +665,7 @@ URI: [oscal:Parameter](https://w3id.org/lmodel/oscal/Parameter)
 <span class="w">  </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">select-xor-values</span>
 </code></pre></div>
 </details>
-
-### Induced
-
+<h3 id="induced">Induced</h3>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Parameter</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Parameters provide a mechanism for the dynamic assignment of value(s)</span>
@@ -731,7 +949,8 @@ URI: [oscal:Parameter](https://w3id.org/lmodel/oscal/Parameter)
 <span class="w">        </span><span class="nt">value_presence</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ABSENT</span>
 <span class="w">  </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">select-xor-values</span>
 </code></pre></div>
-</details></div>
+</details>
+</div>
 </article>
 </div>
 <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
@@ -763,7 +982,7 @@ URI: [oscal:Parameter](https://w3id.org/lmodel/oscal/Parameter)
 </div>
 <div class="md-progress" data-md-component="progress" role="progressbar"></div>
 <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.tabs.link", "header.autohide", "navigation.expand", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "search.suggest", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
-<script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+<script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
 <script src="../../assets/pymdownx-extras/extra-loader-B5CKpNQx.js"></script>
 </body>
 </html>

@@ -17,7 +17,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -25,7 +25,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
       
 
@@ -358,6 +358,53 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#identifier-and-mapping-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Identifier and Mapping Information
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Identifier and Mapping Information">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#schema-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schema Source
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classes-in-subset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Classes in subset
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -379,839 +426,216 @@
 
 <h1 id="subset-assessmentcommon">Subset: AssessmentCommon</h1>
 <p><em>Classes originating from the oscal-assessment-common namespace: subjects, assets, activities, tasks, findings, observations, risks, and related helper types.</em></p>
-<div data-search-exclude markdown="1">
-
-URI: [AssessmentCommon](AssessmentCommon.md)
-
-
-
-
-
-
-
-
-## Identifier and Mapping Information
-
-
-
-
-
-### Schema Source
-
-
-* from schema: https://w3id.org/lmodel/oscal
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## Classes in subset
-
-| Class | Description |
-| --- | --- |
-| [Activity](Activity.md) | Identifies an assessment or related process that can be performed |
-| [AssessmentAssets](AssessmentAssets.md) | Identifies the assets used to perform this assessment |
-| [AssessmentMethod](AssessmentMethod.md) | A local definition of a control objective |
-| [AssessmentPart](AssessmentPart.md) | A partition of an assessment plan or results or a child of another part |
-| [AssessmentPlatform](AssessmentPlatform.md) | Used to represent the toolset used to perform aspects of the assessment |
-| [AssessmentSelectControlById](AssessmentSelectControlById.md) | Select a specific control for inclusion/exclusion in the assessment by litera... |
-| [AssessmentSubject](AssessmentSubject.md) | Identifies system elements being assessed, such as components, inventory item... |
-| [AssessmentSubjectPlaceholder](AssessmentSubjectPlaceholder.md) | Used when the assessment subjects will be determined as part of one or more o... |
-| [AssessmentSubjectSource](AssessmentSubjectSource.md) | Assessment subjects will be identified while conducting the referenced activi... |
-| [AssociatedActivity](AssociatedActivity.md) | Identifies an individual activity to be performed as part of a task |
-| [AssociatedRisk](AssociatedRisk.md) | Relates the finding to a set of referenced risks |
-| [AtFrequency](AtFrequency.md) | The task is intended to occur at the specified frequency |
-| [Characterization](Characterization.md) | A collection of descriptive data about the containing object from a specific ... |
-| [ControlObjectiveSelection](ControlObjectiveSelection.md) | Identifies the control objectives of the assessment |
-| [ControlSelection](ControlSelection.md) | Identifies the controls being assessed |
-| [EventTiming](EventTiming.md) | The timing under which the task is intended to occur |
-| [Facet](Facet.md) | An individual characteristic that is part of a larger set produced by the sam... |
-| [Finding](Finding.md) | Describes an individual finding |
-| [FindingTarget](FindingTarget.md) | Captures an assessor's conclusions regarding the degree to which an objective... |
-| [IdentifiedSubject](IdentifiedSubject.md) | Used to detail assessment subjects that were identified by this task |
-| [ImportSSP](ImportSSP.md) | Used by the assessment plan and POA&M to import information about the system |
-| [LocalObjective](LocalObjective.md) | A local definition of a control objective for this assessment |
-| [LoggedBy](LoggedBy.md) | Used to indicate who created a log entry in what role |
-| [MitigatingFactor](MitigatingFactor.md) | Describes an existing mitigating factor that may affect the overall determina... |
-| [ObjectiveStatus](ObjectiveStatus.md) | A determination of if the objective is satisfied or not within a given system |
-| [Observation](Observation.md) | Describes an individual observation |
-| [OnDateCondition](OnDateCondition.md) | The task is intended to occur on the specified date |
-| [Origin](Origin.md) | Identifies the source of the finding, such as a tool, interviewed person, or ... |
-| [OriginActor](OriginActor.md) | The actor that produces an observation, a finding, or a risk |
-| [RelatedObservation](RelatedObservation.md) | Relates the identified element to a set of referenced observations |
-| [RelatedTask](RelatedTask.md) | Identifies an individual task for which the containing object is a consequenc... |
-| [RelevantEvidence](RelevantEvidence.md) | Links this observation to relevant evidence |
-| [RequiredAsset](RequiredAsset.md) | Identifies an asset required to achieve remediation |
-| [Response](Response.md) | Describes either recommended or an actual plan for addressing the risk |
-| [ReviewedControls](ReviewedControls.md) | Identifies the controls being assessed and their control objectives |
-| [Risk](Risk.md) | An identified risk |
-| [RiskLog](RiskLog.md) | A log of all risk-related tasks taken |
-| [RiskLogEntry](RiskLogEntry.md) | Identifies an individual risk response that occurred as part of managing an i... |
-| [RiskResponseReference](RiskResponseReference.md) | Identifies an individual risk response that this log entry is for |
-| [SelectObjectiveById](SelectObjectiveById.md) | Used to select a control objective for inclusion/exclusion |
-| [SelectSubjectById](SelectSubjectById.md) | Identifies a set of assessment subjects to include/exclude by UUID |
-| [Step](Step.md) | Identifies an individual step in a series of steps related to an activity, su... |
-| [SubjectReference](SubjectReference.md) | A human-oriented identifier reference to a resource |
-| [Task](Task.md) | Represents a scheduled event or milestone, which may be associated with a ser... |
-| [TaskDependency](TaskDependency.md) | Used to indicate that a task is dependent on another task |
-| [ThreatId](ThreatId.md) | A pointer, by ID, to an externally-defined threat |
-| [UsesComponent](UsesComponent.md) | The set of components that are used by the assessment platform |
-| [WithinDateRange](WithinDateRange.md) | The task is intended to occur within the specified date range |
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<div>
+<p>URI: <a href="./">AssessmentCommon</a></p>
+<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="schema-source">Schema Source</h3>
+<ul>
+<li>from schema: https://w3id.org/lmodel/oscal</li>
+</ul>
+<h2 id="classes-in-subset">Classes in subset</h2>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../Activity/">Activity</a></td>
+<td>Identifies an assessment or related process that can be performed</td>
+</tr>
+<tr>
+<td><a href="../AssessmentAssets/">AssessmentAssets</a></td>
+<td>Identifies the assets used to perform this assessment</td>
+</tr>
+<tr>
+<td><a href="../AssessmentMethod/">AssessmentMethod</a></td>
+<td>A local definition of a control objective</td>
+</tr>
+<tr>
+<td><a href="../AssessmentPart/">AssessmentPart</a></td>
+<td>A partition of an assessment plan or results or a child of another part</td>
+</tr>
+<tr>
+<td><a href="../AssessmentPlatform/">AssessmentPlatform</a></td>
+<td>Used to represent the toolset used to perform aspects of the assessment</td>
+</tr>
+<tr>
+<td><a href="../AssessmentSelectControlById/">AssessmentSelectControlById</a></td>
+<td>Select a specific control for inclusion/exclusion in the assessment by litera...</td>
+</tr>
+<tr>
+<td><a href="../AssessmentSubject/">AssessmentSubject</a></td>
+<td>Identifies system elements being assessed, such as components, inventory item...</td>
+</tr>
+<tr>
+<td><a href="../AssessmentSubjectPlaceholder/">AssessmentSubjectPlaceholder</a></td>
+<td>Used when the assessment subjects will be determined as part of one or more o...</td>
+</tr>
+<tr>
+<td><a href="../AssessmentSubjectSource/">AssessmentSubjectSource</a></td>
+<td>Assessment subjects will be identified while conducting the referenced activi...</td>
+</tr>
+<tr>
+<td><a href="../AssociatedActivity/">AssociatedActivity</a></td>
+<td>Identifies an individual activity to be performed as part of a task</td>
+</tr>
+<tr>
+<td><a href="../AssociatedRisk/">AssociatedRisk</a></td>
+<td>Relates the finding to a set of referenced risks</td>
+</tr>
+<tr>
+<td><a href="../AtFrequency/">AtFrequency</a></td>
+<td>The task is intended to occur at the specified frequency</td>
+</tr>
+<tr>
+<td><a href="../Characterization/">Characterization</a></td>
+<td>A collection of descriptive data about the containing object from a specific ...</td>
+</tr>
+<tr>
+<td><a href="../ControlObjectiveSelection/">ControlObjectiveSelection</a></td>
+<td>Identifies the control objectives of the assessment</td>
+</tr>
+<tr>
+<td><a href="../ControlSelection/">ControlSelection</a></td>
+<td>Identifies the controls being assessed</td>
+</tr>
+<tr>
+<td><a href="../EventTiming/">EventTiming</a></td>
+<td>The timing under which the task is intended to occur</td>
+</tr>
+<tr>
+<td><a href="../Facet/">Facet</a></td>
+<td>An individual characteristic that is part of a larger set produced by the sam...</td>
+</tr>
+<tr>
+<td><a href="../Finding/">Finding</a></td>
+<td>Describes an individual finding</td>
+</tr>
+<tr>
+<td><a href="../FindingTarget/">FindingTarget</a></td>
+<td>Captures an assessor's conclusions regarding the degree to which an objective...</td>
+</tr>
+<tr>
+<td><a href="../IdentifiedSubject/">IdentifiedSubject</a></td>
+<td>Used to detail assessment subjects that were identified by this task</td>
+</tr>
+<tr>
+<td><a href="../ImportSSP/">ImportSSP</a></td>
+<td>Used by the assessment plan and POA&amp;M to import information about the system</td>
+</tr>
+<tr>
+<td><a href="../LocalObjective/">LocalObjective</a></td>
+<td>A local definition of a control objective for this assessment</td>
+</tr>
+<tr>
+<td><a href="../LoggedBy/">LoggedBy</a></td>
+<td>Used to indicate who created a log entry in what role</td>
+</tr>
+<tr>
+<td><a href="../MitigatingFactor/">MitigatingFactor</a></td>
+<td>Describes an existing mitigating factor that may affect the overall determina...</td>
+</tr>
+<tr>
+<td><a href="../ObjectiveStatus/">ObjectiveStatus</a></td>
+<td>A determination of if the objective is satisfied or not within a given system</td>
+</tr>
+<tr>
+<td><a href="../Observation/">Observation</a></td>
+<td>Describes an individual observation</td>
+</tr>
+<tr>
+<td><a href="../OnDateCondition/">OnDateCondition</a></td>
+<td>The task is intended to occur on the specified date</td>
+</tr>
+<tr>
+<td><a href="../Origin/">Origin</a></td>
+<td>Identifies the source of the finding, such as a tool, interviewed person, or ...</td>
+</tr>
+<tr>
+<td><a href="../OriginActor/">OriginActor</a></td>
+<td>The actor that produces an observation, a finding, or a risk</td>
+</tr>
+<tr>
+<td><a href="../RelatedObservation/">RelatedObservation</a></td>
+<td>Relates the identified element to a set of referenced observations</td>
+</tr>
+<tr>
+<td><a href="../RelatedTask/">RelatedTask</a></td>
+<td>Identifies an individual task for which the containing object is a consequenc...</td>
+</tr>
+<tr>
+<td><a href="../RelevantEvidence/">RelevantEvidence</a></td>
+<td>Links this observation to relevant evidence</td>
+</tr>
+<tr>
+<td><a href="../RequiredAsset/">RequiredAsset</a></td>
+<td>Identifies an asset required to achieve remediation</td>
+</tr>
+<tr>
+<td><a href="../Response/">Response</a></td>
+<td>Describes either recommended or an actual plan for addressing the risk</td>
+</tr>
+<tr>
+<td><a href="../ReviewedControls/">ReviewedControls</a></td>
+<td>Identifies the controls being assessed and their control objectives</td>
+</tr>
+<tr>
+<td><a href="../Risk/">Risk</a></td>
+<td>An identified risk</td>
+</tr>
+<tr>
+<td><a href="../RiskLog/">RiskLog</a></td>
+<td>A log of all risk-related tasks taken</td>
+</tr>
+<tr>
+<td><a href="../RiskLogEntry/">RiskLogEntry</a></td>
+<td>Identifies an individual risk response that occurred as part of managing an i...</td>
+</tr>
+<tr>
+<td><a href="../RiskResponseReference/">RiskResponseReference</a></td>
+<td>Identifies an individual risk response that this log entry is for</td>
+</tr>
+<tr>
+<td><a href="../SelectObjectiveById/">SelectObjectiveById</a></td>
+<td>Used to select a control objective for inclusion/exclusion</td>
+</tr>
+<tr>
+<td><a href="../SelectSubjectById/">SelectSubjectById</a></td>
+<td>Identifies a set of assessment subjects to include/exclude by UUID</td>
+</tr>
+<tr>
+<td><a href="../Step/">Step</a></td>
+<td>Identifies an individual step in a series of steps related to an activity, su...</td>
+</tr>
+<tr>
+<td><a href="../SubjectReference/">SubjectReference</a></td>
+<td>A human-oriented identifier reference to a resource</td>
+</tr>
+<tr>
+<td><a href="../Task/">Task</a></td>
+<td>Represents a scheduled event or milestone, which may be associated with a ser...</td>
+</tr>
+<tr>
+<td><a href="../TaskDependency/">TaskDependency</a></td>
+<td>Used to indicate that a task is dependent on another task</td>
+</tr>
+<tr>
+<td><a href="../ThreatId/">ThreatId</a></td>
+<td>A pointer, by ID, to an externally-defined threat</td>
+</tr>
+<tr>
+<td><a href="../UsesComponent/">UsesComponent</a></td>
+<td>The set of components that are used by the assessment platform</td>
+</tr>
+<tr>
+<td><a href="../WithinDateRange/">WithinDateRange</a></td>
+<td>The task is intended to occur within the specified date range</td>
+</tr>
+</tbody>
+</table>
 </div>
 
 
@@ -1281,7 +705,7 @@ URI: [AssessmentCommon](AssessmentCommon.md)
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.tabs.link", "header.autohide", "navigation.expand", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "search.suggest", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../../assets/pymdownx-extras/extra-loader-B5CKpNQx.js"></script>
       

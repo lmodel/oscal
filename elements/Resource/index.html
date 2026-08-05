@@ -7,9 +7,9 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://lmodel.github.io/oscal/elements/Resource/" rel="canonical"/>
 <link href="../../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.6.1, mkdocs-material-9.7.6" name="generator"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.7" name="generator"/>
 <title>Class: Resource - oscal</title>
-<link href="../../assets/stylesheets/main.484c7ddc.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/main.ec1eaa64.min.css" rel="stylesheet"/>
 <script src="../../assets/pymdownx-extras/material-extra-theme-2ek1P7jT.js" type="text/javascript"></script>
 <script src="../../assets/pymdownx-extras/material-extra-3rdparty-BUCF4rjN.js" type="text/javascript"></script>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -184,6 +184,101 @@
 <div class="md-sidebar__scrollwrap">
 <div class="md-sidebar__inner">
 <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#slots">
+<span class="md-ellipsis">
+      
+        Slots
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#usages">
+<span class="md-ellipsis">
+      
+        Usages
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#in-subsets">
+<span class="md-ellipsis">
+      
+        In Subsets
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#identifier-and-mapping-information">
+<span class="md-ellipsis">
+      
+        Identifier and Mapping Information
+      
+    </span>
+</a>
+<nav aria-label="Identifier and Mapping Information" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#schema-source">
+<span class="md-ellipsis">
+      
+        Schema Source
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#mappings">
+<span class="md-ellipsis">
+      
+        Mappings
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#linkml-source">
+<span class="md-ellipsis">
+      
+        LinkML Source
+      
+    </span>
+</a>
+<nav aria-label="LinkML Source" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#direct">
+<span class="md-ellipsis">
+      
+        Direct
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#induced">
+<span class="md-ellipsis">
+      
+        Induced
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
 </nav>
 </div>
 </div>
@@ -192,16 +287,8 @@
 <article class="md-content__inner md-typeset">
 <h1 id="class-resource">Class: Resource</h1>
 <p><em>A resource associated with content in the containing document instance. A resource may be directly included in the document using base64 encoding or may point to one or more equivalent internet resources.</em></p>
-<div data-search-exclude="" markdown="1">
-
-
-
-URI: [oscal:Resource](https://w3id.org/lmodel/oscal/Resource)
-
-
-
-
-
+<div>
+<p>URI: <a href="https://w3id.org/lmodel/oscal/Resource">oscal:Resource</a></p>
 <pre class="mermaid"><code> classDiagram
     class Resource
     click Resource href "../Resource/"
@@ -270,80 +357,123 @@ URI: [oscal:Resource](https://w3id.org/lmodel/oscal/Resource)
 
 </code></pre>
 <!-- no inheritance hierarchy -->
-
-## Slots
-
-| Name | Cardinality and Range | Description | Inheritance |
-| ---  | --- | --- | --- |
-| [uuid](uuid.md) | 1 <br/> [UUIDType](UUIDType.md) | A unique identifier for a resource | direct |
-| [title](title.md) | 0..1 <br/> [MarkupLineType](MarkupLineType.md) | An optional name given to the resource, which may be used by a tool for displ... | direct |
-| [description](description.md) | 0..1 <br/> [MarkupMultilineType](MarkupMultilineType.md) | An optional short summary of the resource used to indicate the purpose of the... | direct |
-| [props](props.md) | * <br/> [ResourceProperty](ResourceProperty.md) | A list of properties | direct |
-| [document_ids](document_ids.md) | * <br/> [DocumentId](DocumentId.md) | Document identifiers qualified by an identifier scheme | direct |
-| [remarks](remarks.md) | 0..1 <br/> [MarkupMultilineType](MarkupMultilineType.md) | Additional commentary about the containing object | direct |
-| [citation](citation.md) | 0..1 <br/> [Citation](Citation.md) | An optional citation consisting of end note text using structured markup | direct |
-| [rlinks](rlinks.md) | * <br/> [ResourceLink](ResourceLink.md) | A URL-based pointer to an external resource with an optional hash for verific... | direct |
-| [base64](base64.md) | 0..1 <br/> [Base64Resource](Base64Resource.md) | A resource encoded using the Base64 alphabet defined by RFC 2045 | direct |
-
-
-
-
-
-## Usages
-
-| used by | used in | type | used |
-| ---  | --- | --- | --- |
-| [BackMatter](BackMatter.md) | [resources](resources.md) | range | [Resource](Resource.md) |
-
-
-
-
-
-
-
-
-## In Subsets
-
-
-* [OscalBackMatter](OscalBackMatter.md)
-
-
-
-
-
-
-## Identifier and Mapping Information
-
-
-
-
-
-### Schema Source
-
-
-* from schema: https://w3id.org/lmodel/oscal
-
-
-
-
-## Mappings
-
-| Mapping Type | Mapped Value |
-| ---  | ---  |
-| self | oscal:Resource |
-| native | oscal:Resource |
-
-
-
-
-
-
-## LinkML Source
-
+<h2 id="slots">Slots</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Cardinality and Range</th>
+<th>Description</th>
+<th>Inheritance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../uuid/">uuid</a></td>
+<td>1 <br/> <a href="../UUIDType/">UUIDType</a></td>
+<td>A unique identifier for a resource</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../title/">title</a></td>
+<td>0..1 <br/> <a href="../MarkupLineType/">MarkupLineType</a></td>
+<td>An optional name given to the resource, which may be used by a tool for displ...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../description/">description</a></td>
+<td>0..1 <br/> <a href="../MarkupMultilineType/">MarkupMultilineType</a></td>
+<td>An optional short summary of the resource used to indicate the purpose of the...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../props/">props</a></td>
+<td>* <br/> <a href="../ResourceProperty/">ResourceProperty</a></td>
+<td>A list of properties</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../document_ids/">document_ids</a></td>
+<td>* <br/> <a href="../DocumentId/">DocumentId</a></td>
+<td>Document identifiers qualified by an identifier scheme</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../remarks/">remarks</a></td>
+<td>0..1 <br/> <a href="../MarkupMultilineType/">MarkupMultilineType</a></td>
+<td>Additional commentary about the containing object</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../citation/">citation</a></td>
+<td>0..1 <br/> <a href="../Citation/">Citation</a></td>
+<td>An optional citation consisting of end note text using structured markup</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../rlinks/">rlinks</a></td>
+<td>* <br/> <a href="../ResourceLink/">ResourceLink</a></td>
+<td>A URL-based pointer to an external resource with an optional hash for verific...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../base64/">base64</a></td>
+<td>0..1 <br/> <a href="../Base64Resource/">Base64Resource</a></td>
+<td>A resource encoded using the Base64 alphabet defined by RFC 2045</td>
+<td>direct</td>
+</tr>
+</tbody>
+</table>
+<h2 id="usages">Usages</h2>
+<table>
+<thead>
+<tr>
+<th>used by</th>
+<th>used in</th>
+<th>type</th>
+<th>used</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../BackMatter/">BackMatter</a></td>
+<td><a href="../resources/">resources</a></td>
+<td>range</td>
+<td><a href="./">Resource</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="in-subsets">In Subsets</h2>
+<ul>
+<li><a href="../OscalBackMatter/">OscalBackMatter</a></li>
+</ul>
+<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="schema-source">Schema Source</h3>
+<ul>
+<li>from schema: https://w3id.org/lmodel/oscal</li>
+</ul>
+<h2 id="mappings">Mappings</h2>
+<table>
+<thead>
+<tr>
+<th>Mapping Type</th>
+<th>Mapped Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>self</td>
+<td>oscal:Resource</td>
+</tr>
+<tr>
+<td>native</td>
+<td>oscal:Resource</td>
+</tr>
+</tbody>
+</table>
+<h2 id="linkml-source">LinkML Source</h2>
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
-
-### Direct
-
+<h3 id="direct">Direct</h3>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Resource</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A resource associated with content in the containing document instance.</span>
@@ -383,9 +513,7 @@ URI: [oscal:Resource](https://w3id.org/lmodel/oscal/Resource)
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DocumentId</span>
 </code></pre></div>
 </details>
-
-### Induced
-
+<h3 id="induced">Induced</h3>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Resource</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A resource associated with content in the containing document instance.</span>
@@ -710,7 +838,8 @@ URI: [oscal:Resource](https://w3id.org/lmodel/oscal/Resource)
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Base64Resource</span>
 <span class="w">    </span><span class="nt">inlined</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
-</details></div>
+</details>
+</div>
 </article>
 </div>
 <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
@@ -742,7 +871,7 @@ URI: [oscal:Resource](https://w3id.org/lmodel/oscal/Resource)
 </div>
 <div class="md-progress" data-md-component="progress" role="progressbar"></div>
 <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.tabs.link", "header.autohide", "navigation.expand", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "search.suggest", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
-<script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+<script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
 <script src="../../assets/pymdownx-extras/extra-loader-B5CKpNQx.js"></script>
 </body>
 </html>

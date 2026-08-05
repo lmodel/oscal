@@ -7,9 +7,9 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://lmodel.github.io/oscal/elements/LeveragedAuthorization/" rel="canonical"/>
 <link href="../../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.6.1, mkdocs-material-9.7.6" name="generator"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.7" name="generator"/>
 <title>Class: LeveragedAuthorization - oscal</title>
-<link href="../../assets/stylesheets/main.484c7ddc.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/main.ec1eaa64.min.css" rel="stylesheet"/>
 <script src="../../assets/pymdownx-extras/material-extra-theme-2ek1P7jT.js" type="text/javascript"></script>
 <script src="../../assets/pymdownx-extras/material-extra-3rdparty-BUCF4rjN.js" type="text/javascript"></script>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -184,6 +184,101 @@
 <div class="md-sidebar__scrollwrap">
 <div class="md-sidebar__inner">
 <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#slots">
+<span class="md-ellipsis">
+      
+        Slots
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#usages">
+<span class="md-ellipsis">
+      
+        Usages
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#in-subsets">
+<span class="md-ellipsis">
+      
+        In Subsets
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#identifier-and-mapping-information">
+<span class="md-ellipsis">
+      
+        Identifier and Mapping Information
+      
+    </span>
+</a>
+<nav aria-label="Identifier and Mapping Information" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#schema-source">
+<span class="md-ellipsis">
+      
+        Schema Source
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#mappings">
+<span class="md-ellipsis">
+      
+        Mappings
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#linkml-source">
+<span class="md-ellipsis">
+      
+        LinkML Source
+      
+    </span>
+</a>
+<nav aria-label="LinkML Source" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#direct">
+<span class="md-ellipsis">
+      
+        Direct
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#induced">
+<span class="md-ellipsis">
+      
+        Induced
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
 </nav>
 </div>
 </div>
@@ -192,16 +287,8 @@
 <article class="md-content__inner md-typeset">
 <h1 id="class-leveragedauthorization">Class: LeveragedAuthorization</h1>
 <p><em>A description of another authorized system from which this system inherits capabilities that satisfy security requirements. Another term for this concept is a common control provider.</em></p>
-<div data-search-exclude="" markdown="1">
-
-
-
-URI: [oscal:LeveragedAuthorization](https://w3id.org/lmodel/oscal/LeveragedAuthorization)
-
-
-
-
-
+<div>
+<p>URI: <a href="https://w3id.org/lmodel/oscal/LeveragedAuthorization">oscal:LeveragedAuthorization</a></p>
 <pre class="mermaid"><code> classDiagram
     class LeveragedAuthorization
     click LeveragedAuthorization href "../LeveragedAuthorization/"
@@ -239,78 +326,111 @@ URI: [oscal:LeveragedAuthorization](https://w3id.org/lmodel/oscal/LeveragedAutho
 
 </code></pre>
 <!-- no inheritance hierarchy -->
-
-## Slots
-
-| Name | Cardinality and Range | Description | Inheritance |
-| ---  | --- | --- | --- |
-| [uuid](uuid.md) | 1 <br/> [UUIDType](UUIDType.md) | A machine-oriented, globally unique identifier with a cross-instance scope | direct |
-| [title](title.md) | 1 <br/> [MarkupLineType](MarkupLineType.md) | A human-readable name or title | direct |
-| [props](props.md) | * <br/> [Property](Property.md) | A list of properties | direct |
-| [links](links.md) | * <br/> [SspLeveragedAuthorizationLink](SspLeveragedAuthorizationLink.md) | A list of links | direct |
-| [party_uuid](party_uuid.md) | 1 <br/> [UUIDType](UUIDType.md) | A machine-oriented identifier reference to the party who is making the log en... | direct |
-| [date_authorized](date_authorized.md) | 1 <br/> [String](String.md) | The date the system received its authorization | direct |
-| [remarks](remarks.md) | 0..1 <br/> [MarkupMultilineType](MarkupMultilineType.md) | Additional commentary about the containing object | direct |
-
-
-
-
-
-## Usages
-
-| used by | used in | type | used |
-| ---  | --- | --- | --- |
-| [SystemImplementation](SystemImplementation.md) | [leveraged_authorizations](leveraged_authorizations.md) | range | [LeveragedAuthorization](LeveragedAuthorization.md) |
-
-
-
-
-
-
-
-
-## In Subsets
-
-
-* [Ssp](Ssp.md)
-
-
-
-
-
-
-## Identifier and Mapping Information
-
-
-
-
-
-### Schema Source
-
-
-* from schema: https://w3id.org/lmodel/oscal
-
-
-
-
-## Mappings
-
-| Mapping Type | Mapped Value |
-| ---  | ---  |
-| self | oscal:LeveragedAuthorization |
-| native | oscal:LeveragedAuthorization |
-
-
-
-
-
-
-## LinkML Source
-
+<h2 id="slots">Slots</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Cardinality and Range</th>
+<th>Description</th>
+<th>Inheritance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../uuid/">uuid</a></td>
+<td>1 <br/> <a href="../UUIDType/">UUIDType</a></td>
+<td>A machine-oriented, globally unique identifier with a cross-instance scope</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../title/">title</a></td>
+<td>1 <br/> <a href="../MarkupLineType/">MarkupLineType</a></td>
+<td>A human-readable name or title</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../props/">props</a></td>
+<td>* <br/> <a href="../Property/">Property</a></td>
+<td>A list of properties</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../links/">links</a></td>
+<td>* <br/> <a href="../SspLeveragedAuthorizationLink/">SspLeveragedAuthorizationLink</a></td>
+<td>A list of links</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../party_uuid/">party_uuid</a></td>
+<td>1 <br/> <a href="../UUIDType/">UUIDType</a></td>
+<td>A machine-oriented identifier reference to the party who is making the log en...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../date_authorized/">date_authorized</a></td>
+<td>1 <br/> <a href="../String/">String</a></td>
+<td>The date the system received its authorization</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../remarks/">remarks</a></td>
+<td>0..1 <br/> <a href="../MarkupMultilineType/">MarkupMultilineType</a></td>
+<td>Additional commentary about the containing object</td>
+<td>direct</td>
+</tr>
+</tbody>
+</table>
+<h2 id="usages">Usages</h2>
+<table>
+<thead>
+<tr>
+<th>used by</th>
+<th>used in</th>
+<th>type</th>
+<th>used</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../SystemImplementation/">SystemImplementation</a></td>
+<td><a href="../leveraged_authorizations/">leveraged_authorizations</a></td>
+<td>range</td>
+<td><a href="./">LeveragedAuthorization</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="in-subsets">In Subsets</h2>
+<ul>
+<li><a href="../Ssp/">Ssp</a></li>
+</ul>
+<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="schema-source">Schema Source</h3>
+<ul>
+<li>from schema: https://w3id.org/lmodel/oscal</li>
+</ul>
+<h2 id="mappings">Mappings</h2>
+<table>
+<thead>
+<tr>
+<th>Mapping Type</th>
+<th>Mapped Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>self</td>
+<td>oscal:LeveragedAuthorization</td>
+</tr>
+<tr>
+<td>native</td>
+<td>oscal:LeveragedAuthorization</td>
+</tr>
+</tbody>
+</table>
+<h2 id="linkml-source">LinkML Source</h2>
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
-
-### Direct
-
+<h3 id="direct">Direct</h3>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LeveragedAuthorization</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A description of another authorized system from which this system inherits</span>
@@ -345,9 +465,7 @@ URI: [oscal:LeveragedAuthorization](https://w3id.org/lmodel/oscal/LeveragedAutho
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SspLeveragedAuthorizationLink</span>
 </code></pre></div>
 </details>
-
-### Induced
-
+<h3 id="induced">Induced</h3>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LeveragedAuthorization</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A description of another authorized system from which this system inherits</span>
@@ -619,7 +737,8 @@ URI: [oscal:LeveragedAuthorization](https://w3id.org/lmodel/oscal/LeveragedAutho
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RelatedFinding</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MarkupMultilineType</span>
 </code></pre></div>
-</details></div>
+</details>
+</div>
 </article>
 </div>
 <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
@@ -651,7 +770,7 @@ URI: [oscal:LeveragedAuthorization](https://w3id.org/lmodel/oscal/LeveragedAutho
 </div>
 <div class="md-progress" data-md-component="progress" role="progressbar"></div>
 <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.tabs.link", "header.autohide", "navigation.expand", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "search.suggest", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
-<script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+<script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
 <script src="../../assets/pymdownx-extras/extra-loader-B5CKpNQx.js"></script>
 </body>
 </html>

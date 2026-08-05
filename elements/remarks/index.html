@@ -17,7 +17,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -25,7 +25,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
       
 
@@ -358,6 +358,114 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#applicable-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Applicable Classes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Properties
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#type-and-range" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Type and Range
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cardinality-and-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cardinality and Requirements
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#identifier-and-mapping-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Identifier and Mapping Information
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Identifier and Mapping Information">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#schema-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schema Source
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mappings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mappings
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linkml-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LinkML Source
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -379,191 +487,656 @@
 
 <h1 id="slot-remarks">Slot: remarks</h1>
 <p><em>Additional commentary about the containing object.</em></p>
-<div data-search-exclude markdown="1">
-
-
-
-URI: [oscal:remarks](https://w3id.org/lmodel/oscal/remarks)
+<div>
+<p>URI: <a href="https://w3id.org/lmodel/oscal/remarks">oscal:remarks</a></p>
 <!-- no inheritance hierarchy -->
-
-
-
-
-
-## Applicable Classes
-
-| Name | Description | Modifies Slot |
-| --- | --- | --- |
-| [OscalCommon](OscalCommon.md) | Mixin providing props, links, and remarks slots common to most OSCAL objects |  no  |
-| [Property](Property.md) | An attribute, characteristic, or quality of the containing object expressed a... |  no  |
-| [Resource](Resource.md) | A resource associated with content in the containing document instance |  no  |
-| [ConstraintTest](ConstraintTest.md) | A test expression which is expected to be evaluated by a tool |  no  |
-| [ControlMatching](ControlMatching.md) | Selecting a set of controls by matching their IDs with a wildcard pattern |  no  |
-| [Removal](Removal.md) | Specifies objects to be removed from a control based on aspects of the object... |  no  |
-| [ImportSSP](ImportSSP.md) | Used by the assessment plan and POA&M to import information about the system |  no  |
-| [LocalDefinitions](LocalDefinitions.md) | Used to define data objects that are used in the assessment plan, that do not... |  no  |
-| [SelectObjectiveById](SelectObjectiveById.md) | Used to select a control objective for inclusion/exclusion |  no  |
-| [AssessmentSubjectSource](AssessmentSubjectSource.md) | Assessment subjects will be identified while conducting the referenced activi... |  no  |
-| [OnDateCondition](OnDateCondition.md) | The task is intended to occur on the specified date |  no  |
-| [WithinDateRange](WithinDateRange.md) | The task is intended to occur within the specified date range |  no  |
-| [AtFrequency](AtFrequency.md) | The task is intended to occur at the specified frequency |  no  |
-| [TaskDependency](TaskDependency.md) | Used to indicate that a task is dependent on another task |  no  |
-| [SetParameter](SetParameter.md) | Identifies the parameter that will be set by the enclosed value |  no  |
-| [ComponentStatus](ComponentStatus.md) | Describes the operational status of the system component |  no  |
-| [PortRange](PortRange.md) | Where applicable, the transport layer protocol port range |  no  |
-| [ImplementationStatus](ImplementationStatus.md) | Indicates the degree to which a given control is implemented |  no  |
-| [ObjectiveStatus](ObjectiveStatus.md) | A determination of if the objective is satisfied or not within a given system |  no  |
-| [RelatedObservation](RelatedObservation.md) | Relates the identified element to a set of referenced observations |  no  |
-| [AssociatedRisk](AssociatedRisk.md) | Relates the finding to a set of referenced risks |  no  |
-| [LoggedBy](LoggedBy.md) | Used to indicate who created a log entry in what role |  no  |
-| [ImportProfile](ImportProfile.md) | Used to import the OSCAL profile representing the system's control baseline |  no  |
-| [SystemCharacteristics](SystemCharacteristics.md) | Contains the characteristics of the system, such as its name, purpose, and se... |  no  |
-| [SystemStatus](SystemStatus.md) | Describes the operational status of the system |  no  |
-| [AuthorizationBoundary](AuthorizationBoundary.md) | A description of this system's authorization boundary, optionally supplemente... |  no  |
-| [Diagram](Diagram.md) | A graphic that provides a visual representation the system, or some aspect of... |  no  |
-| [NetworkArchitecture](NetworkArchitecture.md) | A description of the system's network architecture, optionally supplemented w... |  no  |
-| [DataFlow](DataFlow.md) | A description of the logical flow of information within the system and across... |  no  |
-| [SystemImplementation](SystemImplementation.md) | Provides information as to how the system is implemented |  no  |
-| [LeveragedAuthorization](LeveragedAuthorization.md) | A description of another authorized system from which this system inherits ca... |  no  |
-| [SspImplementedRequirement](SspImplementedRequirement.md) | Describes how the system satisfies an individual control |  no  |
-| [SspStatement](SspStatement.md) | Identifies which statements within a control are addressed |  no  |
-| [ByComponent](ByComponent.md) | Defines how the referenced component implements a set of controls |  no  |
-| [ProvidedControlImplementation](ProvidedControlImplementation.md) | Describes a capability which may be inherited by a leveraging system |  no  |
-| [ControlResponsibility](ControlResponsibility.md) | Describes a control implementation responsibility imposed on a leveraging sys... |  no  |
-| [InheritedControlImplementation](InheritedControlImplementation.md) | Describes a control implementation inherited by a leveraging system |  no  |
-| [SatisfiedControlImplementation](SatisfiedControlImplementation.md) | Describes how this system satisfies a responsibility imposed by a leveraged s... |  no  |
-| [ImportAssessmentPlan](ImportAssessmentPlan.md) | Used by assessment-results to import information about the original plan for ... |  no  |
-| [AssessmentResultsLocalDefinitions](AssessmentResultsLocalDefinitions.md) | Used to define data objects that are referenced by the assessment results but... |  no  |
-| [ImportComponentDefinition](ImportComponentDefinition.md) | Loads a component definition from another resource |  no  |
-| [ImplementedRequirement](ImplementedRequirement.md) | Describes how the containing component or capability implements an individual... |  no  |
-| [ImplementedControlStatement](ImplementedControlStatement.md) | Identifies which statements within a control are addressed |  no  |
-| [QualifierItem](QualifierItem.md) | A qualifier describing requirements or incompatibilities |  no  |
-| [PoamLocalDefinitions](PoamLocalDefinitions.md) | Allows components and inventory items to be defined within the POA&M for case... |  no  |
-| [RelatedFinding](RelatedFinding.md) | Relates a POA&M item to a referenced finding |  no  |
-| [Metadata](Metadata.md) | Provides information about the containing document, and defines concepts shar... |  no  |
-| [Revision](Revision.md) | An entry in a sequential list of revisions to the containing document |  no  |
-| [Role](Role.md) | Defines a function, which might be assigned to a party in a specific situatio... |  no  |
-| [Location](Location.md) | A physical point of presence, which may be associated with people, organizati... |  no  |
-| [Party](Party.md) | An organization or person, which may be associated with roles or other concep... |  no  |
-| [ResponsibleParty](ResponsibleParty.md) | A reference to a set of persons and/or organizations that have responsibility... |  no  |
-| [ResponsibleRole](ResponsibleRole.md) | A reference to a role with responsibility for performing a function relative ... |  no  |
-| [Action](Action.md) | An action applied by a role within a given party to the content |  no  |
-| [MetadataProperty](MetadataProperty.md) | Metadata-scoped OSCAL property |  no  |
-| [RevisionProperty](RevisionProperty.md) | Revision-scoped OSCAL property |  no  |
-| [LocationProperty](LocationProperty.md) | Location-scoped OSCAL property |  no  |
-| [PartyProperty](PartyProperty.md) | Party-scoped OSCAL property |  no  |
-| [ResourceProperty](ResourceProperty.md) | Back-matter resource-scoped OSCAL property |  no  |
-| [PartProperty](PartProperty.md) | Control-common part-scoped OSCAL property |  no  |
-| [ParameterProperty](ParameterProperty.md) | Control-common parameter-scoped OSCAL property |  no  |
-| [Parameter](Parameter.md) | Parameters provide a mechanism for the dynamic assignment of value(s) in a co... |  no  |
-| [ProfileGroup](ProfileGroup.md) | A group of (selected) controls or of groups of controls within a profile cust... |  no  |
-| [ProfileAlterationProperty](ProfileAlterationProperty.md) | OSCAL property entries allowed in profile modify additions |  no  |
-| [ReviewedControls](ReviewedControls.md) | Identifies the controls being assessed and their control objectives |  no  |
-| [ControlSelection](ControlSelection.md) | Identifies the controls being assessed |  no  |
-| [ControlObjectiveSelection](ControlObjectiveSelection.md) | Identifies the control objectives of the assessment |  no  |
-| [AssessmentSubject](AssessmentSubject.md) | Identifies system elements being assessed, such as components, inventory item... |  no  |
-| [SelectSubjectById](SelectSubjectById.md) | Identifies a set of assessment subjects to include/exclude by UUID |  no  |
-| [SubjectReference](SubjectReference.md) | A human-oriented identifier reference to a resource |  no  |
-| [AssessmentSubjectPlaceholder](AssessmentSubjectPlaceholder.md) | Used when the assessment subjects will be determined as part of one or more o... |  no  |
-| [AssessmentPlatform](AssessmentPlatform.md) | Used to represent the toolset used to perform aspects of the assessment |  no  |
-| [UsesComponent](UsesComponent.md) | The set of components that are used by the assessment platform |  no  |
-| [LocalObjective](LocalObjective.md) | A local definition of a control objective for this assessment |  no  |
-| [AssessmentMethod](AssessmentMethod.md) | A local definition of a control objective |  no  |
-| [Activity](Activity.md) | Identifies an assessment or related process that can be performed |  no  |
-| [Step](Step.md) | Identifies an individual step in a series of steps related to an activity, su... |  no  |
-| [Task](Task.md) | Represents a scheduled event or milestone, which may be associated with a ser... |  no  |
-| [AssociatedActivity](AssociatedActivity.md) | Identifies an individual activity to be performed as part of a task |  no  |
-| [SystemComponent](SystemComponent.md) | A defined component that can be part of an implemented system |  no  |
-| [SystemUser](SystemUser.md) | A type of user that interacts with the system based on an associated role |  no  |
-| [InventoryItem](InventoryItem.md) | A single managed inventory item within the system |  no  |
-| [ImplementedComponent](ImplementedComponent.md) | The set of components that are implemented in a given system inventory item |  no  |
-| [ImplementationCommonProperty](ImplementationCommonProperty.md) | Implementation-common scoped OSCAL property |  no  |
-| [ImplementationResponsibleRole](ImplementationResponsibleRole.md) | Implementation-common scoped responsible role |  no  |
-| [ImplementationResponsibleParty](ImplementationResponsibleParty.md) | Implementation-common scoped responsible party |  no  |
-| [RelatedTask](RelatedTask.md) | Identifies an individual task for which the containing object is a consequenc... |  no  |
-| [Observation](Observation.md) | Describes an individual observation |  no  |
-| [RelevantEvidence](RelevantEvidence.md) | Links this observation to relevant evidence |  no  |
-| [Finding](Finding.md) | Describes an individual finding |  no  |
-| [FindingTarget](FindingTarget.md) | Captures an assessor's conclusions regarding the degree to which an objective... |  no  |
-| [Facet](Facet.md) | An individual characteristic that is part of a larger set produced by the sam... |  no  |
-| [Response](Response.md) | Describes either recommended or an actual plan for addressing the risk |  no  |
-| [RequiredAsset](RequiredAsset.md) | Identifies an asset required to achieve remediation |  no  |
-| [RiskLogEntry](RiskLogEntry.md) | Identifies an individual risk response that occurred as part of managing an i... |  no  |
-| [RiskResponseReference](RiskResponseReference.md) | Identifies an individual risk response that this log entry is for |  no  |
-| [SspSystemCharacteristicsProp](SspSystemCharacteristicsProp.md) | SSP-scoped property used in system characteristics |  no  |
-| [SspSystemInformationProp](SspSystemInformationProp.md) | SSP-scoped property used in system information |  no  |
-| [SspControlOriginationProp](SspControlOriginationProp.md) | SSP-scoped property used in implemented requirement and by-component contexts |  no  |
-| [SspAllowsAuthenticatedScanProp](SspAllowsAuthenticatedScanProp.md) | SSP-scoped property used for component and inventory allows-authenticated-sca... |  no  |
-| [SspSystemCharacteristicsResponsibleParty](SspSystemCharacteristicsResponsibleParty.md) | SSP-scoped responsible party for system characteristics |  no  |
-| [SspImplementedRequirementResponsibleRole](SspImplementedRequirementResponsibleRole.md) | SSP-scoped responsible role used by implemented requirement and statement con... |  no  |
-| [SspByComponentResponsibleRole](SspByComponentResponsibleRole.md) | SSP-scoped responsible role used by by-component contexts |  no  |
-| [SspSystemComponent](SspSystemComponent.md) | SSP-scoped system component with allows-authenticated-scan property typing |  no  |
-| [SspInventoryItem](SspInventoryItem.md) | SSP-scoped inventory item with allows-authenticated-scan property typing |  no  |
-| [Result](Result.md) | Identifies all of the assessment observations and findings, initial and resid... |  no  |
-| [AssessmentLogEntry](AssessmentLogEntry.md) | Identifies the result of an action and/or task that occurred as part of execu... |  no  |
-| [DefinedComponent](DefinedComponent.md) | A defined component that can be part of an implemented system |  no  |
-| [Capability](Capability.md) | A grouping of other components and/or capabilities |  no  |
-| [MappingProvenance](MappingProvenance.md) | Mapping-level provenance details and mapping defaults |  no  |
-| [Mapping](Mapping.md) | A mapping between two mapped resources |  no  |
-| [Map](Map.md) | A relationship-based mapping entry between source and target sets |  no  |
-| [MappingItem](MappingItem.md) | A source or target item participating in a mapping entry |  no  |
-| [MappingResourceReference](MappingResourceReference.md) | A reference to the source or target resource for a mapping |  no  |
-| [PoamItem](PoamItem.md) | Describes an individual POA&M item |  no  |
-
-
-
-
-
-
-## Properties
-
-### Type and Range
-
-| Property | Value |
-| --- | --- |
-| Range | [MarkupMultilineType](MarkupMultilineType.md) |
-| Domain Of | [OscalCommon](OscalCommon.md), [Property](Property.md), [Resource](Resource.md), [ConstraintTest](ConstraintTest.md), [ControlMatching](ControlMatching.md), [Removal](Removal.md), [ImportSSP](ImportSSP.md), [LocalDefinitions](LocalDefinitions.md), [SelectObjectiveById](SelectObjectiveById.md), [AssessmentSubjectSource](AssessmentSubjectSource.md), [OnDateCondition](OnDateCondition.md), [WithinDateRange](WithinDateRange.md), [AtFrequency](AtFrequency.md), [TaskDependency](TaskDependency.md), [SetParameter](SetParameter.md), [ComponentStatus](ComponentStatus.md), [PortRange](PortRange.md), [ImplementationStatus](ImplementationStatus.md), [ObjectiveStatus](ObjectiveStatus.md), [RelatedObservation](RelatedObservation.md), [AssociatedRisk](AssociatedRisk.md), [LoggedBy](LoggedBy.md), [ImportProfile](ImportProfile.md), [SystemCharacteristics](SystemCharacteristics.md), [SystemStatus](SystemStatus.md), [AuthorizationBoundary](AuthorizationBoundary.md), [Diagram](Diagram.md), [NetworkArchitecture](NetworkArchitecture.md), [DataFlow](DataFlow.md), [SystemImplementation](SystemImplementation.md), [LeveragedAuthorization](LeveragedAuthorization.md), [SspImplementedRequirement](SspImplementedRequirement.md), [SspStatement](SspStatement.md), [ByComponent](ByComponent.md), [ProvidedControlImplementation](ProvidedControlImplementation.md), [ControlResponsibility](ControlResponsibility.md), [InheritedControlImplementation](InheritedControlImplementation.md), [SatisfiedControlImplementation](SatisfiedControlImplementation.md), [ImportAssessmentPlan](ImportAssessmentPlan.md), [AssessmentResultsLocalDefinitions](AssessmentResultsLocalDefinitions.md), [ImportComponentDefinition](ImportComponentDefinition.md), [ImplementedRequirement](ImplementedRequirement.md), [ImplementedControlStatement](ImplementedControlStatement.md), [QualifierItem](QualifierItem.md), [PoamLocalDefinitions](PoamLocalDefinitions.md), [RelatedFinding](RelatedFinding.md) |
-
-### Cardinality and Requirements
-
-| Property | Value |
-| --- | --- |
-
-
-
-
-
-
-
-
-
-
-## Identifier and Mapping Information
-
-
-
-
-
-### Schema Source
-
-
-* from schema: https://w3id.org/lmodel/oscal
-
-
-
-
-## Mappings
-
-| Mapping Type | Mapped Value |
-| ---  | ---  |
-| self | oscal:remarks |
-| native | oscal:remarks |
-
-
-
-
-## LinkML Source
-
+<h2 id="applicable-classes">Applicable Classes</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Modifies Slot</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../OscalCommon/">OscalCommon</a></td>
+<td>Mixin providing props, links, and remarks slots common to most OSCAL objects</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Property/">Property</a></td>
+<td>An attribute, characteristic, or quality of the containing object expressed a...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Resource/">Resource</a></td>
+<td>A resource associated with content in the containing document instance</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ConstraintTest/">ConstraintTest</a></td>
+<td>A test expression which is expected to be evaluated by a tool</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ControlMatching/">ControlMatching</a></td>
+<td>Selecting a set of controls by matching their IDs with a wildcard pattern</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Removal/">Removal</a></td>
+<td>Specifies objects to be removed from a control based on aspects of the object...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ImportSSP/">ImportSSP</a></td>
+<td>Used by the assessment plan and POA&amp;M to import information about the system</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../LocalDefinitions/">LocalDefinitions</a></td>
+<td>Used to define data objects that are used in the assessment plan, that do not...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../SelectObjectiveById/">SelectObjectiveById</a></td>
+<td>Used to select a control objective for inclusion/exclusion</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../AssessmentSubjectSource/">AssessmentSubjectSource</a></td>
+<td>Assessment subjects will be identified while conducting the referenced activi...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../OnDateCondition/">OnDateCondition</a></td>
+<td>The task is intended to occur on the specified date</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../WithinDateRange/">WithinDateRange</a></td>
+<td>The task is intended to occur within the specified date range</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../AtFrequency/">AtFrequency</a></td>
+<td>The task is intended to occur at the specified frequency</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../TaskDependency/">TaskDependency</a></td>
+<td>Used to indicate that a task is dependent on another task</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../SetParameter/">SetParameter</a></td>
+<td>Identifies the parameter that will be set by the enclosed value</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ComponentStatus/">ComponentStatus</a></td>
+<td>Describes the operational status of the system component</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../PortRange/">PortRange</a></td>
+<td>Where applicable, the transport layer protocol port range</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ImplementationStatus/">ImplementationStatus</a></td>
+<td>Indicates the degree to which a given control is implemented</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ObjectiveStatus/">ObjectiveStatus</a></td>
+<td>A determination of if the objective is satisfied or not within a given system</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../RelatedObservation/">RelatedObservation</a></td>
+<td>Relates the identified element to a set of referenced observations</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../AssociatedRisk/">AssociatedRisk</a></td>
+<td>Relates the finding to a set of referenced risks</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../LoggedBy/">LoggedBy</a></td>
+<td>Used to indicate who created a log entry in what role</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ImportProfile/">ImportProfile</a></td>
+<td>Used to import the OSCAL profile representing the system's control baseline</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../SystemCharacteristics/">SystemCharacteristics</a></td>
+<td>Contains the characteristics of the system, such as its name, purpose, and se...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../SystemStatus/">SystemStatus</a></td>
+<td>Describes the operational status of the system</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../AuthorizationBoundary/">AuthorizationBoundary</a></td>
+<td>A description of this system's authorization boundary, optionally supplemente...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Diagram/">Diagram</a></td>
+<td>A graphic that provides a visual representation the system, or some aspect of...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../NetworkArchitecture/">NetworkArchitecture</a></td>
+<td>A description of the system's network architecture, optionally supplemented w...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../DataFlow/">DataFlow</a></td>
+<td>A description of the logical flow of information within the system and across...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../SystemImplementation/">SystemImplementation</a></td>
+<td>Provides information as to how the system is implemented</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../LeveragedAuthorization/">LeveragedAuthorization</a></td>
+<td>A description of another authorized system from which this system inherits ca...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../SspImplementedRequirement/">SspImplementedRequirement</a></td>
+<td>Describes how the system satisfies an individual control</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../SspStatement/">SspStatement</a></td>
+<td>Identifies which statements within a control are addressed</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ByComponent/">ByComponent</a></td>
+<td>Defines how the referenced component implements a set of controls</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ProvidedControlImplementation/">ProvidedControlImplementation</a></td>
+<td>Describes a capability which may be inherited by a leveraging system</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ControlResponsibility/">ControlResponsibility</a></td>
+<td>Describes a control implementation responsibility imposed on a leveraging sys...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../InheritedControlImplementation/">InheritedControlImplementation</a></td>
+<td>Describes a control implementation inherited by a leveraging system</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../SatisfiedControlImplementation/">SatisfiedControlImplementation</a></td>
+<td>Describes how this system satisfies a responsibility imposed by a leveraged s...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ImportAssessmentPlan/">ImportAssessmentPlan</a></td>
+<td>Used by assessment-results to import information about the original plan for ...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../AssessmentResultsLocalDefinitions/">AssessmentResultsLocalDefinitions</a></td>
+<td>Used to define data objects that are referenced by the assessment results but...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ImportComponentDefinition/">ImportComponentDefinition</a></td>
+<td>Loads a component definition from another resource</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ImplementedRequirement/">ImplementedRequirement</a></td>
+<td>Describes how the containing component or capability implements an individual...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ImplementedControlStatement/">ImplementedControlStatement</a></td>
+<td>Identifies which statements within a control are addressed</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../QualifierItem/">QualifierItem</a></td>
+<td>A qualifier describing requirements or incompatibilities</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../PoamLocalDefinitions/">PoamLocalDefinitions</a></td>
+<td>Allows components and inventory items to be defined within the POA&amp;M for case...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../RelatedFinding/">RelatedFinding</a></td>
+<td>Relates a POA&amp;M item to a referenced finding</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Metadata/">Metadata</a></td>
+<td>Provides information about the containing document, and defines concepts shar...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Revision/">Revision</a></td>
+<td>An entry in a sequential list of revisions to the containing document</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Role/">Role</a></td>
+<td>Defines a function, which might be assigned to a party in a specific situatio...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Location/">Location</a></td>
+<td>A physical point of presence, which may be associated with people, organizati...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Party/">Party</a></td>
+<td>An organization or person, which may be associated with roles or other concep...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ResponsibleParty/">ResponsibleParty</a></td>
+<td>A reference to a set of persons and/or organizations that have responsibility...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ResponsibleRole/">ResponsibleRole</a></td>
+<td>A reference to a role with responsibility for performing a function relative ...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Action/">Action</a></td>
+<td>An action applied by a role within a given party to the content</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../MetadataProperty/">MetadataProperty</a></td>
+<td>Metadata-scoped OSCAL property</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../RevisionProperty/">RevisionProperty</a></td>
+<td>Revision-scoped OSCAL property</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../LocationProperty/">LocationProperty</a></td>
+<td>Location-scoped OSCAL property</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../PartyProperty/">PartyProperty</a></td>
+<td>Party-scoped OSCAL property</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ResourceProperty/">ResourceProperty</a></td>
+<td>Back-matter resource-scoped OSCAL property</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../PartProperty/">PartProperty</a></td>
+<td>Control-common part-scoped OSCAL property</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ParameterProperty/">ParameterProperty</a></td>
+<td>Control-common parameter-scoped OSCAL property</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Parameter/">Parameter</a></td>
+<td>Parameters provide a mechanism for the dynamic assignment of value(s) in a co...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ProfileGroup/">ProfileGroup</a></td>
+<td>A group of (selected) controls or of groups of controls within a profile cust...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ProfileAlterationProperty/">ProfileAlterationProperty</a></td>
+<td>OSCAL property entries allowed in profile modify additions</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ReviewedControls/">ReviewedControls</a></td>
+<td>Identifies the controls being assessed and their control objectives</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ControlSelection/">ControlSelection</a></td>
+<td>Identifies the controls being assessed</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ControlObjectiveSelection/">ControlObjectiveSelection</a></td>
+<td>Identifies the control objectives of the assessment</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../AssessmentSubject/">AssessmentSubject</a></td>
+<td>Identifies system elements being assessed, such as components, inventory item...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../SelectSubjectById/">SelectSubjectById</a></td>
+<td>Identifies a set of assessment subjects to include/exclude by UUID</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../SubjectReference/">SubjectReference</a></td>
+<td>A human-oriented identifier reference to a resource</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../AssessmentSubjectPlaceholder/">AssessmentSubjectPlaceholder</a></td>
+<td>Used when the assessment subjects will be determined as part of one or more o...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../AssessmentPlatform/">AssessmentPlatform</a></td>
+<td>Used to represent the toolset used to perform aspects of the assessment</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../UsesComponent/">UsesComponent</a></td>
+<td>The set of components that are used by the assessment platform</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../LocalObjective/">LocalObjective</a></td>
+<td>A local definition of a control objective for this assessment</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../AssessmentMethod/">AssessmentMethod</a></td>
+<td>A local definition of a control objective</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Activity/">Activity</a></td>
+<td>Identifies an assessment or related process that can be performed</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Step/">Step</a></td>
+<td>Identifies an individual step in a series of steps related to an activity, su...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Task/">Task</a></td>
+<td>Represents a scheduled event or milestone, which may be associated with a ser...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../AssociatedActivity/">AssociatedActivity</a></td>
+<td>Identifies an individual activity to be performed as part of a task</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../SystemComponent/">SystemComponent</a></td>
+<td>A defined component that can be part of an implemented system</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../SystemUser/">SystemUser</a></td>
+<td>A type of user that interacts with the system based on an associated role</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../InventoryItem/">InventoryItem</a></td>
+<td>A single managed inventory item within the system</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ImplementedComponent/">ImplementedComponent</a></td>
+<td>The set of components that are implemented in a given system inventory item</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ImplementationCommonProperty/">ImplementationCommonProperty</a></td>
+<td>Implementation-common scoped OSCAL property</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ImplementationResponsibleRole/">ImplementationResponsibleRole</a></td>
+<td>Implementation-common scoped responsible role</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ImplementationResponsibleParty/">ImplementationResponsibleParty</a></td>
+<td>Implementation-common scoped responsible party</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../RelatedTask/">RelatedTask</a></td>
+<td>Identifies an individual task for which the containing object is a consequenc...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Observation/">Observation</a></td>
+<td>Describes an individual observation</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../RelevantEvidence/">RelevantEvidence</a></td>
+<td>Links this observation to relevant evidence</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Finding/">Finding</a></td>
+<td>Describes an individual finding</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../FindingTarget/">FindingTarget</a></td>
+<td>Captures an assessor's conclusions regarding the degree to which an objective...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Facet/">Facet</a></td>
+<td>An individual characteristic that is part of a larger set produced by the sam...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Response/">Response</a></td>
+<td>Describes either recommended or an actual plan for addressing the risk</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../RequiredAsset/">RequiredAsset</a></td>
+<td>Identifies an asset required to achieve remediation</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../RiskLogEntry/">RiskLogEntry</a></td>
+<td>Identifies an individual risk response that occurred as part of managing an i...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../RiskResponseReference/">RiskResponseReference</a></td>
+<td>Identifies an individual risk response that this log entry is for</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../SspSystemCharacteristicsProp/">SspSystemCharacteristicsProp</a></td>
+<td>SSP-scoped property used in system characteristics</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../SspSystemInformationProp/">SspSystemInformationProp</a></td>
+<td>SSP-scoped property used in system information</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../SspControlOriginationProp/">SspControlOriginationProp</a></td>
+<td>SSP-scoped property used in implemented requirement and by-component contexts</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../SspAllowsAuthenticatedScanProp/">SspAllowsAuthenticatedScanProp</a></td>
+<td>SSP-scoped property used for component and inventory allows-authenticated-sca...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../SspSystemCharacteristicsResponsibleParty/">SspSystemCharacteristicsResponsibleParty</a></td>
+<td>SSP-scoped responsible party for system characteristics</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../SspImplementedRequirementResponsibleRole/">SspImplementedRequirementResponsibleRole</a></td>
+<td>SSP-scoped responsible role used by implemented requirement and statement con...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../SspByComponentResponsibleRole/">SspByComponentResponsibleRole</a></td>
+<td>SSP-scoped responsible role used by by-component contexts</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../SspSystemComponent/">SspSystemComponent</a></td>
+<td>SSP-scoped system component with allows-authenticated-scan property typing</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../SspInventoryItem/">SspInventoryItem</a></td>
+<td>SSP-scoped inventory item with allows-authenticated-scan property typing</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Result/">Result</a></td>
+<td>Identifies all of the assessment observations and findings, initial and resid...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../AssessmentLogEntry/">AssessmentLogEntry</a></td>
+<td>Identifies the result of an action and/or task that occurred as part of execu...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../DefinedComponent/">DefinedComponent</a></td>
+<td>A defined component that can be part of an implemented system</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Capability/">Capability</a></td>
+<td>A grouping of other components and/or capabilities</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../MappingProvenance/">MappingProvenance</a></td>
+<td>Mapping-level provenance details and mapping defaults</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Mapping/">Mapping</a></td>
+<td>A mapping between two mapped resources</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Map/">Map</a></td>
+<td>A relationship-based mapping entry between source and target sets</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../MappingItem/">MappingItem</a></td>
+<td>A source or target item participating in a mapping entry</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../MappingResourceReference/">MappingResourceReference</a></td>
+<td>A reference to the source or target resource for a mapping</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../PoamItem/">PoamItem</a></td>
+<td>Describes an individual POA&amp;M item</td>
+<td>no</td>
+</tr>
+</tbody>
+</table>
+<h2 id="properties">Properties</h2>
+<h3 id="type-and-range">Type and Range</h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Range</td>
+<td><a href="../MarkupMultilineType/">MarkupMultilineType</a></td>
+</tr>
+<tr>
+<td>Domain Of</td>
+<td><a href="../OscalCommon/">OscalCommon</a>, <a href="../Property/">Property</a>, <a href="../Resource/">Resource</a>, <a href="../ConstraintTest/">ConstraintTest</a>, <a href="../ControlMatching/">ControlMatching</a>, <a href="../Removal/">Removal</a>, <a href="../ImportSSP/">ImportSSP</a>, <a href="../LocalDefinitions/">LocalDefinitions</a>, <a href="../SelectObjectiveById/">SelectObjectiveById</a>, <a href="../AssessmentSubjectSource/">AssessmentSubjectSource</a>, <a href="../OnDateCondition/">OnDateCondition</a>, <a href="../WithinDateRange/">WithinDateRange</a>, <a href="../AtFrequency/">AtFrequency</a>, <a href="../TaskDependency/">TaskDependency</a>, <a href="../SetParameter/">SetParameter</a>, <a href="../ComponentStatus/">ComponentStatus</a>, <a href="../PortRange/">PortRange</a>, <a href="../ImplementationStatus/">ImplementationStatus</a>, <a href="../ObjectiveStatus/">ObjectiveStatus</a>, <a href="../RelatedObservation/">RelatedObservation</a>, <a href="../AssociatedRisk/">AssociatedRisk</a>, <a href="../LoggedBy/">LoggedBy</a>, <a href="../ImportProfile/">ImportProfile</a>, <a href="../SystemCharacteristics/">SystemCharacteristics</a>, <a href="../SystemStatus/">SystemStatus</a>, <a href="../AuthorizationBoundary/">AuthorizationBoundary</a>, <a href="../Diagram/">Diagram</a>, <a href="../NetworkArchitecture/">NetworkArchitecture</a>, <a href="../DataFlow/">DataFlow</a>, <a href="../SystemImplementation/">SystemImplementation</a>, <a href="../LeveragedAuthorization/">LeveragedAuthorization</a>, <a href="../SspImplementedRequirement/">SspImplementedRequirement</a>, <a href="../SspStatement/">SspStatement</a>, <a href="../ByComponent/">ByComponent</a>, <a href="../ProvidedControlImplementation/">ProvidedControlImplementation</a>, <a href="../ControlResponsibility/">ControlResponsibility</a>, <a href="../InheritedControlImplementation/">InheritedControlImplementation</a>, <a href="../SatisfiedControlImplementation/">SatisfiedControlImplementation</a>, <a href="../ImportAssessmentPlan/">ImportAssessmentPlan</a>, <a href="../AssessmentResultsLocalDefinitions/">AssessmentResultsLocalDefinitions</a>, <a href="../ImportComponentDefinition/">ImportComponentDefinition</a>, <a href="../ImplementedRequirement/">ImplementedRequirement</a>, <a href="../ImplementedControlStatement/">ImplementedControlStatement</a>, <a href="../QualifierItem/">QualifierItem</a>, <a href="../PoamLocalDefinitions/">PoamLocalDefinitions</a>, <a href="../RelatedFinding/">RelatedFinding</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="cardinality-and-requirements">Cardinality and Requirements</h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="schema-source">Schema Source</h3>
+<ul>
+<li>from schema: https://w3id.org/lmodel/oscal</li>
+</ul>
+<h2 id="mappings">Mappings</h2>
+<table>
+<thead>
+<tr>
+<th>Mapping Type</th>
+<th>Mapped Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>self</td>
+<td>oscal:remarks</td>
+</tr>
+<tr>
+<td>native</td>
+<td>oscal:remarks</td>
+</tr>
+</tbody>
+</table>
+<h2 id="linkml-source">LinkML Source</h2>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">remarks</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Additional commentary about the containing object.</span>
@@ -618,7 +1191,8 @@ URI: [oscal:remarks](https://w3id.org/lmodel/oscal/remarks)
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RelatedFinding</span>
 <span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MarkupMultilineType</span>
 </code></pre></div>
-</details></div>
+</details>
+</div>
 
 
 
@@ -687,7 +1261,7 @@ URI: [oscal:remarks](https://w3id.org/lmodel/oscal/remarks)
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.tabs.link", "header.autohide", "navigation.expand", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "search.suggest", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../../assets/pymdownx-extras/extra-loader-B5CKpNQx.js"></script>
       

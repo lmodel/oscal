@@ -17,7 +17,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -25,7 +25,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
       
 
@@ -358,6 +358,53 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#identifier-and-mapping-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Identifier and Mapping Information
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Identifier and Mapping Information">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#schema-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schema Source
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classes-in-subset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Classes in subset
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -379,755 +426,104 @@
 
 <h1 id="subset-oscalmetadata">Subset: OscalMetadata</h1>
 <p><em>Classes originating from the oscal-metadata namespace: document metadata, parties, roles, locations, and utility types such as Property, Link, and Hash.</em></p>
-<div data-search-exclude markdown="1">
-
-URI: [OscalMetadata](OscalMetadata.md)
-
-
-
-
-
-
-
-
-## Identifier and Mapping Information
-
-
-
-
-
-### Schema Source
-
-
-* from schema: https://w3id.org/lmodel/oscal
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## Classes in subset
-
-| Class | Description |
-| --- | --- |
-| [Action](Action.md) | An action applied by a role within a given party to the content |
-| [Address](Address.md) | A postal address for the location |
-| [DocumentId](DocumentId.md) | A document identifier qualified by an identifier scheme |
-| [Hash](Hash.md) | A representation of a cryptographic digest generated over a resource using a ... |
-| [Link](Link.md) | A reference to a local or remote resource, that has a specific relation to th... |
-| [Location](Location.md) | A physical point of presence, which may be associated with people, organizati... |
-| [LocationProperty](LocationProperty.md) | Location-scoped OSCAL property |
-| [Metadata](Metadata.md) | Provides information about the containing document, and defines concepts shar... |
-| [MetadataPartyExternalId](MetadataPartyExternalId.md) | Metadata-scoped external identifier |
-| [MetadataProperty](MetadataProperty.md) | Metadata-scoped OSCAL property |
-| [Party](Party.md) | An organization or person, which may be associated with roles or other concep... |
-| [PartyExternalId](PartyExternalId.md) | An identifier for a person or organization using a designated scheme, e |
-| [PartyProperty](PartyProperty.md) | Party-scoped OSCAL property |
-| [Property](Property.md) | An attribute, characteristic, or quality of the containing object expressed a... |
-| [ResponsibleParty](ResponsibleParty.md) | A reference to a set of persons and/or organizations that have responsibility... |
-| [ResponsibleRole](ResponsibleRole.md) | A reference to a role with responsibility for performing a function relative ... |
-| [Revision](Revision.md) | An entry in a sequential list of revisions to the containing document |
-| [RevisionProperty](RevisionProperty.md) | Revision-scoped OSCAL property |
-| [Role](Role.md) | Defines a function, which might be assigned to a party in a specific situatio... |
-| [TelephoneNumber](TelephoneNumber.md) | A telephone service number as defined by ITU-T E |
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<div>
+<p>URI: <a href="./">OscalMetadata</a></p>
+<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="schema-source">Schema Source</h3>
+<ul>
+<li>from schema: https://w3id.org/lmodel/oscal</li>
+</ul>
+<h2 id="classes-in-subset">Classes in subset</h2>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../Action/">Action</a></td>
+<td>An action applied by a role within a given party to the content</td>
+</tr>
+<tr>
+<td><a href="../Address/">Address</a></td>
+<td>A postal address for the location</td>
+</tr>
+<tr>
+<td><a href="../DocumentId/">DocumentId</a></td>
+<td>A document identifier qualified by an identifier scheme</td>
+</tr>
+<tr>
+<td><a href="../Hash/">Hash</a></td>
+<td>A representation of a cryptographic digest generated over a resource using a ...</td>
+</tr>
+<tr>
+<td><a href="../Link/">Link</a></td>
+<td>A reference to a local or remote resource, that has a specific relation to th...</td>
+</tr>
+<tr>
+<td><a href="../Location/">Location</a></td>
+<td>A physical point of presence, which may be associated with people, organizati...</td>
+</tr>
+<tr>
+<td><a href="../LocationProperty/">LocationProperty</a></td>
+<td>Location-scoped OSCAL property</td>
+</tr>
+<tr>
+<td><a href="../Metadata/">Metadata</a></td>
+<td>Provides information about the containing document, and defines concepts shar...</td>
+</tr>
+<tr>
+<td><a href="../MetadataPartyExternalId/">MetadataPartyExternalId</a></td>
+<td>Metadata-scoped external identifier</td>
+</tr>
+<tr>
+<td><a href="../MetadataProperty/">MetadataProperty</a></td>
+<td>Metadata-scoped OSCAL property</td>
+</tr>
+<tr>
+<td><a href="../Party/">Party</a></td>
+<td>An organization or person, which may be associated with roles or other concep...</td>
+</tr>
+<tr>
+<td><a href="../PartyExternalId/">PartyExternalId</a></td>
+<td>An identifier for a person or organization using a designated scheme, e</td>
+</tr>
+<tr>
+<td><a href="../PartyProperty/">PartyProperty</a></td>
+<td>Party-scoped OSCAL property</td>
+</tr>
+<tr>
+<td><a href="../Property/">Property</a></td>
+<td>An attribute, characteristic, or quality of the containing object expressed a...</td>
+</tr>
+<tr>
+<td><a href="../ResponsibleParty/">ResponsibleParty</a></td>
+<td>A reference to a set of persons and/or organizations that have responsibility...</td>
+</tr>
+<tr>
+<td><a href="../ResponsibleRole/">ResponsibleRole</a></td>
+<td>A reference to a role with responsibility for performing a function relative ...</td>
+</tr>
+<tr>
+<td><a href="../Revision/">Revision</a></td>
+<td>An entry in a sequential list of revisions to the containing document</td>
+</tr>
+<tr>
+<td><a href="../RevisionProperty/">RevisionProperty</a></td>
+<td>Revision-scoped OSCAL property</td>
+</tr>
+<tr>
+<td><a href="../Role/">Role</a></td>
+<td>Defines a function, which might be assigned to a party in a specific situatio...</td>
+</tr>
+<tr>
+<td><a href="../TelephoneNumber/">TelephoneNumber</a></td>
+<td>A telephone service number as defined by ITU-T E</td>
+</tr>
+</tbody>
+</table>
 </div>
 
 
@@ -1197,7 +593,7 @@ URI: [OscalMetadata](OscalMetadata.md)
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.tabs.link", "header.autohide", "navigation.expand", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "search.suggest", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../../assets/pymdownx-extras/extra-loader-B5CKpNQx.js"></script>
       

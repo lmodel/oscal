@@ -17,7 +17,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -25,7 +25,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
       
 
@@ -358,6 +358,53 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#identifier-and-mapping-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Identifier and Mapping Information
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Identifier and Mapping Information">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#schema-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schema Source
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classes-in-subset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Classes in subset
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -379,722 +426,60 @@
 
 <h1 id="subset-componentdefinition">Subset: ComponentDefinition</h1>
 <p><em>Classes that form the root OSCAL Component Definition document and component-definition-specific structural containers.</em></p>
-<div data-search-exclude markdown="1">
-
-URI: [ComponentDefinition](ComponentDefinition.md)
-
-
-
-
-
-
-
-
-## Identifier and Mapping Information
-
-
-
-
-
-### Schema Source
-
-
-* from schema: https://w3id.org/lmodel/oscal
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## Classes in subset
-
-| Class | Description |
-| --- | --- |
-| [Capability](Capability.md) | A grouping of other components and/or capabilities |
-| [ComponentDefinition](ComponentDefinition.md) | A collection of component descriptions, which may optionally be grouped by ca... |
-| [ComponentDefinitionDocument](ComponentDefinitionDocument.md) | Root wrapper for an OSCAL Component Definition document |
-| [ControlImplementationSet](ControlImplementationSet.md) | Defines how the component or capability supports a set of controls |
-| [DefinedComponent](DefinedComponent.md) | A defined component that can be part of an implemented system |
-| [ImplementedControlStatement](ImplementedControlStatement.md) | Identifies which statements within a control are addressed |
-| [ImplementedRequirement](ImplementedRequirement.md) | Describes how the containing component or capability implements an individual... |
-| [ImportComponentDefinition](ImportComponentDefinition.md) | Loads a component definition from another resource |
-| [IncorporatesComponent](IncorporatesComponent.md) | The collection of components comprising a capability |
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<div>
+<p>URI: <a href="./">ComponentDefinition</a></p>
+<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="schema-source">Schema Source</h3>
+<ul>
+<li>from schema: https://w3id.org/lmodel/oscal</li>
+</ul>
+<h2 id="classes-in-subset">Classes in subset</h2>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../Capability/">Capability</a></td>
+<td>A grouping of other components and/or capabilities</td>
+</tr>
+<tr>
+<td><a href="./">ComponentDefinition</a></td>
+<td>A collection of component descriptions, which may optionally be grouped by ca...</td>
+</tr>
+<tr>
+<td><a href="../ComponentDefinitionDocument/">ComponentDefinitionDocument</a></td>
+<td>Root wrapper for an OSCAL Component Definition document</td>
+</tr>
+<tr>
+<td><a href="../ControlImplementationSet/">ControlImplementationSet</a></td>
+<td>Defines how the component or capability supports a set of controls</td>
+</tr>
+<tr>
+<td><a href="../DefinedComponent/">DefinedComponent</a></td>
+<td>A defined component that can be part of an implemented system</td>
+</tr>
+<tr>
+<td><a href="../ImplementedControlStatement/">ImplementedControlStatement</a></td>
+<td>Identifies which statements within a control are addressed</td>
+</tr>
+<tr>
+<td><a href="../ImplementedRequirement/">ImplementedRequirement</a></td>
+<td>Describes how the containing component or capability implements an individual...</td>
+</tr>
+<tr>
+<td><a href="../ImportComponentDefinition/">ImportComponentDefinition</a></td>
+<td>Loads a component definition from another resource</td>
+</tr>
+<tr>
+<td><a href="../IncorporatesComponent/">IncorporatesComponent</a></td>
+<td>The collection of components comprising a capability</td>
+</tr>
+</tbody>
+</table>
 </div>
 
 
@@ -1164,7 +549,7 @@ URI: [ComponentDefinition](ComponentDefinition.md)
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.tabs.link", "header.autohide", "navigation.expand", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "search.suggest", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../../assets/pymdownx-extras/extra-loader-B5CKpNQx.js"></script>
       

@@ -7,9 +7,9 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://lmodel.github.io/oscal/elements/RelatedTask/" rel="canonical"/>
 <link href="../../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.6.1, mkdocs-material-9.7.6" name="generator"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.7" name="generator"/>
 <title>Class: RelatedTask - oscal</title>
-<link href="../../assets/stylesheets/main.484c7ddc.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/main.ec1eaa64.min.css" rel="stylesheet"/>
 <script src="../../assets/pymdownx-extras/material-extra-theme-2ek1P7jT.js" type="text/javascript"></script>
 <script src="../../assets/pymdownx-extras/material-extra-3rdparty-BUCF4rjN.js" type="text/javascript"></script>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -184,6 +184,110 @@
 <div class="md-sidebar__scrollwrap">
 <div class="md-sidebar__inner">
 <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#inheritance">
+<span class="md-ellipsis">
+      
+        Inheritance
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#slots">
+<span class="md-ellipsis">
+      
+        Slots
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#usages">
+<span class="md-ellipsis">
+      
+        Usages
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#in-subsets">
+<span class="md-ellipsis">
+      
+        In Subsets
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#identifier-and-mapping-information">
+<span class="md-ellipsis">
+      
+        Identifier and Mapping Information
+      
+    </span>
+</a>
+<nav aria-label="Identifier and Mapping Information" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#schema-source">
+<span class="md-ellipsis">
+      
+        Schema Source
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#mappings">
+<span class="md-ellipsis">
+      
+        Mappings
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#linkml-source">
+<span class="md-ellipsis">
+      
+        LinkML Source
+      
+    </span>
+</a>
+<nav aria-label="LinkML Source" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#direct">
+<span class="md-ellipsis">
+      
+        Direct
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#induced">
+<span class="md-ellipsis">
+      
+        Induced
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
 </nav>
 </div>
 </div>
@@ -192,16 +296,8 @@
 <article class="md-content__inner md-typeset">
 <h1 id="class-relatedtask">Class: RelatedTask</h1>
 <p><em>Identifies an individual task for which the containing object is a consequence of.</em></p>
-<div data-search-exclude="" markdown="1">
-
-
-
-URI: [oscal:RelatedTask](https://w3id.org/lmodel/oscal/RelatedTask)
-
-
-
-
-
+<div>
+<p>URI: <a href="https://w3id.org/lmodel/oscal/RelatedTask">oscal:RelatedTask</a></p>
 <pre class="mermaid"><code> classDiagram
     class RelatedTask
     click RelatedTask href "../RelatedTask/"
@@ -270,88 +366,127 @@ URI: [oscal:RelatedTask](https://w3id.org/lmodel/oscal/RelatedTask)
       RelatedTask : task_uuid
 
 </code></pre>
-
-
-
-
-
-## Inheritance
-* **RelatedTask** [ [OscalCommon](OscalCommon.md) [HasResponsibleParties](HasResponsibleParties.md)]
-
-
-## Slots
-
-| Name | Cardinality and Range | Description | Inheritance |
-| ---  | --- | --- | --- |
-| [task_uuid](task_uuid.md) | 1 <br/> [UUIDType](UUIDType.md) | A UUID reference to a task | direct |
-| [subjects](subjects.md) | * <br/> [AssessmentSubject](AssessmentSubject.md) | Assessment subjects or subject references for this object | direct |
-| [identified_subject](identified_subject.md) | 0..1 <br/> [IdentifiedSubject](IdentifiedSubject.md) | Used to detail assessment subjects that were identified by this task | direct |
-| [remarks](remarks.md) | 0..1 <br/> [MarkupMultilineType](MarkupMultilineType.md) | Additional commentary about the containing object | [OscalCommon](OscalCommon.md) |
-| [responsible_parties](responsible_parties.md) | * <br/> [ResponsibleParty](ResponsibleParty.md) | Responsible party assignments | [HasResponsibleParties](HasResponsibleParties.md) |
-| [props](props.md) | * <br/> [Property](Property.md) | A list of properties | [HasPropsAndLinks](HasPropsAndLinks.md) |
-| [links](links.md) | * <br/> [Link](Link.md) | A list of links | [HasPropsAndLinks](HasPropsAndLinks.md) |
-
-
-
-
-
-## Usages
-
-| used by | used in | type | used |
-| ---  | --- | --- | --- |
-| [Origin](Origin.md) | [related_tasks](related_tasks.md) | range | [RelatedTask](RelatedTask.md) |
-| [RiskResponseReference](RiskResponseReference.md) | [related_tasks](related_tasks.md) | range | [RelatedTask](RelatedTask.md) |
-| [AssessmentLogEntry](AssessmentLogEntry.md) | [related_tasks](related_tasks.md) | range | [RelatedTask](RelatedTask.md) |
-
-
-
-
-
-
-
-
-## In Subsets
-
-
-* [AssessmentCommon](AssessmentCommon.md)
-
-
-
-
-
-
-## Identifier and Mapping Information
-
-
-
-
-
-### Schema Source
-
-
-* from schema: https://w3id.org/lmodel/oscal
-
-
-
-
-## Mappings
-
-| Mapping Type | Mapped Value |
-| ---  | ---  |
-| self | oscal:RelatedTask |
-| native | oscal:RelatedTask |
-
-
-
-
-
-
-## LinkML Source
-
+<h2 id="inheritance">Inheritance</h2>
+<ul>
+<li><strong>RelatedTask</strong> [ <a href="../OscalCommon/">OscalCommon</a> <a href="../HasResponsibleParties/">HasResponsibleParties</a>]</li>
+</ul>
+<h2 id="slots">Slots</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Cardinality and Range</th>
+<th>Description</th>
+<th>Inheritance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../task_uuid/">task_uuid</a></td>
+<td>1 <br/> <a href="../UUIDType/">UUIDType</a></td>
+<td>A UUID reference to a task</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../subjects/">subjects</a></td>
+<td>* <br/> <a href="../AssessmentSubject/">AssessmentSubject</a></td>
+<td>Assessment subjects or subject references for this object</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../identified_subject/">identified_subject</a></td>
+<td>0..1 <br/> <a href="../IdentifiedSubject/">IdentifiedSubject</a></td>
+<td>Used to detail assessment subjects that were identified by this task</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../remarks/">remarks</a></td>
+<td>0..1 <br/> <a href="../MarkupMultilineType/">MarkupMultilineType</a></td>
+<td>Additional commentary about the containing object</td>
+<td><a href="../OscalCommon/">OscalCommon</a></td>
+</tr>
+<tr>
+<td><a href="../responsible_parties/">responsible_parties</a></td>
+<td>* <br/> <a href="../ResponsibleParty/">ResponsibleParty</a></td>
+<td>Responsible party assignments</td>
+<td><a href="../HasResponsibleParties/">HasResponsibleParties</a></td>
+</tr>
+<tr>
+<td><a href="../props/">props</a></td>
+<td>* <br/> <a href="../Property/">Property</a></td>
+<td>A list of properties</td>
+<td><a href="../HasPropsAndLinks/">HasPropsAndLinks</a></td>
+</tr>
+<tr>
+<td><a href="../links/">links</a></td>
+<td>* <br/> <a href="../Link/">Link</a></td>
+<td>A list of links</td>
+<td><a href="../HasPropsAndLinks/">HasPropsAndLinks</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="usages">Usages</h2>
+<table>
+<thead>
+<tr>
+<th>used by</th>
+<th>used in</th>
+<th>type</th>
+<th>used</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../Origin/">Origin</a></td>
+<td><a href="../related_tasks/">related_tasks</a></td>
+<td>range</td>
+<td><a href="./">RelatedTask</a></td>
+</tr>
+<tr>
+<td><a href="../RiskResponseReference/">RiskResponseReference</a></td>
+<td><a href="../related_tasks/">related_tasks</a></td>
+<td>range</td>
+<td><a href="./">RelatedTask</a></td>
+</tr>
+<tr>
+<td><a href="../AssessmentLogEntry/">AssessmentLogEntry</a></td>
+<td><a href="../related_tasks/">related_tasks</a></td>
+<td>range</td>
+<td><a href="./">RelatedTask</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="in-subsets">In Subsets</h2>
+<ul>
+<li><a href="../AssessmentCommon/">AssessmentCommon</a></li>
+</ul>
+<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="schema-source">Schema Source</h3>
+<ul>
+<li>from schema: https://w3id.org/lmodel/oscal</li>
+</ul>
+<h2 id="mappings">Mappings</h2>
+<table>
+<thead>
+<tr>
+<th>Mapping Type</th>
+<th>Mapped Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>self</td>
+<td>oscal:RelatedTask</td>
+</tr>
+<tr>
+<td>native</td>
+<td>oscal:RelatedTask</td>
+</tr>
+</tbody>
+</table>
+<h2 id="linkml-source">LinkML Source</h2>
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
-
-### Direct
-
+<h3 id="direct">Direct</h3>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RelatedTask</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Identifies an individual task for which the containing object is a consequence</span>
@@ -375,9 +510,7 @@ URI: [oscal:RelatedTask](https://w3id.org/lmodel/oscal/RelatedTask)
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AssessmentSubject</span>
 </code></pre></div>
 </details>
-
-### Induced
-
+<h3 id="induced">Induced</h3>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RelatedTask</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Identifies an individual task for which the containing object is a consequence</span>
@@ -568,7 +701,8 @@ URI: [oscal:RelatedTask](https://w3id.org/lmodel/oscal/RelatedTask)
 <span class="w">    </span><span class="nt">inlined</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">    </span><span class="nt">inlined_as_list</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
-</details></div>
+</details>
+</div>
 </article>
 </div>
 <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
@@ -600,7 +734,7 @@ URI: [oscal:RelatedTask](https://w3id.org/lmodel/oscal/RelatedTask)
 </div>
 <div class="md-progress" data-md-component="progress" role="progressbar"></div>
 <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.tabs.link", "header.autohide", "navigation.expand", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "search.suggest", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
-<script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+<script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
 <script src="../../assets/pymdownx-extras/extra-loader-B5CKpNQx.js"></script>
 </body>
 </html>

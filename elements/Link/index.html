@@ -7,9 +7,9 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://lmodel.github.io/oscal/elements/Link/" rel="canonical"/>
 <link href="../../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.6.1, mkdocs-material-9.7.6" name="generator"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.7" name="generator"/>
 <title>Class: Link - oscal</title>
-<link href="../../assets/stylesheets/main.484c7ddc.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/main.ec1eaa64.min.css" rel="stylesheet"/>
 <script src="../../assets/pymdownx-extras/material-extra-theme-2ek1P7jT.js" type="text/javascript"></script>
 <script src="../../assets/pymdownx-extras/material-extra-3rdparty-BUCF4rjN.js" type="text/javascript"></script>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -184,6 +184,110 @@
 <div class="md-sidebar__scrollwrap">
 <div class="md-sidebar__inner">
 <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#inheritance">
+<span class="md-ellipsis">
+      
+        Inheritance
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#slots">
+<span class="md-ellipsis">
+      
+        Slots
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#usages">
+<span class="md-ellipsis">
+      
+        Usages
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#in-subsets">
+<span class="md-ellipsis">
+      
+        In Subsets
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#identifier-and-mapping-information">
+<span class="md-ellipsis">
+      
+        Identifier and Mapping Information
+      
+    </span>
+</a>
+<nav aria-label="Identifier and Mapping Information" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#schema-source">
+<span class="md-ellipsis">
+      
+        Schema Source
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#mappings">
+<span class="md-ellipsis">
+      
+        Mappings
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#linkml-source">
+<span class="md-ellipsis">
+      
+        LinkML Source
+      
+    </span>
+</a>
+<nav aria-label="LinkML Source" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#direct">
+<span class="md-ellipsis">
+      
+        Direct
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#induced">
+<span class="md-ellipsis">
+      
+        Induced
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
 </nav>
 </div>
 </div>
@@ -192,16 +296,8 @@
 <article class="md-content__inner md-typeset">
 <h1 id="class-link">Class: Link</h1>
 <p><em>A reference to a local or remote resource, that has a specific relation to the containing object.</em></p>
-<div data-search-exclude="" markdown="1">
-
-
-
-URI: [oscal:Link](https://w3id.org/lmodel/oscal/Link)
-
-
-
-
-
+<div>
+<p>URI: <a href="https://w3id.org/lmodel/oscal/Link">oscal:Link</a></p>
 <pre class="mermaid"><code> classDiagram
     class Link
     click Link href "../Link/"
@@ -227,169 +323,590 @@ URI: [oscal:Link](https://w3id.org/lmodel/oscal/Link)
       Link : text
 
 </code></pre>
-
-
-
-
-
-## Inheritance
-* **Link**
-    * [ImplementationCommonLink](ImplementationCommonLink.md)
-    * [SspSystemInformationLink](SspSystemInformationLink.md)
-    * [SspDiagramLink](SspDiagramLink.md)
-    * [SspLeveragedAuthorizationLink](SspLeveragedAuthorizationLink.md)
-    * [SspByComponentLink](SspByComponentLink.md)
-
-
-## Slots
-
-| Name | Cardinality and Range | Description | Inheritance |
-| ---  | --- | --- | --- |
-| [href](href.md) | 1 <br/> [URIReferenceType](URIReferenceType.md) | A resolvable URL reference to a resource | direct |
-| [rel](rel.md) | 0..1 <br/> [TokenType](TokenType.md) or <br/>[MetadataLinkRelEnum](MetadataLinkRelEnum.md) | Describes the type of relationship provided by the link's hypertext reference | direct |
-| [resource_fragment](resource_fragment.md) | 0..1 <br/> [String](String.md) | In case where the href points to a back-matter/resource, this value will indi... | direct |
-| [media_type](media_type.md) | 0..1 <br/> [String](String.md) | A label that indicates the nature of a resource, as a data serialization or f... | direct |
-| [text](text.md) | 0..1 <br/> [MarkupLineType](MarkupLineType.md) | A textual label to associate with the containing object | direct |
-
-
-
-
-
-## Usages
-
-| used by | used in | type | used |
-| ---  | --- | --- | --- |
-| [HasPropsAndLinks](HasPropsAndLinks.md) | [links](links.md) | range | [Link](Link.md) |
-| [OscalCommon](OscalCommon.md) | [links](links.md) | range | [Link](Link.md) |
-| [Group](Group.md) | [links](links.md) | range | [Link](Link.md) |
-| [Control](Control.md) | [links](links.md) | range | [Link](Link.md) |
-| [Metadata](Metadata.md) | [links](links.md) | range | [Link](Link.md) |
-| [Revision](Revision.md) | [links](links.md) | range | [Link](Link.md) |
-| [Role](Role.md) | [links](links.md) | range | [Link](Link.md) |
-| [Location](Location.md) | [links](links.md) | range | [Link](Link.md) |
-| [Party](Party.md) | [links](links.md) | range | [Link](Link.md) |
-| [ResponsibleParty](ResponsibleParty.md) | [links](links.md) | range | [Link](Link.md) |
-| [ResponsibleRole](ResponsibleRole.md) | [links](links.md) | range | [Link](Link.md) |
-| [Action](Action.md) | [links](links.md) | range | [Link](Link.md) |
-| [Citation](Citation.md) | [links](links.md) | range | [Link](Link.md) |
-| [Part](Part.md) | [links](links.md) | range | [Link](Link.md) |
-| [Parameter](Parameter.md) | [links](links.md) | range | [Link](Link.md) |
-| [ProfileGroup](ProfileGroup.md) | [links](links.md) | range | [Link](Link.md) |
-| [ParameterSetting](ParameterSetting.md) | [links](links.md) | range | [Link](Link.md) |
-| [Addition](Addition.md) | [links](links.md) | range | [Link](Link.md) |
-| [ReviewedControls](ReviewedControls.md) | [links](links.md) | range | [Link](Link.md) |
-| [ControlSelection](ControlSelection.md) | [links](links.md) | range | [Link](Link.md) |
-| [ControlObjectiveSelection](ControlObjectiveSelection.md) | [links](links.md) | range | [Link](Link.md) |
-| [AssessmentSubject](AssessmentSubject.md) | [links](links.md) | range | [Link](Link.md) |
-| [SelectSubjectById](SelectSubjectById.md) | [links](links.md) | range | [Link](Link.md) |
-| [SubjectReference](SubjectReference.md) | [links](links.md) | range | [Link](Link.md) |
-| [AssessmentSubjectPlaceholder](AssessmentSubjectPlaceholder.md) | [links](links.md) | range | [Link](Link.md) |
-| [AssessmentPlatform](AssessmentPlatform.md) | [links](links.md) | range | [Link](Link.md) |
-| [UsesComponent](UsesComponent.md) | [links](links.md) | range | [Link](Link.md) |
-| [LocalObjective](LocalObjective.md) | [links](links.md) | range | [Link](Link.md) |
-| [AssessmentMethod](AssessmentMethod.md) | [links](links.md) | range | [Link](Link.md) |
-| [Activity](Activity.md) | [links](links.md) | range | [Link](Link.md) |
-| [Step](Step.md) | [links](links.md) | range | [Link](Link.md) |
-| [Task](Task.md) | [links](links.md) | range | [Link](Link.md) |
-| [AssociatedActivity](AssociatedActivity.md) | [links](links.md) | range | [Link](Link.md) |
-| [AssessmentPart](AssessmentPart.md) | [links](links.md) | range | [Link](Link.md) |
-| [TermsAndConditionsPart](TermsAndConditionsPart.md) | [links](links.md) | range | [Link](Link.md) |
-| [ControlPart](ControlPart.md) | [links](links.md) | range | [Link](Link.md) |
-| [ImplementationResponsibleRole](ImplementationResponsibleRole.md) | [links](links.md) | range | [Link](Link.md) |
-| [ImplementationResponsibleParty](ImplementationResponsibleParty.md) | [links](links.md) | range | [Link](Link.md) |
-| [OriginActor](OriginActor.md) | [links](links.md) | range | [Link](Link.md) |
-| [RelatedTask](RelatedTask.md) | [links](links.md) | range | [Link](Link.md) |
-| [Observation](Observation.md) | [links](links.md) | range | [Link](Link.md) |
-| [RelevantEvidence](RelevantEvidence.md) | [links](links.md) | range | [Link](Link.md) |
-| [Finding](Finding.md) | [links](links.md) | range | [Link](Link.md) |
-| [FindingTarget](FindingTarget.md) | [links](links.md) | range | [Link](Link.md) |
-| [Risk](Risk.md) | [links](links.md) | range | [Link](Link.md) |
-| [Characterization](Characterization.md) | [links](links.md) | range | [Link](Link.md) |
-| [Facet](Facet.md) | [links](links.md) | range | [Link](Link.md) |
-| [MitigatingFactor](MitigatingFactor.md) | [links](links.md) | range | [Link](Link.md) |
-| [Response](Response.md) | [links](links.md) | range | [Link](Link.md) |
-| [RequiredAsset](RequiredAsset.md) | [links](links.md) | range | [Link](Link.md) |
-| [RiskLogEntry](RiskLogEntry.md) | [links](links.md) | range | [Link](Link.md) |
-| [RiskResponseReference](RiskResponseReference.md) | [links](links.md) | range | [Link](Link.md) |
-| [InformationType](InformationType.md) | [links](links.md) | range | [Link](Link.md) |
-| [ImpactLevel](ImpactLevel.md) | [links](links.md) | range | [Link](Link.md) |
-| [AuthorizationBoundary](AuthorizationBoundary.md) | [links](links.md) | range | [Link](Link.md) |
-| [NetworkArchitecture](NetworkArchitecture.md) | [links](links.md) | range | [Link](Link.md) |
-| [DataFlow](DataFlow.md) | [links](links.md) | range | [Link](Link.md) |
-| [SystemImplementation](SystemImplementation.md) | [links](links.md) | range | [Link](Link.md) |
-| [SspImplementedRequirement](SspImplementedRequirement.md) | [links](links.md) | range | [Link](Link.md) |
-| [SspStatement](SspStatement.md) | [links](links.md) | range | [Link](Link.md) |
-| [Export](Export.md) | [links](links.md) | range | [Link](Link.md) |
-| [ProvidedControlImplementation](ProvidedControlImplementation.md) | [links](links.md) | range | [Link](Link.md) |
-| [ControlResponsibility](ControlResponsibility.md) | [links](links.md) | range | [Link](Link.md) |
-| [InheritedControlImplementation](InheritedControlImplementation.md) | [links](links.md) | range | [Link](Link.md) |
-| [SatisfiedControlImplementation](SatisfiedControlImplementation.md) | [links](links.md) | range | [Link](Link.md) |
-| [SspSystemCharacteristicsResponsibleParty](SspSystemCharacteristicsResponsibleParty.md) | [links](links.md) | range | [Link](Link.md) |
-| [SspImplementedRequirementResponsibleRole](SspImplementedRequirementResponsibleRole.md) | [links](links.md) | range | [Link](Link.md) |
-| [SspByComponentResponsibleRole](SspByComponentResponsibleRole.md) | [links](links.md) | range | [Link](Link.md) |
-| [Result](Result.md) | [links](links.md) | range | [Link](Link.md) |
-| [AssessmentLogEntry](AssessmentLogEntry.md) | [links](links.md) | range | [Link](Link.md) |
-| [DefinedComponent](DefinedComponent.md) | [links](links.md) | range | [Link](Link.md) |
-| [Capability](Capability.md) | [links](links.md) | range | [Link](Link.md) |
-| [ControlImplementationSet](ControlImplementationSet.md) | [links](links.md) | range | [Link](Link.md) |
-| [ImplementedRequirement](ImplementedRequirement.md) | [links](links.md) | range | [Link](Link.md) |
-| [ImplementedControlStatement](ImplementedControlStatement.md) | [links](links.md) | range | [Link](Link.md) |
-| [MappingProvenance](MappingProvenance.md) | [links](links.md) | range | [Link](Link.md) |
-| [Mapping](Mapping.md) | [links](links.md) | range | [Link](Link.md) |
-| [Map](Map.md) | [links](links.md) | range | [Link](Link.md) |
-| [MappingItem](MappingItem.md) | [links](links.md) | range | [Link](Link.md) |
-| [MappingResourceReference](MappingResourceReference.md) | [links](links.md) | range | [Link](Link.md) |
-| [PoamItem](PoamItem.md) | [links](links.md) | range | [Link](Link.md) |
-
-
-
-
-
-
-
-
-## In Subsets
-
-
-* [OscalMetadata](OscalMetadata.md)
-
-
-
-
-
-
-## Identifier and Mapping Information
-
-
-
-
-
-### Schema Source
-
-
-* from schema: https://w3id.org/lmodel/oscal
-
-
-
-
-## Mappings
-
-| Mapping Type | Mapped Value |
-| ---  | ---  |
-| self | oscal:Link |
-| native | oscal:Link |
-
-
-
-
-
-
-## LinkML Source
-
+<h2 id="inheritance">Inheritance</h2>
+<ul>
+<li><strong>Link</strong><ul>
+<li><a href="../ImplementationCommonLink/">ImplementationCommonLink</a></li>
+<li><a href="../SspSystemInformationLink/">SspSystemInformationLink</a></li>
+<li><a href="../SspDiagramLink/">SspDiagramLink</a></li>
+<li><a href="../SspLeveragedAuthorizationLink/">SspLeveragedAuthorizationLink</a></li>
+<li><a href="../SspByComponentLink/">SspByComponentLink</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="slots">Slots</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Cardinality and Range</th>
+<th>Description</th>
+<th>Inheritance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../href/">href</a></td>
+<td>1 <br/> <a href="../URIReferenceType/">URIReferenceType</a></td>
+<td>A resolvable URL reference to a resource</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../rel/">rel</a></td>
+<td>0..1 <br/> <a href="../TokenType/">TokenType</a> or <br/><a href="../MetadataLinkRelEnum/">MetadataLinkRelEnum</a></td>
+<td>Describes the type of relationship provided by the link's hypertext reference</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../resource_fragment/">resource_fragment</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>In case where the href points to a back-matter/resource, this value will indi...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../media_type/">media_type</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>A label that indicates the nature of a resource, as a data serialization or f...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../text/">text</a></td>
+<td>0..1 <br/> <a href="../MarkupLineType/">MarkupLineType</a></td>
+<td>A textual label to associate with the containing object</td>
+<td>direct</td>
+</tr>
+</tbody>
+</table>
+<h2 id="usages">Usages</h2>
+<table>
+<thead>
+<tr>
+<th>used by</th>
+<th>used in</th>
+<th>type</th>
+<th>used</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../HasPropsAndLinks/">HasPropsAndLinks</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../OscalCommon/">OscalCommon</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../Group/">Group</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../Control/">Control</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../Metadata/">Metadata</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../Revision/">Revision</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../Role/">Role</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../Location/">Location</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../Party/">Party</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../ResponsibleParty/">ResponsibleParty</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../ResponsibleRole/">ResponsibleRole</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../Action/">Action</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../Citation/">Citation</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../Part/">Part</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../Parameter/">Parameter</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../ProfileGroup/">ProfileGroup</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../ParameterSetting/">ParameterSetting</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../Addition/">Addition</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../ReviewedControls/">ReviewedControls</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../ControlSelection/">ControlSelection</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../ControlObjectiveSelection/">ControlObjectiveSelection</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../AssessmentSubject/">AssessmentSubject</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../SelectSubjectById/">SelectSubjectById</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../SubjectReference/">SubjectReference</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../AssessmentSubjectPlaceholder/">AssessmentSubjectPlaceholder</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../AssessmentPlatform/">AssessmentPlatform</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../UsesComponent/">UsesComponent</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../LocalObjective/">LocalObjective</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../AssessmentMethod/">AssessmentMethod</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../Activity/">Activity</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../Step/">Step</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../Task/">Task</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../AssociatedActivity/">AssociatedActivity</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../AssessmentPart/">AssessmentPart</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../TermsAndConditionsPart/">TermsAndConditionsPart</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../ControlPart/">ControlPart</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../ImplementationResponsibleRole/">ImplementationResponsibleRole</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../ImplementationResponsibleParty/">ImplementationResponsibleParty</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../OriginActor/">OriginActor</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../RelatedTask/">RelatedTask</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../Observation/">Observation</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../RelevantEvidence/">RelevantEvidence</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../Finding/">Finding</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../FindingTarget/">FindingTarget</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../Risk/">Risk</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../Characterization/">Characterization</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../Facet/">Facet</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../MitigatingFactor/">MitigatingFactor</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../Response/">Response</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../RequiredAsset/">RequiredAsset</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../RiskLogEntry/">RiskLogEntry</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../RiskResponseReference/">RiskResponseReference</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../InformationType/">InformationType</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../ImpactLevel/">ImpactLevel</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../AuthorizationBoundary/">AuthorizationBoundary</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../NetworkArchitecture/">NetworkArchitecture</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../DataFlow/">DataFlow</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../SystemImplementation/">SystemImplementation</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../SspImplementedRequirement/">SspImplementedRequirement</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../SspStatement/">SspStatement</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../Export/">Export</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../ProvidedControlImplementation/">ProvidedControlImplementation</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../ControlResponsibility/">ControlResponsibility</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../InheritedControlImplementation/">InheritedControlImplementation</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../SatisfiedControlImplementation/">SatisfiedControlImplementation</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../SspSystemCharacteristicsResponsibleParty/">SspSystemCharacteristicsResponsibleParty</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../SspImplementedRequirementResponsibleRole/">SspImplementedRequirementResponsibleRole</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../SspByComponentResponsibleRole/">SspByComponentResponsibleRole</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../Result/">Result</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../AssessmentLogEntry/">AssessmentLogEntry</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../DefinedComponent/">DefinedComponent</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../Capability/">Capability</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../ControlImplementationSet/">ControlImplementationSet</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../ImplementedRequirement/">ImplementedRequirement</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../ImplementedControlStatement/">ImplementedControlStatement</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../MappingProvenance/">MappingProvenance</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../Mapping/">Mapping</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../Map/">Map</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../MappingItem/">MappingItem</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../MappingResourceReference/">MappingResourceReference</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+<tr>
+<td><a href="../PoamItem/">PoamItem</a></td>
+<td><a href="../links/">links</a></td>
+<td>range</td>
+<td><a href="./">Link</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="in-subsets">In Subsets</h2>
+<ul>
+<li><a href="../OscalMetadata/">OscalMetadata</a></li>
+</ul>
+<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="schema-source">Schema Source</h3>
+<ul>
+<li>from schema: https://w3id.org/lmodel/oscal</li>
+</ul>
+<h2 id="mappings">Mappings</h2>
+<table>
+<thead>
+<tr>
+<th>Mapping Type</th>
+<th>Mapped Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>self</td>
+<td>oscal:Link</td>
+</tr>
+<tr>
+<td>native</td>
+<td>oscal:Link</td>
+</tr>
+</tbody>
+</table>
+<h2 id="linkml-source">LinkML Source</h2>
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
-
-### Direct
-
+<h3 id="direct">Direct</h3>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Link</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A reference to a local or remote resource, that has a specific relation</span>
@@ -415,9 +932,7 @@ URI: [oscal:Link](https://w3id.org/lmodel/oscal/Link)
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TokenType</span>
 </code></pre></div>
 </details>
-
-### Induced
-
+<h3 id="induced">Induced</h3>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Link</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A reference to a local or remote resource, that has a specific relation</span>
@@ -504,7 +1019,8 @@ URI: [oscal:Link](https://w3id.org/lmodel/oscal/Link)
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Citation</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MarkupLineType</span>
 </code></pre></div>
-</details></div>
+</details>
+</div>
 </article>
 </div>
 <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
@@ -536,7 +1052,7 @@ URI: [oscal:Link](https://w3id.org/lmodel/oscal/Link)
 </div>
 <div class="md-progress" data-md-component="progress" role="progressbar"></div>
 <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.tabs.link", "header.autohide", "navigation.expand", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "search.suggest", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
-<script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+<script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
 <script src="../../assets/pymdownx-extras/extra-loader-B5CKpNQx.js"></script>
 </body>
 </html>

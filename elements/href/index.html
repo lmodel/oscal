@@ -17,7 +17,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -25,7 +25,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
       
 
@@ -358,6 +358,114 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#applicable-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Applicable Classes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Properties
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#type-and-range" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Type and Range
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cardinality-and-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cardinality and Requirements
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#identifier-and-mapping-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Identifier and Mapping Information
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Identifier and Mapping Information">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#schema-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schema Source
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mappings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mappings
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linkml-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LinkML Source
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -379,91 +487,156 @@
 
 <h1 id="slot-href">Slot: href</h1>
 <p><em>A resolvable URL reference to a resource.</em></p>
-<div data-search-exclude markdown="1">
-
-
-
-URI: [oscal:href](https://w3id.org/lmodel/oscal/href)
+<div>
+<p>URI: <a href="https://w3id.org/lmodel/oscal/href">oscal:href</a></p>
 <!-- no inheritance hierarchy -->
-
-
-
-
-
-## Applicable Classes
-
-| Name | Description | Modifies Slot |
-| --- | --- | --- |
-| [Link](Link.md) | A reference to a local or remote resource, that has a specific relation to th... |  yes  |
-| [ResourceLink](ResourceLink.md) | A URL-based pointer to an external resource with an optional hash for verific... |  yes  |
-| [ProfileImport](ProfileImport.md) | Designates a referenced source catalog or profile that provides a source of c... |  yes  |
-| [ImportSSP](ImportSSP.md) | Used by the assessment plan and POA&M to import information about the system |  yes  |
-| [RelevantEvidence](RelevantEvidence.md) | Links this observation to relevant evidence |  no  |
-| [ThreatId](ThreatId.md) | A pointer, by ID, to an externally-defined threat |  no  |
-| [ImportProfile](ImportProfile.md) | Used to import the OSCAL profile representing the system's control baseline |  yes  |
-| [ImportAssessmentPlan](ImportAssessmentPlan.md) | Used by assessment-results to import information about the original plan for ... |  yes  |
-| [ImportComponentDefinition](ImportComponentDefinition.md) | Loads a component definition from another resource |  yes  |
-| [MappingResourceReference](MappingResourceReference.md) | A reference to the source or target resource for a mapping |  yes  |
-| [ImplementationCommonLink](ImplementationCommonLink.md) | Implementation-common scoped OSCAL link |  no  |
-| [SspSystemInformationLink](SspSystemInformationLink.md) | SSP-scoped link used in system information |  no  |
-| [SspDiagramLink](SspDiagramLink.md) | SSP-scoped link used in diagram objects |  no  |
-| [SspLeveragedAuthorizationLink](SspLeveragedAuthorizationLink.md) | SSP-scoped link used in leveraged authorization objects |  no  |
-| [SspByComponentLink](SspByComponentLink.md) | SSP-scoped link used in by-component contexts |  no  |
-
-
-
-
-
-
-## Properties
-
-### Type and Range
-
-| Property | Value |
-| --- | --- |
-| Range | [URIReferenceType](URIReferenceType.md) |
-| Domain Of | [Link](Link.md), [ResourceLink](ResourceLink.md), [ProfileImport](ProfileImport.md), [ImportSSP](ImportSSP.md), [RelevantEvidence](RelevantEvidence.md), [ThreatId](ThreatId.md), [ImportProfile](ImportProfile.md), [ImportAssessmentPlan](ImportAssessmentPlan.md), [ImportComponentDefinition](ImportComponentDefinition.md), [MappingResourceReference](MappingResourceReference.md) |
-
-### Cardinality and Requirements
-
-| Property | Value |
-| --- | --- |
-
-
-
-
-
-
-
-
-
-
-## Identifier and Mapping Information
-
-
-
-
-
-### Schema Source
-
-
-* from schema: https://w3id.org/lmodel/oscal
-
-
-
-
-## Mappings
-
-| Mapping Type | Mapped Value |
-| ---  | ---  |
-| self | oscal:href |
-| native | oscal:href |
-
-
-
-
-## LinkML Source
-
+<h2 id="applicable-classes">Applicable Classes</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Modifies Slot</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../Link/">Link</a></td>
+<td>A reference to a local or remote resource, that has a specific relation to th...</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../ResourceLink/">ResourceLink</a></td>
+<td>A URL-based pointer to an external resource with an optional hash for verific...</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../ProfileImport/">ProfileImport</a></td>
+<td>Designates a referenced source catalog or profile that provides a source of c...</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../ImportSSP/">ImportSSP</a></td>
+<td>Used by the assessment plan and POA&amp;M to import information about the system</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../RelevantEvidence/">RelevantEvidence</a></td>
+<td>Links this observation to relevant evidence</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ThreatId/">ThreatId</a></td>
+<td>A pointer, by ID, to an externally-defined threat</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ImportProfile/">ImportProfile</a></td>
+<td>Used to import the OSCAL profile representing the system's control baseline</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../ImportAssessmentPlan/">ImportAssessmentPlan</a></td>
+<td>Used by assessment-results to import information about the original plan for ...</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../ImportComponentDefinition/">ImportComponentDefinition</a></td>
+<td>Loads a component definition from another resource</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../MappingResourceReference/">MappingResourceReference</a></td>
+<td>A reference to the source or target resource for a mapping</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../ImplementationCommonLink/">ImplementationCommonLink</a></td>
+<td>Implementation-common scoped OSCAL link</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../SspSystemInformationLink/">SspSystemInformationLink</a></td>
+<td>SSP-scoped link used in system information</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../SspDiagramLink/">SspDiagramLink</a></td>
+<td>SSP-scoped link used in diagram objects</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../SspLeveragedAuthorizationLink/">SspLeveragedAuthorizationLink</a></td>
+<td>SSP-scoped link used in leveraged authorization objects</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../SspByComponentLink/">SspByComponentLink</a></td>
+<td>SSP-scoped link used in by-component contexts</td>
+<td>no</td>
+</tr>
+</tbody>
+</table>
+<h2 id="properties">Properties</h2>
+<h3 id="type-and-range">Type and Range</h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Range</td>
+<td><a href="../URIReferenceType/">URIReferenceType</a></td>
+</tr>
+<tr>
+<td>Domain Of</td>
+<td><a href="../Link/">Link</a>, <a href="../ResourceLink/">ResourceLink</a>, <a href="../ProfileImport/">ProfileImport</a>, <a href="../ImportSSP/">ImportSSP</a>, <a href="../RelevantEvidence/">RelevantEvidence</a>, <a href="../ThreatId/">ThreatId</a>, <a href="../ImportProfile/">ImportProfile</a>, <a href="../ImportAssessmentPlan/">ImportAssessmentPlan</a>, <a href="../ImportComponentDefinition/">ImportComponentDefinition</a>, <a href="../MappingResourceReference/">MappingResourceReference</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="cardinality-and-requirements">Cardinality and Requirements</h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="schema-source">Schema Source</h3>
+<ul>
+<li>from schema: https://w3id.org/lmodel/oscal</li>
+</ul>
+<h2 id="mappings">Mappings</h2>
+<table>
+<thead>
+<tr>
+<th>Mapping Type</th>
+<th>Mapped Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>self</td>
+<td>oscal:href</td>
+</tr>
+<tr>
+<td>native</td>
+<td>oscal:href</td>
+</tr>
+</tbody>
+</table>
+<h2 id="linkml-source">LinkML Source</h2>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">href</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A resolvable URL reference to a resource.</span>
@@ -482,7 +655,8 @@ URI: [oscal:href](https://w3id.org/lmodel/oscal/href)
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MappingResourceReference</span>
 <span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">URIReferenceType</span>
 </code></pre></div>
-</details></div>
+</details>
+</div>
 
 
 
@@ -551,7 +725,7 @@ URI: [oscal:href](https://w3id.org/lmodel/oscal/href)
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.tabs.link", "header.autohide", "navigation.expand", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "search.suggest", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../../assets/pymdownx-extras/extra-loader-B5CKpNQx.js"></script>
       

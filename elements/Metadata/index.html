@@ -7,9 +7,9 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://lmodel.github.io/oscal/elements/Metadata/" rel="canonical"/>
 <link href="../../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.6.1, mkdocs-material-9.7.6" name="generator"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.7" name="generator"/>
 <title>Class: Metadata - oscal</title>
-<link href="../../assets/stylesheets/main.484c7ddc.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/main.ec1eaa64.min.css" rel="stylesheet"/>
 <script src="../../assets/pymdownx-extras/material-extra-theme-2ek1P7jT.js" type="text/javascript"></script>
 <script src="../../assets/pymdownx-extras/material-extra-3rdparty-BUCF4rjN.js" type="text/javascript"></script>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -184,6 +184,110 @@
 <div class="md-sidebar__scrollwrap">
 <div class="md-sidebar__inner">
 <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#inheritance">
+<span class="md-ellipsis">
+      
+        Inheritance
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#slots">
+<span class="md-ellipsis">
+      
+        Slots
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#usages">
+<span class="md-ellipsis">
+      
+        Usages
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#in-subsets">
+<span class="md-ellipsis">
+      
+        In Subsets
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#identifier-and-mapping-information">
+<span class="md-ellipsis">
+      
+        Identifier and Mapping Information
+      
+    </span>
+</a>
+<nav aria-label="Identifier and Mapping Information" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#schema-source">
+<span class="md-ellipsis">
+      
+        Schema Source
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#mappings">
+<span class="md-ellipsis">
+      
+        Mappings
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#linkml-source">
+<span class="md-ellipsis">
+      
+        LinkML Source
+      
+    </span>
+</a>
+<nav aria-label="LinkML Source" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#direct">
+<span class="md-ellipsis">
+      
+        Direct
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#induced">
+<span class="md-ellipsis">
+      
+        Induced
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
 </nav>
 </div>
 </div>
@@ -192,16 +296,8 @@
 <article class="md-content__inner md-typeset">
 <h1 id="class-metadata">Class: Metadata</h1>
 <p><em>Provides information about the containing document, and defines concepts shared across the document.</em></p>
-<div data-search-exclude="" markdown="1">
-
-
-
-URI: [oscal:Metadata](https://w3id.org/lmodel/oscal/Metadata)
-
-
-
-
-
+<div>
+<p>URI: <a href="https://w3id.org/lmodel/oscal/Metadata">oscal:Metadata</a></p>
 <pre class="mermaid"><code> classDiagram
     class Metadata
     click Metadata href "../Metadata/"
@@ -322,101 +418,205 @@ URI: [oscal:Metadata](https://w3id.org/lmodel/oscal/Metadata)
       Metadata : version
 
 </code></pre>
-
-
-
-
-
-## Inheritance
-* **Metadata** [ [OscalCommon](OscalCommon.md) [HasResponsibleParties](HasResponsibleParties.md)]
-
-
-## Slots
-
-| Name | Cardinality and Range | Description | Inheritance |
-| ---  | --- | --- | --- |
-| [title](title.md) | 1 <br/> [MarkupLineType](MarkupLineType.md) | A name given to the document | direct |
-| [published](published.md) | 0..1 <br/> [DateTimeWithTimezoneType](DateTimeWithTimezoneType.md) | The date and time the document was last made available | direct |
-| [last_modified](last_modified.md) | 1 <br/> [DateTimeWithTimezoneType](DateTimeWithTimezoneType.md) | The date and time the document was last stored for later retrieval | direct |
-| [version](version.md) | 1 <br/> [String](String.md) | Used to distinguish a specific revision of an OSCAL document | direct |
-| [oscal_version](oscal_version.md) | 1 <br/> [String](String.md) | The OSCAL model version the document was authored against | direct |
-| [document_ids](document_ids.md) | * <br/> [DocumentId](DocumentId.md) | Document identifiers qualified by an identifier scheme | direct |
-| [revisions](revisions.md) | * <br/> [Revision](Revision.md) | An entry in a sequential list of revisions to the containing document, expect... | direct |
-| [roles](roles.md) | * <br/> [Role](Role.md) | Defines a function, which might be assigned to a party in a specific situatio... | direct |
-| [locations](locations.md) | * <br/> [Location](Location.md) | A physical point of presence, which may be associated with people, organizati... | direct |
-| [parties](parties.md) | * <br/> [Party](Party.md) | An organization or person, which may be associated with roles or other concep... | direct |
-| [actions](actions.md) | * <br/> [Action](Action.md) | An action applied by a role within a given party to the content | direct |
-| [remarks](remarks.md) | 0..1 <br/> [MarkupMultilineType](MarkupMultilineType.md) | Additional commentary about the containing object | [OscalCommon](OscalCommon.md) |
-| [responsible_parties](responsible_parties.md) | * <br/> [ResponsibleParty](ResponsibleParty.md) | Responsible party assignments | [HasResponsibleParties](HasResponsibleParties.md) |
-| [props](props.md) | * <br/> [MetadataProperty](MetadataProperty.md) | A list of properties | [HasPropsAndLinks](HasPropsAndLinks.md) |
-| [links](links.md) | * <br/> [Link](Link.md) | A list of links | [HasPropsAndLinks](HasPropsAndLinks.md) |
-
-
-
-
-
-## Usages
-
-| used by | used in | type | used |
-| ---  | --- | --- | --- |
-| [Catalog](Catalog.md) | [metadata](metadata.md) | range | [Metadata](Metadata.md) |
-| [Profile](Profile.md) | [metadata](metadata.md) | range | [Metadata](Metadata.md) |
-| [AssessmentPlan](AssessmentPlan.md) | [metadata](metadata.md) | range | [Metadata](Metadata.md) |
-| [SystemSecurityPlan](SystemSecurityPlan.md) | [metadata](metadata.md) | range | [Metadata](Metadata.md) |
-| [AssessmentResults](AssessmentResults.md) | [metadata](metadata.md) | range | [Metadata](Metadata.md) |
-| [ComponentDefinition](ComponentDefinition.md) | [metadata](metadata.md) | range | [Metadata](Metadata.md) |
-| [MappingCollection](MappingCollection.md) | [metadata](metadata.md) | range | [Metadata](Metadata.md) |
-| [PlanOfActionAndMilestones](PlanOfActionAndMilestones.md) | [metadata](metadata.md) | range | [Metadata](Metadata.md) |
-
-
-
-
-
-
-
-
-## In Subsets
-
-
-* [OscalMetadata](OscalMetadata.md)
-
-
-
-
-
-
-## Identifier and Mapping Information
-
-
-
-
-
-### Schema Source
-
-
-* from schema: https://w3id.org/lmodel/oscal
-
-
-
-
-## Mappings
-
-| Mapping Type | Mapped Value |
-| ---  | ---  |
-| self | oscal:Metadata |
-| native | oscal:Metadata |
-
-
-
-
-
-
-## LinkML Source
-
+<h2 id="inheritance">Inheritance</h2>
+<ul>
+<li><strong>Metadata</strong> [ <a href="../OscalCommon/">OscalCommon</a> <a href="../HasResponsibleParties/">HasResponsibleParties</a>]</li>
+</ul>
+<h2 id="slots">Slots</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Cardinality and Range</th>
+<th>Description</th>
+<th>Inheritance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../title/">title</a></td>
+<td>1 <br/> <a href="../MarkupLineType/">MarkupLineType</a></td>
+<td>A name given to the document</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../published/">published</a></td>
+<td>0..1 <br/> <a href="../DateTimeWithTimezoneType/">DateTimeWithTimezoneType</a></td>
+<td>The date and time the document was last made available</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../last_modified/">last_modified</a></td>
+<td>1 <br/> <a href="../DateTimeWithTimezoneType/">DateTimeWithTimezoneType</a></td>
+<td>The date and time the document was last stored for later retrieval</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../version/">version</a></td>
+<td>1 <br/> <a href="../String/">String</a></td>
+<td>Used to distinguish a specific revision of an OSCAL document</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../oscal_version/">oscal_version</a></td>
+<td>1 <br/> <a href="../String/">String</a></td>
+<td>The OSCAL model version the document was authored against</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../document_ids/">document_ids</a></td>
+<td>* <br/> <a href="../DocumentId/">DocumentId</a></td>
+<td>Document identifiers qualified by an identifier scheme</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../revisions/">revisions</a></td>
+<td>* <br/> <a href="../Revision/">Revision</a></td>
+<td>An entry in a sequential list of revisions to the containing document, expect...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../roles/">roles</a></td>
+<td>* <br/> <a href="../Role/">Role</a></td>
+<td>Defines a function, which might be assigned to a party in a specific situatio...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../locations/">locations</a></td>
+<td>* <br/> <a href="../Location/">Location</a></td>
+<td>A physical point of presence, which may be associated with people, organizati...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../parties/">parties</a></td>
+<td>* <br/> <a href="../Party/">Party</a></td>
+<td>An organization or person, which may be associated with roles or other concep...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../actions/">actions</a></td>
+<td>* <br/> <a href="../Action/">Action</a></td>
+<td>An action applied by a role within a given party to the content</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../remarks/">remarks</a></td>
+<td>0..1 <br/> <a href="../MarkupMultilineType/">MarkupMultilineType</a></td>
+<td>Additional commentary about the containing object</td>
+<td><a href="../OscalCommon/">OscalCommon</a></td>
+</tr>
+<tr>
+<td><a href="../responsible_parties/">responsible_parties</a></td>
+<td>* <br/> <a href="../ResponsibleParty/">ResponsibleParty</a></td>
+<td>Responsible party assignments</td>
+<td><a href="../HasResponsibleParties/">HasResponsibleParties</a></td>
+</tr>
+<tr>
+<td><a href="../props/">props</a></td>
+<td>* <br/> <a href="../MetadataProperty/">MetadataProperty</a></td>
+<td>A list of properties</td>
+<td><a href="../HasPropsAndLinks/">HasPropsAndLinks</a></td>
+</tr>
+<tr>
+<td><a href="../links/">links</a></td>
+<td>* <br/> <a href="../Link/">Link</a></td>
+<td>A list of links</td>
+<td><a href="../HasPropsAndLinks/">HasPropsAndLinks</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="usages">Usages</h2>
+<table>
+<thead>
+<tr>
+<th>used by</th>
+<th>used in</th>
+<th>type</th>
+<th>used</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../Catalog/">Catalog</a></td>
+<td><a href="../metadata/">metadata</a></td>
+<td>range</td>
+<td><a href="./">Metadata</a></td>
+</tr>
+<tr>
+<td><a href="../Profile/">Profile</a></td>
+<td><a href="../metadata/">metadata</a></td>
+<td>range</td>
+<td><a href="./">Metadata</a></td>
+</tr>
+<tr>
+<td><a href="../AssessmentPlan/">AssessmentPlan</a></td>
+<td><a href="../metadata/">metadata</a></td>
+<td>range</td>
+<td><a href="./">Metadata</a></td>
+</tr>
+<tr>
+<td><a href="../SystemSecurityPlan/">SystemSecurityPlan</a></td>
+<td><a href="../metadata/">metadata</a></td>
+<td>range</td>
+<td><a href="./">Metadata</a></td>
+</tr>
+<tr>
+<td><a href="../AssessmentResults/">AssessmentResults</a></td>
+<td><a href="../metadata/">metadata</a></td>
+<td>range</td>
+<td><a href="./">Metadata</a></td>
+</tr>
+<tr>
+<td><a href="../ComponentDefinition/">ComponentDefinition</a></td>
+<td><a href="../metadata/">metadata</a></td>
+<td>range</td>
+<td><a href="./">Metadata</a></td>
+</tr>
+<tr>
+<td><a href="../MappingCollection/">MappingCollection</a></td>
+<td><a href="../metadata/">metadata</a></td>
+<td>range</td>
+<td><a href="./">Metadata</a></td>
+</tr>
+<tr>
+<td><a href="../PlanOfActionAndMilestones/">PlanOfActionAndMilestones</a></td>
+<td><a href="../metadata/">metadata</a></td>
+<td>range</td>
+<td><a href="./">Metadata</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="in-subsets">In Subsets</h2>
+<ul>
+<li><a href="../OscalMetadata/">OscalMetadata</a></li>
+</ul>
+<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="schema-source">Schema Source</h3>
+<ul>
+<li>from schema: https://w3id.org/lmodel/oscal</li>
+</ul>
+<h2 id="mappings">Mappings</h2>
+<table>
+<thead>
+<tr>
+<th>Mapping Type</th>
+<th>Mapped Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>self</td>
+<td>oscal:Metadata</td>
+</tr>
+<tr>
+<td>native</td>
+<td>oscal:Metadata</td>
+</tr>
+</tbody>
+</table>
+<h2 id="linkml-source">LinkML Source</h2>
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
-
-### Direct
-
+<h3 id="direct">Direct</h3>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Metadata</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Provides information about the containing document, and defines concepts</span>
@@ -464,9 +664,7 @@ URI: [oscal:Metadata](https://w3id.org/lmodel/oscal/Metadata)
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Link</span>
 </code></pre></div>
 </details>
-
-### Induced
-
+<h3 id="induced">Induced</h3>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Metadata</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Provides information about the containing document, and defines concepts</span>
@@ -797,7 +995,8 @@ URI: [oscal:Metadata](https://w3id.org/lmodel/oscal/Metadata)
 <span class="w">    </span><span class="nt">inlined</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">    </span><span class="nt">inlined_as_list</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
-</details></div>
+</details>
+</div>
 </article>
 </div>
 <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
@@ -829,7 +1028,7 @@ URI: [oscal:Metadata](https://w3id.org/lmodel/oscal/Metadata)
 </div>
 <div class="md-progress" data-md-component="progress" role="progressbar"></div>
 <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.tabs.link", "header.autohide", "navigation.expand", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "search.suggest", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
-<script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+<script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
 <script src="../../assets/pymdownx-extras/extra-loader-B5CKpNQx.js"></script>
 </body>
 </html>
