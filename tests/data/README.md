@@ -24,11 +24,6 @@ sorted in subfolders:
 - `luigi_carpio/` — A real-world OSCAL Component Definition JSON file mapping NIST
   800-53 Rev 5 controls to AWS services (FedRAMP High + CJIS). Validated by the
   `test-luigi-carpio` recipe in `project.justfile`.
-- `open_control/` — Reference files in the **OpenControl format** (v1.0.0, v3.0.0,
-  v3.1.0), a predecessor compliance format with its own schema (`satisfies`,
-  `control_key`, `schema_version`, etc.). These are **not OSCAL** and cannot be
-  validated against the OSCAL LinkML schema or generated JSON Schema; they are kept
-  as reference material for format-comparison and migration context.
 
 ## Naming conventions
 

@@ -27,9 +27,11 @@ This document records the knowledge sources used in the bootstrap discovery pass
 | `https://pages.nist.gov/OSCAL/` | `Reference` | `references/nist-oscal` | Verify NIST URL resolves; check latest OSCAL version number. |
 | `https://linkml.io/` | `Reference` | `references/linkml` | Verify URL resolves; no version pinning needed (framework reference). |
 | `pyproject.toml` (authors field) | `Organization` | `org/lmodel` | Verify lmodel GitHub org URL; update `name` if org changes. |
+| `tests/data/cncf-ai-benchmarks/` + `tests/data/invalid/cncf-ai-benchmarks/` | `Dataset` | `datasets/cncf-ai-benchmarks` | Re-count fixture files (expect 31 in each dir); confirm the invalid copies still differ only by the injected `last-modified` fault; re-check upstream `oscal-compass-lab/ai-benchmarks` source URL resolves. |
+| `tests/data/luigi_carpio/component-definition.json` | `Dataset` | `datasets/luigi-carpio-component-definition` | Re-read `metadata.oscal-version`; re-count `fedramp-high`/`cjis-delta` props; confirm `test-luigi-carpio` recipe in `project.justfile` still targets this path. |
 
 ## Gaps noted
 
 - `project/` (generated artifacts directory) contains ~20 format outputs (jsonschema, owl, shacl, rdf, typescript, golang, rust, protobuf, etc.). Each could become a `Dataset` concept with `derivedFrom` pointing to the schema. Not added in this pass - add when the generated formats themselves become objects of knowledge queries.
-- `tests/` and `scripts/` contain tooling code; no concept warranted in this pass.
+- `tests/` (test suite code, `tests/data/valid/`, `tests/data/invalid/*.yaml`, `tests/data/problem/`) and `scripts/` contain tooling/unit-fixture code; no concept warranted for those. The real-world data fixtures under `tests/data/` (cncf-ai-benchmarks, luigi_carpio) are captured above since they carry external provenance rather than being synthetic unit fixtures.
 - No CODEOWNERS file present; ownership derived from `pyproject.toml` authors.

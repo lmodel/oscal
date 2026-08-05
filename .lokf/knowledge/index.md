@@ -27,6 +27,8 @@ A [LOKF](https://lokf.nolan-nichols.com) knowledge base for OSCAL (Open Security
 * [OSCAL Component Definition Schema](datasets/oscal-component-schema.md) - Component Definition model.
 * [OSCAL Mapping Schema](datasets/oscal-mapping-schema.md) - Mapping Collection model.
 * [OSCAL POAM Schema](datasets/oscal-poam-schema.md) - Plan of Action and Milestones model.
+* [CNCF AI Ecosystem OSCAL Benchmarks](datasets/cncf-ai-benchmarks.md) - 31 real-world Component Definition fixtures (valid + fault-injected invalid) from the CNCF AI ecosystem.
+* [NIST 800-53 Rev 5 to AWS Service Mapping](datasets/luigi-carpio-component-definition.md) - Real-world Component Definition fixture mapping NIST 800-53 Rev 5 to AWS services (FedRAMP High + CJIS).
 
 ## References
 

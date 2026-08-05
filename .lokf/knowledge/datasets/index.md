@@ -9,3 +9,5 @@
 * [OSCAL Component Definition Schema](oscal-component-schema.md) - Component Definition model.
 * [OSCAL Mapping Schema](oscal-mapping-schema.md) - Mapping Collection model.
 * [OSCAL POAM Schema](oscal-poam-schema.md) - Plan of Action and Milestones model.
+* [CNCF AI Ecosystem OSCAL Benchmarks](cncf-ai-benchmarks.md) - 31 real-world Component Definition fixtures (valid + fault-injected invalid) from the CNCF AI ecosystem.
+* [NIST 800-53 Rev 5 to AWS Service Mapping](luigi-carpio-component-definition.md) - Real-world Component Definition fixture mapping NIST 800-53 Rev 5 to AWS services (FedRAMP High + CJIS).
