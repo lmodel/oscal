@@ -1,0 +1,1799 @@
+{
+  "component-definition": {
+    "uuid": "4b8ea84d-9b7a-4c65-90e6-a475160f0343",
+    "metadata": {
+      "title": "Delta-Lake AI Governance Component Definition",
+      "last-modified": "2026-06-01T14:22:54+0000",
+      "version": "1.0",
+      "oscal-version": "1.2.1",
+      "remarks": "Component definition derived from Delta-Lake Governance Benchmark"
+    },
+    "components": [
+      {
+        "uuid": "20289d24-5f65-4a3a-a689-fcae8a502d57",
+        "type": "software",
+        "title": "Delta-Lake",
+        "description": "AI/ML component for Delta-Lake with governance controls",
+        "props": [
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Training data, Inference",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Transparency",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Untracked table lineage and protocol state",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "DL-GOV-001",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure every governed Delta table is linked to source data, schema, protocol version, and transaction-log history",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Record source dataset lineage, table schema, protocol version, table properties, and transaction-log provenance for every governed Delta table before production use.",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Table-lineage completeness",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Completeness = governed Delta tables with linked source lineage, schema, protocol state, and transaction-log provenance / total governed Delta tables.",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Model/system documentation completeness",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure table-lineage completeness reaches 100% before a Delta table is approved for governed production use.",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "1",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Partial",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "The correct main repo is delta-io/delta, and Delta Lake's core governance unit is the transaction-log-backed table rather than the org itself.",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Training data",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Accuracy",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Schema mismatch and bad-record ingestion",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "DL-ACC-002",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure schema enforcement blocks incompatible writes to governed Delta tables",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Use Delta Lake schema enforcement so incompatible writes are rejected unless an approved schema-evolution path is explicitly authorized.",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Schema-enforcement success rate, schema-mismatch rejection rate",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Schema-enforcement success = incompatible writes correctly rejected / total incompatible write tests; rejection rate = rejected incompatible writes / total incompatible writes attempted.",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Exact Match",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure schema enforcement correctly rejects all incompatible writes for governed tables.",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "1",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Partial",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Delta Lake docs explicitly describe schema enforcement as preventing insertion of bad or incompatible records during ingestion.",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Training data",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Governance",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Uncontrolled schema evolution",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "DL-GOV-003",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure schema evolution is used only under approved change control",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Require explicit approval and benchmark evidence before enabling schema evolution or mergeSchema behavior on governed Delta tables.",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Approved-schema-change coverage",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Coverage = schema changes applied with approved evolution evidence / total governed schema changes in scope.",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Documentation completeness",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure approved-schema-change coverage reaches 100% for all governed schema changes.",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "1",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Partial",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Delta Lake supports schema evolution, but governance is needed because permissive evolution can dilute data quality if unmanaged.",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Manual",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Training data, Inference",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Reliability",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Concurrent write conflicts",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "DL-REL-004",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure governed write workflows handle optimistic concurrency conflicts safely",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Validate write workflows that modify governed Delta tables so optimistic concurrency conflicts are detected, surfaced, and retried or failed safely according to policy.",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Conflict-handling success rate, unresolved write-conflict rate",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Conflict-handling success = write-conflict tests resolved according to policy / total conflict tests; unresolved conflict rate = unsafe conflict outcomes / total conflict tests.",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "N/A - transactional reliability metric",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure optimistic concurrency conflicts are handled successfully in all governed write workflows.",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "100% policy-compliant handling",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "No",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Delta Lake uses optimistic concurrency control for transactional guarantees between writes, so conflict-handling behavior is a core control.",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Training data, Inference",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Reliability",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Lost auditability from inadequate version history retention",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "DL-REL-005",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure retention and VACUUM settings preserve required time-travel and audit windows",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Validate retention and VACUUM strategy so governed Delta tables retain sufficient history for audit, rollback, reproducibility, and incident investigation.",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Time-travel retention compliance rate, historical-version availability rate",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Compliance rate = governed tables meeting the approved history-retention window / total governed tables; historical-version availability = required historical versions accessible / total required versions tested.",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Documentation completeness",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure governed Delta tables preserve the approved time-travel and audit window before VACUUM actions are permitted.",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "100% compliance",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Partial",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Delta Lake time travel depends on retained historical files, and the docs warn that VACUUM can limit time-travel ability.",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Manual",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Training data, Inference",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Transparency",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Inability to reproduce historical dataset states",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "DL-GOV-006",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure time-travel queries reproduce approved historical table states",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Validate that governed Delta tables can be read by version or timestamp to reproduce approved historical states used in training, evaluation, or reporting.",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Time-travel reproducibility rate",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Reproducibility rate = historical state queries reproducing the approved expected state / total tested historical versions or timestamps.",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Consistency, Exact Match",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure time-travel reproducibility remains above threshold for all governed historical states used in AI workflows.",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": ">99%",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Partial",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Delta Lake docs highlight time travel by version or timestamp as a core feature for historical reproducibility.",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Training data",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Accuracy",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Poor data quality in merge, update, or delete workflows",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "DL-ACC-007",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure merge, update, and delete operations preserve governed table correctness",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Validate merge, update, and delete workflows so row-level changes produce the expected final table state without unintended duplication, omission, or corruption.",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Post-operation correctness rate, duplicate-row rate, missing-row rate",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Correctness = governed row-change operations producing the approved final state / total tested operations; duplicate and missing-row rates are computed against expected state.",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Exact Match",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure merge, update, and delete workflows preserve the approved final table state for all governed scenarios.",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Correctness >99%; duplicates and missing rows <1%",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Partial",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Delta Lake explicitly supports upserts and deletes, so row-level correctness in these workflows is a direct control surface.",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Training data, Inference",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Reliability",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Untracked row-level changes",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "DL-GOV-008",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure change data feed is enabled where governed use cases require row-level auditability",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "For governed use cases that need row-level change tracking, enable and validate Delta change data feed so inserts, updates, and deletes are auditably available.",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "CDF coverage, row-change capture completeness",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "CDF coverage = governed tables requiring row-level change tracking with CDF enabled / total governed tables requiring row-level tracking; capture completeness = captured row changes / expected row changes.",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Documentation completeness",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure change data feed coverage and row-change capture completeness meet the approved threshold for governed use cases.",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "1",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Partial",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Delta Lake's change data feed records insert, delete, and update change events with row-level metadata, making it a direct auditability feature.",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Training data, Inference",
+            "remarks": "rule_set_08"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Performance",
+            "remarks": "rule_set_08"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Query latency regression",
+            "remarks": "rule_set_08"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "DL-PERF-009",
+            "remarks": "rule_set_08"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure representative read workloads meet the approved latency objective",
+            "remarks": "rule_set_08"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Benchmark governed Delta read workloads so schema changes, file-layout changes, or operational tuning decisions do not violate service expectations.",
+            "remarks": "rule_set_08"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "p95 query latency, mean query latency",
+            "remarks": "rule_set_08"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Measure query response times for approved benchmark workloads and compute p95 and mean latency against the governed baseline.",
+            "remarks": "rule_set_08"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "N/A - operational metric",
+            "remarks": "rule_set_08"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure p95 query latency remains within the approved service objective for governed read workloads.",
+            "remarks": "rule_set_08"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Within project SLA",
+            "remarks": "rule_set_08"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "No",
+            "remarks": "rule_set_08"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Delta Lake aims to improve reliability and performance on data-lake storage, so read-performance validation is a practical platform control.",
+            "remarks": "rule_set_08"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_08"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Training data, Inference",
+            "remarks": "rule_set_09"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Performance",
+            "remarks": "rule_set_09"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Write throughput degradation",
+            "remarks": "rule_set_09"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "DL-PERF-010",
+            "remarks": "rule_set_09"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure representative write workloads meet the approved throughput objective",
+            "remarks": "rule_set_09"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Benchmark governed append, merge, and streaming-ingest workloads so write-path changes do not create unacceptable performance regressions.",
+            "remarks": "rule_set_09"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Rows per second, write throughput, commit latency",
+            "remarks": "rule_set_09"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Run representative write benchmarks and compute sustained throughput and commit latency under the approved workload profile.",
+            "remarks": "rule_set_09"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "N/A - operational metric",
+            "remarks": "rule_set_09"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure write throughput and commit latency remain within the approved operational target for governed workflows.",
+            "remarks": "rule_set_09"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Project-approved throughput and latency target",
+            "remarks": "rule_set_09"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "No",
+            "remarks": "rule_set_09"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Delta Lake's transaction log and conflict checks influence write behavior, so write-performance validation is necessary for production workloads.",
+            "remarks": "rule_set_09"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_09"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Training data",
+            "remarks": "rule_set_10"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Privacy",
+            "remarks": "rule_set_10"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "PII exposure in governed Delta tables",
+            "remarks": "rule_set_10"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "DL-PRIV-011",
+            "remarks": "rule_set_10"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure governed Delta tables are evaluated for PII and confidential-data exposure risk",
+            "remarks": "rule_set_10"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Evaluate whether governed tables, historical versions, and row-change feeds expose personal or confidential information beyond policy limits.",
+            "remarks": "rule_set_10"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "PII leakage rate, confidential-data exposure rate, precision, recall",
+            "remarks": "rule_set_10"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Leakage rate = sensitive exposures in governed table samples or historical versions / total privacy test samples; compute precision and recall where privacy classifiers are used.",
+            "remarks": "rule_set_10"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "PII leakage, Precision, Recall",
+            "remarks": "rule_set_10"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure PII and confidential-data exposure remain below threshold and privacy-detection recall remains above threshold before production approval.",
+            "remarks": "rule_set_10"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Leakage <1%; Recall >95%",
+            "remarks": "rule_set_10"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Partial",
+            "remarks": "rule_set_10"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Delta Lake supports time travel and change data feed, so privacy review must include both current and historical states where governed data is retained.",
+            "remarks": "rule_set_10"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_10"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Training data",
+            "remarks": "rule_set_11"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Fairness",
+            "remarks": "rule_set_11"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Unrepresentative governed datasets",
+            "remarks": "rule_set_11"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "DL-FAIR-012",
+            "remarks": "rule_set_11"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure governed Delta tables meet representativeness requirements for downstream AI use",
+            "remarks": "rule_set_11"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Measure whether Delta tables used in training or evaluation sufficiently represent the intended populations, classes, or segments before downstream AI use.",
+            "remarks": "rule_set_11"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Coverage ratio, class imbalance ratio, subgroup sample proportion",
+            "remarks": "rule_set_11"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Compute subgroup proportions for the governed Delta table and compare them to the approved representativeness target or expected production distribution.",
+            "remarks": "rule_set_11"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "N/A - dataset representativeness metric",
+            "remarks": "rule_set_11"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure subgroup coverage remains within approved representativeness thresholds before the governed Delta table is used for AI development.",
+            "remarks": "rule_set_11"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "No subgroup below 80% of expected coverage",
+            "remarks": "rule_set_11"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "No",
+            "remarks": "rule_set_11"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Delta Lake is often used as the system of record for training and evaluation data, so representativeness risk is downstream but materially influenced by table content.",
+            "remarks": "rule_set_11"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Semi-automated",
+            "remarks": "rule_set_11"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Training data, Inference",
+            "remarks": "rule_set_12"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Governance",
+            "remarks": "rule_set_12"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Unreviewed protocol or table-feature changes",
+            "remarks": "rule_set_12"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "DL-GOV-013",
+            "remarks": "rule_set_12"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure protocol and table-feature changes are reviewed before rollout",
+            "remarks": "rule_set_12"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Require change review for protocol upgrades, table-feature changes, or capability changes that affect compatibility or behavior in governed Delta tables.",
+            "remarks": "rule_set_12"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Approved-protocol-change coverage",
+            "remarks": "rule_set_12"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Coverage = governed protocol or table-feature changes with completed review and compatibility evidence / total governed protocol or feature changes.",
+            "remarks": "rule_set_12"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Documentation completeness",
+            "remarks": "rule_set_12"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure approved-protocol-change coverage reaches 100% before rollout of governed protocol or feature changes.",
+            "remarks": "rule_set_12"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "1",
+            "remarks": "rule_set_12"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Partial",
+            "remarks": "rule_set_12"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Delta Lake's protocol spec and feature evolution affect interoperability and behavior, so protocol-governance is a realistic control point.",
+            "remarks": "rule_set_12"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Manual",
+            "remarks": "rule_set_12"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Training data, Inference",
+            "remarks": "rule_set_13"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Reliability",
+            "remarks": "rule_set_13"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Broken compatibility across compute engines",
+            "remarks": "rule_set_13"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "DL-REL-014",
+            "remarks": "rule_set_13"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure governed Delta tables are validated on every approved compute engine",
+            "remarks": "rule_set_13"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Where Delta tables are read or written by multiple compute engines, validate compatibility and correctness across each approved engine and version combination.",
+            "remarks": "rule_set_13"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Cross-engine compatibility pass rate",
+            "remarks": "rule_set_13"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Pass rate = approved engine and version combinations passing governed compatibility tests / total required engine and version combinations.",
+            "remarks": "rule_set_13"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "N/A - interoperability metric",
+            "remarks": "rule_set_13"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure cross-engine compatibility pass rate reaches 100% before production approval of governed multi-engine Delta workflows.",
+            "remarks": "rule_set_13"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "1",
+            "remarks": "rule_set_13"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "No",
+            "remarks": "rule_set_13"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "The official Delta org describes Delta Lake as working with multiple engines including Spark, PrestoDB, Flink, Trino, and Hive, so compatibility validation is necessary.",
+            "remarks": "rule_set_13"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_13"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Training data, Inference",
+            "remarks": "rule_set_14"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Integrity",
+            "remarks": "rule_set_14"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Incorrect historical rollback or restore",
+            "remarks": "rule_set_14"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "DL-REL-015",
+            "remarks": "rule_set_14"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure rollback and restore procedures produce the approved table state",
+            "remarks": "rule_set_14"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Validate governed rollback and restore workflows so the intended historical table state is recovered without unintended schema or data drift.",
+            "remarks": "rule_set_14"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Rollback correctness rate, restore success rate",
+            "remarks": "rule_set_14"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Rollback correctness = rollback tests producing the approved target state / total rollback tests; restore success = successful restores / total restore tests.",
+            "remarks": "rule_set_14"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Exact Match",
+            "remarks": "rule_set_14"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure rollback and restore workflows recover the approved table state for all governed scenarios.",
+            "remarks": "rule_set_14"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Correctness >99%",
+            "remarks": "rule_set_14"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Partial",
+            "remarks": "rule_set_14"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Delta Lake's time-travel and transaction-log model support rollback-style workflows, which should be validated directly in governed environments.",
+            "remarks": "rule_set_14"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_14"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Training data, Inference",
+            "remarks": "rule_set_15"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Security",
+            "remarks": "rule_set_15"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Unauthorized access to governed Delta tables or history",
+            "remarks": "rule_set_15"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "DL-SEC-016",
+            "remarks": "rule_set_15"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure governed Delta tables and historical states are accessible only through approved controls",
+            "remarks": "rule_set_15"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Restrict access to governed Delta tables, current versions, historical versions, and change feeds so only approved principals and systems can access them.",
+            "remarks": "rule_set_15"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Approved-access coverage",
+            "remarks": "rule_set_15"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Coverage = governed Delta assets accessible only through approved principals and paths / total governed Delta assets in scope.",
+            "remarks": "rule_set_15"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "N/A - access governance metric",
+            "remarks": "rule_set_15"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure approved-access coverage reaches 100% before governed Delta assets are approved for production use.",
+            "remarks": "rule_set_15"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "1",
+            "remarks": "rule_set_15"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "No",
+            "remarks": "rule_set_15"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "This is a governance and platform-access rule rather than a Delta-specific built-in feature, but it is necessary because time travel and CDF extend the accessible data surface.",
+            "remarks": "rule_set_15"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Manual",
+            "remarks": "rule_set_15"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Non-technical",
+            "remarks": "rule_set_16"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Governance",
+            "remarks": "rule_set_16"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Insufficient lakehouse release testing",
+            "remarks": "rule_set_16"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "DL-GOV-017",
+            "remarks": "rule_set_16"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure governed Delta workflows cover data quality, schema, privacy, compatibility, history, and performance tests",
+            "remarks": "rule_set_16"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Build a Delta Lake release standard that requires representative testing across schema enforcement, concurrency, time travel, privacy, compatibility, latency, throughput, and rollback domains.",
+            "remarks": "rule_set_16"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Risk-test coverage",
+            "remarks": "rule_set_16"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Coverage = number of mandated Delta Lake risk domains with active tracked evidence / total mandated risk domains in the release standard.",
+            "remarks": "rule_set_16"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Composite evaluation coverage based on benchmark families",
+            "remarks": "rule_set_16"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure risk-test coverage remains at or above threshold across the required Delta Lake validation domains.",
+            "remarks": "rule_set_16"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": ">90%",
+            "remarks": "rule_set_16"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Partial",
+            "remarks": "rule_set_16"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Delta Lake is a data and transaction layer, so release readiness must span both data correctness and operational behavior.",
+            "remarks": "rule_set_16"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_16"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Non-technical",
+            "remarks": "rule_set_17"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Governance",
+            "remarks": "rule_set_17"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Lack of table transparency",
+            "remarks": "rule_set_17"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "DL-GOV-018",
+            "remarks": "rule_set_17"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure governed Delta tables have complete documentation of schema, retention, CDF, and intended use",
+            "remarks": "rule_set_17"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Document table purpose, schema, retention policy, change-data-feed usage, partitioning or layout assumptions, and intended downstream AI or analytics use for each governed Delta table.",
+            "remarks": "rule_set_17"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Table transparency completeness",
+            "remarks": "rule_set_17"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Completeness = completed required transparency fields / total required transparency fields for each governed Delta table.",
+            "remarks": "rule_set_17"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Model/system documentation completeness",
+            "remarks": "rule_set_17"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure table transparency completeness reaches 100% before production approval.",
+            "remarks": "rule_set_17"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "1",
+            "remarks": "rule_set_17"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Partial",
+            "remarks": "rule_set_17"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "For Delta Lake, the governed table is the central object that needs documented behavior and intended use.",
+            "remarks": "rule_set_17"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Manual",
+            "remarks": "rule_set_17"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Non-technical",
+            "remarks": "rule_set_18"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Governance",
+            "remarks": "rule_set_18"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Lack of system transparency",
+            "remarks": "rule_set_18"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "DL-GOV-019",
+            "remarks": "rule_set_18"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure deployment topology, engine assumptions, and retention strategy are documented for governed Delta systems",
+            "remarks": "rule_set_18"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Document the compute engines, storage platform, concurrency assumptions, retention strategy, version-history policy, and operational dependencies for each governed Delta deployment.",
+            "remarks": "rule_set_18"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "System transparency completeness",
+            "remarks": "rule_set_18"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Completeness = completed required architecture and deployment fields / total required fields in the approved transparency checklist.",
+            "remarks": "rule_set_18"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Model/system documentation completeness",
+            "remarks": "rule_set_18"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure system transparency completeness reaches 100% before production approval.",
+            "remarks": "rule_set_18"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "1",
+            "remarks": "rule_set_18"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Partial",
+            "remarks": "rule_set_18"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Delta Lake spans storage plus multiple compute engines, so deployment assumptions are part of the governed system boundary.",
+            "remarks": "rule_set_18"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Manual",
+            "remarks": "rule_set_18"
+          }
+        ],
+        "control-implementations": [
+          {
+            "uuid": "32805505-d472-4fc0-b646-ad378f7667bb",
+            "source": "https://raw.githubusercontent.com/oscal-compass/oscal-content/refs/heads/main/catalogs/nist_ai_rmf_gen_ai/1.0.0/catalog.json",
+            "description": "Implementation of NIST AI RMF controls for Delta-Lake",
+            "implemented-requirements": [
+              {
+                "uuid": "0f393beb-6f06-4657-bb8f-be6d57e7e15d",
+                "control-id": "GOVERN-1.1",
+                "description": "Control implementation for GOVERN-1.1",
+                "props": [
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "DL-GOV-003"
+                  },
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "DL-GOV-013"
+                  },
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "DL-SEC-016"
+                  }
+                ]
+              },
+              {
+                "uuid": "3ac66922-6f4a-4470-821a-145aba370398",
+                "control-id": "GOVERN-1.3",
+                "description": "Control implementation for GOVERN-1.3",
+                "props": [
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "DL-GOV-008"
+                  }
+                ]
+              },
+              {
+                "uuid": "435fb3b5-1429-4a31-81ca-7c7d75a70b71",
+                "control-id": "GOVERN-1.6",
+                "description": "Control implementation for GOVERN-1.6",
+                "props": [
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "DL-GOV-001"
+                  },
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "DL-GOV-018"
+                  }
+                ]
+              },
+              {
+                "uuid": "ebbb429a-286b-4f04-b795-c7f06caf2026",
+                "control-id": "MANAGE-4.1",
+                "description": "Control implementation for MANAGE-4.1",
+                "props": [
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "DL-REL-004"
+                  }
+                ]
+              },
+              {
+                "uuid": "354eb638-8be0-46b5-9374-77593b219382",
+                "control-id": "MANAGE-4.2",
+                "description": "Control implementation for MANAGE-4.2",
+                "props": [
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "DL-REL-005"
+                  }
+                ]
+              },
+              {
+                "uuid": "b417540a-55f3-410d-97be-2f45a483a6be",
+                "control-id": "MAP-1.3",
+                "description": "Control implementation for MAP-1.3",
+                "props": [
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "DL-GOV-019"
+                  }
+                ]
+              },
+              {
+                "uuid": "ffeb260a-5b78-43e0-8ca9-c46b84da68ec",
+                "control-id": "MAP-2.1",
+                "description": "Control implementation for MAP-2.1",
+                "props": [
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "DL-FAIR-012"
+                  }
+                ]
+              },
+              {
+                "uuid": "47f510bb-2e57-4b61-9ecd-586f940d9fa3",
+                "control-id": "MEASURE-2.10",
+                "description": "Control implementation for MEASURE-2.10",
+                "props": [
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "DL-GOV-006"
+                  },
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "DL-REL-014"
+                  },
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "DL-GOV-017"
+                  }
+                ]
+              },
+              {
+                "uuid": "4a9d2b0d-9707-45a5-8309-b9982919b861",
+                "control-id": "MEASURE-2.2",
+                "description": "Control implementation for MEASURE-2.2",
+                "props": [
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "DL-ACC-002"
+                  },
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "DL-ACC-007"
+                  },
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "DL-REL-015"
+                  }
+                ]
+              },
+              {
+                "uuid": "1cd4ca58-3c61-40c4-88f0-291399baaa59",
+                "control-id": "MEASURE-2.3",
+                "description": "Control implementation for MEASURE-2.3",
+                "props": [
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "DL-PERF-009"
+                  },
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "DL-PERF-010"
+                  }
+                ]
+              },
+              {
+                "uuid": "085e6771-7b65-4bfc-b99f-4d85ed4ef301",
+                "control-id": "MEASURE-2.7",
+                "description": "Control implementation for MEASURE-2.7",
+                "props": [
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "DL-PRIV-011"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

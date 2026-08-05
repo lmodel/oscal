@@ -186,9 +186,9 @@ _update-linkml:
 _test-schema:
   uv run gen-project {{config_yaml}} -d tmp {{source_schema_path}}
 
-# Run Python unit tests with pytest
+# Run Python unit tests with pytest (verbose: one line per test, fixture filenames as IDs)
 _test-python: gen-python
-  uv run python -m pytest
+  uv run python -m pytest -v
 
 # Run example tests
 _test-examples: _ensure_examples_output

@@ -1,0 +1,1799 @@
+{
+  "component-definition": {
+    "uuid": "cab7d765-18ef-47d5-8af0-1b951118fdd3",
+    "metadata": {
+      "title": "Great-Expectations AI Governance Component Definition",
+      "last-modified": "2026-06-01T14:22:54+00:00",
+      "version": "1.0",
+      "oscal-version": "1.2.1",
+      "remarks": "Component definition derived from Great-Expectations Governance Benchmark"
+    },
+    "components": [
+      {
+        "uuid": "129984de-4c15-49e7-8ae2-3d49f7995d76",
+        "type": "software",
+        "title": "Great-Expectations",
+        "description": "AI/ML component for Great-Expectations with governance controls",
+        "props": [
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Training data",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Transparency",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Untracked data-quality rules",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "GX-GOV-001",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure every governed dataset has versioned Expectations linked to its intended use",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Define and version Expectations for each governed dataset so data-quality rules are explicit, reviewable, and tied to the dataset's intended downstream AI or analytics use.",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Expectation coverage",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Coverage = governed datasets with approved Expectation Suites / total governed datasets in scope.",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Documentation completeness",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure Expectation coverage reaches 100% before a governed dataset is approved for downstream use.",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "1",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Partial",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "GX Core is built around Expectations as unit tests for data, making Expectation coverage the primary governance control.",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Training data",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Accuracy",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Schema mismatch in source data",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "GX-ACC-002",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure schema Expectations validate required columns, types, and nullability",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Use Expectations to validate required columns, data types, column presence, and nullability so schema drift is detected before downstream use.",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Schema conformance rate, missing-column rate, type-mismatch rate",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Schema conformance = records or batches satisfying schema Expectations / total validated records or batches; mismatch rates computed from failed validations.",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Exact Match",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure schema conformance remains above threshold and schema mismatch rates remain below threshold for governed datasets.",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Conformance >99%; mismatch rates <1%",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Partial",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Great Expectations directly supports schema-style validations via Expectations, so this is a core platform-native rule.",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Training data",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Accuracy",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Unexpected nulls or missing critical values",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "GX-ACC-003",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure critical fields satisfy completeness Expectations",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Apply Expectations to critical columns so null rates, missing values, or incomplete records are detected before the data is consumed by training or inference pipelines.",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Completeness rate, null-value rate",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Completeness rate = rows satisfying non-null or completeness Expectations / total validated rows; null-value rate = failing rows / total validated rows.",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Exact Match",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure completeness for critical fields remains above threshold and null-value rates remain below threshold.",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Completeness >99%; null-value rate <1%",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Partial",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "GX is widely used to test completeness rules before data enters downstream systems.",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Training data",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Accuracy",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Unexpected value ranges or distributions",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "GX-ACC-004",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure critical columns satisfy approved range and distribution Expectations",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Validate governed columns against allowed ranges, sets, quantiles, or distribution thresholds so out-of-bound or anomalous data is flagged before use.",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Range-violation rate, distribution-drift rate",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Violation rate = rows or batches failing range or distribution Expectations / total validated rows or batches.",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "N/A - data-quality metric",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure range-violation and distribution-drift rates remain below approved thresholds for governed datasets.",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "<1%",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "No",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Great Expectations supports expressive value and distribution checks, which are central to dataset quality assurance.",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Training data",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Accuracy",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Duplicate records in governed data",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "GX-ACC-005",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure uniqueness Expectations are applied to keys and deduplication-sensitive fields",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Validate unique keys and deduplication-sensitive columns so duplicate rows do not distort downstream analytics, training, or evaluation datasets.",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Duplicate-record rate, uniqueness pass rate",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Duplicate-record rate = duplicate rows or key collisions / total validated rows; uniqueness pass rate = rows satisfying uniqueness Expectations / total validated rows.",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Exact Match",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure duplicate-record rates remain below threshold and uniqueness pass rates remain above threshold for governed keys.",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Duplicate rate <1%; uniqueness pass rate >99%",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Partial",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "GX has direct Expectation patterns for uniqueness and key integrity, making this a native control.",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Training data",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Fairness",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Unrepresentative dataset composition",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "GX-FAIR-006",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure representation Expectations are defined for critical populations, classes, or segments",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Define and validate expectations around subgroup composition so governed datasets do not materially underrepresent required populations or categories.",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Coverage ratio, subgroup representation ratio, class imbalance ratio",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Compute subgroup proportions and compare them to approved representativeness thresholds or expected production distributions.",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "N/A - dataset representativeness metric",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure subgroup coverage remains within approved representativeness thresholds before the dataset is approved for downstream AI use.",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "No subgroup below 80% of expected coverage",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "No",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "GX can validate expected proportions and distributions, which is useful for fairness-related dataset gating.",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Semi-automated",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Training data",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Privacy",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "PII or confidential data in unapproved fields",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "GX-PRIV-007",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure sensitive-data Expectations are applied to governed columns and tables",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Validate that governed datasets do not contain unauthorized personal or confidential values in columns, fields, or free-text locations where they are not allowed.",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "PII leakage rate, confidential-data exposure rate, precision, recall",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Leakage rate = sensitive values detected in unauthorized locations / total governed validation samples; compute precision and recall where classifiers or detectors are used.",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "PII leakage, Precision, Recall",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure PII and confidential-data exposure remain below threshold and privacy-detection recall remains above threshold before production approval.",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Leakage <1%; Recall >95%",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Partial",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "GX does not natively classify all PII, but it is a practical validation framework for enforcing approved sensitive-data rules in data pipelines.",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Training data",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Reliability",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Validation not executed before downstream use",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "GX-REL-008",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure checkpoints run before governed data is promoted downstream",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Use Checkpoints to require successful validation results before governed datasets are promoted to downstream training, analytics, or serving pipelines.",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Checkpoint enforcement coverage, failed-gate bypass rate",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Coverage = governed pipelines with enforced Checkpoints / total governed pipelines; bypass rate = downstream promotions despite failed validation / total governed failed validations.",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Documentation completeness",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure Checkpoint enforcement coverage reaches 100% and failed-gate bypass remains at zero for governed pipelines.",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Coverage 100%; bypass rate 0%",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Partial",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "GX Checkpoints are the primary mechanism to operationalize validation gates before downstream use.",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Training data, Inference",
+            "remarks": "rule_set_08"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Reliability",
+            "remarks": "rule_set_08"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Unreviewed validation failures",
+            "remarks": "rule_set_08"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "GX-GOV-009",
+            "remarks": "rule_set_08"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure failed validation results trigger review or remediation workflows",
+            "remarks": "rule_set_08"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Require that failed Expectation or Checkpoint results are reviewed, triaged, and either remediated or explicitly approved before reuse of the governed data asset.",
+            "remarks": "rule_set_08"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Validation-review completion rate, unresolved critical failure count",
+            "remarks": "rule_set_08"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Completion rate = failed validation results with completed review or remediation / total failed validation results; unresolved critical failure count from governed exceptions.",
+            "remarks": "rule_set_08"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Documentation completeness",
+            "remarks": "rule_set_08"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure failed-validation review completion reaches 100% and unresolved critical failures remain at zero before downstream reuse.",
+            "remarks": "rule_set_08"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "100% review; 0 unresolved critical failures",
+            "remarks": "rule_set_08"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Partial",
+            "remarks": "rule_set_08"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Validation results are only useful if failures trigger review; GX makes those results explicit and documentable.",
+            "remarks": "rule_set_08"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Manual",
+            "remarks": "rule_set_08"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Training data",
+            "remarks": "rule_set_09"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Transparency",
+            "remarks": "rule_set_09"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Lack of validation-result traceability",
+            "remarks": "rule_set_09"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "GX-GOV-010",
+            "remarks": "rule_set_09"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure validation results are retained and linked to the exact data asset and Expectation Suite used",
+            "remarks": "rule_set_09"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Retain validation results with clear linkage to the dataset, batch, data source, and Expectation Suite version so audits and incident reviews can reconstruct data-quality status.",
+            "remarks": "rule_set_09"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Validation-result traceability completeness",
+            "remarks": "rule_set_09"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Completeness = retained validation results with linked dataset, batch, source, and Expectation Suite version / total governed validation results.",
+            "remarks": "rule_set_09"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Documentation completeness",
+            "remarks": "rule_set_09"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure validation-result traceability completeness reaches 100% for all governed validation runs.",
+            "remarks": "rule_set_09"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "1",
+            "remarks": "rule_set_09"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Partial",
+            "remarks": "rule_set_09"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "GX automatically produces validation artifacts that can serve as evidence, making traceability a core governance strength.",
+            "remarks": "rule_set_09"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_09"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Training data, Inference",
+            "remarks": "rule_set_10"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Explainability",
+            "remarks": "rule_set_10"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Opaque data-quality evidence",
+            "remarks": "rule_set_10"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "GX-EXP-011",
+            "remarks": "rule_set_10"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure Data Docs are generated for governed validation outcomes",
+            "remarks": "rule_set_10"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Generate and retain Data Docs or equivalent documentation for governed Expectation Suites and validation results so quality evidence is understandable to technical and non-technical stakeholders.",
+            "remarks": "rule_set_10"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Data Docs coverage",
+            "remarks": "rule_set_10"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Coverage = governed validation suites or checkpoints with generated and accessible Data Docs / total governed validation suites or checkpoints.",
+            "remarks": "rule_set_10"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Documentation completeness",
+            "remarks": "rule_set_10"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure Data Docs coverage reaches 100% for governed validation assets.",
+            "remarks": "rule_set_10"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "1",
+            "remarks": "rule_set_10"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Partial",
+            "remarks": "rule_set_10"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "The repo explicitly states GX can automatically generate documentation for each set of validation results, making this a direct repo-grounded control.",
+            "remarks": "rule_set_10"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_10"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Training data",
+            "remarks": "rule_set_11"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Accuracy",
+            "remarks": "rule_set_11"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Unexpected row-count or volume anomalies",
+            "remarks": "rule_set_11"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "GX-ACC-012",
+            "remarks": "rule_set_11"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure row-count Expectations detect unexpected volume shifts",
+            "remarks": "rule_set_11"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Validate row-count ranges and dataset-size thresholds so unexpected spikes or drops are detected before the dataset is consumed downstream.",
+            "remarks": "rule_set_11"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Row-count deviation rate, volume-anomaly rate",
+            "remarks": "rule_set_11"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Deviation rate = validation runs where row-count expectations fail / total validation runs; anomaly rate computed from approved volume thresholds.",
+            "remarks": "rule_set_11"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "N/A - data-quality metric",
+            "remarks": "rule_set_11"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure row-count deviation and volume-anomaly rates remain below approved thresholds for governed datasets.",
+            "remarks": "rule_set_11"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "<1%",
+            "remarks": "rule_set_11"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "No",
+            "remarks": "rule_set_11"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Volume shifts are a common early signal of ingestion or upstream system issues, and GX is well suited to catching them.",
+            "remarks": "rule_set_11"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_11"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Training data",
+            "remarks": "rule_set_12"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Accuracy",
+            "remarks": "rule_set_12"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Broken referential relationships across datasets",
+            "remarks": "rule_set_12"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "GX-ACC-013",
+            "remarks": "rule_set_12"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure relational integrity Expectations validate key relationships across governed data assets",
+            "remarks": "rule_set_12"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Validate that foreign-key-like relationships, join keys, or approved table-level integrity assumptions remain correct across governed data assets.",
+            "remarks": "rule_set_12"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Relational-integrity pass rate, broken-key rate",
+            "remarks": "rule_set_12"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Pass rate = validated relationships satisfying approved integrity expectations / total tested relationships; broken-key rate = failing relationships / total tested relationships.",
+            "remarks": "rule_set_12"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Exact Match",
+            "remarks": "rule_set_12"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure relational-integrity pass rates remain above threshold and broken-key rates remain below threshold for governed data assets.",
+            "remarks": "rule_set_12"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Pass rate >99%; broken-key rate <1%",
+            "remarks": "rule_set_12"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Partial",
+            "remarks": "rule_set_12"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "GX can validate multi-source or table-level relationships through expectation logic, which is important for trustworthy downstream joins and features.",
+            "remarks": "rule_set_12"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_12"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Training data",
+            "remarks": "rule_set_13"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Performance",
+            "remarks": "rule_set_13"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Excessive validation overhead",
+            "remarks": "rule_set_13"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "GX-PERF-014",
+            "remarks": "rule_set_13"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure governed validation workloads meet approved runtime overhead limits",
+            "remarks": "rule_set_13"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Benchmark validation execution time and resource usage so Expectation Suites remain practical to run at the required pipeline frequency.",
+            "remarks": "rule_set_13"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Validation runtime, validation CPU or memory overhead",
+            "remarks": "rule_set_13"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Measure validation execution time and resource use on representative datasets and compare against the approved operational budget.",
+            "remarks": "rule_set_13"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "N/A - operational metric",
+            "remarks": "rule_set_13"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure governed validation runtime and resource overhead remain within the approved operational budget.",
+            "remarks": "rule_set_13"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Within project performance budget",
+            "remarks": "rule_set_13"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "No",
+            "remarks": "rule_set_13"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "GX must be operationally sustainable in pipelines; excessive validation overhead can drive teams to skip checks.",
+            "remarks": "rule_set_13"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_13"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Training data, Inference",
+            "remarks": "rule_set_14"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Governance",
+            "remarks": "rule_set_14"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Uncontrolled Expectation changes",
+            "remarks": "rule_set_14"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "GX-GOV-015",
+            "remarks": "rule_set_14"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure Expectation Suite changes are versioned and reviewed before adoption",
+            "remarks": "rule_set_14"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Version and review material changes to Expectation Suites so governance-critical rules are not weakened, removed, or changed without approval.",
+            "remarks": "rule_set_14"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Approved-expectation-change coverage",
+            "remarks": "rule_set_14"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Coverage = material Expectation Suite changes with completed review and approval / total material Expectation Suite changes in scope.",
+            "remarks": "rule_set_14"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Documentation completeness",
+            "remarks": "rule_set_14"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure approved-expectation-change coverage reaches 100% for all governed Expectation changes.",
+            "remarks": "rule_set_14"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "1",
+            "remarks": "rule_set_14"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Partial",
+            "remarks": "rule_set_14"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Since Expectations encode data policy, changes to them are effectively governance changes and should be controlled accordingly.",
+            "remarks": "rule_set_14"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Manual",
+            "remarks": "rule_set_14"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Training data, Inference",
+            "remarks": "rule_set_15"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Security",
+            "remarks": "rule_set_15"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Unauthorized validation target expansion",
+            "remarks": "rule_set_15"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "GX-SEC-016",
+            "remarks": "rule_set_15"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure validations run only against approved data assets and data sources",
+            "remarks": "rule_set_15"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Restrict GX Data Contexts, datasources, and validation configurations to governed assets so unauthorized or shadow data sources are not included in production validation workflows.",
+            "remarks": "rule_set_15"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Approved-datasource coverage",
+            "remarks": "rule_set_15"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Coverage = governed GX contexts and pipelines using only approved data assets and datasources / total governed GX contexts and pipelines.",
+            "remarks": "rule_set_15"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "N/A - access governance metric",
+            "remarks": "rule_set_15"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure approved-datasource coverage reaches 100% before production approval.",
+            "remarks": "rule_set_15"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "1",
+            "remarks": "rule_set_15"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "No",
+            "remarks": "rule_set_15"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "This is a governance-layer rule applied to how GX is configured and used in production data-quality workflows.",
+            "remarks": "rule_set_15"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Manual",
+            "remarks": "rule_set_15"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Non-technical",
+            "remarks": "rule_set_16"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Governance",
+            "remarks": "rule_set_16"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Insufficient data-quality release testing",
+            "remarks": "rule_set_16"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "GX-GOV-017",
+            "remarks": "rule_set_16"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure governed GX projects cover schema, completeness, uniqueness, privacy, representativeness, and pipeline-gating tests",
+            "remarks": "rule_set_16"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Build a Great Expectations validation standard that requires representative testing across schema, completeness, duplicates, distributions, privacy, fairness-sensitive composition, and gating domains.",
+            "remarks": "rule_set_16"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Risk-test coverage",
+            "remarks": "rule_set_16"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Coverage = number of mandated GX data-risk domains with active Expectation or Checkpoint evidence / total mandated domains in the validation standard.",
+            "remarks": "rule_set_16"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Composite evaluation coverage based on benchmark families",
+            "remarks": "rule_set_16"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure risk-test coverage remains at or above threshold across the required GX validation domains.",
+            "remarks": "rule_set_16"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": ">90%",
+            "remarks": "rule_set_16"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Partial",
+            "remarks": "rule_set_16"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "GX is a validation framework, so release readiness should be framed as breadth and rigor of data-quality evidence.",
+            "remarks": "rule_set_16"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_16"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Non-technical",
+            "remarks": "rule_set_17"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Governance",
+            "remarks": "rule_set_17"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Lack of dataset transparency",
+            "remarks": "rule_set_17"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "GX-GOV-018",
+            "remarks": "rule_set_17"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure governed datasets have complete documentation of quality rules, intended use, and validation status",
+            "remarks": "rule_set_17"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Document dataset purpose, key quality expectations, sensitivity constraints, representativeness assumptions, and current validation status for each governed dataset.",
+            "remarks": "rule_set_17"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Dataset transparency completeness",
+            "remarks": "rule_set_17"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Completeness = completed required transparency fields / total required transparency fields for each governed dataset.",
+            "remarks": "rule_set_17"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Model/system documentation completeness",
+            "remarks": "rule_set_17"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure dataset transparency completeness reaches 100% before the dataset is approved for governed use.",
+            "remarks": "rule_set_17"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "1",
+            "remarks": "rule_set_17"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Partial",
+            "remarks": "rule_set_17"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "GX helps preserve institutional knowledge about data through documented Expectations and validation results, according to the repo README.",
+            "remarks": "rule_set_17"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Manual",
+            "remarks": "rule_set_17"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Non-technical",
+            "remarks": "rule_set_18"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Governance",
+            "remarks": "rule_set_18"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Lack of system transparency",
+            "remarks": "rule_set_18"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "GX-GOV-019",
+            "remarks": "rule_set_18"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure GX Data Contexts, datasources, checkpoints, and documentation outputs are documented for governed systems",
+            "remarks": "rule_set_18"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Document the GX Data Context, datasources, Expectation Suites, Checkpoints, validation stores, and Data Docs outputs used in each governed environment.",
+            "remarks": "rule_set_18"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "System transparency completeness",
+            "remarks": "rule_set_18"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Completeness = completed required architecture and validation workflow fields / total required fields in the approved transparency checklist.",
+            "remarks": "rule_set_18"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Model/system documentation completeness",
+            "remarks": "rule_set_18"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure system transparency completeness reaches 100% before production approval.",
+            "remarks": "rule_set_18"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "1",
+            "remarks": "rule_set_18"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Partial",
+            "remarks": "rule_set_18"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "GX governance depends on understanding the full validation workflow, not just individual Expectations.",
+            "remarks": "rule_set_18"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Manual",
+            "remarks": "rule_set_18"
+          }
+        ],
+        "control-implementations": [
+          {
+            "uuid": "745da4b2-8101-4a61-95db-291e07202eff",
+            "source": "https://raw.githubusercontent.com/oscal-compass/oscal-content/refs/heads/main/catalogs/nist_ai_rmf_gen_ai/1.0.0/catalog.json",
+            "description": "Implementation of NIST AI RMF controls for Great-Expectations",
+            "implemented-requirements": [
+              {
+                "uuid": "9d277560-31e1-41d7-b64b-735a4a18e930",
+                "control-id": "GOVERN-1.1",
+                "description": "Control implementation for GOVERN-1.1",
+                "props": [
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "GX-GOV-015"
+                  },
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "GX-SEC-016"
+                  }
+                ]
+              },
+              {
+                "uuid": "eacc0af8-e9e4-4ae6-b236-462265c5e450",
+                "control-id": "GOVERN-1.3",
+                "description": "Control implementation for GOVERN-1.3",
+                "props": [
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "GX-EXP-011"
+                  }
+                ]
+              },
+              {
+                "uuid": "b36b8551-421e-4324-8bc3-5cc33ced4973",
+                "control-id": "GOVERN-1.6",
+                "description": "Control implementation for GOVERN-1.6",
+                "props": [
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "GX-GOV-001"
+                  },
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "GX-GOV-010"
+                  },
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "GX-GOV-018"
+                  }
+                ]
+              },
+              {
+                "uuid": "ab0ee6e2-4014-44d1-84fe-4e5f7321e34e",
+                "control-id": "MANAGE-4.1",
+                "description": "Control implementation for MANAGE-4.1",
+                "props": [
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "GX-REL-008"
+                  }
+                ]
+              },
+              {
+                "uuid": "2a7ca344-5ece-4553-9d0a-afab3aae3663",
+                "control-id": "MANAGE-4.2",
+                "description": "Control implementation for MANAGE-4.2",
+                "props": [
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "GX-GOV-009"
+                  }
+                ]
+              },
+              {
+                "uuid": "b728a30b-1c42-48e1-a40b-bc2efca8ce24",
+                "control-id": "MAP-1.3",
+                "description": "Control implementation for MAP-1.3",
+                "props": [
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "GX-GOV-019"
+                  }
+                ]
+              },
+              {
+                "uuid": "4af8802d-2e0a-4724-9f72-5cbfdebc6ba5",
+                "control-id": "MAP-2.1",
+                "description": "Control implementation for MAP-2.1",
+                "props": [
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "GX-FAIR-006"
+                  }
+                ]
+              },
+              {
+                "uuid": "8900f2bb-ac7d-4707-a46a-85530547fa9c",
+                "control-id": "MEASURE-2.10",
+                "description": "Control implementation for MEASURE-2.10",
+                "props": [
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "GX-ACC-004"
+                  },
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "GX-ACC-012"
+                  },
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "GX-GOV-017"
+                  }
+                ]
+              },
+              {
+                "uuid": "ff5e2c72-bfcd-4d95-a6da-f045e3a0cdff",
+                "control-id": "MEASURE-2.2",
+                "description": "Control implementation for MEASURE-2.2",
+                "props": [
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "GX-ACC-002"
+                  },
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "GX-ACC-003"
+                  },
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "GX-ACC-005"
+                  },
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "GX-ACC-013"
+                  }
+                ]
+              },
+              {
+                "uuid": "d34a26c1-3faa-4d99-969d-82e379b673b8",
+                "control-id": "MEASURE-2.3",
+                "description": "Control implementation for MEASURE-2.3",
+                "props": [
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "GX-PERF-014"
+                  }
+                ]
+              },
+              {
+                "uuid": "c966539f-3bf6-41e4-9bc0-2fa99f46023c",
+                "control-id": "MEASURE-2.7",
+                "description": "Control implementation for MEASURE-2.7",
+                "props": [
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "GX-PRIV-007"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

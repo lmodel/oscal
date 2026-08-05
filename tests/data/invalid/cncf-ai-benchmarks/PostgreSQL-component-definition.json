@@ -1,0 +1,785 @@
+{
+  "component-definition": {
+    "uuid": "bdd43bc2-6b42-45e8-99f1-d5fd3d9097b7",
+    "metadata": {
+      "title": "PostgreSQL AI Governance Component Definition",
+      "last-modified": "2026-06-01T14:22:54+0000",
+      "version": "1.0",
+      "oscal-version": "1.2.1",
+      "remarks": "Component definition derived from PostgreSQL Governance Benchmark"
+    },
+    "components": [
+      {
+        "uuid": "edf8554a-3b6f-4c5d-8e12-6b8785a0108b",
+        "type": "software",
+        "title": "PostgreSQL",
+        "description": "AI/ML component for PostgreSQL with governance controls",
+        "props": [
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Training data, Inference",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Privacy",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "PII exposure in database tables",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "PG-PRIV-001",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure PII columns are identified and access-controlled",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Classify and tag columns containing PII and enforce role-based access controls to restrict unauthorized access.",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "PII access violation rate",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Unauthorized PII access attempts / total access attempts",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "PII leakage",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure PII access violations remain below threshold",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "<1%",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Partial",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Maps DB access control to privacy leakage risk",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Training data",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Accuracy",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Data integrity violations",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "PG-ACC-002",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure constraints enforce data integrity",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Use primary keys, foreign keys, NOT NULL, and CHECK constraints to maintain data correctness.",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Constraint violation rate",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Constraint violations / total transactions",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Exact Match",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure constraint violation rate remains below threshold",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "<0.1%",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Partial",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Exact match approximates data correctness",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Training data, Inference",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Reliability",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Data loss due to failure",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "PG-REL-003",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure WAL and backups are enabled",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Enable Write-Ahead Logging and regular backups to ensure durability and recovery.",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Recovery success rate",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Successful recoveries / total recovery tests",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "N/A",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure recovery success rate remains above threshold",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": ">99.9%",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "No",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Core DB durability control",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Inference",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Performance",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Slow query execution",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "PG-PERF-004",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure query latency meets SLA",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Monitor and optimize query execution plans to maintain performance.",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "p95 query latency",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "95th percentile query response time",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "N/A",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure latency remains within SLA",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "<200ms",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "No",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Performance control for DB layer",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Output",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Security",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Unauthorized data access",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "PG-SEC-005",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure RBAC policies are enforced",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Implement least-privilege roles and monitor access logs.",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Unauthorized access rate",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Unauthorized access attempts / total access",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "N/A",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure unauthorized access rate remains below threshold",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "<0.1%",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "No",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Security baseline control",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Training data",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Fairness",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Biased dataset storage",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "PG-FAIR-006",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure dataset representation is balanced",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Analyze stored datasets for subgroup representation imbalance.",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Demographic disparity",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Difference in subgroup representation ratios",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "CrowS-Pairs, BBQ",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure disparity remains below threshold",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "<0.1",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Yes",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Maps DB stored data to fairness benchmarks",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Semi-automated",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Inference, Output",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Integrity",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Stale data retrieval",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "PG-INT-007",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure data freshness for queries",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Monitor replication lag and update timestamps to ensure fresh data.",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Replication lag",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Time difference between primary and replica",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "N/A",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure lag remains below threshold",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "<5s",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "No",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Critical for RAG accuracy",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Non-technical",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Governance",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Lack of auditability",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "PG-GOV-008",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure audit logging is enabled",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Enable and retain logs for queries, access, and schema changes.",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Audit log coverage",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Logged events / total critical events",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Documentation completeness",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure audit coverage is complete",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "1",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Partial",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Auditability mapped to documentation completeness",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Manual",
+            "remarks": "rule_set_07"
+          }
+        ],
+        "control-implementations": [
+          {
+            "uuid": "66e80c66-ef3d-4168-b3b1-85892b139b79",
+            "source": "https://raw.githubusercontent.com/oscal-compass/oscal-content/refs/heads/main/catalogs/nist_ai_rmf_gen_ai/1.0.0/catalog.json",
+            "description": "Implementation of NIST AI RMF controls for PostgreSQL",
+            "implemented-requirements": [
+              {
+                "uuid": "45e51f2d-7b3d-45a4-8888-108c14023b9f",
+                "control-id": "GOVERN-1.1",
+                "description": "Control implementation for GOVERN-1.1",
+                "props": [
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "PG-PRIV-001"
+                  },
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "PG-SEC-005"
+                  }
+                ]
+              },
+              {
+                "uuid": "46243ba9-1892-4bf3-951e-25e9349eab07",
+                "control-id": "GOVERN-1.6",
+                "description": "Control implementation for GOVERN-1.6",
+                "props": [
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "PG-GOV-008"
+                  }
+                ]
+              },
+              {
+                "uuid": "699d8202-5e60-40bb-942b-78b2871209e4",
+                "control-id": "MANAGE-4.1",
+                "description": "Control implementation for MANAGE-4.1",
+                "props": [
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "PG-REL-003"
+                  }
+                ]
+              },
+              {
+                "uuid": "ece616f6-3669-4b4d-855b-a6dbedb70158",
+                "control-id": "MEASURE-2.11",
+                "description": "Control implementation for MEASURE-2.11",
+                "props": [
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "PG-FAIR-006"
+                  }
+                ]
+              },
+              {
+                "uuid": "cd7320f7-6981-4935-a119-0ec1ac1d4803",
+                "control-id": "MEASURE-2.2",
+                "description": "Control implementation for MEASURE-2.2",
+                "props": [
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "PG-ACC-002"
+                  }
+                ]
+              },
+              {
+                "uuid": "c48dce72-4301-4d3f-bab1-0ddf2827e85e",
+                "control-id": "MEASURE-2.3",
+                "description": "Control implementation for MEASURE-2.3",
+                "props": [
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "PG-PERF-004"
+                  },
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "PG-INT-007"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

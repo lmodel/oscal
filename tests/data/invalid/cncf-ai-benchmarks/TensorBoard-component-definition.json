@@ -1,0 +1,2696 @@
+{
+  "component-definition": {
+    "uuid": "40264241-ca42-46b2-8404-b03917a3c58a",
+    "metadata": {
+      "title": "TensorBoard AI Governance Component Definition",
+      "last-modified": "2026-06-01T14:22:54+0000",
+      "version": "1.0",
+      "oscal-version": "1.2.1",
+      "remarks": "Component definition derived from TensorBoard Governance Benchmark"
+    },
+    "components": [
+      {
+        "uuid": "d7087ced-b9ec-4e47-8af1-fae63f1718fd",
+        "type": "software",
+        "title": "TensorBoard",
+        "description": "AI/ML component for TensorBoard with governance controls",
+        "props": [
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Training data, Inference",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Accuracy",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Poor model accuracy",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "TB-ACC-001",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure baseline quality metrics are logged for every experiment",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Use TensorBoard scalar summaries to log baseline model-quality metrics for each training and evaluation run so regressions are visible before promotion.",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Accuracy, F1-score, BLEU, ROUGE, exact match",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Log evaluation metrics as TensorBoard scalars for each run and compare candidate runs against the approved baseline across the same benchmark dataset.",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Accuracy, F1-score, BLEU, ROUGE",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure candidate quality metrics deviate by no more than 10% from the approved Hugging Face model-card baseline or internal champion baseline.",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "<=10% deviation from baseline",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Yes",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "TensorBoard is suited to logging, visualizing, and comparing experiment metrics rather than directly changing model behavior.",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Training data",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Transparency",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Uncertain data provenance",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "TB-TRN-002",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure dataset provenance metadata is captured as experiment artifacts",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Log dataset version, source, split definition, collection date, preprocessing version, and ownership metadata alongside TensorBoard runs for auditability.",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Provenance documentation completeness",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Completeness = completed required provenance fields / total required provenance fields for each experiment.",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Model card provenance completeness",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure provenance documentation completeness is 100% before model promotion.",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "1",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Yes",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "TensorBoard does not own governance workflows, but it can store linked metadata and artifacts that support provenance review.",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Manual",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Training data",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Accuracy",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Data contamination",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "TB-TRN-003",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure contamination and split-integrity checks are logged before training acceptance",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Log overlap, duplication, and contamination validation results so problematic training datasets are visible in TensorBoard before model comparison or release review.",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Duplicate rate, train-test overlap rate, contamination rate",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Compute overlap and contamination statistics during data validation and log them as scalars or text summaries before training begins.",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "N/A - data validation metric",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure train-test overlap and contamination rates remain below threshold before training results are considered valid.",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "<1%",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "No",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "This is an observability and evidence rule rather than a Hugging Face-aligned model-card metric.",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Training data",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Fairness",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Unrepresentative data",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "TB-TRN-004",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure subgroup representation metrics are logged for training and evaluation datasets",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Track coverage statistics and subgroup sample proportions in TensorBoard so underrepresentation trends are visible during experiment review.",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Coverage ratio, class imbalance ratio, subgroup sample proportion",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Calculate subgroup proportions and coverage gaps over training and evaluation datasets; log them as scalars or tables for each run.",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "N/A - dataset representativeness metric",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure subgroup coverage remains within approved representativeness thresholds for the intended use case.",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "No subgroup below 80% of target representation",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "No",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "TensorBoard can make representativeness evidence visible, even though it does not enforce dataset acceptance policies.",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Training, Inference",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Reliability",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Overfitting or unstable training",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "TB-REL-005",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure training and validation curves are logged and compared for instability",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Use TensorBoard scalar charts to monitor loss, accuracy, and validation divergence so overfitting or unstable convergence patterns are detected early.",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Train-validation loss gap, variance across epochs",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Compute and visualize the difference between training and validation loss or accuracy across epochs; flag sustained divergence trends.",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Loss, accuracy",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure train-validation divergence remains below threshold for accepted models.",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "<10% sustained gap",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Partial",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "TensorBoard is directly designed for this form of model-development observability.",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Inference, Output",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Privacy",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Personal information in prompt",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "TB-PRIV-006",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure privacy-risk evaluation metrics are logged for prompt and response datasets",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Use TensorBoard to visualize privacy-focused evaluation scores so prompt or output PII exposure trends are visible across model versions.",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "PII leakage rate, PII precision, PII recall",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Run privacy evaluations using seeded PII datasets; leakage rate = leaked PII instances / total seeded PII instances. Log precision and recall for privacy detectors.",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "PII leakage, Precision, Recall",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure PII leakage rate remains below threshold and privacy detection recall remains above threshold.",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Leakage <1%; Recall >95%",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Partial",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "TensorBoard can expose privacy risk measurements but is not a runtime masking or redaction layer.",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Inference, Output",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Privacy",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Confidential data in prompt",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "TB-PRIV-007",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure confidential-content exposure tests are logged for release review",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Record confidential-data leakage evaluations in TensorBoard so model or prompt changes with worsening exposure risk are visible before deployment.",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Confidential leakage rate",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Leakage rate = confidential entities disclosed in prompt or output evaluations / total seeded confidential entities in the approved test set.",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Leakage / extraction rate",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure confidential leakage rate remains below threshold before production promotion.",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "<1%",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Partial",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "This is a measurement-and-evidence control, not direct prevention.",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Inference",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Privacy",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Membership inference attack",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "TB-PRIV-008",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure membership-inference attack success is benchmarked and trended",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Log adversarial privacy evaluation results so membership-inference risk can be compared across experiments and model versions.",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Membership inference success rate",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Success rate = correct membership disclosures / total adversarial membership-inference prompts in the controlled evaluation suite.",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Attack success rate",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure membership-inference success rate remains below threshold.",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "<5%",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Partial",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "TensorBoard is useful for comparing privacy risk trends over time across runs.",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Inference, Output",
+            "remarks": "rule_set_08"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Robustness: prompt attacks",
+            "remarks": "rule_set_08"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Prompt injection attack",
+            "remarks": "rule_set_08"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "TB-ROB-009",
+            "remarks": "rule_set_08"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure prompt-injection evaluation scores are logged for each tested model or prompt version",
+            "remarks": "rule_set_08"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Use TensorBoard scalars and text summaries to track prompt-injection test outcomes and compare attack success across release candidates.",
+            "remarks": "rule_set_08"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Prompt-injection success rate",
+            "remarks": "rule_set_08"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Success rate = compromised runs caused by direct injection prompts / total prompt-injection test cases.",
+            "remarks": "rule_set_08"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Attack success rate",
+            "remarks": "rule_set_08"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure prompt-injection success rate remains below threshold for approved release candidates.",
+            "remarks": "rule_set_08"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "<5%",
+            "remarks": "rule_set_08"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Partial",
+            "remarks": "rule_set_08"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "TensorBoard provides observability into attack testing results rather than runtime enforcement.",
+            "remarks": "rule_set_08"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_08"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Inference, Output",
+            "remarks": "rule_set_09"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Robustness: prompt attacks",
+            "remarks": "rule_set_09"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Indirect instructions attack",
+            "remarks": "rule_set_09"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "TB-ROB-010",
+            "remarks": "rule_set_09"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure indirect prompt-injection scenarios are benchmarked with external context variations",
+            "remarks": "rule_set_09"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Track evaluations with malicious retrieved content or external instructions so indirect-attack susceptibility is visible in TensorBoard comparisons.",
+            "remarks": "rule_set_09"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Indirect prompt-injection success rate",
+            "remarks": "rule_set_09"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Success rate = compromised runs caused by malicious external content / total indirect-injection test cases.",
+            "remarks": "rule_set_09"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Attack success rate",
+            "remarks": "rule_set_09"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure indirect prompt-injection success rate remains below threshold.",
+            "remarks": "rule_set_09"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "<5%",
+            "remarks": "rule_set_09"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Partial",
+            "remarks": "rule_set_09"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "This is relevant where TensorBoard is used to inspect evaluation runs for RAG or agent-like systems.",
+            "remarks": "rule_set_09"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_09"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Inference, Output",
+            "remarks": "rule_set_10"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Robustness: prompt attacks",
+            "remarks": "rule_set_10"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Prompt leaking",
+            "remarks": "rule_set_10"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "TB-ROB-011",
+            "remarks": "rule_set_10"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure hidden-prompt disclosure evaluations are visible in experiment dashboards",
+            "remarks": "rule_set_10"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Log prompt-leak test outcomes so any increase in disclosure risk across models, prompts, or releases can be reviewed during experiment comparison.",
+            "remarks": "rule_set_10"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Prompt disclosure rate",
+            "remarks": "rule_set_10"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Disclosure rate = successful prompt leaks / total prompt-leak attempts in the controlled evaluation suite.",
+            "remarks": "rule_set_10"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Extraction / leakage rate",
+            "remarks": "rule_set_10"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure hidden-prompt disclosure rate remains below threshold.",
+            "remarks": "rule_set_10"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "<1%",
+            "remarks": "rule_set_10"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Partial",
+            "remarks": "rule_set_10"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "TensorBoard can surface disclosure test results and trend them over time.",
+            "remarks": "rule_set_10"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_10"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Inference, Output",
+            "remarks": "rule_set_11"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Robustness: model behavior manipulation",
+            "remarks": "rule_set_11"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Jailbreaking",
+            "remarks": "rule_set_11"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "TB-ROB-012",
+            "remarks": "rule_set_11"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure jailbreak success and refusal rates are logged for all release candidates",
+            "remarks": "rule_set_11"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Track jailbreak benchmark results in TensorBoard to compare how often models or prompts fail to refuse disallowed requests.",
+            "remarks": "rule_set_11"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Jailbreak success rate, refusal compliance rate",
+            "remarks": "rule_set_11"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Jailbreak success = disallowed completions / total jailbreak attempts; refusal compliance = compliant refusals / total disallowed requests.",
+            "remarks": "rule_set_11"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Attack success rate, safety refusal rate",
+            "remarks": "rule_set_11"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure jailbreak success rate remains below threshold and refusal compliance remains above threshold.",
+            "remarks": "rule_set_11"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Success <5%; Refusal >95%",
+            "remarks": "rule_set_11"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Partial",
+            "remarks": "rule_set_11"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "TensorBoard's value here is run comparison and anomaly visibility.",
+            "remarks": "rule_set_11"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_11"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Inference, Output",
+            "remarks": "rule_set_12"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Robustness",
+            "remarks": "rule_set_12"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Hallucination",
+            "remarks": "rule_set_12"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "TB-QUAL-013",
+            "remarks": "rule_set_12"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure hallucination and faithfulness scores are logged per model and benchmark set",
+            "remarks": "rule_set_12"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Use TensorBoard to visualize hallucination rate and faithfulness scores across experiments so unsupported-claim regressions are visible.",
+            "remarks": "rule_set_12"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Faithfulness score, hallucination rate",
+            "remarks": "rule_set_12"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Faithfulness = supported claims / total claims; hallucination rate = unsupported answers / total evaluated answers.",
+            "remarks": "rule_set_12"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Hallucination score, faithfulness",
+            "remarks": "rule_set_12"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure faithfulness remains above threshold and hallucination rate remains below threshold before release.",
+            "remarks": "rule_set_12"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Faithfulness >0.85; Hallucination <10%",
+            "remarks": "rule_set_12"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Yes",
+            "remarks": "rule_set_12"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "TensorBoard is suited to plotting and comparing these evaluation results, even if separate evaluators compute them.",
+            "remarks": "rule_set_12"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_12"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Output",
+            "remarks": "rule_set_13"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Misuse",
+            "remarks": "rule_set_13"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Spreading toxicity",
+            "remarks": "rule_set_13"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "TB-SAFE-014",
+            "remarks": "rule_set_13"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure toxicity scoring is logged and trended across experiments",
+            "remarks": "rule_set_13"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Use TensorBoard scalar summaries to monitor toxicity scores and threshold exceedance rates so harmful-generation regressions are easy to spot.",
+            "remarks": "rule_set_13"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Toxicity score, toxicity exceedance rate",
+            "remarks": "rule_set_13"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Score evaluation outputs with a toxicity classifier; log average toxicity and percentage of outputs exceeding the approved threshold.",
+            "remarks": "rule_set_13"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "RealToxicityPrompts, toxicity score",
+            "remarks": "rule_set_13"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure average toxicity and toxicity exceedance rate remain below approved limits.",
+            "remarks": "rule_set_13"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Mean toxicity <0.10; Exceedance <5%",
+            "remarks": "rule_set_13"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Yes",
+            "remarks": "rule_set_13"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "This is a natural TensorBoard use case because it is fundamentally a metric-visualization platform.",
+            "remarks": "rule_set_13"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_13"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Output",
+            "remarks": "rule_set_14"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Value alignment",
+            "remarks": "rule_set_14"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Harmful output",
+            "remarks": "rule_set_14"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "TB-SAFE-015",
+            "remarks": "rule_set_14"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure harmful-output violation trends are visible in release dashboards",
+            "remarks": "rule_set_14"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Log safety benchmark outcomes and harmful-content policy violations so unsafe-output regressions are visible during review.",
+            "remarks": "rule_set_14"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Harm-policy violation rate",
+            "remarks": "rule_set_14"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Violation rate = policy-violating outputs / total harm-focused evaluation prompts or monitored samples.",
+            "remarks": "rule_set_14"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Safety benchmark score, refusal rate, toxicity score",
+            "remarks": "rule_set_14"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure harmful-output violation rate remains below threshold.",
+            "remarks": "rule_set_14"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "<5%",
+            "remarks": "rule_set_14"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Partial",
+            "remarks": "rule_set_14"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "TensorBoard helps teams see the trend but does not itself block harmful outputs.",
+            "remarks": "rule_set_14"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_14"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Output",
+            "remarks": "rule_set_15"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Value alignment",
+            "remarks": "rule_set_15"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Toxic output",
+            "remarks": "rule_set_15"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "TB-SAFE-016",
+            "remarks": "rule_set_15"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure conversational or session-level toxicity trends are visualized",
+            "remarks": "rule_set_15"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Aggregate conversation-level safety results and log them so teams can detect whether multi-turn interactions create more toxic outcomes than single-turn tests.",
+            "remarks": "rule_set_15"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Toxic-conversation rate",
+            "remarks": "rule_set_15"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Toxic-conversation rate = unsafe conversations / total evaluated conversations over the conversational benchmark set.",
+            "remarks": "rule_set_15"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Safety benchmark score, toxicity score",
+            "remarks": "rule_set_15"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure toxic-conversation rate remains below threshold.",
+            "remarks": "rule_set_15"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "<5%",
+            "remarks": "rule_set_15"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Partial",
+            "remarks": "rule_set_15"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "TensorBoard can visualize aggregated session metrics as scalars or custom dashboards.",
+            "remarks": "rule_set_15"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_15"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Output",
+            "remarks": "rule_set_16"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Fairness",
+            "remarks": "rule_set_16"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Output bias",
+            "remarks": "rule_set_16"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "TB-FAIR-017",
+            "remarks": "rule_set_16"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure fairness and subgroup disparity metrics are logged per experiment",
+            "remarks": "rule_set_16"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Use TensorBoard to compare output quality or harmfulness across demographic slices so bias trends are visible before release.",
+            "remarks": "rule_set_16"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Demographic parity difference, subgroup toxicity disparity, CrowS-Pairs or BBQ score",
+            "remarks": "rule_set_16"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Compute benchmark scores or group disparities across protected-group slices and store them as experiment metrics.",
+            "remarks": "rule_set_16"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "CrowS-Pairs, BBQ, BOLD sentiment parity",
+            "remarks": "rule_set_16"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure demographic disparity remains below threshold and fairness benchmark scores remain within approved bounds.",
+            "remarks": "rule_set_16"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Disparity <0.10",
+            "remarks": "rule_set_16"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Yes",
+            "remarks": "rule_set_16"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "TensorBoard is appropriate for visual comparison of fairness metrics over many runs.",
+            "remarks": "rule_set_16"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_16"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Output",
+            "remarks": "rule_set_17"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Explainability",
+            "remarks": "rule_set_17"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Unreliable source attribution",
+            "remarks": "rule_set_17"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "TB-EXP-018",
+            "remarks": "rule_set_17"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure source-grounding and citation quality metrics are logged for retrieval-based systems",
+            "remarks": "rule_set_17"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Log citation accuracy and groundedness scores so source attribution quality can be reviewed alongside other evaluation metrics.",
+            "remarks": "rule_set_17"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Citation accuracy, groundedness score",
+            "remarks": "rule_set_17"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Citation accuracy = answers with correct supporting citations / total citation-required answers; groundedness = supported claims / total claims.",
+            "remarks": "rule_set_17"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Faithfulness, groundedness",
+            "remarks": "rule_set_17"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure citation accuracy and groundedness remain above threshold for approved releases.",
+            "remarks": "rule_set_17"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Citation accuracy >90%; Groundedness >0.85",
+            "remarks": "rule_set_17"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Partial",
+            "remarks": "rule_set_17"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "TensorBoard is best used as the reporting surface for these evaluations.",
+            "remarks": "rule_set_17"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_17"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Training, Inference, Output",
+            "remarks": "rule_set_18"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Explainability",
+            "remarks": "rule_set_18"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Untraceable attribution",
+            "remarks": "rule_set_18"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "TB-EXP-019",
+            "remarks": "rule_set_18"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure run metadata and experiment comparisons are retained for traceability",
+            "remarks": "rule_set_18"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Store run IDs, model versions, hyperparameters, evaluation artifacts, and comparison views so each result can be traced back to the generating experiment.",
+            "remarks": "rule_set_18"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Run traceability completeness",
+            "remarks": "rule_set_18"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Completeness = runs with required traceability fields and linked evaluation artifacts / total reviewed runs.",
+            "remarks": "rule_set_18"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Documentation completeness",
+            "remarks": "rule_set_18"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure run traceability completeness remains at 100% for promoted experiments.",
+            "remarks": "rule_set_18"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "1",
+            "remarks": "rule_set_18"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Partial",
+            "remarks": "rule_set_18"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "TensorBoard supports experiment traceability at the run level, though not full workflow governance.",
+            "remarks": "rule_set_18"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Manual",
+            "remarks": "rule_set_18"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Training",
+            "remarks": "rule_set_19"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Reliability",
+            "remarks": "rule_set_19"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Gradient instability",
+            "remarks": "rule_set_19"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "TB-REL-020",
+            "remarks": "rule_set_19"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure gradient and parameter-distribution summaries are monitored",
+            "remarks": "rule_set_19"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Use TensorBoard histograms and distributions to visualize gradients, weights, and activations so exploding or vanishing gradient issues are visible during training.",
+            "remarks": "rule_set_19"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Gradient norm, weight distribution drift, activation saturation",
+            "remarks": "rule_set_19"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Log histogram summaries or scalar norms for gradients and parameters by layer over training steps and compare against stable reference runs.",
+            "remarks": "rule_set_19"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "N/A - training diagnostics metric",
+            "remarks": "rule_set_19"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure gradient norms and parameter distributions remain within approved training-stability thresholds.",
+            "remarks": "rule_set_19"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Project-specific stable range",
+            "remarks": "rule_set_19"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "No",
+            "remarks": "rule_set_19"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "This is one of TensorBoard's most native capabilities because histograms and distributions are core visualizations.",
+            "remarks": "rule_set_19"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_19"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Training",
+            "remarks": "rule_set_20"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Performance",
+            "remarks": "rule_set_20"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Resource inefficiency",
+            "remarks": "rule_set_20"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "TB-PERF-021",
+            "remarks": "rule_set_20"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure profiling data is collected for representative training runs",
+            "remarks": "rule_set_20"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Use TensorBoard profiling views to inspect bottlenecks in CPU, GPU, input pipeline, and memory behavior for representative model-training jobs.",
+            "remarks": "rule_set_20"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Step time, input-pipeline utilization, memory usage, device utilization",
+            "remarks": "rule_set_20"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Collect profiler traces and summarize utilization, bottleneck percentages, and memory trends over representative workloads.",
+            "remarks": "rule_set_20"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "N/A - operational profiling metric",
+            "remarks": "rule_set_20"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure representative training runs meet approved utilization and step-time thresholds.",
+            "remarks": "rule_set_20"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Project-specific baseline",
+            "remarks": "rule_set_20"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "No",
+            "remarks": "rule_set_20"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Official TensorBoard integrations explicitly support sampled profiling and performance analysis.",
+            "remarks": "rule_set_20"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_20"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Training, Output",
+            "remarks": "rule_set_21"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Explainability",
+            "remarks": "rule_set_21"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Opaque embedding behavior",
+            "remarks": "rule_set_21"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "TB-EXP-022",
+            "remarks": "rule_set_21"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure embedding projections are visualized for representative classes or clusters",
+            "remarks": "rule_set_21"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Use TensorBoard's embedding projector to inspect whether learned representations separate expected classes or collapse undesirably.",
+            "remarks": "rule_set_21"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Cluster separation score, nearest-neighbor purity",
+            "remarks": "rule_set_21"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Project embeddings into lower-dimensional space and compute cluster purity or separation on labeled validation subsets.",
+            "remarks": "rule_set_21"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Embedding similarity / clustering quality",
+            "remarks": "rule_set_21"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure representative embedding clusters maintain acceptable separation and purity thresholds.",
+            "remarks": "rule_set_21"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Project-specific baseline",
+            "remarks": "rule_set_21"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Partial",
+            "remarks": "rule_set_21"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "TensorBoard's embedding projector is directly relevant for this form of interpretability evidence.",
+            "remarks": "rule_set_21"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Semi-automated",
+            "remarks": "rule_set_21"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Training, Inference",
+            "remarks": "rule_set_22"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Governance",
+            "remarks": "rule_set_22"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Unreviewed hyperparameter changes",
+            "remarks": "rule_set_22"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "TB-GOV-023",
+            "remarks": "rule_set_22"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure hyperparameter changes are logged and compared across runs",
+            "remarks": "rule_set_22"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Use TensorBoard HParams views to track hyperparameter settings and compare their effect on quality, fairness, privacy, and safety metrics.",
+            "remarks": "rule_set_22"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "HParam experiment coverage",
+            "remarks": "rule_set_22"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Coverage = runs with complete hyperparameter logging / total reviewed runs.",
+            "remarks": "rule_set_22"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Documentation completeness",
+            "remarks": "rule_set_22"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure complete hyperparameter logging exists for all experiments considered for promotion.",
+            "remarks": "rule_set_22"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "1",
+            "remarks": "rule_set_22"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Partial",
+            "remarks": "rule_set_22"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "TensorBoard's HParams support makes this especially relevant for controlled model-development review.",
+            "remarks": "rule_set_22"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_22"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Inference, Output",
+            "remarks": "rule_set_23"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Misuse",
+            "remarks": "rule_set_23"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Spreading disinformation",
+            "remarks": "rule_set_23"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "TB-QUAL-024",
+            "remarks": "rule_set_23"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure factuality and unsupported-claim metrics are visible in experiment dashboards",
+            "remarks": "rule_set_23"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Log unsupported-claim rate and factuality scores so truthfulness regressions can be compared across runs and model variants.",
+            "remarks": "rule_set_23"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Unsupported-claim rate, factuality score",
+            "remarks": "rule_set_23"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Unsupported-claim rate = unsupported claims / total claims; factuality score from configured evaluator over the benchmark set.",
+            "remarks": "rule_set_23"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Faithfulness, hallucination score",
+            "remarks": "rule_set_23"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure unsupported-claim rate remains below threshold and factuality remains above threshold.",
+            "remarks": "rule_set_23"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Unsupported claims <10%; Factuality >0.85",
+            "remarks": "rule_set_23"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Partial",
+            "remarks": "rule_set_23"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "TensorBoard is suitable for tracking these values over time even if computation comes from external evaluators.",
+            "remarks": "rule_set_23"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_23"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Inference, Output",
+            "remarks": "rule_set_24"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Reliability",
+            "remarks": "rule_set_24"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Inconsistent outputs",
+            "remarks": "rule_set_24"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "TB-QUAL-025",
+            "remarks": "rule_set_24"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure output consistency benchmarks are logged across repeated test runs",
+            "remarks": "rule_set_24"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Track repeated evaluation results so unstable responses or large variance across identical inputs are visible in experiment comparisons.",
+            "remarks": "rule_set_24"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Consistency score, variance score",
+            "remarks": "rule_set_24"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Consistency = stable equivalent outputs / total repeated test cases; variance score derived from semantic distance across repeated responses.",
+            "remarks": "rule_set_24"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Consistency, exact match, semantic similarity",
+            "remarks": "rule_set_24"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure response consistency remains above threshold and output variance remains below threshold.",
+            "remarks": "rule_set_24"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Consistency >0.85; Variance <0.15",
+            "remarks": "rule_set_24"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Partial",
+            "remarks": "rule_set_24"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "TensorBoard supports this as a comparative evaluation dashboard use case.",
+            "remarks": "rule_set_24"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_24"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Inference, Output",
+            "remarks": "rule_set_25"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Performance",
+            "remarks": "rule_set_25"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Latency regression",
+            "remarks": "rule_set_25"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "TB-PERF-026",
+            "remarks": "rule_set_25"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure latency and throughput metrics are logged for representative inference workloads",
+            "remarks": "rule_set_25"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Track inference latency, throughput, and resource consumption so performance regressions are visible during model and system comparison.",
+            "remarks": "rule_set_25"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "p95 latency, throughput, memory usage",
+            "remarks": "rule_set_25"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Log latency and throughput as scalars over benchmark or production-like workloads and compare candidate runs against the approved baseline.",
+            "remarks": "rule_set_25"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "N/A - operational metric",
+            "remarks": "rule_set_25"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure p95 latency and throughput remain within approved thresholds relative to baseline.",
+            "remarks": "rule_set_25"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Latency increase <=20%; Throughput decrease <=10%",
+            "remarks": "rule_set_25"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "No",
+            "remarks": "rule_set_25"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "TensorBoard can visualize these metrics but does not manage serving or routing directly.",
+            "remarks": "rule_set_25"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_25"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Non-technical",
+            "remarks": "rule_set_26"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Governance",
+            "remarks": "rule_set_26"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Incorrect risk testing",
+            "remarks": "rule_set_26"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "TB-GOV-027",
+            "remarks": "rule_set_26"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure evaluation dashboards cover quality, safety, privacy, fairness, and robustness domains",
+            "remarks": "rule_set_26"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Build TensorBoard dashboards that aggregate metrics across required risk domains instead of reviewing only loss or accuracy.",
+            "remarks": "rule_set_26"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Risk-test coverage",
+            "remarks": "rule_set_26"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Coverage = number of mandated risk domains with active logged evaluation metrics / total mandated risk domains in the benchmark standard.",
+            "remarks": "rule_set_26"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Composite evaluation coverage based on model-card and benchmark families",
+            "remarks": "rule_set_26"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure logged risk-test coverage remains at or above threshold across required evaluation domains.",
+            "remarks": "rule_set_26"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": ">90%",
+            "remarks": "rule_set_26"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Partial",
+            "remarks": "rule_set_26"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "This matches TensorBoard's role as an evidence aggregation and visualization surface.",
+            "remarks": "rule_set_26"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_26"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Non-technical",
+            "remarks": "rule_set_27"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Governance",
+            "remarks": "rule_set_27"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Lack of model transparency",
+            "remarks": "rule_set_27"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "TB-GOV-028",
+            "remarks": "rule_set_27"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure deployed models have linked model-card and limitation documentation",
+            "remarks": "rule_set_27"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Attach model-card references, intended use, known limitations, license, and baseline metrics to experiment outputs so reviewers can access model transparency evidence.",
+            "remarks": "rule_set_27"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Model transparency completeness",
+            "remarks": "rule_set_27"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Completeness = completed required transparency fields / total required transparency fields for each reviewed model.",
+            "remarks": "rule_set_27"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Model card completeness",
+            "remarks": "rule_set_27"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure model transparency completeness is 100% before production approval.",
+            "remarks": "rule_set_27"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "1",
+            "remarks": "rule_set_27"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Yes",
+            "remarks": "rule_set_27"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "TensorBoard can expose or link this evidence but does not replace a model registry or policy engine.",
+            "remarks": "rule_set_27"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Manual",
+            "remarks": "rule_set_27"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Non-technical",
+            "remarks": "rule_set_28"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Governance",
+            "remarks": "rule_set_28"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Lack of system transparency",
+            "remarks": "rule_set_28"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "TB-GOV-029",
+            "remarks": "rule_set_28"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure system-level architecture and dependency evidence is linked to experiments",
+            "remarks": "rule_set_28"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Document the system boundary, dependencies, data sources, evaluation tools, and runtime assumptions in artifacts associated with TensorBoard runs.",
+            "remarks": "rule_set_28"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "System transparency completeness",
+            "remarks": "rule_set_28"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Completeness = documented required architecture and dependency fields / total required fields in the approved transparency checklist.",
+            "remarks": "rule_set_28"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Model/system documentation completeness",
+            "remarks": "rule_set_28"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure system transparency completeness is 100% before release.",
+            "remarks": "rule_set_28"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "1",
+            "remarks": "rule_set_28"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Partial",
+            "remarks": "rule_set_28"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "TensorBoard can serve as the review surface for linked artifacts, but this remains partly manual governance work.",
+            "remarks": "rule_set_28"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Manual",
+            "remarks": "rule_set_28"
+          }
+        ],
+        "control-implementations": [
+          {
+            "uuid": "9ba646e1-abd0-4a36-b451-07dffebfbdf1",
+            "source": "https://raw.githubusercontent.com/oscal-compass/oscal-content/refs/heads/main/catalogs/nist_ai_rmf_gen_ai/1.0.0/catalog.json",
+            "description": "Implementation of NIST AI RMF controls for TensorBoard",
+            "implemented-requirements": [
+              {
+                "uuid": "813e6cec-88ea-4856-ad98-38b2f40028e6",
+                "control-id": "GOVERN-1.6",
+                "description": "Control implementation for GOVERN-1.6",
+                "props": [
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "TB-TRN-002"
+                  },
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "TB-EXP-019"
+                  },
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "TB-GOV-023"
+                  },
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "TB-GOV-028"
+                  }
+                ]
+              },
+              {
+                "uuid": "556cda9a-c67d-47e4-9e71-461acfa42278",
+                "control-id": "MANAGE-4.1",
+                "description": "Control implementation for MANAGE-4.1",
+                "props": [
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "TB-PRIV-007"
+                  },
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "TB-ROB-011"
+                  }
+                ]
+              },
+              {
+                "uuid": "bcf027cd-2381-4ce6-b162-d8bcbd4304ce",
+                "control-id": "MANAGE-4.2",
+                "description": "Control implementation for MANAGE-4.2",
+                "props": [
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "TB-SAFE-015"
+                  }
+                ]
+              },
+              {
+                "uuid": "4e0f5065-2f4c-4d47-b520-aa3b1782f8c1",
+                "control-id": "MAP-1.3",
+                "description": "Control implementation for MAP-1.3",
+                "props": [
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "TB-GOV-029"
+                  }
+                ]
+              },
+              {
+                "uuid": "4f8d32fa-2c86-4998-806c-ec2290d9cd12",
+                "control-id": "MAP-2.1",
+                "description": "Control implementation for MAP-2.1",
+                "props": [
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "TB-TRN-004"
+                  }
+                ]
+              },
+              {
+                "uuid": "5e95a55c-6b84-477e-92f7-59bbf7f1da65",
+                "control-id": "MAP-3.3",
+                "description": "Control implementation for MAP-3.3",
+                "props": [
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "TB-EXP-018"
+                  },
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "TB-EXP-022"
+                  }
+                ]
+              },
+              {
+                "uuid": "f1333c48-8914-4b11-b5f3-7c71191e7921",
+                "control-id": "MEASURE-2.10",
+                "description": "Control implementation for MEASURE-2.10",
+                "props": [
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "TB-GOV-027"
+                  }
+                ]
+              },
+              {
+                "uuid": "a2680363-64a1-496a-8d8c-7d09acaf5d11",
+                "control-id": "MEASURE-2.11",
+                "description": "Control implementation for MEASURE-2.11",
+                "props": [
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "TB-FAIR-017"
+                  }
+                ]
+              },
+              {
+                "uuid": "dc383254-f3e0-4892-bca3-3abfbe2d23ed",
+                "control-id": "MEASURE-2.2",
+                "description": "Control implementation for MEASURE-2.2",
+                "props": [
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "TB-ACC-001"
+                  },
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "TB-TRN-003"
+                  },
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "TB-QUAL-013"
+                  },
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "TB-QUAL-024"
+                  },
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "TB-QUAL-025"
+                  }
+                ]
+              },
+              {
+                "uuid": "29ec1dc7-009f-4425-bda2-226d6a0e535b",
+                "control-id": "MEASURE-2.3",
+                "description": "Control implementation for MEASURE-2.3",
+                "props": [
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "TB-REL-005"
+                  },
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "TB-REL-020"
+                  },
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "TB-PERF-021"
+                  },
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "TB-PERF-026"
+                  }
+                ]
+              },
+              {
+                "uuid": "8499e147-b2f2-436f-8b01-0ba73042597e",
+                "control-id": "MEASURE-2.5",
+                "description": "Control implementation for MEASURE-2.5",
+                "props": [
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "TB-PRIV-008"
+                  },
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "TB-ROB-009"
+                  },
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "TB-ROB-010"
+                  },
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "TB-ROB-012"
+                  }
+                ]
+              },
+              {
+                "uuid": "9dccf6c6-feab-470a-8b88-462328684f62",
+                "control-id": "MEASURE-2.7",
+                "description": "Control implementation for MEASURE-2.7",
+                "props": [
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "TB-PRIV-006"
+                  },
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "TB-SAFE-014"
+                  },
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "TB-SAFE-016"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,2148 @@
+{
+  "component-definition": {
+    "uuid": "063aba96-135d-47bf-bc23-21fa57f5252a",
+    "metadata": {
+      "title": "Grafana AI Governance Component Definition",
+      "last-modified": "2026-06-01T14:22:54+0000",
+      "version": "1.0",
+      "oscal-version": "1.2.1",
+      "remarks": "Component definition derived from Grafana Governance Benchmark"
+    },
+    "components": [
+      {
+        "uuid": "f876b1a6-4af6-4e50-8727-f0e493c06ba6",
+        "type": "software",
+        "title": "Grafana",
+        "description": "AI/ML component for Grafana with governance controls",
+        "props": [
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Inference, Output",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Transparency",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Untracked dashboard and alert coverage",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "GRF-GOV-001",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure every governed AI service has explicit Grafana dashboard and alert coverage",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Define and document the required dashboards, panels, alerts, and data-source dependencies for every governed AI service so observability expectations are explicit and reviewable.",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Dashboard and alert coverage",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Coverage = governed AI services with approved Grafana dashboard and alert coverage / total governed AI services in scope.",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Documentation completeness",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure dashboard and alert coverage reaches 100% before a governed AI service is approved for production.",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "1",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Partial",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Grafana is an observability and visualization platform, so dashboard and alert coverage is the primary governance control.",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_00"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Inference, Output",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Governance",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Undocumented data-source and panel configuration",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "GRF-GOV-002",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure data sources, dashboards, panels, and alert rules are documented for governed AI workloads",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Document Grafana data sources, folders, dashboards, panel queries, transformations, variables, alert rules, and notification policies for all governed AI observability workflows.",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Observability-configuration completeness",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Completeness = governed observability workflows with complete data-source, dashboard, and alert documentation / total governed workflows.",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Documentation completeness",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure observability-configuration completeness reaches 100% before production approval.",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "1",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Partial",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Grafana behavior depends on configured data sources, queries, and alert rules, so documentation is essential for governance.",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Manual",
+            "remarks": "rule_set_01"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Inference, Output",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Reliability",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Broken or incorrect dashboard queries",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "GRF-ACC-003",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure governed dashboard queries and panel transformations are validated against approved expected results",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Validate critical dashboard queries, panel transformations, and calculated values against reference datasets or known-good scenarios so operators are not misled by incorrect visualizations.",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Query correctness rate, panel correctness rate",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Correctness rate = critical dashboard queries or transformations producing approved expected outputs / total governed query or transformation tests.",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Exact Match",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure dashboard-query and panel correctness remains above threshold for governed operational views.",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": ">99%",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Partial",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Grafana often transforms and visualizes operational data, so query and panel correctness is a direct platform control for AI observability.",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_02"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Inference, Output",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Governance",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Missing critical dashboards for AI operations",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "GRF-GOV-004",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure required operational dashboards exist for governed AI services",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Provide approved dashboards for latency, error rate, throughput, saturation, rollout health, and other required AI service signals so production triage is possible.",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Dashboard coverage",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Coverage = governed AI services with approved dashboards for required operational signals / total governed AI services.",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Documentation completeness",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure required dashboard coverage reaches 100% for governed AI services.",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "1",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Partial",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Grafana is the presentation layer for many operational metrics, so missing dashboards create real incident-response blind spots.",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_03"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Inference, Output",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Reliability",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Alert rule misses critical incidents",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "GRF-REL-005",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure governed Grafana alerts achieve the required incident-detection coverage",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Validate critical alert rules against representative incident scenarios so operational failures in AI systems are detected within the approved detection window.",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Incident-detection coverage, alert recall, mean time to detect",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Detection coverage = critical incidents correctly alerted / total tested critical incidents; alert recall computed over the approved incident suite; mean time to detect measured from incident start to firing alert.",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Precision, Recall",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure incident-detection coverage and alert recall remain above threshold for governed critical alerts.",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": ">95% coverage; Recall >95%",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Partial",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Grafana alerting is a direct operational-risk control when dashboards are used as the trigger point for incident response.",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_04"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Inference, Output",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Governance",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Noisy or low-precision alerts",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "GRF-REL-006",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure alert precision remains above the approved threshold for governed alert policies",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Evaluate alert rules to reduce false positives and alert fatigue so AI operations teams can trust actionable Grafana alerts.",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Alert precision, false-positive rate",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Alert precision = true positive alerts / total fired alerts; false-positive rate = non-actionable alerts / total fired alerts over the observation window or test suite.",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Precision",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure alert precision remains above threshold and false-positive rate remains below threshold for governed alert policies.",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Precision >90%; false-positive rate <10%",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Partial",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Grafana alerts are only useful when they are actionable, especially for AI services with noisy runtime patterns.",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_05"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Inference, Output",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Reliability",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Notification routing failure",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "GRF-REL-007",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure governed alert notifications are delivered through approved contact points and policies",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Validate Grafana notification policies and contact points so critical alerts reach the intended operational responders without loss or misrouting.",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Notification delivery success rate, misroute rate",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Delivery success rate = alerts successfully delivered to approved contact points / total governed alert notifications; misroute rate = misrouted notifications / total notifications.",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "N/A - operational notification metric",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure notification delivery success remains above threshold and misroute rate remains below threshold for governed alerts.",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": ">99% success; misroute <1%",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "No",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Grafana alerting depends on notification policies and contact points, so delivery correctness is a direct operational control.",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_06"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Inference, Output",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Performance",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Slow dashboard rendering or query latency",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "GRF-PERF-008",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure critical Grafana dashboards and panels meet the approved latency objective",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Benchmark critical dashboard loads and panel query execution so observability workflows remain usable under production-scale AI workloads.",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Dashboard load latency, p95 panel query latency",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Measure dashboard load times and panel query execution times for governed views and compute p95 and mean latency under the approved workload profile.",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "N/A - operational metric",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure critical dashboard and panel latency remains within the approved service objective.",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Within project SLA",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "No",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Grafana is the operator-facing layer, so slow dashboards can materially degrade incident response during AI outages.",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_07"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Inference, Output",
+            "remarks": "rule_set_08"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Performance",
+            "remarks": "rule_set_08"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Overly expensive queries against observability backends",
+            "remarks": "rule_set_08"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "GRF-PERF-009",
+            "remarks": "rule_set_08"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure governed panel queries stay within the approved cost and performance budget",
+            "remarks": "rule_set_08"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Review and benchmark governed Grafana queries so expensive dashboards do not overload Prometheus, Loki, Mimir, Elasticsearch, or other approved backends.",
+            "remarks": "rule_set_08"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Backend query cost, query timeout rate, expensive-query count",
+            "remarks": "rule_set_08"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Query timeout rate = timed-out dashboard queries / total governed dashboard queries; expensive-query count from approved profiling or backend metrics.",
+            "remarks": "rule_set_08"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "N/A - operational metric",
+            "remarks": "rule_set_08"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure query timeout rate and expensive-query count remain within the approved budget for governed dashboards.",
+            "remarks": "rule_set_08"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Within project query budget; timeouts <1%",
+            "remarks": "rule_set_08"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "No",
+            "remarks": "rule_set_08"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Grafana sits on top of other observability systems, so inefficient queries can create real platform risk even when dashboards are correct.",
+            "remarks": "rule_set_08"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_08"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Inference, Output",
+            "remarks": "rule_set_09"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Security",
+            "remarks": "rule_set_09"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Unauthorized dashboard or data-source exposure",
+            "remarks": "rule_set_09"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "GRF-SEC-010",
+            "remarks": "rule_set_09"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure only approved users, teams, and service accounts can access governed dashboards and data sources",
+            "remarks": "rule_set_09"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Use Grafana RBAC, folder permissions, and data-source access controls so only approved identities can view or manage governed AI observability assets.",
+            "remarks": "rule_set_09"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Approved-access coverage",
+            "remarks": "rule_set_09"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Coverage = governed dashboards and data sources accessible only by approved identities / total governed dashboards and data sources.",
+            "remarks": "rule_set_09"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "N/A - access governance metric",
+            "remarks": "rule_set_09"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure approved-access coverage reaches 100% before production approval.",
+            "remarks": "rule_set_09"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "1",
+            "remarks": "rule_set_09"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "No",
+            "remarks": "rule_set_09"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Grafana often consolidates highly sensitive operational views, so RBAC and folder-level governance are critical.",
+            "remarks": "rule_set_09"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Manual",
+            "remarks": "rule_set_09"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Inference, Output",
+            "remarks": "rule_set_10"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Privacy",
+            "remarks": "rule_set_10"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Sensitive data in dashboards, variables, or annotations",
+            "remarks": "rule_set_10"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "GRF-PRIV-011",
+            "remarks": "rule_set_10"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure governed Grafana views do not expose PII or confidential data in dashboards or annotations",
+            "remarks": "rule_set_10"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Validate dashboards, variables, legends, annotations, and panels so personal data, prompts, tokens, or confidential identifiers are not exposed in Grafana views beyond policy limits.",
+            "remarks": "rule_set_10"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Sensitive-view exposure rate, precision, recall",
+            "remarks": "rule_set_10"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Exposure rate = dashboard elements exposing unauthorized sensitive data / total governed dashboard elements tested; compute precision and recall where detection logic is used.",
+            "remarks": "rule_set_10"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "PII leakage, Precision, Recall",
+            "remarks": "rule_set_10"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure sensitive dashboard exposure remains below threshold and privacy-detection recall remains above threshold before production approval.",
+            "remarks": "rule_set_10"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Leakage <1%; Recall >95%",
+            "remarks": "rule_set_10"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Partial",
+            "remarks": "rule_set_10"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Grafana can display labels, annotations, logs, and traces that may expose sensitive information if not governed carefully.",
+            "remarks": "rule_set_10"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_10"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Inference, Output",
+            "remarks": "rule_set_11"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Governance",
+            "remarks": "rule_set_11"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Incorrect variables or templating causing misleading views",
+            "remarks": "rule_set_11"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "GRF-ACC-012",
+            "remarks": "rule_set_11"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure governed dashboard variables and templating produce approved query scopes and views",
+            "remarks": "rule_set_11"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Validate dashboard variables, templating logic, and drilldowns so operators are not shown misleading subsets or incorrect filtered views of AI service health.",
+            "remarks": "rule_set_11"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Variable-scope correctness rate",
+            "remarks": "rule_set_11"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Correctness rate = governed variable and template scenarios producing the approved scope or filtered view / total tested variable scenarios.",
+            "remarks": "rule_set_11"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Exact Match",
+            "remarks": "rule_set_11"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure dashboard-variable correctness remains above threshold for governed operational views.",
+            "remarks": "rule_set_11"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": ">99%",
+            "remarks": "rule_set_11"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Partial",
+            "remarks": "rule_set_11"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Grafana variables and templating can materially change what operators see, making them part of the control surface.",
+            "remarks": "rule_set_11"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_11"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Inference, Output",
+            "remarks": "rule_set_12"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Governance",
+            "remarks": "rule_set_12"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Insufficient AI workload SLI/SLO coverage",
+            "remarks": "rule_set_12"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "GRF-GOV-013",
+            "remarks": "rule_set_12"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure governed AI services have dashboards and alerts for the SLIs required by approved SLOs",
+            "remarks": "rule_set_12"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Define and validate the Grafana visualizations and alerts needed to compute, display, and act on critical SLIs for latency, error rate, throughput, availability, and safety-sensitive service health.",
+            "remarks": "rule_set_12"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "SLI/SLO visualization coverage",
+            "remarks": "rule_set_12"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Coverage = governed SLOs with required Grafana dashboards and alerting views available / total governed SLOs.",
+            "remarks": "rule_set_12"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Documentation completeness",
+            "remarks": "rule_set_12"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure SLI/SLO visualization coverage reaches 100% before production approval of governed AI services.",
+            "remarks": "rule_set_12"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "1",
+            "remarks": "rule_set_12"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Partial",
+            "remarks": "rule_set_12"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Grafana is commonly the front-end where SLI and SLO posture becomes actionable for operators and stakeholders.",
+            "remarks": "rule_set_12"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_12"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Inference, Output",
+            "remarks": "rule_set_13"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Explainability",
+            "remarks": "rule_set_13"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Insufficient incident triage context",
+            "remarks": "rule_set_13"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "GRF-EXP-014",
+            "remarks": "rule_set_13"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure governed dashboards provide the context needed for AI incident investigation",
+            "remarks": "rule_set_13"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Provide dashboards that combine the metrics, logs, traces, and annotations required to understand latency spikes, failures, rollout regressions, and safety events in governed AI services.",
+            "remarks": "rule_set_13"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Incident-triage dashboard coverage",
+            "remarks": "rule_set_13"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Coverage = governed AI services with approved triage dashboards containing required operational context / total governed AI services.",
+            "remarks": "rule_set_13"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Documentation completeness",
+            "remarks": "rule_set_13"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure incident-triage dashboard coverage reaches 100% for governed AI services.",
+            "remarks": "rule_set_13"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "1",
+            "remarks": "rule_set_13"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Partial",
+            "remarks": "rule_set_13"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Grafana's major value is the ability to correlate multiple telemetry sources in a human-readable way during incidents.",
+            "remarks": "rule_set_13"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_13"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Inference, Output",
+            "remarks": "rule_set_14"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Fairness",
+            "remarks": "rule_set_14"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Missing observability for subgroup disparities",
+            "remarks": "rule_set_14"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "GRF-FAIR-015",
+            "remarks": "rule_set_14"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure subgroup-sensitive dashboards exist where fairness monitoring is required",
+            "remarks": "rule_set_14"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Where policy requires fairness monitoring, provide Grafana dashboards and alerts that let teams observe subgroup disparities in model quality or service outcomes over time.",
+            "remarks": "rule_set_14"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Fairness-observability coverage, subgroup disparity visualization coverage",
+            "remarks": "rule_set_14"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Coverage = governed fairness-sensitive services with required subgroup dashboards available / total governed fairness-sensitive services.",
+            "remarks": "rule_set_14"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "CrowS-Pairs, BBQ, BOLD sentiment parity",
+            "remarks": "rule_set_14"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure subgroup-sensitive dashboard coverage reaches 100% where fairness monitoring is required.",
+            "remarks": "rule_set_14"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "1",
+            "remarks": "rule_set_14"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Partial",
+            "remarks": "rule_set_14"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Grafana does not compute fairness by itself, but it is often the runtime visualization layer where fairness metrics become actionable.",
+            "remarks": "rule_set_14"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Semi-automated",
+            "remarks": "rule_set_14"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Inference, Output",
+            "remarks": "rule_set_15"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Value alignment",
+            "remarks": "rule_set_15"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Missing runtime safety dashboards",
+            "remarks": "rule_set_15"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "GRF-SAFE-016",
+            "remarks": "rule_set_15"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure governed AI services have dashboards and alerts for runtime safety events where required",
+            "remarks": "rule_set_15"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Where policy requires runtime safety monitoring, provide Grafana dashboards and alerting for toxicity incidents, policy violations, refusals, or safety-trigger events from governed AI services.",
+            "remarks": "rule_set_15"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Safety-dashboard coverage",
+            "remarks": "rule_set_15"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Coverage = governed AI services requiring runtime safety observability with required Grafana dashboards and alerts available / total governed safety-sensitive services.",
+            "remarks": "rule_set_15"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "RealToxicityPrompts, toxicity score",
+            "remarks": "rule_set_15"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure runtime safety dashboard coverage reaches 100% for all governed safety-sensitive AI services.",
+            "remarks": "rule_set_15"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "1",
+            "remarks": "rule_set_15"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Partial",
+            "remarks": "rule_set_15"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Grafana is often the place where runtime safety signals become visible to operators and governance stakeholders.",
+            "remarks": "rule_set_15"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Semi-automated",
+            "remarks": "rule_set_15"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Inference, Output",
+            "remarks": "rule_set_16"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Reliability",
+            "remarks": "rule_set_16"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Undetected rollout regressions in AI services",
+            "remarks": "rule_set_16"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "GRF-REL-017",
+            "remarks": "rule_set_16"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure rollout health dashboards and alerts exist for governed AI releases",
+            "remarks": "rule_set_16"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Monitor deployment, pod, and endpoint health metrics during governed AI rollouts so regressions are visible before they become widespread incidents.",
+            "remarks": "rule_set_16"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Rollout health coverage, rollout incident detection rate",
+            "remarks": "rule_set_16"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Coverage = governed rollouts with required Grafana health views and alerts / total governed rollouts; detection rate = rollout incidents correctly surfaced / total tested rollout incidents.",
+            "remarks": "rule_set_16"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "N/A - operational reliability metric",
+            "remarks": "rule_set_16"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure rollout health coverage and rollout incident detection remain above threshold for governed AI releases.",
+            "remarks": "rule_set_16"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": ">95% detection; 100% coverage",
+            "remarks": "rule_set_16"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "No",
+            "remarks": "rule_set_16"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Grafana is commonly the first operator-facing surface used to watch rollout regressions in production AI services.",
+            "remarks": "rule_set_16"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_16"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Inference, Output",
+            "remarks": "rule_set_17"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Governance",
+            "remarks": "rule_set_17"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Missing drilldowns from dashboard to root-cause views",
+            "remarks": "rule_set_17"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "GRF-REL-018",
+            "remarks": "rule_set_17"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure governed dashboards provide approved drilldowns to supporting logs, traces, or detail views",
+            "remarks": "rule_set_17"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Validate panel links, data links, and drilldown navigation so operators can move from summary dashboards to root-cause evidence without ambiguity or dead ends.",
+            "remarks": "rule_set_17"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Drilldown correctness rate",
+            "remarks": "rule_set_17"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Correctness rate = governed drilldowns resolving to the approved supporting views or telemetry / total tested drilldown paths.",
+            "remarks": "rule_set_17"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Exact Match",
+            "remarks": "rule_set_17"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure dashboard drilldown correctness remains above threshold for governed operational views.",
+            "remarks": "rule_set_17"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": ">99%",
+            "remarks": "rule_set_17"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Partial",
+            "remarks": "rule_set_17"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Grafana supports data links and panel navigation, which become critical during AI incidents where summary views are insufficient.",
+            "remarks": "rule_set_17"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_17"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Inference, Output",
+            "remarks": "rule_set_18"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Reliability",
+            "remarks": "rule_set_18"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Multi-tenant observability confusion",
+            "remarks": "rule_set_18"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "GRF-GOV-019",
+            "remarks": "rule_set_18"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure folders, teams, and dashboards are organized to match governed ownership boundaries",
+            "remarks": "rule_set_18"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Use Grafana folders, teams, and governance conventions so dashboards and alerts for different AI services or tenants remain clearly owned and reviewable.",
+            "remarks": "rule_set_18"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ownership-boundary compliance rate",
+            "remarks": "rule_set_18"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Compliance rate = governed dashboards and alerts placed under approved ownership boundaries / total governed dashboards and alerts.",
+            "remarks": "rule_set_18"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Documentation completeness",
+            "remarks": "rule_set_18"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure ownership-boundary compliance reaches 100% for governed AI observability assets.",
+            "remarks": "rule_set_18"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "1",
+            "remarks": "rule_set_18"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Partial",
+            "remarks": "rule_set_18"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Grafana supports teams and folder hierarchies, which are important for multi-team enterprise AI operations.",
+            "remarks": "rule_set_18"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Manual",
+            "remarks": "rule_set_18"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Deployment, Inference",
+            "remarks": "rule_set_19"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Reliability",
+            "remarks": "rule_set_19"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Single-instance visualization failure risk",
+            "remarks": "rule_set_19"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "GRF-REL-020",
+            "remarks": "rule_set_19"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure governed Grafana deployments meet approved resilience architecture requirements",
+            "remarks": "rule_set_19"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Use the approved Grafana deployment topology, backup, and failover design so loss of a single visualization node does not create unacceptable observability gaps for critical AI systems.",
+            "remarks": "rule_set_19"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Visualization-resilience compliance rate",
+            "remarks": "rule_set_19"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Compliance rate = governed Grafana deployments meeting the approved resilience architecture / total governed Grafana deployments.",
+            "remarks": "rule_set_19"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "N/A - resilience metric",
+            "remarks": "rule_set_19"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure visualization-resilience compliance reaches 100% for deployments observing critical AI systems.",
+            "remarks": "rule_set_19"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "1",
+            "remarks": "rule_set_19"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "No",
+            "remarks": "rule_set_19"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Grafana is often treated as a critical operational interface, so resilience requirements matter for enterprise AI systems even if metrics still exist underneath.",
+            "remarks": "rule_set_19"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Manual",
+            "remarks": "rule_set_19"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Non-technical",
+            "remarks": "rule_set_20"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Governance",
+            "remarks": "rule_set_20"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Insufficient observability release testing",
+            "remarks": "rule_set_20"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "GRF-GOV-021",
+            "remarks": "rule_set_20"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure governed Grafana deployments cover dashboards, alerts, permissions, privacy, drilldowns, and resilience tests",
+            "remarks": "rule_set_20"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Build a Grafana release standard that requires representative testing across dashboard correctness, alert quality, RBAC, privacy, navigation, and topology resilience domains.",
+            "remarks": "rule_set_20"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Risk-test coverage",
+            "remarks": "rule_set_20"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Coverage = number of mandated Grafana risk domains with active tracked evidence / total mandated risk domains in the release standard.",
+            "remarks": "rule_set_20"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Composite evaluation coverage based on benchmark families",
+            "remarks": "rule_set_20"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure risk-test coverage remains at or above threshold across the required Grafana validation domains.",
+            "remarks": "rule_set_20"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": ">90%",
+            "remarks": "rule_set_20"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Partial",
+            "remarks": "rule_set_20"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Grafana is the operator-facing observability layer, so release readiness should focus on correctness, accessibility, and actionability of views and alerts.",
+            "remarks": "rule_set_20"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Automated",
+            "remarks": "rule_set_20"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Non-technical",
+            "remarks": "rule_set_21"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Governance",
+            "remarks": "rule_set_21"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Lack of monitored-service transparency",
+            "remarks": "rule_set_21"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "GRF-GOV-022",
+            "remarks": "rule_set_21"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure governed AI services document which Grafana dashboards and alerts represent their operational state",
+            "remarks": "rule_set_21"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Document the dashboards, panel queries, alert rules, annotations, and escalation assumptions that represent the health of each governed AI service in Grafana.",
+            "remarks": "rule_set_21"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Service observability transparency completeness",
+            "remarks": "rule_set_21"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Completeness = governed AI services with completed Grafana observability transparency fields / total governed AI services.",
+            "remarks": "rule_set_21"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Documentation completeness",
+            "remarks": "rule_set_21"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure service observability transparency completeness reaches 100% before production approval.",
+            "remarks": "rule_set_21"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "1",
+            "remarks": "rule_set_21"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Partial",
+            "remarks": "rule_set_21"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Grafana governance is strongest when teams can clearly explain which dashboards and alerts represent service health and why.",
+            "remarks": "rule_set_21"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Manual",
+            "remarks": "rule_set_21"
+          },
+          {
+            "name": "AI_Lifecycle",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Non-technical",
+            "remarks": "rule_set_22"
+          },
+          {
+            "name": "Main_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Governance",
+            "remarks": "rule_set_22"
+          },
+          {
+            "name": "Sub_Risk",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Lack of system transparency",
+            "remarks": "rule_set_22"
+          },
+          {
+            "name": "Rule_ID",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "GRF-GOV-023",
+            "remarks": "rule_set_22"
+          },
+          {
+            "name": "Rule_Title",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure Grafana topology, data-source dependencies, alert routing, and access assumptions are documented for governed environments",
+            "remarks": "rule_set_22"
+          },
+          {
+            "name": "Rule_Description",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Document Grafana deployment topology, organization or folder model, data-source dependencies, alert routing, notification policies, and access assumptions for each governed environment.",
+            "remarks": "rule_set_22"
+          },
+          {
+            "name": "Associated_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "System transparency completeness",
+            "remarks": "rule_set_22"
+          },
+          {
+            "name": "Metric_Calculation",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Completeness = completed required architecture and monitoring-workflow fields / total required fields in the approved transparency checklist.",
+            "remarks": "rule_set_22"
+          },
+          {
+            "name": "HF_Metric",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Model/system documentation completeness",
+            "remarks": "rule_set_22"
+          },
+          {
+            "name": "Metric_Based_Rule",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Ensure system transparency completeness reaches 100% before production approval.",
+            "remarks": "rule_set_22"
+          },
+          {
+            "name": "Threshold_Value",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "1",
+            "remarks": "rule_set_22"
+          },
+          {
+            "name": "HF_Metric_Match",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Partial",
+            "remarks": "rule_set_22"
+          },
+          {
+            "name": "Mapping_Notes",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Grafana behavior depends on topology, data sources, and organizational structure, so environment-level transparency is essential for enterprise reviewability.",
+            "remarks": "rule_set_22"
+          },
+          {
+            "name": "Assessment_Status_Manual_or_Automated",
+            "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+            "value": "Manual",
+            "remarks": "rule_set_22"
+          }
+        ],
+        "control-implementations": [
+          {
+            "uuid": "1cd95411-87e3-47c0-8dbe-e02bc4f2646c",
+            "source": "https://raw.githubusercontent.com/oscal-compass/oscal-content/refs/heads/main/catalogs/nist_ai_rmf_gen_ai/1.0.0/catalog.json",
+            "description": "Implementation of NIST AI RMF controls for Grafana",
+            "implemented-requirements": [
+              {
+                "uuid": "c765c553-1b8b-4811-b194-357dd4bfcbbd",
+                "control-id": "GOVERN-1.1",
+                "description": "Control implementation for GOVERN-1.1",
+                "props": [
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "GRF-SEC-010"
+                  },
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "GRF-GOV-019"
+                  }
+                ]
+              },
+              {
+                "uuid": "94466bf5-0262-45af-9fb9-d9fac15c7cda",
+                "control-id": "GOVERN-1.3",
+                "description": "Control implementation for GOVERN-1.3",
+                "props": [
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "GRF-GOV-004"
+                  },
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "GRF-GOV-013"
+                  },
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "GRF-EXP-014"
+                  }
+                ]
+              },
+              {
+                "uuid": "737ea859-b98b-4dbf-a8a3-28ac8e11dbf6",
+                "control-id": "GOVERN-1.6",
+                "description": "Control implementation for GOVERN-1.6",
+                "props": [
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "GRF-GOV-001"
+                  },
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "GRF-GOV-022"
+                  }
+                ]
+              },
+              {
+                "uuid": "7b9f0c65-b5d3-46cb-97f4-8d4cb4124bb2",
+                "control-id": "MANAGE-4.1",
+                "description": "Control implementation for MANAGE-4.1",
+                "props": [
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "GRF-REL-005"
+                  },
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "GRF-REL-007"
+                  },
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "GRF-REL-020"
+                  }
+                ]
+              },
+              {
+                "uuid": "70ff01d2-ec5d-4eee-9316-437a43288924",
+                "control-id": "MAP-1.3",
+                "description": "Control implementation for MAP-1.3",
+                "props": [
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "GRF-GOV-002"
+                  },
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "GRF-GOV-023"
+                  }
+                ]
+              },
+              {
+                "uuid": "0775bc1b-ae51-4fe4-818e-79df73fc7148",
+                "control-id": "MEASURE-2.10",
+                "description": "Control implementation for MEASURE-2.10",
+                "props": [
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "GRF-REL-018"
+                  },
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "GRF-GOV-021"
+                  }
+                ]
+              },
+              {
+                "uuid": "468e53ce-4551-44a2-a537-a650945ef389",
+                "control-id": "MEASURE-2.11",
+                "description": "Control implementation for MEASURE-2.11",
+                "props": [
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "GRF-FAIR-015"
+                  }
+                ]
+              },
+              {
+                "uuid": "2d0f8c41-ffd5-400c-8d94-e538337d8841",
+                "control-id": "MEASURE-2.2",
+                "description": "Control implementation for MEASURE-2.2",
+                "props": [
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "GRF-ACC-003"
+                  },
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "GRF-ACC-012"
+                  }
+                ]
+              },
+              {
+                "uuid": "eaa14172-9cd9-470f-8de0-729af0c0d5b0",
+                "control-id": "MEASURE-2.3",
+                "description": "Control implementation for MEASURE-2.3",
+                "props": [
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "GRF-REL-006"
+                  },
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "GRF-PERF-008"
+                  },
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "GRF-PERF-009"
+                  },
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "GRF-REL-017"
+                  }
+                ]
+              },
+              {
+                "uuid": "8352c74d-6ac9-4bb6-81cb-52c5d69f6c65",
+                "control-id": "MEASURE-2.7",
+                "description": "Control implementation for MEASURE-2.7",
+                "props": [
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "GRF-PRIV-011"
+                  },
+                  {
+                    "name": "Rule_Id",
+                    "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal/cd",
+                    "value": "GRF-SAFE-016"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

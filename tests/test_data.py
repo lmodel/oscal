@@ -45,6 +45,8 @@ from linkml_runtime.loaders import yaml_loader
 
 DATA_DIR_VALID = Path(__file__).parent / "data" / "valid"
 DATA_DIR_INVALID = Path(__file__).parent / "data" / "invalid"
+DATA_DIR_CNCF_AI_BENCHMARKS = Path(__file__).parent / "data" / "cncf-ai-benchmarks"
+DATA_DIR_CNCF_AI_BENCHMARKS_INVALID = Path(__file__).parent / "data" / "invalid" / "cncf-ai-benchmarks"
 SCHEMA_DIR = Path(__file__).parent.parent / "src" / "oscal" / "schema"
 JSONSCHEMA_PATH = Path(__file__).parent.parent / "project" / "jsonschema" / "oscal.schema.json"
 
@@ -55,6 +57,13 @@ JSONSCHEMA_PATH = Path(__file__).parent.parent / "project" / "jsonschema" / "osc
 # All *.yaml files collected at import time so pytest can parametrize them.
 VALID_EXAMPLE_FILES = glob.glob(os.path.join(DATA_DIR_VALID, '*.yaml'))
 INVALID_EXAMPLE_FILES = glob.glob(os.path.join(DATA_DIR_INVALID, '*.yaml'))
+CNCF_AI_BENCHMARKS_FILES = glob.glob(os.path.join(DATA_DIR_CNCF_AI_BENCHMARKS, '*.json'))
+CNCF_AI_BENCHMARKS_INVALID_FILES = glob.glob(os.path.join(DATA_DIR_CNCF_AI_BENCHMARKS_INVALID, '*.json'))
+
+
+def _fixture_id(filepath: str) -> str:
+    """Readable test ID for a fixture: its filename instead of the full path."""
+    return Path(filepath).name
 
 # Fixture filenames (basename only) that are expected to *pass* the Python
 # yaml_loader despite living in the invalid directory.  Add a fixture here
@@ -217,13 +226,34 @@ def _jsonschema_validator(target_class_name: str):
     return Draft7Validator(subschema)
 
 
-def _validate_generated_json_schema(filepath: str, target_class_name: str):
-    """Validate one fixture against the generated JSON Schema definition for its target class."""
-    instance = yaml.safe_load(Path(filepath).read_text())
+def _iter_generated_json_schema_errors(instance, target_class_name: str):
+    """Collect generated-JSON-Schema errors for an already-parsed instance."""
     return sorted(
         _jsonschema_validator(target_class_name).iter_errors(instance),
         key=lambda error: tuple(error.path),
     )
+
+
+def _validate_generated_json_schema(filepath: str, target_class_name: str):
+    """Validate one fixture against the generated JSON Schema definition for its target class."""
+    instance = yaml.safe_load(Path(filepath).read_text())
+    return _iter_generated_json_schema_errors(instance, target_class_name)
+
+
+def _normalize_keys(value):
+    """
+    Recursively convert hyphenated dict keys to underscores.
+
+    Native OSCAL JSON uses hyphenated keys (``component-definition``,
+    ``last-modified``); the generated JSON Schema and Python model use
+    underscore keys.  Only keys are rewritten — values (e.g. property names
+    like ``fedramp-high``) are untouched.
+    """
+    if isinstance(value, dict):
+        return {key.replace("-", "_"): _normalize_keys(item) for key, item in value.items()}
+    if isinstance(value, list):
+        return [_normalize_keys(item) for item in value]
+    return value
 
 
 # ---------------------------------------------------------------------------
@@ -285,7 +315,7 @@ def _allow_other_enum_names():
 # Parametrized fixture tests
 # ---------------------------------------------------------------------------
 
-@pytest.mark.parametrize("filepath", VALID_EXAMPLE_FILES)
+@pytest.mark.parametrize("filepath", VALID_EXAMPLE_FILES, ids=_fixture_id)
 def test_valid_data_files(filepath):
     """
     Each file in ``tests/data/valid/`` must load without error.
@@ -300,7 +330,7 @@ def test_valid_data_files(filepath):
     assert obj
 
 
-@pytest.mark.parametrize("filepath", VALID_EXAMPLE_FILES)
+@pytest.mark.parametrize("filepath", VALID_EXAMPLE_FILES, ids=_fixture_id)
 def test_valid_data_files_match_generated_json_schema(filepath):
     """
     Valid fixtures should also satisfy the generated JSON Schema.
@@ -313,7 +343,7 @@ def test_valid_data_files_match_generated_json_schema(filepath):
     assert not errors, [error.message for error in errors]
 
 
-@pytest.mark.parametrize("filepath", INVALID_EXAMPLE_FILES)
+@pytest.mark.parametrize("filepath", INVALID_EXAMPLE_FILES, ids=_fixture_id)
 def test_invalid_data_files(filepath):
     """
     Each file in ``tests/data/invalid/`` must raise an exception during loading.
@@ -337,7 +367,7 @@ def test_invalid_data_files(filepath):
     pytest.skip(f"No invalid-data validator configured for {target_class_name}")
 
 
-@pytest.mark.parametrize("filepath", INVALID_EXAMPLE_FILES)
+@pytest.mark.parametrize("filepath", INVALID_EXAMPLE_FILES, ids=_fixture_id)
 def test_invalid_data_files_fail_generated_json_schema(filepath):
     """
     Invalid fixtures should fail class-specific generated JSON Schema validation.
@@ -347,6 +377,38 @@ def test_invalid_data_files_fail_generated_json_schema(filepath):
     """
     target_class_name = Path(filepath).stem.split("-")[0]
     errors = _validate_generated_json_schema(filepath, target_class_name)
+    assert errors, f"Expected generated JSON Schema errors for {filepath}"
+
+
+@pytest.mark.parametrize("filepath", CNCF_AI_BENCHMARKS_FILES, ids=_fixture_id)
+def test_cncf_ai_benchmarks_match_generated_json_schema(filepath):
+    """
+    Each JSON file in ``tests/data/cncf-ai-benchmarks/`` must satisfy the
+    generated JSON Schema for ``ComponentDefinitionDocument``.
+
+    Files follow the ``<Name>-component-definition.json`` naming convention;
+    all are expected to be valid OSCAL component definitions.  The files use
+    native OSCAL hyphenated keys, so keys are normalized to underscores before
+    validation (same convention as the ``test-luigi-carpio`` justfile recipe).
+    """
+    instance = _normalize_keys(json.loads(Path(filepath).read_text()))
+    errors = _iter_generated_json_schema_errors(instance, "ComponentDefinitionDocument")
+    assert not errors, [error.message for error in errors]
+
+
+@pytest.mark.parametrize("filepath", CNCF_AI_BENCHMARKS_INVALID_FILES, ids=_fixture_id)
+def test_cncf_ai_benchmarks_invalid_fail_generated_json_schema(filepath):
+    """
+    Each JSON file in ``tests/data/invalid/cncf-ai-benchmarks/`` must fail the
+    generated JSON Schema for ``ComponentDefinitionDocument``.
+
+    These are copies of the ``tests/data/cncf-ai-benchmarks/`` fixtures with a
+    single fault injected: ``metadata.last-modified`` uses the malformed
+    ``+0000`` timezone offset (no colon) instead of RFC 3339 ``+00:00``, which
+    the schema's date-time pattern rejects.
+    """
+    instance = _normalize_keys(json.loads(Path(filepath).read_text()))
+    errors = _iter_generated_json_schema_errors(instance, "ComponentDefinitionDocument")
     assert errors, f"Expected generated JSON Schema errors for {filepath}"
 
 

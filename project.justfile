@@ -10,8 +10,18 @@
 ##
 _test-linkml-validate:
 	#!{{shebang}}
+	import json
 	import subprocess
+	import tempfile
 	from pathlib import Path
+
+	def normalize_keys(value):
+		# Native OSCAL JSON uses hyphenated keys; the schema uses underscores.
+		if isinstance(value, dict):
+			return {k.replace("-", "_"): normalize_keys(v) for k, v in value.items()}
+		if isinstance(value, list):
+			return [normalize_keys(item) for item in value]
+		return value
 
 	schema_map = {
 		"AssessmentPlan": "src/oscal/schema/oscal_assessment_plan.yaml",
@@ -48,7 +58,7 @@ _test-linkml-validate:
 			target_class = fixture.stem.split("-")[0]
 			schema_path = schema_map.get(target_class)
 			if schema_path is None:
-				print(f"SKIP {fixture}: no standalone schema mapping")
+				print(f"[linkml-validate] SKIP {fixture}: no standalone schema mapping")
 				continue
 
 			result = subprocess.run(
@@ -66,8 +76,52 @@ _test-linkml-validate:
 				text=True,
 			)
 			ok = result.returncode == 0
+			status = "PASS" if ok == expected_ok else "FAIL"
+			expectation = "valid" if expected_ok else "invalid"
+			print(f"[linkml-validate] {status} {fixture} ({target_class}, expect {expectation})")
 			if ok != expected_ok:
 				failures.append((fixture, result.stdout, result.stderr))
+
+	# cncf-ai-benchmarks: *.json files are ComponentDefinitionDocument instances.
+	# The fixtures use native OSCAL hyphenated keys, so normalize each one to
+	# underscore keys in a temp copy before handing it to linkml-validate.
+	# tests/data/cncf-ai-benchmarks/ must all be valid; tests/data/invalid/cncf-ai-benchmarks/
+	# are copies with a single fault injected (malformed last-modified timezone) and must fail.
+	cncf_schema = schema_map["ComponentDefinition"]
+	cncf_dirs = (
+		(Path("tests/data/cncf-ai-benchmarks"), True),
+		(Path("tests/data/invalid/cncf-ai-benchmarks"), False),
+	)
+	with tempfile.TemporaryDirectory(prefix="cncf-normalized-") as tmpdir:
+		for cncf_dir, expected_ok in cncf_dirs:
+			expectation = "valid" if expected_ok else "invalid"
+			for fixture in sorted(cncf_dir.glob("*.json")):
+				normalized = Path(tmpdir) / fixture.name
+				normalized.write_text(
+					json.dumps(normalize_keys(json.loads(fixture.read_text())))
+				)
+				result = subprocess.run(
+					[
+						"uv",
+						"run",
+						"linkml-validate",
+						"-s",
+						cncf_schema,
+						"-C",
+						"ComponentDefinitionDocument",
+						str(normalized),
+					],
+					capture_output=True,
+					text=True,
+				)
+				ok = result.returncode == 0
+				status = "PASS" if ok == expected_ok else "FAIL"
+				print(
+					f"[linkml-validate] {status} {fixture} "
+					f"(ComponentDefinitionDocument, expect {expectation})"
+				)
+				if ok != expected_ok:
+					failures.append((fixture, result.stdout, result.stderr))
 
 	if failures:
 		for fixture, stdout, stderr in failures:
