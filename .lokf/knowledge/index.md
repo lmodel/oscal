@@ -1,14 +1,14 @@
 ---
 lokf_version: "0.1"
 okf_version: "0.1"
-base_iri: https://github.com/lmodel/oscal/knowledge/
+base_iri: https://w3id.org/lmodel/oscal/knowledge/
 context: https://w3id.org/lokf/context.jsonld
 title: OSCAL Knowledge Bundle
 description: LinkML schema encoding the NIST Open Security Controls Assessment Language (OSCAL), providing machine-readable representations for security controls, assessments, and compliance data.
 license: https://creativecommons.org/licenses/by/4.0/
 publisher:
   type: Organization
-  id: https://github.com/lmodel/oscal/knowledge/org/lmodel
+  id: https://w3id.org/lmodel/oscal/knowledge/org/lmodel
   name: lmodel
 ---
 

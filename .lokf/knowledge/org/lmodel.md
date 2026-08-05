@@ -1,6 +1,6 @@
 ---
 type: Organization
-id: https://github.com/lmodel/oscal/knowledge/org/lmodel
+id: https://w3id.org/lmodel/oscal/knowledge/org/lmodel
 title: lmodel
 description: The lmodel GitHub organization that publishes the OSCAL LinkML schema project and related linked-data model repositories.
 resource: https://github.com/lmodel

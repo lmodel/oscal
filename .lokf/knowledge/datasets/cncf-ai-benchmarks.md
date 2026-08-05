@@ -1,6 +1,6 @@
 ---
 type: Dataset
-id: https://github.com/lmodel/oscal/knowledge/datasets/cncf-ai-benchmarks
+id: https://w3id.org/lmodel/oscal/knowledge/datasets/cncf-ai-benchmarks
 title: CNCF AI Ecosystem OSCAL Benchmarks
 description: 31 real-world OSCAL Component Definition JSON fixtures covering CNCF AI ecosystem projects (PyTorch, TensorFlow, LangChain, Kubernetes, and others), each derived from a project-specific "Governance Benchmark". Used as positive (valid) and negative (fault-injected invalid) test fixtures for ComponentDefinitionDocument schema validation.
 version: "1.2.1"
@@ -10,7 +10,7 @@ timestamp: "2026-08-05T00:00:00Z"
 source:
   - https://github.com/oscal-compass-lab/ai-benchmarks
 about:
-  - https://github.com/lmodel/oscal/knowledge/datasets/oscal-component-schema
+  - https://w3id.org/lmodel/oscal/knowledge/datasets/oscal-component-schema
 distribution:
   - media_type: application/json
     access_url: https://github.com/lmodel/oscal/tree/main/tests/data/cncf-ai-benchmarks

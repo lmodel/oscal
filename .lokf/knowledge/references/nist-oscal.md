@@ -1,12 +1,12 @@
 ---
 type: Reference
-id: https://github.com/lmodel/oscal/knowledge/references/nist-oscal
+id: https://w3id.org/lmodel/oscal/knowledge/references/nist-oscal
 title: NIST OSCAL
 description: The NIST Open Security Controls Assessment Language (OSCAL) standard. The authoritative upstream specification from which all schema modules in this repository are derived.
 resource: https://pages.nist.gov/OSCAL/
 timestamp: "2026-08-05T00:00:00Z"
 about:
-  - https://github.com/lmodel/oscal/knowledge/datasets/oscal-schema
+  - https://w3id.org/lmodel/oscal/knowledge/datasets/oscal-schema
 ---
 
 # NIST OSCAL

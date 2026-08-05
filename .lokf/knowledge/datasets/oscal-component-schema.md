@@ -1,6 +1,6 @@
 ---
 type: Dataset
-id: https://github.com/lmodel/oscal/knowledge/datasets/oscal-component-schema
+id: https://w3id.org/lmodel/oscal/knowledge/datasets/oscal-component-schema
 title: OSCAL Component Definition Schema
 description: LinkML schema for the OSCAL Component Definition model (v1.2.1). Encodes reusable definitions of system components and their control implementations.
 version: "1.2.1"
@@ -10,11 +10,11 @@ timestamp: "2026-08-05T00:00:00Z"
 source:
   - http://csrc.nist.gov/ns/oscal/1.2.1/oscal-component-definition-schema.json
 isPartOf:
-  - https://github.com/lmodel/oscal/knowledge/datasets/oscal-schema
+  - https://w3id.org/lmodel/oscal/knowledge/datasets/oscal-schema
 derivedFrom:
-  - https://github.com/lmodel/oscal/knowledge/references/nist-oscal
+  - https://w3id.org/lmodel/oscal/knowledge/references/nist-oscal
 references:
-  - https://github.com/lmodel/oscal/knowledge/references/linkml
+  - https://w3id.org/lmodel/oscal/knowledge/references/linkml
 distribution:
   - media_type: application/yaml
     access_url: https://github.com/lmodel/oscal/blob/main/src/oscal/schema/oscal_component.yaml

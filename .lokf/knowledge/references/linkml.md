@@ -1,12 +1,12 @@
 ---
 type: Reference
-id: https://github.com/lmodel/oscal/knowledge/references/linkml
+id: https://w3id.org/lmodel/oscal/knowledge/references/linkml
 title: LinkML
 description: The Linked Data Modeling Language. A framework for authoring schemas in YAML that generate JSON Schema, OWL, SHACL, RDF, and multiple programming-language datamodels. All OSCAL schemas in this repository are authored in LinkML.
 resource: https://linkml.io/
 timestamp: "2026-08-05T00:00:00Z"
 about:
-  - https://github.com/lmodel/oscal/knowledge/datasets/oscal-schema
+  - https://w3id.org/lmodel/oscal/knowledge/datasets/oscal-schema
 ---
 
 # LinkML

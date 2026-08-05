@@ -1,6 +1,6 @@
 ---
 type: Playbook
-id: https://github.com/lmodel/oscal/knowledge/playbooks/knowledge-sources
+id: https://w3id.org/lmodel/oscal/knowledge/playbooks/knowledge-sources
 title: Knowledge Sources
 description: Map of all repository sources scraped in the bootstrap discovery pass to build this LOKF bundle. Each entry records the source path or URL, the class(es) it yielded, and how to re-verify it on the next refresh.
 timestamp: "2026-08-05T00:00:00Z"

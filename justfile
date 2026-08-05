@@ -209,7 +209,12 @@ _gen-yaml:
   uv run gen-yaml {{source_schema_path}} > {{distrib_schema_path}}/{{schema_name}}.yaml
 
 # Overridable recipe to add project-specific artifacts to the distribution schema path
+# Publishes the LOKF knowledge bundle into the docs site so concept IRIs
+# (https://w3id.org/lmodel/oscal/knowledge/...) resolve via the existing
+# w3id.org catch-all redirect to lmodel.github.io/oscal/knowledge/...
 _add-artifacts:
+  rm -rf docs/knowledge
+  cp -r .lokf/knowledge docs/knowledge
 
 # Run documentation server
 _serve:

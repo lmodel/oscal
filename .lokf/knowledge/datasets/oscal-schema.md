@@ -1,6 +1,6 @@
 ---
 type: Dataset
-id: https://github.com/lmodel/oscal/knowledge/datasets/oscal-schema
+id: https://w3id.org/lmodel/oscal/knowledge/datasets/oscal-schema
 title: OSCAL Schema (top-level)
 description: Aggregating top-level LinkML schema for OSCAL (Open Security Controls Assessment Language). Imports all eight domain sub-schemas and provides the shared namespace.
 version: "1.2.1"
@@ -8,18 +8,18 @@ resource: https://github.com/lmodel/oscal/blob/main/src/oscal/schema/oscal.yaml
 license: https://www.apache.org/licenses/LICENSE-2.0
 timestamp: "2026-08-05T00:00:00Z"
 derivedFrom:
-  - https://github.com/lmodel/oscal/knowledge/references/nist-oscal
+  - https://w3id.org/lmodel/oscal/knowledge/references/nist-oscal
 references:
-  - https://github.com/lmodel/oscal/knowledge/references/linkml
+  - https://w3id.org/lmodel/oscal/knowledge/references/linkml
 hasPart:
-  - https://github.com/lmodel/oscal/knowledge/datasets/oscal-catalog-schema
-  - https://github.com/lmodel/oscal/knowledge/datasets/oscal-profile-schema
-  - https://github.com/lmodel/oscal/knowledge/datasets/oscal-ssp-schema
-  - https://github.com/lmodel/oscal/knowledge/datasets/oscal-assessment-plan-schema
-  - https://github.com/lmodel/oscal/knowledge/datasets/oscal-assessment-results-schema
-  - https://github.com/lmodel/oscal/knowledge/datasets/oscal-component-schema
-  - https://github.com/lmodel/oscal/knowledge/datasets/oscal-mapping-schema
-  - https://github.com/lmodel/oscal/knowledge/datasets/oscal-poam-schema
+  - https://w3id.org/lmodel/oscal/knowledge/datasets/oscal-catalog-schema
+  - https://w3id.org/lmodel/oscal/knowledge/datasets/oscal-profile-schema
+  - https://w3id.org/lmodel/oscal/knowledge/datasets/oscal-ssp-schema
+  - https://w3id.org/lmodel/oscal/knowledge/datasets/oscal-assessment-plan-schema
+  - https://w3id.org/lmodel/oscal/knowledge/datasets/oscal-assessment-results-schema
+  - https://w3id.org/lmodel/oscal/knowledge/datasets/oscal-component-schema
+  - https://w3id.org/lmodel/oscal/knowledge/datasets/oscal-mapping-schema
+  - https://w3id.org/lmodel/oscal/knowledge/datasets/oscal-poam-schema
 distribution:
   - media_type: application/yaml
     access_url: https://github.com/lmodel/oscal/blob/main/src/oscal/schema/oscal.yaml

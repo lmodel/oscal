@@ -1,6 +1,6 @@
 ---
 type: Dataset
-id: https://github.com/lmodel/oscal/knowledge/datasets/luigi-carpio-component-definition
+id: https://w3id.org/lmodel/oscal/knowledge/datasets/luigi-carpio-component-definition
 title: NIST 800-53 Rev 5 to AWS Service Mapping (Luigi Carpio)
 description: A real-world OSCAL Component Definition JSON fixture mapping NIST 800-53 Rev 5 security controls to AWS services, with FedRAMP High baseline coverage and a CJIS v6.0 delta section for controls where CJIS exceeds FedRAMP High. Used for structural and domain-specific validation of the OSCAL model.
 version: "1.1.2"
@@ -8,7 +8,7 @@ resource: https://github.com/lmodel/oscal/tree/main/tests/data/luigi_carpio
 license: MIT
 timestamp: "2026-08-05T00:00:00Z"
 about:
-  - https://github.com/lmodel/oscal/knowledge/datasets/oscal-component-schema
+  - https://w3id.org/lmodel/oscal/knowledge/datasets/oscal-component-schema
 ---
 
 # NIST 800-53 Rev 5 to AWS Service Mapping (Luigi Carpio)

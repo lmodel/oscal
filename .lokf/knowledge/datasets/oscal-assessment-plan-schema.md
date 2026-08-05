@@ -1,6 +1,6 @@
 ---
 type: Dataset
-id: https://github.com/lmodel/oscal/knowledge/datasets/oscal-assessment-plan-schema
+id: https://w3id.org/lmodel/oscal/knowledge/datasets/oscal-assessment-plan-schema
 title: OSCAL Assessment Plan Schema
 description: LinkML schema for the OSCAL Assessment Plan (AP) model (v1.2.1). Encodes the plan for assessing security controls in an information system.
 version: "1.2.1"
@@ -8,11 +8,11 @@ resource: https://github.com/lmodel/oscal/blob/main/src/oscal/schema/oscal_asses
 license: https://www.apache.org/licenses/LICENSE-2.0
 timestamp: "2026-08-05T00:00:00Z"
 isPartOf:
-  - https://github.com/lmodel/oscal/knowledge/datasets/oscal-schema
+  - https://w3id.org/lmodel/oscal/knowledge/datasets/oscal-schema
 derivedFrom:
-  - https://github.com/lmodel/oscal/knowledge/references/nist-oscal
+  - https://w3id.org/lmodel/oscal/knowledge/references/nist-oscal
 references:
-  - https://github.com/lmodel/oscal/knowledge/references/linkml
+  - https://w3id.org/lmodel/oscal/knowledge/references/linkml
 distribution:
   - media_type: application/yaml
     access_url: https://github.com/lmodel/oscal/blob/main/src/oscal/schema/oscal_assessment_plan.yaml

@@ -1,5 +1,7 @@
 # generated part of documentation
 /docs/elements/*.md
+# LOKF knowledge bundle copied into the docs site at build time (source: .lokf/knowledge/)
+/docs/knowledge/
 # linkml-run-examples output (not useful to have in git in its current form)
 /examples/output/
 
