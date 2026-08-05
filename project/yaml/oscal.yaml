@@ -13886,8 +13886,6 @@ classes:
     in_subset:
     - oscal_catalog
     from_schema: https://w3id.org/lmodel/oscal_catalog
-    exact_mappings:
-    - oscal_catalog:HasPropsAndLinks
     mixin: true
     slots:
     - props
@@ -13901,8 +13899,6 @@ classes:
     in_subset:
     - oscal_catalog
     from_schema: https://w3id.org/lmodel/oscal_catalog
-    exact_mappings:
-    - oscal_catalog:OscalCommon
     mixin: true
     mixins:
     - HasPropsAndLinks
@@ -13919,8 +13915,6 @@ classes:
     in_subset:
     - oscal_catalog
     from_schema: https://w3id.org/lmodel/oscal_catalog
-    exact_mappings:
-    - oscal_catalog:HasResponsibleRoles
     mixin: true
     slots:
     - responsible-roles
@@ -13933,8 +13927,6 @@ classes:
     in_subset:
     - oscal_catalog
     from_schema: https://w3id.org/lmodel/oscal_catalog
-    exact_mappings:
-    - oscal_catalog:HasResponsibleParties
     mixin: true
     slots:
     - responsible-parties
@@ -13947,8 +13939,6 @@ classes:
     in_subset:
     - oscal_catalog
     from_schema: https://w3id.org/lmodel/oscal_catalog
-    exact_mappings:
-    - oscal_catalog:OscalDocument
     class_uri: oscal_catalog:OscalDocument
     tree_root: true
   CatalogDocument:
@@ -13958,8 +13948,6 @@ classes:
     in_subset:
     - oscal_catalog
     from_schema: https://w3id.org/lmodel/oscal_catalog
-    exact_mappings:
-    - oscal_catalog:CatalogDocument
     is_a: OscalDocument
     slots:
     - CatalogDocument_catalog
@@ -13975,8 +13963,6 @@ classes:
     in_subset:
     - oscal_catalog
     from_schema: https://w3id.org/lmodel/oscal_catalog
-    exact_mappings:
-    - oscal_catalog:Catalog
     slots:
     - Catalog_uuid
     - Catalog_metadata
@@ -14001,8 +13987,6 @@ classes:
     in_subset:
     - oscal_catalog
     from_schema: https://w3id.org/lmodel/oscal_catalog
-    exact_mappings:
-    - oscal_catalog:Group
     mixins:
     - HasPropsAndLinks
     slots:
@@ -14039,8 +14023,6 @@ classes:
     in_subset:
     - oscal_catalog
     from_schema: https://w3id.org/lmodel/oscal_catalog
-    exact_mappings:
-    - oscal_catalog:Control
     mixins:
     - HasPropsAndLinks
     slots:
@@ -14076,8 +14058,6 @@ classes:
     in_subset:
     - oscal_metadata
     from_schema: https://w3id.org/lmodel/oscal_catalog
-    exact_mappings:
-    - oscal_catalog:Metadata
     mixins:
     - OscalCommon
     - HasResponsibleParties
@@ -14128,8 +14108,6 @@ classes:
     in_subset:
     - oscal_metadata
     from_schema: https://w3id.org/lmodel/oscal_catalog
-    exact_mappings:
-    - oscal_catalog:Revision
     mixins:
     - OscalCommon
     slots:
@@ -14159,8 +14137,6 @@ classes:
     in_subset:
     - oscal_metadata
     from_schema: https://w3id.org/lmodel/oscal_catalog
-    exact_mappings:
-    - oscal_catalog:DocumentId
     slots:
     - DocumentId_scheme
     - DocumentId_identifier
@@ -14182,8 +14158,6 @@ classes:
     in_subset:
     - oscal_metadata
     from_schema: https://w3id.org/lmodel/oscal_catalog
-    exact_mappings:
-    - oscal_catalog:Role
     mixins:
     - OscalCommon
     slots:
@@ -14211,8 +14185,6 @@ classes:
     in_subset:
     - oscal_metadata
     from_schema: https://w3id.org/lmodel/oscal_catalog
-    exact_mappings:
-    - oscal_catalog:Location
     mixins:
     - OscalCommon
     slots:
@@ -14241,8 +14213,6 @@ classes:
     in_subset:
     - oscal_metadata
     from_schema: https://w3id.org/lmodel/oscal_catalog
-    exact_mappings:
-    - oscal_catalog:Party
     mixins:
     - OscalCommon
     slots:
@@ -14312,8 +14282,6 @@ classes:
     in_subset:
     - oscal_metadata
     from_schema: https://w3id.org/lmodel/oscal_catalog
-    exact_mappings:
-    - oscal_catalog:PartyExternalId
     slots:
     - PartyExternalId_scheme
     - PartyExternalId_id
@@ -14338,8 +14306,6 @@ classes:
     in_subset:
     - oscal_metadata
     from_schema: https://w3id.org/lmodel/oscal_catalog
-    exact_mappings:
-    - oscal_catalog:ResponsibleParty
     mixins:
     - OscalCommon
     slots:
@@ -14369,8 +14335,6 @@ classes:
     in_subset:
     - oscal_metadata
     from_schema: https://w3id.org/lmodel/oscal_catalog
-    exact_mappings:
-    - oscal_catalog:ResponsibleRole
     mixins:
     - OscalCommon
     slots:
@@ -14392,8 +14356,6 @@ classes:
     in_subset:
     - oscal_metadata
     from_schema: https://w3id.org/lmodel/oscal_catalog
-    exact_mappings:
-    - oscal_catalog:Action
     mixins:
     - OscalCommon
     - HasResponsibleParties
@@ -14431,8 +14393,6 @@ classes:
     in_subset:
     - oscal_metadata
     from_schema: https://w3id.org/lmodel/oscal_catalog
-    exact_mappings:
-    - oscal_catalog:TelephoneNumber
     slots:
     - TelephoneNumber_type
     - TelephoneNumber_number
@@ -14455,8 +14415,6 @@ classes:
     in_subset:
     - oscal_metadata
     from_schema: https://w3id.org/lmodel/oscal_catalog
-    exact_mappings:
-    - oscal_catalog:Address
     slots:
     - Address_type
     - addr-lines
@@ -14481,8 +14439,6 @@ classes:
     in_subset:
     - oscal_metadata
     from_schema: https://w3id.org/lmodel/oscal_catalog
-    exact_mappings:
-    - oscal_catalog:Hash
     slots:
     - Hash_value
     - Hash_algorithm
@@ -14502,8 +14458,6 @@ classes:
     in_subset:
     - oscal_metadata
     from_schema: https://w3id.org/lmodel/oscal_catalog
-    exact_mappings:
-    - oscal_catalog:Property
     slots:
     - Property_name
     - Property_uuid
@@ -14541,8 +14495,6 @@ classes:
     in_subset:
     - oscal_metadata
     from_schema: https://w3id.org/lmodel/oscal_catalog
-    exact_mappings:
-    - oscal_catalog:MetadataProperty
     is_a: Property
     slots:
     - Property_uuid
@@ -14564,8 +14516,6 @@ classes:
     in_subset:
     - oscal_metadata
     from_schema: https://w3id.org/lmodel/oscal_catalog
-    exact_mappings:
-    - oscal_catalog:RevisionProperty
     is_a: Property
     slots:
     - Property_uuid
@@ -14587,8 +14537,6 @@ classes:
     in_subset:
     - oscal_metadata
     from_schema: https://w3id.org/lmodel/oscal_catalog
-    exact_mappings:
-    - oscal_catalog:LocationProperty
     is_a: Property
     slots:
     - Property_uuid
@@ -14620,8 +14568,6 @@ classes:
     in_subset:
     - oscal_metadata
     from_schema: https://w3id.org/lmodel/oscal_catalog
-    exact_mappings:
-    - oscal_catalog:PartyProperty
     is_a: Property
     slots:
     - Property_uuid
@@ -14643,8 +14589,6 @@ classes:
     in_subset:
     - oscal_back_matter
     from_schema: https://w3id.org/lmodel/oscal_catalog
-    exact_mappings:
-    - oscal_catalog:ResourceProperty
     is_a: Property
     slots:
     - Property_uuid
@@ -14671,8 +14615,6 @@ classes:
     in_subset:
     - oscal_control_common
     from_schema: https://w3id.org/lmodel/oscal_catalog
-    exact_mappings:
-    - oscal_catalog:PartProperty
     is_a: Property
     slots:
     - Property_uuid
@@ -14694,8 +14636,6 @@ classes:
     in_subset:
     - oscal_control_common
     from_schema: https://w3id.org/lmodel/oscal_catalog
-    exact_mappings:
-    - oscal_catalog:ParameterProperty
     is_a: Property
     slots:
     - Property_uuid
@@ -14719,8 +14659,6 @@ classes:
     in_subset:
     - oscal_metadata
     from_schema: https://w3id.org/lmodel/oscal_catalog
-    exact_mappings:
-    - oscal_catalog:MetadataPartyExternalId
     is_a: PartyExternalId
     slots:
     - PartyExternalId_scheme
@@ -14734,8 +14672,6 @@ classes:
     in_subset:
     - oscal_metadata
     from_schema: https://w3id.org/lmodel/oscal_catalog
-    exact_mappings:
-    - oscal_catalog:Link
     slots:
     - Link_href
     - Link_rel
@@ -14761,8 +14697,6 @@ classes:
     in_subset:
     - oscal_back_matter
     from_schema: https://w3id.org/lmodel/oscal_catalog
-    exact_mappings:
-    - oscal_catalog:BackMatter
     slots:
     - resources
     class_uri: oscal_catalog:BackMatter
@@ -14775,8 +14709,6 @@ classes:
     in_subset:
     - oscal_back_matter
     from_schema: https://w3id.org/lmodel/oscal_catalog
-    exact_mappings:
-    - oscal_catalog:Resource
     slots:
     - Resource_uuid
     - Resource_title
@@ -14815,8 +14747,6 @@ classes:
     in_subset:
     - oscal_back_matter
     from_schema: https://w3id.org/lmodel/oscal_catalog
-    exact_mappings:
-    - oscal_catalog:Citation
     mixins:
     - HasPropsAndLinks
     slots:
@@ -14840,8 +14770,6 @@ classes:
     in_subset:
     - oscal_back_matter
     from_schema: https://w3id.org/lmodel/oscal_catalog
-    exact_mappings:
-    - oscal_catalog:ResourceLink
     slots:
     - ResourceLink_href
     - media-type
@@ -14859,8 +14787,6 @@ classes:
     in_subset:
     - oscal_back_matter
     from_schema: https://w3id.org/lmodel/oscal_catalog
-    exact_mappings:
-    - oscal_catalog:Base64Resource
     slots:
     - media-type
     - Base64Resource_value
@@ -14879,8 +14805,6 @@ classes:
     in_subset:
     - oscal_control_common
     from_schema: https://w3id.org/lmodel/oscal_catalog
-    exact_mappings:
-    - oscal_catalog:Part
     mixins:
     - HasPropsAndLinks
     slots:
@@ -14929,8 +14853,6 @@ classes:
     in_subset:
     - oscal_control_common
     from_schema: https://w3id.org/lmodel/oscal_catalog
-    exact_mappings:
-    - oscal_catalog:Parameter
     mixins:
     - OscalCommon
     slots:
@@ -14991,8 +14913,6 @@ classes:
     in_subset:
     - oscal_control_common
     from_schema: https://w3id.org/lmodel/oscal_catalog
-    exact_mappings:
-    - oscal_catalog:ParameterConstraint
     slots:
     - ParameterConstraint_description
     - tests
@@ -15008,8 +14928,6 @@ classes:
     in_subset:
     - oscal_control_common
     from_schema: https://w3id.org/lmodel/oscal_catalog
-    exact_mappings:
-    - oscal_catalog:ConstraintTest
     slots:
     - remarks
     - ConstraintTest_expression
@@ -15026,8 +14944,6 @@ classes:
     in_subset:
     - oscal_control_common
     from_schema: https://w3id.org/lmodel/oscal_catalog
-    exact_mappings:
-    - oscal_catalog:ParameterGuideline
     slots:
     - ParameterGuideline_prose
     slot_usage:
@@ -15043,8 +14959,6 @@ classes:
     in_subset:
     - oscal_control_common
     from_schema: https://w3id.org/lmodel/oscal_catalog
-    exact_mappings:
-    - oscal_catalog:ParameterSelection
     slots:
     - how-many
     - choice
@@ -15056,8 +14970,6 @@ classes:
     in_subset:
     - oscal_control_common
     from_schema: https://w3id.org/lmodel/oscal_catalog
-    exact_mappings:
-    - oscal_catalog:IncludeAll
     class_uri: oscal_catalog:IncludeAll
   ControlMatching:
     name: ControlMatching
@@ -15067,8 +14979,6 @@ classes:
     in_subset:
     - oscal_control_common
     from_schema: https://w3id.org/lmodel/oscal_catalog
-    exact_mappings:
-    - oscal_catalog:ControlMatching
     slots:
     - remarks
     - pattern
@@ -15080,8 +14990,6 @@ classes:
     in_subset:
     - oscal_control_common
     from_schema: https://w3id.org/lmodel/oscal_catalog
-    exact_mappings:
-    - oscal_catalog:SelectControlById
     slots:
     - with-child-controls
     - with-ids
@@ -15094,8 +15002,6 @@ classes:
     in_subset:
     - profile
     from_schema: https://w3id.org/lmodel/oscal_profile
-    exact_mappings:
-    - oscal_profile:ProfileDocument
     is_a: OscalDocument
     slots:
     - ProfileDocument_profile
@@ -15113,8 +15019,6 @@ classes:
     in_subset:
     - profile
     from_schema: https://w3id.org/lmodel/oscal_profile
-    exact_mappings:
-    - oscal_profile:Profile
     slots:
     - Profile_uuid
     - Profile_metadata
@@ -15141,8 +15045,6 @@ classes:
     in_subset:
     - profile
     from_schema: https://w3id.org/lmodel/oscal_profile
-    exact_mappings:
-    - oscal_profile:ProfileImport
     slots:
     - ProfileImport_href
     - include-all
@@ -15167,8 +15069,6 @@ classes:
     in_subset:
     - profile
     from_schema: https://w3id.org/lmodel/oscal_profile
-    exact_mappings:
-    - oscal_profile:ProfileMerge
     slots:
     - combine
     - flat
@@ -15183,8 +15083,6 @@ classes:
     in_subset:
     - profile
     from_schema: https://w3id.org/lmodel/oscal_profile
-    exact_mappings:
-    - oscal_profile:CombinationRule
     slots:
     - CombinationRule_method
     slot_usage:
@@ -15200,8 +15098,6 @@ classes:
     in_subset:
     - profile
     from_schema: https://w3id.org/lmodel/oscal_profile
-    exact_mappings:
-    - oscal_profile:MergeFlat
     class_uri: oscal_profile:MergeFlat
   MergeCustom:
     name: MergeCustom
@@ -15211,8 +15107,6 @@ classes:
     in_subset:
     - profile
     from_schema: https://w3id.org/lmodel/oscal_profile
-    exact_mappings:
-    - oscal_profile:MergeCustom
     slots:
     - MergeCustom_groups
     - insert-controls
@@ -15229,8 +15123,6 @@ classes:
     in_subset:
     - profile
     from_schema: https://w3id.org/lmodel/oscal_profile
-    exact_mappings:
-    - oscal_profile:ProfileGroup
     mixins:
     - OscalCommon
     slots:
@@ -15259,8 +15151,6 @@ classes:
     in_subset:
     - profile
     from_schema: https://w3id.org/lmodel/oscal_profile
-    exact_mappings:
-    - oscal_profile:ProfileModify
     slots:
     - ProfileModify_set-parameters
     - alters
@@ -15278,8 +15168,6 @@ classes:
     in_subset:
     - profile
     from_schema: https://w3id.org/lmodel/oscal_profile
-    exact_mappings:
-    - oscal_profile:ParameterSetting
     mixins:
     - HasPropsAndLinks
     slots:
@@ -15307,8 +15195,6 @@ classes:
     in_subset:
     - profile
     from_schema: https://w3id.org/lmodel/oscal_profile
-    exact_mappings:
-    - oscal_profile:Alteration
     slots:
     - Alteration_control-id
     - removes
@@ -15326,8 +15212,6 @@ classes:
     in_subset:
     - profile
     from_schema: https://w3id.org/lmodel/oscal_profile
-    exact_mappings:
-    - oscal_profile:Removal
     slots:
     - by-name
     - by-class
@@ -15343,8 +15227,6 @@ classes:
     in_subset:
     - profile
     from_schema: https://w3id.org/lmodel/oscal_profile
-    exact_mappings:
-    - oscal_profile:Addition
     slots:
     - position
     - by-id
@@ -15365,8 +15247,6 @@ classes:
     in_subset:
     - profile
     from_schema: https://w3id.org/lmodel/oscal_profile
-    exact_mappings:
-    - oscal_profile:ProfileAlterationProperty
     is_a: Property
     slots:
     - Property_uuid
@@ -15389,8 +15269,6 @@ classes:
     in_subset:
     - profile
     from_schema: https://w3id.org/lmodel/oscal_profile
-    exact_mappings:
-    - oscal_profile:InsertControls
     slots:
     - order
     - include-all
@@ -15411,8 +15289,6 @@ classes:
     in_subset:
     - ssp
     from_schema: https://w3id.org/lmodel/oscal_ssp
-    exact_mappings:
-    - oscal_ssp:SspDocument
     is_a: OscalDocument
     slots:
     - SspDocument_system-security-plan
@@ -15428,8 +15304,6 @@ classes:
     in_subset:
     - ssp
     from_schema: https://w3id.org/lmodel/oscal_ssp
-    exact_mappings:
-    - oscal_ssp:SystemSecurityPlan
     slots:
     - SystemSecurityPlan_uuid
     - SystemSecurityPlan_metadata
@@ -15466,8 +15340,6 @@ classes:
     in_subset:
     - ssp
     from_schema: https://w3id.org/lmodel/oscal_ssp
-    exact_mappings:
-    - oscal_ssp:ImportProfile
     slots:
     - ImportProfile_href
     - remarks
@@ -15484,8 +15356,6 @@ classes:
     in_subset:
     - ssp
     from_schema: https://w3id.org/lmodel/oscal_ssp
-    exact_mappings:
-    - oscal_ssp:SystemCharacteristics
     slots:
     - SystemCharacteristics_system-ids
     - SystemCharacteristics_system-name
@@ -15536,8 +15406,6 @@ classes:
     in_subset:
     - ssp
     from_schema: https://w3id.org/lmodel/oscal_ssp
-    exact_mappings:
-    - oscal_ssp:SystemInformation
     slots:
     - SystemInformation_props
     - SystemInformation_links
@@ -15561,8 +15429,6 @@ classes:
     in_subset:
     - ssp
     from_schema: https://w3id.org/lmodel/oscal_ssp
-    exact_mappings:
-    - oscal_ssp:InformationType
     slots:
     - uuid
     - InformationType_title
@@ -15589,8 +15455,6 @@ classes:
     in_subset:
     - ssp
     from_schema: https://w3id.org/lmodel/oscal_ssp
-    exact_mappings:
-    - oscal_ssp:InformationTypeCategorization
     slots:
     - informationTypeCategorization__system
     - informationTypeCategorization__information_type_ids
@@ -15619,8 +15483,6 @@ classes:
     in_subset:
     - ssp
     from_schema: https://w3id.org/lmodel/oscal_ssp
-    exact_mappings:
-    - oscal_ssp:ImpactLevel
     slots:
     - props
     - links
@@ -15648,8 +15510,6 @@ classes:
     in_subset:
     - ssp
     from_schema: https://w3id.org/lmodel/oscal_ssp
-    exact_mappings:
-    - oscal_ssp:SecurityImpactLevel
     slots:
     - SecurityImpactLevel_security-objective-confidentiality
     - SecurityImpactLevel_security-objective-integrity
@@ -15672,8 +15532,6 @@ classes:
     in_subset:
     - ssp
     from_schema: https://w3id.org/lmodel/oscal_ssp
-    exact_mappings:
-    - oscal_ssp:SystemStatus
     slots:
     - remarks
     - systemStatus__state
@@ -15692,8 +15550,6 @@ classes:
     in_subset:
     - ssp
     from_schema: https://w3id.org/lmodel/oscal_ssp
-    exact_mappings:
-    - oscal_ssp:AuthorizationBoundary
     slots:
     - AuthorizationBoundary_description
     - props
@@ -15713,8 +15569,6 @@ classes:
     in_subset:
     - ssp
     from_schema: https://w3id.org/lmodel/oscal_ssp
-    exact_mappings:
-    - oscal_ssp:Diagram
     slots:
     - Diagram_uuid
     - description
@@ -15738,8 +15592,6 @@ classes:
     in_subset:
     - ssp
     from_schema: https://w3id.org/lmodel/oscal_ssp
-    exact_mappings:
-    - oscal_ssp:NetworkArchitecture
     slots:
     - NetworkArchitecture_description
     - props
@@ -15759,8 +15611,6 @@ classes:
     in_subset:
     - ssp
     from_schema: https://w3id.org/lmodel/oscal_ssp
-    exact_mappings:
-    - oscal_ssp:DataFlow
     slots:
     - DataFlow_description
     - props
@@ -15779,8 +15629,6 @@ classes:
     in_subset:
     - ssp
     from_schema: https://w3id.org/lmodel/oscal_ssp
-    exact_mappings:
-    - oscal_ssp:SystemImplementation
     slots:
     - props
     - links
@@ -15807,8 +15655,6 @@ classes:
     in_subset:
     - ssp
     from_schema: https://w3id.org/lmodel/oscal_ssp
-    exact_mappings:
-    - oscal_ssp:LeveragedAuthorization
     slots:
     - LeveragedAuthorization_uuid
     - LeveragedAuthorization_title
@@ -15841,8 +15687,6 @@ classes:
     in_subset:
     - ssp
     from_schema: https://w3id.org/lmodel/oscal_ssp
-    exact_mappings:
-    - oscal_ssp:SspControlImplementation
     slots:
     - SspControlImplementation_description
     - SspControlImplementation_set-parameters
@@ -15867,8 +15711,6 @@ classes:
     in_subset:
     - ssp
     from_schema: https://w3id.org/lmodel/oscal_ssp
-    exact_mappings:
-    - oscal_ssp:SspImplementedRequirement
     slots:
     - SspImplementedRequirement_uuid
     - SspImplementedRequirement_control-id
@@ -15907,8 +15749,6 @@ classes:
     in_subset:
     - ssp
     from_schema: https://w3id.org/lmodel/oscal_ssp
-    exact_mappings:
-    - oscal_ssp:SspStatement
     slots:
     - SspStatement_statement-id
     - SspStatement_uuid
@@ -15938,8 +15778,6 @@ classes:
     in_subset:
     - ssp
     from_schema: https://w3id.org/lmodel/oscal_ssp
-    exact_mappings:
-    - oscal_ssp:ByComponent
     slots:
     - ByComponent_component-uuid
     - ByComponent_uuid
@@ -15985,8 +15823,6 @@ classes:
     in_subset:
     - ssp
     from_schema: https://w3id.org/lmodel/oscal_ssp
-    exact_mappings:
-    - oscal_ssp:Export
     slots:
     - description
     - props
@@ -16001,8 +15837,6 @@ classes:
     in_subset:
     - ssp
     from_schema: https://w3id.org/lmodel/oscal_ssp
-    exact_mappings:
-    - oscal_ssp:ProvidedControlImplementation
     slots:
     - ProvidedControlImplementation_uuid
     - ProvidedControlImplementation_description
@@ -16029,8 +15863,6 @@ classes:
     in_subset:
     - ssp
     from_schema: https://w3id.org/lmodel/oscal_ssp
-    exact_mappings:
-    - oscal_ssp:ControlResponsibility
     slots:
     - ControlResponsibility_uuid
     - provided-uuid
@@ -16057,8 +15889,6 @@ classes:
     in_subset:
     - ssp
     from_schema: https://w3id.org/lmodel/oscal_ssp
-    exact_mappings:
-    - oscal_ssp:InheritedControlImplementation
     slots:
     - InheritedControlImplementation_uuid
     - provided-uuid
@@ -16086,8 +15916,6 @@ classes:
     in_subset:
     - ssp
     from_schema: https://w3id.org/lmodel/oscal_ssp
-    exact_mappings:
-    - oscal_ssp:SatisfiedControlImplementation
     slots:
     - SatisfiedControlImplementation_uuid
     - responsibility-uuid
@@ -16114,8 +15942,6 @@ classes:
     in_subset:
     - ssp
     from_schema: https://w3id.org/lmodel/oscal_ssp
-    exact_mappings:
-    - oscal_ssp:SspSystemCharacteristicsProp
     is_a: Property
     slots:
     - Property_uuid
@@ -16144,8 +15970,6 @@ classes:
     in_subset:
     - ssp
     from_schema: https://w3id.org/lmodel/oscal_ssp
-    exact_mappings:
-    - oscal_ssp:SspSystemInformationProp
     is_a: Property
     slots:
     - Property_uuid
@@ -16171,8 +15995,6 @@ classes:
     in_subset:
     - ssp
     from_schema: https://w3id.org/lmodel/oscal_ssp
-    exact_mappings:
-    - oscal_ssp:SspControlOriginationProp
     is_a: Property
     slots:
     - Property_uuid
@@ -16197,8 +16019,6 @@ classes:
     in_subset:
     - ssp
     from_schema: https://w3id.org/lmodel/oscal_ssp
-    exact_mappings:
-    - oscal_ssp:SspAllowsAuthenticatedScanProp
     is_a: Property
     slots:
     - Property_uuid
@@ -16223,8 +16043,6 @@ classes:
     in_subset:
     - ssp
     from_schema: https://w3id.org/lmodel/oscal_ssp
-    exact_mappings:
-    - oscal_ssp:SspSystemInformationLink
     is_a: Link
     slots:
     - Link_href
@@ -16246,8 +16064,6 @@ classes:
     in_subset:
     - ssp
     from_schema: https://w3id.org/lmodel/oscal_ssp
-    exact_mappings:
-    - oscal_ssp:SspDiagramLink
     is_a: Link
     slots:
     - Link_href
@@ -16269,8 +16085,6 @@ classes:
     in_subset:
     - ssp
     from_schema: https://w3id.org/lmodel/oscal_ssp
-    exact_mappings:
-    - oscal_ssp:SspLeveragedAuthorizationLink
     is_a: Link
     slots:
     - Link_href
@@ -16292,8 +16106,6 @@ classes:
     in_subset:
     - ssp
     from_schema: https://w3id.org/lmodel/oscal_ssp
-    exact_mappings:
-    - oscal_ssp:SspByComponentLink
     is_a: Link
     slots:
     - Link_href
@@ -16315,8 +16127,6 @@ classes:
     in_subset:
     - ssp
     from_schema: https://w3id.org/lmodel/oscal_ssp
-    exact_mappings:
-    - oscal_ssp:SspSystemCharacteristicsResponsibleParty
     is_a: ResponsibleParty
     slots:
     - ResponsibleParty_party-uuids
@@ -16339,8 +16149,6 @@ classes:
     in_subset:
     - ssp
     from_schema: https://w3id.org/lmodel/oscal_ssp
-    exact_mappings:
-    - oscal_ssp:SspImplementedRequirementResponsibleRole
     is_a: ResponsibleRole
     slots:
     - party-uuids
@@ -16362,8 +16170,6 @@ classes:
     in_subset:
     - ssp
     from_schema: https://w3id.org/lmodel/oscal_ssp
-    exact_mappings:
-    - oscal_ssp:SspByComponentResponsibleRole
     is_a: ResponsibleRole
     slots:
     - party-uuids
@@ -16386,8 +16192,6 @@ classes:
     in_subset:
     - ssp
     from_schema: https://w3id.org/lmodel/oscal_ssp
-    exact_mappings:
-    - oscal_ssp:SspSystemComponent
     is_a: SystemComponent
     slots:
     - SystemComponent_uuid
@@ -16414,8 +16218,6 @@ classes:
     in_subset:
     - ssp
     from_schema: https://w3id.org/lmodel/oscal_ssp
-    exact_mappings:
-    - oscal_ssp:SspInventoryItem
     is_a: InventoryItem
     slots:
     - InventoryItem_uuid
@@ -16437,8 +16239,6 @@ classes:
     in_subset:
     - assessment_plan
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
-    exact_mappings:
-    - oscal_assessment_plan:AssessmentPlanDocument
     is_a: OscalDocument
     slots:
     - AssessmentPlanDocument_assessment-plan
@@ -16454,8 +16254,6 @@ classes:
     in_subset:
     - assessment_plan
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
-    exact_mappings:
-    - oscal_assessment_plan:AssessmentPlan
     slots:
     - AssessmentPlan_uuid
     - AssessmentPlan_metadata
@@ -16490,8 +16288,6 @@ classes:
     in_subset:
     - assessment_common
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
-    exact_mappings:
-    - oscal_assessment_plan:ImportSSP
     slots:
     - ImportSSP_href
     - remarks
@@ -16508,8 +16304,6 @@ classes:
     in_subset:
     - assessment_plan
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
-    exact_mappings:
-    - oscal_assessment_plan:LocalDefinitions
     slots:
     - components
     - inventory-items
@@ -16526,8 +16320,6 @@ classes:
     in_subset:
     - assessment_plan
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
-    exact_mappings:
-    - oscal_assessment_plan:TermsAndConditions
     slots:
     - TermsAndConditions_parts
     slot_usage:
@@ -16542,8 +16334,6 @@ classes:
     in_subset:
     - assessment_common
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
-    exact_mappings:
-    - oscal_assessment_plan:ReviewedControls
     mixins:
     - OscalCommon
     slots:
@@ -16565,8 +16355,6 @@ classes:
     in_subset:
     - assessment_common
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
-    exact_mappings:
-    - oscal_assessment_plan:ControlSelection
     mixins:
     - OscalCommon
     slots:
@@ -16592,8 +16380,6 @@ classes:
     in_subset:
     - assessment_common
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
-    exact_mappings:
-    - oscal_assessment_plan:ControlObjectiveSelection
     mixins:
     - OscalCommon
     slots:
@@ -16613,8 +16399,6 @@ classes:
     in_subset:
     - assessment_common
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
-    exact_mappings:
-    - oscal_assessment_plan:AssessmentSelectControlById
     slots:
     - AssessmentSelectControlById_control-id
     - statement-ids
@@ -16630,8 +16414,6 @@ classes:
     in_subset:
     - assessment_common
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
-    exact_mappings:
-    - oscal_assessment_plan:SelectObjectiveById
     slots:
     - SelectObjectiveById_objective-id
     - remarks
@@ -16648,8 +16430,6 @@ classes:
     in_subset:
     - assessment_common
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
-    exact_mappings:
-    - oscal_assessment_plan:AssessmentSubject
     mixins:
     - OscalCommon
     slots:
@@ -16676,8 +16456,6 @@ classes:
     in_subset:
     - assessment_common
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
-    exact_mappings:
-    - oscal_assessment_plan:SelectSubjectById
     mixins:
     - OscalCommon
     slots:
@@ -16706,8 +16484,6 @@ classes:
     in_subset:
     - assessment_common
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
-    exact_mappings:
-    - oscal_assessment_plan:SubjectReference
     mixins:
     - OscalCommon
     slots:
@@ -16736,8 +16512,6 @@ classes:
     in_subset:
     - assessment_common
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
-    exact_mappings:
-    - oscal_assessment_plan:AssessmentSubjectPlaceholder
     mixins:
     - OscalCommon
     slots:
@@ -16764,8 +16538,6 @@ classes:
     in_subset:
     - assessment_common
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
-    exact_mappings:
-    - oscal_assessment_plan:AssessmentSubjectSource
     slots:
     - AssessmentSubjectSource_task-uuid
     - remarks
@@ -16781,8 +16553,6 @@ classes:
     in_subset:
     - assessment_common
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
-    exact_mappings:
-    - oscal_assessment_plan:AssessmentAssets
     slots:
     - components
     - AssessmentAssets_assessment-platforms
@@ -16798,8 +16568,6 @@ classes:
     in_subset:
     - assessment_common
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
-    exact_mappings:
-    - oscal_assessment_plan:AssessmentPlatform
     mixins:
     - OscalCommon
     slots:
@@ -16821,8 +16589,6 @@ classes:
     in_subset:
     - assessment_common
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
-    exact_mappings:
-    - oscal_assessment_plan:UsesComponent
     mixins:
     - OscalCommon
     - HasResponsibleParties
@@ -16845,8 +16611,6 @@ classes:
     in_subset:
     - assessment_common
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
-    exact_mappings:
-    - oscal_assessment_plan:LocalObjective
     mixins:
     - OscalCommon
     slots:
@@ -16872,8 +16636,6 @@ classes:
     in_subset:
     - assessment_common
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
-    exact_mappings:
-    - oscal_assessment_plan:AssessmentMethod
     mixins:
     - OscalCommon
     slots:
@@ -16899,8 +16661,6 @@ classes:
     in_subset:
     - assessment_common
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
-    exact_mappings:
-    - oscal_assessment_plan:Activity
     mixins:
     - OscalCommon
     - HasResponsibleRoles
@@ -16930,8 +16690,6 @@ classes:
     in_subset:
     - assessment_common
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
-    exact_mappings:
-    - oscal_assessment_plan:Step
     mixins:
     - OscalCommon
     - HasResponsibleRoles
@@ -16960,8 +16718,6 @@ classes:
     in_subset:
     - assessment_common
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
-    exact_mappings:
-    - oscal_assessment_plan:Task
     mixins:
     - OscalCommon
     - HasResponsibleRoles
@@ -17003,8 +16759,6 @@ classes:
     in_subset:
     - assessment_common
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
-    exact_mappings:
-    - oscal_assessment_plan:EventTiming
     slots:
     - on-date
     - within-date-range
@@ -17017,8 +16771,6 @@ classes:
     in_subset:
     - assessment_common
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
-    exact_mappings:
-    - oscal_assessment_plan:OnDateCondition
     slots:
     - OnDateCondition_date
     - remarks
@@ -17034,8 +16786,6 @@ classes:
     in_subset:
     - assessment_common
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
-    exact_mappings:
-    - oscal_assessment_plan:WithinDateRange
     slots:
     - WithinDateRange_start
     - WithinDateRange_end
@@ -17055,8 +16805,6 @@ classes:
     in_subset:
     - assessment_common
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
-    exact_mappings:
-    - oscal_assessment_plan:AtFrequency
     slots:
     - AtFrequency_period
     - AtFrequency_unit
@@ -17076,8 +16824,6 @@ classes:
     in_subset:
     - assessment_common
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
-    exact_mappings:
-    - oscal_assessment_plan:TaskDependency
     slots:
     - TaskDependency_task-uuid
     - remarks
@@ -17093,8 +16839,6 @@ classes:
     in_subset:
     - assessment_common
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
-    exact_mappings:
-    - oscal_assessment_plan:AssociatedActivity
     mixins:
     - OscalCommon
     - HasResponsibleRoles
@@ -17122,8 +16866,6 @@ classes:
     in_subset:
     - assessment_common
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
-    exact_mappings:
-    - oscal_assessment_plan:AssessmentPart
     mixins:
     - HasPropsAndLinks
     slots:
@@ -17154,8 +16896,6 @@ classes:
     in_subset:
     - assessment_plan
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
-    exact_mappings:
-    - oscal_assessment_plan:TermsAndConditionsPart
     is_a: AssessmentPart
     slots:
     - uuid
@@ -17184,8 +16924,6 @@ classes:
     in_subset:
     - oscal_control_common
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
-    exact_mappings:
-    - oscal_assessment_plan:ControlPart
     mixins:
     - HasPropsAndLinks
     slots:
@@ -17213,8 +16951,6 @@ classes:
     in_subset:
     - implementation_common
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
-    exact_mappings:
-    - oscal_assessment_plan:SetParameter
     slots:
     - SetParameter_param-id
     - SetParameter_values
@@ -17234,8 +16970,6 @@ classes:
     in_subset:
     - implementation_common
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
-    exact_mappings:
-    - oscal_assessment_plan:SystemComponent
     mixins:
     - OscalCommon
     - HasResponsibleRoles
@@ -17289,8 +17023,6 @@ classes:
     in_subset:
     - implementation_common
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
-    exact_mappings:
-    - oscal_assessment_plan:ComponentStatus
     slots:
     - ComponentStatus_state
     - remarks
@@ -17308,8 +17040,6 @@ classes:
     in_subset:
     - implementation_common
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
-    exact_mappings:
-    - oscal_assessment_plan:Protocol
     slots:
     - uuid
     - Protocol_name
@@ -17327,8 +17057,6 @@ classes:
     in_subset:
     - implementation_common
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
-    exact_mappings:
-    - oscal_assessment_plan:PortRange
     slots:
     - PortRange_start
     - PortRange_end
@@ -17349,8 +17077,6 @@ classes:
     in_subset:
     - implementation_common
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
-    exact_mappings:
-    - oscal_assessment_plan:ImplementationStatus
     slots:
     - ImplementationStatus_state
     - remarks
@@ -17373,8 +17099,6 @@ classes:
     in_subset:
     - implementation_common
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
-    exact_mappings:
-    - oscal_assessment_plan:SystemUser
     mixins:
     - OscalCommon
     slots:
@@ -17406,8 +17130,6 @@ classes:
     in_subset:
     - implementation_common
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
-    exact_mappings:
-    - oscal_assessment_plan:AuthorizedPrivilege
     slots:
     - AuthorizedPrivilege_title
     - description
@@ -17427,8 +17149,6 @@ classes:
     in_subset:
     - implementation_common
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
-    exact_mappings:
-    - oscal_assessment_plan:InventoryItem
     mixins:
     - OscalCommon
     - HasResponsibleParties
@@ -17465,8 +17185,6 @@ classes:
     in_subset:
     - implementation_common
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
-    exact_mappings:
-    - oscal_assessment_plan:ImplementedComponent
     mixins:
     - OscalCommon
     - HasResponsibleParties
@@ -17497,8 +17215,6 @@ classes:
     in_subset:
     - implementation_common
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
-    exact_mappings:
-    - oscal_assessment_plan:SystemId
     slots:
     - SystemId_id
     - SystemId_identifier-type
@@ -17520,8 +17236,6 @@ classes:
     in_subset:
     - implementation_common
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
-    exact_mappings:
-    - oscal_assessment_plan:ImplementationCommonProperty
     is_a: Property
     slots:
     - Property_uuid
@@ -17554,8 +17268,6 @@ classes:
     in_subset:
     - implementation_common
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
-    exact_mappings:
-    - oscal_assessment_plan:ImplementationCommonLink
     is_a: Link
     slots:
     - Link_href
@@ -17577,8 +17289,6 @@ classes:
     in_subset:
     - implementation_common
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
-    exact_mappings:
-    - oscal_assessment_plan:ImplementationResponsibleRole
     is_a: ResponsibleRole
     slots:
     - party-uuids
@@ -17600,8 +17310,6 @@ classes:
     in_subset:
     - implementation_common
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
-    exact_mappings:
-    - oscal_assessment_plan:ImplementationResponsibleParty
     is_a: ResponsibleParty
     slots:
     - ResponsibleParty_party-uuids
@@ -17624,8 +17332,6 @@ classes:
     in_subset:
     - assessment_common
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
-    exact_mappings:
-    - oscal_assessment_plan:Origin
     slots:
     - Origin_actors
     - related-tasks
@@ -17641,8 +17347,6 @@ classes:
     in_subset:
     - assessment_common
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
-    exact_mappings:
-    - oscal_assessment_plan:OriginActor
     mixins:
     - HasPropsAndLinks
     slots:
@@ -17668,8 +17372,6 @@ classes:
     in_subset:
     - assessment_common
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
-    exact_mappings:
-    - oscal_assessment_plan:RelatedTask
     mixins:
     - OscalCommon
     - HasResponsibleParties
@@ -17696,8 +17398,6 @@ classes:
     in_subset:
     - assessment_common
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
-    exact_mappings:
-    - oscal_assessment_plan:IdentifiedSubject
     slots:
     - IdentifiedSubject_subject-placeholder-uuid
     - IdentifiedSubject_subjects
@@ -17717,8 +17417,6 @@ classes:
     in_subset:
     - assessment_common
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
-    exact_mappings:
-    - oscal_assessment_plan:Observation
     mixins:
     - OscalCommon
     slots:
@@ -17759,8 +17457,6 @@ classes:
     in_subset:
     - assessment_common
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
-    exact_mappings:
-    - oscal_assessment_plan:RelevantEvidence
     mixins:
     - OscalCommon
     slots:
@@ -17781,8 +17477,6 @@ classes:
     in_subset:
     - assessment_common
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
-    exact_mappings:
-    - oscal_assessment_plan:Finding
     mixins:
     - OscalCommon
     slots:
@@ -17819,8 +17513,6 @@ classes:
     in_subset:
     - assessment_common
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
-    exact_mappings:
-    - oscal_assessment_plan:FindingTarget
     mixins:
     - OscalCommon
     slots:
@@ -17855,8 +17547,6 @@ classes:
     in_subset:
     - assessment_common
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
-    exact_mappings:
-    - oscal_assessment_plan:ObjectiveStatus
     slots:
     - ObjectiveStatus_state
     - reason
@@ -17875,8 +17565,6 @@ classes:
     in_subset:
     - assessment_common
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
-    exact_mappings:
-    - oscal_assessment_plan:RelatedObservation
     slots:
     - RelatedObservation_observation-uuid
     - remarks
@@ -17892,8 +17580,6 @@ classes:
     in_subset:
     - assessment_common
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
-    exact_mappings:
-    - oscal_assessment_plan:AssociatedRisk
     slots:
     - AssociatedRisk_risk-uuid
     - remarks
@@ -17909,8 +17595,6 @@ classes:
     in_subset:
     - assessment_common
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
-    exact_mappings:
-    - oscal_assessment_plan:Risk
     mixins:
     - HasPropsAndLinks
     slots:
@@ -17956,8 +17640,6 @@ classes:
     in_subset:
     - assessment_common
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
-    exact_mappings:
-    - oscal_assessment_plan:ThreatId
     slots:
     - href
     - ThreatId_system
@@ -17980,8 +17662,6 @@ classes:
     in_subset:
     - assessment_common
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
-    exact_mappings:
-    - oscal_assessment_plan:Characterization
     mixins:
     - HasPropsAndLinks
     slots:
@@ -18005,8 +17685,6 @@ classes:
     in_subset:
     - assessment_common
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
-    exact_mappings:
-    - oscal_assessment_plan:Facet
     mixins:
     - OscalCommon
     slots:
@@ -18036,8 +17714,6 @@ classes:
     in_subset:
     - assessment_common
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
-    exact_mappings:
-    - oscal_assessment_plan:MitigatingFactor
     mixins:
     - HasPropsAndLinks
     slots:
@@ -18066,8 +17742,6 @@ classes:
     in_subset:
     - assessment_common
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
-    exact_mappings:
-    - oscal_assessment_plan:Response
     mixins:
     - OscalCommon
     slots:
@@ -18102,8 +17776,6 @@ classes:
     in_subset:
     - assessment_common
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
-    exact_mappings:
-    - oscal_assessment_plan:RequiredAsset
     mixins:
     - OscalCommon
     slots:
@@ -18132,8 +17804,6 @@ classes:
     in_subset:
     - assessment_common
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
-    exact_mappings:
-    - oscal_assessment_plan:RiskLog
     slots:
     - RiskLog_entries
     slot_usage:
@@ -18149,8 +17819,6 @@ classes:
     in_subset:
     - assessment_common
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
-    exact_mappings:
-    - oscal_assessment_plan:RiskLogEntry
     mixins:
     - OscalCommon
     slots:
@@ -18180,8 +17848,6 @@ classes:
     in_subset:
     - assessment_common
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
-    exact_mappings:
-    - oscal_assessment_plan:LoggedBy
     slots:
     - LoggedBy_party-uuid
     - role-id
@@ -18198,8 +17864,6 @@ classes:
     in_subset:
     - assessment_common
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
-    exact_mappings:
-    - oscal_assessment_plan:RiskResponseReference
     mixins:
     - OscalCommon
     slots:
@@ -18220,8 +17884,6 @@ classes:
     in_subset:
     - assessment_results
     from_schema: https://w3id.org/lmodel/oscal_assessment_results
-    exact_mappings:
-    - oscal_assessment_results:AssessmentResultsDocument
     is_a: OscalDocument
     slots:
     - AssessmentResultsDocument_assessment-results
@@ -18238,8 +17900,6 @@ classes:
     in_subset:
     - assessment_results
     from_schema: https://w3id.org/lmodel/oscal_assessment_results
-    exact_mappings:
-    - oscal_assessment_results:AssessmentResults
     slots:
     - AssessmentResults_uuid
     - AssessmentResults_metadata
@@ -18274,8 +17934,6 @@ classes:
     in_subset:
     - assessment_results
     from_schema: https://w3id.org/lmodel/oscal_assessment_results
-    exact_mappings:
-    - oscal_assessment_results:ImportAssessmentPlan
     slots:
     - ImportAssessmentPlan_href
     - remarks
@@ -18292,8 +17950,6 @@ classes:
     in_subset:
     - assessment_results
     from_schema: https://w3id.org/lmodel/oscal_assessment_results
-    exact_mappings:
-    - oscal_assessment_results:AssessmentResultsLocalDefinitions
     slots:
     - objectives-and-methods
     - activities
@@ -18308,8 +17964,6 @@ classes:
     in_subset:
     - assessment_results
     from_schema: https://w3id.org/lmodel/oscal_assessment_results
-    exact_mappings:
-    - oscal_assessment_results:Result
     mixins:
     - OscalCommon
     slots:
@@ -18360,8 +18014,6 @@ classes:
     in_subset:
     - assessment_results
     from_schema: https://w3id.org/lmodel/oscal_assessment_results
-    exact_mappings:
-    - oscal_assessment_results:ResultLocalDefinitions
     slots:
     - components
     - inventory-items
@@ -18377,8 +18029,6 @@ classes:
     in_subset:
     - assessment_results
     from_schema: https://w3id.org/lmodel/oscal_assessment_results
-    exact_mappings:
-    - oscal_assessment_results:Attestation
     mixins:
     - HasResponsibleParties
     slots:
@@ -18397,8 +18047,6 @@ classes:
     in_subset:
     - assessment_results
     from_schema: https://w3id.org/lmodel/oscal_assessment_results
-    exact_mappings:
-    - oscal_assessment_results:AssessmentLog
     slots:
     - AssessmentLog_entries
     slot_usage:
@@ -18415,8 +18063,6 @@ classes:
     in_subset:
     - assessment_results
     from_schema: https://w3id.org/lmodel/oscal_assessment_results
-    exact_mappings:
-    - oscal_assessment_results:AssessmentLogEntry
     mixins:
     - OscalCommon
     slots:
@@ -18445,8 +18091,6 @@ classes:
     in_subset:
     - component_definition
     from_schema: https://w3id.org/lmodel/oscal_component
-    exact_mappings:
-    - oscal_component:ComponentDefinitionDocument
     is_a: OscalDocument
     slots:
     - ComponentDefinitionDocument_component-definition
@@ -18463,8 +18107,6 @@ classes:
     in_subset:
     - component_definition
     from_schema: https://w3id.org/lmodel/oscal_component
-    exact_mappings:
-    - oscal_component:ComponentDefinition
     slots:
     - ComponentDefinition_uuid
     - ComponentDefinition_metadata
@@ -18490,8 +18132,6 @@ classes:
     in_subset:
     - component_definition
     from_schema: https://w3id.org/lmodel/oscal_component
-    exact_mappings:
-    - oscal_component:ImportComponentDefinition
     slots:
     - ImportComponentDefinition_href
     - remarks
@@ -18507,8 +18147,6 @@ classes:
     in_subset:
     - component_definition
     from_schema: https://w3id.org/lmodel/oscal_component
-    exact_mappings:
-    - oscal_component:DefinedComponent
     mixins:
     - OscalCommon
     - HasResponsibleRoles
@@ -18546,8 +18184,6 @@ classes:
     in_subset:
     - component_definition
     from_schema: https://w3id.org/lmodel/oscal_component
-    exact_mappings:
-    - oscal_component:Capability
     mixins:
     - OscalCommon
     slots:
@@ -18578,8 +18214,6 @@ classes:
     in_subset:
     - component_definition
     from_schema: https://w3id.org/lmodel/oscal_component
-    exact_mappings:
-    - oscal_component:IncorporatesComponent
     slots:
     - IncorporatesComponent_component-uuid
     - IncorporatesComponent_description
@@ -18598,8 +18232,6 @@ classes:
     in_subset:
     - component_definition
     from_schema: https://w3id.org/lmodel/oscal_component
-    exact_mappings:
-    - oscal_component:ControlImplementationSet
     mixins:
     - HasPropsAndLinks
     slots:
@@ -18637,8 +18269,6 @@ classes:
     in_subset:
     - component_definition
     from_schema: https://w3id.org/lmodel/oscal_component
-    exact_mappings:
-    - oscal_component:ImplementedRequirement
     mixins:
     - HasPropsAndLinks
     - HasResponsibleRoles
@@ -18677,8 +18307,6 @@ classes:
     in_subset:
     - component_definition
     from_schema: https://w3id.org/lmodel/oscal_component
-    exact_mappings:
-    - oscal_component:ImplementedControlStatement
     mixins:
     - HasPropsAndLinks
     - HasResponsibleRoles
@@ -18708,8 +18336,6 @@ classes:
     in_subset:
     - mapping_collection
     from_schema: https://w3id.org/lmodel/oscal_mapping
-    exact_mappings:
-    - oscal_mapping:MappingCollectionDocument
     is_a: OscalDocument
     slots:
     - MappingCollectionDocument_mapping-collection
@@ -18725,8 +18351,6 @@ classes:
     in_subset:
     - mapping_collection
     from_schema: https://w3id.org/lmodel/oscal_mapping
-    exact_mappings:
-    - oscal_mapping:MappingCollection
     slots:
     - MappingCollection_uuid
     - MappingCollection_metadata
@@ -18754,8 +18378,6 @@ classes:
     in_subset:
     - mapping_collection
     from_schema: https://w3id.org/lmodel/oscal_mapping
-    exact_mappings:
-    - oscal_mapping:MappingProvenance
     mixins:
     - OscalCommon
     - HasResponsibleParties
@@ -18793,8 +18415,6 @@ classes:
     in_subset:
     - mapping_collection
     from_schema: https://w3id.org/lmodel/oscal_mapping
-    exact_mappings:
-    - oscal_mapping:Mapping
     mixins:
     - OscalCommon
     slots:
@@ -18840,8 +18460,6 @@ classes:
     in_subset:
     - mapping_collection
     from_schema: https://w3id.org/lmodel/oscal_mapping
-    exact_mappings:
-    - oscal_mapping:Map
     mixins:
     - OscalCommon
     slots:
@@ -18879,8 +18497,6 @@ classes:
     in_subset:
     - mapping_collection
     from_schema: https://w3id.org/lmodel/oscal_mapping
-    exact_mappings:
-    - oscal_mapping:MappingItem
     mixins:
     - OscalCommon
     slots:
@@ -18905,8 +18521,6 @@ classes:
     in_subset:
     - mapping_collection
     from_schema: https://w3id.org/lmodel/oscal_mapping
-    exact_mappings:
-    - oscal_mapping:MappingResourceReference
     mixins:
     - OscalCommon
     slots:
@@ -18936,8 +18550,6 @@ classes:
     in_subset:
     - mapping_collection
     from_schema: https://w3id.org/lmodel/oscal_mapping
-    exact_mappings:
-    - oscal_mapping:QualifierItem
     slots:
     - QualifierItem_subject
     - QualifierItem_predicate
@@ -18966,8 +18578,6 @@ classes:
     in_subset:
     - mapping_collection
     from_schema: https://w3id.org/lmodel/oscal_mapping
-    exact_mappings:
-    - oscal_mapping:GapSummary
     slots:
     - GapSummary_uuid
     - GapSummary_unmapped-controls
@@ -18986,8 +18596,6 @@ classes:
     in_subset:
     - mapping_collection
     from_schema: https://w3id.org/lmodel/oscal_mapping
-    exact_mappings:
-    - oscal_mapping:ConfidenceScore
     slots:
     - ConfidenceScore_category
     - percentage
@@ -19005,8 +18613,6 @@ classes:
     in_subset:
     - mapping_collection
     from_schema: https://w3id.org/lmodel/oscal_mapping
-    exact_mappings:
-    - oscal_mapping:Coverage
     slots:
     - generation-method
     - Coverage_target-coverage
@@ -19022,8 +18628,6 @@ classes:
     in_subset:
     - poam
     from_schema: https://w3id.org/lmodel/oscal_poam
-    exact_mappings:
-    - oscal_poam:PoamDocument
     is_a: OscalDocument
     slots:
     - PoamDocument_plan-of-action-and-milestones
@@ -19040,8 +18644,6 @@ classes:
     in_subset:
     - poam
     from_schema: https://w3id.org/lmodel/oscal_poam
-    exact_mappings:
-    - oscal_poam:PlanOfActionAndMilestones
     slots:
     - PlanOfActionAndMilestones_uuid
     - PlanOfActionAndMilestones_metadata
@@ -19076,8 +18678,6 @@ classes:
     in_subset:
     - poam
     from_schema: https://w3id.org/lmodel/oscal_poam
-    exact_mappings:
-    - oscal_poam:PoamLocalDefinitions
     slots:
     - components
     - inventory-items
@@ -19091,8 +18691,6 @@ classes:
     in_subset:
     - poam
     from_schema: https://w3id.org/lmodel/oscal_poam
-    exact_mappings:
-    - oscal_poam:PoamItem
     mixins:
     - OscalCommon
     slots:
@@ -19121,8 +18719,6 @@ classes:
     in_subset:
     - poam
     from_schema: https://w3id.org/lmodel/oscal_poam
-    exact_mappings:
-    - oscal_poam:RelatedFinding
     slots:
     - RelatedFinding_finding-uuid
     - remarks
@@ -19133,7 +18729,7 @@ classes:
     class_uri: oscal_poam:RelatedFinding
 metamodel_version: 1.11.0
 source_file: oscal.yaml
-source_file_date: '2026-03-31T00:50:26'
+source_file_date: '2026-08-05T12:16:26'
 source_file_size: 1348
-generation_date: '2026-05-20T14:10:18'
+generation_date: '2026-08-05T13:05:36'
 

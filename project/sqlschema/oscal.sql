@@ -2445,8 +2445,8 @@ CREATE TABLE "ParameterSelection_choice" (
 	PRIMARY KEY ("ParameterSelection_id", choice),
 	FOREIGN KEY("ParameterSelection_id") REFERENCES "ParameterSelection" (id)
 );
-CREATE INDEX "ix_ParameterSelection_choice_choice" ON "ParameterSelection_choice" (choice);
 CREATE INDEX "ix_ParameterSelection_choice_ParameterSelection_id" ON "ParameterSelection_choice" ("ParameterSelection_id");
+CREATE INDEX "ix_ParameterSelection_choice_choice" ON "ParameterSelection_choice" (choice);
 
 CREATE TABLE "CatalogDocument" (
 	id INTEGER NOT NULL,
@@ -2967,8 +2967,8 @@ CREATE TABLE "Party_member_of_organizations" (
 	PRIMARY KEY ("Party_id", member_of_organizations),
 	FOREIGN KEY("Party_id") REFERENCES "Party" (id)
 );
-CREATE INDEX "ix_Party_member_of_organizations_member_of_organizations" ON "Party_member_of_organizations" (member_of_organizations);
 CREATE INDEX "ix_Party_member_of_organizations_Party_id" ON "Party_member_of_organizations" ("Party_id");
+CREATE INDEX "ix_Party_member_of_organizations_member_of_organizations" ON "Party_member_of_organizations" (member_of_organizations);
 
 CREATE TABLE "ParameterSetting_values" (
 	"ParameterSetting_id" INTEGER,
@@ -3262,8 +3262,8 @@ CREATE TABLE "SspSystemCharacteristicsResponsibleParty_party_uuids" (
 	PRIMARY KEY ("SspSystemCharacteristicsResponsibleParty_id", party_uuids),
 	FOREIGN KEY("SspSystemCharacteristicsResponsibleParty_id") REFERENCES "SspSystemCharacteristicsResponsibleParty" (id)
 );
-CREATE INDEX "ix_SspSystemCharacteristicsResponsibleParty_party_uuids_party_uuids" ON "SspSystemCharacteristicsResponsibleParty_party_uuids" (party_uuids);
 CREATE INDEX "ix_SspSystemCharacteristicsResponsibleParty_party_uuids_SspSystemCharacteristicsResponsibleParty_id" ON "SspSystemCharacteristicsResponsibleParty_party_uuids" ("SspSystemCharacteristicsResponsibleParty_id");
+CREATE INDEX "ix_SspSystemCharacteristicsResponsibleParty_party_uuids_party_uuids" ON "SspSystemCharacteristicsResponsibleParty_party_uuids" (party_uuids);
 
 CREATE TABLE "TelephoneNumber" (
 	id INTEGER NOT NULL,
@@ -3889,8 +3889,8 @@ CREATE TABLE "ImplementationResponsibleParty_party_uuids" (
 	PRIMARY KEY ("ImplementationResponsibleParty_id", party_uuids),
 	FOREIGN KEY("ImplementationResponsibleParty_id") REFERENCES "ImplementationResponsibleParty" (id)
 );
-CREATE INDEX "ix_ImplementationResponsibleParty_party_uuids_party_uuids" ON "ImplementationResponsibleParty_party_uuids" (party_uuids);
 CREATE INDEX "ix_ImplementationResponsibleParty_party_uuids_ImplementationResponsibleParty_id" ON "ImplementationResponsibleParty_party_uuids" ("ImplementationResponsibleParty_id");
+CREATE INDEX "ix_ImplementationResponsibleParty_party_uuids_party_uuids" ON "ImplementationResponsibleParty_party_uuids" (party_uuids);
 
 CREATE TABLE "Observation_methods" (
 	"Observation_id" INTEGER,
@@ -3907,8 +3907,8 @@ CREATE TABLE "Observation_types" (
 	PRIMARY KEY ("Observation_id", types),
 	FOREIGN KEY("Observation_id") REFERENCES "Observation" (id)
 );
-CREATE INDEX "ix_Observation_types_Observation_id" ON "Observation_types" ("Observation_id");
 CREATE INDEX "ix_Observation_types_types" ON "Observation_types" (types);
+CREATE INDEX "ix_Observation_types_Observation_id" ON "Observation_types" ("Observation_id");
 
 CREATE TABLE "ConstraintTest" (
 	id INTEGER NOT NULL,
@@ -3975,8 +3975,8 @@ CREATE TABLE "SetParameter_values" (
 	PRIMARY KEY ("SetParameter_id", "values"),
 	FOREIGN KEY("SetParameter_id") REFERENCES "SetParameter" (id)
 );
-CREATE INDEX "ix_SetParameter_values_values" ON "SetParameter_values" ("values");
 CREATE INDEX "ix_SetParameter_values_SetParameter_id" ON "SetParameter_values" ("SetParameter_id");
+CREATE INDEX "ix_SetParameter_values_values" ON "SetParameter_values" ("values");
 
 CREATE TABLE "SspByComponentResponsibleRole_party_uuids" (
 	"SspByComponentResponsibleRole_id" INTEGER,
@@ -4156,8 +4156,8 @@ CREATE TABLE "ResponsibleParty_party_uuids" (
 	PRIMARY KEY ("ResponsibleParty_id", party_uuids),
 	FOREIGN KEY("ResponsibleParty_id") REFERENCES "ResponsibleParty" (id)
 );
-CREATE INDEX "ix_ResponsibleParty_party_uuids_party_uuids" ON "ResponsibleParty_party_uuids" (party_uuids);
 CREATE INDEX "ix_ResponsibleParty_party_uuids_ResponsibleParty_id" ON "ResponsibleParty_party_uuids" ("ResponsibleParty_id");
+CREATE INDEX "ix_ResponsibleParty_party_uuids_party_uuids" ON "ResponsibleParty_party_uuids" (party_uuids);
 
 CREATE TABLE "ResponsibleRole_party_uuids" (
 	"ResponsibleRole_id" INTEGER,

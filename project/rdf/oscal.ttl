@@ -21,10 +21,10 @@
             sh:prefix "linkml" ],
         [ sh:namespace "https://w3id.org/lmodel/oscal/"^^xsd:anyURI ;
             sh:prefix "oscal" ] ;
-    linkml:annotations [ skos:example "e0b9845b-6de4-4f52-a96c-56255f507520" ;
-            linkml:tag "uuid"^^xsd:anyURI ],
-        [ skos:example "2026-03-27T10:00:00Z" ;
-            linkml:tag "last-modified"^^xsd:anyURI ] ;
+    linkml:annotations [ skos:example "2026-03-27T10:00:00Z" ;
+            linkml:tag "last-modified"^^xsd:anyURI ],
+        [ skos:example "e0b9845b-6de4-4f52-a96c-56255f507520" ;
+            linkml:tag "uuid"^^xsd:anyURI ] ;
     linkml:classes <https://w3id.org/lmodel/oscal/Action>,
         <https://w3id.org/lmodel/oscal/Activity>,
         <https://w3id.org/lmodel/oscal/Addition>,
@@ -385,7 +385,7 @@
         <https://w3id.org/lmodel/oscal/UserPrivilegeLevelEnum>,
         <https://w3id.org/lmodel/oscal/UserTypeEnum>,
         <https://w3id.org/lmodel/oscal/WithChildControlsEnum> ;
-    linkml:generation_date "2026-05-20T14:10:38"^^xsd:dateTime ;
+    linkml:generation_date "2026-08-05T13:05:59"^^xsd:dateTime ;
     linkml:id "https://w3id.org/lmodel/oscal"^^xsd:anyURI ;
     linkml:imports "./oscal"^^xsd:anyURI,
         "./oscal_assessment_plan"^^xsd:anyURI,
@@ -1088,7 +1088,7 @@
         <https://w3id.org/lmodel/oscal/with_ids>,
         <https://w3id.org/lmodel/oscal/within_date_range> ;
     linkml:source_file "oscal.yaml" ;
-    linkml:source_file_date "2026-03-31T00:50:26"^^xsd:dateTime ;
+    linkml:source_file_date "2026-08-05T12:16:26"^^xsd:dateTime ;
     linkml:source_file_size 1348 ;
     linkml:subsets <https://w3id.org/lmodel/oscal/assessment_common>,
         <https://w3id.org/lmodel/oscal/assessment_plan>,
@@ -2004,9 +2004,9 @@
     skos:inScheme "https://w3id.org/lmodel/oscal_catalog"^^xsd:anyURI ;
     skos:prefLabel "type" ;
     linkml:any_of [ a linkml:AnonymousSlotExpression ;
-            linkml:range <https://w3id.org/lmodel/oscal/string> ],
+            linkml:range <https://w3id.org/lmodel/oscal/AddressTypeEnum> ],
         [ a linkml:AnonymousSlotExpression ;
-            linkml:range <https://w3id.org/lmodel/oscal/AddressTypeEnum> ] ;
+            linkml:range <https://w3id.org/lmodel/oscal/string> ] ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_catalog/type"^^xsd:anyURI ;
     linkml:description "Indicates the type of address. Recommended values: home, work. Other values are permitted (OSCAL allow-other=\"yes\")." ;
     linkml:domain <https://w3id.org/lmodel/oscal/Address> ;
@@ -3531,9 +3531,9 @@
     skos:inScheme "https://w3id.org/lmodel/oscal_catalog"^^xsd:anyURI ;
     skos:prefLabel "scheme" ;
     linkml:any_of [ a linkml:AnonymousSlotExpression ;
-            linkml:range <https://w3id.org/lmodel/oscal/DocumentIdSchemeEnum> ],
+            linkml:range <https://w3id.org/lmodel/oscal/URIType> ],
         [ a linkml:AnonymousSlotExpression ;
-            linkml:range <https://w3id.org/lmodel/oscal/URIType> ] ;
+            linkml:range <https://w3id.org/lmodel/oscal/DocumentIdSchemeEnum> ] ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_catalog/scheme"^^xsd:anyURI ;
     linkml:description "Qualifies the kind of identifier using a URI." ;
     linkml:domain <https://w3id.org/lmodel/oscal/DocumentId> ;
@@ -3792,9 +3792,9 @@
     skos:inScheme "https://w3id.org/lmodel/oscal_catalog"^^xsd:anyURI ;
     skos:prefLabel "algorithm" ;
     linkml:any_of [ a linkml:AnonymousSlotExpression ;
-            linkml:range <https://w3id.org/lmodel/oscal/HashAlgorithmEnum> ],
+            linkml:range <https://w3id.org/lmodel/oscal/string> ],
         [ a linkml:AnonymousSlotExpression ;
-            linkml:range <https://w3id.org/lmodel/oscal/string> ] ;
+            linkml:range <https://w3id.org/lmodel/oscal/HashAlgorithmEnum> ] ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_catalog/algorithm"^^xsd:anyURI ;
     linkml:description "The digest method by which a hash is derived. Recommended values are in HashAlgorithmEnum; other values are permitted (OSCAL allow-other=\"yes\")." ;
     linkml:domain <https://w3id.org/lmodel/oscal/Hash> ;
@@ -3878,9 +3878,9 @@
     skos:inScheme "https://w3id.org/lmodel/oscal_ssp"^^xsd:anyURI ;
     skos:prefLabel "selected" ;
     linkml:any_of [ a linkml:AnonymousSlotExpression ;
-            linkml:range <https://w3id.org/lmodel/oscal/string> ],
+            linkml:range <https://w3id.org/lmodel/oscal/Fips199ImpactLevelEnum> ],
         [ a linkml:AnonymousSlotExpression ;
-            linkml:range <https://w3id.org/lmodel/oscal/Fips199ImpactLevelEnum> ] ;
+            linkml:range <https://w3id.org/lmodel/oscal/string> ] ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_ssp/selected"^^xsd:anyURI ;
     linkml:description "The selected (Confidentiality, Integrity, or Availability) security impact level." ;
     linkml:domain <https://w3id.org/lmodel/oscal/ImpactLevel> ;
@@ -3914,9 +3914,9 @@
     skos:inScheme "https://w3id.org/lmodel/oscal_catalog"^^xsd:anyURI ;
     skos:prefLabel "rel" ;
     linkml:any_of [ a linkml:AnonymousSlotExpression ;
-            linkml:range <https://w3id.org/lmodel/oscal/ImplementationLinkRelEnum> ],
+            linkml:range <https://w3id.org/lmodel/oscal/TokenType> ],
         [ a linkml:AnonymousSlotExpression ;
-            linkml:range <https://w3id.org/lmodel/oscal/TokenType> ] ;
+            linkml:range <https://w3id.org/lmodel/oscal/ImplementationLinkRelEnum> ] ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_catalog/rel"^^xsd:anyURI ;
     linkml:description "Describes the type of relationship provided by the link's hypertext reference. This can be an indicator of the link's purpose." ;
     linkml:domain <https://w3id.org/lmodel/oscal/ImplementationCommonLink> ;
@@ -3953,15 +3953,15 @@
         [ a linkml:AnonymousSlotExpression ;
             linkml:range <https://w3id.org/lmodel/oscal/UserPrivilegeLevelEnum> ],
         [ a linkml:AnonymousSlotExpression ;
+            linkml:range <https://w3id.org/lmodel/oscal/ImplementationIpAddressClassEnum> ],
+        [ a linkml:AnonymousSlotExpression ;
             linkml:range <https://w3id.org/lmodel/oscal/ImplementationPointEnum> ],
+        [ a linkml:AnonymousSlotExpression ;
+            linkml:range <https://w3id.org/lmodel/oscal/ImplementationYesNoEnum> ],
         [ a linkml:AnonymousSlotExpression ;
             linkml:range <https://w3id.org/lmodel/oscal/ImplementationDirectionEnum> ],
         [ a linkml:AnonymousSlotExpression ;
-            linkml:range <https://w3id.org/lmodel/oscal/ImplementationIpAddressClassEnum> ],
-        [ a linkml:AnonymousSlotExpression ;
-            linkml:range <https://w3id.org/lmodel/oscal/string> ],
-        [ a linkml:AnonymousSlotExpression ;
-            linkml:range <https://w3id.org/lmodel/oscal/ImplementationYesNoEnum> ] ;
+            linkml:range <https://w3id.org/lmodel/oscal/string> ] ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_catalog/value"^^xsd:anyURI ;
     linkml:description "The value associated with the containing object." ;
     linkml:domain <https://w3id.org/lmodel/oscal/ImplementationCommonProperty> ;
@@ -4059,9 +4059,9 @@
     skos:inScheme "https://w3id.org/lmodel/oscal_catalog"^^xsd:anyURI ;
     skos:prefLabel "role-id" ;
     linkml:any_of [ a linkml:AnonymousSlotExpression ;
-            linkml:range <https://w3id.org/lmodel/oscal/TokenType> ],
+            linkml:range <https://w3id.org/lmodel/oscal/ImplementationResponsibleRoleIdEnum> ],
         [ a linkml:AnonymousSlotExpression ;
-            linkml:range <https://w3id.org/lmodel/oscal/ImplementationResponsibleRoleIdEnum> ] ;
+            linkml:range <https://w3id.org/lmodel/oscal/TokenType> ] ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_catalog/role_id"^^xsd:anyURI ;
     linkml:description "A reference to a role by its identifier." ;
     linkml:domain <https://w3id.org/lmodel/oscal/ImplementationResponsibleParty> ;
@@ -4078,9 +4078,9 @@
     skos:inScheme "https://w3id.org/lmodel/oscal_catalog"^^xsd:anyURI ;
     skos:prefLabel "role-id" ;
     linkml:any_of [ a linkml:AnonymousSlotExpression ;
-            linkml:range <https://w3id.org/lmodel/oscal/ImplementationResponsibleRoleIdEnum> ],
+            linkml:range <https://w3id.org/lmodel/oscal/TokenType> ],
         [ a linkml:AnonymousSlotExpression ;
-            linkml:range <https://w3id.org/lmodel/oscal/TokenType> ] ;
+            linkml:range <https://w3id.org/lmodel/oscal/ImplementationResponsibleRoleIdEnum> ] ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_catalog/role_id"^^xsd:anyURI ;
     linkml:description "A reference to a role by its identifier." ;
     linkml:domain <https://w3id.org/lmodel/oscal/ImplementationResponsibleRole> ;
@@ -4395,8 +4395,8 @@
 
 <https://w3id.org/lmodel/oscal/IncludeAll> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/oscal_control_common> ;
-    skos:exactMatch "oscal_catalog:IncludeAll"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_catalog"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_catalog/IncludeAll"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_catalog/IncludeAll"^^xsd:anyURI ;
     linkml:description "Include all controls from the imported catalog or profile resources." ;
     linkml:slot_usage [ ] .
@@ -5067,9 +5067,9 @@
     skos:inScheme "https://w3id.org/lmodel/oscal_catalog"^^xsd:anyURI ;
     skos:prefLabel "type" ;
     linkml:any_of [ a linkml:AnonymousSlotExpression ;
-            linkml:range <https://w3id.org/lmodel/oscal/TokenType> ],
+            linkml:range <https://w3id.org/lmodel/oscal/MappingResourceTypeEnum> ],
         [ a linkml:AnonymousSlotExpression ;
-            linkml:range <https://w3id.org/lmodel/oscal/MappingResourceTypeEnum> ] ;
+            linkml:range <https://w3id.org/lmodel/oscal/TokenType> ] ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_catalog/type"^^xsd:anyURI ;
     linkml:description "The semantic type of the referenced resource. OSCAL defines catalog and profile, while locally defined values are also permitted." ;
     linkml:domain <https://w3id.org/lmodel/oscal/MappingResourceReference> ;
@@ -5209,8 +5209,8 @@
 
 <https://w3id.org/lmodel/oscal/MergeFlat> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/profile> ;
-    skos:exactMatch "oscal_profile:MergeFlat"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_profile"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_profile/MergeFlat"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_profile/MergeFlat"^^xsd:anyURI ;
     linkml:description "Directs that controls appear without any grouping structure after profile resolution." ;
     linkml:slot_usage [ ] .
@@ -5233,8 +5233,8 @@
 
 <https://w3id.org/lmodel/oscal/MetadataPartyExternalId> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/oscal_metadata> ;
-    skos:exactMatch "oscal_catalog:MetadataPartyExternalId"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_catalog"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_catalog/MetadataPartyExternalId"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_catalog/MetadataPartyExternalId"^^xsd:anyURI ;
     linkml:description "Metadata-scoped external identifier." ;
     linkml:is_a <https://w3id.org/lmodel/oscal/PartyExternalId> ;
@@ -5509,9 +5509,9 @@
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
     skos:prefLabel "methods" ;
     linkml:any_of [ a linkml:AnonymousSlotExpression ;
-            linkml:range <https://w3id.org/lmodel/oscal/ObservationMethodEnum> ],
+            linkml:range <https://w3id.org/lmodel/oscal/string> ],
         [ a linkml:AnonymousSlotExpression ;
-            linkml:range <https://w3id.org/lmodel/oscal/string> ] ;
+            linkml:range <https://w3id.org/lmodel/oscal/ObservationMethodEnum> ] ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/methods"^^xsd:anyURI ;
     linkml:description "Identifies how the observation was made. Recommended values are in ObservationMethodEnum; other values are permitted (OSCAL allow-other=\"yes\")." ;
     linkml:domain <https://w3id.org/lmodel/oscal/Observation> ;
@@ -6642,9 +6642,9 @@
     skos:inScheme "https://w3id.org/lmodel/oscal_catalog"^^xsd:anyURI ;
     skos:prefLabel "value" ;
     linkml:any_of [ a linkml:AnonymousSlotExpression ;
-            linkml:range <https://w3id.org/lmodel/oscal/string> ],
+            linkml:range <https://w3id.org/lmodel/oscal/ResourcePropTypeEnum> ],
         [ a linkml:AnonymousSlotExpression ;
-            linkml:range <https://w3id.org/lmodel/oscal/ResourcePropTypeEnum> ] ;
+            linkml:range <https://w3id.org/lmodel/oscal/string> ] ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_catalog/value"^^xsd:anyURI ;
     linkml:description "The value associated with the containing object." ;
     linkml:domain <https://w3id.org/lmodel/oscal/ResourceProperty> ;
@@ -7091,9 +7091,9 @@
     skos:inScheme "https://w3id.org/lmodel/oscal_catalog"^^xsd:anyURI ;
     skos:prefLabel "status" ;
     linkml:any_of [ a linkml:AnonymousSlotExpression ;
-            linkml:range <https://w3id.org/lmodel/oscal/RiskStatusEnum> ],
+            linkml:range <https://w3id.org/lmodel/oscal/string> ],
         [ a linkml:AnonymousSlotExpression ;
-            linkml:range <https://w3id.org/lmodel/oscal/string> ] ;
+            linkml:range <https://w3id.org/lmodel/oscal/RiskStatusEnum> ] ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_catalog/status"^^xsd:anyURI ;
     linkml:description "Status indicator used by the containing OSCAL context. Allowed values are constrained by class-level slot_usage." ;
     linkml:domain <https://w3id.org/lmodel/oscal/Risk> ;
@@ -7377,9 +7377,9 @@
     skos:inScheme "https://w3id.org/lmodel/oscal_catalog"^^xsd:anyURI ;
     skos:prefLabel "rel" ;
     linkml:any_of [ a linkml:AnonymousSlotExpression ;
-            linkml:range <https://w3id.org/lmodel/oscal/ByComponentLinkRelEnum> ],
+            linkml:range <https://w3id.org/lmodel/oscal/string> ],
         [ a linkml:AnonymousSlotExpression ;
-            linkml:range <https://w3id.org/lmodel/oscal/string> ] ;
+            linkml:range <https://w3id.org/lmodel/oscal/ByComponentLinkRelEnum> ] ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_catalog/rel"^^xsd:anyURI ;
     linkml:description "Describes the type of relationship provided by the link's hypertext reference. This can be an indicator of the link's purpose." ;
     linkml:domain <https://w3id.org/lmodel/oscal/SspByComponentLink> ;
@@ -7395,9 +7395,9 @@
     skos:inScheme "https://w3id.org/lmodel/oscal_catalog"^^xsd:anyURI ;
     skos:prefLabel "role-id" ;
     linkml:any_of [ a linkml:AnonymousSlotExpression ;
-            linkml:range <https://w3id.org/lmodel/oscal/ByComponentResponsibleRoleIdEnum> ],
+            linkml:range <https://w3id.org/lmodel/oscal/TokenType> ],
         [ a linkml:AnonymousSlotExpression ;
-            linkml:range <https://w3id.org/lmodel/oscal/TokenType> ] ;
+            linkml:range <https://w3id.org/lmodel/oscal/ByComponentResponsibleRoleIdEnum> ] ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_catalog/role_id"^^xsd:anyURI ;
     linkml:description "A reference to a role by its identifier." ;
     linkml:domain <https://w3id.org/lmodel/oscal/SspByComponentResponsibleRole> ;
@@ -7760,13 +7760,13 @@
     skos:inScheme "https://w3id.org/lmodel/oscal_catalog"^^xsd:anyURI ;
     skos:prefLabel "value" ;
     linkml:any_of [ a linkml:AnonymousSlotExpression ;
-            linkml:range <https://w3id.org/lmodel/oscal/AssuranceLevelValueEnum> ],
+            linkml:range <https://w3id.org/lmodel/oscal/CloudServiceModelEnum> ],
         [ a linkml:AnonymousSlotExpression ;
             linkml:range <https://w3id.org/lmodel/oscal/CloudDeploymentModelEnum> ],
         [ a linkml:AnonymousSlotExpression ;
             linkml:range <https://w3id.org/lmodel/oscal/string> ],
         [ a linkml:AnonymousSlotExpression ;
-            linkml:range <https://w3id.org/lmodel/oscal/CloudServiceModelEnum> ] ;
+            linkml:range <https://w3id.org/lmodel/oscal/AssuranceLevelValueEnum> ] ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_catalog/value"^^xsd:anyURI ;
     linkml:description "The value associated with the containing object." ;
     linkml:domain <https://w3id.org/lmodel/oscal/SspSystemCharacteristicsProp> ;
@@ -9871,9 +9871,9 @@
 <https://w3id.org/lmodel/oscal/relationship> a linkml:SlotDefinition ;
     skos:inScheme "https://w3id.org/lmodel/oscal_mapping"^^xsd:anyURI ;
     linkml:any_of [ a linkml:AnonymousSlotExpression ;
-            linkml:range <https://w3id.org/lmodel/oscal/TokenType> ],
+            linkml:range <https://w3id.org/lmodel/oscal/RelationshipEnum> ],
         [ a linkml:AnonymousSlotExpression ;
-            linkml:range <https://w3id.org/lmodel/oscal/RelationshipEnum> ] ;
+            linkml:range <https://w3id.org/lmodel/oscal/TokenType> ] ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_mapping/relationship"^^xsd:anyURI ;
     linkml:description "Relationship type for a mapping entry. OSCAL namespace values are defined by RelationshipEnum." ;
     linkml:domain_of <https://w3id.org/lmodel/oscal/Map> ;
@@ -10398,9 +10398,9 @@
 <https://w3id.org/lmodel/oscal/types> a linkml:SlotDefinition ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
     linkml:any_of [ a linkml:AnonymousSlotExpression ;
-            linkml:range <https://w3id.org/lmodel/oscal/string> ],
+            linkml:range <https://w3id.org/lmodel/oscal/ObservationTypeEnum> ],
         [ a linkml:AnonymousSlotExpression ;
-            linkml:range <https://w3id.org/lmodel/oscal/ObservationTypeEnum> ] ;
+            linkml:range <https://w3id.org/lmodel/oscal/string> ] ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/types"^^xsd:anyURI ;
     linkml:description "Identifies the nature of the observation. Recommended values are in ObservationTypeEnum; other values are permitted (OSCAL allow-other=\"yes\")." ;
     linkml:domain_of <https://w3id.org/lmodel/oscal/Observation> ;
@@ -10501,9 +10501,9 @@
     skos:inScheme "https://w3id.org/lmodel/oscal_catalog"^^xsd:anyURI ;
     skos:prefLabel "name" ;
     linkml:any_of [ a linkml:AnonymousSlotExpression ;
-            linkml:range <https://w3id.org/lmodel/oscal/string> ],
+            linkml:range <https://w3id.org/lmodel/oscal/AssessmentPartNameEnum> ],
         [ a linkml:AnonymousSlotExpression ;
-            linkml:range <https://w3id.org/lmodel/oscal/AssessmentPartNameEnum> ] ;
+            linkml:range <https://w3id.org/lmodel/oscal/string> ] ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_catalog/name"^^xsd:anyURI ;
     linkml:description "A textual label that uniquely identifies an attribute or semantic type." ;
     linkml:domain <https://w3id.org/lmodel/oscal/AssessmentPart> ;
@@ -10864,9 +10864,9 @@
     skos:inScheme "https://w3id.org/lmodel/oscal_catalog"^^xsd:anyURI ;
     skos:prefLabel "type" ;
     linkml:any_of [ a linkml:AnonymousSlotExpression ;
-            linkml:range <https://w3id.org/lmodel/oscal/string> ],
+            linkml:range <https://w3id.org/lmodel/oscal/ComponentTypeEnum> ],
         [ a linkml:AnonymousSlotExpression ;
-            linkml:range <https://w3id.org/lmodel/oscal/ComponentTypeEnum> ] ;
+            linkml:range <https://w3id.org/lmodel/oscal/string> ] ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_catalog/type"^^xsd:anyURI ;
     linkml:description "Indicates the nature or kind of the containing object." ;
     linkml:domain <https://w3id.org/lmodel/oscal/SystemComponent> ;
@@ -11435,8 +11435,8 @@
 
 <https://w3id.org/lmodel/oscal/BackMatter> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/oscal_back_matter> ;
-    skos:exactMatch "oscal_catalog:BackMatter"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_catalog"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_catalog/BackMatter"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_catalog/BackMatter"^^xsd:anyURI ;
     linkml:description "A collection of resources that may be referenced from within the OSCAL document instance." ;
     linkml:slot_usage [ ] ;
@@ -11761,8 +11761,8 @@
 
 <https://w3id.org/lmodel/oscal/ControlMatching> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/oscal_control_common> ;
-    skos:exactMatch "oscal_catalog:ControlMatching"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_catalog"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_catalog/ControlMatching"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_catalog/ControlMatching"^^xsd:anyURI ;
     linkml:description "Selecting a set of controls by matching their IDs with a wildcard pattern." ;
     linkml:slot_usage [ ] ;
@@ -11771,8 +11771,8 @@
 
 <https://w3id.org/lmodel/oscal/ImplementationResponsibleRole> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/implementation_common> ;
-    skos:exactMatch "oscal_assessment_plan:ImplementationResponsibleRole"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_plan/ImplementationResponsibleRole"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/ImplementationResponsibleRole"^^xsd:anyURI ;
     linkml:description "Implementation-common scoped responsible role." ;
     linkml:is_a <https://w3id.org/lmodel/oscal/ResponsibleRole> ;
@@ -11785,8 +11785,8 @@
 
 <https://w3id.org/lmodel/oscal/MetadataProperty> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/oscal_metadata> ;
-    skos:exactMatch "oscal_catalog:MetadataProperty"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_catalog"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_catalog/MetadataProperty"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_catalog/MetadataProperty"^^xsd:anyURI ;
     linkml:description "Metadata-scoped OSCAL property." ;
     linkml:is_a <https://w3id.org/lmodel/oscal/Property> ;
@@ -11801,8 +11801,8 @@
 
 <https://w3id.org/lmodel/oscal/ParameterProperty> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/oscal_control_common> ;
-    skos:exactMatch "oscal_catalog:ParameterProperty"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_catalog"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_catalog/ParameterProperty"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_catalog/ParameterProperty"^^xsd:anyURI ;
     linkml:description "Control-common parameter-scoped OSCAL property." ;
     linkml:is_a <https://w3id.org/lmodel/oscal/Property> ;
@@ -11817,8 +11817,8 @@
 
 <https://w3id.org/lmodel/oscal/PartProperty> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/oscal_control_common> ;
-    skos:exactMatch "oscal_catalog:PartProperty"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_catalog"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_catalog/PartProperty"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_catalog/PartProperty"^^xsd:anyURI ;
     linkml:description "Control-common part-scoped OSCAL property." ;
     linkml:is_a <https://w3id.org/lmodel/oscal/Property> ;
@@ -11833,8 +11833,8 @@
 
 <https://w3id.org/lmodel/oscal/PartyProperty> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/oscal_metadata> ;
-    skos:exactMatch "oscal_catalog:PartyProperty"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_catalog"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_catalog/PartyProperty"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_catalog/PartyProperty"^^xsd:anyURI ;
     linkml:description "Party-scoped OSCAL property." ;
     linkml:is_a <https://w3id.org/lmodel/oscal/Property> ;
@@ -11849,8 +11849,8 @@
 
 <https://w3id.org/lmodel/oscal/ProfileAlterationProperty> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/profile> ;
-    skos:exactMatch "oscal_profile:ProfileAlterationProperty"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_profile"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_profile/ProfileAlterationProperty"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_profile/ProfileAlterationProperty"^^xsd:anyURI ;
     linkml:description "OSCAL property entries allowed in profile modify additions." ;
     linkml:is_a <https://w3id.org/lmodel/oscal/Property> ;
@@ -11880,8 +11880,8 @@
 
 <https://w3id.org/lmodel/oscal/RevisionProperty> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/oscal_metadata> ;
-    skos:exactMatch "oscal_catalog:RevisionProperty"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_catalog"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_catalog/RevisionProperty"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_catalog/RevisionProperty"^^xsd:anyURI ;
     linkml:description "Revision-scoped OSCAL property." ;
     linkml:is_a <https://w3id.org/lmodel/oscal/Property> ;
@@ -11896,8 +11896,8 @@
 
 <https://w3id.org/lmodel/oscal/SspByComponentLink> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/ssp> ;
-    skos:exactMatch "oscal_ssp:SspByComponentLink"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_ssp"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_ssp/SspByComponentLink"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_ssp/SspByComponentLink"^^xsd:anyURI ;
     linkml:description "SSP-scoped link used in by-component contexts." ;
     linkml:is_a <https://w3id.org/lmodel/oscal/Link> ;
@@ -11910,8 +11910,8 @@
 
 <https://w3id.org/lmodel/oscal/SspDiagramLink> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/ssp> ;
-    skos:exactMatch "oscal_ssp:SspDiagramLink"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_ssp"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_ssp/SspDiagramLink"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_ssp/SspDiagramLink"^^xsd:anyURI ;
     linkml:description "SSP-scoped link used in diagram objects." ;
     linkml:is_a <https://w3id.org/lmodel/oscal/Link> ;
@@ -11924,8 +11924,8 @@
 
 <https://w3id.org/lmodel/oscal/SspInventoryItem> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/ssp> ;
-    skos:exactMatch "oscal_ssp:SspInventoryItem"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_ssp"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_ssp/SspInventoryItem"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_ssp/SspInventoryItem"^^xsd:anyURI ;
     linkml:description "SSP-scoped inventory item with allows-authenticated-scan property typing." ;
     linkml:is_a <https://w3id.org/lmodel/oscal/InventoryItem> ;
@@ -11940,8 +11940,8 @@
 
 <https://w3id.org/lmodel/oscal/SspLeveragedAuthorizationLink> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/ssp> ;
-    skos:exactMatch "oscal_ssp:SspLeveragedAuthorizationLink"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_ssp"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_ssp/SspLeveragedAuthorizationLink"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_ssp/SspLeveragedAuthorizationLink"^^xsd:anyURI ;
     linkml:description "SSP-scoped link used in leveraged authorization objects." ;
     linkml:is_a <https://w3id.org/lmodel/oscal/Link> ;
@@ -11954,8 +11954,8 @@
 
 <https://w3id.org/lmodel/oscal/SspSystemCharacteristicsResponsibleParty> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/ssp> ;
-    skos:exactMatch "oscal_ssp:SspSystemCharacteristicsResponsibleParty"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_ssp"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_ssp/SspSystemCharacteristicsResponsibleParty"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_ssp/SspSystemCharacteristicsResponsibleParty"^^xsd:anyURI ;
     linkml:description "SSP-scoped responsible party for system characteristics." ;
     linkml:is_a <https://w3id.org/lmodel/oscal/ResponsibleParty> ;
@@ -11968,8 +11968,8 @@
 
 <https://w3id.org/lmodel/oscal/SspSystemComponent> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/ssp> ;
-    skos:exactMatch "oscal_ssp:SspSystemComponent"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_ssp"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_ssp/SspSystemComponent"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_ssp/SspSystemComponent"^^xsd:anyURI ;
     linkml:description "SSP-scoped system component with allows-authenticated-scan property typing." ;
     linkml:is_a <https://w3id.org/lmodel/oscal/SystemComponent> ;
@@ -11988,8 +11988,8 @@
 
 <https://w3id.org/lmodel/oscal/SspSystemInformationLink> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/ssp> ;
-    skos:exactMatch "oscal_ssp:SspSystemInformationLink"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_ssp"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_ssp/SspSystemInformationLink"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_ssp/SspSystemInformationLink"^^xsd:anyURI ;
     linkml:description "SSP-scoped link used in system information." ;
     linkml:is_a <https://w3id.org/lmodel/oscal/Link> ;
@@ -12123,8 +12123,8 @@
 
 <https://w3id.org/lmodel/oscal/AssessmentPlanDocument> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/assessment_plan> ;
-    skos:exactMatch "oscal_assessment_plan:AssessmentPlanDocument"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_plan/AssessmentPlanDocument"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/AssessmentPlanDocument"^^xsd:anyURI ;
     linkml:description "Root wrapper for an OSCAL Assessment Plan document." ;
     linkml:is_a <https://w3id.org/lmodel/oscal/OscalDocument> ;
@@ -12133,8 +12133,8 @@
 
 <https://w3id.org/lmodel/oscal/AssessmentResultsDocument> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/assessment_results> ;
-    skos:exactMatch "oscal_assessment_results:AssessmentResultsDocument"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_results"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_results/AssessmentResultsDocument"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_results/AssessmentResultsDocument"^^xsd:anyURI ;
     linkml:description "Root wrapper for an OSCAL Assessment Results document." ;
     linkml:is_a <https://w3id.org/lmodel/oscal/OscalDocument> ;
@@ -12143,8 +12143,8 @@
 
 <https://w3id.org/lmodel/oscal/CatalogDocument> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/oscal_catalog> ;
-    skos:exactMatch "oscal_catalog:CatalogDocument"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_catalog"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_catalog/CatalogDocument"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_catalog/CatalogDocument"^^xsd:anyURI ;
     linkml:description "Root wrapper for an OSCAL Catalog document." ;
     linkml:is_a <https://w3id.org/lmodel/oscal/OscalDocument> ;
@@ -12153,8 +12153,8 @@
 
 <https://w3id.org/lmodel/oscal/CombinationRule> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/profile> ;
-    skos:exactMatch "oscal_profile:CombinationRule"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_profile"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_profile/CombinationRule"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_profile/CombinationRule"^^xsd:anyURI ;
     linkml:description "Defines how to resolve duplicate instances of the same control (e.g., controls with the same ID) encountered in a profile merge." ;
     linkml:slot_usage [ ] ;
@@ -12162,8 +12162,8 @@
 
 <https://w3id.org/lmodel/oscal/ComponentDefinitionDocument> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/component_definition> ;
-    skos:exactMatch "oscal_component:ComponentDefinitionDocument"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_component"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_component/ComponentDefinitionDocument"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_component/ComponentDefinitionDocument"^^xsd:anyURI ;
     linkml:description "Root wrapper for an OSCAL Component Definition document." ;
     linkml:is_a <https://w3id.org/lmodel/oscal/OscalDocument> ;
@@ -12172,8 +12172,8 @@
 
 <https://w3id.org/lmodel/oscal/ImplementationResponsibleParty> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/implementation_common> ;
-    skos:exactMatch "oscal_assessment_plan:ImplementationResponsibleParty"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_plan/ImplementationResponsibleParty"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/ImplementationResponsibleParty"^^xsd:anyURI ;
     linkml:description "Implementation-common scoped responsible party." ;
     linkml:is_a <https://w3id.org/lmodel/oscal/ResponsibleParty> ;
@@ -12186,10 +12186,10 @@
 
 <https://w3id.org/lmodel/oscal/InformationTypeCategorization> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/ssp> ;
-    skos:exactMatch "oscal_ssp:InformationTypeCategorization"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_ssp"^^xsd:anyURI ;
     linkml:attributes <https://w3id.org/lmodel/oscal/information_type_ids>,
         <https://w3id.org/lmodel/oscal/system> ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_ssp/InformationTypeCategorization"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_ssp/InformationTypeCategorization"^^xsd:anyURI ;
     linkml:description "A set of information type identifiers qualified by the given identification system used." ;
     linkml:slot_usage [ ] ;
@@ -12198,8 +12198,8 @@
 
 <https://w3id.org/lmodel/oscal/MappingCollectionDocument> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/mapping_collection> ;
-    skos:exactMatch "oscal_mapping:MappingCollectionDocument"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_mapping"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_mapping/MappingCollectionDocument"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_mapping/MappingCollectionDocument"^^xsd:anyURI ;
     linkml:description "Root wrapper for an OSCAL Mapping Collection document." ;
     linkml:is_a <https://w3id.org/lmodel/oscal/OscalDocument> ;
@@ -12208,8 +12208,8 @@
 
 <https://w3id.org/lmodel/oscal/ParameterGuideline> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/oscal_control_common> ;
-    skos:exactMatch "oscal_catalog:ParameterGuideline"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_catalog"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_catalog/ParameterGuideline"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_catalog/ParameterGuideline"^^xsd:anyURI ;
     linkml:description "A prose statement that provides a recommendation for the use of a parameter." ;
     linkml:slot_usage [ ] ;
@@ -12217,8 +12217,8 @@
 
 <https://w3id.org/lmodel/oscal/ParameterSelection> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/oscal_control_common> ;
-    skos:exactMatch "oscal_catalog:ParameterSelection"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_catalog"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_catalog/ParameterSelection"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_catalog/ParameterSelection"^^xsd:anyURI ;
     linkml:description "Presenting a choice among alternatives." ;
     linkml:slot_usage [ ] ;
@@ -12227,8 +12227,8 @@
 
 <https://w3id.org/lmodel/oscal/PoamDocument> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/poam> ;
-    skos:exactMatch "oscal_poam:PoamDocument"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_poam"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_poam/PoamDocument"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_poam/PoamDocument"^^xsd:anyURI ;
     linkml:description "Root wrapper for an OSCAL Plan of Action and Milestones document." ;
     linkml:is_a <https://w3id.org/lmodel/oscal/OscalDocument> ;
@@ -12237,8 +12237,8 @@
 
 <https://w3id.org/lmodel/oscal/ProfileDocument> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/profile> ;
-    skos:exactMatch "oscal_profile:ProfileDocument"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_profile"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_profile/ProfileDocument"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_profile/ProfileDocument"^^xsd:anyURI ;
     linkml:description "Root wrapper for an OSCAL Profile document." ;
     linkml:is_a <https://w3id.org/lmodel/oscal/OscalDocument> ;
@@ -12247,8 +12247,8 @@
 
 <https://w3id.org/lmodel/oscal/RiskLog> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/assessment_common> ;
-    skos:exactMatch "oscal_assessment_plan:RiskLog"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_plan/RiskLog"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/RiskLog"^^xsd:anyURI ;
     linkml:description "A log of all risk-related tasks taken." ;
     linkml:slot_usage [ ] ;
@@ -12256,8 +12256,8 @@
 
 <https://w3id.org/lmodel/oscal/SspDocument> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/ssp> ;
-    skos:exactMatch "oscal_ssp:SspDocument"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_ssp"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_ssp/SspDocument"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_ssp/SspDocument"^^xsd:anyURI ;
     linkml:description "Root wrapper for an OSCAL System Security Plan document." ;
     linkml:is_a <https://w3id.org/lmodel/oscal/OscalDocument> ;
@@ -12266,8 +12266,8 @@
 
 <https://w3id.org/lmodel/oscal/SspImplementedRequirementResponsibleRole> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/ssp> ;
-    skos:exactMatch "oscal_ssp:SspImplementedRequirementResponsibleRole"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_ssp"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_ssp/SspImplementedRequirementResponsibleRole"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_ssp/SspImplementedRequirementResponsibleRole"^^xsd:anyURI ;
     linkml:description "SSP-scoped responsible role used by implemented requirement and statement contexts." ;
     linkml:is_a <https://w3id.org/lmodel/oscal/ResponsibleRole> ;
@@ -12280,9 +12280,9 @@
 
 <https://w3id.org/lmodel/oscal/SystemStatus> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/ssp> ;
-    skos:exactMatch "oscal_ssp:SystemStatus"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_ssp"^^xsd:anyURI ;
     linkml:attributes <https://w3id.org/lmodel/oscal/state> ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_ssp/SystemStatus"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_ssp/SystemStatus"^^xsd:anyURI ;
     linkml:description "Describes the operational status of the system." ;
     linkml:slot_usage [ ] ;
@@ -12291,8 +12291,8 @@
 
 <https://w3id.org/lmodel/oscal/TermsAndConditions> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/assessment_plan> ;
-    skos:exactMatch "oscal_assessment_plan:TermsAndConditions"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_plan/TermsAndConditions"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/TermsAndConditions"^^xsd:anyURI ;
     linkml:description "Used to define various terms and conditions under which an assessment can be performed." ;
     linkml:slot_usage [ ] ;
@@ -12300,8 +12300,8 @@
 
 <https://w3id.org/lmodel/oscal/UsesComponent> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/assessment_common> ;
-    skos:exactMatch "oscal_assessment_plan:UsesComponent"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_plan/UsesComponent"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/UsesComponent"^^xsd:anyURI ;
     linkml:description "The set of components that are used by the assessment platform." ;
     linkml:mixins <https://w3id.org/lmodel/oscal/HasResponsibleParties>,
@@ -12430,9 +12430,9 @@
 <https://w3id.org/lmodel/oscal/system> a linkml:SlotDefinition ;
     skos:inScheme "https://w3id.org/lmodel/oscal_catalog"^^xsd:anyURI ;
     linkml:any_of [ a linkml:AnonymousSlotExpression ;
-            linkml:range <https://w3id.org/lmodel/oscal/InformationTypeCategorizationSystemEnum> ],
+            linkml:range <https://w3id.org/lmodel/oscal/URIType> ],
         [ a linkml:AnonymousSlotExpression ;
-            linkml:range <https://w3id.org/lmodel/oscal/URIType> ] ;
+            linkml:range <https://w3id.org/lmodel/oscal/InformationTypeCategorizationSystemEnum> ] ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_catalog/system"^^xsd:anyURI ;
     linkml:description "Specifies the action type system used.",
         "Specifies the information type identification system used. Recommended values are in InformationTypeCategorizationSystemEnum; other values are permitted (OSCAL allow-other=\"yes\")." ;
@@ -12460,8 +12460,8 @@
 
 <https://w3id.org/lmodel/oscal/AssessmentResultsLocalDefinitions> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/assessment_results> ;
-    skos:exactMatch "oscal_assessment_results:AssessmentResultsLocalDefinitions"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_results"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_results/AssessmentResultsLocalDefinitions"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_results/AssessmentResultsLocalDefinitions"^^xsd:anyURI ;
     linkml:description "Used to define data objects that are referenced by the assessment results but do not appear in the imported assessment plan." ;
     linkml:slot_usage [ ] ;
@@ -12471,8 +12471,8 @@
 
 <https://w3id.org/lmodel/oscal/AssessmentSubjectSource> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/assessment_common> ;
-    skos:exactMatch "oscal_assessment_plan:AssessmentSubjectSource"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_plan/AssessmentSubjectSource"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/AssessmentSubjectSource"^^xsd:anyURI ;
     linkml:description "Assessment subjects will be identified while conducting the referenced activity." ;
     linkml:slot_usage [ ] ;
@@ -12481,8 +12481,8 @@
 
 <https://w3id.org/lmodel/oscal/Attestation> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/assessment_results> ;
-    skos:exactMatch "oscal_assessment_results:Attestation"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_results"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_results/Attestation"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_results/Attestation"^^xsd:anyURI ;
     linkml:description "A set of textual attestation statements, typically written by the assessor." ;
     linkml:mixins <https://w3id.org/lmodel/oscal/HasResponsibleParties> ;
@@ -12492,8 +12492,8 @@
 
 <https://w3id.org/lmodel/oscal/ComponentStatus> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/implementation_common> ;
-    skos:exactMatch "oscal_assessment_plan:ComponentStatus"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_plan/ComponentStatus"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/ComponentStatus"^^xsd:anyURI ;
     linkml:description "Describes the operational status of the system component." ;
     linkml:slot_usage [ ] ;
@@ -12502,8 +12502,8 @@
 
 <https://w3id.org/lmodel/oscal/ImplementationStatus> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/implementation_common> ;
-    skos:exactMatch "oscal_assessment_plan:ImplementationStatus"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_plan/ImplementationStatus"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/ImplementationStatus"^^xsd:anyURI ;
     linkml:description "Indicates the degree to which a given control is implemented." ;
     linkml:slot_usage [ ] ;
@@ -12512,8 +12512,8 @@
 
 <https://w3id.org/lmodel/oscal/ImportComponentDefinition> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/component_definition> ;
-    skos:exactMatch "oscal_component:ImportComponentDefinition"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_component"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_component/ImportComponentDefinition"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_component/ImportComponentDefinition"^^xsd:anyURI ;
     linkml:description "Loads a component definition from another resource." ;
     linkml:slot_usage [ ] ;
@@ -12539,9 +12539,9 @@
     skos:inScheme "https://w3id.org/lmodel/oscal_catalog"^^xsd:anyURI ;
     skos:prefLabel "rel" ;
     linkml:any_of [ a linkml:AnonymousSlotExpression ;
-            linkml:range <https://w3id.org/lmodel/oscal/TokenType> ],
+            linkml:range <https://w3id.org/lmodel/oscal/MetadataLinkRelEnum> ],
         [ a linkml:AnonymousSlotExpression ;
-            linkml:range <https://w3id.org/lmodel/oscal/MetadataLinkRelEnum> ] ;
+            linkml:range <https://w3id.org/lmodel/oscal/TokenType> ] ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_catalog/rel"^^xsd:anyURI ;
     linkml:description "Describes the type of relationship provided by the link's hypertext reference. This can be an indicator of the link's purpose." ;
     linkml:domain <https://w3id.org/lmodel/oscal/Link> ;
@@ -12555,8 +12555,8 @@
 
 <https://w3id.org/lmodel/oscal/MergeCustom> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/profile> ;
-    skos:exactMatch "oscal_profile:MergeCustom"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_profile"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_profile/MergeCustom"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_profile/MergeCustom"^^xsd:anyURI ;
     linkml:description "Provides an alternate grouping structure that selected controls will be placed in after profile resolution." ;
     linkml:slot_usage [ ] ;
@@ -12565,8 +12565,8 @@
 
 <https://w3id.org/lmodel/oscal/RelevantEvidence> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/assessment_common> ;
-    skos:exactMatch "oscal_assessment_plan:RelevantEvidence"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_plan/RelevantEvidence"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/RelevantEvidence"^^xsd:anyURI ;
     linkml:description "Links this observation to relevant evidence." ;
     linkml:mixins <https://w3id.org/lmodel/oscal/OscalCommon> ;
@@ -12579,8 +12579,8 @@
 
 <https://w3id.org/lmodel/oscal/TaskDependency> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/assessment_common> ;
-    skos:exactMatch "oscal_assessment_plan:TaskDependency"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_plan/TaskDependency"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/TaskDependency"^^xsd:anyURI ;
     linkml:description "Used to indicate that a task is dependent on another task." ;
     linkml:slot_usage [ ] ;
@@ -12676,8 +12676,8 @@
 
 <https://w3id.org/lmodel/oscal/AssessmentAssets> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/assessment_common> ;
-    skos:exactMatch "oscal_assessment_plan:AssessmentAssets"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_plan/AssessmentAssets"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/AssessmentAssets"^^xsd:anyURI ;
     linkml:description "Identifies the assets used to perform this assessment." ;
     linkml:slot_usage [ ] ;
@@ -12686,8 +12686,8 @@
 
 <https://w3id.org/lmodel/oscal/AssessmentLog> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/assessment_results> ;
-    skos:exactMatch "oscal_assessment_results:AssessmentLog"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_results"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_results/AssessmentLog"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_results/AssessmentLog"^^xsd:anyURI ;
     linkml:description "A log of all assessment-related actions taken." ;
     linkml:slot_usage [ ] ;
@@ -12695,8 +12695,8 @@
 
 <https://w3id.org/lmodel/oscal/AssociatedRisk> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/assessment_common> ;
-    skos:exactMatch "oscal_assessment_plan:AssociatedRisk"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_plan/AssociatedRisk"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/AssociatedRisk"^^xsd:anyURI ;
     linkml:description "Relates the finding to a set of referenced risks." ;
     linkml:slot_usage [ ] ;
@@ -12705,8 +12705,8 @@
 
 <https://w3id.org/lmodel/oscal/ConstraintTest> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/oscal_control_common> ;
-    skos:exactMatch "oscal_catalog:ConstraintTest"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_catalog"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_catalog/ConstraintTest"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_catalog/ConstraintTest"^^xsd:anyURI ;
     linkml:description "A test expression which is expected to be evaluated by a tool." ;
     linkml:slot_usage [ ] ;
@@ -12715,8 +12715,8 @@
 
 <https://w3id.org/lmodel/oscal/ControlObjectiveSelection> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/assessment_common> ;
-    skos:exactMatch "oscal_assessment_plan:ControlObjectiveSelection"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_plan/ControlObjectiveSelection"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/ControlObjectiveSelection"^^xsd:anyURI ;
     linkml:description "Identifies the control objectives of the assessment." ;
     linkml:mixins <https://w3id.org/lmodel/oscal/OscalCommon> ;
@@ -12731,8 +12731,8 @@
 
 <https://w3id.org/lmodel/oscal/EventTiming> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/assessment_common> ;
-    skos:exactMatch "oscal_assessment_plan:EventTiming"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_plan/EventTiming"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/EventTiming"^^xsd:anyURI ;
     linkml:description "The timing under which the task is intended to occur." ;
     linkml:slot_usage [ ] ;
@@ -12742,8 +12742,8 @@
 
 <https://w3id.org/lmodel/oscal/ImplementationCommonLink> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/implementation_common> ;
-    skos:exactMatch "oscal_assessment_plan:ImplementationCommonLink"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_plan/ImplementationCommonLink"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/ImplementationCommonLink"^^xsd:anyURI ;
     linkml:description "Implementation-common scoped OSCAL link." ;
     linkml:is_a <https://w3id.org/lmodel/oscal/Link> ;
@@ -12756,8 +12756,8 @@
 
 <https://w3id.org/lmodel/oscal/ImportAssessmentPlan> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/assessment_results> ;
-    skos:exactMatch "oscal_assessment_results:ImportAssessmentPlan"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_results"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_results/ImportAssessmentPlan"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_results/ImportAssessmentPlan"^^xsd:anyURI ;
     linkml:description "Used by assessment-results to import information about the original plan for assessing the system." ;
     linkml:slot_usage [ ] ;
@@ -12766,8 +12766,8 @@
 
 <https://w3id.org/lmodel/oscal/ImportProfile> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/ssp> ;
-    skos:exactMatch "oscal_ssp:ImportProfile"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_ssp"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_ssp/ImportProfile"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_ssp/ImportProfile"^^xsd:anyURI ;
     linkml:description "Used to import the OSCAL profile representing the system's control baseline." ;
     linkml:slot_usage [ ] ;
@@ -12776,8 +12776,8 @@
 
 <https://w3id.org/lmodel/oscal/ImportSSP> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/assessment_common> ;
-    skos:exactMatch "oscal_assessment_plan:ImportSSP"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_plan/ImportSSP"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/ImportSSP"^^xsd:anyURI ;
     linkml:description "Used by the assessment plan and POA&M to import information about the system." ;
     linkml:slot_usage [ ] ;
@@ -12786,8 +12786,8 @@
 
 <https://w3id.org/lmodel/oscal/LocalDefinitions> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/assessment_plan> ;
-    skos:exactMatch "oscal_assessment_plan:LocalDefinitions"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_plan/LocalDefinitions"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/LocalDefinitions"^^xsd:anyURI ;
     linkml:description "Used to define data objects that are used in the assessment plan, that do not appear in the referenced SSP." ;
     linkml:slot_usage [ ] ;
@@ -12800,8 +12800,8 @@
 
 <https://w3id.org/lmodel/oscal/OnDateCondition> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/assessment_common> ;
-    skos:exactMatch "oscal_assessment_plan:OnDateCondition"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_plan/OnDateCondition"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/OnDateCondition"^^xsd:anyURI ;
     linkml:description "The task is intended to occur on the specified date." ;
     linkml:slot_usage [ ] ;
@@ -12810,8 +12810,8 @@
 
 <https://w3id.org/lmodel/oscal/ParameterConstraint> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/oscal_control_common> ;
-    skos:exactMatch "oscal_catalog:ParameterConstraint"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_catalog"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_catalog/ParameterConstraint"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_catalog/ParameterConstraint"^^xsd:anyURI ;
     linkml:description "A formal or informal expression of a constraint or test." ;
     linkml:slot_usage [ ] ;
@@ -12820,8 +12820,8 @@
 
 <https://w3id.org/lmodel/oscal/ProfileModify> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/profile> ;
-    skos:exactMatch "oscal_profile:ProfileModify"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_profile"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_profile/ProfileModify"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_profile/ProfileModify"^^xsd:anyURI ;
     linkml:description "Set parameters or amend controls in resolution." ;
     linkml:slot_usage [ ] ;
@@ -12830,8 +12830,8 @@
 
 <https://w3id.org/lmodel/oscal/RelatedObservation> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/assessment_common> ;
-    skos:exactMatch "oscal_assessment_plan:RelatedObservation"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_plan/RelatedObservation"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/RelatedObservation"^^xsd:anyURI ;
     linkml:description "Relates the identified element to a set of referenced observations." ;
     linkml:slot_usage [ ] ;
@@ -12840,8 +12840,8 @@
 
 <https://w3id.org/lmodel/oscal/ResourceProperty> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/oscal_back_matter> ;
-    skos:exactMatch "oscal_catalog:ResourceProperty"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_catalog"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_catalog/ResourceProperty"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_catalog/ResourceProperty"^^xsd:anyURI ;
     linkml:description "Back-matter resource-scoped OSCAL property." ;
     linkml:is_a <https://w3id.org/lmodel/oscal/Property> ;
@@ -12856,8 +12856,8 @@
 
 <https://w3id.org/lmodel/oscal/RiskResponseReference> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/assessment_common> ;
-    skos:exactMatch "oscal_assessment_plan:RiskResponseReference"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_plan/RiskResponseReference"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/RiskResponseReference"^^xsd:anyURI ;
     linkml:description "Identifies an individual risk response that this log entry is for." ;
     linkml:mixins <https://w3id.org/lmodel/oscal/OscalCommon> ;
@@ -12870,8 +12870,8 @@
 
 <https://w3id.org/lmodel/oscal/SspSystemCharacteristicsProp> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/ssp> ;
-    skos:exactMatch "oscal_ssp:SspSystemCharacteristicsProp"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_ssp"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_ssp/SspSystemCharacteristicsProp"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_ssp/SspSystemCharacteristicsProp"^^xsd:anyURI ;
     linkml:description "SSP-scoped property used in system characteristics." ;
     linkml:is_a <https://w3id.org/lmodel/oscal/Property> ;
@@ -12886,8 +12886,8 @@
 
 <https://w3id.org/lmodel/oscal/SspSystemInformationProp> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/ssp> ;
-    skos:exactMatch "oscal_ssp:SspSystemInformationProp"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_ssp"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_ssp/SspSystemInformationProp"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_ssp/SspSystemInformationProp"^^xsd:anyURI ;
     linkml:description "SSP-scoped property used in system information." ;
     linkml:is_a <https://w3id.org/lmodel/oscal/Property> ;
@@ -12968,8 +12968,8 @@
 
 <https://w3id.org/lmodel/oscal/AssessmentSelectControlById> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/assessment_common> ;
-    skos:exactMatch "oscal_assessment_plan:AssessmentSelectControlById"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_plan/AssessmentSelectControlById"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/AssessmentSelectControlById"^^xsd:anyURI ;
     linkml:description "Select a specific control for inclusion/exclusion in the assessment by literal control ID and optional statement IDs." ;
     linkml:slot_usage [ ] ;
@@ -12978,8 +12978,8 @@
 
 <https://w3id.org/lmodel/oscal/ConfidenceScore> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/mapping_collection> ;
-    skos:exactMatch "oscal_mapping:ConfidenceScore"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_mapping"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_mapping/ConfidenceScore"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_mapping/ConfidenceScore"^^xsd:anyURI ;
     linkml:description "Confidence represented as a category and/or percentage value." ;
     linkml:slot_usage [ ] ;
@@ -12988,8 +12988,8 @@
 
 <https://w3id.org/lmodel/oscal/Coverage> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/mapping_collection> ;
-    skos:exactMatch "oscal_mapping:Coverage"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_mapping"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_mapping/Coverage"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_mapping/Coverage"^^xsd:anyURI ;
     linkml:description "A percentage representing target coverage by source mappings." ;
     linkml:slot_usage [ ] ;
@@ -12998,8 +12998,8 @@
 
 <https://w3id.org/lmodel/oscal/Export> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/ssp> ;
-    skos:exactMatch "oscal_ssp:Export"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_ssp"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_ssp/Export"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_ssp/Export"^^xsd:anyURI ;
     linkml:description "Defines a set of control implementations that are provided as reference implementations for use by organizations implementing the leveraged system." ;
     linkml:slot_usage [ ] ;
@@ -13011,8 +13011,8 @@
 
 <https://w3id.org/lmodel/oscal/OscalDocument> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/oscal_catalog> ;
-    skos:exactMatch "oscal_catalog:OscalDocument"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_catalog"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_catalog/OscalDocument"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_catalog/OscalDocument"^^xsd:anyURI ;
     linkml:description "A root wrapper for an OSCAL document, which may be of any OSCAL document type (e.g. Catalog, Profile, Assessment Plan, SSP)." ;
     linkml:slot_usage [ ] ;
@@ -13020,8 +13020,8 @@
 
 <https://w3id.org/lmodel/oscal/PoamLocalDefinitions> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/poam> ;
-    skos:exactMatch "oscal_poam:PoamLocalDefinitions"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_poam"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_poam/PoamLocalDefinitions"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_poam/PoamLocalDefinitions"^^xsd:anyURI ;
     linkml:description "Allows components and inventory items to be defined within the POA&M for cases where no OSCAL SSP is available with the POA&M." ;
     linkml:slot_usage [ ] ;
@@ -13032,8 +13032,8 @@
 
 <https://w3id.org/lmodel/oscal/RelatedFinding> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/poam> ;
-    skos:exactMatch "oscal_poam:RelatedFinding"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_poam"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_poam/RelatedFinding"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_poam/RelatedFinding"^^xsd:anyURI ;
     linkml:description "Relates a POA&M item to a referenced finding." ;
     linkml:slot_usage [ ] ;
@@ -13042,8 +13042,8 @@
 
 <https://w3id.org/lmodel/oscal/ResourceLink> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/oscal_back_matter> ;
-    skos:exactMatch "oscal_catalog:ResourceLink"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_catalog"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_catalog/ResourceLink"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_catalog/ResourceLink"^^xsd:anyURI ;
     linkml:description "A URL-based pointer to an external resource with an optional hash for verification and change detection." ;
     linkml:slot_usage [ ] ;
@@ -13053,8 +13053,8 @@
 
 <https://w3id.org/lmodel/oscal/ResultLocalDefinitions> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/assessment_results> ;
-    skos:exactMatch "oscal_assessment_results:ResultLocalDefinitions"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_results"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_results/ResultLocalDefinitions"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_results/ResultLocalDefinitions"^^xsd:anyURI ;
     linkml:description "Used to define local implementation and assessment assets referenced by a result that do not appear in the imported system security plan." ;
     linkml:slot_usage [ ] ;
@@ -13066,8 +13066,8 @@
 
 <https://w3id.org/lmodel/oscal/SelectObjectiveById> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/assessment_common> ;
-    skos:exactMatch "oscal_assessment_plan:SelectObjectiveById"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_plan/SelectObjectiveById"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/SelectObjectiveById"^^xsd:anyURI ;
     linkml:description "Used to select a control objective for inclusion/exclusion." ;
     linkml:slot_usage [ ] ;
@@ -13076,8 +13076,8 @@
 
 <https://w3id.org/lmodel/oscal/SspAllowsAuthenticatedScanProp> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/ssp> ;
-    skos:exactMatch "oscal_ssp:SspAllowsAuthenticatedScanProp"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_ssp"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_ssp/SspAllowsAuthenticatedScanProp"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_ssp/SspAllowsAuthenticatedScanProp"^^xsd:anyURI ;
     linkml:description "SSP-scoped property used for component and inventory allows-authenticated-scan." ;
     linkml:is_a <https://w3id.org/lmodel/oscal/Property> ;
@@ -13092,8 +13092,8 @@
 
 <https://w3id.org/lmodel/oscal/SspByComponentResponsibleRole> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/ssp> ;
-    skos:exactMatch "oscal_ssp:SspByComponentResponsibleRole"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_ssp"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_ssp/SspByComponentResponsibleRole"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_ssp/SspByComponentResponsibleRole"^^xsd:anyURI ;
     linkml:description "SSP-scoped responsible role used by by-component contexts." ;
     linkml:is_a <https://w3id.org/lmodel/oscal/ResponsibleRole> ;
@@ -13106,8 +13106,8 @@
 
 <https://w3id.org/lmodel/oscal/TermsAndConditionsPart> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/assessment_plan> ;
-    skos:exactMatch "oscal_assessment_plan:TermsAndConditionsPart"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_plan/TermsAndConditionsPart"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/TermsAndConditionsPart"^^xsd:anyURI ;
     linkml:description "A terms-and-conditions scoped assessment part." ;
     linkml:is_a <https://w3id.org/lmodel/oscal/AssessmentPart> ;
@@ -13187,8 +13187,8 @@
 
 <https://w3id.org/lmodel/oscal/Alteration> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/profile> ;
-    skos:exactMatch "oscal_profile:Alteration"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_profile"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_profile/Alteration"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_profile/Alteration"^^xsd:anyURI ;
     linkml:description "Specifies changes to be made to an included control when a profile is resolved." ;
     linkml:slot_usage [ ] ;
@@ -13198,8 +13198,8 @@
 
 <https://w3id.org/lmodel/oscal/AssessmentPlatform> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/assessment_common> ;
-    skos:exactMatch "oscal_assessment_plan:AssessmentPlatform"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_plan/AssessmentPlatform"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/AssessmentPlatform"^^xsd:anyURI ;
     linkml:description "Used to represent the toolset used to perform aspects of the assessment." ;
     linkml:mixins <https://w3id.org/lmodel/oscal/OscalCommon> ;
@@ -13213,8 +13213,8 @@
 
 <https://w3id.org/lmodel/oscal/AssessmentSubjectPlaceholder> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/assessment_common> ;
-    skos:exactMatch "oscal_assessment_plan:AssessmentSubjectPlaceholder"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_plan/AssessmentSubjectPlaceholder"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/AssessmentSubjectPlaceholder"^^xsd:anyURI ;
     linkml:description "Used when the assessment subjects will be determined as part of one or more other assessment activities." ;
     linkml:mixins <https://w3id.org/lmodel/oscal/OscalCommon> ;
@@ -13228,8 +13228,8 @@
 
 <https://w3id.org/lmodel/oscal/Base64Resource> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/oscal_back_matter> ;
-    skos:exactMatch "oscal_catalog:Base64Resource"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_catalog"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_catalog/Base64Resource"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_catalog/Base64Resource"^^xsd:anyURI ;
     linkml:description "A resource encoded using the Base64 alphabet defined by RFC 2045." ;
     linkml:slot_usage [ ] ;
@@ -13239,8 +13239,8 @@
 
 <https://w3id.org/lmodel/oscal/Citation> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/oscal_back_matter> ;
-    skos:exactMatch "oscal_catalog:Citation"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_catalog"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_catalog/Citation"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_catalog/Citation"^^xsd:anyURI ;
     linkml:description "An optional citation consisting of end note text using structured markup." ;
     linkml:mixins <https://w3id.org/lmodel/oscal/HasPropsAndLinks> ;
@@ -13251,8 +13251,8 @@
 
 <https://w3id.org/lmodel/oscal/HasResponsibleParties> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/oscal_catalog> ;
-    skos:exactMatch "oscal_catalog:HasResponsibleParties"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_catalog"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_catalog/HasResponsibleParties"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_catalog/HasResponsibleParties"^^xsd:anyURI ;
     linkml:description "Mixin providing the responsible-parties slot for objects that carry party assignments." ;
     linkml:mixin true ;
@@ -13261,8 +13261,8 @@
 
 <https://w3id.org/lmodel/oscal/HasResponsibleRoles> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/oscal_catalog> ;
-    skos:exactMatch "oscal_catalog:HasResponsibleRoles"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_catalog"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_catalog/HasResponsibleRoles"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_catalog/HasResponsibleRoles"^^xsd:anyURI ;
     linkml:description "Mixin providing the responsible-roles slot for objects that carry role assignments." ;
     linkml:mixin true ;
@@ -13271,8 +13271,8 @@
 
 <https://w3id.org/lmodel/oscal/LoggedBy> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/assessment_common> ;
-    skos:exactMatch "oscal_assessment_plan:LoggedBy"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_plan/LoggedBy"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/LoggedBy"^^xsd:anyURI ;
     linkml:description "Used to indicate who created a log entry in what role." ;
     linkml:slot_usage [ ] ;
@@ -13282,8 +13282,8 @@
 
 <https://w3id.org/lmodel/oscal/NetworkArchitecture> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/ssp> ;
-    skos:exactMatch "oscal_ssp:NetworkArchitecture"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_ssp"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_ssp/NetworkArchitecture"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_ssp/NetworkArchitecture"^^xsd:anyURI ;
     linkml:description "A description of the system's network architecture, optionally supplemented with diagrams that illustrate the network architecture." ;
     linkml:slot_usage [ ] ;
@@ -13295,8 +13295,8 @@
 
 <https://w3id.org/lmodel/oscal/ObjectiveStatus> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/assessment_common> ;
-    skos:exactMatch "oscal_assessment_plan:ObjectiveStatus"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_plan/ObjectiveStatus"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/ObjectiveStatus"^^xsd:anyURI ;
     linkml:description "A determination of if the objective is satisfied or not within a given system." ;
     linkml:slot_usage [ ] ;
@@ -13306,8 +13306,8 @@
 
 <https://w3id.org/lmodel/oscal/Origin> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/assessment_common> ;
-    skos:exactMatch "oscal_assessment_plan:Origin"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_plan/Origin"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/Origin"^^xsd:anyURI ;
     linkml:description "Identifies the source of the finding, such as a tool, interviewed person, or activity." ;
     linkml:slot_usage [ ] ;
@@ -13316,8 +13316,8 @@
 
 <https://w3id.org/lmodel/oscal/ProfileMerge> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/profile> ;
-    skos:exactMatch "oscal_profile:ProfileMerge"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_profile"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_profile/ProfileMerge"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_profile/ProfileMerge"^^xsd:anyURI ;
     linkml:description "Provides structuring directives that instruct how controls are organized after profile resolution." ;
     linkml:slot_usage [ ] ;
@@ -13328,8 +13328,8 @@
 
 <https://w3id.org/lmodel/oscal/Protocol> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/implementation_common> ;
-    skos:exactMatch "oscal_assessment_plan:Protocol"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_plan/Protocol"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/Protocol"^^xsd:anyURI ;
     linkml:description "Information about the protocol used to provide a service." ;
     linkml:slot_usage [ ] ;
@@ -13340,8 +13340,8 @@
 
 <https://w3id.org/lmodel/oscal/SspControlOriginationProp> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/ssp> ;
-    skos:exactMatch "oscal_ssp:SspControlOriginationProp"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_ssp"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_ssp/SspControlOriginationProp"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_ssp/SspControlOriginationProp"^^xsd:anyURI ;
     linkml:description "SSP-scoped property used in implemented requirement and by-component contexts." ;
     linkml:is_a <https://w3id.org/lmodel/oscal/Property> ;
@@ -13361,8 +13361,8 @@
 
 <https://w3id.org/lmodel/oscal/AssessmentMethod> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/assessment_common> ;
-    skos:exactMatch "oscal_assessment_plan:AssessmentMethod"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_plan/AssessmentMethod"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/AssessmentMethod"^^xsd:anyURI ;
     linkml:description "A local definition of a control objective." ;
     linkml:mixins <https://w3id.org/lmodel/oscal/OscalCommon> ;
@@ -13376,8 +13376,8 @@
 
 <https://w3id.org/lmodel/oscal/AssociatedActivity> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/assessment_common> ;
-    skos:exactMatch "oscal_assessment_plan:AssociatedActivity"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_plan/AssociatedActivity"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/AssociatedActivity"^^xsd:anyURI ;
     linkml:description "Identifies an individual activity to be performed as part of a task." ;
     linkml:mixins <https://w3id.org/lmodel/oscal/HasResponsibleRoles>,
@@ -13392,8 +13392,8 @@
 
 <https://w3id.org/lmodel/oscal/AuthorizationBoundary> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/ssp> ;
-    skos:exactMatch "oscal_ssp:AuthorizationBoundary"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_ssp"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_ssp/AuthorizationBoundary"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_ssp/AuthorizationBoundary"^^xsd:anyURI ;
     linkml:description "A description of this system's authorization boundary, optionally supplemented with diagrams that illustrate the authorization boundary." ;
     linkml:slot_usage [ ] ;
@@ -13405,8 +13405,8 @@
 
 <https://w3id.org/lmodel/oscal/DataFlow> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/ssp> ;
-    skos:exactMatch "oscal_ssp:DataFlow"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_ssp"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_ssp/DataFlow"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_ssp/DataFlow"^^xsd:anyURI ;
     linkml:description "A description of the logical flow of information within the system and across its boundaries, optionally supplemented with diagrams." ;
     linkml:slot_usage [ ] ;
@@ -13418,8 +13418,8 @@
 
 <https://w3id.org/lmodel/oscal/Hash> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/oscal_metadata> ;
-    skos:exactMatch "oscal_catalog:Hash"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_catalog"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_catalog/Hash"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_catalog/Hash"^^xsd:anyURI ;
     linkml:description "A representation of a cryptographic digest generated over a resource using a specified hash algorithm." ;
     linkml:slot_usage [ ] ;
@@ -13428,8 +13428,8 @@
 
 <https://w3id.org/lmodel/oscal/IdentifiedSubject> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/assessment_common> ;
-    skos:exactMatch "oscal_assessment_plan:IdentifiedSubject"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_plan/IdentifiedSubject"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/IdentifiedSubject"^^xsd:anyURI ;
     linkml:description "Used to detail assessment subjects that were identified by this task." ;
     linkml:slot_usage [ ] ;
@@ -13438,8 +13438,8 @@
 
 <https://w3id.org/lmodel/oscal/ImplementationCommonProperty> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/implementation_common> ;
-    skos:exactMatch "oscal_assessment_plan:ImplementationCommonProperty"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_plan/ImplementationCommonProperty"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/ImplementationCommonProperty"^^xsd:anyURI ;
     linkml:description "Implementation-common scoped OSCAL property." ;
     linkml:is_a <https://w3id.org/lmodel/oscal/Property> ;
@@ -13454,8 +13454,8 @@
 
 <https://w3id.org/lmodel/oscal/IncorporatesComponent> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/component_definition> ;
-    skos:exactMatch "oscal_component:IncorporatesComponent"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_component"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_component/IncorporatesComponent"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_component/IncorporatesComponent"^^xsd:anyURI ;
     linkml:description "The collection of components comprising a capability." ;
     linkml:slot_usage [ ] ;
@@ -13464,8 +13464,8 @@
 
 <https://w3id.org/lmodel/oscal/LocalObjective> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/assessment_common> ;
-    skos:exactMatch "oscal_assessment_plan:LocalObjective"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_plan/LocalObjective"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/LocalObjective"^^xsd:anyURI ;
     linkml:description "A local definition of a control objective for this assessment. Uses catalog syntax for control objective and assessment actions." ;
     linkml:mixins <https://w3id.org/lmodel/oscal/OscalCommon> ;
@@ -13479,8 +13479,8 @@
 
 <https://w3id.org/lmodel/oscal/LocationProperty> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/oscal_metadata> ;
-    skos:exactMatch "oscal_catalog:LocationProperty"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_catalog"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_catalog/LocationProperty"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_catalog/LocationProperty"^^xsd:anyURI ;
     linkml:description "Location-scoped OSCAL property." ;
     linkml:is_a <https://w3id.org/lmodel/oscal/Property> ;
@@ -13495,8 +13495,8 @@
 
 <https://w3id.org/lmodel/oscal/ResponsibleRole> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/oscal_metadata> ;
-    skos:exactMatch "oscal_catalog:ResponsibleRole"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_catalog"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_catalog/ResponsibleRole"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_catalog/ResponsibleRole"^^xsd:anyURI ;
     linkml:description "A reference to a role with responsibility for performing a function relative to the containing object, optionally associated with a set of persons and/or organizations that perform that role." ;
     linkml:mixins <https://w3id.org/lmodel/oscal/OscalCommon> ;
@@ -13509,8 +13509,8 @@
 
 <https://w3id.org/lmodel/oscal/SelectSubjectById> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/assessment_common> ;
-    skos:exactMatch "oscal_assessment_plan:SelectSubjectById"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_plan/SelectSubjectById"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/SelectSubjectById"^^xsd:anyURI ;
     linkml:description "Identifies a set of assessment subjects to include/exclude by UUID." ;
     linkml:mixins <https://w3id.org/lmodel/oscal/OscalCommon> ;
@@ -13523,8 +13523,8 @@
 
 <https://w3id.org/lmodel/oscal/TelephoneNumber> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/oscal_metadata> ;
-    skos:exactMatch "oscal_catalog:TelephoneNumber"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_catalog"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_catalog/TelephoneNumber"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_catalog/TelephoneNumber"^^xsd:anyURI ;
     linkml:description "A telephone service number as defined by ITU-T E.164." ;
     linkml:slot_usage [ ] ;
@@ -13533,8 +13533,8 @@
 
 <https://w3id.org/lmodel/oscal/WithinDateRange> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/assessment_common> ;
-    skos:exactMatch "oscal_assessment_plan:WithinDateRange"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_plan/WithinDateRange"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/WithinDateRange"^^xsd:anyURI ;
     linkml:description "The task is intended to occur within the specified date range." ;
     linkml:slot_usage [ ] ;
@@ -13631,8 +13631,8 @@
 
 <https://w3id.org/lmodel/oscal/AuthorizedPrivilege> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/implementation_common> ;
-    skos:exactMatch "oscal_assessment_plan:AuthorizedPrivilege"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_plan/AuthorizedPrivilege"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/AuthorizedPrivilege"^^xsd:anyURI ;
     linkml:description "Identifies a specific system privilege held by the user, along with an associated description and/or rationale for the privilege." ;
     linkml:slot_usage [ ] ;
@@ -13642,8 +13642,8 @@
 
 <https://w3id.org/lmodel/oscal/Characterization> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/assessment_common> ;
-    skos:exactMatch "oscal_assessment_plan:Characterization"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_plan/Characterization"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/Characterization"^^xsd:anyURI ;
     linkml:description "A collection of descriptive data about the containing object from a specific origin." ;
     linkml:mixins <https://w3id.org/lmodel/oscal/HasPropsAndLinks> ;
@@ -13655,8 +13655,8 @@
 
 <https://w3id.org/lmodel/oscal/DocumentId> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/oscal_metadata> ;
-    skos:exactMatch "oscal_catalog:DocumentId"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_catalog"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_catalog/DocumentId"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_catalog/DocumentId"^^xsd:anyURI ;
     linkml:description "A document identifier qualified by an identifier scheme." ;
     linkml:slot_usage [ ] ;
@@ -13665,8 +13665,8 @@
 
 <https://w3id.org/lmodel/oscal/GapSummary> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/mapping_collection> ;
-    skos:exactMatch "oscal_mapping:GapSummary"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_mapping"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_mapping/GapSummary"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_mapping/GapSummary"^^xsd:anyURI ;
     linkml:description "A summary of controls that were not mapped." ;
     linkml:slot_usage [ ] ;
@@ -13675,8 +13675,8 @@
 
 <https://w3id.org/lmodel/oscal/PartyExternalId> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/oscal_metadata> ;
-    skos:exactMatch "oscal_catalog:PartyExternalId"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_catalog"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_catalog/PartyExternalId"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_catalog/PartyExternalId"^^xsd:anyURI ;
     linkml:description "An identifier for a person or organization using a designated scheme, e.g. an Open Researcher and Contributor ID (ORCID)." ;
     linkml:slot_usage [ ] ;
@@ -13685,8 +13685,8 @@
 
 <https://w3id.org/lmodel/oscal/Removal> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/profile> ;
-    skos:exactMatch "oscal_profile:Removal"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_profile"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_profile/Removal"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_profile/Removal"^^xsd:anyURI ;
     linkml:description "Specifies objects to be removed from a control based on aspects of the object that must all match." ;
     linkml:slot_usage [ ] ;
@@ -13699,8 +13699,8 @@
 
 <https://w3id.org/lmodel/oscal/ResponsibleParty> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/oscal_metadata> ;
-    skos:exactMatch "oscal_catalog:ResponsibleParty"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_catalog"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_catalog/ResponsibleParty"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_catalog/ResponsibleParty"^^xsd:anyURI ;
     linkml:description "A reference to a set of persons and/or organizations that have responsibility for performing the referenced role in the context of the containing object." ;
     linkml:mixins <https://w3id.org/lmodel/oscal/OscalCommon> ;
@@ -13713,8 +13713,8 @@
 
 <https://w3id.org/lmodel/oscal/Role> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/oscal_metadata> ;
-    skos:exactMatch "oscal_catalog:Role"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_catalog"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_catalog/Role"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_catalog/Role"^^xsd:anyURI ;
     linkml:description "Defines a function, which might be assigned to a party in a specific situation." ;
     linkml:mixins <https://w3id.org/lmodel/oscal/OscalCommon> ;
@@ -13729,8 +13729,8 @@
 
 <https://w3id.org/lmodel/oscal/Step> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/assessment_common> ;
-    skos:exactMatch "oscal_assessment_plan:Step"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_plan/Step"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/Step"^^xsd:anyURI ;
     linkml:description "Identifies an individual step in a series of steps related to an activity, such as an assessment test or examination procedure." ;
     linkml:mixins <https://w3id.org/lmodel/oscal/HasResponsibleRoles>,
@@ -13747,8 +13747,8 @@
 
 <https://w3id.org/lmodel/oscal/ThreatId> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/assessment_common> ;
-    skos:exactMatch "oscal_assessment_plan:ThreatId"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_plan/ThreatId"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/ThreatId"^^xsd:anyURI ;
     linkml:description "A pointer, by ID, to an externally-defined threat." ;
     linkml:slot_usage [ ] ;
@@ -13793,8 +13793,8 @@
 
 <https://w3id.org/lmodel/oscal/AtFrequency> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/assessment_common> ;
-    skos:exactMatch "oscal_assessment_plan:AtFrequency"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_plan/AtFrequency"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/AtFrequency"^^xsd:anyURI ;
     linkml:description "The task is intended to occur at the specified frequency." ;
     linkml:slot_usage [ ] ;
@@ -13804,8 +13804,8 @@
 
 <https://w3id.org/lmodel/oscal/InsertControls> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/profile> ;
-    skos:exactMatch "oscal_profile:InsertControls"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_profile"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_profile/InsertControls"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_profile/InsertControls"^^xsd:anyURI ;
     linkml:description "Specifies which controls to use in the containing context (as part of a group or custom merge structure)." ;
     linkml:slot_usage [ ] ;
@@ -13816,8 +13816,8 @@
 
 <https://w3id.org/lmodel/oscal/MappingItem> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/mapping_collection> ;
-    skos:exactMatch "oscal_mapping:MappingItem"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_mapping"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_mapping/MappingItem"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_mapping/MappingItem"^^xsd:anyURI ;
     linkml:description "A source or target item participating in a mapping entry." ;
     linkml:mixins <https://w3id.org/lmodel/oscal/OscalCommon> ;
@@ -13830,8 +13830,8 @@
 
 <https://w3id.org/lmodel/oscal/OriginActor> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/assessment_common> ;
-    skos:exactMatch "oscal_assessment_plan:OriginActor"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_plan/OriginActor"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/OriginActor"^^xsd:anyURI ;
     linkml:description "The actor that produces an observation, a finding, or a risk." ;
     linkml:mixins <https://w3id.org/lmodel/oscal/HasPropsAndLinks> ;
@@ -13844,8 +13844,8 @@
 
 <https://w3id.org/lmodel/oscal/PortRange> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/implementation_common> ;
-    skos:exactMatch "oscal_assessment_plan:PortRange"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_plan/PortRange"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/PortRange"^^xsd:anyURI ;
     linkml:description "Where applicable, the transport layer protocol port range." ;
     linkml:slot_usage [ ] ;
@@ -13856,8 +13856,8 @@
 
 <https://w3id.org/lmodel/oscal/RelatedTask> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/assessment_common> ;
-    skos:exactMatch "oscal_assessment_plan:RelatedTask"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_plan/RelatedTask"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/RelatedTask"^^xsd:anyURI ;
     linkml:description "Identifies an individual task for which the containing object is a consequence of." ;
     linkml:mixins <https://w3id.org/lmodel/oscal/HasResponsibleParties>,
@@ -13873,8 +13873,8 @@
 
 <https://w3id.org/lmodel/oscal/ReviewedControls> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/assessment_common> ;
-    skos:exactMatch "oscal_assessment_plan:ReviewedControls"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_plan/ReviewedControls"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/ReviewedControls"^^xsd:anyURI ;
     linkml:description "Identifies the controls being assessed and their control objectives." ;
     linkml:mixins <https://w3id.org/lmodel/oscal/OscalCommon> ;
@@ -13888,8 +13888,8 @@
 
 <https://w3id.org/lmodel/oscal/SelectControlById> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/oscal_control_common> ;
-    skos:exactMatch "oscal_catalog:SelectControlById"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_catalog"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_catalog/SelectControlById"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_catalog/SelectControlById"^^xsd:anyURI ;
     linkml:description "Select a control or controls from an imported control set." ;
     linkml:slot_usage [ ] ;
@@ -13899,8 +13899,8 @@
 
 <https://w3id.org/lmodel/oscal/SystemId> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/implementation_common> ;
-    skos:exactMatch "oscal_assessment_plan:SystemId"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_plan/SystemId"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/SystemId"^^xsd:anyURI ;
     linkml:description "A human-oriented, globally unique identifier for a system." ;
     linkml:slot_usage [ ] ;
@@ -13914,8 +13914,8 @@
 
 <https://w3id.org/lmodel/oscal/SubjectReference> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/assessment_common> ;
-    skos:exactMatch "oscal_assessment_plan:SubjectReference"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_plan/SubjectReference"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/SubjectReference"^^xsd:anyURI ;
     linkml:description "A human-oriented identifier reference to a resource. Use type to indicate whether the identified resource is a component, inventory item, location, user, or something else." ;
     linkml:mixins <https://w3id.org/lmodel/oscal/OscalCommon> ;
@@ -13943,8 +13943,8 @@
 
 <https://w3id.org/lmodel/oscal/Action> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/oscal_metadata> ;
-    skos:exactMatch "oscal_catalog:Action"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_catalog"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_catalog/Action"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_catalog/Action"^^xsd:anyURI ;
     linkml:description "An action applied by a role within a given party to the content." ;
     linkml:mixins <https://w3id.org/lmodel/oscal/HasResponsibleParties>,
@@ -13961,8 +13961,8 @@
 
 <https://w3id.org/lmodel/oscal/Activity> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/assessment_common> ;
-    skos:exactMatch "oscal_assessment_plan:Activity"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_plan/Activity"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/Activity"^^xsd:anyURI ;
     linkml:description "Identifies an assessment or related process that can be performed. In the assessment plan, this is an intended activity." ;
     linkml:mixins <https://w3id.org/lmodel/oscal/HasResponsibleRoles>,
@@ -13980,8 +13980,8 @@
 
 <https://w3id.org/lmodel/oscal/Addition> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/profile> ;
-    skos:exactMatch "oscal_profile:Addition"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_profile"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_profile/Addition"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_profile/Addition"^^xsd:anyURI ;
     linkml:description "Specifies content to be added into controls in resolution." ;
     linkml:slot_usage [ ] ;
@@ -13995,8 +13995,8 @@
 
 <https://w3id.org/lmodel/oscal/Catalog> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/oscal_catalog> ;
-    skos:exactMatch "oscal_catalog:Catalog"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_catalog"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_catalog/Catalog"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_catalog/Catalog"^^xsd:anyURI ;
     linkml:description "A structured, organized collection of control information." ;
     linkml:slot_usage [ ] ;
@@ -14009,8 +14009,8 @@
 
 <https://w3id.org/lmodel/oscal/ControlSelection> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/assessment_common> ;
-    skos:exactMatch "oscal_assessment_plan:ControlSelection"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_plan/ControlSelection"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/ControlSelection"^^xsd:anyURI ;
     linkml:description "Identifies the controls being assessed." ;
     linkml:mixins <https://w3id.org/lmodel/oscal/OscalCommon> ;
@@ -14025,8 +14025,8 @@
 
 <https://w3id.org/lmodel/oscal/Diagram> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/ssp> ;
-    skos:exactMatch "oscal_ssp:Diagram"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_ssp"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_ssp/Diagram"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_ssp/Diagram"^^xsd:anyURI ;
     linkml:description "A graphic that provides a visual representation the system, or some aspect of it." ;
     linkml:slot_usage [ ] ;
@@ -14039,8 +14039,8 @@
 
 <https://w3id.org/lmodel/oscal/ImplementedComponent> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/implementation_common> ;
-    skos:exactMatch "oscal_assessment_plan:ImplementedComponent"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_plan/ImplementedComponent"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/ImplementedComponent"^^xsd:anyURI ;
     linkml:description "The set of components that are implemented in a given system inventory item." ;
     linkml:mixins <https://w3id.org/lmodel/oscal/HasResponsibleParties>,
@@ -14126,8 +14126,8 @@
 
 <https://w3id.org/lmodel/oscal/SspControlImplementation> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/ssp> ;
-    skos:exactMatch "oscal_ssp:SspControlImplementation"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_ssp"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_ssp/SspControlImplementation"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_ssp/SspControlImplementation"^^xsd:anyURI ;
     linkml:description "Describes how the system satisfies a set of controls." ;
     linkml:slot_usage [ ] ;
@@ -14146,8 +14146,8 @@
 
 <https://w3id.org/lmodel/oscal/Address> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/oscal_metadata> ;
-    skos:exactMatch "oscal_catalog:Address"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_catalog"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_catalog/Address"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_catalog/Address"^^xsd:anyURI ;
     linkml:description "A postal address for the location." ;
     linkml:slot_usage [ ] ;
@@ -14160,8 +14160,8 @@
 
 <https://w3id.org/lmodel/oscal/ImplementedControlStatement> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/component_definition> ;
-    skos:exactMatch "oscal_component:ImplementedControlStatement"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_component"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_component/ImplementedControlStatement"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_component/ImplementedControlStatement"^^xsd:anyURI ;
     linkml:description "Identifies which statements within a control are addressed." ;
     linkml:mixins <https://w3id.org/lmodel/oscal/HasPropsAndLinks>,
@@ -14177,8 +14177,8 @@
 
 <https://w3id.org/lmodel/oscal/Location> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/oscal_metadata> ;
-    skos:exactMatch "oscal_catalog:Location"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_catalog"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_catalog/Location"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_catalog/Location"^^xsd:anyURI ;
     linkml:description "A physical point of presence, which may be associated with people, organizations, or other concepts within the current or linked OSCAL document." ;
     linkml:mixins <https://w3id.org/lmodel/oscal/OscalCommon> ;
@@ -14195,8 +14195,8 @@
 
 <https://w3id.org/lmodel/oscal/MitigatingFactor> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/assessment_common> ;
-    skos:exactMatch "oscal_assessment_plan:MitigatingFactor"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_plan/MitigatingFactor"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/MitigatingFactor"^^xsd:anyURI ;
     linkml:description "Describes an existing mitigating factor that may affect the overall determination of the risk." ;
     linkml:mixins <https://w3id.org/lmodel/oscal/HasPropsAndLinks> ;
@@ -14210,8 +14210,8 @@
 
 <https://w3id.org/lmodel/oscal/ProfileImport> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/profile> ;
-    skos:exactMatch "oscal_profile:ProfileImport"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_profile"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_profile/ProfileImport"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_profile/ProfileImport"^^xsd:anyURI ;
     linkml:description "Designates a referenced source catalog or profile that provides a source of control information for use in creating a new overlay or baseline." ;
     linkml:slot_usage [ ] ;
@@ -14222,8 +14222,8 @@
 
 <https://w3id.org/lmodel/oscal/RequiredAsset> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/assessment_common> ;
-    skos:exactMatch "oscal_assessment_plan:RequiredAsset"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_plan/RequiredAsset"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/RequiredAsset"^^xsd:anyURI ;
     linkml:description "Identifies an asset required to achieve remediation." ;
     linkml:mixins <https://w3id.org/lmodel/oscal/OscalCommon> ;
@@ -14238,8 +14238,8 @@
 
 <https://w3id.org/lmodel/oscal/SystemInformation> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/ssp> ;
-    skos:exactMatch "oscal_ssp:SystemInformation"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_ssp"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_ssp/SystemInformation"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_ssp/SystemInformation"^^xsd:anyURI ;
     linkml:description "Contains details about all information types that are stored, processed, or transmitted by the system, such as privacy information." ;
     linkml:slot_usage [ ] ;
@@ -14254,8 +14254,8 @@
 
 <https://w3id.org/lmodel/oscal/AssessmentSubject> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/assessment_common> ;
-    skos:exactMatch "oscal_assessment_plan:AssessmentSubject"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_plan/AssessmentSubject"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/AssessmentSubject"^^xsd:anyURI ;
     linkml:description "Identifies system elements being assessed, such as components, inventory items, and locations." ;
     linkml:mixins <https://w3id.org/lmodel/oscal/OscalCommon> ;
@@ -14279,8 +14279,8 @@
 
 <https://w3id.org/lmodel/oscal/Facet> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/assessment_common> ;
-    skos:exactMatch "oscal_assessment_plan:Facet"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_plan/Facet"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/Facet"^^xsd:anyURI ;
     linkml:description "An individual characteristic that is part of a larger set produced by the same actor." ;
     linkml:mixins <https://w3id.org/lmodel/oscal/OscalCommon> ;
@@ -14294,8 +14294,8 @@
 
 <https://w3id.org/lmodel/oscal/MappingResourceReference> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/mapping_collection> ;
-    skos:exactMatch "oscal_mapping:MappingResourceReference"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_mapping"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_mapping/MappingResourceReference"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_mapping/MappingResourceReference"^^xsd:anyURI ;
     linkml:description "A reference to the source or target resource for a mapping." ;
     linkml:mixins <https://w3id.org/lmodel/oscal/OscalCommon> ;
@@ -14309,8 +14309,8 @@
 
 <https://w3id.org/lmodel/oscal/ProvidedControlImplementation> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/ssp> ;
-    skos:exactMatch "oscal_ssp:ProvidedControlImplementation"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_ssp"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_ssp/ProvidedControlImplementation"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_ssp/ProvidedControlImplementation"^^xsd:anyURI ;
     linkml:description "Describes a capability which may be inherited by a leveraging system." ;
     linkml:slot_usage [ ] ;
@@ -14323,8 +14323,8 @@
 
 <https://w3id.org/lmodel/oscal/SecurityImpactLevel> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/ssp> ;
-    skos:exactMatch "oscal_ssp:SecurityImpactLevel"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_ssp"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_ssp/SecurityImpactLevel"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_ssp/SecurityImpactLevel"^^xsd:anyURI ;
     linkml:description "The overall level of expected impact resulting from unauthorized disclosure, modification, or loss of access to information." ;
     linkml:slot_usage [ ] ;
@@ -14334,8 +14334,8 @@
 
 <https://w3id.org/lmodel/oscal/SetParameter> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/implementation_common> ;
-    skos:exactMatch "oscal_assessment_plan:SetParameter"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_plan/SetParameter"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/SetParameter"^^xsd:anyURI ;
     linkml:description "Identifies the parameter that will be set by the enclosed value." ;
     linkml:slot_usage [ ] ;
@@ -14345,8 +14345,8 @@
 
 <https://w3id.org/lmodel/oscal/SystemImplementation> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/ssp> ;
-    skos:exactMatch "oscal_ssp:SystemImplementation"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_ssp"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_ssp/SystemImplementation"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_ssp/SystemImplementation"^^xsd:anyURI ;
     linkml:description "Provides information as to how the system is implemented." ;
     linkml:slot_usage [ ] ;
@@ -14379,8 +14379,8 @@
 
 <https://w3id.org/lmodel/oscal/Control> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/oscal_catalog> ;
-    skos:exactMatch "oscal_catalog:Control"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_catalog"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_catalog/Control"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_catalog/Control"^^xsd:anyURI ;
     linkml:description "A structured object representing a requirement or guideline, which when implemented will reduce an aspect of risk related to an information system and its information." ;
     linkml:mixins <https://w3id.org/lmodel/oscal/HasPropsAndLinks> ;
@@ -14396,8 +14396,8 @@
 
 <https://w3id.org/lmodel/oscal/ControlPart> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/oscal_control_common> ;
-    skos:exactMatch "oscal_assessment_plan:ControlPart"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_plan/ControlPart"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/ControlPart"^^xsd:anyURI ;
     linkml:description "An annotated, markup-based textual element of a control's or catalog group's definition, or a child of another part." ;
     linkml:mixins <https://w3id.org/lmodel/oscal/HasPropsAndLinks> ;
@@ -14414,8 +14414,8 @@
 
 <https://w3id.org/lmodel/oscal/ControlResponsibility> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/ssp> ;
-    skos:exactMatch "oscal_ssp:ControlResponsibility"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_ssp"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_ssp/ControlResponsibility"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_ssp/ControlResponsibility"^^xsd:anyURI ;
     linkml:description "Describes a control implementation responsibility imposed on a leveraging system." ;
     linkml:slot_usage [ ] ;
@@ -14429,8 +14429,8 @@
 
 <https://w3id.org/lmodel/oscal/Group> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/oscal_catalog> ;
-    skos:exactMatch "oscal_catalog:Group"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_catalog"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_catalog/Group"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_catalog/Group"^^xsd:anyURI ;
     linkml:description "A group of controls, or of groups of controls." ;
     linkml:mixins <https://w3id.org/lmodel/oscal/HasPropsAndLinks> ;
@@ -14447,8 +14447,8 @@
 
 <https://w3id.org/lmodel/oscal/HasPropsAndLinks> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/oscal_catalog> ;
-    skos:exactMatch "oscal_catalog:HasPropsAndLinks"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_catalog"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_catalog/HasPropsAndLinks"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_catalog/HasPropsAndLinks"^^xsd:anyURI ;
     linkml:description "Mixin providing the props and links slots that are common to many OSCAL objects." ;
     linkml:mixin true ;
@@ -14458,8 +14458,8 @@
 
 <https://w3id.org/lmodel/oscal/ImpactLevel> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/ssp> ;
-    skos:exactMatch "oscal_ssp:ImpactLevel"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_ssp"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_ssp/ImpactLevel"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_ssp/ImpactLevel"^^xsd:anyURI ;
     linkml:description "The expected level of impact resulting from the described information's confidentiality, integrity, or availability affect." ;
     linkml:slot_usage [ ] ;
@@ -14471,8 +14471,8 @@
 
 <https://w3id.org/lmodel/oscal/ProfileGroup> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/profile> ;
-    skos:exactMatch "oscal_profile:ProfileGroup"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_profile"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_profile/ProfileGroup"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_profile/ProfileGroup"^^xsd:anyURI ;
     linkml:description "A group of (selected) controls or of groups of controls within a profile custom merge structure." ;
     linkml:mixins <https://w3id.org/lmodel/oscal/OscalCommon> ;
@@ -14512,8 +14512,8 @@
 
 <https://w3id.org/lmodel/oscal/AssessmentLogEntry> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/assessment_results> ;
-    skos:exactMatch "oscal_assessment_results:AssessmentLogEntry"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_results"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_results/AssessmentLogEntry"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_results/AssessmentLogEntry"^^xsd:anyURI ;
     linkml:description "Identifies the result of an action and/or task that occurred as part of executing an assessment plan or assessment event." ;
     linkml:mixins <https://w3id.org/lmodel/oscal/OscalCommon> ;
@@ -14531,8 +14531,8 @@
 
 <https://w3id.org/lmodel/oscal/AssessmentPart> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/assessment_common> ;
-    skos:exactMatch "oscal_assessment_plan:AssessmentPart"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_plan/AssessmentPart"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/AssessmentPart"^^xsd:anyURI ;
     linkml:description "A partition of an assessment plan or results or a child of another part." ;
     linkml:mixins <https://w3id.org/lmodel/oscal/HasPropsAndLinks> ;
@@ -14549,8 +14549,8 @@
 
 <https://w3id.org/lmodel/oscal/Capability> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/component_definition> ;
-    skos:exactMatch "oscal_component:Capability"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_component"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_component/Capability"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_component/Capability"^^xsd:anyURI ;
     linkml:description "A grouping of other components and/or capabilities." ;
     linkml:mixins <https://w3id.org/lmodel/oscal/OscalCommon> ;
@@ -14566,8 +14566,8 @@
 
 <https://w3id.org/lmodel/oscal/InheritedControlImplementation> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/ssp> ;
-    skos:exactMatch "oscal_ssp:InheritedControlImplementation"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_ssp"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_ssp/InheritedControlImplementation"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_ssp/InheritedControlImplementation"^^xsd:anyURI ;
     linkml:description "Describes a control implementation inherited by a leveraging system." ;
     linkml:slot_usage [ ] ;
@@ -14581,8 +14581,8 @@
 
 <https://w3id.org/lmodel/oscal/RiskLogEntry> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/assessment_common> ;
-    skos:exactMatch "oscal_assessment_plan:RiskLogEntry"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_plan/RiskLogEntry"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/RiskLogEntry"^^xsd:anyURI ;
     linkml:description "Identifies an individual risk response that occurred as part of managing an identified risk." ;
     linkml:mixins <https://w3id.org/lmodel/oscal/OscalCommon> ;
@@ -14615,8 +14615,8 @@
 
 <https://w3id.org/lmodel/oscal/ComponentDefinition> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/component_definition> ;
-    skos:exactMatch "oscal_component:ComponentDefinition"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_component"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_component/ComponentDefinition"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_component/ComponentDefinition"^^xsd:anyURI ;
     linkml:description "A collection of component descriptions, which may optionally be grouped by capability." ;
     linkml:slot_usage [ ] ;
@@ -14629,8 +14629,8 @@
 
 <https://w3id.org/lmodel/oscal/FindingTarget> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/assessment_common> ;
-    skos:exactMatch "oscal_assessment_plan:FindingTarget"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_plan/FindingTarget"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/FindingTarget"^^xsd:anyURI ;
     linkml:description "Captures an assessor's conclusions regarding the degree to which an objective is satisfied." ;
     linkml:mixins <https://w3id.org/lmodel/oscal/OscalCommon> ;
@@ -14647,21 +14647,21 @@
 
 <https://w3id.org/lmodel/oscal/Parameter> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/oscal_control_common> ;
-    skos:exactMatch "oscal_catalog:Parameter"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_catalog"^^xsd:anyURI ;
     sh:rule [ a linkml:ClassRule ;
+            dcterms:title "select-xor-values" ;
+            sh:condition [ a linkml:AnonymousClassExpression ;
+                    linkml:slot_conditions <https://w3id.org/lmodel/oscal/select> ] ;
+            linkml:postconditions [ a linkml:AnonymousClassExpression ;
+                    linkml:slot_conditions <https://w3id.org/lmodel/oscal/values> ] ],
+        [ a linkml:ClassRule ;
             dcterms:title "values-xor-select" ;
             sh:condition [ a linkml:AnonymousClassExpression ;
                     linkml:slot_conditions <https://w3id.org/lmodel/oscal/values> ] ;
             linkml:description "A parameter may have prescribed values or a selection construct, but not both (metaschema <choice> constraint)." ;
             linkml:postconditions [ a linkml:AnonymousClassExpression ;
-                    linkml:slot_conditions <https://w3id.org/lmodel/oscal/select> ] ],
-        [ a linkml:ClassRule ;
-            dcterms:title "select-xor-values" ;
-            sh:condition [ a linkml:AnonymousClassExpression ;
-                    linkml:slot_conditions <https://w3id.org/lmodel/oscal/select> ] ;
-            linkml:postconditions [ a linkml:AnonymousClassExpression ;
-                    linkml:slot_conditions <https://w3id.org/lmodel/oscal/values> ] ] ;
+                    linkml:slot_conditions <https://w3id.org/lmodel/oscal/select> ] ] ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_catalog/Parameter"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_catalog/Parameter"^^xsd:anyURI ;
     linkml:description "Parameters provide a mechanism for the dynamic assignment of value(s) in a control." ;
     linkml:mixins <https://w3id.org/lmodel/oscal/OscalCommon> ;
@@ -14681,8 +14681,8 @@
 
 <https://w3id.org/lmodel/oscal/ParameterSetting> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/profile> ;
-    skos:exactMatch "oscal_profile:ParameterSetting"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_profile"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_profile/ParameterSetting"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_profile/ParameterSetting"^^xsd:anyURI ;
     linkml:description "A parameter setting to be propagated to points of insertion in a resolved profile." ;
     linkml:mixins <https://w3id.org/lmodel/oscal/HasPropsAndLinks> ;
@@ -14701,8 +14701,8 @@
 
 <https://w3id.org/lmodel/oscal/Revision> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/oscal_metadata> ;
-    skos:exactMatch "oscal_catalog:Revision"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_catalog"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_catalog/Revision"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_catalog/Revision"^^xsd:anyURI ;
     linkml:description "An entry in a sequential list of revisions to the containing document." ;
     linkml:mixins <https://w3id.org/lmodel/oscal/OscalCommon> ;
@@ -14718,8 +14718,8 @@
 
 <https://w3id.org/lmodel/oscal/SystemUser> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/implementation_common> ;
-    skos:exactMatch "oscal_assessment_plan:SystemUser"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_plan/SystemUser"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/SystemUser"^^xsd:anyURI ;
     linkml:description "A type of user that interacts with the system based on an associated role." ;
     linkml:mixins <https://w3id.org/lmodel/oscal/OscalCommon> ;
@@ -14736,8 +14736,8 @@
 
 <https://w3id.org/lmodel/oscal/MappingProvenance> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/mapping_collection> ;
-    skos:exactMatch "oscal_mapping:MappingProvenance"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_mapping"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_mapping/MappingProvenance"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_mapping/MappingProvenance"^^xsd:anyURI ;
     linkml:description "Mapping-level provenance details and mapping defaults." ;
     linkml:mixins <https://w3id.org/lmodel/oscal/HasResponsibleParties>,
@@ -14756,8 +14756,8 @@
 
 <https://w3id.org/lmodel/oscal/Profile> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/profile> ;
-    skos:exactMatch "oscal_profile:Profile"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_profile"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_profile/Profile"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_profile/Profile"^^xsd:anyURI ;
     linkml:description "An OSCAL Profile that designates a set of controls from one or more catalogs or profiles, optionally restructures and modifies them, to describe a basis for a security standard or body of practice." ;
     linkml:slot_usage [ ] ;
@@ -14770,8 +14770,8 @@
 
 <https://w3id.org/lmodel/oscal/QualifierItem> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/mapping_collection> ;
-    skos:exactMatch "oscal_mapping:QualifierItem"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_mapping"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_mapping/QualifierItem"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_mapping/QualifierItem"^^xsd:anyURI ;
     linkml:description "A qualifier describing requirements or incompatibilities." ;
     linkml:slot_usage [ ] ;
@@ -14795,8 +14795,8 @@
 
 <https://w3id.org/lmodel/oscal/InformationType> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/ssp> ;
-    skos:exactMatch "oscal_ssp:InformationType"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_ssp"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_ssp/InformationType"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_ssp/InformationType"^^xsd:anyURI ;
     linkml:description "Contains details about one information type that is stored, processed, or transmitted by the system, such as privacy information, and its impact level." ;
     linkml:slot_usage [ ] ;
@@ -14812,8 +14812,8 @@
 
 <https://w3id.org/lmodel/oscal/InventoryItem> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/implementation_common> ;
-    skos:exactMatch "oscal_assessment_plan:InventoryItem"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_plan/InventoryItem"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/InventoryItem"^^xsd:anyURI ;
     linkml:description "A single managed inventory item within the system." ;
     linkml:mixins <https://w3id.org/lmodel/oscal/HasResponsibleParties>,
@@ -14829,8 +14829,8 @@
 
 <https://w3id.org/lmodel/oscal/MappingCollection> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/mapping_collection> ;
-    skos:exactMatch "oscal_mapping:MappingCollection"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_mapping"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_mapping/MappingCollection"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_mapping/MappingCollection"^^xsd:anyURI ;
     linkml:description "A collection of control mappings between source and target resources." ;
     linkml:slot_usage [ ] ;
@@ -14842,8 +14842,8 @@
 
 <https://w3id.org/lmodel/oscal/SatisfiedControlImplementation> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/ssp> ;
-    skos:exactMatch "oscal_ssp:SatisfiedControlImplementation"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_ssp"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_ssp/SatisfiedControlImplementation"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_ssp/SatisfiedControlImplementation"^^xsd:anyURI ;
     linkml:description "Describes how this system satisfies a responsibility imposed by a leveraged system." ;
     linkml:slot_usage [ ] ;
@@ -14857,8 +14857,8 @@
 
 <https://w3id.org/lmodel/oscal/SspStatement> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/ssp> ;
-    skos:exactMatch "oscal_ssp:SspStatement"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_ssp"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_ssp/SspStatement"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_ssp/SspStatement"^^xsd:anyURI ;
     linkml:description "Identifies which statements within a control are addressed." ;
     linkml:slot_usage [ ] ;
@@ -14872,8 +14872,8 @@
 
 <https://w3id.org/lmodel/oscal/DefinedComponent> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/component_definition> ;
-    skos:exactMatch "oscal_component:DefinedComponent"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_component"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_component/DefinedComponent"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_component/DefinedComponent"^^xsd:anyURI ;
     linkml:description "A defined component that can be part of an implemented system." ;
     linkml:mixins <https://w3id.org/lmodel/oscal/HasResponsibleRoles>,
@@ -14893,8 +14893,8 @@
 
 <https://w3id.org/lmodel/oscal/Link> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/oscal_metadata> ;
-    skos:exactMatch "oscal_catalog:Link"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_catalog"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_catalog/Link"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_catalog/Link"^^xsd:anyURI ;
     linkml:description "A reference to a local or remote resource, that has a specific relation to the containing object." ;
     linkml:slot_usage [ ] ;
@@ -14906,8 +14906,8 @@
 
 <https://w3id.org/lmodel/oscal/PoamItem> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/poam> ;
-    skos:exactMatch "oscal_poam:PoamItem"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_poam"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_poam/PoamItem"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_poam/PoamItem"^^xsd:anyURI ;
     linkml:description "Describes an individual POA&M item." ;
     linkml:mixins <https://w3id.org/lmodel/oscal/OscalCommon> ;
@@ -14925,8 +14925,8 @@
 
 <https://w3id.org/lmodel/oscal/Response> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/assessment_common> ;
-    skos:exactMatch "oscal_assessment_plan:Response"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_plan/Response"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/Response"^^xsd:anyURI ;
     linkml:description "Describes either recommended or an actual plan for addressing the risk." ;
     linkml:mixins <https://w3id.org/lmodel/oscal/OscalCommon> ;
@@ -14944,8 +14944,8 @@
 
 <https://w3id.org/lmodel/oscal/ControlImplementationSet> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/component_definition> ;
-    skos:exactMatch "oscal_component:ControlImplementationSet"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_component"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_component/ControlImplementationSet"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_component/ControlImplementationSet"^^xsd:anyURI ;
     linkml:description "Defines how the component or capability supports a set of controls." ;
     linkml:mixins <https://w3id.org/lmodel/oscal/HasPropsAndLinks> ;
@@ -14960,8 +14960,8 @@
 
 <https://w3id.org/lmodel/oscal/Finding> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/assessment_common> ;
-    skos:exactMatch "oscal_assessment_plan:Finding"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_plan/Finding"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/Finding"^^xsd:anyURI ;
     linkml:description "Describes an individual finding." ;
     linkml:mixins <https://w3id.org/lmodel/oscal/OscalCommon> ;
@@ -14980,8 +14980,8 @@
 
 <https://w3id.org/lmodel/oscal/LeveragedAuthorization> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/ssp> ;
-    skos:exactMatch "oscal_ssp:LeveragedAuthorization"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_ssp"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_ssp/LeveragedAuthorization"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_ssp/LeveragedAuthorization"^^xsd:anyURI ;
     linkml:description "A description of another authorized system from which this system inherits capabilities that satisfy security requirements. Another term for this concept is a common control provider." ;
     linkml:slot_usage [ ] ;
@@ -15002,8 +15002,8 @@
 
 <https://w3id.org/lmodel/oscal/AssessmentResults> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/assessment_results> ;
-    skos:exactMatch "oscal_assessment_results:AssessmentResults"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_results"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_results/AssessmentResults"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_results/AssessmentResults"^^xsd:anyURI ;
     linkml:description "Security assessment results, such as those provided by a FedRAMP assessor in a security assessment report." ;
     linkml:slot_usage [ ] ;
@@ -15016,8 +15016,8 @@
 
 <https://w3id.org/lmodel/oscal/ImplementedRequirement> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/component_definition> ;
-    skos:exactMatch "oscal_component:ImplementedRequirement"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_component"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_component/ImplementedRequirement"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_component/ImplementedRequirement"^^xsd:anyURI ;
     linkml:description "Describes how the containing component or capability implements an individual control." ;
     linkml:mixins <https://w3id.org/lmodel/oscal/HasPropsAndLinks>,
@@ -15035,8 +15035,8 @@
 
 <https://w3id.org/lmodel/oscal/Task> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/assessment_common> ;
-    skos:exactMatch "oscal_assessment_plan:Task"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_plan/Task"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/Task"^^xsd:anyURI ;
     linkml:description "Represents a scheduled event or milestone, which may be associated with a series of assessment actions." ;
     linkml:mixins <https://w3id.org/lmodel/oscal/HasResponsibleRoles>,
@@ -15058,8 +15058,8 @@
 
 <https://w3id.org/lmodel/oscal/AssessmentPlan> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/assessment_plan> ;
-    skos:exactMatch "oscal_assessment_plan:AssessmentPlan"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_plan/AssessmentPlan"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/AssessmentPlan"^^xsd:anyURI ;
     linkml:description "An assessment plan, such as those provided by a FedRAMP assessor." ;
     linkml:slot_usage [ ] ;
@@ -15076,8 +15076,8 @@
 
 <https://w3id.org/lmodel/oscal/SspImplementedRequirement> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/ssp> ;
-    skos:exactMatch "oscal_ssp:SspImplementedRequirement"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_ssp"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_ssp/SspImplementedRequirement"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_ssp/SspImplementedRequirement"^^xsd:anyURI ;
     linkml:description "Describes how the system satisfies an individual control." ;
     linkml:slot_usage [ ] ;
@@ -15093,8 +15093,8 @@
 
 <https://w3id.org/lmodel/oscal/Part> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/oscal_control_common> ;
-    skos:exactMatch "oscal_catalog:Part"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_catalog"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_catalog/Part"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_catalog/Part"^^xsd:anyURI ;
     linkml:description "An annotated, markup-based textual element of a control's or catalog group's definition, or a child of another part." ;
     linkml:mixins <https://w3id.org/lmodel/oscal/HasPropsAndLinks> ;
@@ -15111,8 +15111,8 @@
 
 <https://w3id.org/lmodel/oscal/Resource> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/oscal_back_matter> ;
-    skos:exactMatch "oscal_catalog:Resource"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_catalog"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_catalog/Resource"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_catalog/Resource"^^xsd:anyURI ;
     linkml:description "A resource associated with content in the containing document instance. A resource may be directly included in the document using base64 encoding or may point to one or more equivalent internet resources." ;
     linkml:slot_usage [ ] ;
@@ -15128,8 +15128,8 @@
 
 <https://w3id.org/lmodel/oscal/Map> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/mapping_collection> ;
-    skos:exactMatch "oscal_mapping:Map"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_mapping"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_mapping/Map"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_mapping/Map"^^xsd:anyURI ;
     linkml:description "A relationship-based mapping entry between source and target sets." ;
     linkml:mixins <https://w3id.org/lmodel/oscal/OscalCommon> ;
@@ -15149,8 +15149,8 @@
 
 <https://w3id.org/lmodel/oscal/Observation> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/assessment_common> ;
-    skos:exactMatch "oscal_assessment_plan:Observation"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_plan/Observation"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/Observation"^^xsd:anyURI ;
     linkml:description "Describes an individual observation." ;
     linkml:mixins <https://w3id.org/lmodel/oscal/OscalCommon> ;
@@ -15171,8 +15171,8 @@
 
 <https://w3id.org/lmodel/oscal/SystemSecurityPlan> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/ssp> ;
-    skos:exactMatch "oscal_ssp:SystemSecurityPlan"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_ssp"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_ssp/SystemSecurityPlan"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_ssp/SystemSecurityPlan"^^xsd:anyURI ;
     linkml:description "A system security plan, such as those described in NIST SP 800-18." ;
     linkml:slot_usage [ ] ;
@@ -15186,21 +15186,21 @@
 
 <https://w3id.org/lmodel/oscal/Party> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/oscal_metadata> ;
-    skos:exactMatch "oscal_catalog:Party"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_catalog"^^xsd:anyURI ;
     sh:rule [ a linkml:ClassRule ;
-            dcterms:title "location-uuids-xor-addresses" ;
-            sh:condition [ a linkml:AnonymousClassExpression ;
-                    linkml:slot_conditions <https://w3id.org/lmodel/oscal/location_uuids> ] ;
-            linkml:postconditions [ a linkml:AnonymousClassExpression ;
-                    linkml:slot_conditions <https://w3id.org/lmodel/oscal/addresses> ] ],
-        [ a linkml:ClassRule ;
             dcterms:title "addresses-xor-location-uuids" ;
             sh:condition [ a linkml:AnonymousClassExpression ;
                     linkml:slot_conditions <https://w3id.org/lmodel/oscal/addresses> ] ;
             linkml:description "A party may have inline addresses or location UUID references, but not both (metaschema <choice> constraint)." ;
             linkml:postconditions [ a linkml:AnonymousClassExpression ;
-                    linkml:slot_conditions <https://w3id.org/lmodel/oscal/location_uuids> ] ] ;
+                    linkml:slot_conditions <https://w3id.org/lmodel/oscal/location_uuids> ] ],
+        [ a linkml:ClassRule ;
+            dcterms:title "location-uuids-xor-addresses" ;
+            sh:condition [ a linkml:AnonymousClassExpression ;
+                    linkml:slot_conditions <https://w3id.org/lmodel/oscal/location_uuids> ] ;
+            linkml:postconditions [ a linkml:AnonymousClassExpression ;
+                    linkml:slot_conditions <https://w3id.org/lmodel/oscal/addresses> ] ] ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_catalog/Party"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_catalog/Party"^^xsd:anyURI ;
     linkml:description "An organization or person, which may be associated with roles or other concepts within the current or linked OSCAL document." ;
     linkml:mixins <https://w3id.org/lmodel/oscal/OscalCommon> ;
@@ -15221,8 +15221,8 @@
 
 <https://w3id.org/lmodel/oscal/PlanOfActionAndMilestones> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/poam> ;
-    skos:exactMatch "oscal_poam:PlanOfActionAndMilestones"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_poam"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_poam/PlanOfActionAndMilestones"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_poam/PlanOfActionAndMilestones"^^xsd:anyURI ;
     linkml:description "A plan of action and milestones that identifies initial and residual risks, deviations, and disposition." ;
     linkml:slot_usage [ ] ;
@@ -15239,8 +15239,8 @@
 
 <https://w3id.org/lmodel/oscal/SystemComponent> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/implementation_common> ;
-    skos:exactMatch "oscal_assessment_plan:SystemComponent"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_plan/SystemComponent"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/SystemComponent"^^xsd:anyURI ;
     linkml:description "A defined component that can be part of an implemented system." ;
     linkml:mixins <https://w3id.org/lmodel/oscal/HasResponsibleRoles>,
@@ -15302,8 +15302,8 @@
 
 <https://w3id.org/lmodel/oscal/Risk> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/assessment_common> ;
-    skos:exactMatch "oscal_assessment_plan:Risk"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_plan"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_plan/Risk"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_plan/Risk"^^xsd:anyURI ;
     linkml:description "An identified risk." ;
     linkml:mixins <https://w3id.org/lmodel/oscal/HasPropsAndLinks> ;
@@ -15326,8 +15326,8 @@
 
 <https://w3id.org/lmodel/oscal/ByComponent> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/ssp> ;
-    skos:exactMatch "oscal_ssp:ByComponent"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_ssp"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_ssp/ByComponent"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_ssp/ByComponent"^^xsd:anyURI ;
     linkml:description "Defines how the referenced component implements a set of controls." ;
     linkml:slot_usage [ ] ;
@@ -15346,8 +15346,8 @@
 
 <https://w3id.org/lmodel/oscal/Property> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/oscal_metadata> ;
-    skos:exactMatch "oscal_catalog:Property"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_catalog"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_catalog/Property"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_catalog/Property"^^xsd:anyURI ;
     linkml:description "An attribute, characteristic, or quality of the containing object expressed as a namespace qualified name/value pair." ;
     linkml:slot_usage [ ] ;
@@ -15361,8 +15361,8 @@
 
 <https://w3id.org/lmodel/oscal/Result> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/assessment_results> ;
-    skos:exactMatch "oscal_assessment_results:Result"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_assessment_results"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_assessment_results/Result"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_assessment_results/Result"^^xsd:anyURI ;
     linkml:description "Identifies all of the assessment observations and findings, initial and residual risks, deviations, and disposition for a particular execution of the assessment." ;
     linkml:mixins <https://w3id.org/lmodel/oscal/OscalCommon> ;
@@ -15390,8 +15390,8 @@
 
 <https://w3id.org/lmodel/oscal/Mapping> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/mapping_collection> ;
-    skos:exactMatch "oscal_mapping:Mapping"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_mapping"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_mapping/Mapping"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_mapping/Mapping"^^xsd:anyURI ;
     linkml:description "A mapping between two mapped resources." ;
     linkml:mixins <https://w3id.org/lmodel/oscal/OscalCommon> ;
@@ -15421,8 +15421,8 @@
 
 <https://w3id.org/lmodel/oscal/Metadata> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/oscal_metadata> ;
-    skos:exactMatch "oscal_catalog:Metadata"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_catalog"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_catalog/Metadata"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_catalog/Metadata"^^xsd:anyURI ;
     linkml:description "Provides information about the containing document, and defines concepts shared across the document." ;
     linkml:mixins <https://w3id.org/lmodel/oscal/HasResponsibleParties>,
@@ -15508,8 +15508,8 @@
 
 <https://w3id.org/lmodel/oscal/OscalCommon> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/oscal_catalog> ;
-    skos:exactMatch "oscal_catalog:OscalCommon"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_catalog"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_catalog/OscalCommon"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_catalog/OscalCommon"^^xsd:anyURI ;
     linkml:description "Mixin providing props, links, and remarks slots common to most OSCAL objects. Extends HasPropsAndLinks." ;
     linkml:mixin true ;
@@ -15521,8 +15521,8 @@
 
 <https://w3id.org/lmodel/oscal/SystemCharacteristics> a linkml:ClassDefinition ;
     OIO:inSubset <https://w3id.org/lmodel/oscal/ssp> ;
-    skos:exactMatch "oscal_ssp:SystemCharacteristics"^^xsd:anyURI ;
     skos:inScheme "https://w3id.org/lmodel/oscal_ssp"^^xsd:anyURI ;
+    linkml:class_uri "https://w3id.org/lmodel/oscal_ssp/SystemCharacteristics"^^xsd:anyURI ;
     linkml:definition_uri "https://w3id.org/lmodel/oscal_ssp/SystemCharacteristics"^^xsd:anyURI ;
     linkml:description "Contains the characteristics of the system, such as its name, purpose, and security impact level." ;
     linkml:slot_usage [ ] ;

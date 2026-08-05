@@ -1,5 +1,5 @@
 # Auto generated from oscal.yaml by namespacegen.py version: 0.0.1
-# Generation date: 2026-05-20T14:10:23
+# Generation date: 2026-08-05T13:05:41
 # Schema: oscal
 #
 # id: https://w3id.org/lmodel/oscal

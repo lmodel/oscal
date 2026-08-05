@@ -1,7 +1,7 @@
 -- ====================================================================
 -- SQL Validation Queries
 -- Generated from LinkML schema
--- LinkML v1.11.0
+-- LinkML v1.11.1
 -- Generator: sqlvalidationgen.py v0.1.0
 -- Dialect: sqlite
 -- ====================================================================
