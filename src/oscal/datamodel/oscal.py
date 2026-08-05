@@ -1,5 +1,5 @@
 # Auto generated from oscal.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-05-20T14:14:09
+# Generation date: 2026-08-05T13:45:23
 # Schema: oscal
 #
 # id: https://w3id.org/lmodel/oscal
