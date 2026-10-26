@@ -13,6 +13,7 @@ requires-python = ">=3.11"
 dependencies = [
     "linkml>=1.11.1",
     "lokf[build]>=0.3.0",
+    "rust-just==1.47.0",
 ]
 
 [tool.uv]
