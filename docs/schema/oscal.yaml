@@ -1,16 +1,24 @@
 name: oscal
 annotations:
+  oscal_tag:
+    tag: oscal_tag
+    value: v1.2.3
+  oscal_commit:
+    tag: oscal_commit
+    value: e061961c7702afeabffdf5e59894d35e748dade1
   uuid:
     tag: uuid
-    value: e0b9845b-6de4-4f52-a96c-56255f507520
+    value: 5bda39c3-8ebf-4717-b21f-c96a20c27f18
   last-modified:
     tag: last-modified
-    value: '2026-03-27T10:00:00Z'
-description: 'OSCAL: Open Security Controls Assessment Language: LinkML Schema'
-title: oscal
+    value: '2026-10-28T23:30:00Z'
+description: 'A LinkML model of NIST''s Open Security Controls Assessment Language
+  (OSCAL) 1.2.3: the catalog, profile, component definition, system security plan,
+  assessment plan, assessment results, plan of action and milestones, and mapping
+  collection models, each in a module of its own.'
+title: Open Security Controls Assessment Language (OSCAL)
 notes:
-- '{''Every time the content of an OSCAL file changes, the following must also change'':
-  None}'
+- 'Every time the content of an OSCAL file changes, the following must also change:'
 - A new UUID value must be generated and assigned to the root element's uuid.
 - The last-modified field in metadata must be assigned with the date and time at the
   moment the file is saved with the modified content.
@@ -19,10 +27,21 @@ notes:
   with version control.
 - When converting between formats, such as XML to JSON, these values should remain
   the same. This enables tools to know the content within the two formats is equivalent.
+comments:
+- The version is the OSCAL release the model renders. Its tag and commit are in the
+  annotations, and src/oscal/schema/metaschema/ holds that commit's metaschema sources,
+  where every allowed-values list an enum renders is defined; each enum's oscal_allowed_values
+  annotation names its lists. scripts/check_upstream_release.py reads the same pins
+  and reports when NIST tags a newer release or the copy drifts. The release tags
+  are the schema's own versions.
+source: https://github.com/usnistgov/OSCAL/tree/e061961c7702afeabffdf5e59894d35e748dade1/src/metaschema
 see_also:
 - https://lmodel.github.io/oscal
+- https://pages.nist.gov/OSCAL/
+- https://pages.nist.gov/OSCAL-Reference/models/v1.2.3/
+- https://github.com/usnistgov/OSCAL/releases/tag/v1.2.3
 id: https://w3id.org/lmodel/oscal
-version: 1.2.1
+version: 1.2.3
 imports:
 - linkml:types
 - ./oscal_catalog
@@ -33,7 +52,6 @@ imports:
 - ./oscal_component
 - ./oscal_mapping
 - ./oscal_poam
-- ./oscal
 license: Apache-2.0
 prefixes:
   oscal:
@@ -464,20 +482,32 @@ types:
     name: NonNegativeIntegerType
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/NonNegativeIntegerType
     description: A non-negative integer value (>= 0), as used for port range boundaries.
+      OSCAL 1.2.2 restored this minimum in its JSON datatype. Each slot with this
+      range repeats it, because the generated Pydantic model reads a minimum from
+      the slot and not from the type.
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     base: int
     uri: xsd:nonNegativeInteger
+    minimum_value: 0
   PositiveIntegerType:
     name: PositiveIntegerType
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/PositiveIntegerType
     description: A positive integer value (>= 1), as used for task recurrence periods.
+      OSCAL 1.2.2 restored this minimum in its JSON datatype. Each slot with this
+      range repeats it, because the generated Pydantic model reads a minimum from
+      the slot and not from the type.
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     base: int
     uri: xsd:positiveInteger
+    minimum_value: 1
 enums:
   PartyTypeEnum:
     name: PartyTypeEnum
     definition_uri: https://w3id.org/lmodel/oscal_catalog/PartyTypeEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-metadata-party-type-values
     from_schema: https://w3id.org/lmodel/oscal_catalog
     permissible_values:
       person:
@@ -488,6 +518,9 @@ enums:
     name: HashAlgorithmEnum
     definition_uri: https://w3id.org/lmodel/oscal_catalog/HashAlgorithmEnum
     annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-back-matter-resource-hash-algorithm-values
       allow_any:
         tag: allow_any
         value: true
@@ -517,6 +550,9 @@ enums:
     name: PhoneTypeEnum
     definition_uri: https://w3id.org/lmodel/oscal_catalog/PhoneTypeEnum
     annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-metadata-telephone-number-type-values
       allow_any:
         tag: allow_any
         value: true
@@ -536,6 +572,9 @@ enums:
     name: AddressTypeEnum
     definition_uri: https://w3id.org/lmodel/oscal_catalog/AddressTypeEnum
     annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-metadata-address-location-type-values
       allow_any:
         tag: allow_any
         value: true
@@ -552,6 +591,10 @@ enums:
     name: MetadataLinkRelEnum
     definition_uri: https://w3id.org/lmodel/oscal_catalog/MetadataLinkRelEnum
     annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-metadata-revision-link-rel-types oscal-metadata-link-rel-values@metadata
+          oscal-catalog-metadata-link-rel-type oscal-metadata-link-rel-values@rel
       allow_any:
         tag: allow_any
         value: true
@@ -582,6 +625,10 @@ enums:
   LocationPropNameEnum:
     name: LocationPropNameEnum
     definition_uri: https://w3id.org/lmodel/oscal_catalog/LocationPropNameEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-metadata-location-prop-name-values
     description: Allowed OSCAL property names for metadata locations.
     from_schema: https://w3id.org/lmodel/oscal_catalog
     permissible_values:
@@ -591,6 +638,9 @@ enums:
     name: LocationPropTypeEnum
     definition_uri: https://w3id.org/lmodel/oscal_catalog/LocationPropTypeEnum
     annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-metadata-location-prop-type-values
       allow_any:
         tag: allow_any
         value: true
@@ -602,10 +652,29 @@ enums:
     permissible_values:
       data-center:
         text: data-center
+      region:
+        text: region
+      zone:
+        text: zone
+      headquarters:
+        text: headquarters
+      regional-office:
+        text: regional-office
+      satellite-office:
+        text: satellite-office
+      edge:
+        text: edge
+      cdn:
+        text: cdn
+      domain:
+        text: domain
   LocationDataCenterClassEnum:
     name: LocationDataCenterClassEnum
     definition_uri: https://w3id.org/lmodel/oscal_catalog/LocationDataCenterClassEnum
     annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-metadata-location-prop-type-data-center-values
       allow_any:
         tag: allow_any
         value: true
@@ -619,10 +688,23 @@ enums:
         text: primary
       alternate:
         text: alternate
+      peer:
+        text: peer
+      availability:
+        text: availability
+      sub:
+        text: sub
+      fault:
+        text: fault
+      failure:
+        text: failure
   PartyExternalIdSchemeEnum:
     name: PartyExternalIdSchemeEnum
     definition_uri: https://w3id.org/lmodel/oscal_catalog/PartyExternalIdSchemeEnum
     annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-metadata-party-external-id-values
       allow_any:
         tag: allow_any
         value: true
@@ -637,6 +719,10 @@ enums:
   PartyPropNameEnum:
     name: PartyPropNameEnum
     definition_uri: https://w3id.org/lmodel/oscal_catalog/PartyPropNameEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-metadata-party-prop-name-values
     description: Allowed OSCAL property names for metadata parties.
     from_schema: https://w3id.org/lmodel/oscal_catalog
     permissible_values:
@@ -650,6 +736,9 @@ enums:
     name: MetadataResponsiblePartyRoleIdEnum
     definition_uri: https://w3id.org/lmodel/oscal_catalog/MetadataResponsiblePartyRoleIdEnum
     annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-metadata-responsible-party-role-ids
       allow_any:
         tag: allow_any
         value: true
@@ -672,6 +761,10 @@ enums:
   MetadataPropNameEnum:
     name: MetadataPropNameEnum
     definition_uri: https://w3id.org/lmodel/oscal_catalog/MetadataPropNameEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-catalog-metadata-prop-name oscal-metadata-prop-name-values@metadata
     description: Allowed OSCAL property names for metadata.
     from_schema: https://w3id.org/lmodel/oscal_catalog
     permissible_values:
@@ -684,6 +777,10 @@ enums:
   RevisionPropNameEnum:
     name: RevisionPropNameEnum
     definition_uri: https://w3id.org/lmodel/oscal_catalog/RevisionPropNameEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-metadata-prop-name-values@property
     description: Allowed OSCAL property names for metadata revisions.
     from_schema: https://w3id.org/lmodel/oscal_catalog
     permissible_values:
@@ -692,6 +789,10 @@ enums:
   ResourcePropNameEnum:
     name: ResourcePropNameEnum
     definition_uri: https://w3id.org/lmodel/oscal_catalog/ResourcePropNameEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-back-matter-resource-prop-name-values
     description: Allowed OSCAL property names for back-matter resources.
     from_schema: https://w3id.org/lmodel/oscal_catalog
     permissible_values:
@@ -704,6 +805,10 @@ enums:
   ResourcePropTypeEnum:
     name: ResourcePropTypeEnum
     definition_uri: https://w3id.org/lmodel/oscal_catalog/ResourcePropTypeEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-back-matter-resource-prop-type-values
     description: Allowed OSCAL back-matter resource type property values.
     from_schema: https://w3id.org/lmodel/oscal_catalog
     permissible_values:
@@ -759,6 +864,9 @@ enums:
     name: ActionSystemEnum
     definition_uri: https://w3id.org/lmodel/oscal_catalog/ActionSystemEnum
     annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-metadata-action-system-values
       allow_any:
         tag: allow_any
         value: true
@@ -773,6 +881,10 @@ enums:
   ActionTypeEnum:
     name: ActionTypeEnum
     definition_uri: https://w3id.org/lmodel/oscal_catalog/ActionTypeEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-metadata-action-type-values
     description: Allowed OSCAL action type values.
     from_schema: https://w3id.org/lmodel/oscal_catalog
     permissible_values:
@@ -784,6 +896,9 @@ enums:
     name: DocumentIdSchemeEnum
     definition_uri: https://w3id.org/lmodel/oscal_catalog/DocumentIdSchemeEnum
     annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-metadata-document-id-scheme-values
       allow_any:
         tag: allow_any
         value: true
@@ -798,6 +913,10 @@ enums:
   ParameterCardinalityEnum:
     name: ParameterCardinalityEnum
     definition_uri: https://w3id.org/lmodel/oscal_catalog/ParameterCardinalityEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-parameter-how-many-type
     from_schema: https://w3id.org/lmodel/oscal_catalog
     permissible_values:
       one:
@@ -807,6 +926,10 @@ enums:
   PartPropNameEnum:
     name: PartPropNameEnum
     definition_uri: https://w3id.org/lmodel/oscal_catalog/PartPropNameEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-part-prop-name
     description: Allowed OSCAL property names for control-common parts.
     from_schema: https://w3id.org/lmodel/oscal_catalog
     permissible_values:
@@ -819,6 +942,10 @@ enums:
   ParameterPropNameEnum:
     name: ParameterPropNameEnum
     definition_uri: https://w3id.org/lmodel/oscal_catalog/ParameterPropNameEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-parameter-prop-name
     description: Allowed OSCAL property names for control-common parameters.
     from_schema: https://w3id.org/lmodel/oscal_catalog
     permissible_values:
@@ -833,6 +960,10 @@ enums:
   RmfParameterPropNameEnum:
     name: RmfParameterPropNameEnum
     definition_uri: https://w3id.org/lmodel/oscal_catalog/RmfParameterPropNameEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-rmf-parameter-prop-name
     description: Allowed OSCAL RMF parameter property names.
     from_schema: https://w3id.org/lmodel/oscal_catalog
     permissible_values:
@@ -841,6 +972,10 @@ enums:
   GroupPartNameEnum:
     name: GroupPartNameEnum
     definition_uri: https://w3id.org/lmodel/oscal_catalog/GroupPartNameEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-group-part-name
     description: Allowed OSCAL part names for catalog groups.
     from_schema: https://w3id.org/lmodel/oscal_catalog
     permissible_values:
@@ -851,6 +986,10 @@ enums:
   ControlPropNameEnum:
     name: ControlPropNameEnum
     definition_uri: https://w3id.org/lmodel/oscal_catalog/ControlPropNameEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-control-prop-name
     description: Allowed OSCAL property names for catalog controls.
     from_schema: https://w3id.org/lmodel/oscal_catalog
     permissible_values:
@@ -865,17 +1004,38 @@ enums:
   ControlPropStatusValueEnum:
     name: ControlPropStatusValueEnum
     definition_uri: https://w3id.org/lmodel/oscal_catalog/ControlPropStatusValueEnum
-    description: Allowed OSCAL status property values for catalog controls.
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-control-prop-status-value
+      allow_any:
+        tag: allow_any
+        value: true
+    description: Curated OSCAL status property values for catalog controls. Other
+      values are permitted (OSCAL allow-other="yes").
     from_schema: https://w3id.org/lmodel/oscal_catalog
     permissible_values:
       withdrawn:
         text: withdrawn
-      Withdrawn:
-        text: Withdrawn
+      reserved:
+        text: reserved
+      deprecated:
+        text: deprecated
+      conditional:
+        text: conditional
+      superseded:
+        text: superseded
+      modified:
+        text: modified
+      experimental:
+        text: experimental
   ControlLinkRelEnum:
     name: ControlLinkRelEnum
     definition_uri: https://w3id.org/lmodel/oscal_catalog/ControlLinkRelEnum
     annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-control-link-rel-type
       allow_any:
         tag: allow_any
         value: true
@@ -896,6 +1056,10 @@ enums:
   ControlPartNameEnum:
     name: ControlPartNameEnum
     definition_uri: https://w3id.org/lmodel/oscal_catalog/ControlPartNameEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-control-part-name
     description: Allowed top-level OSCAL part names for catalog controls.
     from_schema: https://w3id.org/lmodel/oscal_catalog
     permissible_values:
@@ -914,6 +1078,10 @@ enums:
   ControlStatementPartSubpartNameEnum:
     name: ControlStatementPartSubpartNameEnum
     definition_uri: https://w3id.org/lmodel/oscal_catalog/ControlStatementPartSubpartNameEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-control-statement-part-subpart-name
     description: Allowed OSCAL subpart names for control statement parts.
     from_schema: https://w3id.org/lmodel/oscal_catalog
     permissible_values:
@@ -922,6 +1090,10 @@ enums:
   ControlStatementPartNameEnum:
     name: ControlStatementPartNameEnum
     definition_uri: https://w3id.org/lmodel/oscal_catalog/ControlStatementPartNameEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-control-statement-part-name
     description: Allowed OSCAL part names for control statement parts.
     from_schema: https://w3id.org/lmodel/oscal_catalog
     permissible_values:
@@ -932,6 +1104,10 @@ enums:
   ControlObjectivePartSubpartNameEnum:
     name: ControlObjectivePartSubpartNameEnum
     definition_uri: https://w3id.org/lmodel/oscal_catalog/ControlObjectivePartSubpartNameEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-control-objective-part-subpart-name
     description: Allowed OSCAL subpart names for control objective parts.
     from_schema: https://w3id.org/lmodel/oscal_catalog
     permissible_values:
@@ -942,6 +1118,10 @@ enums:
   ControlStatementPartPropNameEnum:
     name: ControlStatementPartPropNameEnum
     definition_uri: https://w3id.org/lmodel/oscal_catalog/ControlStatementPartPropNameEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-control-statement-part-prop-name
     description: Allowed OSCAL property names for control statement parts.
     from_schema: https://w3id.org/lmodel/oscal_catalog
     permissible_values:
@@ -950,6 +1130,10 @@ enums:
   ControlStatementPartRmfPropNameEnum:
     name: ControlStatementPartRmfPropNameEnum
     definition_uri: https://w3id.org/lmodel/oscal_catalog/ControlStatementPartRmfPropNameEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-control-statement-part-rmf-prop-name
     description: Allowed OSCAL RMF property names for control statement parts.
     from_schema: https://w3id.org/lmodel/oscal_catalog
     permissible_values:
@@ -958,6 +1142,10 @@ enums:
   ControlObjectivePartMethodPropValueEnum:
     name: ControlObjectivePartMethodPropValueEnum
     definition_uri: https://w3id.org/lmodel/oscal_catalog/ControlObjectivePartMethodPropValueEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-control-objective-part-method-prop-value
     description: Allowed OSCAL method property values for control objectives.
     from_schema: https://w3id.org/lmodel/oscal_catalog
     permissible_values:
@@ -970,6 +1158,10 @@ enums:
   WithChildControlsEnum:
     name: WithChildControlsEnum
     definition_uri: https://w3id.org/lmodel/oscal_catalog/WithChildControlsEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-with-child-controls-values
     from_schema: https://w3id.org/lmodel/oscal_catalog
     permissible_values:
       'yes':
@@ -979,6 +1171,10 @@ enums:
   InsertOrderEnum:
     name: InsertOrderEnum
     definition_uri: https://w3id.org/lmodel/oscal_profile/InsertOrderEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-profile-insert-controls-order-values
     description: Ordering options for a selection of controls.
     from_schema: https://w3id.org/lmodel/oscal_profile
     permissible_values:
@@ -991,6 +1187,10 @@ enums:
   AdditionPositionEnum:
     name: AdditionPositionEnum
     definition_uri: https://w3id.org/lmodel/oscal_profile/AdditionPositionEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-alter-position-values
     description: Where new content is added relative to the targeted element.
     from_schema: https://w3id.org/lmodel/oscal_profile
     permissible_values:
@@ -1005,6 +1205,10 @@ enums:
   ByItemNameEnum:
     name: ByItemNameEnum
     definition_uri: https://w3id.org/lmodel/oscal_profile/ByItemNameEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-profile-alter-by-item-name-values
     description: Identifies content to remove by the item's object type name.
     from_schema: https://w3id.org/lmodel/oscal_profile
     permissible_values:
@@ -1023,6 +1227,10 @@ enums:
   CombinationMethodEnum:
     name: CombinationMethodEnum
     definition_uri: https://w3id.org/lmodel/oscal_profile/CombinationMethodEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-profile-merge-combine-method-values
     description: Methods for resolving duplicate control instances during merge.
     from_schema: https://w3id.org/lmodel/oscal_profile
     permissible_values:
@@ -1036,6 +1244,10 @@ enums:
   AlterationPropNameEnum:
     name: AlterationPropNameEnum
     definition_uri: https://w3id.org/lmodel/oscal_profile/AlterationPropNameEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-part-prop-name
     description: Allowed OSCAL property names for profile modification additions.
     from_schema: https://w3id.org/lmodel/oscal_profile
     permissible_values:
@@ -1048,6 +1260,10 @@ enums:
   SystemOperatingStatusEnum:
     name: SystemOperatingStatusEnum
     definition_uri: https://w3id.org/lmodel/oscal_ssp/SystemOperatingStatusEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-status-state-values
     description: Allowable operational states for an OSCAL-described system.
     from_schema: https://w3id.org/lmodel/oscal_ssp
     permissible_values:
@@ -1069,6 +1285,10 @@ enums:
   SystemCharacteristicsPropNameEnum:
     name: SystemCharacteristicsPropNameEnum
     definition_uri: https://w3id.org/lmodel/oscal_ssp/SystemCharacteristicsPropNameEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-system-characteristics-prop-name-values@system-characteristics
     description: OSCAL-defined property names used within system characteristics.
     from_schema: https://w3id.org/lmodel/oscal_ssp
     permissible_values:
@@ -1085,6 +1305,10 @@ enums:
   AssuranceLevelValueEnum:
     name: AssuranceLevelValueEnum
     definition_uri: https://w3id.org/lmodel/oscal_ssp/AssuranceLevelValueEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-system-characteristics-prop-sp-800-63-assurance-level-values
     description: NIST SP 800-63 assurance level values.
     from_schema: https://w3id.org/lmodel/oscal_ssp
     permissible_values:
@@ -1097,6 +1321,10 @@ enums:
   CloudDeploymentModelEnum:
     name: CloudDeploymentModelEnum
     definition_uri: https://w3id.org/lmodel/oscal_ssp/CloudDeploymentModelEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-system-characteristics-prop-cloud-deployment-model-values
     description: Cloud deployment model values used by OSCAL SSP properties.
     from_schema: https://w3id.org/lmodel/oscal_ssp
     permissible_values:
@@ -1115,6 +1343,10 @@ enums:
   CloudServiceModelEnum:
     name: CloudServiceModelEnum
     definition_uri: https://w3id.org/lmodel/oscal_ssp/CloudServiceModelEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-system-characteristics-prop-cloud-service-model-values
     description: Cloud service model values used by OSCAL SSP properties.
     from_schema: https://w3id.org/lmodel/oscal_ssp
     permissible_values:
@@ -1130,6 +1362,9 @@ enums:
     name: SystemCharacteristicsResponsibleRoleIdEnum
     definition_uri: https://w3id.org/lmodel/oscal_ssp/SystemCharacteristicsResponsibleRoleIdEnum
     annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-system-characteristics-responsible-party-role-id-values
       allow_any:
         tag: allow_any
         value: true
@@ -1157,6 +1392,9 @@ enums:
     name: InformationTypeCategorizationSystemEnum
     definition_uri: https://w3id.org/lmodel/oscal_ssp/InformationTypeCategorizationSystemEnum
     annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-information-type-categorization-system-values
       allow_any:
         tag: allow_any
         value: true
@@ -1169,6 +1407,10 @@ enums:
   SystemInformationPropNameEnum:
     name: SystemInformationPropNameEnum
     definition_uri: https://w3id.org/lmodel/oscal_ssp/SystemInformationPropNameEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-system-information-prop-name-values
     description: OSCAL-defined property names used within system information.
     from_schema: https://w3id.org/lmodel/oscal_ssp
     permissible_values:
@@ -1177,6 +1419,10 @@ enums:
   PrivacyDesignationEnum:
     name: PrivacyDesignationEnum
     definition_uri: https://w3id.org/lmodel/oscal_ssp/PrivacyDesignationEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-system-information-prop-privacy-designation-values
     description: Privacy designation property values.
     from_schema: https://w3id.org/lmodel/oscal_ssp
     permissible_values:
@@ -1188,6 +1434,9 @@ enums:
     name: SystemInformationLinkRelEnum
     definition_uri: https://w3id.org/lmodel/oscal_ssp/SystemInformationLinkRelEnum
     annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-system-information-link-rel-values
       allow_any:
         tag: allow_any
         value: true
@@ -1201,6 +1450,9 @@ enums:
     name: Fips199ImpactLevelEnum
     definition_uri: https://w3id.org/lmodel/oscal_ssp/Fips199ImpactLevelEnum
     annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-fips-199-impact-levels
       allow_any:
         tag: allow_any
         value: true
@@ -1218,6 +1470,9 @@ enums:
     name: DiagramLinkRelEnum
     definition_uri: https://w3id.org/lmodel/oscal_ssp/DiagramLinkRelEnum
     annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-diagram-link-rel-values
       allow_any:
         tag: allow_any
         value: true
@@ -1231,6 +1486,9 @@ enums:
     name: LeveragedAuthorizationLinkRelEnum
     definition_uri: https://w3id.org/lmodel/oscal_ssp/LeveragedAuthorizationLinkRelEnum
     annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-leveraged-authorization-link-rel-values
       allow_any:
         tag: allow_any
         value: true
@@ -1243,6 +1501,10 @@ enums:
   AllowsAuthenticatedScanEnum:
     name: AllowsAuthenticatedScanEnum
     definition_uri: https://w3id.org/lmodel/oscal_ssp/AllowsAuthenticatedScanEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-component-allows-authenticated-scan-value
     description: Values for allows-authenticated-scan property in SSP component and
       inventory contexts.
     from_schema: https://w3id.org/lmodel/oscal_ssp
@@ -1254,6 +1516,10 @@ enums:
   ControlOriginationPropNameEnum:
     name: ControlOriginationPropNameEnum
     definition_uri: https://w3id.org/lmodel/oscal_ssp/ControlOriginationPropNameEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-implemented-requirement-statement-by-component-prop-name-values
     description: OSCAL-defined property names used in implementation statements.
     from_schema: https://w3id.org/lmodel/oscal_ssp
     permissible_values:
@@ -1262,6 +1528,10 @@ enums:
   ControlOriginationValueEnum:
     name: ControlOriginationValueEnum
     definition_uri: https://w3id.org/lmodel/oscal_ssp/ControlOriginationValueEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-implemented-requirement-statement-by-component-prop-control-origination-values
     description: Control origination values.
     from_schema: https://w3id.org/lmodel/oscal_ssp
     permissible_values:
@@ -1279,6 +1549,9 @@ enums:
     name: ImplementedRequirementResponsibleRoleIdEnum
     definition_uri: https://w3id.org/lmodel/oscal_ssp/ImplementedRequirementResponsibleRoleIdEnum
     annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-implemented-requirement-responsible-role-id-values
       allow_any:
         tag: allow_any
         value: true
@@ -1304,6 +1577,9 @@ enums:
     name: ByComponentLinkRelEnum
     definition_uri: https://w3id.org/lmodel/oscal_ssp/ByComponentLinkRelEnum
     annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-by-component-link-rel-values
       allow_any:
         tag: allow_any
         value: true
@@ -1319,6 +1595,9 @@ enums:
     name: ByComponentResponsibleRoleIdEnum
     definition_uri: https://w3id.org/lmodel/oscal_ssp/ByComponentResponsibleRoleIdEnum
     annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-by-component-responsible-role-id-values
       allow_any:
         tag: allow_any
         value: true
@@ -1348,6 +1627,9 @@ enums:
     name: TaskTypeEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/TaskTypeEnum
     annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-task-values
       allow_any:
         tag: allow_any
         value: true
@@ -1363,6 +1645,10 @@ enums:
   TimingUnitEnum:
     name: TimingUnitEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/TimingUnitEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-timing-unit-values
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     permissible_values:
       seconds:
@@ -1381,6 +1667,9 @@ enums:
     name: AssessmentSubjectTypeEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/AssessmentSubjectTypeEnum
     annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-assessment-subject-values
       allow_any:
         tag: allow_any
         value: true
@@ -1404,6 +1693,9 @@ enums:
     name: SelectSubjectTypeEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/SelectSubjectTypeEnum
     annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-assessment-subject-type-values
       allow_any:
         tag: allow_any
         value: true
@@ -1428,6 +1720,10 @@ enums:
   OriginActorTypeEnum:
     name: OriginActorTypeEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/OriginActorTypeEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-origin-actor-type-values
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     permissible_values:
       tool:
@@ -1440,6 +1736,9 @@ enums:
     name: ObservationMethodEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/ObservationMethodEnum
     annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-observation-method-type-values
       allow_any:
         tag: allow_any
         value: true
@@ -1461,6 +1760,9 @@ enums:
     name: ObservationTypeEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/ObservationTypeEnum
     annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-observation-values
       allow_any:
         tag: allow_any
         value: true
@@ -1487,6 +1789,9 @@ enums:
     name: RiskStatusEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/RiskStatusEnum
     annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-risk-status-values
       allow_any:
         tag: allow_any
         value: true
@@ -1510,6 +1815,10 @@ enums:
   FindingTargetTypeEnum:
     name: FindingTargetTypeEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/FindingTargetTypeEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-finding-target-values
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     permissible_values:
       statement-id:
@@ -1519,6 +1828,10 @@ enums:
   ObjectiveStatusStateEnum:
     name: ObjectiveStatusStateEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/ObjectiveStatusStateEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-finding-target-status-state-values
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     permissible_values:
       satisfied:
@@ -1529,6 +1842,9 @@ enums:
     name: ObjectiveStatusReasonEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/ObjectiveStatusReasonEnum
     annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-finding-target-reason-values
       allow_any:
         tag: allow_any
         value: true
@@ -1548,6 +1864,9 @@ enums:
     name: ImplementationStatusStateEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/ImplementationStatusStateEnum
     annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-implementation-status-values
       allow_any:
         tag: allow_any
         value: true
@@ -1571,6 +1890,9 @@ enums:
     name: ComponentTypeEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/ComponentTypeEnum
     annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-component-type-values
       allow_any:
         tag: allow_any
         value: true
@@ -1608,9 +1930,19 @@ enums:
         text: validation
       network:
         text: network
+      region:
+        text: region
+      zone:
+        text: zone
+      resource-container:
+        text: resource-container
   ComponentStateEnum:
     name: ComponentStateEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/ComponentStateEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-component-status-state-values
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     permissible_values:
       under-development:
@@ -1624,6 +1956,10 @@ enums:
   TransportEnum:
     name: TransportEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/TransportEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-component-protocol-transport-values
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     permissible_values:
       TCP:
@@ -1633,6 +1969,12 @@ enums:
   ImplementationPropNameEnum:
     name: ImplementationPropNameEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/ImplementationPropNameEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-component-prop-name-values oscal-inventory-item-prop-name-values
+          oscal-component-interconnection-prop-name-values oscal-user-prop-name-values
+          oscal-software-component-prop-name oscal-component-hardware-service-software-prop-name-values
     description: Allowed OSCAL implementation-common property names.
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     permissible_values:
@@ -1728,6 +2070,10 @@ enums:
     name: ImplementationLinkRelEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/ImplementationLinkRelEnum
     annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-component-link-rel-values oscal-service-component-link-rel-type
+          oscal-component-prop-validation-link-rel-values oscal-component-interconnection-link-rel-values
       allow_any:
         tag: allow_any
         value: true
@@ -1763,6 +2109,9 @@ enums:
     name: ImplementationAssetTypeEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/ImplementationAssetTypeEnum
     annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-component-asset-type-value
       allow_any:
         tag: allow_any
         value: true
@@ -1797,6 +2146,10 @@ enums:
   ImplementationPointEnum:
     name: ImplementationPointEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/ImplementationPointEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-component-implementation-point-value
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     permissible_values:
       internal:
@@ -1806,6 +2159,10 @@ enums:
   ImplementationIpAddressClassEnum:
     name: ImplementationIpAddressClassEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/ImplementationIpAddressClassEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-component-prop-ipaddress-class-values
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     permissible_values:
       local:
@@ -1815,6 +2172,10 @@ enums:
   ImplementationDirectionEnum:
     name: ImplementationDirectionEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/ImplementationDirectionEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-component-prop-direction-values
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     permissible_values:
       incoming:
@@ -1824,6 +2185,10 @@ enums:
   UserTypeEnum:
     name: UserTypeEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/UserTypeEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-user-prop-type-values
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     permissible_values:
       internal:
@@ -1835,6 +2200,10 @@ enums:
   UserPrivilegeLevelEnum:
     name: UserPrivilegeLevelEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/UserPrivilegeLevelEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-user-prop-privilege-level-values
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     permissible_values:
       privileged:
@@ -1847,6 +2216,9 @@ enums:
     name: InterconnectionResponsibleRoleIdEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/InterconnectionResponsibleRoleIdEnum
     annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-component-interconnection-responsible-role-id-values
       allow_any:
         tag: allow_any
         value: true
@@ -1866,6 +2238,9 @@ enums:
     name: ImplementationResponsibleRoleIdEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/ImplementationResponsibleRoleIdEnum
     annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-component-responsible-role-id-values
       allow_any:
         tag: allow_any
         value: true
@@ -1894,6 +2269,10 @@ enums:
   ImplementationYesNoEnum:
     name: ImplementationYesNoEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/ImplementationYesNoEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-component-public-value
     description: Implementation-common yes/no value set used by several properties.
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     permissible_values:
@@ -1905,6 +2284,9 @@ enums:
     name: SystemIdentifierTypeEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/SystemIdentifierTypeEnum
     annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-system-identifier-type-values
       allow_any:
         tag: allow_any
         value: true
@@ -1926,6 +2308,9 @@ enums:
     name: AssessmentPartNameEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/AssessmentPartNameEnum
     annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-assessment-part-values
       allow_any:
         tag: allow_any
         value: true
@@ -1944,6 +2329,10 @@ enums:
   TermsAndConditionsPartNameEnum:
     name: TermsAndConditionsPartNameEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/TermsAndConditionsPartNameEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-terms-and-conditions-part-name
     description: Allowed part names in assessment plan terms-and-conditions.
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     permissible_values:
@@ -1964,6 +2353,10 @@ enums:
   OscalAssessmentObjectiveTypesEnum:
     name: OscalAssessmentObjectiveTypesEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/OscalAssessmentObjectiveTypesEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-assessment-objective-types
     description: Values from assessment-common set oscal-assessment-objective-types.
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     permissible_values:
@@ -1979,6 +2372,9 @@ enums:
     name: OscalRiskPropTypeValuesEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/OscalRiskPropTypeValuesEnum
     annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-risk-prop-type-values
       allow_any:
         tag: allow_any
         value: true
@@ -2008,6 +2404,10 @@ enums:
   OscalRiskPropNameValuesEnum:
     name: OscalRiskPropNameValuesEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/OscalRiskPropNameValuesEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-risk-prop-name-values@risk
     description: Values from assessment-common set oscal-risk-prop-name-values.
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     permissible_values:
@@ -2023,6 +2423,9 @@ enums:
     name: OscalCharacterizationFacetNameSystemValuesEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/OscalCharacterizationFacetNameSystemValuesEnum
     annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-characterization-facet-name-system-values
       allow_any:
         tag: allow_any
         value: true
@@ -2050,6 +2453,10 @@ enums:
   OscalFacetPropNameValuesEnum:
     name: OscalFacetPropNameValuesEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/OscalFacetPropNameValuesEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-facet-prop-name-values
     description: Values from assessment-common set oscal-facet-prop-name-values.
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     permissible_values:
@@ -2058,6 +2465,10 @@ enums:
   OscalFacetPropStateValuesEnum:
     name: OscalFacetPropStateValuesEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/OscalFacetPropStateValuesEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-facet-prop-state-values
     description: Values from assessment-common set oscal-facet-prop-state-values.
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     permissible_values:
@@ -2068,6 +2479,10 @@ enums:
   OscalFacetNameCoreValuesEnum:
     name: OscalFacetNameCoreValuesEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/OscalFacetNameCoreValuesEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-facet-name-core-values
     description: Values from assessment-common set oscal-facet-name-core-values.
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     permissible_values:
@@ -2082,6 +2497,10 @@ enums:
   OscalFacetFedrampValuesEnum:
     name: OscalFacetFedrampValuesEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/OscalFacetFedrampValuesEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-facet-fedramp-values
     description: Values from assessment-common set oscal-facet-fedramp-values.
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     permissible_values:
@@ -2094,6 +2513,10 @@ enums:
   OscalFacetCveValuesEnum:
     name: OscalFacetCveValuesEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/OscalFacetCveValuesEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-facet-cve-values
     description: Values from assessment-common set oscal-facet-cve-values.
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     permissible_values:
@@ -2102,6 +2525,10 @@ enums:
   OscalFacetCvss2NameValuesEnum:
     name: OscalFacetCvss2NameValuesEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/OscalFacetCvss2NameValuesEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-facet-cvss2-name-values
     description: Values from assessment-common set oscal-facet-cvss2-name-values.
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     permissible_values:
@@ -2136,6 +2563,10 @@ enums:
   OscalFacetCvss2AccessVectorValuesEnum:
     name: OscalFacetCvss2AccessVectorValuesEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/OscalFacetCvss2AccessVectorValuesEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-facet-cvss2-access-vector-values
     description: Values from assessment-common set oscal-facet-cvss2-access-vector-values.
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     permissible_values:
@@ -2148,6 +2579,10 @@ enums:
   OscalFacetCvss2AccessComplexityValuesEnum:
     name: OscalFacetCvss2AccessComplexityValuesEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/OscalFacetCvss2AccessComplexityValuesEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-facet-cvss2-access-complexity-values
     description: Values from assessment-common set oscal-facet-cvss2-access-complexity-values.
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     permissible_values:
@@ -2160,6 +2595,10 @@ enums:
   OscalFacetCvss2AuthenticationValuesEnum:
     name: OscalFacetCvss2AuthenticationValuesEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/OscalFacetCvss2AuthenticationValuesEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-facet-cvss2-authentication-values
     description: Values from assessment-common set oscal-facet-cvss2-authentication-values.
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     permissible_values:
@@ -2172,6 +2611,10 @@ enums:
   OscalFacetCvss2ConfidentialityImpactValuesEnum:
     name: OscalFacetCvss2ConfidentialityImpactValuesEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/OscalFacetCvss2ConfidentialityImpactValuesEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-facet-cvss2-confidentiality-impact-values
     description: Values from assessment-common set oscal-facet-cvss2-confidentiality-impact-values.
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     permissible_values:
@@ -2184,6 +2627,10 @@ enums:
   OscalFacetCvss2ExploitabilityValuesEnum:
     name: OscalFacetCvss2ExploitabilityValuesEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/OscalFacetCvss2ExploitabilityValuesEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-facet-cvss2-exploitability-values
     description: Values from assessment-common set oscal-facet-cvss2-exploitability-values.
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     permissible_values:
@@ -2200,6 +2647,10 @@ enums:
   OscalFacetCvss2RemediationLevelValuesEnum:
     name: OscalFacetCvss2RemediationLevelValuesEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/OscalFacetCvss2RemediationLevelValuesEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-facet-cvss2-remediation-level-values
     description: Values from assessment-common set oscal-facet-cvss2-remediation-level-values.
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     permissible_values:
@@ -2216,6 +2667,10 @@ enums:
   OscalFacetCvss2ReportConfidenceValuesEnum:
     name: OscalFacetCvss2ReportConfidenceValuesEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/OscalFacetCvss2ReportConfidenceValuesEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-facet-cvss2-report-confidence-values
     description: Values from assessment-common set oscal-facet-cvss2-report-confidence-values.
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     permissible_values:
@@ -2230,6 +2685,10 @@ enums:
   OscalFacetCvss2CollateralDamagePotentialValuesEnum:
     name: OscalFacetCvss2CollateralDamagePotentialValuesEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/OscalFacetCvss2CollateralDamagePotentialValuesEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-facet-cvss2-collateral-damage-potential-values
     description: Values from assessment-common set oscal-facet-cvss2-collateral-damage-potential-values.
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     permissible_values:
@@ -2248,6 +2707,10 @@ enums:
   OscalFacetCvss2CiaRequirementValuesEnum:
     name: OscalFacetCvss2CiaRequirementValuesEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/OscalFacetCvss2CiaRequirementValuesEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-facet-cvss2-cia-requirement-values
     description: Values from assessment-common set oscal-facet-cvss2-cia-requirement-values.
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     permissible_values:
@@ -2264,6 +2727,10 @@ enums:
   OscalFacetCvss3NameValuesEnum:
     name: OscalFacetCvss3NameValuesEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/OscalFacetCvss3NameValuesEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-facet-cvss3-name-values
     description: Values from assessment-common set oscal-facet-cvss3-name-values.
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     permissible_values:
@@ -2314,6 +2781,10 @@ enums:
   OscalFacetCvss3AccessVectorValuesEnum:
     name: OscalFacetCvss3AccessVectorValuesEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/OscalFacetCvss3AccessVectorValuesEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-facet-cvss3-access-vector-values
     description: Values from assessment-common set oscal-facet-cvss3-access-vector-values.
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     permissible_values:
@@ -2328,6 +2799,10 @@ enums:
   OscalFacetCvss3AccessComplexityValuesEnum:
     name: OscalFacetCvss3AccessComplexityValuesEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/OscalFacetCvss3AccessComplexityValuesEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-facet-cvss3-access-complexity-values
     description: Values from assessment-common set oscal-facet-cvss3-access-complexity-values.
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     permissible_values:
@@ -2338,6 +2813,10 @@ enums:
   OscalFacetCvss3CiaImpactValuesEnum:
     name: OscalFacetCvss3CiaImpactValuesEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/OscalFacetCvss3CiaImpactValuesEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-facet-cvss3-cia-impact-values
     description: Values from assessment-common set oscal-facet-cvss3-cia-impact-values.
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     permissible_values:
@@ -2350,6 +2829,10 @@ enums:
   OscalFacetCvss3UserInteractionEnum:
     name: OscalFacetCvss3UserInteractionEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/OscalFacetCvss3UserInteractionEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-facet-cvss3-user-interaction
     description: Values from assessment-common set oscal-facet-cvss3-user-interaction.
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     permissible_values:
@@ -2360,6 +2843,10 @@ enums:
   OscalFacetCvss3ScopeEnum:
     name: OscalFacetCvss3ScopeEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/OscalFacetCvss3ScopeEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-facet-cvss3-scope
     description: Values from assessment-common set oscal-facet-cvss3-scope.
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     permissible_values:
@@ -2370,6 +2857,10 @@ enums:
   OscalFacetCvss3ExploitCodeMaturityValuesEnum:
     name: OscalFacetCvss3ExploitCodeMaturityValuesEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/OscalFacetCvss3ExploitCodeMaturityValuesEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-facet-cvss3-exploit-code-maturity-values
     description: Values from assessment-common set oscal-facet-cvss3-exploit-code-maturity-values.
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     permissible_values:
@@ -2386,6 +2877,10 @@ enums:
   OscalFacetCvss3RemediationLevelEnum:
     name: OscalFacetCvss3RemediationLevelEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/OscalFacetCvss3RemediationLevelEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-facet-cvss3-remediation-level
     description: Values from assessment-common set oscal-facet-cvss3-remediation-level.
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     permissible_values:
@@ -2402,6 +2897,10 @@ enums:
   OscalFacetCvss3ReportConfidenceValuesEnum:
     name: OscalFacetCvss3ReportConfidenceValuesEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/OscalFacetCvss3ReportConfidenceValuesEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-facet-cvss3-report-confidence-values
     description: Values from assessment-common set oscal-facet-cvss3-report-confidence-values.
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     permissible_values:
@@ -2416,6 +2915,10 @@ enums:
   OscalFacetCvss3CiaRequirementValuesEnum:
     name: OscalFacetCvss3CiaRequirementValuesEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/OscalFacetCvss3CiaRequirementValuesEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-facet-cvss3-cia-requirement-values
     description: Values from assessment-common set oscal-facet-cvss3-cia-requirement-values.
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     permissible_values:
@@ -2430,6 +2933,10 @@ enums:
   OscalFacetCvss3ModifiedAttackVectorValuesEnum:
     name: OscalFacetCvss3ModifiedAttackVectorValuesEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/OscalFacetCvss3ModifiedAttackVectorValuesEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-facet-cvss3-modified-attack-vector-values
     description: Values from assessment-common set oscal-facet-cvss3-modified-attack-vector-values.
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     permissible_values:
@@ -2446,6 +2953,10 @@ enums:
   OscalFacetCvss3ModifiedAttackComplexityValuesEnum:
     name: OscalFacetCvss3ModifiedAttackComplexityValuesEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/OscalFacetCvss3ModifiedAttackComplexityValuesEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-facet-cvss3-modified-attack-complexity-values
     description: Values from assessment-common set oscal-facet-cvss3-modified-attack-complexity-values.
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     permissible_values:
@@ -2458,6 +2969,10 @@ enums:
   OscalFacetCvss3ModifiedCiaValuesEnum:
     name: OscalFacetCvss3ModifiedCiaValuesEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/OscalFacetCvss3ModifiedCiaValuesEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-facet-cvss3-modified-cia-values
     description: Values from assessment-common set oscal-facet-cvss3-modified-cia-values.
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     permissible_values:
@@ -2472,6 +2987,10 @@ enums:
   OscalFacetCvss3ModifiedUserInteractionValuesEnum:
     name: OscalFacetCvss3ModifiedUserInteractionValuesEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/OscalFacetCvss3ModifiedUserInteractionValuesEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-facet-cvss3-modified-user-interaction-values
     description: Values from assessment-common set oscal-facet-cvss3-modified-user-interaction-values.
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     permissible_values:
@@ -2484,6 +3003,10 @@ enums:
   OscalFacetCvss3ModifiedScopeValuesEnum:
     name: OscalFacetCvss3ModifiedScopeValuesEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/OscalFacetCvss3ModifiedScopeValuesEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-facet-cvss3-modified-scope-values
     description: Values from assessment-common set oscal-facet-cvss3-modified-scope-values.
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     permissible_values:
@@ -2496,6 +3019,10 @@ enums:
   OscalCvssV40VectorsEnum:
     name: OscalCvssV40VectorsEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/OscalCvssV40VectorsEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-cvss-v4.0-vectors
     description: Values from assessment-common set oscal-cvss-v4.0-vectors.
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     permissible_values:
@@ -2566,6 +3093,10 @@ enums:
   OscalCvssV40AvValuesEnum:
     name: OscalCvssV40AvValuesEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/OscalCvssV40AvValuesEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-cvss-v4.0-av-values
     description: Values from assessment-common set oscal-cvss-v4.0-av-values.
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     permissible_values:
@@ -2580,6 +3111,10 @@ enums:
   OscalCvssV40AcValuesEnum:
     name: OscalCvssV40AcValuesEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/OscalCvssV40AcValuesEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-cvss-v4.0-ac-values
     description: Values from assessment-common set oscal-cvss-v4.0-ac-values.
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     permissible_values:
@@ -2590,6 +3125,10 @@ enums:
   OscalCvssV40AtValuesEnum:
     name: OscalCvssV40AtValuesEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/OscalCvssV40AtValuesEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-cvss-v4.0-at-values
     description: Values from assessment-common set oscal-cvss-v4.0-at-values.
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     permissible_values:
@@ -2600,6 +3139,10 @@ enums:
   OscalCvssV40PrCiaValuesEnum:
     name: OscalCvssV40PrCiaValuesEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/OscalCvssV40PrCiaValuesEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-cvss-v4.0-pr-cia-values
     description: Values from assessment-common set oscal-cvss-v4.0-pr-cia-values.
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     permissible_values:
@@ -2612,6 +3155,10 @@ enums:
   OscalCvssV40UiValuesEnum:
     name: OscalCvssV40UiValuesEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/OscalCvssV40UiValuesEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-cvss-v4.0-ui-values
     description: Values from assessment-common set oscal-cvss-v4.0-ui-values.
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     permissible_values:
@@ -2624,6 +3171,10 @@ enums:
   OscalCvssV40SValuesEnum:
     name: OscalCvssV40SValuesEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/OscalCvssV40SValuesEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-cvss-v4.0-s-values
     description: Values from assessment-common set oscal-cvss-v4.0-s-values.
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     permissible_values:
@@ -2636,6 +3187,10 @@ enums:
   OscalCvssV40AuValuesEnum:
     name: OscalCvssV40AuValuesEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/OscalCvssV40AuValuesEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-cvss-v4.0-au-values
     description: Values from assessment-common set oscal-cvss-v4.0-au-values.
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     permissible_values:
@@ -2648,6 +3203,10 @@ enums:
   OscalCvssV40RValuesEnum:
     name: OscalCvssV40RValuesEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/OscalCvssV40RValuesEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-cvss-v4.0-r-values
     description: Values from assessment-common set oscal-cvss-v4.0-r-values.
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     permissible_values:
@@ -2662,6 +3221,10 @@ enums:
   OscalCvssV40VValuesEnum:
     name: OscalCvssV40VValuesEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/OscalCvssV40VValuesEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-cvss-v4.0-v-values
     description: Values from assessment-common set oscal-cvss-v4.0-v-values.
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     permissible_values:
@@ -2676,6 +3239,10 @@ enums:
   OscalCvssV40ReValuesEnum:
     name: OscalCvssV40ReValuesEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/OscalCvssV40ReValuesEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-cvss-v4.0-re-values
     description: Values from assessment-common set oscal-cvss-v4.0-re-values.
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     permissible_values:
@@ -2690,6 +3257,10 @@ enums:
   OscalCvssV40UValuesEnum:
     name: OscalCvssV40UValuesEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/OscalCvssV40UValuesEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-cvss-v4.0-u-values
     description: Values from assessment-common set oscal-cvss-v4.0-u-values.
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     permissible_values:
@@ -2706,6 +3277,10 @@ enums:
   OscalCvssV40MavValuesEnum:
     name: OscalCvssV40MavValuesEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/OscalCvssV40MavValuesEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-cvss-v4.0-mav-values
     description: Values from assessment-common set oscal-cvss-v4.0-mav-values.
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     permissible_values:
@@ -2722,6 +3297,10 @@ enums:
   OscalCvssV40MacValuesEnum:
     name: OscalCvssV40MacValuesEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/OscalCvssV40MacValuesEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-cvss-v4.0-mac-values
     description: Values from assessment-common set oscal-cvss-v4.0-mac-values.
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     permissible_values:
@@ -2734,6 +3313,10 @@ enums:
   OscalCvssV40MatValuesEnum:
     name: OscalCvssV40MatValuesEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/OscalCvssV40MatValuesEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-cvss-v4.0-mat-values
     description: Values from assessment-common set oscal-cvss-v4.0-mat-values.
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     permissible_values:
@@ -2746,6 +3329,10 @@ enums:
   OscalCvssV40MprMvsCiaValuesEnum:
     name: OscalCvssV40MprMvsCiaValuesEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/OscalCvssV40MprMvsCiaValuesEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-cvss-v4.0-mpr-mvs-cia-values
     description: Values from assessment-common set oscal-cvss-v4.0-mpr-mvs-cia-values.
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     permissible_values:
@@ -2760,6 +3347,10 @@ enums:
   OscalCvssV40MuiValuesEnum:
     name: OscalCvssV40MuiValuesEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/OscalCvssV40MuiValuesEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-cvss-v4.0-mui-values
     description: Values from assessment-common set oscal-cvss-v4.0-mui-values.
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     permissible_values:
@@ -2774,6 +3365,10 @@ enums:
   OscalCvssV40MscValuesEnum:
     name: OscalCvssV40MscValuesEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/OscalCvssV40MscValuesEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-cvss-v4.0-msc-values
     description: Values from assessment-common set oscal-cvss-v4.0-msc-values.
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     permissible_values:
@@ -2788,6 +3383,10 @@ enums:
   OscalCvssV40MsiMsaCiaValuesEnum:
     name: OscalCvssV40MsiMsaCiaValuesEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/OscalCvssV40MsiMsaCiaValuesEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-cvss-v4.0-msi-msa-cia-values
     description: Values from assessment-common set oscal-cvss-v4.0-msi-msa-cia-values.
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     permissible_values:
@@ -2804,6 +3403,10 @@ enums:
   OscalCvssV40EnvCiaValuesEnum:
     name: OscalCvssV40EnvCiaValuesEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/OscalCvssV40EnvCiaValuesEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-cvss-v4.0-env-cia-values
     description: Values from assessment-common set oscal-cvss-v4.0-env-cia-values.
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     permissible_values:
@@ -2818,6 +3421,10 @@ enums:
   OscalCvssV40EValuesEnum:
     name: OscalCvssV40EValuesEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/OscalCvssV40EValuesEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-cvss-v4.0-e-values
     description: Values from assessment-common set oscal-cvss-v4.0-e-values.
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     permissible_values:
@@ -2832,6 +3439,10 @@ enums:
   OscalResponsePropTypeValueEnum:
     name: OscalResponsePropTypeValueEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/OscalResponsePropTypeValueEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-response-prop-type-value
     description: Values from assessment-common set oscal-response-prop-type-value.
     from_schema: https://w3id.org/lmodel/oscal_assessment_plan
     permissible_values:
@@ -2853,6 +3464,9 @@ enums:
     name: ResponseLifecycleEnum
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/ResponseLifecycleEnum
     annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-response-lifecycle-values
       allow_any:
         tag: allow_any
         value: true
@@ -2871,6 +3485,10 @@ enums:
   MappingMethodEnum:
     name: MappingMethodEnum
     definition_uri: https://w3id.org/lmodel/oscal_mapping/MappingMethodEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal_mapping-common_metaschema.xml#method#.
     from_schema: https://w3id.org/lmodel/oscal_mapping
     permissible_values:
       human:
@@ -2882,6 +3500,10 @@ enums:
   MatchingRationaleEnum:
     name: MatchingRationaleEnum
     definition_uri: https://w3id.org/lmodel/oscal_mapping/MatchingRationaleEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal_mapping-common_metaschema.xml#matching-rationale#.
     from_schema: https://w3id.org/lmodel/oscal_mapping
     permissible_values:
       syntactic:
@@ -2893,6 +3515,10 @@ enums:
   MappingStatusEnum:
     name: MappingStatusEnum
     definition_uri: https://w3id.org/lmodel/oscal_mapping/MappingStatusEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal_mapping-common_metaschema.xml#status#.
     from_schema: https://w3id.org/lmodel/oscal_mapping
     permissible_values:
       complete:
@@ -2908,6 +3534,10 @@ enums:
   MappingSubjectTypeEnum:
     name: MappingSubjectTypeEnum
     definition_uri: https://w3id.org/lmodel/oscal_mapping/MappingSubjectTypeEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal_mapping-common_metaschema.xml#mapping-item/type#.
     from_schema: https://w3id.org/lmodel/oscal_mapping
     permissible_values:
       control:
@@ -2917,6 +3547,10 @@ enums:
   QualifierSubjectEnum:
     name: QualifierSubjectEnum
     definition_uri: https://w3id.org/lmodel/oscal_mapping/QualifierSubjectEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal_mapping-common_metaschema.xml#qualifier-item/subject#.
     from_schema: https://w3id.org/lmodel/oscal_mapping
     permissible_values:
       source:
@@ -2928,6 +3562,10 @@ enums:
   QualifierPredicateEnum:
     name: QualifierPredicateEnum
     definition_uri: https://w3id.org/lmodel/oscal_mapping/QualifierPredicateEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal_mapping-common_metaschema.xml#qualifier-item/predicate#.
     from_schema: https://w3id.org/lmodel/oscal_mapping
     permissible_values:
       has-requirement:
@@ -2937,6 +3575,10 @@ enums:
   QualifierCategoryEnum:
     name: QualifierCategoryEnum
     definition_uri: https://w3id.org/lmodel/oscal_mapping/QualifierCategoryEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal_mapping-common_metaschema.xml#qualifier-item/category#.
     from_schema: https://w3id.org/lmodel/oscal_mapping
     permissible_values:
       restricted:
@@ -2948,6 +3590,10 @@ enums:
   RelationshipEnum:
     name: RelationshipEnum
     definition_uri: https://w3id.org/lmodel/oscal_mapping/RelationshipEnum
+    annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal_mapping-common_metaschema.xml#map/relationship#.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]
     description: Relationship values used for mapping entries in the OSCAL namespace.
     from_schema: https://w3id.org/lmodel/oscal_mapping
     permissible_values:
@@ -2967,6 +3613,9 @@ enums:
     name: MappingResourceTypeEnum
     definition_uri: https://w3id.org/lmodel/oscal_mapping/MappingResourceTypeEnum
     annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal_mapping-common_metaschema.xml#mapping-resource-reference/type#.
       allow_any:
         tag: allow_any
         value: true
@@ -2982,6 +3631,9 @@ enums:
     name: ConfidenceCategoryEnum
     definition_uri: https://w3id.org/lmodel/oscal_mapping/ConfidenceCategoryEnum
     annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal_mapping-common_metaschema.xml#confidence-score/category#.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]
       allow_any:
         tag: allow_any
         value: true
@@ -3001,6 +3653,9 @@ enums:
     name: CoverageGenerationMethodEnum
     definition_uri: https://w3id.org/lmodel/oscal_mapping/CoverageGenerationMethodEnum
     annotations:
+      oscal_allowed_values:
+        tag: oscal_allowed_values
+        value: oscal-mapping-coverage-generation-method-values
       allow_any:
         tag: allow_any
         value: true
@@ -3278,6 +3933,7 @@ slots:
     - HasPropsAndLinks
     - Resource
     - Addition
+    - SystemCharacteristics
     - SystemInformation
     - InformationType
     - ImpactLevel
@@ -3309,6 +3965,7 @@ slots:
     domain_of:
     - HasPropsAndLinks
     - Addition
+    - SystemCharacteristics
     - SystemInformation
     - InformationType
     - ImpactLevel
@@ -5791,6 +6448,7 @@ slots:
     domain_of:
     - AtFrequency
     range: PositiveIntegerType
+    minimum_value: 1
   unit:
     name: unit
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/unit
@@ -10761,6 +11419,7 @@ slots:
     usage_slot_name: period
     range: PositiveIntegerType
     required: true
+    minimum_value: 1
   AtFrequency_unit:
     name: AtFrequency_unit
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/unit
@@ -11157,6 +11816,7 @@ slots:
     is_usage_slot: true
     usage_slot_name: start
     range: NonNegativeIntegerType
+    minimum_value: 0
   PortRange_end:
     name: PortRange_end
     definition_uri: https://w3id.org/lmodel/oscal_assessment_plan/end
@@ -11172,6 +11832,7 @@ slots:
     is_usage_slot: true
     usage_slot_name: end
     range: NonNegativeIntegerType
+    minimum_value: 0
   ImplementationStatus_state:
     name: ImplementationStatus_state
     definition_uri: https://w3id.org/lmodel/oscal_catalog/state
@@ -15361,6 +16022,8 @@ classes:
     - SystemCharacteristics_system-name
     - system-name-short
     - SystemCharacteristics_description
+    - SystemCharacteristics_props
+    - links
     - date-authorized
     - security-sensitivity-level
     - SystemCharacteristics_system-information
@@ -15371,7 +16034,6 @@ classes:
     - data-flow
     - SystemCharacteristics_responsible-parties
     - remarks
-    - SystemCharacteristics_props
     slot_usage:
       system-ids:
         name: system-ids
@@ -17066,9 +17728,11 @@ classes:
       start:
         name: start
         range: NonNegativeIntegerType
+        minimum_value: 0
       end:
         name: end
         range: NonNegativeIntegerType
+        minimum_value: 0
     class_uri: oscal_assessment_plan:PortRange
   ImplementationStatus:
     name: ImplementationStatus
@@ -18729,7 +19393,7 @@ classes:
     class_uri: oscal_poam:RelatedFinding
 metamodel_version: 1.11.0
 source_file: oscal.yaml
-source_file_date: '2026-08-05T12:16:26'
-source_file_size: 1348
-generation_date: '2026-08-05T14:31:54'
+source_file_date: '2026-10-28T23:09:03'
+source_file_size: 2432
+generation_date: '2026-10-28T23:42:45'
 

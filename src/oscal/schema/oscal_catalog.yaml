@@ -5,8 +5,8 @@ title: oscal_catalog
 description: |-
   OSCAL Control Catalog Model: LinkML Schema
 license: Apache-2.0
-source: http://csrc.nist.gov/ns/oscal/1.2.1/oscal-catalog-schema.json
-version: 1.2.1
+source: http://csrc.nist.gov/ns/oscal/1.2.3/oscal-catalog-schema.json
+version: 1.2.3
 
 comments:
   - Core stays open.
@@ -21,7 +21,7 @@ annotations:
   uuid: 286a922f-e668-4a49-83bf-b331f760cd94
   last-modified: "2026-03-27T10:00:00Z"
 notes:
-  - Every time the content of an OSCAL file changes, the following must also change:
+  - "Every time the content of an OSCAL file changes, the following must also change:"
   - A new UUID value must be generated and assigned to the root element's uuid.
   - The last-modified field in metadata must be assigned with the date and time at the moment the file is saved with the modified content.
   - These are two mechanisms by which tools can quickly know if a file has changed since it was last encountered. This document level UUID is the only UUID in OSCAL associated with version control.
@@ -96,12 +96,15 @@ types:
 
 enums:
   PartyTypeEnum:
+    annotations:
+      oscal_allowed_values: oscal-metadata-party-type-values
     permissible_values:
       person:
       organization:
 
   HashAlgorithmEnum:
     annotations:
+      oscal_allowed_values: oscal-back-matter-resource-hash-algorithm-values
       allow_any: true
     description: >
       Curated hash algorithm values. Other values are permitted (OSCAL allow-other="yes").
@@ -117,6 +120,7 @@ enums:
 
   PhoneTypeEnum:
     annotations:
+      oscal_allowed_values: oscal-metadata-telephone-number-type-values
       allow_any: true
     description: >
       Curated telephone number type values. Other values are permitted (OSCAL allow-other="yes").
@@ -127,6 +131,7 @@ enums:
 
   AddressTypeEnum:
     annotations:
+      oscal_allowed_values: oscal-metadata-address-location-type-values
       allow_any: true
     description: >
       Curated address type values. Other values are permitted (OSCAL allow-other="yes").
@@ -136,6 +141,7 @@ enums:
 
   MetadataLinkRelEnum:
     annotations:
+      oscal_allowed_values: oscal-metadata-revision-link-rel-types oscal-metadata-link-rel-values@metadata oscal-catalog-metadata-link-rel-type oscal-metadata-link-rel-values@rel
       allow_any: true
     description: >
       Curated metadata link relation values. Other values are permitted (OSCAL allow-other="yes").
@@ -151,29 +157,47 @@ enums:
       source-profile-uuid:
 
   LocationPropNameEnum:
+    annotations:
+      oscal_allowed_values: oscal-metadata-location-prop-name-values
     description: Allowed OSCAL property names for metadata locations.
     permissible_values:
       type:
 
   LocationPropTypeEnum:
     annotations:
+      oscal_allowed_values: oscal-metadata-location-prop-type-values
       allow_any: true
     description: >
       Curated OSCAL location type property values. Other values are permitted (OSCAL allow-other="yes").
     permissible_values:
       data-center:
+      region:
+      zone:
+      headquarters:
+      regional-office:
+      satellite-office:
+      edge:
+      cdn:
+      domain:
 
   LocationDataCenterClassEnum:
     annotations:
+      oscal_allowed_values: oscal-metadata-location-prop-type-data-center-values
       allow_any: true
     description: >
       Curated OSCAL location class values for data-center type. Other values are permitted (OSCAL allow-other="yes").
     permissible_values:
       primary:
       alternate:
+      peer:
+      availability:
+      sub:
+      fault:
+      failure:
 
   PartyExternalIdSchemeEnum:
     annotations:
+      oscal_allowed_values: oscal-metadata-party-external-id-values
       allow_any: true
     description: >
       Curated external identifier scheme values for metadata parties. Other values are permitted (OSCAL allow-other="yes").
@@ -181,6 +205,8 @@ enums:
       http://orcid.org/:
 
   PartyPropNameEnum:
+    annotations:
+      oscal_allowed_values: oscal-metadata-party-prop-name-values
     description: Allowed OSCAL property names for metadata parties.
     permissible_values:
       mail-stop:
@@ -189,6 +215,7 @@ enums:
 
   MetadataResponsiblePartyRoleIdEnum:
     annotations:
+      oscal_allowed_values: oscal-metadata-responsible-party-role-ids
       allow_any: true
     description: >
       Curated metadata responsible-party role identifiers. Other values are permitted (OSCAL allow-other="yes").
@@ -200,6 +227,8 @@ enums:
       contact:
 
   MetadataPropNameEnum:
+    annotations:
+      oscal_allowed_values: oscal-catalog-metadata-prop-name oscal-metadata-prop-name-values@metadata
     description: Allowed OSCAL property names for metadata.
     permissible_values:
       keywords:
@@ -207,11 +236,15 @@ enums:
       source-profile-uuid:
 
   RevisionPropNameEnum:
+    annotations:
+      oscal_allowed_values: oscal-metadata-prop-name-values@property
     description: Allowed OSCAL property names for metadata revisions.
     permissible_values:
       marking:
 
   ResourcePropNameEnum:
+    annotations:
+      oscal_allowed_values: oscal-back-matter-resource-prop-name-values
     description: Allowed OSCAL property names for back-matter resources.
     permissible_values:
       type:
@@ -219,6 +252,8 @@ enums:
       published:
 
   ResourcePropTypeEnum:
+    annotations:
+      oscal_allowed_values: oscal-back-matter-resource-prop-type-values
     description: Allowed OSCAL back-matter resource type property values.
     permissible_values:
       logo:
@@ -248,6 +283,7 @@ enums:
 
   ActionSystemEnum:
     annotations:
+      oscal_allowed_values: oscal-metadata-action-system-values
       allow_any: true
     description: >
       Curated OSCAL action system values. Other values are permitted (OSCAL allow-other="yes").
@@ -255,6 +291,8 @@ enums:
       http://csrc.nist.gov/ns/oscal:
 
   ActionTypeEnum:
+    annotations:
+      oscal_allowed_values: oscal-metadata-action-type-values
     description: Allowed OSCAL action type values.
     permissible_values:
       approval:
@@ -262,6 +300,7 @@ enums:
 
   DocumentIdSchemeEnum:
     annotations:
+      oscal_allowed_values: oscal-metadata-document-id-scheme-values
       allow_any: true
     description: >
       Curated document identifier scheme values. Other values are permitted (OSCAL allow-other="yes").
@@ -269,11 +308,15 @@ enums:
       http://www.doi.org/:
 
   ParameterCardinalityEnum:
+    annotations:
+      oscal_allowed_values: oscal-parameter-how-many-type
     permissible_values:
       one:
       one-or-more:
 
   PartPropNameEnum:
+    annotations:
+      oscal_allowed_values: oscal-part-prop-name
     description: Allowed OSCAL property names for control-common parts.
     permissible_values:
       label:
@@ -281,6 +324,8 @@ enums:
       alt-identifier:
 
   ParameterPropNameEnum:
+    annotations:
+      oscal_allowed_values: oscal-parameter-prop-name
     description: Allowed OSCAL property names for control-common parameters.
     permissible_values:
       label:
@@ -289,17 +334,23 @@ enums:
       alt-label:
 
   RmfParameterPropNameEnum:
+    annotations:
+      oscal_allowed_values: oscal-rmf-parameter-prop-name
     description: Allowed OSCAL RMF parameter property names.
     permissible_values:
       aggregates:
 
   GroupPartNameEnum:
+    annotations:
+      oscal_allowed_values: oscal-group-part-name
     description: Allowed OSCAL part names for catalog groups.
     permissible_values:
       overview:
       instruction:
 
   ControlPropNameEnum:
+    annotations:
+      oscal_allowed_values: oscal-control-prop-name
     description: Allowed OSCAL property names for catalog controls.
     permissible_values:
       label:
@@ -308,13 +359,24 @@ enums:
       status:
 
   ControlPropStatusValueEnum:
-    description: Allowed OSCAL status property values for catalog controls.
+    annotations:
+      oscal_allowed_values: oscal-control-prop-status-value
+      allow_any: true
+    description: >-
+      Curated OSCAL status property values for catalog controls. Other
+      values are permitted (OSCAL allow-other="yes").
     permissible_values:
       withdrawn:
-      Withdrawn:
+      reserved:
+      deprecated:
+      conditional:
+      superseded:
+      modified:
+      experimental:
 
   ControlLinkRelEnum:
     annotations:
+      oscal_allowed_values: oscal-control-link-rel-type
       allow_any: true
     description: >-
       Curated OSCAL link relation values for catalog controls. Other values are
@@ -327,6 +389,8 @@ enums:
       moved-to:
 
   ControlPartNameEnum:
+    annotations:
+      oscal_allowed_values: oscal-control-part-name
     description: Allowed top-level OSCAL part names for catalog controls.
     permissible_values:
       overview:
@@ -337,33 +401,45 @@ enums:
       assessment-method:
 
   ControlStatementPartSubpartNameEnum:
+    annotations:
+      oscal_allowed_values: oscal-control-statement-part-subpart-name
     description: Allowed OSCAL subpart names for control statement parts.
     permissible_values:
       item:
 
   ControlStatementPartNameEnum:
+    annotations:
+      oscal_allowed_values: oscal-control-statement-part-name
     description: Allowed OSCAL part names for control statement parts.
     permissible_values:
       objective:
       assessment-objective:
 
   ControlObjectivePartSubpartNameEnum:
+    annotations:
+      oscal_allowed_values: oscal-control-objective-part-subpart-name
     description: Allowed OSCAL subpart names for control objective parts.
     permissible_values:
       objects:
       assessment-objects:
 
   ControlStatementPartPropNameEnum:
+    annotations:
+      oscal_allowed_values: oscal-control-statement-part-prop-name
     description: Allowed OSCAL property names for control statement parts.
     permissible_values:
       method:
 
   ControlStatementPartRmfPropNameEnum:
+    annotations:
+      oscal_allowed_values: oscal-control-statement-part-rmf-prop-name
     description: Allowed OSCAL RMF property names for control statement parts.
     permissible_values:
       method:
 
   ControlObjectivePartMethodPropValueEnum:
+    annotations:
+      oscal_allowed_values: oscal-control-objective-part-method-prop-value
     description: Allowed OSCAL method property values for control objectives.
     permissible_values:
       INTERVIEW:
@@ -371,6 +447,8 @@ enums:
       TEST:
 
   WithChildControlsEnum:
+    annotations:
+      oscal_allowed_values: oscal-with-child-controls-values
     permissible_values:
       "yes":
       "no":
@@ -1001,7 +1079,7 @@ classes:
     tree_root: true
     in_subset:
       - oscal_catalog
-  
+
   CatalogDocument:
     is_a: OscalDocument
     description: Root wrapper for an OSCAL Catalog document.
@@ -1802,4 +1880,3 @@ classes:
       - matching
     in_subset:
       - oscal_control_common
-

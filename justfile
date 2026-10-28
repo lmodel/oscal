@@ -118,7 +118,7 @@ test: _test-schema _test-python _test-examples _test-linkml-validate test-luigi-
 # Run linting
 [group('model development')]
 lint:
-  uv run linkml-lint {{source_schema_dir}}
+  uv run linkml-lint --ignore-warnings {{source_schema_dir}}
 
 # Generate md documentation for the schema and add artifacts
 [group('model development')]

@@ -1,9 +1,9 @@
 # Auto generated from oscal.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-08-05T13:45:23
+# Generation date: 2026-10-28T23:44:02
 # Schema: oscal
 #
 # id: https://w3id.org/lmodel/oscal
-# description: OSCAL: Open Security Controls Assessment Language: LinkML Schema
+# description: A LinkML model of NIST's Open Security Controls Assessment Language (OSCAL) 1.2.3: the catalog, profile, component definition, system security plan, assessment plan, assessment results, plan of action and milestones, and mapping collection models, each in a module of its own.
 # license: Apache-2.0
 
 import dataclasses
@@ -60,7 +60,7 @@ from linkml_runtime.linkml_model.types import Boolean, Float, String
 from linkml_runtime.utils.metamodelcore import Bool
 
 metamodel_version = "1.11.0"
-version = "1.2.1"
+version = "1.2.3"
 
 # Namespaces
 LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
@@ -151,7 +151,7 @@ class EmailAddressType(str):
 
 
 class NonNegativeIntegerType(int):
-    """ A non-negative integer value (>= 0), as used for port range boundaries. """
+    """ A non-negative integer value (>= 0), as used for port range boundaries. OSCAL 1.2.2 restored this minimum in its JSON datatype. Each slot with this range repeats it, because the generated Pydantic model reads a minimum from the slot and not from the type. """
     type_class_uri = XSD["nonNegativeInteger"]
     type_class_curie = "xsd:nonNegativeInteger"
     type_name = "NonNegativeIntegerType"
@@ -159,7 +159,7 @@ class NonNegativeIntegerType(int):
 
 
 class PositiveIntegerType(int):
-    """ A positive integer value (>= 1), as used for task recurrence periods. """
+    """ A positive integer value (>= 1), as used for task recurrence periods. OSCAL 1.2.2 restored this minimum in its JSON datatype. Each slot with this range repeats it, because the generated Pydantic model reads a minimum from the slot and not from the type. """
     type_class_uri = XSD["positiveInteger"]
     type_class_curie = "xsd:positiveInteger"
     type_name = "PositiveIntegerType"
@@ -2361,6 +2361,8 @@ class SystemCharacteristics(YAMLRoot):
     system_status: Union[dict, "SystemStatus"] = None
     authorization_boundary: Union[dict, "AuthorizationBoundary"] = None
     system_name_short: Optional[str] = None
+    props: Optional[Union[Union[dict, "SspSystemCharacteristicsProp"], list[Union[dict, "SspSystemCharacteristicsProp"]]]] = empty_list()
+    links: Optional[Union[Union[dict, Link], list[Union[dict, Link]]]] = empty_list()
     date_authorized: Optional[str] = None
     security_sensitivity_level: Optional[str] = None
     security_impact_level: Optional[Union[dict, "SecurityImpactLevel"]] = None
@@ -2368,7 +2370,6 @@ class SystemCharacteristics(YAMLRoot):
     data_flow: Optional[Union[dict, "DataFlow"]] = None
     responsible_parties: Optional[Union[Union[dict, "SspSystemCharacteristicsResponsibleParty"], list[Union[dict, "SspSystemCharacteristicsResponsibleParty"]]]] = empty_list()
     remarks: Optional[str] = None
-    props: Optional[Union[Union[dict, "SspSystemCharacteristicsProp"], list[Union[dict, "SspSystemCharacteristicsProp"]]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.system_ids):
@@ -2403,6 +2404,10 @@ class SystemCharacteristics(YAMLRoot):
         if self.system_name_short is not None and not isinstance(self.system_name_short, str):
             self.system_name_short = str(self.system_name_short)
 
+        self._normalize_inlined_as_list(slot_name="props", slot_type=SspSystemCharacteristicsProp, key_name="name", keyed=False)
+
+        self._normalize_inlined_as_list(slot_name="links", slot_type=Link, key_name="href", keyed=False)
+
         if self.date_authorized is not None and not isinstance(self.date_authorized, str):
             self.date_authorized = str(self.date_authorized)
 
@@ -2422,8 +2427,6 @@ class SystemCharacteristics(YAMLRoot):
 
         if self.remarks is not None and not isinstance(self.remarks, str):
             self.remarks = str(self.remarks)
-
-        self._normalize_inlined_as_list(slot_name="props", slot_type=SspSystemCharacteristicsProp, key_name="name", keyed=False)
 
         super().__post_init__(**kwargs)
 
@@ -7632,6 +7635,13 @@ class LocationPropTypeEnum(EnumDefinitionImpl):
     """
     Curated OSCAL location type property values. Other values are permitted (OSCAL allow-other="yes").
     """
+    region = PermissibleValue(text="region")
+    zone = PermissibleValue(text="zone")
+    headquarters = PermissibleValue(text="headquarters")
+    edge = PermissibleValue(text="edge")
+    cdn = PermissibleValue(text="cdn")
+    domain = PermissibleValue(text="domain")
+
     _defn = EnumDefinition(
         name="LocationPropTypeEnum",
         description="""Curated OSCAL location type property values. Other values are permitted (OSCAL allow-other=\"yes\").""",
@@ -7641,6 +7651,10 @@ class LocationPropTypeEnum(EnumDefinitionImpl):
     def _addvals(cls):
         setattr(cls, "data-center",
             PermissibleValue(text="data-center"))
+        setattr(cls, "regional-office",
+            PermissibleValue(text="regional-office"))
+        setattr(cls, "satellite-office",
+            PermissibleValue(text="satellite-office"))
 
 class LocationDataCenterClassEnum(EnumDefinitionImpl):
     """
@@ -7648,6 +7662,11 @@ class LocationDataCenterClassEnum(EnumDefinitionImpl):
     """
     primary = PermissibleValue(text="primary")
     alternate = PermissibleValue(text="alternate")
+    peer = PermissibleValue(text="peer")
+    availability = PermissibleValue(text="availability")
+    sub = PermissibleValue(text="sub")
+    fault = PermissibleValue(text="fault")
+    failure = PermissibleValue(text="failure")
 
     _defn = EnumDefinition(
         name="LocationDataCenterClassEnum",
@@ -7935,14 +7954,19 @@ class ControlPropNameEnum(EnumDefinitionImpl):
 
 class ControlPropStatusValueEnum(EnumDefinitionImpl):
     """
-    Allowed OSCAL status property values for catalog controls.
+    Curated OSCAL status property values for catalog controls. Other values are permitted (OSCAL allow-other="yes").
     """
     withdrawn = PermissibleValue(text="withdrawn")
-    Withdrawn = PermissibleValue(text="Withdrawn")
+    reserved = PermissibleValue(text="reserved")
+    deprecated = PermissibleValue(text="deprecated")
+    conditional = PermissibleValue(text="conditional")
+    superseded = PermissibleValue(text="superseded")
+    modified = PermissibleValue(text="modified")
+    experimental = PermissibleValue(text="experimental")
 
     _defn = EnumDefinition(
         name="ControlPropStatusValueEnum",
-        description="Allowed OSCAL status property values for catalog controls.",
+        description="""Curated OSCAL status property values for catalog controls. Other values are permitted (OSCAL allow-other=\"yes\").""",
     )
 
 class ControlLinkRelEnum(EnumDefinitionImpl):
@@ -8716,6 +8740,8 @@ class ComponentTypeEnum(EnumDefinitionImpl):
     standard = PermissibleValue(text="standard")
     validation = PermissibleValue(text="validation")
     network = PermissibleValue(text="network")
+    region = PermissibleValue(text="region")
+    zone = PermissibleValue(text="zone")
 
     _defn = EnumDefinition(
         name="ComponentTypeEnum",
@@ -8728,6 +8754,8 @@ class ComponentTypeEnum(EnumDefinitionImpl):
             PermissibleValue(text="this-system"))
         setattr(cls, "process-procedure",
             PermissibleValue(text="process-procedure"))
+        setattr(cls, "resource-container",
+            PermissibleValue(text="resource-container"))
 
 class ComponentStateEnum(EnumDefinitionImpl):
 

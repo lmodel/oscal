@@ -1,0 +1,9 @@
+# linkml-lint reads this file from the directory `just lint` runs in.
+# The recommended rules apply, with one change: standard_naming reports at
+# warning level, which `just lint` (errors only) does not fail on. Slots keep
+# OSCAL's own hyphenated keys (`last-modified`, `finding-uuid`), so that an
+# OSCAL JSON document validates against the schema without translation.
+extends: recommended
+rules:
+  standard_naming:
+    level: warning

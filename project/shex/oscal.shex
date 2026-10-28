@@ -1,5 +1,5 @@
 # metamodel_version: 1.11.0
-# version: 1.2.1
+# version: 1.2.3
 BASE <https://w3id.org/lmodel/oscal/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
@@ -2422,6 +2422,8 @@ oscal_ssp:SystemCharacteristics CLOSED {
           oscal_ssp:system_name @linkml:String ;
           oscal_ssp:system_name_short @linkml:String ? ;
           oscal_catalog:description @oscal_catalog:MarkupMultilineType ;
+          oscal_catalog:props @oscal_ssp:SspSystemCharacteristicsProp * ;
+          oscal_catalog:links @oscal_catalog:Link * ;
           oscal_ssp:date_authorized @linkml:String ? ;
           oscal_ssp:security_sensitivity_level @linkml:String ? ;
           oscal_ssp:system_information @oscal_ssp:SystemInformation ;
@@ -2431,8 +2433,7 @@ oscal_ssp:SystemCharacteristics CLOSED {
           oscal_ssp:network_architecture @oscal_ssp:NetworkArchitecture ? ;
           oscal_ssp:data_flow @oscal_ssp:DataFlow ? ;
           oscal_catalog:responsible_parties @oscal_ssp:SspSystemCharacteristicsResponsibleParty * ;
-          oscal_catalog:remarks @oscal_catalog:MarkupMultilineType ? ;
-          oscal_catalog:props @oscal_ssp:SspSystemCharacteristicsProp *
+          oscal_catalog:remarks @oscal_catalog:MarkupMultilineType ?
        ) ;
        rdf:type [ oscal_ssp:SystemCharacteristics ] ?
     )

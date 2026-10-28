@@ -50,16 +50,21 @@ _test-linkml-validate:
 		"Risk": "src/oscal/schema/oscal_assessment_plan.yaml",
 		"Role": "src/oscal/schema/oscal_catalog.yaml",
 		"SystemComponent": "src/oscal/schema/oscal_component.yaml",
+		"Catalog": "src/oscal/schema/oscal_catalog.yaml",
+		"Profile": "src/oscal/schema/oscal_profile.yaml",
+		"SystemSecurityPlan": "src/oscal/schema/oscal_ssp.yaml",
+		"PlanOfActionAndMilestones": "src/oscal/schema/oscal_poam.yaml",
+		"MappingCollection": "src/oscal/schema/oscal_mapping.yaml",
+		"AtFrequency": "src/oscal/schema/oscal_assessment_plan.yaml",
+		"PortRange": "src/oscal/schema/oscal_assessment_plan.yaml",
 	}
 
 	failures = []
 	for subset, expected_ok in (("valid", True), ("invalid", False)):
 		for fixture in sorted((Path("tests/data") / subset).glob("*.yaml")):
 			target_class = fixture.stem.split("-")[0]
-			schema_path = schema_map.get(target_class)
-			if schema_path is None:
-				print(f"[linkml-validate] SKIP {fixture}: no standalone schema mapping")
-				continue
+			# A class with no module of its own here is checked against the umbrella.
+			schema_path = schema_map.get(target_class, "src/oscal/schema/oscal.yaml")
 
 			result = subprocess.run(
 				[
@@ -141,7 +146,7 @@ test-luigi-carpio:
 	import re
 	from pathlib import Path
 	import oscal.datamodel.oscal as model
-	
+
 	def normalize_keys(value):
 		if isinstance(value, dict):
 			return {

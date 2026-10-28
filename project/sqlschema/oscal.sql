@@ -349,6 +349,7 @@
 --     * Slot: RequiredAsset_id Description: Autocreated FK slot
 --     * Slot: RiskLogEntry_id Description: Autocreated FK slot
 --     * Slot: RiskResponseReference_id Description: Autocreated FK slot
+--     * Slot: SystemCharacteristics_id Description: Autocreated FK slot
 --     * Slot: InformationType_id Description: Autocreated FK slot
 --     * Slot: ImpactLevel_id Description: Autocreated FK slot
 --     * Slot: AuthorizationBoundary_id Description: Autocreated FK slot
@@ -1162,6 +1163,7 @@
 --     * Slot: _class Description: A textual label that provides a sub-type or characterization of the property's name.
 --     * Slot: remarks Description: Additional commentary about the containing object.
 --     * Slot: group Description: An identifier for relating distinct sets of properties.
+--     * Slot: SystemCharacteristics_id Description: Autocreated FK slot
 -- # Class: SspSystemInformationProp Description: SSP-scoped property used in system information.
 --     * Slot: id
 --     * Slot: name Description: A textual label, within a namespace, that identifies a specific attribute, characteristic, or quality of the property's containing object.
@@ -1841,19 +1843,6 @@ CREATE TABLE "Export" (
 	PRIMARY KEY (id)
 );
 CREATE INDEX "ix_Export_id" ON "Export" (id);
-
-CREATE TABLE "SspSystemCharacteristicsProp" (
-	id INTEGER NOT NULL,
-	name VARCHAR(29) NOT NULL,
-	uuid TEXT,
-	ns TEXT,
-	value TEXT NOT NULL,
-	_class TEXT,
-	remarks TEXT,
-	"group" TEXT,
-	PRIMARY KEY (id)
-);
-CREATE INDEX "ix_SspSystemCharacteristicsProp_id" ON "SspSystemCharacteristicsProp" (id);
 
 CREATE TABLE "ImportAssessmentPlan" (
 	id INTEGER NOT NULL,
@@ -2805,6 +2794,21 @@ CREATE TABLE "SspStatement" (
 );
 CREATE INDEX "ix_SspStatement_id" ON "SspStatement" (id);
 
+CREATE TABLE "SspSystemCharacteristicsProp" (
+	id INTEGER NOT NULL,
+	name VARCHAR(29) NOT NULL,
+	uuid TEXT,
+	ns TEXT,
+	value TEXT NOT NULL,
+	_class TEXT,
+	remarks TEXT,
+	"group" TEXT,
+	"SystemCharacteristics_id" INTEGER,
+	PRIMARY KEY (id),
+	FOREIGN KEY("SystemCharacteristics_id") REFERENCES "SystemCharacteristics" (id)
+);
+CREATE INDEX "ix_SspSystemCharacteristicsProp_id" ON "SspSystemCharacteristicsProp" (id);
+
 CREATE TABLE "SspAllowsAuthenticatedScanProp" (
 	id INTEGER NOT NULL,
 	name TEXT NOT NULL,
@@ -3244,8 +3248,8 @@ CREATE TABLE "SystemUser_role_ids" (
 	PRIMARY KEY ("SystemUser_id", role_ids),
 	FOREIGN KEY("SystemUser_id") REFERENCES "SystemUser" (id)
 );
-CREATE INDEX "ix_SystemUser_role_ids_SystemUser_id" ON "SystemUser_role_ids" ("SystemUser_id");
 CREATE INDEX "ix_SystemUser_role_ids_role_ids" ON "SystemUser_role_ids" (role_ids);
+CREATE INDEX "ix_SystemUser_role_ids_SystemUser_id" ON "SystemUser_role_ids" ("SystemUser_id");
 
 CREATE TABLE "InformationTypeCategorization_information_type_ids" (
 	"InformationTypeCategorization_id" INTEGER,
@@ -3608,8 +3612,8 @@ CREATE TABLE "Location_urls" (
 	PRIMARY KEY ("Location_id", urls),
 	FOREIGN KEY("Location_id") REFERENCES "Location" (id)
 );
-CREATE INDEX "ix_Location_urls_urls" ON "Location_urls" (urls);
 CREATE INDEX "ix_Location_urls_Location_id" ON "Location_urls" ("Location_id");
+CREATE INDEX "ix_Location_urls_urls" ON "Location_urls" (urls);
 
 CREATE TABLE "AuthorizedPrivilege_functions_performed" (
 	"AuthorizedPrivilege_id" INTEGER,
@@ -3635,8 +3639,8 @@ CREATE TABLE "SspImplementedRequirementResponsibleRole_party_uuids" (
 	PRIMARY KEY ("SspImplementedRequirementResponsibleRole_id", party_uuids),
 	FOREIGN KEY("SspImplementedRequirementResponsibleRole_id") REFERENCES "SspImplementedRequirementResponsibleRole" (id)
 );
-CREATE INDEX "ix_SspImplementedRequirementResponsibleRole_party_uuids_SspImplementedRequirementResponsibleRole_id" ON "SspImplementedRequirementResponsibleRole_party_uuids" ("SspImplementedRequirementResponsibleRole_id");
 CREATE INDEX "ix_SspImplementedRequirementResponsibleRole_party_uuids_party_uuids" ON "SspImplementedRequirementResponsibleRole_party_uuids" (party_uuids);
+CREATE INDEX "ix_SspImplementedRequirementResponsibleRole_party_uuids_SspImplementedRequirementResponsibleRole_id" ON "SspImplementedRequirementResponsibleRole_party_uuids" ("SspImplementedRequirementResponsibleRole_id");
 
 CREATE TABLE "PartProperty" (
 	id INTEGER NOT NULL,
@@ -3880,8 +3884,8 @@ CREATE TABLE "SelectControlById_with_ids" (
 	PRIMARY KEY ("SelectControlById_id", with_ids),
 	FOREIGN KEY("SelectControlById_id") REFERENCES "SelectControlById" (id)
 );
-CREATE INDEX "ix_SelectControlById_with_ids_SelectControlById_id" ON "SelectControlById_with_ids" ("SelectControlById_id");
 CREATE INDEX "ix_SelectControlById_with_ids_with_ids" ON "SelectControlById_with_ids" (with_ids);
+CREATE INDEX "ix_SelectControlById_with_ids_SelectControlById_id" ON "SelectControlById_with_ids" ("SelectControlById_id");
 
 CREATE TABLE "ImplementationResponsibleParty_party_uuids" (
 	"ImplementationResponsibleParty_id" INTEGER,
@@ -3898,8 +3902,8 @@ CREATE TABLE "Observation_methods" (
 	PRIMARY KEY ("Observation_id", methods),
 	FOREIGN KEY("Observation_id") REFERENCES "Observation" (id)
 );
-CREATE INDEX "ix_Observation_methods_Observation_id" ON "Observation_methods" ("Observation_id");
 CREATE INDEX "ix_Observation_methods_methods" ON "Observation_methods" (methods);
+CREATE INDEX "ix_Observation_methods_Observation_id" ON "Observation_methods" ("Observation_id");
 
 CREATE TABLE "Observation_types" (
 	"Observation_id" INTEGER,
@@ -3907,8 +3911,8 @@ CREATE TABLE "Observation_types" (
 	PRIMARY KEY ("Observation_id", types),
 	FOREIGN KEY("Observation_id") REFERENCES "Observation" (id)
 );
-CREATE INDEX "ix_Observation_types_types" ON "Observation_types" (types);
 CREATE INDEX "ix_Observation_types_Observation_id" ON "Observation_types" ("Observation_id");
+CREATE INDEX "ix_Observation_types_types" ON "Observation_types" (types);
 
 CREATE TABLE "ConstraintTest" (
 	id INTEGER NOT NULL,
@@ -4165,8 +4169,8 @@ CREATE TABLE "ResponsibleRole_party_uuids" (
 	PRIMARY KEY ("ResponsibleRole_id", party_uuids),
 	FOREIGN KEY("ResponsibleRole_id") REFERENCES "ResponsibleRole" (id)
 );
-CREATE INDEX "ix_ResponsibleRole_party_uuids_ResponsibleRole_id" ON "ResponsibleRole_party_uuids" ("ResponsibleRole_id");
 CREATE INDEX "ix_ResponsibleRole_party_uuids_party_uuids" ON "ResponsibleRole_party_uuids" (party_uuids);
+CREATE INDEX "ix_ResponsibleRole_party_uuids_ResponsibleRole_id" ON "ResponsibleRole_party_uuids" ("ResponsibleRole_id");
 
 CREATE TABLE "Property" (
 	id INTEGER NOT NULL,
@@ -4388,6 +4392,7 @@ CREATE TABLE "Link" (
 	"RequiredAsset_id" INTEGER,
 	"RiskLogEntry_id" INTEGER,
 	"RiskResponseReference_id" INTEGER,
+	"SystemCharacteristics_id" INTEGER,
 	"InformationType_id" INTEGER,
 	"ImpactLevel_id" INTEGER,
 	"AuthorizationBoundary_id" INTEGER,
@@ -4470,6 +4475,7 @@ CREATE TABLE "Link" (
 	FOREIGN KEY("RequiredAsset_id") REFERENCES "RequiredAsset" (id),
 	FOREIGN KEY("RiskLogEntry_id") REFERENCES "RiskLogEntry" (id),
 	FOREIGN KEY("RiskResponseReference_id") REFERENCES "RiskResponseReference" (id),
+	FOREIGN KEY("SystemCharacteristics_id") REFERENCES "SystemCharacteristics" (id),
 	FOREIGN KEY("InformationType_id") REFERENCES "InformationType" (id),
 	FOREIGN KEY("ImpactLevel_id") REFERENCES "ImpactLevel" (id),
 	FOREIGN KEY("AuthorizationBoundary_id") REFERENCES "AuthorizationBoundary" (id),

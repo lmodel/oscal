@@ -1,7 +1,7 @@
  syntax="proto3";
  package
 // metamodel_version: 1.11.0
-// version: 1.2.1
+// version: 1.2.3
 // An action applied by a role within a given party to the content.
 message Action
  {
@@ -1718,6 +1718,8 @@ message SystemCharacteristics
   string system-name = 0
   string system-name-short = 0
   markupMultilineType description = 0
+ repeated  sspSystemCharacteristicsProp props = 0
+ repeated  link links = 0
   string date-authorized = 0
   string security-sensitivity-level = 0
   systemInformation system-information = 0
@@ -1728,7 +1730,6 @@ message SystemCharacteristics
   dataFlow data-flow = 0
  repeated  sspSystemCharacteristicsResponsibleParty responsible-parties = 0
   markupMultilineType remarks = 0
- repeated  sspSystemCharacteristicsProp props = 0
  }
 // A defined component that can be part of an implemented system.
 message SystemComponent

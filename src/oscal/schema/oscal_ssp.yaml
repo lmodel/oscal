@@ -7,13 +7,13 @@ description: |-
 license: Apache-2.0
 see_also:
   - https://pages.nist.gov/OSCAL/learn/concepts/layer/implementation/ssp/
-source: http://csrc.nist.gov/ns/oscal/1.2.1/oscal-ssp-schema.json
-version: 1.2.1
+source: http://csrc.nist.gov/ns/oscal/1.2.3/oscal-ssp-schema.json
+version: 1.2.3
 annotations:
   uuid: 8e44bf95-e930-455b-a098-3c5e967c3c4f
   last-modified: "2026-03-27T10:00:00Z"
 notes:
-  - Every time the content of an OSCAL file changes, the following must also change:
+  - "Every time the content of an OSCAL file changes, the following must also change:"
   - A new UUID value must be generated and assigned to the root element's uuid.
   - The last-modified field in metadata must be assigned with the date and time at the moment the file is saved with the modified content.
   - These are two mechanisms by which tools can quickly know if a file has changed since it was last encountered. This document level UUID is the only UUID in OSCAL associated with version control.
@@ -40,6 +40,8 @@ subsets:
 
 enums:
   SystemOperatingStatusEnum:
+    annotations:
+      oscal_allowed_values: oscal-status-state-values
     description: Allowable operational states for an OSCAL-described system.
     permissible_values:
       operational:
@@ -54,6 +56,8 @@ enums:
         description: Some other state.
 
   SystemCharacteristicsPropNameEnum:
+    annotations:
+      oscal_allowed_values: oscal-system-characteristics-prop-name-values@system-characteristics
     description: OSCAL-defined property names used within system characteristics.
     permissible_values:
       identity-assurance-level:
@@ -63,6 +67,8 @@ enums:
       cloud-service-model:
 
   AssuranceLevelValueEnum:
+    annotations:
+      oscal_allowed_values: oscal-system-characteristics-prop-sp-800-63-assurance-level-values
     description: NIST SP 800-63 assurance level values.
     permissible_values:
       "1":
@@ -70,6 +76,8 @@ enums:
       "3":
 
   CloudDeploymentModelEnum:
+    annotations:
+      oscal_allowed_values: oscal-system-characteristics-prop-cloud-deployment-model-values
     description: Cloud deployment model values used by OSCAL SSP properties.
     permissible_values:
       public-cloud:
@@ -80,6 +88,8 @@ enums:
       other:
 
   CloudServiceModelEnum:
+    annotations:
+      oscal_allowed_values: oscal-system-characteristics-prop-cloud-service-model-values
     description: Cloud service model values used by OSCAL SSP properties.
     permissible_values:
       saas:
@@ -89,6 +99,7 @@ enums:
 
   SystemCharacteristicsResponsibleRoleIdEnum:
     annotations:
+      oscal_allowed_values: oscal-system-characteristics-responsible-party-role-id-values
       allow_any: true
     description: >-
       Curated role identifiers for system characteristics responsible parties.
@@ -105,6 +116,7 @@ enums:
 
   InformationTypeCategorizationSystemEnum:
     annotations:
+      oscal_allowed_values: oscal-information-type-categorization-system-values
       allow_any: true
     description: >-
       Curated information type categorization system URIs. Other values are
@@ -113,11 +125,15 @@ enums:
       http://doi.org/10.6028/NIST.SP.800-60v2r1:
 
   SystemInformationPropNameEnum:
+    annotations:
+      oscal_allowed_values: oscal-system-information-prop-name-values
     description: OSCAL-defined property names used within system information.
     permissible_values:
       privacy-designation:
 
   PrivacyDesignationEnum:
+    annotations:
+      oscal_allowed_values: oscal-system-information-prop-privacy-designation-values
     description: Privacy designation property values.
     permissible_values:
       "yes":
@@ -125,6 +141,7 @@ enums:
 
   SystemInformationLinkRelEnum:
     annotations:
+      oscal_allowed_values: oscal-system-information-link-rel-values
       allow_any: true
     description: >-
       Curated relation values for links in system information. Other values are
@@ -134,6 +151,7 @@ enums:
 
   Fips199ImpactLevelEnum:
     annotations:
+      oscal_allowed_values: oscal-fips-199-impact-levels
       allow_any: true
     description: >-
       Curated FIPS 199 impact level values. Other values are permitted (OSCAL
@@ -145,6 +163,7 @@ enums:
 
   DiagramLinkRelEnum:
     annotations:
+      oscal_allowed_values: oscal-diagram-link-rel-values
       allow_any: true
     description: >-
       Curated relation values for links in diagram objects. Other values are
@@ -154,6 +173,7 @@ enums:
 
   LeveragedAuthorizationLinkRelEnum:
     annotations:
+      oscal_allowed_values: oscal-leveraged-authorization-link-rel-values
       allow_any: true
     description: >-
       Curated relation values for links in leveraged authorization objects.
@@ -162,17 +182,23 @@ enums:
       system-security-plan:
 
   AllowsAuthenticatedScanEnum:
+    annotations:
+      oscal_allowed_values: oscal-component-allows-authenticated-scan-value
     description: Values for allows-authenticated-scan property in SSP component and inventory contexts.
     permissible_values:
       "yes":
       "no":
 
   ControlOriginationPropNameEnum:
+    annotations:
+      oscal_allowed_values: oscal-implemented-requirement-statement-by-component-prop-name-values
     description: OSCAL-defined property names used in implementation statements.
     permissible_values:
       control-origination:
 
   ControlOriginationValueEnum:
+    annotations:
+      oscal_allowed_values: oscal-implemented-requirement-statement-by-component-prop-control-origination-values
     description: Control origination values.
     permissible_values:
       organization:
@@ -183,6 +209,7 @@ enums:
 
   ImplementedRequirementResponsibleRoleIdEnum:
     annotations:
+      oscal_allowed_values: oscal-implemented-requirement-responsible-role-id-values
       allow_any: true
     description: >-
       Curated role identifiers for implemented requirement and statement
@@ -198,6 +225,7 @@ enums:
 
   ByComponentLinkRelEnum:
     annotations:
+      oscal_allowed_values: oscal-by-component-link-rel-values
       allow_any: true
     description: >-
       Curated relation values for links in by-component objects. Other values
@@ -208,6 +236,7 @@ enums:
 
   ByComponentResponsibleRoleIdEnum:
     annotations:
+      oscal_allowed_values: oscal-by-component-responsible-role-id-values
       allow_any: true
     description: >-
       Curated role identifiers for by-component responsible roles. Other values
@@ -553,6 +582,8 @@ classes:
       - system-name
       - system-name-short
       - description
+      - props
+      - links
       - date-authorized
       - security-sensitivity-level
       - system-information

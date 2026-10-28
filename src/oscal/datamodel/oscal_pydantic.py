@@ -30,7 +30,7 @@ from pydantic import (
 
 
 metamodel_version = "1.11.0"
-version = "1.2.1"
+version = "1.2.3"
 
 
 class ConfiguredBaseModel(BaseModel):
@@ -67,13 +67,27 @@ class LinkMLMeta(RootModel):
 
 
 linkml_meta = LinkMLMeta({'annotations': {'last-modified': {'tag': 'last-modified',
-                                       'value': '2026-03-27T10:00:00Z'},
+                                       'value': '2026-10-28T23:30:00Z'},
+                     'oscal_commit': {'tag': 'oscal_commit',
+                                      'value': 'e061961c7702afeabffdf5e59894d35e748dade1'},
+                     'oscal_tag': {'tag': 'oscal_tag', 'value': 'v1.2.3'},
                      'uuid': {'tag': 'uuid',
-                              'value': 'e0b9845b-6de4-4f52-a96c-56255f507520'}},
+                              'value': '5bda39c3-8ebf-4717-b21f-c96a20c27f18'}},
+     'comments': ['The version is the OSCAL release the model renders. Its tag and '
+                  'commit are in the annotations, and src/oscal/schema/metaschema/ '
+                  "holds that commit's metaschema sources, where every "
+                  "allowed-values list an enum renders is defined; each enum's "
+                  'oscal_allowed_values annotation names its lists. '
+                  'scripts/check_upstream_release.py reads the same pins and '
+                  'reports when NIST tags a newer release or the copy drifts. The '
+                  "release tags are the schema's own versions."],
      'default_prefix': 'oscal',
      'default_range': 'string',
-     'description': 'OSCAL: Open Security Controls Assessment Language: LinkML '
-                    'Schema',
+     'description': "A LinkML model of NIST's Open Security Controls Assessment "
+                    'Language (OSCAL) 1.2.3: the catalog, profile, component '
+                    'definition, system security plan, assessment plan, assessment '
+                    'results, plan of action and milestones, and mapping '
+                    'collection models, each in a module of its own.',
      'id': 'https://w3id.org/lmodel/oscal',
      'imports': ['linkml:types',
                  './oscal_catalog',
@@ -83,12 +97,11 @@ linkml_meta = LinkMLMeta({'annotations': {'last-modified': {'tag': 'last-modifie
                  './oscal_assessment_results',
                  './oscal_component',
                  './oscal_mapping',
-                 './oscal_poam',
-                 './oscal'],
+                 './oscal_poam'],
      'license': 'Apache-2.0',
      'name': 'oscal',
-     'notes': ["{'Every time the content of an OSCAL file changes, the following "
-               "must also change': None}",
+     'notes': ['Every time the content of an OSCAL file changes, the following '
+               'must also change:',
                'A new UUID value must be generated and assigned to the root '
                "element's uuid.",
                'The last-modified field in metadata must be assigned with the date '
@@ -104,9 +117,13 @@ linkml_meta = LinkMLMeta({'annotations': {'last-modified': {'tag': 'last-modifie
                              'prefix_reference': 'https://w3id.org/linkml/'},
                   'oscal': {'prefix_prefix': 'oscal',
                             'prefix_reference': 'https://w3id.org/lmodel/oscal/'}},
-     'see_also': ['https://lmodel.github.io/oscal'],
+     'see_also': ['https://lmodel.github.io/oscal',
+                  'https://pages.nist.gov/OSCAL/',
+                  'https://pages.nist.gov/OSCAL-Reference/models/v1.2.3/',
+                  'https://github.com/usnistgov/OSCAL/releases/tag/v1.2.3'],
+     'source': 'https://github.com/usnistgov/OSCAL/tree/e061961c7702afeabffdf5e59894d35e748dade1/src/metaschema',
      'source_file': 'src/oscal/schema/oscal.yaml',
-     'title': 'oscal'} )
+     'title': 'Open Security Controls Assessment Language (OSCAL)'} )
 
 class PartyTypeEnum(str, Enum):
     person = "person"
@@ -176,6 +193,14 @@ class LocationPropTypeEnum(str, Enum):
 
     """
     data_center = "data-center"
+    region = "region"
+    zone = "zone"
+    headquarters = "headquarters"
+    regional_office = "regional-office"
+    satellite_office = "satellite-office"
+    edge = "edge"
+    cdn = "cdn"
+    domain = "domain"
 
 
 class LocationDataCenterClassEnum(str, Enum):
@@ -185,6 +210,11 @@ class LocationDataCenterClassEnum(str, Enum):
     """
     primary = "primary"
     alternate = "alternate"
+    peer = "peer"
+    availability = "availability"
+    sub = "sub"
+    fault = "fault"
+    failure = "failure"
 
 
 class PartyExternalIdSchemeEnum(str, Enum):
@@ -346,10 +376,15 @@ class ControlPropNameEnum(str, Enum):
 
 class ControlPropStatusValueEnum(str, Enum):
     """
-    Allowed OSCAL status property values for catalog controls.
+    Curated OSCAL status property values for catalog controls. Other values are permitted (OSCAL allow-other="yes").
     """
     withdrawn = "withdrawn"
-    Withdrawn = "Withdrawn"
+    reserved = "reserved"
+    deprecated = "deprecated"
+    conditional = "conditional"
+    superseded = "superseded"
+    modified = "modified"
+    experimental = "experimental"
 
 
 class ControlLinkRelEnum(str, Enum):
@@ -612,6 +647,9 @@ class ComponentTypeEnum(str, Enum):
     standard = "standard"
     validation = "validation"
     network = "network"
+    region = "region"
+    zone = "zone"
+    resource_container = "resource-container"
 
 
 class ComponentStateEnum(str, Enum):
@@ -1711,6 +1749,7 @@ class HasPropsAndLinks(ConfiguredBaseModel):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -1730,6 +1769,7 @@ class HasPropsAndLinks(ConfiguredBaseModel):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -1807,6 +1847,7 @@ class OscalCommon(HasPropsAndLinks):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -1826,6 +1867,7 @@ class OscalCommon(HasPropsAndLinks):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -2072,6 +2114,7 @@ class Group(HasPropsAndLinks):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -2091,6 +2134,7 @@ class Group(HasPropsAndLinks):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -2201,6 +2245,7 @@ class Control(HasPropsAndLinks):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -2220,6 +2265,7 @@ class Control(HasPropsAndLinks):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -2360,6 +2406,7 @@ class Metadata(HasResponsibleParties, OscalCommon):
     props: Optional[list[MetadataProperty]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -2379,6 +2426,7 @@ class Metadata(HasResponsibleParties, OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -2496,6 +2544,7 @@ class Revision(OscalCommon):
     props: Optional[list[RevisionProperty]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -2515,6 +2564,7 @@ class Revision(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -2705,6 +2755,7 @@ class Role(OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -2724,6 +2775,7 @@ class Role(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -2892,6 +2944,7 @@ class Location(OscalCommon):
     props: Optional[list[LocationProperty]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -2911,6 +2964,7 @@ class Location(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -3093,6 +3147,7 @@ class Party(OscalCommon):
     props: Optional[list[PartyProperty]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -3112,6 +3167,7 @@ class Party(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -3230,6 +3286,7 @@ class ResponsibleParty(OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -3249,6 +3306,7 @@ class ResponsibleParty(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -3334,6 +3392,7 @@ class ResponsibleRole(OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -3353,6 +3412,7 @@ class ResponsibleRole(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -3513,6 +3573,7 @@ class Action(HasResponsibleParties, OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -3532,6 +3593,7 @@ class Action(HasResponsibleParties, OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -4959,6 +5021,7 @@ class Resource(ConfiguredBaseModel):
     props: Optional[list[ResourceProperty]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -5044,6 +5107,7 @@ class Citation(HasPropsAndLinks):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -5063,6 +5127,7 @@ class Citation(HasPropsAndLinks):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -5237,6 +5302,7 @@ class Part(HasPropsAndLinks):
     props: Optional[list[PartProperty]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -5256,6 +5322,7 @@ class Part(HasPropsAndLinks):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -5380,6 +5447,7 @@ class Parameter(OscalCommon):
     props: Optional[list[ParameterProperty]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -5399,6 +5467,7 @@ class Parameter(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -5936,6 +6005,7 @@ class ProfileGroup(OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -5955,6 +6025,7 @@ class ProfileGroup(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -6024,6 +6095,7 @@ class ParameterSetting(HasPropsAndLinks):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -6043,6 +6115,7 @@ class ParameterSetting(HasPropsAndLinks):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -6188,6 +6261,7 @@ class Addition(ConfiguredBaseModel):
     props: Optional[list[ProfileAlterationProperty]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -6207,6 +6281,7 @@ class Addition(ConfiguredBaseModel):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -6765,6 +6840,7 @@ class ReviewedControls(OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -6784,6 +6860,7 @@ class ReviewedControls(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -6920,6 +6997,7 @@ class ControlSelection(OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -6939,6 +7017,7 @@ class ControlSelection(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -7071,6 +7150,7 @@ class ControlObjectiveSelection(OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -7090,6 +7170,7 @@ class ControlObjectiveSelection(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -7314,6 +7395,7 @@ class AssessmentSubject(OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -7333,6 +7415,7 @@ class AssessmentSubject(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -7430,6 +7513,7 @@ class SelectSubjectById(OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -7449,6 +7533,7 @@ class SelectSubjectById(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -7580,6 +7665,7 @@ class SubjectReference(OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -7599,6 +7685,7 @@ class SubjectReference(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -7781,6 +7868,7 @@ class AssessmentSubjectPlaceholder(OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -7800,6 +7888,7 @@ class AssessmentSubjectPlaceholder(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -8039,6 +8128,7 @@ class AssessmentPlatform(OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -8058,6 +8148,7 @@ class AssessmentPlatform(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -8140,6 +8231,7 @@ class UsesComponent(HasResponsibleParties, OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -8159,6 +8251,7 @@ class UsesComponent(HasResponsibleParties, OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -8303,6 +8396,7 @@ class LocalObjective(OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -8322,6 +8416,7 @@ class LocalObjective(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -8502,6 +8597,7 @@ class AssessmentMethod(OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -8521,6 +8617,7 @@ class AssessmentMethod(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -8744,6 +8841,7 @@ class Activity(HasResponsibleRoles, OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -8763,6 +8861,7 @@ class Activity(HasResponsibleRoles, OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -8985,6 +9084,7 @@ class Step(HasResponsibleRoles, OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -9004,6 +9104,7 @@ class Step(HasResponsibleRoles, OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -9256,6 +9357,7 @@ class Task(HasResponsibleRoles, OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -9275,6 +9377,7 @@ class Task(HasResponsibleRoles, OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -9439,7 +9542,7 @@ class AtFrequency(ConfiguredBaseModel):
          'slot_usage': {'period': {'name': 'period', 'required': True},
                         'unit': {'name': 'unit', 'required': True}}})
 
-    period: int = Field(default=..., description="""The task must occur every period (in the given units).""", json_schema_extra = { "linkml_meta": {'domain_of': ['AtFrequency']} })
+    period: int = Field(default=..., description="""The task must occur every period (in the given units).""", ge=1, json_schema_extra = { "linkml_meta": {'domain_of': ['AtFrequency']} })
     unit: TimingUnitEnum = Field(default=..., description="""The unit of time for the period.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AtFrequency']} })
     remarks: Optional[str] = Field(default=None, description="""Additional commentary about the containing object.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OscalCommon',
                        'Property',
@@ -9623,6 +9726,7 @@ class AssociatedActivity(HasResponsibleRoles, OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -9642,6 +9746,7 @@ class AssociatedActivity(HasResponsibleRoles, OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -9798,6 +9903,7 @@ class AssessmentPart(HasPropsAndLinks):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -9817,6 +9923,7 @@ class AssessmentPart(HasPropsAndLinks):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -9971,6 +10078,7 @@ class TermsAndConditionsPart(AssessmentPart):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -9990,6 +10098,7 @@ class TermsAndConditionsPart(AssessmentPart):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -10100,6 +10209,7 @@ class ControlPart(HasPropsAndLinks):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -10119,6 +10229,7 @@ class ControlPart(HasPropsAndLinks):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -10435,6 +10546,7 @@ class SystemComponent(HasResponsibleRoles, OscalCommon):
     props: Optional[list[ImplementationCommonProperty]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -10454,6 +10566,7 @@ class SystemComponent(HasResponsibleRoles, OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[ImplementationCommonLink]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -10648,15 +10761,19 @@ class PortRange(ConfiguredBaseModel):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
          'in_subset': ['implementation_common'],
-         'slot_usage': {'end': {'name': 'end', 'range': 'NonNegativeIntegerType'},
-                        'start': {'name': 'start', 'range': 'NonNegativeIntegerType'}}})
+         'slot_usage': {'end': {'minimum_value': 0,
+                                'name': 'end',
+                                'range': 'NonNegativeIntegerType'},
+                        'start': {'minimum_value': 0,
+                                  'name': 'start',
+                                  'range': 'NonNegativeIntegerType'}}})
 
-    start: Optional[int] = Field(default=None, description="""The start date/time.""", json_schema_extra = { "linkml_meta": {'domain_of': ['WithinDateRange',
+    start: Optional[int] = Field(default=None, description="""The start date/time.""", ge=0, json_schema_extra = { "linkml_meta": {'domain_of': ['WithinDateRange',
                        'PortRange',
                        'RiskLogEntry',
                        'Result',
                        'AssessmentLogEntry']} })
-    end: Optional[int] = Field(default=None, description="""The end date/time.""", json_schema_extra = { "linkml_meta": {'domain_of': ['WithinDateRange',
+    end: Optional[int] = Field(default=None, description="""The end date/time.""", ge=0, json_schema_extra = { "linkml_meta": {'domain_of': ['WithinDateRange',
                        'PortRange',
                        'RiskLogEntry',
                        'Result',
@@ -10980,6 +11097,7 @@ class SystemUser(OscalCommon):
     props: Optional[list[ImplementationCommonProperty]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -10999,6 +11117,7 @@ class SystemUser(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[ImplementationCommonLink]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -11281,6 +11400,7 @@ class InventoryItem(HasResponsibleParties, OscalCommon):
     props: Optional[list[ImplementationCommonProperty]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -11300,6 +11420,7 @@ class InventoryItem(HasResponsibleParties, OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[ImplementationCommonLink]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -11387,6 +11508,7 @@ class ImplementedComponent(HasResponsibleParties, OscalCommon):
     props: Optional[list[ImplementationCommonProperty]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -11406,6 +11528,7 @@ class ImplementedComponent(HasResponsibleParties, OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[ImplementationCommonLink]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -11693,6 +11816,7 @@ class ImplementationResponsibleRole(ResponsibleRole):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -11712,6 +11836,7 @@ class ImplementationResponsibleRole(ResponsibleRole):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -11797,6 +11922,7 @@ class ImplementationResponsibleParty(ResponsibleParty):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -11816,6 +11942,7 @@ class ImplementationResponsibleParty(ResponsibleParty):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -11881,6 +12008,7 @@ class OriginActor(HasPropsAndLinks):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -11900,6 +12028,7 @@ class OriginActor(HasPropsAndLinks):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -11988,6 +12117,7 @@ class RelatedTask(HasResponsibleParties, OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -12007,6 +12137,7 @@ class RelatedTask(HasResponsibleParties, OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -12260,6 +12391,7 @@ class Observation(OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -12279,6 +12411,7 @@ class Observation(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -12415,6 +12548,7 @@ class RelevantEvidence(OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -12434,6 +12568,7 @@ class RelevantEvidence(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -12654,6 +12789,7 @@ class Finding(OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -12673,6 +12809,7 @@ class Finding(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -12861,6 +12998,7 @@ class FindingTarget(OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -12880,6 +13018,7 @@ class FindingTarget(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -13250,6 +13389,7 @@ class Risk(HasPropsAndLinks):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -13269,6 +13409,7 @@ class Risk(HasPropsAndLinks):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -13338,6 +13479,7 @@ class Characterization(HasPropsAndLinks):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -13357,6 +13499,7 @@ class Characterization(HasPropsAndLinks):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -13449,6 +13592,7 @@ class Facet(OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -13468,6 +13612,7 @@ class Facet(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -13610,6 +13755,7 @@ class MitigatingFactor(HasPropsAndLinks):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -13629,6 +13775,7 @@ class MitigatingFactor(HasPropsAndLinks):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -13849,6 +13996,7 @@ class Response(OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -13868,6 +14016,7 @@ class Response(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -14089,6 +14238,7 @@ class RequiredAsset(OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -14108,6 +14258,7 @@ class RequiredAsset(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -14346,6 +14497,7 @@ class RiskLogEntry(OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -14365,6 +14517,7 @@ class RiskLogEntry(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -14505,6 +14658,7 @@ class RiskResponseReference(OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -14524,6 +14678,7 @@ class RiskResponseReference(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -14782,6 +14937,47 @@ class SystemCharacteristics(ConfiguredBaseModel):
                        'ImplementedControlStatement',
                        'QualifierItem',
                        'PoamItem']} })
+    props: Optional[list[SspSystemCharacteristicsProp]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
+                       'Resource',
+                       'Addition',
+                       'SystemCharacteristics',
+                       'SystemInformation',
+                       'InformationType',
+                       'ImpactLevel',
+                       'AuthorizationBoundary',
+                       'Diagram',
+                       'NetworkArchitecture',
+                       'DataFlow',
+                       'SystemImplementation',
+                       'LeveragedAuthorization',
+                       'SspImplementedRequirement',
+                       'SspStatement',
+                       'ByComponent',
+                       'Export',
+                       'ProvidedControlImplementation',
+                       'ControlResponsibility',
+                       'InheritedControlImplementation',
+                       'SatisfiedControlImplementation']} })
+    links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
+                       'Addition',
+                       'SystemCharacteristics',
+                       'SystemInformation',
+                       'InformationType',
+                       'ImpactLevel',
+                       'AuthorizationBoundary',
+                       'Diagram',
+                       'NetworkArchitecture',
+                       'DataFlow',
+                       'SystemImplementation',
+                       'LeveragedAuthorization',
+                       'SspImplementedRequirement',
+                       'SspStatement',
+                       'ByComponent',
+                       'Export',
+                       'ProvidedControlImplementation',
+                       'ControlResponsibility',
+                       'InheritedControlImplementation',
+                       'SatisfiedControlImplementation']} })
     date_authorized: Optional[str] = Field(default=None, description="""The date the system received its authorization.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SystemCharacteristics', 'LeveragedAuthorization']} })
     security_sensitivity_level: Optional[str] = Field(default=None, description="""The overall information system sensitivity categorization, such as defined by FIPS-199.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SystemCharacteristics']} })
     system_information: SystemInformation = Field(default=..., description="""Contains details about all information types that are stored, processed, or transmitted by the system.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SystemCharacteristics']} })
@@ -14854,6 +15050,7 @@ class SystemInformation(ConfiguredBaseModel):
     props: Optional[list[SspSystemInformationProp]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -14873,6 +15070,7 @@ class SystemInformation(ConfiguredBaseModel):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[SspSystemInformationLink]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -15041,6 +15239,7 @@ class InformationType(ConfiguredBaseModel):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -15060,6 +15259,7 @@ class InformationType(ConfiguredBaseModel):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -15111,6 +15311,7 @@ class ImpactLevel(ConfiguredBaseModel):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -15130,6 +15331,7 @@ class ImpactLevel(ConfiguredBaseModel):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -15291,6 +15493,7 @@ class AuthorizationBoundary(ConfiguredBaseModel):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -15310,6 +15513,7 @@ class AuthorizationBoundary(ConfiguredBaseModel):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -15489,6 +15693,7 @@ class Diagram(ConfiguredBaseModel):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -15508,6 +15713,7 @@ class Diagram(ConfiguredBaseModel):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[SspDiagramLink]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -15634,6 +15840,7 @@ class NetworkArchitecture(ConfiguredBaseModel):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -15653,6 +15860,7 @@ class NetworkArchitecture(ConfiguredBaseModel):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -15779,6 +15987,7 @@ class DataFlow(ConfiguredBaseModel):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -15798,6 +16007,7 @@ class DataFlow(ConfiguredBaseModel):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -15879,6 +16089,7 @@ class SystemImplementation(ConfiguredBaseModel):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -15898,6 +16109,7 @@ class SystemImplementation(ConfiguredBaseModel):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -16080,6 +16292,7 @@ class LeveragedAuthorization(ConfiguredBaseModel):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -16099,6 +16312,7 @@ class LeveragedAuthorization(ConfiguredBaseModel):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[SspLeveragedAuthorizationLink]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -16319,6 +16533,7 @@ class SspImplementedRequirement(ConfiguredBaseModel):
     props: Optional[list[SspControlOriginationProp]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -16338,6 +16553,7 @@ class SspImplementedRequirement(ConfiguredBaseModel):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -16488,6 +16704,7 @@ class SspStatement(ConfiguredBaseModel):
     props: Optional[list[SspControlOriginationProp]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -16507,6 +16724,7 @@ class SspStatement(ConfiguredBaseModel):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -16709,6 +16927,7 @@ class ByComponent(ConfiguredBaseModel):
     props: Optional[list[SspControlOriginationProp]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -16728,6 +16947,7 @@ class ByComponent(ConfiguredBaseModel):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[SspByComponentLink]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -16869,6 +17089,7 @@ class Export(ConfiguredBaseModel):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -16888,6 +17109,7 @@ class Export(ConfiguredBaseModel):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -17024,6 +17246,7 @@ class ProvidedControlImplementation(ConfiguredBaseModel):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -17043,6 +17266,7 @@ class ProvidedControlImplementation(ConfiguredBaseModel):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -17232,6 +17456,7 @@ class ControlResponsibility(ConfiguredBaseModel):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -17251,6 +17476,7 @@ class ControlResponsibility(ConfiguredBaseModel):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -17440,6 +17666,7 @@ class InheritedControlImplementation(ConfiguredBaseModel):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -17459,6 +17686,7 @@ class InheritedControlImplementation(ConfiguredBaseModel):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -17648,6 +17876,7 @@ class SatisfiedControlImplementation(ConfiguredBaseModel):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -17667,6 +17896,7 @@ class SatisfiedControlImplementation(ConfiguredBaseModel):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -18464,6 +18694,7 @@ class SspSystemCharacteristicsResponsibleParty(ResponsibleParty):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -18483,6 +18714,7 @@ class SspSystemCharacteristicsResponsibleParty(ResponsibleParty):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -18568,6 +18800,7 @@ class SspImplementedRequirementResponsibleRole(ResponsibleRole):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -18587,6 +18820,7 @@ class SspImplementedRequirementResponsibleRole(ResponsibleRole):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -18672,6 +18906,7 @@ class SspByComponentResponsibleRole(ResponsibleRole):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -18691,6 +18926,7 @@ class SspByComponentResponsibleRole(ResponsibleRole):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -18933,6 +19169,7 @@ class SspSystemComponent(SystemComponent):
     props: Optional[list[SspAllowsAuthenticatedScanProp]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -18952,6 +19189,7 @@ class SspSystemComponent(SystemComponent):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[ImplementationCommonLink]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -19132,6 +19370,7 @@ class SspInventoryItem(InventoryItem):
     props: Optional[list[SspAllowsAuthenticatedScanProp]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -19151,6 +19390,7 @@ class SspInventoryItem(InventoryItem):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[ImplementationCommonLink]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -19620,6 +19860,7 @@ class Result(OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -19639,6 +19880,7 @@ class Result(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -19927,6 +20169,7 @@ class AssessmentLogEntry(OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -19946,6 +20189,7 @@ class AssessmentLogEntry(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -20353,6 +20597,7 @@ class DefinedComponent(HasResponsibleRoles, OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -20372,6 +20617,7 @@ class DefinedComponent(HasResponsibleRoles, OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -20562,6 +20808,7 @@ class Capability(OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -20581,6 +20828,7 @@ class Capability(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -20795,6 +21043,7 @@ class ControlImplementationSet(HasPropsAndLinks):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -20814,6 +21063,7 @@ class ControlImplementationSet(HasPropsAndLinks):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -21013,6 +21263,7 @@ class ImplementedRequirement(HasResponsibleRoles, HasPropsAndLinks):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -21032,6 +21283,7 @@ class ImplementedRequirement(HasResponsibleRoles, HasPropsAndLinks):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -21221,6 +21473,7 @@ class ImplementedControlStatement(HasResponsibleRoles, HasPropsAndLinks):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -21240,6 +21493,7 @@ class ImplementedControlStatement(HasResponsibleRoles, HasPropsAndLinks):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -21440,6 +21694,7 @@ class MappingProvenance(HasResponsibleParties, OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -21459,6 +21714,7 @@ class MappingProvenance(HasResponsibleParties, OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -21610,6 +21866,7 @@ class Mapping(OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -21629,6 +21886,7 @@ class Mapping(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -21777,6 +22035,7 @@ class Map(OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -21796,6 +22055,7 @@ class Map(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -21891,6 +22151,7 @@ class MappingItem(OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -21910,6 +22171,7 @@ class MappingItem(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -22026,6 +22288,7 @@ class MappingResourceReference(OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -22045,6 +22308,7 @@ class MappingResourceReference(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -22641,6 +22905,7 @@ class PoamItem(OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -22660,6 +22925,7 @@ class PoamItem(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',

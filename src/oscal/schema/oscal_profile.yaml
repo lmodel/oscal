@@ -7,13 +7,13 @@ description: |-
 license: Apache-2.0
 see_also:
   - https://pages.nist.gov/OSCAL/learn/concepts/layer/control/profile/
-source: http://csrc.nist.gov/ns/oscal/1.2.1/oscal-profile-schema.json
-version: 1.2.1
+source: http://csrc.nist.gov/ns/oscal/1.2.3/oscal-profile-schema.json
+version: 1.2.3
 annotations:
   uuid: 14ceda98-46ea-4d3f-84dc-acf070a12fc5
   last-modified: "2026-03-27T10:00:00Z"
 notes:
-  - Every time the content of an OSCAL file changes, the following must also change:
+  - "Every time the content of an OSCAL file changes, the following must also change:"
   - A new UUID value must be generated and assigned to the root element's uuid.
   - The last-modified field in metadata must be assigned with the date and time at the moment the file is saved with the modified content.
   - These are two mechanisms by which tools can quickly know if a file has changed since it was last encountered. This document level UUID is the only UUID in OSCAL associated with version control.
@@ -38,6 +38,8 @@ subsets:
 
 enums:
   InsertOrderEnum:
+    annotations:
+      oscal_allowed_values: oscal-profile-insert-controls-order-values
     description: Ordering options for a selection of controls.
     permissible_values:
       keep:
@@ -45,6 +47,8 @@ enums:
       descending:
 
   AdditionPositionEnum:
+    annotations:
+      oscal_allowed_values: oscal-alter-position-values
     description: Where new content is added relative to the targeted element.
     permissible_values:
       before:
@@ -53,6 +57,8 @@ enums:
       ending:
 
   ByItemNameEnum:
+    annotations:
+      oscal_allowed_values: oscal-profile-alter-by-item-name-values
     description: Identifies content to remove by the item's object type name.
     permissible_values:
       param:
@@ -63,6 +69,8 @@ enums:
       map:
 
   CombinationMethodEnum:
+    annotations:
+      oscal_allowed_values: oscal-profile-merge-combine-method-values
     description: Methods for resolving duplicate control instances during merge.
     permissible_values:
       use-first:
@@ -71,6 +79,8 @@ enums:
       keep:
 
   AlterationPropNameEnum:
+    annotations:
+      oscal_allowed_values: oscal-part-prop-name
     description: Allowed OSCAL property names for profile modification additions.
     permissible_values:
       label:

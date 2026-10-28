@@ -68,6 +68,14 @@ export enum LocationPropNameEnum {
 export enum LocationPropTypeEnum {
     
     data_center = "data-center",
+    region = "region",
+    zone = "zone",
+    headquarters = "headquarters",
+    regional_office = "regional-office",
+    satellite_office = "satellite-office",
+    edge = "edge",
+    cdn = "cdn",
+    domain = "domain",
 };
 /**
 * Curated OSCAL location class values for data-center type. Other values are permitted (OSCAL allow-other="yes").
@@ -77,6 +85,11 @@ export enum LocationDataCenterClassEnum {
     
     primary = "primary",
     alternate = "alternate",
+    peer = "peer",
+    availability = "availability",
+    sub = "sub",
+    fault = "fault",
+    failure = "failure",
 };
 /**
 * Curated external identifier scheme values for metadata parties. Other values are permitted (OSCAL allow-other="yes").
@@ -237,12 +250,17 @@ export enum ControlPropNameEnum {
     status = "status",
 };
 /**
-* Allowed OSCAL status property values for catalog controls.
+* Curated OSCAL status property values for catalog controls. Other values are permitted (OSCAL allow-other="yes").
 */
 export enum ControlPropStatusValueEnum {
     
     withdrawn = "withdrawn",
-    Withdrawn = "Withdrawn",
+    reserved = "reserved",
+    deprecated = "deprecated",
+    conditional = "conditional",
+    superseded = "superseded",
+    modified = "modified",
+    experimental = "experimental",
 };
 /**
 * Curated OSCAL link relation values for catalog controls. Other values are permitted (OSCAL allow-other="yes").
@@ -510,6 +528,9 @@ export enum ComponentTypeEnum {
     standard = "standard",
     validation = "validation",
     network = "network",
+    region = "region",
+    zone = "zone",
+    resource_container = "resource-container",
 };
 
 export enum ComponentStateEnum {
@@ -3435,6 +3456,10 @@ export interface SystemCharacteristics {
     system_name_short?: string,
     /** A human-readable description. */
     description: string,
+    /** A list of properties. */
+    props?: SspSystemCharacteristicsProp[],
+    /** A list of links. */
+    links?: Link[],
     /** The date the system received its authorization. */
     date_authorized?: string,
     /** The overall information system sensitivity categorization, such as defined by FIPS-199. */

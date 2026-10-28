@@ -1,5 +1,5 @@
 # metamodel_version: 1.11.0
-# version: 1.2.1
+# version: 1.2.3
 enum ActionSystemEnum
   {
     http__COLON____SOLIDUS____SOLIDUS__csrc__FULL_STOP__nist__FULL_STOP__gov__SOLIDUS__ns__SOLIDUS__oscal
@@ -139,6 +139,9 @@ enum ComponentTypeEnum
     standard
     validation
     network
+    region
+    zone
+    resource__HYPHEN_MINUS__container
   }
 
 enum ConfidenceCategoryEnum
@@ -206,7 +209,12 @@ enum ControlPropNameEnum
 enum ControlPropStatusValueEnum
   {
     withdrawn
-    Withdrawn
+    reserved
+    deprecated
+    conditional
+    superseded
+    modified
+    experimental
   }
 
 enum ControlStatementPartNameEnum
@@ -442,6 +450,11 @@ enum LocationDataCenterClassEnum
   {
     primary
     alternate
+    peer
+    availability
+    sub
+    fault
+    failure
   }
 
 enum LocationPropNameEnum
@@ -452,6 +465,14 @@ enum LocationPropNameEnum
 enum LocationPropTypeEnum
   {
     data__HYPHEN_MINUS__center
+    region
+    zone
+    headquarters
+    regional__HYPHEN_MINUS__office
+    satellite__HYPHEN_MINUS__office
+    edge
+    cdn
+    domain
   }
 
 enum MappingMethodEnum
@@ -3058,6 +3079,8 @@ type SystemCharacteristics
     system-name: String!
     system-name-short: String
     description: MarkupMultilineType!
+    props: [SspSystemCharacteristicsProp]
+    links: [Link]
     date-authorized: String
     security-sensitivity-level: String
     system-information: SystemInformation!
@@ -3068,7 +3091,6 @@ type SystemCharacteristics
     data-flow: DataFlow
     responsible-parties: [SspSystemCharacteristicsResponsibleParty]
     remarks: MarkupMultilineType
-    props: [SspSystemCharacteristicsProp]
   }
 
 type SystemComponent implements OscalCommon, HasResponsibleRoles

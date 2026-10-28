@@ -1256,6 +1256,7 @@
             "properties": {
                 "period": {
                     "description": "The task must occur every period (in the given units).",
+                    "minimum": 1,
                     "type": "integer"
                 },
                 "remarks": {
@@ -1988,7 +1989,10 @@
                 "guidance",
                 "standard",
                 "validation",
-                "network"
+                "network",
+                "region",
+                "zone",
+                "resource-container"
             ],
             "title": "ComponentTypeEnum",
             "type": "string"
@@ -2450,10 +2454,15 @@
             "type": "string"
         },
         "ControlPropStatusValueEnum": {
-            "description": "Allowed OSCAL status property values for catalog controls.",
+            "description": "Curated OSCAL status property values for catalog controls. Other values are permitted (OSCAL allow-other=\"yes\").",
             "enum": [
                 "withdrawn",
-                "Withdrawn"
+                "reserved",
+                "deprecated",
+                "conditional",
+                "superseded",
+                "modified",
+                "experimental"
             ],
             "title": "ControlPropStatusValueEnum",
             "type": "string"
@@ -5008,7 +5017,12 @@
             "description": "Curated OSCAL location class values for data-center type. Other values are permitted (OSCAL allow-other=\"yes\").",
             "enum": [
                 "primary",
-                "alternate"
+                "alternate",
+                "peer",
+                "availability",
+                "sub",
+                "fault",
+                "failure"
             ],
             "title": "LocationDataCenterClassEnum",
             "type": "string"
@@ -5024,7 +5038,15 @@
         "LocationPropTypeEnum": {
             "description": "Curated OSCAL location type property values. Other values are permitted (OSCAL allow-other=\"yes\").",
             "enum": [
-                "data-center"
+                "data-center",
+                "region",
+                "zone",
+                "headquarters",
+                "regional-office",
+                "satellite-office",
+                "edge",
+                "cdn",
+                "domain"
             ],
             "title": "LocationPropTypeEnum",
             "type": "string"
@@ -8228,6 +8250,7 @@
             "properties": {
                 "end": {
                     "description": "The end date/time.",
+                    "minimum": 0,
                     "type": [
                         "integer",
                         "null"
@@ -8242,6 +8265,7 @@
                 },
                 "start": {
                     "description": "The start date/time.",
+                    "minimum": 0,
                     "type": [
                         "integer",
                         "null"
@@ -11772,6 +11796,16 @@
                     "description": "A human-readable description.",
                     "type": "string"
                 },
+                "links": {
+                    "description": "A list of links.",
+                    "items": {
+                        "$ref": "#/$defs/Link"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "network_architecture": {
                     "anyOf": [
                         {
@@ -11782,6 +11816,16 @@
                         }
                     ],
                     "description": "A description of the system's network architecture, optionally supplemented with diagrams that illustrate the network architecture."
+                },
+                "props": {
+                    "description": "A list of properties.",
+                    "items": {
+                        "$ref": "#/$defs/SspSystemCharacteristicsProp"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
                 },
                 "remarks": {
                     "description": "Additional commentary about the containing object.",
@@ -12802,5 +12846,5 @@
     "metamodel_version": "1.11.0",
     "title": "oscal",
     "type": "object",
-    "version": "1.2.1"
+    "version": "1.2.3"
 }
