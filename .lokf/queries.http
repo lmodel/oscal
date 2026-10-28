@@ -1,4 +1,4 @@
-### LOKF SPARQL queries for the OSCAL knowledge bundle.
+### LOKF SPARQL queries for the oscal knowledge bundle.
 ###
 ### Requires a VS Code "REST Client" extension (humao.rest-client).
 ### Start the endpoint first (from this directory):
@@ -19,34 +19,33 @@ WHERE { ?s a ?type . FILTER(?type != rdf:Statement) }
 GROUP BY ?type
 ORDER BY DESC(?count)
 
-### 2. All datasets and their source URLs
+### 2. All services and their endpoints
 POST {{base}}/sparql
 Content-Type: application/sparql-query
 
-SELECT ?title ?source
-WHERE { ?s a schema:Dataset ; schema:name ?title .
-        OPTIONAL { ?s dcterms:source ?source } }
+SELECT ?title ?endpoint
+WHERE { ?s a schema:WebAPI ; schema:name ?title .
+        OPTIONAL { ?s schema:url ?endpoint } }
 ORDER BY ?title
 
-### 3. All concepts derived from the NIST OSCAL standard
+### 3. Not yet confirmed by a person (no human verification recorded)
 POST {{base}}/sparql
 Content-Type: application/sparql-query
 
-SELECT ?title ?type
-WHERE { ?s prov:wasDerivedFrom <https://github.com/lmodel/oscal/knowledge/references/nist-oscal> ;
-           schema:name ?title ;
-           a ?type . }
-ORDER BY ?type ?title
+SELECT ?title
+WHERE { ?s schema:name ?title .
+        FILTER NOT EXISTS { ?s lokf:verified ?v . ?v prov:wasAssociatedWith ?by .
+                            FILTER(STRSTARTS(STR(?by), "human:")) } }
+ORDER BY ?title
 
-### 4. Dependency graph between schema modules
+### 4. Past review date (stale_after has passed)
 POST {{base}}/sparql
 Content-Type: application/sparql-query
 
-SELECT ?fromTitle ?toTitle
-WHERE { ?from dcterms:isPartOf ?to ;
-              schema:name ?fromTitle .
-        ?to schema:name ?toTitle . }
-ORDER BY ?fromTitle
+SELECT ?title ?due
+WHERE { ?s schema:name ?title ; schema:expires ?due .
+        FILTER(SUBSTR(STR(?due), 1, 10) <= SUBSTR(STR(NOW()), 1, 10)) }
+ORDER BY ?due
 
 ### Bonus: whole graph as Turtle (CONSTRUCT -> text/turtle)
 POST {{base}}/sparql

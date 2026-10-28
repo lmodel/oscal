@@ -1,6 +1,6 @@
 ---
-lokf_version: "0.1"
-okf_version: "0.1"
+lokf_version: "0.2"
+okf_version: "0.2"
 base_iri: https://w3id.org/lmodel/oscal/knowledge/
 context: https://w3id.org/lokf/context.jsonld
 title: OSCAL Knowledge Bundle
