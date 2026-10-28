@@ -1,3 +1,8 @@
+"""oscal.
+
+OSCAL: Open Security Controls Assessment Language: LinkML Schema
+"""
+
 try:
     from oscal._version import __version__, __version_tuple__
 except ImportError:  # pragma: no cover
