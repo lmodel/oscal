@@ -1,7 +1,7 @@
 ---
-id: https://w3id.org/lmodel/oscal_poam
+id: https://w3id.org/lmodel/oscal/oscal_poam
 name: oscal_poam
-title: oscal_poam
+title: OSCAL Plan of Action and Milestones (POA&M) Model
 description: |-
   OSCAL Plan of Action and Milestones (POA&M) Model: LinkML Schema
 license: Apache-2.0
@@ -20,11 +20,9 @@ notes:
   - When converting between formats, such as XML to JSON, these values should remain the same. This enables tools to know the content within the two formats is equivalent.
 
 prefixes:
-  oscal_poam: https://w3id.org/lmodel/oscal_poam/
-  oscal_assessment_plan: https://w3id.org/lmodel/oscal_assessment_plan/
-  oscal_catalog: https://w3id.org/lmodel/oscal_catalog/
+  oscal: https://w3id.org/lmodel/oscal/
   linkml: https://w3id.org/linkml/
-default_prefix: oscal_poam
+default_prefix: oscal
 default_range: string
 
 imports:

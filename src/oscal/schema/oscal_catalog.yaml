@@ -1,7 +1,7 @@
 ---
-id: https://w3id.org/lmodel/oscal_catalog
+id: https://w3id.org/lmodel/oscal/oscal_catalog
 name: oscal_catalog
-title: oscal_catalog
+title: OSCAL Control Catalog Model
 description: |-
   OSCAL Control Catalog Model: LinkML Schema
 license: Apache-2.0
@@ -28,9 +28,9 @@ notes:
   - When converting between formats, such as XML to JSON, these values should remain the same. This enables tools to know the content within the two formats is equivalent.
 
 prefixes:
-  oscal_catalog: https://w3id.org/lmodel/oscal_catalog/
+  oscal: https://w3id.org/lmodel/oscal/
   linkml: https://w3id.org/linkml/
-default_prefix: oscal_catalog
+default_prefix: oscal
 default_range: string
 
 imports:

@@ -1,7 +1,7 @@
 ---
-id: https://w3id.org/lmodel/oscal_assessment_results
+id: https://w3id.org/lmodel/oscal/oscal_assessment_results
 name: oscal_assessment_results
-title: oscal_assessment_results
+title: OSCAL Assessment Results Model
 description: |-
   OSCAL Assessment Results Model: LinkML Schema
 license: Apache-2.0
@@ -20,11 +20,9 @@ notes:
   - When converting between formats, such as XML to JSON, these values should remain the same. This enables tools to know the content within the two formats is equivalent.
 
 prefixes:
-  oscal_assessment_results: https://w3id.org/lmodel/oscal_assessment_results/
-  oscal_assessment_plan: https://w3id.org/lmodel/oscal_assessment_plan/
-  oscal_catalog: https://w3id.org/lmodel/oscal_catalog/
+  oscal: https://w3id.org/lmodel/oscal/
   linkml: https://w3id.org/linkml/
-default_prefix: oscal_assessment_results
+default_prefix: oscal
 default_range: string
 
 imports:

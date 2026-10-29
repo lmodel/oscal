@@ -1,7 +1,7 @@
 ---
-id: https://w3id.org/lmodel/oscal_ssp
+id: https://w3id.org/lmodel/oscal/oscal_ssp
 name: oscal_ssp
-title: oscal_ssp
+title: OSCAL System Security Plan (SSP) Model
 description: |-
   OSCAL System Security Plan (SSP) Model: LinkML Schema
 license: Apache-2.0
@@ -20,11 +20,9 @@ notes:
   - When converting between formats, such as XML to JSON, these values should remain the same. This enables tools to know the content within the two formats is equivalent.
 
 prefixes:
-  oscal_ssp: https://w3id.org/lmodel/oscal_ssp/
-  oscal_assessment_plan: https://w3id.org/lmodel/oscal_assessment_plan/
-  oscal_catalog: https://w3id.org/lmodel/oscal_catalog/
+  oscal: https://w3id.org/lmodel/oscal/
   linkml: https://w3id.org/linkml/
-default_prefix: oscal_ssp
+default_prefix: oscal
 default_range: string
 
 imports:

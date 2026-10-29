@@ -119,6 +119,19 @@ def test_modules_carry_the_pinned_version():
             assert f"/ns/oscal/{version}/" in header["source"], module.name
 
 
+def test_modules_share_the_oscal_namespace():
+    """Every module's id lies under the umbrella's, and every element takes
+    the one oscal prefix, which the repository's w3id route covers."""
+    umbrella = yaml.safe_load(SCHEMA.read_text())
+    namespace = umbrella["prefixes"]["oscal"]
+    assert namespace == umbrella["id"] + "/"
+    for module in MODULES:
+        header = yaml.safe_load(module.read_text())
+        assert header["default_prefix"] == "oscal", module.name
+        assert header["prefixes"]["oscal"] == namespace, module.name
+        if module != SCHEMA:
+            assert header["id"] == namespace + header["name"], module.name
+
 def test_every_enum_names_its_lists():
     """Each enum names, in its oscal_allowed_values annotation, the
     metaschema lists it renders, and each name is a list of the copy."""
