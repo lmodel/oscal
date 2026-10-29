@@ -132,6 +132,7 @@ def test_modules_share_the_oscal_namespace():
         if module != SCHEMA:
             assert header["id"] == namespace + header["name"], module.name
 
+
 def test_every_enum_names_its_lists():
     """Each enum names, in its oscal_allowed_values annotation, the
     metaschema lists it renders, and each name is a list of the copy."""
@@ -157,3 +158,87 @@ def test_enums_render_the_pinned_metaschema():
         ours = set(enum.get("permissible_values") or {})
         assert ours == theirs, (name, sorted(ours - theirs), sorted(theirs - ours))
         assert bool(notes.get("allow_any")) == any(lists[key][0] for key in keys), name
+
+
+# What a host may import beside this schema's adapt copy: LOKF's schema, pinned
+# by the sidecar, and the adapt copies other lmodel repositories release, each
+# the schema asset of a release checked against its .sha256 and attestation:
+# slsa v0.7.0 and github-actions v0.1.0.
+COPY = ROOT / ".lokf" / "oscal.yaml"
+LOKF = ROOT / ".lokf" / "lokf.yaml"
+NEIGHBOURS = (
+    ROOT / "tests" / "neighbours" / "slsa.yaml",
+    ROOT / "tests" / "neighbours" / "github-actions.yaml",
+)
+ELEMENT_KINDS = ("classes", "enums", "types", "subsets")
+
+# Keys OSCAL's copy shares with a neighbour under another IRI. LinkML keeps one
+# namespace, and the JSON-LD context gives each key one IRI across a
+# composite, whether it is a slot or an attribute on either side, so a host
+# that imports this copy beside slsa's or github-actions' projects these keys
+# under one vocabulary's IRI. They are OSCAL's own keys, and `lokf adapt`
+# renames only what lokf.yaml defines, so they stay until it can rename what a
+# neighbour copy defines too. A new overlap fails the test.
+SHARED_WITH_NEIGHBOURS = {
+    "slsa.yaml": {
+        "attestations",
+        "dependencies",
+        "parties",
+        "provenance",
+        "subject",
+        "value",
+    },
+    "github-actions.yaml": {"actions"},
+}
+
+
+def _names(path):
+    """Each kind of element a schema file declares, and every slot and
+    attribute name with the IRI it expands to."""
+    doc = yaml.safe_load(path.read_text())
+    prefixes = doc.get("prefixes") or {}
+
+    def expand(curie):
+        prefix, _, local = curie.partition(":")
+        return prefixes[prefix] + local if prefix in prefixes else curie
+
+    default = doc.get("default_prefix")
+    elements = {kind: set(doc.get(kind) or {}) for kind in ELEMENT_KINDS}
+    slots = {}
+    owners = [doc.get("slots") or {}]
+    owners += [
+        (cls or {}).get("attributes") or {}
+        for cls in (doc.get("classes") or {}).values()
+    ]
+    for owner in owners:
+        for name, slot in owner.items():
+            uri = (slot or {}).get("slot_uri") or f"{default}:{name}"
+            slots.setdefault(name, set()).add(expand(uri))
+    return elements, slots
+
+
+def _clashes(neighbour):
+    elements, slots = _names(COPY)
+    their_elements, their_slots = _names(neighbour)
+    for kind in ELEMENT_KINDS:
+        assert not elements[kind] & their_elements[kind], (neighbour.name, kind)
+    return {
+        name
+        for name in slots.keys() & their_slots.keys()
+        if slots[name] != their_slots[name]
+    }
+
+
+def test_names_apart_from_lokf():
+    """No class, enum, type or subset name of the copy is LOKF's, and a slot
+    name the two share carries LOKF's IRI."""
+    assert not _clashes(LOKF)
+
+
+def test_names_apart_from_neighbours():
+    """A class, enum, type or subset name is the copy's alone, and the only
+    keys it shares with a neighbour under another IRI are the listed ones."""
+    for neighbour in NEIGHBOURS:
+        assert _clashes(neighbour) == SHARED_WITH_NEIGHBOURS[neighbour.name], (
+            neighbour.name
+        )

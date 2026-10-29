@@ -462,3 +462,26 @@ gen-project-extended: \
   gen-pandera-artifact \
   gen-markdown-datadict-artifact \
   gen-golr-artifact
+
+# ============ Knowledge bundle: the adapted domain schema ============
+
+# `.lokf/oscal.yaml` is the copy `lokf adapt` writes from the schema so that it
+# can sit beside `.lokf/lokf.yaml` (`lokf adapt --help` lists the moves). The
+# roots are the eight OSCAL models, the classes a knowledge concept may use as
+# its `type`. OSCAL gives none of them an identifier slot, so each keeps its
+# required `uuid` and `metadata`, and a concept's `id` names it beside them.
+# The recipes run the `lokf` the sidecar's floor pins (0.9.0 or later);
+# LOKF_CMD runs another, such as a checkout:
+# LOKF_CMD="uv run --project ../lokf lokf" just lokf-adapt
+lokf_cmd := env_var_or_default("LOKF_CMD", "uv run --project .lokf lokf")
+lokf_adapt_roots := "--root Catalog --root Profile --root ComponentDefinition --root SystemSecurityPlan --root AssessmentPlan --root AssessmentResults --root PlanOfActionAndMilestones --root MappingCollection"
+
+# Rewrite .lokf/oscal.yaml from the schema (run after every schema change)
+[group('knowledge bundle')]
+lokf-adapt:
+  {{lokf_cmd}} adapt {{source_schema_path}} {{lokf_adapt_roots}} --lokf .lokf/lokf.yaml -o .lokf/oscal.yaml
+
+# Fail when .lokf/oscal.yaml is stale against the schema or .lokf/lokf.yaml
+[group('knowledge bundle')]
+lokf-adapt-check:
+  {{lokf_cmd}} adapt {{source_schema_path}} {{lokf_adapt_roots}} --lokf .lokf/lokf.yaml -o .lokf/oscal.yaml --check
