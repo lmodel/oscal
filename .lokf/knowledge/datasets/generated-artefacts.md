@@ -11,8 +11,8 @@ sources:
   - id: contributing.md
     resource: CONTRIBUTING.md
     title: the table of paths and the rule to regenerate
-  - id: config.yaml
-    resource: config.yaml
+  - id: generators.yaml
+    resource: .linkml/generators.yaml
     title: the excludes and the generator arguments
   - id: justfile
     resource: justfile
@@ -37,8 +37,7 @@ sources:
     title: the docs/elements and tmp rules
 generated:
   by: process:ktl-librarian
-  at: "2026-10-29T00:56:26Z"
-  revision: 57a6e461e82c2896a6fceb786029f75b32ec8668
+  at: "2026-10-29T20:52:57Z"
 status: draft
 ---
 
@@ -48,7 +47,7 @@ CONTRIBUTING.md lists `src/oscal/datamodel/`, `project/` and `docs/schema/` as a
 
 ## project/
 
-`just gen-project` runs LinkML's `gen-project` with `config.yaml`, which skips the markdown generator and merges imports for the generators it configures.[^config.yaml] The recipe then moves the Python output into `src/oscal/datamodel/` and writes the Pydantic model with `gen-pydantic`. It runs `gen-java`, `gen-typescript` and `gen-owl` on their own, because some generators ignore the configuration file or cannot create directories.[^justfile]
+`just gen-project` runs LinkML's `gen-project` with `.linkml/generators.yaml`, which skips the markdown generator and merges imports for the generators it configures.[^generators.yaml] The recipe then moves the Python output into `src/oscal/datamodel/` and writes the Pydantic model with `gen-pydantic`. It runs `gen-java`, `gen-typescript` and `gen-owl` on their own, because some generators ignore the configuration file or cannot create directories.[^justfile]
 
 `project.justfile` adds `just gen-project-extended`, which runs the generators that `gen-project` does not cover:[^project.justfile] a merged LinkML file, resolved YAML, SSSOM, Python namespaces, a TSV summary, Graphviz, Mermaid class diagrams, a Mermaid ER diagram, PlantUML, RDF in Turtle, SPARQL queries, CSV, DBML, SQLAlchemy models, SQL validation queries, TerminusDB, TypeDB, Java, Go, Rust, C++, Pandera, a Markdown data dictionary and GOLR views. The YAML, RDF, DBML, Java, Pandera and Markdown data dictionary recipes run patched scripts from `scripts/issues/`, and each script's docstring names the upstream generator bug it works around. For example, a comment says that `gen-java` without merged imports generates no file, because the root schema's classes are all defined in the modules it imports.
 
@@ -68,6 +67,6 @@ CONTRIBUTING.md lists `src/oscal/datamodel/`, `project/` and `docs/schema/` as a
 
 [^contributing.md]: CONTRIBUTING.md, the table of paths and the first item of Before opening a pull request
 [^readme.md]: README.md, the Repository Structure section
-[^config.yaml]: config.yaml, excludes and generator_args
+[^generators.yaml]: .linkml/generators.yaml, excludes and generator_args
 [^justfile]: justfile, the gen-project, gen-python, gen-doc and `_gen-yaml` recipes
 [^project.justfile]: project.justfile, the supplemental generator recipes and gen-project-extended

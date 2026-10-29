@@ -24,7 +24,7 @@ sources:
   - resource: .github/workflows
   - resource: .github/dependabot.yml
   - resource: justfile
-  - resource: config.yaml
+  - resource: .linkml/generators.yaml
   - resource: config.public.mk
   - resource: .linkmllint.yaml
   - resource: .copier-answers.yml
@@ -59,7 +59,7 @@ sources:
   - resource: knowledge_bundle
 generated:
   by: process:ktl-librarian
-  at: "2026-10-29T01:15:40Z"
+  at: "2026-10-29T20:52:57Z"
 verified:
   - by: process:ktl-librarian
     at: "2026-10-29T01:19:01Z"
@@ -79,7 +79,7 @@ Each concept derived from a file or folder of this repository names it by its pa
 | `README.md` (What it models, Influences, Mappings, Not modelled here), `docs/about.md`, `.linkmllint.yaml`, the `class_` comment in `oscal_catalog.yaml` | `explanations/scope-and-influences`, `explanations/element-names`, `references/nist-oscal` | re-read each section and comment |
 | `src/oscal/schema/metaschema/`, the OSCAL metaschema section of `NOTICE` | `datasets/metaschema-copy` | re-read the commit and release NOTICE names, and list the folder; the upstream watch compares the blobs weekly |
 | `scripts/check_upstream_release.py`, `.github/scripts/report-issue.sh` | `playbooks/update-upstream-pins`, `workflows/upstream-watch` | re-read `PINNED_TAG`, `PINNED_COMMIT`, `PINNED_PATH`, `ELSEWHERE`, the report's instructions and the issue title |
-| `justfile`, `config.yaml`, `project/`, `src/oscal/datamodel/`, `docs/schema/`, `docs/elements/`, `scripts/issues/`, `.pre-commit-config.yaml`, `.gitignore` | `datasets/generated-artefacts` | re-read the `gen-project`, `gen-python`, `gen-doc`, `_gen-yaml` and `gen-project-extended` recipes and the `excludes`; re-list `project/*/` |
+| `justfile`, `.linkml/generators.yaml`, `project/`, `src/oscal/datamodel/`, `docs/schema/`, `docs/elements/`, `scripts/issues/`, `.pre-commit-config.yaml`, `.gitignore` | `datasets/generated-artefacts` | re-read the `gen-project`, `gen-python`, `gen-doc`, `_gen-yaml` and `gen-project-extended` recipes and the `excludes`; re-list `project/*/` |
 | `tests/data/`, `tests/test_data.py`, `tests/test_schema_rules.py`, `tests/neighbours/`, `examples/README.md`, the test recipes of `justfile` and `project.justfile` | `datasets/test-data`, `datasets/cncf-ai-benchmarks`, `datasets/luigi-carpio-component-definition`, `playbooks/validate-data` | re-count `valid/`, `invalid/` and `problem/`; re-read the naming rule, the tests, the comment on the neighbours, and each fixture's metadata, README and licence |
 | `CONTRIBUTING.md`, `.copier-answers.yml`, the `update`, `test` and `lint` recipes of `justfile` | `playbooks/regenerate-and-test` | confirm the setup, the checklist and the recipes |
 | `.releaserc.json`, `.github/scripts/changelog-release.mjs`, `CHANGELOG.md`, `pyproject.toml`, the Releasing section of `CONTRIBUTING.md` | `playbooks/release` | re-read the release rules, the commands, the baseline paragraph and the versioning settings |
