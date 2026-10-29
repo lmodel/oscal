@@ -2,6 +2,8 @@
 
 ## 2026-10-29
 
+* **Changed**: NIST OSCAL places the mapping collection in the control layer, as the mapping module's `see_also` now does.
+* **Changed**: OSCAL Mapping Collection names NIST's control mapping page, which the module's `see_also` now links in place of a page that returns 404.
 * **Changed**: Element names says that OSCAL documents have their keys rewritten before they validate, as `.linkmllint.yaml` now says.
 * **Resolved**: `.linkmllint.yaml` no longer says that OSCAL JSON validates without translation; it names the key rewrite the tests do.
 * **Changed**: Knowledge librarian says when the skills pin moves past v0.57.0, from CHANGELOG.md.

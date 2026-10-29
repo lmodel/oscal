@@ -32,7 +32,7 @@ sources:
     title: Reporting issues
 generated:
   by: process:ktl-librarian
-  at: "2026-10-29T00:53:56Z"
+  at: "2026-10-29T01:19:01Z"
 ---
 
 # NIST OSCAL
@@ -47,10 +47,9 @@ The umbrella schema's header gives its `version` as 1.2.3, its `source` as the `
 
 The modules' `see_also` addresses place each model in a layer of NIST's OSCAL concepts:[^schema]
 
-- the control layer: the catalog and the profile;
+- the control layer: the catalog, the profile and the mapping collection;
 - the implementation layer: the component definition and the system security plan;
-- the assessment layer: the assessment plan, the assessment results and the POA&M;
-- the mapping layer: the mapping collection.
+- the assessment layer: the assessment plan, the assessment results and the POA&M.
 
 CONTRIBUTING.md says that a problem in OSCAL itself belongs upstream, in usnistgov/OSCAL's issue tracker.
 

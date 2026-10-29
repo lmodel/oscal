@@ -31,13 +31,12 @@ sources:
     title: the What it models section
 generated:
   by: process:ktl-librarian
-  at: "2026-10-29T00:53:56Z"
-  revision: 7746495c7a27992c40ebd9cff16858020a82696e
+  at: "2026-10-29T01:18:08Z"
 ---
 
 # OSCAL Mapping Collection Schema
 
-`src/oscal/schema/oscal_mapping.yaml` is the module titled "OSCAL Mapping Collection Model", with the id `https://w3id.org/lmodel/oscal/oscal_mapping`.[^oscal_mapping.yaml] Its `version` is `1.2.3`, its license Apache-2.0, and its `source` is NIST's JSON schema of the model, `http://csrc.nist.gov/ns/oscal/1.2.3/oscal-mapping-schema.json`. It imports `linkml:types` and the [catalog module](oscal-catalog-schema.md). Its `see_also` names NIST's OSCAL pages and its page on the mapping layer, <https://pages.nist.gov/OSCAL/learn/concepts/layer/mapping/>.
+`src/oscal/schema/oscal_mapping.yaml` is the module titled "OSCAL Mapping Collection Model", with the id `https://w3id.org/lmodel/oscal/oscal_mapping`.[^oscal_mapping.yaml] Its `version` is `1.2.3`, its license Apache-2.0, and its `source` is NIST's JSON schema of the model, `http://csrc.nist.gov/ns/oscal/1.2.3/oscal-mapping-schema.json`. It imports `linkml:types` and the [catalog module](oscal-catalog-schema.md). Its `see_also` names NIST's OSCAL pages and its page on the control mapping model, <https://pages.nist.gov/OSCAL/learn/concepts/layer/control/mapping/>.
 
 The README describes the model as how the controls of one catalog relate to another's.[^readme.md] `MappingCollection` is "A collection of control mappings between source and target resources". It requires `uuid`, `metadata`, `provenance` and `mappings`, and also holds `back-matter`. `MappingCollectionDocument` wraps one collection as the root of a mapping collection document.
 

@@ -60,6 +60,9 @@ sources:
 generated:
   by: process:ktl-librarian
   at: "2026-10-29T01:15:40Z"
+verified:
+  - by: process:ktl-librarian
+    at: "2026-10-29T01:19:01Z"
 ---
 
 # Knowledge Sources
