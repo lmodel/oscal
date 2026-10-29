@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: SystemComponent
+# metamodel_version: 1.11.0# version: 1.2.3id: SystemComponent
 schema_generating: true
 description: A defined component that can be part of an implemented system.
 display_name: SystemComponent

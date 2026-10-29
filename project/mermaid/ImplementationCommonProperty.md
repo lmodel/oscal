@@ -8,7 +8,7 @@
       Property <|-- ImplementationCommonProperty
         click Property href "../Property"
       
-      ImplementationCommonProperty : _class
+      ImplementationCommonProperty : class_
         
       ImplementationCommonProperty : group
         

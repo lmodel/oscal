@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: ImportProfile
+# metamodel_version: 1.11.0# version: 1.2.3id: ImportProfile
 schema_generating: true
 description: Used to import the OSCAL profile representing the system's control baseline.
 display_name: ImportProfile

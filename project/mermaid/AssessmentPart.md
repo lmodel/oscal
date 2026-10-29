@@ -13,7 +13,7 @@
         click TermsAndConditionsPart href "../TermsAndConditionsPart"
       
 
-      AssessmentPart : _class
+      AssessmentPart : class_
         
       AssessmentPart : links
         

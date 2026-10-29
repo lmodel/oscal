@@ -8,7 +8,7 @@
       Property <|-- ParameterProperty
         click Property href "../Property"
       
-      ParameterProperty : _class
+      ParameterProperty : class_
         
       ParameterProperty : group
         

@@ -8,7 +8,7 @@
       Property <|-- SspAllowsAuthenticatedScanProp
         click Property href "../Property"
       
-      SspAllowsAuthenticatedScanProp : _class
+      SspAllowsAuthenticatedScanProp : class_
         
       SspAllowsAuthenticatedScanProp : group
         

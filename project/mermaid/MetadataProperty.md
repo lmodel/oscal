@@ -8,7 +8,7 @@
       Property <|-- MetadataProperty
         click Property href "../Property"
       
-      MetadataProperty : _class
+      MetadataProperty : class_
         
       MetadataProperty : group
         

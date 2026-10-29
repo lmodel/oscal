@@ -31,6 +31,17 @@
         
       SystemCharacteristics : description
         
+      SystemCharacteristics : links
+        
+          
+    
+        
+        
+        SystemCharacteristics --> "*" Link : links
+        click Link href "../Link"
+    
+
+        
       SystemCharacteristics : network_architecture
         
           
@@ -39,6 +50,17 @@
         
         SystemCharacteristics --> "0..1" NetworkArchitecture : network_architecture
         click NetworkArchitecture href "../NetworkArchitecture"
+    
+
+        
+      SystemCharacteristics : props
+        
+          
+    
+        
+        
+        SystemCharacteristics --> "*" SspSystemCharacteristicsProp : props
+        click SspSystemCharacteristicsProp href "../SspSystemCharacteristicsProp"
     
 
         

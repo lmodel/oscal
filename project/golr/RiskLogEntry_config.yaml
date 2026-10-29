@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: RiskLogEntry
+# metamodel_version: 1.11.0# version: 1.2.3id: RiskLogEntry
 schema_generating: true
 description: Identifies an individual risk response that occurred as part of managing
   an identified risk.

@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: ResultLocalDefinitions
+# metamodel_version: 1.11.0# version: 1.2.3id: ResultLocalDefinitions
 schema_generating: true
 description: Used to define local implementation and assessment assets referenced
   by a result that do not appear in the imported system security plan.

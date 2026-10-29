@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: LocalDefinitions
+# metamodel_version: 1.11.0# version: 1.2.3id: LocalDefinitions
 schema_generating: true
 description: Used to define data objects that are used in the assessment plan, that
   do not appear in the referenced SSP.

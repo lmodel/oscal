@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: ProfileImport
+# metamodel_version: 1.11.0# version: 1.2.3id: ProfileImport
 schema_generating: true
 description: Designates a referenced source catalog or profile that provides a source
   of control information for use in creating a new overlay or baseline.

@@ -8,7 +8,7 @@
       Property <|-- SspControlOriginationProp
         click Property href "../Property"
       
-      SspControlOriginationProp : _class
+      SspControlOriginationProp : class_
         
       SspControlOriginationProp : group
         

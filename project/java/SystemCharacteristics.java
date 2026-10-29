@@ -1,7 +1,7 @@
 package None;
 
 /* metamodel_version: 1.11.0 */
-/* version: 1.2.1 */
+/* version: 1.2.3 */
 import java.net.URI;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -20,6 +20,8 @@ public class SystemCharacteristics  {
   private String system-name;
   private String system-name-short;
   private String description;
+  private List<SspSystemCharacteristicsProp> props;
+  private List<Link> links;
   private String date-authorized;
   private String security-sensitivity-level;
   private SystemInformation system-information;

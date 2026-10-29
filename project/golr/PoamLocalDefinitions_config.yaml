@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: PoamLocalDefinitions
+# metamodel_version: 1.11.0# version: 1.2.3id: PoamLocalDefinitions
 schema_generating: true
 description: Allows components and inventory items to be defined within the POA&M
   for cases where no OSCAL SSP is available with the POA&M.

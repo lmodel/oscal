@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: Control
+# metamodel_version: 1.11.0# version: 1.2.3id: Control
 schema_generating: true
 description: A structured object representing a requirement or guideline, which when
   implemented will reduce an aspect of risk related to an information system and its
@@ -11,10 +11,10 @@ fields:
   description: Identifies a control such that it can be referenced in the defining
     catalog and other OSCAL instances (e.g., profiles).
   display_name: Control_id
-- id: _class
+- id: class_
   description: A textual label that provides a sub-type or characterization of the
     control.
-  display_name: Control__class
+  display_name: Control_class_
 - id: title
   description: A name given to the control, which may be used by a tool for display
     and navigation.

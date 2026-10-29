@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: ReviewedControls
+# metamodel_version: 1.11.0# version: 1.2.3id: ReviewedControls
 schema_generating: true
 description: Identifies the controls being assessed and their control objectives.
 display_name: ReviewedControls

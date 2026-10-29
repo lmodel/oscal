@@ -8,7 +8,7 @@
       AssessmentPart <|-- TermsAndConditionsPart
         click AssessmentPart href "../AssessmentPart"
       
-      TermsAndConditionsPart : _class
+      TermsAndConditionsPart : class_
         
       TermsAndConditionsPart : links
         

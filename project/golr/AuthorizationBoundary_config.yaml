@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: AuthorizationBoundary
+# metamodel_version: 1.11.0# version: 1.2.3id: AuthorizationBoundary
 schema_generating: true
 description: A description of this system's authorization boundary, optionally supplemented
   with diagrams that illustrate the authorization boundary.

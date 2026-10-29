@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: InsertControls
+# metamodel_version: 1.11.0# version: 1.2.3id: InsertControls
 schema_generating: true
 description: Specifies which controls to use in the containing context (as part of
   a group or custom merge structure).

@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: MappingItem
+# metamodel_version: 1.11.0# version: 1.2.3id: MappingItem
 schema_generating: true
 description: A source or target item participating in a mapping entry.
 display_name: MappingItem

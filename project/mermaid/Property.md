@@ -32,7 +32,7 @@
       Property <|-- SspAllowsAuthenticatedScanProp
         click SspAllowsAuthenticatedScanProp href "../SspAllowsAuthenticatedScanProp"
       
-      Property : _class
+      Property : class_
         
       Property : group
         

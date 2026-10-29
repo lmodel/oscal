@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: AssessmentAssets
+# metamodel_version: 1.11.0# version: 1.2.3id: AssessmentAssets
 schema_generating: true
 description: Identifies the assets used to perform this assessment.
 display_name: AssessmentAssets

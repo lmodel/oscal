@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: FindingTarget
+# metamodel_version: 1.11.0# version: 1.2.3id: FindingTarget
 schema_generating: true
 description: Captures an assessor's conclusions regarding the degree to which an objective
   is satisfied.

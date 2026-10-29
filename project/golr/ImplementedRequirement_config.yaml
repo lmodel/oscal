@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: ImplementedRequirement
+# metamodel_version: 1.11.0# version: 1.2.3id: ImplementedRequirement
 schema_generating: true
 description: Describes how the containing component or capability implements an individual
   control.

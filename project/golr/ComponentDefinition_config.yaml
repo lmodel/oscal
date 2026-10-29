@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: ComponentDefinition
+# metamodel_version: 1.11.0# version: 1.2.3id: ComponentDefinition
 schema_generating: true
 description: A collection of component descriptions, which may optionally be grouped
   by capability.

@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: SspInventoryItem
+# metamodel_version: 1.11.0# version: 1.2.3id: SspInventoryItem
 schema_generating: true
 description: SSP-scoped inventory item with allows-authenticated-scan property typing.
 display_name: SspInventoryItem

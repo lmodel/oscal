@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: Action
+# metamodel_version: 1.11.0# version: 1.2.3id: Action
 schema_generating: true
 description: An action applied by a role within a given party to the content.
 display_name: Action

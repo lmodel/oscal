@@ -8,7 +8,7 @@
       HasPropsAndLinks <|-- ControlPart
         click HasPropsAndLinks href "../HasPropsAndLinks"
       
-      ControlPart : _class
+      ControlPart : class_
         
       ControlPart : id
         

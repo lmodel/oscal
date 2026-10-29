@@ -13,13 +13,12 @@ comments:
   - No assumptions about regime (i.e. FedRamp, etc).
 
 see_also:
-  - https://lmodel.github.io/oscal_catalog
   - https://pages.nist.gov/OSCAL/learn/concepts/layer/control/catalog/
-  - https://pages.nist.gov/OSCAL-Reference/models/v1.2.1/catalog/json-reference/
-  - https://pages.nist.gov/OSCAL-Reference/models/v1.2.1/catalog/json-definitions/
+  - https://pages.nist.gov/OSCAL-Reference/models/v1.2.3/catalog/json-reference/
+  - https://pages.nist.gov/OSCAL-Reference/models/v1.2.3/catalog/json-definitions/
 annotations:
-  uuid: 286a922f-e668-4a49-83bf-b331f760cd94
-  last-modified: "2026-03-27T10:00:00Z"
+  uuid: 7d72f63e-2a28-4c7f-b9da-837fa87688eb
+  last-modified: "2026-10-29T01:02:04Z"
 notes:
   - "Every time the content of an OSCAL file changes, the following must also change:"
   - A new UUID value must be generated and assigned to the root element's uuid.

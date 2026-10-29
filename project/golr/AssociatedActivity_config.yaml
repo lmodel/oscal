@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: AssociatedActivity
+# metamodel_version: 1.11.0# version: 1.2.3id: AssociatedActivity
 schema_generating: true
 description: Identifies an individual activity to be performed as part of a task.
 display_name: AssociatedActivity

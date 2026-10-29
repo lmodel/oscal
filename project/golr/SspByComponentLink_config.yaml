@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: SspByComponentLink
+# metamodel_version: 1.11.0# version: 1.2.3id: SspByComponentLink
 schema_generating: true
 description: SSP-scoped link used in by-component contexts.
 display_name: SspByComponentLink

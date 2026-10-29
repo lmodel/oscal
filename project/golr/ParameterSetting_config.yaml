@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: ParameterSetting
+# metamodel_version: 1.11.0# version: 1.2.3id: ParameterSetting
 schema_generating: true
 description: A parameter setting to be propagated to points of insertion in a resolved
   profile.
@@ -9,9 +9,9 @@ fields:
 - id: param_id
   description: The identifier for the parameter being set or referenced.
   display_name: ParameterSetting_param-id
-- id: _class
+- id: class_
   description: A textual label that provides a sub-type or characterization.
-  display_name: _class
+  display_name: class_
 - id: depends_on
   description: (deprecated) Another parameter invoking this one. This construct has
     been deprecated and should not be used.

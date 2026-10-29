@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: ImplementationCommonLink
+# metamodel_version: 1.11.0# version: 1.2.3id: ImplementationCommonLink
 schema_generating: true
 description: Implementation-common scoped OSCAL link.
 display_name: ImplementationCommonLink

@@ -10,8 +10,8 @@ see_also:
 source: http://csrc.nist.gov/ns/oscal/1.2.3/oscal-ssp-schema.json
 version: 1.2.3
 annotations:
-  uuid: 8e44bf95-e930-455b-a098-3c5e967c3c4f
-  last-modified: "2026-03-27T10:00:00Z"
+  uuid: f92ef8f1-5c1e-476c-9372-e5ed96e2433d
+  last-modified: "2026-10-29T01:02:04Z"
 notes:
   - "Every time the content of an OSCAL file changes, the following must also change:"
   - A new UUID value must be generated and assigned to the root element's uuid.

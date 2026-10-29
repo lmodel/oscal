@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: SspSystemInformationLink
+# metamodel_version: 1.11.0# version: 1.2.3id: SspSystemInformationLink
 schema_generating: true
 description: SSP-scoped link used in system information.
 display_name: SspSystemInformationLink

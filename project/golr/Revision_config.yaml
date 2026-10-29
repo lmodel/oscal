@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: Revision
+# metamodel_version: 1.11.0# version: 1.2.3id: Revision
 schema_generating: true
 description: An entry in a sequential list of revisions to the containing document.
 display_name: Revision

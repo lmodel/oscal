@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: ThreatId
+# metamodel_version: 1.11.0# version: 1.2.3id: ThreatId
 schema_generating: true
 description: A pointer, by ID, to an externally-defined threat.
 display_name: ThreatId

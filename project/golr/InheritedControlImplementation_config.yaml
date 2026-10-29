@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: InheritedControlImplementation
+# metamodel_version: 1.11.0# version: 1.2.3id: InheritedControlImplementation
 schema_generating: true
 description: Describes a control implementation inherited by a leveraging system.
 display_name: InheritedControlImplementation

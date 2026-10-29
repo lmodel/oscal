@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: IncorporatesComponent
+# metamodel_version: 1.11.0# version: 1.2.3id: IncorporatesComponent
 schema_generating: true
 description: The collection of components comprising a capability.
 display_name: IncorporatesComponent

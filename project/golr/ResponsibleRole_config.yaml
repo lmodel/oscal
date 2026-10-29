@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: ResponsibleRole
+# metamodel_version: 1.11.0# version: 1.2.3id: ResponsibleRole
 schema_generating: true
 description: A reference to a role with responsibility for performing a function relative
   to the containing object, optionally associated with a set of persons and/or organizations

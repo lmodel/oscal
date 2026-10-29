@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: TermsAndConditionsPart
+# metamodel_version: 1.11.0# version: 1.2.3id: TermsAndConditionsPart
 schema_generating: true
 description: A terms-and-conditions scoped assessment part.
 display_name: TermsAndConditionsPart
@@ -13,9 +13,9 @@ fields:
   description: An optional namespace qualifying a name. Allows different organizations
     to associate distinct semantics with the same name.
   display_name: ns
-- id: _class
+- id: class_
   description: A textual label that provides a sub-type or characterization.
-  display_name: _class
+  display_name: class_
 - id: title
   description: A human-readable name or title.
   display_name: title

@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: ProfileGroup
+# metamodel_version: 1.11.0# version: 1.2.3id: ProfileGroup
 schema_generating: true
 description: A group of (selected) controls or of groups of controls within a profile
   custom merge structure.
@@ -9,9 +9,9 @@ fields:
 - id: id
   description: A unique human-oriented identifier within a particular context.
   display_name: id
-- id: _class
+- id: class_
   description: A textual label that provides a sub-type or characterization.
-  display_name: _class
+  display_name: class_
 - id: title
   description: A human-readable name or title.
   display_name: ProfileGroup_title

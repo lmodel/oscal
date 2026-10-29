@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: SspImplementedRequirementResponsibleRole
+# metamodel_version: 1.11.0# version: 1.2.3id: SspImplementedRequirementResponsibleRole
 schema_generating: true
 description: SSP-scoped responsible role used by implemented requirement and statement
   contexts.

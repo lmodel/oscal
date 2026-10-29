@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: AuthorizedPrivilege
+# metamodel_version: 1.11.0# version: 1.2.3id: AuthorizedPrivilege
 schema_generating: true
 description: Identifies a specific system privilege held by the user, along with an
   associated description and/or rationale for the privilege.

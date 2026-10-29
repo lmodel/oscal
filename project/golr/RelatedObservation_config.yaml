@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: RelatedObservation
+# metamodel_version: 1.11.0# version: 1.2.3id: RelatedObservation
 schema_generating: true
 description: Relates the identified element to a set of referenced observations.
 display_name: RelatedObservation

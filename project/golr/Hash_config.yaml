@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: Hash
+# metamodel_version: 1.11.0# version: 1.2.3id: Hash
 schema_generating: true
 description: A representation of a cryptographic digest generated over a resource
   using a specified hash algorithm.

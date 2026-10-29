@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: ImplementedComponent
+# metamodel_version: 1.11.0# version: 1.2.3id: ImplementedComponent
 schema_generating: true
 description: The set of components that are implemented in a given system inventory
   item.

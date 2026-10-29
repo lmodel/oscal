@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: MergeCustom
+# metamodel_version: 1.11.0# version: 1.2.3id: MergeCustom
 schema_generating: true
 description: Provides an alternate grouping structure that selected controls will
   be placed in after profile resolution.

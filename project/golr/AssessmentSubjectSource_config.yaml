@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: AssessmentSubjectSource
+# metamodel_version: 1.11.0# version: 1.2.3id: AssessmentSubjectSource
 schema_generating: true
 description: Assessment subjects will be identified while conducting the referenced
   activity.

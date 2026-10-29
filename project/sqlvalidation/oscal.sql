@@ -696,6 +696,12 @@ WHERE "AtFrequency".period IS NULL
 
 UNION ALL
 
+SELECT 'AtFrequency' AS table_name, 'period' AS column_name, 'range' AS constraint_type, id AS record_id, period AS invalid_value 
+FROM "AtFrequency" 
+WHERE "AtFrequency".period < 1
+
+UNION ALL
+
 SELECT 'AtFrequency' AS table_name, 'unit' AS column_name, 'required' AS constraint_type, id AS record_id, NULL AS invalid_value 
 FROM "AtFrequency" 
 WHERE "AtFrequency".unit IS NULL
@@ -801,6 +807,18 @@ UNION ALL
 SELECT 'ComponentStatus' AS table_name, 'state' AS column_name, 'enum' AS constraint_type, id AS record_id, state AS invalid_value 
 FROM "ComponentStatus" 
 WHERE "ComponentStatus".state IS NOT NULL AND ("ComponentStatus".state NOT IN ('under-development', 'operational', 'disposition', 'other'))
+
+UNION ALL
+
+SELECT 'PortRange' AS table_name, 'start' AS column_name, 'range' AS constraint_type, id AS record_id, start AS invalid_value 
+FROM "PortRange" 
+WHERE "PortRange".start < 0
+
+UNION ALL
+
+SELECT 'PortRange' AS table_name, 'end' AS column_name, 'range' AS constraint_type, id AS record_id, "end" AS invalid_value 
+FROM "PortRange" 
+WHERE "PortRange"."end" < 0
 
 UNION ALL
 

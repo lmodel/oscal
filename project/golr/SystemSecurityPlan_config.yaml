@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: SystemSecurityPlan
+# metamodel_version: 1.11.0# version: 1.2.3id: SystemSecurityPlan
 schema_generating: true
 description: A system security plan, such as those described in NIST SP 800-18.
 display_name: SystemSecurityPlan

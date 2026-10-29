@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: SspSystemCharacteristicsResponsibleParty
+# metamodel_version: 1.11.0# version: 1.2.3id: SspSystemCharacteristicsResponsibleParty
 schema_generating: true
 description: SSP-scoped responsible party for system characteristics.
 display_name: SspSystemCharacteristicsResponsibleParty

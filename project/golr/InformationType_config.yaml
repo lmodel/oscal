@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: InformationType
+# metamodel_version: 1.11.0# version: 1.2.3id: InformationType
 schema_generating: true
 description: Contains details about one information type that is stored, processed,
   or transmitted by the system, such as privacy information, and its impact level.

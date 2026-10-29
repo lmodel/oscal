@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: ImpactLevel
+# metamodel_version: 1.11.0# version: 1.2.3id: ImpactLevel
 schema_generating: true
 description: The expected level of impact resulting from the described information's
   confidentiality, integrity, or availability affect.

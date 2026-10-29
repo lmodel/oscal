@@ -8,7 +8,7 @@
       Property <|-- RevisionProperty
         click Property href "../Property"
       
-      RevisionProperty : _class
+      RevisionProperty : class_
         
       RevisionProperty : group
         

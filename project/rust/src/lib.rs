@@ -67,7 +67,7 @@ pub type links = Vec<Link>;
 pub type responsible_roles = Vec<ResponsibleRole>;
 pub type responsible_parties = Vec<ResponsibleParty>;
 pub type id = String;
-pub type _class = String;
+pub type class_ = String;
 pub type name = String;
 pub type ns = String;
 pub type type_ = String;
@@ -744,12 +744,28 @@ impl ::pyo3_stub_gen::PyStubType for LocationPropNameEnum {
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub enum LocationPropTypeEnum {
     Data-center,
+    Region,
+    Zone,
+    Headquarters,
+    Regional-office,
+    Satellite-office,
+    Edge,
+    Cdn,
+    Domain,
 }
 
 impl core::fmt::Display for LocationPropTypeEnum {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         match self {
             LocationPropTypeEnum::Data-center => f.write_str("data-center"),
+            LocationPropTypeEnum::Region => f.write_str("region"),
+            LocationPropTypeEnum::Zone => f.write_str("zone"),
+            LocationPropTypeEnum::Headquarters => f.write_str("headquarters"),
+            LocationPropTypeEnum::Regional-office => f.write_str("regional-office"),
+            LocationPropTypeEnum::Satellite-office => f.write_str("satellite-office"),
+            LocationPropTypeEnum::Edge => f.write_str("edge"),
+            LocationPropTypeEnum::Cdn => f.write_str("cdn"),
+            LocationPropTypeEnum::Domain => f.write_str("domain"),
         }
     }
 }
@@ -762,6 +778,14 @@ impl<'py> IntoPyObject<'py> for LocationPropTypeEnum {
     fn into_pyobject(self, py: Python<'py>) -> Result<Self::Output, Self::Error> {
         let s: &str = match self {
             LocationPropTypeEnum::Data-center => "data-center",
+            LocationPropTypeEnum::Region => "region",
+            LocationPropTypeEnum::Zone => "zone",
+            LocationPropTypeEnum::Headquarters => "headquarters",
+            LocationPropTypeEnum::Regional-office => "regional-office",
+            LocationPropTypeEnum::Satellite-office => "satellite-office",
+            LocationPropTypeEnum::Edge => "edge",
+            LocationPropTypeEnum::Cdn => "cdn",
+            LocationPropTypeEnum::Domain => "domain",
         };
         Ok(pyo3::types::PyString::new(py, s).into_any())
     }
@@ -773,6 +797,14 @@ impl<'py> FromPyObject<'py> for LocationPropTypeEnum {
         if let Ok(s) = ob.extract::<&str>() {
             match s {
                 "data-center" | "Data-center" => Ok(LocationPropTypeEnum::Data-center),
+                "region" | "Region" => Ok(LocationPropTypeEnum::Region),
+                "zone" | "Zone" => Ok(LocationPropTypeEnum::Zone),
+                "headquarters" | "Headquarters" => Ok(LocationPropTypeEnum::Headquarters),
+                "regional-office" | "Regional-office" => Ok(LocationPropTypeEnum::Regional-office),
+                "satellite-office" | "Satellite-office" => Ok(LocationPropTypeEnum::Satellite-office),
+                "edge" | "Edge" => Ok(LocationPropTypeEnum::Edge),
+                "cdn" | "Cdn" => Ok(LocationPropTypeEnum::Cdn),
+                "domain" | "Domain" => Ok(LocationPropTypeEnum::Domain),
                 _ => Err(PyErr::new::<pyo3::exceptions::PyValueError, _>(
                     format!("invalid value for LocationPropTypeEnum: {}", s),
                 )),
@@ -789,7 +821,7 @@ impl<'py> FromPyObject<'py> for LocationPropTypeEnum {
 impl ::pyo3_stub_gen::PyStubType for LocationPropTypeEnum {
     fn type_output() -> ::pyo3_stub_gen::TypeInfo {
         ::pyo3_stub_gen::TypeInfo::with_module(
-            "typing.Literal['data-center']",
+            "typing.Literal['data-center', 'region', 'zone', 'headquarters', 'regional-office', 'satellite-office', 'edge', 'cdn', 'domain']",
             "typing".into(),
         )
     }
@@ -799,6 +831,11 @@ impl ::pyo3_stub_gen::PyStubType for LocationPropTypeEnum {
 pub enum LocationDataCenterClassEnum {
     Primary,
     Alternate,
+    Peer,
+    Availability,
+    Sub,
+    Fault,
+    Failure,
 }
 
 impl core::fmt::Display for LocationDataCenterClassEnum {
@@ -806,6 +843,11 @@ impl core::fmt::Display for LocationDataCenterClassEnum {
         match self {
             LocationDataCenterClassEnum::Primary => f.write_str("primary"),
             LocationDataCenterClassEnum::Alternate => f.write_str("alternate"),
+            LocationDataCenterClassEnum::Peer => f.write_str("peer"),
+            LocationDataCenterClassEnum::Availability => f.write_str("availability"),
+            LocationDataCenterClassEnum::Sub => f.write_str("sub"),
+            LocationDataCenterClassEnum::Fault => f.write_str("fault"),
+            LocationDataCenterClassEnum::Failure => f.write_str("failure"),
         }
     }
 }
@@ -819,6 +861,11 @@ impl<'py> IntoPyObject<'py> for LocationDataCenterClassEnum {
         let s: &str = match self {
             LocationDataCenterClassEnum::Primary => "primary",
             LocationDataCenterClassEnum::Alternate => "alternate",
+            LocationDataCenterClassEnum::Peer => "peer",
+            LocationDataCenterClassEnum::Availability => "availability",
+            LocationDataCenterClassEnum::Sub => "sub",
+            LocationDataCenterClassEnum::Fault => "fault",
+            LocationDataCenterClassEnum::Failure => "failure",
         };
         Ok(pyo3::types::PyString::new(py, s).into_any())
     }
@@ -831,6 +878,11 @@ impl<'py> FromPyObject<'py> for LocationDataCenterClassEnum {
             match s {
                 "primary" | "Primary" => Ok(LocationDataCenterClassEnum::Primary),
                 "alternate" | "Alternate" => Ok(LocationDataCenterClassEnum::Alternate),
+                "peer" | "Peer" => Ok(LocationDataCenterClassEnum::Peer),
+                "availability" | "Availability" => Ok(LocationDataCenterClassEnum::Availability),
+                "sub" | "Sub" => Ok(LocationDataCenterClassEnum::Sub),
+                "fault" | "Fault" => Ok(LocationDataCenterClassEnum::Fault),
+                "failure" | "Failure" => Ok(LocationDataCenterClassEnum::Failure),
                 _ => Err(PyErr::new::<pyo3::exceptions::PyValueError, _>(
                     format!("invalid value for LocationDataCenterClassEnum: {}", s),
                 )),
@@ -847,7 +899,7 @@ impl<'py> FromPyObject<'py> for LocationDataCenterClassEnum {
 impl ::pyo3_stub_gen::PyStubType for LocationDataCenterClassEnum {
     fn type_output() -> ::pyo3_stub_gen::TypeInfo {
         ::pyo3_stub_gen::TypeInfo::with_module(
-            "typing.Literal['primary', 'alternate']",
+            "typing.Literal['primary', 'alternate', 'peer', 'availability', 'sub', 'fault', 'failure']",
             "typing".into(),
         )
     }
@@ -1896,14 +1948,24 @@ impl ::pyo3_stub_gen::PyStubType for ControlPropNameEnum {
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub enum ControlPropStatusValueEnum {
     Withdrawn,
-    Withdrawn,
+    Reserved,
+    Deprecated,
+    Conditional,
+    Superseded,
+    Modified,
+    Experimental,
 }
 
 impl core::fmt::Display for ControlPropStatusValueEnum {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         match self {
             ControlPropStatusValueEnum::Withdrawn => f.write_str("withdrawn"),
-            ControlPropStatusValueEnum::Withdrawn => f.write_str("Withdrawn"),
+            ControlPropStatusValueEnum::Reserved => f.write_str("reserved"),
+            ControlPropStatusValueEnum::Deprecated => f.write_str("deprecated"),
+            ControlPropStatusValueEnum::Conditional => f.write_str("conditional"),
+            ControlPropStatusValueEnum::Superseded => f.write_str("superseded"),
+            ControlPropStatusValueEnum::Modified => f.write_str("modified"),
+            ControlPropStatusValueEnum::Experimental => f.write_str("experimental"),
         }
     }
 }
@@ -1916,7 +1978,12 @@ impl<'py> IntoPyObject<'py> for ControlPropStatusValueEnum {
     fn into_pyobject(self, py: Python<'py>) -> Result<Self::Output, Self::Error> {
         let s: &str = match self {
             ControlPropStatusValueEnum::Withdrawn => "withdrawn",
-            ControlPropStatusValueEnum::Withdrawn => "Withdrawn",
+            ControlPropStatusValueEnum::Reserved => "reserved",
+            ControlPropStatusValueEnum::Deprecated => "deprecated",
+            ControlPropStatusValueEnum::Conditional => "conditional",
+            ControlPropStatusValueEnum::Superseded => "superseded",
+            ControlPropStatusValueEnum::Modified => "modified",
+            ControlPropStatusValueEnum::Experimental => "experimental",
         };
         Ok(pyo3::types::PyString::new(py, s).into_any())
     }
@@ -1928,7 +1995,12 @@ impl<'py> FromPyObject<'py> for ControlPropStatusValueEnum {
         if let Ok(s) = ob.extract::<&str>() {
             match s {
                 "withdrawn" | "Withdrawn" => Ok(ControlPropStatusValueEnum::Withdrawn),
-                "Withdrawn" => Ok(ControlPropStatusValueEnum::Withdrawn),
+                "reserved" | "Reserved" => Ok(ControlPropStatusValueEnum::Reserved),
+                "deprecated" | "Deprecated" => Ok(ControlPropStatusValueEnum::Deprecated),
+                "conditional" | "Conditional" => Ok(ControlPropStatusValueEnum::Conditional),
+                "superseded" | "Superseded" => Ok(ControlPropStatusValueEnum::Superseded),
+                "modified" | "Modified" => Ok(ControlPropStatusValueEnum::Modified),
+                "experimental" | "Experimental" => Ok(ControlPropStatusValueEnum::Experimental),
                 _ => Err(PyErr::new::<pyo3::exceptions::PyValueError, _>(
                     format!("invalid value for ControlPropStatusValueEnum: {}", s),
                 )),
@@ -1945,7 +2017,7 @@ impl<'py> FromPyObject<'py> for ControlPropStatusValueEnum {
 impl ::pyo3_stub_gen::PyStubType for ControlPropStatusValueEnum {
     fn type_output() -> ::pyo3_stub_gen::TypeInfo {
         ::pyo3_stub_gen::TypeInfo::with_module(
-            "typing.Literal['withdrawn', 'Withdrawn']",
+            "typing.Literal['withdrawn', 'reserved', 'deprecated', 'conditional', 'superseded', 'modified', 'experimental']",
             "typing".into(),
         )
     }
@@ -3635,6 +3707,9 @@ pub enum ComponentTypeEnum {
     Standard,
     Validation,
     Network,
+    Region,
+    Zone,
+    Resource-container,
 }
 
 impl core::fmt::Display for ComponentTypeEnum {
@@ -3654,6 +3729,9 @@ impl core::fmt::Display for ComponentTypeEnum {
             ComponentTypeEnum::Standard => f.write_str("standard"),
             ComponentTypeEnum::Validation => f.write_str("validation"),
             ComponentTypeEnum::Network => f.write_str("network"),
+            ComponentTypeEnum::Region => f.write_str("region"),
+            ComponentTypeEnum::Zone => f.write_str("zone"),
+            ComponentTypeEnum::Resource-container => f.write_str("resource-container"),
         }
     }
 }
@@ -3679,6 +3757,9 @@ impl<'py> IntoPyObject<'py> for ComponentTypeEnum {
             ComponentTypeEnum::Standard => "standard",
             ComponentTypeEnum::Validation => "validation",
             ComponentTypeEnum::Network => "network",
+            ComponentTypeEnum::Region => "region",
+            ComponentTypeEnum::Zone => "zone",
+            ComponentTypeEnum::Resource-container => "resource-container",
         };
         Ok(pyo3::types::PyString::new(py, s).into_any())
     }
@@ -3703,6 +3784,9 @@ impl<'py> FromPyObject<'py> for ComponentTypeEnum {
                 "standard" | "Standard" => Ok(ComponentTypeEnum::Standard),
                 "validation" | "Validation" => Ok(ComponentTypeEnum::Validation),
                 "network" | "Network" => Ok(ComponentTypeEnum::Network),
+                "region" | "Region" => Ok(ComponentTypeEnum::Region),
+                "zone" | "Zone" => Ok(ComponentTypeEnum::Zone),
+                "resource-container" | "Resource-container" => Ok(ComponentTypeEnum::Resource-container),
                 _ => Err(PyErr::new::<pyo3::exceptions::PyValueError, _>(
                     format!("invalid value for ComponentTypeEnum: {}", s),
                 )),
@@ -3719,7 +3803,7 @@ impl<'py> FromPyObject<'py> for ComponentTypeEnum {
 impl ::pyo3_stub_gen::PyStubType for ComponentTypeEnum {
     fn type_output() -> ::pyo3_stub_gen::TypeInfo {
         ::pyo3_stub_gen::TypeInfo::with_module(
-            "typing.Literal['this-system', 'system', 'interconnection', 'software', 'hardware', 'service', 'policy', 'physical', 'process-procedure', 'plan', 'guidance', 'standard', 'validation', 'network']",
+            "typing.Literal['this-system', 'system', 'interconnection', 'software', 'hardware', 'service', 'policy', 'physical', 'process-procedure', 'plan', 'guidance', 'standard', 'validation', 'network', 'region', 'zone', 'resource-container']",
             "typing".into(),
         )
     }
@@ -12457,7 +12541,7 @@ pub struct Group {
     #[cfg_attr(feature = "serde", serde(default))]
     pub id: Option<String>,
     #[cfg_attr(feature = "serde", serde(default))]
-    pub _class: Option<String>,
+    pub class_: Option<String>,
     pub title: String,
     #[cfg_attr(feature = "serde", serde(default))]
     pub params: Option<Vec<Parameter>>,
@@ -12477,15 +12561,15 @@ pub struct Group {
 #[pymethods]
 impl Group {
     #[new]
-    #[pyo3(signature = (title, id=None, _class=None, params=None, parts=None, groups=None, controls=None, props=None, links=None))]
-    pub fn new(title: String, id: Option<String>, _class: Option<String>, params: Option<serde_utils::PyValue<Vec<Parameter>>>, parts: Option<serde_utils::PyValue<Vec<Part>>>, groups: Option<serde_utils::PyValue<Vec<Box<Group>>>>, controls: Option<serde_utils::PyValue<Vec<Control>>>, props: Option<serde_utils::PyValue<Vec<PropertyOrSubtype>>>, links: Option<serde_utils::PyValue<Vec<LinkOrSubtype>>>) -> Self {
+    #[pyo3(signature = (title, id=None, class_=None, params=None, parts=None, groups=None, controls=None, props=None, links=None))]
+    pub fn new(title: String, id: Option<String>, class_: Option<String>, params: Option<serde_utils::PyValue<Vec<Parameter>>>, parts: Option<serde_utils::PyValue<Vec<Part>>>, groups: Option<serde_utils::PyValue<Vec<Box<Group>>>>, controls: Option<serde_utils::PyValue<Vec<Control>>>, props: Option<serde_utils::PyValue<Vec<PropertyOrSubtype>>>, links: Option<serde_utils::PyValue<Vec<LinkOrSubtype>>>) -> Self {
         let params = params.map(|v| v.into_inner());
         let parts = parts.map(|v| v.into_inner());
         let groups = groups.map(|v| v.into_inner());
         let controls = controls.map(|v| v.into_inner());
         let props = props.map(|v| v.into_inner());
         let links = links.map(|v| v.into_inner());
-        Group{title, id, _class, params, parts, groups, controls, props, links}
+        Group{title, id, class_, params, parts, groups, controls, props, links}
     }
 }
 
@@ -12521,7 +12605,7 @@ impl<'py> FromPyObject<'py> for Box<Group> {
 pub struct Control {
     pub id: String,
     #[cfg_attr(feature = "serde", serde(default))]
-    pub _class: Option<String>,
+    pub class_: Option<String>,
     pub title: String,
     #[cfg_attr(feature = "serde", serde(default))]
     pub params: Option<Vec<Parameter>>,
@@ -12539,14 +12623,14 @@ pub struct Control {
 #[pymethods]
 impl Control {
     #[new]
-    #[pyo3(signature = (id, title, _class=None, params=None, parts=None, controls=None, props=None, links=None))]
-    pub fn new(id: String, title: String, _class: Option<String>, params: Option<serde_utils::PyValue<Vec<Parameter>>>, parts: Option<serde_utils::PyValue<Vec<Part>>>, controls: Option<serde_utils::PyValue<Vec<Box<Control>>>>, props: Option<serde_utils::PyValue<Vec<PropertyOrSubtype>>>, links: Option<serde_utils::PyValue<Vec<LinkOrSubtype>>>) -> Self {
+    #[pyo3(signature = (id, title, class_=None, params=None, parts=None, controls=None, props=None, links=None))]
+    pub fn new(id: String, title: String, class_: Option<String>, params: Option<serde_utils::PyValue<Vec<Parameter>>>, parts: Option<serde_utils::PyValue<Vec<Part>>>, controls: Option<serde_utils::PyValue<Vec<Box<Control>>>>, props: Option<serde_utils::PyValue<Vec<PropertyOrSubtype>>>, links: Option<serde_utils::PyValue<Vec<LinkOrSubtype>>>) -> Self {
         let params = params.map(|v| v.into_inner());
         let parts = parts.map(|v| v.into_inner());
         let controls = controls.map(|v| v.into_inner());
         let props = props.map(|v| v.into_inner());
         let links = links.map(|v| v.into_inner());
-        Control{id, title, _class, params, parts, controls, props, links}
+        Control{id, title, class_, params, parts, controls, props, links}
     }
 }
 
@@ -14265,44 +14349,44 @@ pub mod property_utl {
     ::pyo3_stub_gen::impl_stub_type!(value_range = String | LocationPropTypeEnum | ResourcePropTypeEnum | ImplementationYesNoEnum | ImplementationAssetTypeEnum | ImplementationPointEnum | ImplementationIpAddressClassEnum | ImplementationDirectionEnum | UserTypeEnum | UserPrivilegeLevelEnum | AssuranceLevelValueEnum | CloudDeploymentModelEnum | CloudServiceModelEnum | PrivacyDesignationEnum | ControlOriginationValueEnum | AllowsAuthenticatedScanEnum);
     #[derive(Debug, Clone, PartialEq)]
     #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
-    pub enum _class_range {
+    pub enum class__range {
         String(String),
         LocationDataCenterClassEnum(LocationDataCenterClassEnum),
         String(String)    }
 
     #[cfg(feature = "pyo3")]
-    impl<'py> FromPyObject<'py> for _class_range {
+    impl<'py> FromPyObject<'py> for class__range {
         fn extract_bound(ob: &pyo3::Bound<'py, pyo3::types::PyAny>) -> pyo3::PyResult<Self> {
             if let Ok(val) = ob.extract::<String>() {
-                return Ok(_class_range::String(val));
+                return Ok(class__range::String(val));
             }            if let Ok(val) = ob.extract::<LocationDataCenterClassEnum>() {
-                return Ok(_class_range::LocationDataCenterClassEnum(val));
+                return Ok(class__range::LocationDataCenterClassEnum(val));
             }            if let Ok(val) = ob.extract::<String>() {
-                return Ok(_class_range::String(val));
+                return Ok(class__range::String(val));
             }Err(PyErr::new::<pyo3::exceptions::PyTypeError, _>(
-                "invalid _class",
+                "invalid class_",
             ))
         }
     }
 
     #[cfg(feature = "pyo3")]
-    impl<'py> IntoPyObject<'py> for _class_range {
+    impl<'py> IntoPyObject<'py> for class__range {
         type Target = PyAny;
         type Output = Bound<'py, Self::Target>;
         type Error = PyErr;
 
         fn into_pyobject(self, py: Python<'py>) -> Result<Self::Output, Self::Error> {
             match self {
-                _class_range::String(val) => Ok(val.into_pyobject(py).map(move |b| <pyo3::Bound<'_, _> as Clone>::clone(&b).into_any())?),
-                _class_range::LocationDataCenterClassEnum(val) => Ok(val.into_pyobject(py).map(move |b| <pyo3::Bound<'_, _> as Clone>::clone(&b).into_any())?),
-                _class_range::String(val) => Ok(val.into_pyobject(py).map(move |b| <pyo3::Bound<'_, _> as Clone>::clone(&b).into_any())?),
+                class__range::String(val) => Ok(val.into_pyobject(py).map(move |b| <pyo3::Bound<'_, _> as Clone>::clone(&b).into_any())?),
+                class__range::LocationDataCenterClassEnum(val) => Ok(val.into_pyobject(py).map(move |b| <pyo3::Bound<'_, _> as Clone>::clone(&b).into_any())?),
+                class__range::String(val) => Ok(val.into_pyobject(py).map(move |b| <pyo3::Bound<'_, _> as Clone>::clone(&b).into_any())?),
             }
         }
     }
 
 
     #[cfg(feature = "pyo3")]
-    impl<'py> IntoPyObject<'py> for Box<_class_range>
+    impl<'py> IntoPyObject<'py> for Box<class__range>
     {
         type Target = PyAny;
         type Output = Bound<'py, Self::Target>;
@@ -14313,19 +14397,19 @@ pub mod property_utl {
     }
 
     #[cfg(feature = "pyo3")]
-    impl<'py> FromPyObject<'py> for Box<_class_range> {
+    impl<'py> FromPyObject<'py> for Box<class__range> {
         fn extract_bound(ob: &pyo3::Bound<'py, pyo3::types::PyAny>) -> pyo3::PyResult<Self> {
-            if let Ok(val) = ob.extract::<_class_range>() {
+            if let Ok(val) = ob.extract::<class__range>() {
                 return Ok(Box::new(val));
             }
             Err(PyErr::new::<pyo3::exceptions::PyTypeError, _>(
-                "invalid _class",
+                "invalid class_",
             ))
         }
     }
 
     #[cfg(feature = "stubgen")]
-    ::pyo3_stub_gen::impl_stub_type!(_class_range = String | LocationDataCenterClassEnum | String);
+    ::pyo3_stub_gen::impl_stub_type!(class__range = String | LocationDataCenterClassEnum | String);
 }
 
 #[derive(Debug, Clone, PartialEq)]
@@ -14340,7 +14424,7 @@ pub struct Property {
     pub ns: Option<String>,
     pub value: String,
     #[cfg_attr(feature = "serde", serde(default))]
-    pub _class: Option<String>,
+    pub class_: Option<String>,
     #[cfg_attr(feature = "serde", serde(default))]
     pub remarks: Option<String>,
     #[cfg_attr(feature = "serde", serde(default))]
@@ -14351,9 +14435,9 @@ pub struct Property {
 #[pymethods]
 impl Property {
     #[new]
-    #[pyo3(signature = (name, value, uuid=None, ns=None, _class=None, remarks=None, group=None))]
-    pub fn new(name: String, value: String, uuid: Option<String>, ns: Option<String>, _class: Option<String>, remarks: Option<String>, group: Option<String>) -> Self {
-        Property{name, value, uuid, ns, _class, remarks, group}
+    #[pyo3(signature = (name, value, uuid=None, ns=None, class_=None, remarks=None, group=None))]
+    pub fn new(name: String, value: String, uuid: Option<String>, ns: Option<String>, class_: Option<String>, remarks: Option<String>, group: Option<String>) -> Self {
+        Property{name, value, uuid, ns, class_, remarks, group}
     }
 }
 
@@ -14500,7 +14584,7 @@ pub struct MetadataProperty {
     pub ns: Option<String>,
     pub value: String,
     #[cfg_attr(feature = "serde", serde(default))]
-    pub _class: Option<String>,
+    pub class_: Option<String>,
     #[cfg_attr(feature = "serde", serde(default))]
     pub remarks: Option<String>,
     #[cfg_attr(feature = "serde", serde(default))]
@@ -14511,9 +14595,9 @@ pub struct MetadataProperty {
 #[pymethods]
 impl MetadataProperty {
     #[new]
-    #[pyo3(signature = (name, value, uuid=None, ns=None, _class=None, remarks=None, group=None))]
-    pub fn new(name: MetadataPropNameEnum, value: String, uuid: Option<String>, ns: Option<String>, _class: Option<String>, remarks: Option<String>, group: Option<String>) -> Self {
-        MetadataProperty{name, value, uuid, ns, _class, remarks, group}
+    #[pyo3(signature = (name, value, uuid=None, ns=None, class_=None, remarks=None, group=None))]
+    pub fn new(name: MetadataPropNameEnum, value: String, uuid: Option<String>, ns: Option<String>, class_: Option<String>, remarks: Option<String>, group: Option<String>) -> Self {
+        MetadataProperty{name, value, uuid, ns, class_, remarks, group}
     }
 }
 
@@ -14554,7 +14638,7 @@ pub struct RevisionProperty {
     pub ns: Option<String>,
     pub value: String,
     #[cfg_attr(feature = "serde", serde(default))]
-    pub _class: Option<String>,
+    pub class_: Option<String>,
     #[cfg_attr(feature = "serde", serde(default))]
     pub remarks: Option<String>,
     #[cfg_attr(feature = "serde", serde(default))]
@@ -14565,9 +14649,9 @@ pub struct RevisionProperty {
 #[pymethods]
 impl RevisionProperty {
     #[new]
-    #[pyo3(signature = (name, value, uuid=None, ns=None, _class=None, remarks=None, group=None))]
-    pub fn new(name: RevisionPropNameEnum, value: String, uuid: Option<String>, ns: Option<String>, _class: Option<String>, remarks: Option<String>, group: Option<String>) -> Self {
-        RevisionProperty{name, value, uuid, ns, _class, remarks, group}
+    #[pyo3(signature = (name, value, uuid=None, ns=None, class_=None, remarks=None, group=None))]
+    pub fn new(name: RevisionPropNameEnum, value: String, uuid: Option<String>, ns: Option<String>, class_: Option<String>, remarks: Option<String>, group: Option<String>) -> Self {
+        RevisionProperty{name, value, uuid, ns, class_, remarks, group}
     }
 }
 
@@ -14659,44 +14743,44 @@ pub mod location_property_utl {
     ::pyo3_stub_gen::impl_stub_type!(value_range = String | LocationPropTypeEnum);
     #[derive(Debug, Clone, PartialEq)]
     #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
-    pub enum _class_range {
+    pub enum class__range {
         String(String),
         LocationDataCenterClassEnum(LocationDataCenterClassEnum),
         String(String)    }
 
     #[cfg(feature = "pyo3")]
-    impl<'py> FromPyObject<'py> for _class_range {
+    impl<'py> FromPyObject<'py> for class__range {
         fn extract_bound(ob: &pyo3::Bound<'py, pyo3::types::PyAny>) -> pyo3::PyResult<Self> {
             if let Ok(val) = ob.extract::<String>() {
-                return Ok(_class_range::String(val));
+                return Ok(class__range::String(val));
             }            if let Ok(val) = ob.extract::<LocationDataCenterClassEnum>() {
-                return Ok(_class_range::LocationDataCenterClassEnum(val));
+                return Ok(class__range::LocationDataCenterClassEnum(val));
             }            if let Ok(val) = ob.extract::<String>() {
-                return Ok(_class_range::String(val));
+                return Ok(class__range::String(val));
             }Err(PyErr::new::<pyo3::exceptions::PyTypeError, _>(
-                "invalid _class",
+                "invalid class_",
             ))
         }
     }
 
     #[cfg(feature = "pyo3")]
-    impl<'py> IntoPyObject<'py> for _class_range {
+    impl<'py> IntoPyObject<'py> for class__range {
         type Target = PyAny;
         type Output = Bound<'py, Self::Target>;
         type Error = PyErr;
 
         fn into_pyobject(self, py: Python<'py>) -> Result<Self::Output, Self::Error> {
             match self {
-                _class_range::String(val) => Ok(val.into_pyobject(py).map(move |b| <pyo3::Bound<'_, _> as Clone>::clone(&b).into_any())?),
-                _class_range::LocationDataCenterClassEnum(val) => Ok(val.into_pyobject(py).map(move |b| <pyo3::Bound<'_, _> as Clone>::clone(&b).into_any())?),
-                _class_range::String(val) => Ok(val.into_pyobject(py).map(move |b| <pyo3::Bound<'_, _> as Clone>::clone(&b).into_any())?),
+                class__range::String(val) => Ok(val.into_pyobject(py).map(move |b| <pyo3::Bound<'_, _> as Clone>::clone(&b).into_any())?),
+                class__range::LocationDataCenterClassEnum(val) => Ok(val.into_pyobject(py).map(move |b| <pyo3::Bound<'_, _> as Clone>::clone(&b).into_any())?),
+                class__range::String(val) => Ok(val.into_pyobject(py).map(move |b| <pyo3::Bound<'_, _> as Clone>::clone(&b).into_any())?),
             }
         }
     }
 
 
     #[cfg(feature = "pyo3")]
-    impl<'py> IntoPyObject<'py> for Box<_class_range>
+    impl<'py> IntoPyObject<'py> for Box<class__range>
     {
         type Target = PyAny;
         type Output = Bound<'py, Self::Target>;
@@ -14707,19 +14791,19 @@ pub mod location_property_utl {
     }
 
     #[cfg(feature = "pyo3")]
-    impl<'py> FromPyObject<'py> for Box<_class_range> {
+    impl<'py> FromPyObject<'py> for Box<class__range> {
         fn extract_bound(ob: &pyo3::Bound<'py, pyo3::types::PyAny>) -> pyo3::PyResult<Self> {
-            if let Ok(val) = ob.extract::<_class_range>() {
+            if let Ok(val) = ob.extract::<class__range>() {
                 return Ok(Box::new(val));
             }
             Err(PyErr::new::<pyo3::exceptions::PyTypeError, _>(
-                "invalid _class",
+                "invalid class_",
             ))
         }
     }
 
     #[cfg(feature = "stubgen")]
-    ::pyo3_stub_gen::impl_stub_type!(_class_range = String | LocationDataCenterClassEnum | String);
+    ::pyo3_stub_gen::impl_stub_type!(class__range = String | LocationDataCenterClassEnum | String);
 }
 
 #[derive(Debug, Clone, PartialEq)]
@@ -14734,7 +14818,7 @@ pub struct LocationProperty {
     pub ns: Option<String>,
     pub value: location_property_utl::value_range,
     #[cfg_attr(feature = "serde", serde(default))]
-    pub _class: Option<location_property_utl::_class_range>,
+    pub class_: Option<location_property_utl::class__range>,
     #[cfg_attr(feature = "serde", serde(default))]
     pub remarks: Option<String>,
     #[cfg_attr(feature = "serde", serde(default))]
@@ -14745,9 +14829,9 @@ pub struct LocationProperty {
 #[pymethods]
 impl LocationProperty {
     #[new]
-    #[pyo3(signature = (name, value, uuid=None, ns=None, _class=None, remarks=None, group=None))]
-    pub fn new(name: LocationPropNameEnum, value: location_property_utl::value_range, uuid: Option<String>, ns: Option<String>, _class: Option<location_property_utl::_class_range>, remarks: Option<String>, group: Option<String>) -> Self {
-        LocationProperty{name, value, uuid, ns, _class, remarks, group}
+    #[pyo3(signature = (name, value, uuid=None, ns=None, class_=None, remarks=None, group=None))]
+    pub fn new(name: LocationPropNameEnum, value: location_property_utl::value_range, uuid: Option<String>, ns: Option<String>, class_: Option<location_property_utl::class__range>, remarks: Option<String>, group: Option<String>) -> Self {
+        LocationProperty{name, value, uuid, ns, class_, remarks, group}
     }
 }
 
@@ -14788,7 +14872,7 @@ pub struct PartyProperty {
     pub ns: Option<String>,
     pub value: String,
     #[cfg_attr(feature = "serde", serde(default))]
-    pub _class: Option<String>,
+    pub class_: Option<String>,
     #[cfg_attr(feature = "serde", serde(default))]
     pub remarks: Option<String>,
     #[cfg_attr(feature = "serde", serde(default))]
@@ -14799,9 +14883,9 @@ pub struct PartyProperty {
 #[pymethods]
 impl PartyProperty {
     #[new]
-    #[pyo3(signature = (name, value, uuid=None, ns=None, _class=None, remarks=None, group=None))]
-    pub fn new(name: PartyPropNameEnum, value: String, uuid: Option<String>, ns: Option<String>, _class: Option<String>, remarks: Option<String>, group: Option<String>) -> Self {
-        PartyProperty{name, value, uuid, ns, _class, remarks, group}
+    #[pyo3(signature = (name, value, uuid=None, ns=None, class_=None, remarks=None, group=None))]
+    pub fn new(name: PartyPropNameEnum, value: String, uuid: Option<String>, ns: Option<String>, class_: Option<String>, remarks: Option<String>, group: Option<String>) -> Self {
+        PartyProperty{name, value, uuid, ns, class_, remarks, group}
     }
 }
 
@@ -14905,7 +14989,7 @@ pub struct ResourceProperty {
     pub ns: Option<String>,
     pub value: resource_property_utl::value_range,
     #[cfg_attr(feature = "serde", serde(default))]
-    pub _class: Option<String>,
+    pub class_: Option<String>,
     #[cfg_attr(feature = "serde", serde(default))]
     pub remarks: Option<String>,
     #[cfg_attr(feature = "serde", serde(default))]
@@ -14916,9 +15000,9 @@ pub struct ResourceProperty {
 #[pymethods]
 impl ResourceProperty {
     #[new]
-    #[pyo3(signature = (name, value, uuid=None, ns=None, _class=None, remarks=None, group=None))]
-    pub fn new(name: ResourcePropNameEnum, value: resource_property_utl::value_range, uuid: Option<String>, ns: Option<String>, _class: Option<String>, remarks: Option<String>, group: Option<String>) -> Self {
-        ResourceProperty{name, value, uuid, ns, _class, remarks, group}
+    #[pyo3(signature = (name, value, uuid=None, ns=None, class_=None, remarks=None, group=None))]
+    pub fn new(name: ResourcePropNameEnum, value: resource_property_utl::value_range, uuid: Option<String>, ns: Option<String>, class_: Option<String>, remarks: Option<String>, group: Option<String>) -> Self {
+        ResourceProperty{name, value, uuid, ns, class_, remarks, group}
     }
 }
 
@@ -14959,7 +15043,7 @@ pub struct PartProperty {
     pub ns: Option<String>,
     pub value: String,
     #[cfg_attr(feature = "serde", serde(default))]
-    pub _class: Option<String>,
+    pub class_: Option<String>,
     #[cfg_attr(feature = "serde", serde(default))]
     pub remarks: Option<String>,
     #[cfg_attr(feature = "serde", serde(default))]
@@ -14970,9 +15054,9 @@ pub struct PartProperty {
 #[pymethods]
 impl PartProperty {
     #[new]
-    #[pyo3(signature = (name, value, uuid=None, ns=None, _class=None, remarks=None, group=None))]
-    pub fn new(name: PartPropNameEnum, value: String, uuid: Option<String>, ns: Option<String>, _class: Option<String>, remarks: Option<String>, group: Option<String>) -> Self {
-        PartProperty{name, value, uuid, ns, _class, remarks, group}
+    #[pyo3(signature = (name, value, uuid=None, ns=None, class_=None, remarks=None, group=None))]
+    pub fn new(name: PartPropNameEnum, value: String, uuid: Option<String>, ns: Option<String>, class_: Option<String>, remarks: Option<String>, group: Option<String>) -> Self {
+        PartProperty{name, value, uuid, ns, class_, remarks, group}
     }
 }
 
@@ -15080,7 +15164,7 @@ pub struct ParameterProperty {
     pub ns: Option<String>,
     pub value: String,
     #[cfg_attr(feature = "serde", serde(default))]
-    pub _class: Option<String>,
+    pub class_: Option<String>,
     #[cfg_attr(feature = "serde", serde(default))]
     pub remarks: Option<String>,
     #[cfg_attr(feature = "serde", serde(default))]
@@ -15091,9 +15175,9 @@ pub struct ParameterProperty {
 #[pymethods]
 impl ParameterProperty {
     #[new]
-    #[pyo3(signature = (name, value, uuid=None, ns=None, _class=None, remarks=None, group=None))]
-    pub fn new(name: parameter_property_utl::name_range, value: String, uuid: Option<String>, ns: Option<String>, _class: Option<String>, remarks: Option<String>, group: Option<String>) -> Self {
-        ParameterProperty{name, value, uuid, ns, _class, remarks, group}
+    #[pyo3(signature = (name, value, uuid=None, ns=None, class_=None, remarks=None, group=None))]
+    pub fn new(name: parameter_property_utl::name_range, value: String, uuid: Option<String>, ns: Option<String>, class_: Option<String>, remarks: Option<String>, group: Option<String>) -> Self {
+        ParameterProperty{name, value, uuid, ns, class_, remarks, group}
     }
 }
 
@@ -15705,7 +15789,7 @@ pub struct Part {
     #[cfg_attr(feature = "serde", serde(default))]
     pub ns: Option<String>,
     #[cfg_attr(feature = "serde", serde(default))]
-    pub _class: Option<String>,
+    pub class_: Option<String>,
     #[cfg_attr(feature = "serde", serde(default))]
     pub title: Option<String>,
     #[cfg_attr(feature = "serde", serde(default))]
@@ -15722,12 +15806,12 @@ pub struct Part {
 #[pymethods]
 impl Part {
     #[new]
-    #[pyo3(signature = (name, id=None, ns=None, _class=None, title=None, prose=None, parts=None, props=None, links=None))]
-    pub fn new(name: String, id: Option<String>, ns: Option<String>, _class: Option<String>, title: Option<String>, prose: Option<String>, parts: Option<serde_utils::PyValue<Vec<Box<Part>>>>, props: Option<serde_utils::PyValue<Vec<PartProperty>>>, links: Option<serde_utils::PyValue<Vec<LinkOrSubtype>>>) -> Self {
+    #[pyo3(signature = (name, id=None, ns=None, class_=None, title=None, prose=None, parts=None, props=None, links=None))]
+    pub fn new(name: String, id: Option<String>, ns: Option<String>, class_: Option<String>, title: Option<String>, prose: Option<String>, parts: Option<serde_utils::PyValue<Vec<Box<Part>>>>, props: Option<serde_utils::PyValue<Vec<PartProperty>>>, links: Option<serde_utils::PyValue<Vec<LinkOrSubtype>>>) -> Self {
         let parts = parts.map(|v| v.into_inner());
         let props = props.map(|v| v.into_inner());
         let links = links.map(|v| v.into_inner());
-        Part{name, id, ns, _class, title, prose, parts, props, links}
+        Part{name, id, ns, class_, title, prose, parts, props, links}
     }
 }
 
@@ -15763,7 +15847,7 @@ impl<'py> FromPyObject<'py> for Box<Part> {
 pub struct Parameter {
     pub id: String,
     #[cfg_attr(feature = "serde", serde(default))]
-    pub _class: Option<String>,
+    pub class_: Option<String>,
     #[cfg_attr(feature = "serde", serde(default))]
     pub depends_on: Option<String>,
     #[cfg_attr(feature = "serde", serde(default))]
@@ -15794,14 +15878,14 @@ pub struct Parameter {
 #[pymethods]
 impl Parameter {
     #[new]
-    #[pyo3(signature = (id, _class=None, depends_on=None, label=None, usage=None, constraints=None, guidelines=None, values=None, select=None, remarks=None, props=None, links=None))]
-    pub fn new(id: String, _class: Option<String>, depends_on: Option<String>, label: Option<String>, usage: Option<String>, constraints: Option<serde_utils::PyValue<Vec<ParameterConstraint>>>, guidelines: Option<serde_utils::PyValue<Vec<ParameterGuideline>>>, values: Option<Vec<String>>, select: Option<serde_utils::PyValue<ParameterSelection>>, remarks: Option<String>, props: Option<serde_utils::PyValue<Vec<ParameterProperty>>>, links: Option<serde_utils::PyValue<Vec<LinkOrSubtype>>>) -> Self {
+    #[pyo3(signature = (id, class_=None, depends_on=None, label=None, usage=None, constraints=None, guidelines=None, values=None, select=None, remarks=None, props=None, links=None))]
+    pub fn new(id: String, class_: Option<String>, depends_on: Option<String>, label: Option<String>, usage: Option<String>, constraints: Option<serde_utils::PyValue<Vec<ParameterConstraint>>>, guidelines: Option<serde_utils::PyValue<Vec<ParameterGuideline>>>, values: Option<Vec<String>>, select: Option<serde_utils::PyValue<ParameterSelection>>, remarks: Option<String>, props: Option<serde_utils::PyValue<Vec<ParameterProperty>>>, links: Option<serde_utils::PyValue<Vec<LinkOrSubtype>>>) -> Self {
         let constraints = constraints.map(|v| v.into_inner());
         let guidelines = guidelines.map(|v| v.into_inner());
         let select = select.map(|v| v.into_inner());
         let props = props.map(|v| v.into_inner());
         let links = links.map(|v| v.into_inner());
-        Parameter{id, _class, depends_on, label, usage, constraints, guidelines, values, select, remarks, props, links}
+        Parameter{id, class_, depends_on, label, usage, constraints, guidelines, values, select, remarks, props, links}
     }
 }
 
@@ -16434,7 +16518,7 @@ pub struct ProfileGroup {
     #[cfg_attr(feature = "serde", serde(default))]
     pub id: Option<String>,
     #[cfg_attr(feature = "serde", serde(default))]
-    pub _class: Option<String>,
+    pub class_: Option<String>,
     pub title: String,
     #[cfg_attr(feature = "serde", serde(default))]
     pub params: Option<Vec<Parameter>>,
@@ -16456,15 +16540,15 @@ pub struct ProfileGroup {
 #[pymethods]
 impl ProfileGroup {
     #[new]
-    #[pyo3(signature = (title, id=None, _class=None, params=None, parts=None, groups=None, insert_controls=None, remarks=None, props=None, links=None))]
-    pub fn new(title: String, id: Option<String>, _class: Option<String>, params: Option<serde_utils::PyValue<Vec<Parameter>>>, parts: Option<serde_utils::PyValue<Vec<Part>>>, groups: Option<serde_utils::PyValue<Vec<Box<ProfileGroup>>>>, insert_controls: Option<serde_utils::PyValue<Vec<InsertControls>>>, remarks: Option<String>, props: Option<serde_utils::PyValue<Vec<PropertyOrSubtype>>>, links: Option<serde_utils::PyValue<Vec<LinkOrSubtype>>>) -> Self {
+    #[pyo3(signature = (title, id=None, class_=None, params=None, parts=None, groups=None, insert_controls=None, remarks=None, props=None, links=None))]
+    pub fn new(title: String, id: Option<String>, class_: Option<String>, params: Option<serde_utils::PyValue<Vec<Parameter>>>, parts: Option<serde_utils::PyValue<Vec<Part>>>, groups: Option<serde_utils::PyValue<Vec<Box<ProfileGroup>>>>, insert_controls: Option<serde_utils::PyValue<Vec<InsertControls>>>, remarks: Option<String>, props: Option<serde_utils::PyValue<Vec<PropertyOrSubtype>>>, links: Option<serde_utils::PyValue<Vec<LinkOrSubtype>>>) -> Self {
         let params = params.map(|v| v.into_inner());
         let parts = parts.map(|v| v.into_inner());
         let groups = groups.map(|v| v.into_inner());
         let insert_controls = insert_controls.map(|v| v.into_inner());
         let props = props.map(|v| v.into_inner());
         let links = links.map(|v| v.into_inner());
-        ProfileGroup{title, id, _class, params, parts, groups, insert_controls, remarks, props, links}
+        ProfileGroup{title, id, class_, params, parts, groups, insert_controls, remarks, props, links}
     }
 }
 
@@ -16548,7 +16632,7 @@ impl<'py> FromPyObject<'py> for Box<ProfileModify> {
 pub struct ParameterSetting {
     pub param_id: String,
     #[cfg_attr(feature = "serde", serde(default))]
-    pub _class: Option<String>,
+    pub class_: Option<String>,
     #[cfg_attr(feature = "serde", serde(default))]
     pub depends_on: Option<String>,
     #[cfg_attr(feature = "serde", serde(default))]
@@ -16577,14 +16661,14 @@ pub struct ParameterSetting {
 #[pymethods]
 impl ParameterSetting {
     #[new]
-    #[pyo3(signature = (param_id, _class=None, depends_on=None, label=None, usage=None, constraints=None, guidelines=None, values=None, select=None, props=None, links=None))]
-    pub fn new(param_id: String, _class: Option<String>, depends_on: Option<String>, label: Option<String>, usage: Option<String>, constraints: Option<serde_utils::PyValue<Vec<ParameterConstraint>>>, guidelines: Option<serde_utils::PyValue<Vec<ParameterGuideline>>>, values: Option<Vec<String>>, select: Option<serde_utils::PyValue<ParameterSelection>>, props: Option<serde_utils::PyValue<Vec<PropertyOrSubtype>>>, links: Option<serde_utils::PyValue<Vec<LinkOrSubtype>>>) -> Self {
+    #[pyo3(signature = (param_id, class_=None, depends_on=None, label=None, usage=None, constraints=None, guidelines=None, values=None, select=None, props=None, links=None))]
+    pub fn new(param_id: String, class_: Option<String>, depends_on: Option<String>, label: Option<String>, usage: Option<String>, constraints: Option<serde_utils::PyValue<Vec<ParameterConstraint>>>, guidelines: Option<serde_utils::PyValue<Vec<ParameterGuideline>>>, values: Option<Vec<String>>, select: Option<serde_utils::PyValue<ParameterSelection>>, props: Option<serde_utils::PyValue<Vec<PropertyOrSubtype>>>, links: Option<serde_utils::PyValue<Vec<LinkOrSubtype>>>) -> Self {
         let constraints = constraints.map(|v| v.into_inner());
         let guidelines = guidelines.map(|v| v.into_inner());
         let select = select.map(|v| v.into_inner());
         let props = props.map(|v| v.into_inner());
         let links = links.map(|v| v.into_inner());
-        ParameterSetting{param_id, _class, depends_on, label, usage, constraints, guidelines, values, select, props, links}
+        ParameterSetting{param_id, class_, depends_on, label, usage, constraints, guidelines, values, select, props, links}
     }
 }
 
@@ -16788,7 +16872,7 @@ pub struct ProfileAlterationProperty {
     pub ns: Option<String>,
     pub value: String,
     #[cfg_attr(feature = "serde", serde(default))]
-    pub _class: Option<String>,
+    pub class_: Option<String>,
     #[cfg_attr(feature = "serde", serde(default))]
     pub remarks: Option<String>,
     #[cfg_attr(feature = "serde", serde(default))]
@@ -16799,9 +16883,9 @@ pub struct ProfileAlterationProperty {
 #[pymethods]
 impl ProfileAlterationProperty {
     #[new]
-    #[pyo3(signature = (name, value, uuid=None, ns=None, _class=None, remarks=None, group=None))]
-    pub fn new(name: AlterationPropNameEnum, value: String, uuid: Option<String>, ns: Option<String>, _class: Option<String>, remarks: Option<String>, group: Option<String>) -> Self {
-        ProfileAlterationProperty{name, value, uuid, ns, _class, remarks, group}
+    #[pyo3(signature = (name, value, uuid=None, ns=None, class_=None, remarks=None, group=None))]
+    pub fn new(name: AlterationPropNameEnum, value: String, uuid: Option<String>, ns: Option<String>, class_: Option<String>, remarks: Option<String>, group: Option<String>) -> Self {
+        ProfileAlterationProperty{name, value, uuid, ns, class_, remarks, group}
     }
 }
 
@@ -18834,7 +18918,7 @@ pub struct AssessmentPart {
     #[cfg_attr(feature = "serde", serde(default))]
     pub ns: Option<String>,
     #[cfg_attr(feature = "serde", serde(default))]
-    pub _class: Option<String>,
+    pub class_: Option<String>,
     #[cfg_attr(feature = "serde", serde(default))]
     pub title: Option<String>,
     #[cfg_attr(feature = "serde", serde(default))]
@@ -18851,12 +18935,12 @@ pub struct AssessmentPart {
 #[pymethods]
 impl AssessmentPart {
     #[new]
-    #[pyo3(signature = (name, uuid=None, ns=None, _class=None, title=None, prose=None, parts=None, props=None, links=None))]
-    pub fn new(name: assessment_part_utl::name_range, uuid: Option<String>, ns: Option<String>, _class: Option<String>, title: Option<String>, prose: Option<String>, parts: Option<serde_utils::PyValue<Vec<Box<AssessmentPartOrSubtype>>>>, props: Option<serde_utils::PyValue<Vec<PropertyOrSubtype>>>, links: Option<serde_utils::PyValue<Vec<LinkOrSubtype>>>) -> Self {
+    #[pyo3(signature = (name, uuid=None, ns=None, class_=None, title=None, prose=None, parts=None, props=None, links=None))]
+    pub fn new(name: assessment_part_utl::name_range, uuid: Option<String>, ns: Option<String>, class_: Option<String>, title: Option<String>, prose: Option<String>, parts: Option<serde_utils::PyValue<Vec<Box<AssessmentPartOrSubtype>>>>, props: Option<serde_utils::PyValue<Vec<PropertyOrSubtype>>>, links: Option<serde_utils::PyValue<Vec<LinkOrSubtype>>>) -> Self {
         let parts = parts.map(|v| v.into_inner());
         let props = props.map(|v| v.into_inner());
         let links = links.map(|v| v.into_inner());
-        AssessmentPart{name, uuid, ns, _class, title, prose, parts, props, links}
+        AssessmentPart{name, uuid, ns, class_, title, prose, parts, props, links}
     }
 }
 
@@ -19021,7 +19105,7 @@ pub struct TermsAndConditionsPart {
     #[cfg_attr(feature = "serde", serde(default))]
     pub ns: Option<String>,
     #[cfg_attr(feature = "serde", serde(default))]
-    pub _class: Option<String>,
+    pub class_: Option<String>,
     #[cfg_attr(feature = "serde", serde(default))]
     pub title: Option<String>,
     #[cfg_attr(feature = "serde", serde(default))]
@@ -19038,12 +19122,12 @@ pub struct TermsAndConditionsPart {
 #[pymethods]
 impl TermsAndConditionsPart {
     #[new]
-    #[pyo3(signature = (name, uuid=None, ns=None, _class=None, title=None, prose=None, parts=None, props=None, links=None))]
-    pub fn new(name: terms_and_conditions_part_utl::name_range, uuid: Option<String>, ns: Option<String>, _class: Option<String>, title: Option<String>, prose: Option<String>, parts: Option<serde_utils::PyValue<Vec<Box<TermsAndConditionsPart>>>>, props: Option<serde_utils::PyValue<Vec<PropertyOrSubtype>>>, links: Option<serde_utils::PyValue<Vec<LinkOrSubtype>>>) -> Self {
+    #[pyo3(signature = (name, uuid=None, ns=None, class_=None, title=None, prose=None, parts=None, props=None, links=None))]
+    pub fn new(name: terms_and_conditions_part_utl::name_range, uuid: Option<String>, ns: Option<String>, class_: Option<String>, title: Option<String>, prose: Option<String>, parts: Option<serde_utils::PyValue<Vec<Box<TermsAndConditionsPart>>>>, props: Option<serde_utils::PyValue<Vec<PropertyOrSubtype>>>, links: Option<serde_utils::PyValue<Vec<LinkOrSubtype>>>) -> Self {
         let parts = parts.map(|v| v.into_inner());
         let props = props.map(|v| v.into_inner());
         let links = links.map(|v| v.into_inner());
-        TermsAndConditionsPart{name, uuid, ns, _class, title, prose, parts, props, links}
+        TermsAndConditionsPart{name, uuid, ns, class_, title, prose, parts, props, links}
     }
 }
 
@@ -19083,7 +19167,7 @@ pub struct ControlPart {
     #[cfg_attr(feature = "serde", serde(default))]
     pub ns: Option<String>,
     #[cfg_attr(feature = "serde", serde(default))]
-    pub _class: Option<String>,
+    pub class_: Option<String>,
     #[cfg_attr(feature = "serde", serde(default))]
     pub title: Option<String>,
     #[cfg_attr(feature = "serde", serde(default))]
@@ -19100,12 +19184,12 @@ pub struct ControlPart {
 #[pymethods]
 impl ControlPart {
     #[new]
-    #[pyo3(signature = (name, id=None, ns=None, _class=None, title=None, prose=None, parts=None, props=None, links=None))]
-    pub fn new(name: String, id: Option<String>, ns: Option<String>, _class: Option<String>, title: Option<String>, prose: Option<String>, parts: Option<serde_utils::PyValue<Vec<Box<ControlPart>>>>, props: Option<serde_utils::PyValue<Vec<PropertyOrSubtype>>>, links: Option<serde_utils::PyValue<Vec<LinkOrSubtype>>>) -> Self {
+    #[pyo3(signature = (name, id=None, ns=None, class_=None, title=None, prose=None, parts=None, props=None, links=None))]
+    pub fn new(name: String, id: Option<String>, ns: Option<String>, class_: Option<String>, title: Option<String>, prose: Option<String>, parts: Option<serde_utils::PyValue<Vec<Box<ControlPart>>>>, props: Option<serde_utils::PyValue<Vec<PropertyOrSubtype>>>, links: Option<serde_utils::PyValue<Vec<LinkOrSubtype>>>) -> Self {
         let parts = parts.map(|v| v.into_inner());
         let props = props.map(|v| v.into_inner());
         let links = links.map(|v| v.into_inner());
-        ControlPart{name, id, ns, _class, title, prose, parts, props, links}
+        ControlPart{name, id, ns, class_, title, prose, parts, props, links}
     }
 }
 
@@ -20244,7 +20328,7 @@ pub struct ImplementationCommonProperty {
     pub ns: Option<String>,
     pub value: implementation_common_property_utl::value_range,
     #[cfg_attr(feature = "serde", serde(default))]
-    pub _class: Option<String>,
+    pub class_: Option<String>,
     #[cfg_attr(feature = "serde", serde(default))]
     pub remarks: Option<String>,
     #[cfg_attr(feature = "serde", serde(default))]
@@ -20255,9 +20339,9 @@ pub struct ImplementationCommonProperty {
 #[pymethods]
 impl ImplementationCommonProperty {
     #[new]
-    #[pyo3(signature = (name, value, uuid=None, ns=None, _class=None, remarks=None, group=None))]
-    pub fn new(name: ImplementationPropNameEnum, value: implementation_common_property_utl::value_range, uuid: Option<String>, ns: Option<String>, _class: Option<String>, remarks: Option<String>, group: Option<String>) -> Self {
-        ImplementationCommonProperty{name, value, uuid, ns, _class, remarks, group}
+    #[pyo3(signature = (name, value, uuid=None, ns=None, class_=None, remarks=None, group=None))]
+    pub fn new(name: ImplementationPropNameEnum, value: implementation_common_property_utl::value_range, uuid: Option<String>, ns: Option<String>, class_: Option<String>, remarks: Option<String>, group: Option<String>) -> Self {
+        ImplementationCommonProperty{name, value, uuid, ns, class_, remarks, group}
     }
 }
 
@@ -22387,6 +22471,10 @@ pub struct SystemCharacteristics {
     pub system_name_short: Option<String>,
     pub description: String,
     #[cfg_attr(feature = "serde", serde(default))]
+    pub props: Option<Vec<SspSystemCharacteristicsProp>>,
+    #[cfg_attr(feature = "serde", serde(default))]
+    pub links: Option<Vec<LinkOrSubtype>>,
+    #[cfg_attr(feature = "serde", serde(default))]
     pub date_authorized: Option<String>,
     #[cfg_attr(feature = "serde", serde(default))]
     pub security_sensitivity_level: Option<String>,
@@ -22409,17 +22497,19 @@ pub struct SystemCharacteristics {
 #[pymethods]
 impl SystemCharacteristics {
     #[new]
-    #[pyo3(signature = (system_ids, system_name, description, system_information, system_status, authorization_boundary, system_name_short=None, date_authorized=None, security_sensitivity_level=None, security_impact_level=None, network_architecture=None, data_flow=None, responsible_parties=None, remarks=None))]
-    pub fn new(system_ids: serde_utils::PyValue<Vec<SystemId>>, system_name: String, description: String, system_information: serde_utils::PyValue<SystemInformation>, system_status: serde_utils::PyValue<SystemStatus>, authorization_boundary: serde_utils::PyValue<AuthorizationBoundary>, system_name_short: Option<String>, date_authorized: Option<String>, security_sensitivity_level: Option<String>, security_impact_level: Option<serde_utils::PyValue<SecurityImpactLevel>>, network_architecture: Option<serde_utils::PyValue<NetworkArchitecture>>, data_flow: Option<serde_utils::PyValue<DataFlow>>, responsible_parties: Option<serde_utils::PyValue<Vec<SspSystemCharacteristicsResponsibleParty>>>, remarks: Option<String>) -> Self {
+    #[pyo3(signature = (system_ids, system_name, description, system_information, system_status, authorization_boundary, system_name_short=None, props=None, links=None, date_authorized=None, security_sensitivity_level=None, security_impact_level=None, network_architecture=None, data_flow=None, responsible_parties=None, remarks=None))]
+    pub fn new(system_ids: serde_utils::PyValue<Vec<SystemId>>, system_name: String, description: String, system_information: serde_utils::PyValue<SystemInformation>, system_status: serde_utils::PyValue<SystemStatus>, authorization_boundary: serde_utils::PyValue<AuthorizationBoundary>, system_name_short: Option<String>, props: Option<serde_utils::PyValue<Vec<SspSystemCharacteristicsProp>>>, links: Option<serde_utils::PyValue<Vec<LinkOrSubtype>>>, date_authorized: Option<String>, security_sensitivity_level: Option<String>, security_impact_level: Option<serde_utils::PyValue<SecurityImpactLevel>>, network_architecture: Option<serde_utils::PyValue<NetworkArchitecture>>, data_flow: Option<serde_utils::PyValue<DataFlow>>, responsible_parties: Option<serde_utils::PyValue<Vec<SspSystemCharacteristicsResponsibleParty>>>, remarks: Option<String>) -> Self {
         let system_ids = system_ids.into_inner();
         let system_information = system_information.into_inner();
         let system_status = system_status.into_inner();
         let authorization_boundary = authorization_boundary.into_inner();
+        let props = props.map(|v| v.into_inner());
+        let links = links.map(|v| v.into_inner());
         let security_impact_level = security_impact_level.map(|v| v.into_inner());
         let network_architecture = network_architecture.map(|v| v.into_inner());
         let data_flow = data_flow.map(|v| v.into_inner());
         let responsible_parties = responsible_parties.map(|v| v.into_inner());
-        SystemCharacteristics{system_ids, system_name, description, system_information, system_status, authorization_boundary, system_name_short, date_authorized, security_sensitivity_level, security_impact_level, network_architecture, data_flow, responsible_parties, remarks}
+        SystemCharacteristics{system_ids, system_name, description, system_information, system_status, authorization_boundary, system_name_short, props, links, date_authorized, security_sensitivity_level, security_impact_level, network_architecture, data_flow, responsible_parties, remarks}
     }
 }
 
@@ -23884,7 +23974,7 @@ pub struct SspSystemCharacteristicsProp {
     pub ns: Option<String>,
     pub value: ssp_system_characteristics_prop_utl::value_range,
     #[cfg_attr(feature = "serde", serde(default))]
-    pub _class: Option<String>,
+    pub class_: Option<String>,
     #[cfg_attr(feature = "serde", serde(default))]
     pub remarks: Option<String>,
     #[cfg_attr(feature = "serde", serde(default))]
@@ -23895,9 +23985,9 @@ pub struct SspSystemCharacteristicsProp {
 #[pymethods]
 impl SspSystemCharacteristicsProp {
     #[new]
-    #[pyo3(signature = (name, value, uuid=None, ns=None, _class=None, remarks=None, group=None))]
-    pub fn new(name: SystemCharacteristicsPropNameEnum, value: ssp_system_characteristics_prop_utl::value_range, uuid: Option<String>, ns: Option<String>, _class: Option<String>, remarks: Option<String>, group: Option<String>) -> Self {
-        SspSystemCharacteristicsProp{name, value, uuid, ns, _class, remarks, group}
+    #[pyo3(signature = (name, value, uuid=None, ns=None, class_=None, remarks=None, group=None))]
+    pub fn new(name: SystemCharacteristicsPropNameEnum, value: ssp_system_characteristics_prop_utl::value_range, uuid: Option<String>, ns: Option<String>, class_: Option<String>, remarks: Option<String>, group: Option<String>) -> Self {
+        SspSystemCharacteristicsProp{name, value, uuid, ns, class_, remarks, group}
     }
 }
 
@@ -23938,7 +24028,7 @@ pub struct SspSystemInformationProp {
     pub ns: Option<String>,
     pub value: PrivacyDesignationEnum,
     #[cfg_attr(feature = "serde", serde(default))]
-    pub _class: Option<String>,
+    pub class_: Option<String>,
     #[cfg_attr(feature = "serde", serde(default))]
     pub remarks: Option<String>,
     #[cfg_attr(feature = "serde", serde(default))]
@@ -23949,9 +24039,9 @@ pub struct SspSystemInformationProp {
 #[pymethods]
 impl SspSystemInformationProp {
     #[new]
-    #[pyo3(signature = (name, value, uuid=None, ns=None, _class=None, remarks=None, group=None))]
-    pub fn new(name: SystemInformationPropNameEnum, value: PrivacyDesignationEnum, uuid: Option<String>, ns: Option<String>, _class: Option<String>, remarks: Option<String>, group: Option<String>) -> Self {
-        SspSystemInformationProp{name, value, uuid, ns, _class, remarks, group}
+    #[pyo3(signature = (name, value, uuid=None, ns=None, class_=None, remarks=None, group=None))]
+    pub fn new(name: SystemInformationPropNameEnum, value: PrivacyDesignationEnum, uuid: Option<String>, ns: Option<String>, class_: Option<String>, remarks: Option<String>, group: Option<String>) -> Self {
+        SspSystemInformationProp{name, value, uuid, ns, class_, remarks, group}
     }
 }
 
@@ -23992,7 +24082,7 @@ pub struct SspControlOriginationProp {
     pub ns: Option<String>,
     pub value: ControlOriginationValueEnum,
     #[cfg_attr(feature = "serde", serde(default))]
-    pub _class: Option<String>,
+    pub class_: Option<String>,
     #[cfg_attr(feature = "serde", serde(default))]
     pub remarks: Option<String>,
     #[cfg_attr(feature = "serde", serde(default))]
@@ -24003,9 +24093,9 @@ pub struct SspControlOriginationProp {
 #[pymethods]
 impl SspControlOriginationProp {
     #[new]
-    #[pyo3(signature = (name, value, uuid=None, ns=None, _class=None, remarks=None, group=None))]
-    pub fn new(name: ControlOriginationPropNameEnum, value: ControlOriginationValueEnum, uuid: Option<String>, ns: Option<String>, _class: Option<String>, remarks: Option<String>, group: Option<String>) -> Self {
-        SspControlOriginationProp{name, value, uuid, ns, _class, remarks, group}
+    #[pyo3(signature = (name, value, uuid=None, ns=None, class_=None, remarks=None, group=None))]
+    pub fn new(name: ControlOriginationPropNameEnum, value: ControlOriginationValueEnum, uuid: Option<String>, ns: Option<String>, class_: Option<String>, remarks: Option<String>, group: Option<String>) -> Self {
+        SspControlOriginationProp{name, value, uuid, ns, class_, remarks, group}
     }
 }
 
@@ -24046,7 +24136,7 @@ pub struct SspAllowsAuthenticatedScanProp {
     pub ns: Option<String>,
     pub value: AllowsAuthenticatedScanEnum,
     #[cfg_attr(feature = "serde", serde(default))]
-    pub _class: Option<String>,
+    pub class_: Option<String>,
     #[cfg_attr(feature = "serde", serde(default))]
     pub remarks: Option<String>,
     #[cfg_attr(feature = "serde", serde(default))]
@@ -24057,9 +24147,9 @@ pub struct SspAllowsAuthenticatedScanProp {
 #[pymethods]
 impl SspAllowsAuthenticatedScanProp {
     #[new]
-    #[pyo3(signature = (name, value, uuid=None, ns=None, _class=None, remarks=None, group=None))]
-    pub fn new(name: String, value: AllowsAuthenticatedScanEnum, uuid: Option<String>, ns: Option<String>, _class: Option<String>, remarks: Option<String>, group: Option<String>) -> Self {
-        SspAllowsAuthenticatedScanProp{name, value, uuid, ns, _class, remarks, group}
+    #[pyo3(signature = (name, value, uuid=None, ns=None, class_=None, remarks=None, group=None))]
+    pub fn new(name: String, value: AllowsAuthenticatedScanEnum, uuid: Option<String>, ns: Option<String>, class_: Option<String>, remarks: Option<String>, group: Option<String>) -> Self {
+        SspAllowsAuthenticatedScanProp{name, value, uuid, ns, class_, remarks, group}
     }
 }
 

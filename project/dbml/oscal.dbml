@@ -41,7 +41,7 @@ groups varchar
 
 Table Group {
 Group_id varchar
-Group__class varchar
+Group_class_ varchar
 Group_title varchar [not null]
 params varchar
 parts varchar
@@ -53,7 +53,7 @@ links varchar
 
 Table Control {
 Control_id varchar [not null]
-Control__class varchar
+Control_class_ varchar
 Control_title varchar [not null]
 params varchar
 parts varchar
@@ -196,7 +196,7 @@ Property_name varchar [not null]
 Property_uuid varchar
 Property_ns varchar
 Property_value varchar [not null]
-Property__class varchar
+Property_class_ varchar
 remarks varchar
 group varchar
 }
@@ -205,7 +205,7 @@ Table MetadataProperty {
 Property_uuid varchar
 Property_ns varchar
 Property_value varchar [not null]
-Property__class varchar
+Property_class_ varchar
 remarks varchar
 group varchar
 MetadataProperty_name varchar [not null]
@@ -216,7 +216,7 @@ Table RevisionProperty {
 Property_uuid varchar
 Property_ns varchar
 Property_value varchar [not null]
-Property__class varchar
+Property_class_ varchar
 remarks varchar
 group varchar
 RevisionProperty_name varchar [not null]
@@ -230,17 +230,17 @@ remarks varchar
 group varchar
 LocationProperty_name varchar [not null]
 LocationProperty_value varchar [not null]
-LocationProperty__class varchar
+LocationProperty_class_ varchar
 Property_name varchar [not null]
 Property_value varchar [not null]
-Property__class varchar
+Property_class_ varchar
 }
 
 Table PartyProperty {
 Property_uuid varchar
 Property_ns varchar
 Property_value varchar [not null]
-Property__class varchar
+Property_class_ varchar
 remarks varchar
 group varchar
 PartyProperty_name varchar [not null]
@@ -250,7 +250,7 @@ Property_name varchar [not null]
 Table ResourceProperty {
 Property_uuid varchar
 Property_ns varchar
-Property__class varchar
+Property_class_ varchar
 remarks varchar
 group varchar
 ResourceProperty_name varchar [not null]
@@ -263,7 +263,7 @@ Table PartProperty {
 Property_uuid varchar
 Property_ns varchar
 Property_value varchar [not null]
-Property__class varchar
+Property_class_ varchar
 remarks varchar
 group varchar
 PartProperty_name varchar [not null]
@@ -274,7 +274,7 @@ Table ParameterProperty {
 Property_uuid varchar
 Property_ns varchar
 Property_value varchar [not null]
-Property__class varchar
+Property_class_ varchar
 remarks varchar
 group varchar
 ParameterProperty_name varchar [not null]
@@ -333,7 +333,7 @@ Table Part {
 Part_id varchar
 Part_name varchar [not null]
 Part_ns varchar
-Part__class varchar
+Part_class_ varchar
 Part_title varchar
 Part_prose varchar
 parts varchar
@@ -344,7 +344,7 @@ props varchar
 
 Table Parameter {
 Parameter_id varchar [not null]
-Parameter__class varchar
+Parameter_class_ varchar
 depends_on varchar
 label varchar
 usage varchar
@@ -432,7 +432,7 @@ insert_controls varchar
 
 Table ProfileGroup {
 id varchar
-_class varchar
+class_ varchar
 ProfileGroup_title varchar [not null]
 params varchar
 parts varchar
@@ -450,7 +450,7 @@ alters varchar
 
 Table ParameterSetting {
 ParameterSetting_param_id varchar [not null]
-_class varchar
+class_ varchar
 depends_on varchar
 label varchar
 usage varchar
@@ -491,7 +491,7 @@ Table ProfileAlterationProperty {
 Property_uuid varchar
 Property_ns varchar
 Property_value varchar [not null]
-Property__class varchar
+Property_class_ varchar
 remarks varchar
 group varchar
 ProfileAlterationProperty_name varchar [not null]
@@ -741,7 +741,7 @@ Table AssessmentPart {
 uuid varchar
 AssessmentPart_name varchar [not null]
 ns varchar
-_class varchar
+class_ varchar
 title varchar
 prose varchar
 AssessmentPart_parts varchar
@@ -752,7 +752,7 @@ links varchar
 Table TermsAndConditionsPart {
 uuid varchar
 ns varchar
-_class varchar
+class_ varchar
 title varchar
 prose varchar
 props varchar
@@ -767,7 +767,7 @@ Table ControlPart {
 id varchar
 ControlPart_name varchar [not null]
 ns varchar
-_class varchar
+class_ varchar
 title varchar
 prose varchar
 ControlPart_parts varchar
@@ -874,7 +874,7 @@ SystemId_identifier_type varchar
 Table ImplementationCommonProperty {
 Property_uuid varchar
 Property_ns varchar
-Property__class varchar
+Property_class_ varchar
 remarks varchar
 group varchar
 ImplementationCommonProperty_name varchar [not null]
@@ -1132,6 +1132,8 @@ SystemCharacteristics_system_ids varchar [not null]
 SystemCharacteristics_system_name varchar [not null]
 system_name_short varchar
 SystemCharacteristics_description varchar [not null]
+SystemCharacteristics_props varchar
+links varchar
 date_authorized varchar
 security_sensitivity_level varchar
 SystemCharacteristics_system_information varchar [not null]
@@ -1142,7 +1144,6 @@ network_architecture varchar
 data_flow varchar
 SystemCharacteristics_responsible_parties varchar
 remarks varchar
-SystemCharacteristics_props varchar
 }
 
 Table SystemInformation {
@@ -1336,7 +1337,7 @@ remarks varchar
 Table SspSystemCharacteristicsProp {
 Property_uuid varchar
 Property_ns varchar
-Property__class varchar
+Property_class_ varchar
 remarks varchar
 group varchar
 SspSystemCharacteristicsProp_name varchar [not null]
@@ -1348,7 +1349,7 @@ Property_value varchar [not null]
 Table SspSystemInformationProp {
 Property_uuid varchar
 Property_ns varchar
-Property__class varchar
+Property_class_ varchar
 remarks varchar
 group varchar
 SspSystemInformationProp_name varchar [not null]
@@ -1360,7 +1361,7 @@ Property_value varchar [not null]
 Table SspControlOriginationProp {
 Property_uuid varchar
 Property_ns varchar
-Property__class varchar
+Property_class_ varchar
 remarks varchar
 group varchar
 SspControlOriginationProp_name varchar [not null]
@@ -1372,7 +1373,7 @@ Property_value varchar [not null]
 Table SspAllowsAuthenticatedScanProp {
 Property_uuid varchar
 Property_ns varchar
-Property__class varchar
+Property_class_ varchar
 remarks varchar
 group varchar
 SspAllowsAuthenticatedScanProp_name varchar [not null]

@@ -161,7 +161,7 @@ class Group(Base):
 
     uid = Column(Integer(), primary_key=True, autoincrement=True , nullable=False )
     id = Column(Text())
-    _class = Column(Text())
+    class_ = Column(Text())
     title = Column(Text(), nullable=False )
     Catalog_id = Column(Integer(), ForeignKey('Catalog.id'))
     Group_uid = Column(Integer(), ForeignKey('Group.uid'))
@@ -192,7 +192,7 @@ class Group(Base):
     
 
     def __repr__(self):
-        return f"Group(uid={self.uid},id={self.id},_class={self._class},title={self.title},Catalog_id={self.Catalog_id},Group_uid={self.Group_uid},)"
+        return f"Group(uid={self.uid},id={self.id},class_={self.class_},title={self.title},Catalog_id={self.Catalog_id},Group_uid={self.Group_uid},)"
 
 
 
@@ -207,7 +207,7 @@ class Control(Base):
 
     uid = Column(Integer(), primary_key=True, autoincrement=True , nullable=False )
     id = Column(Text(), nullable=False )
-    _class = Column(Text())
+    class_ = Column(Text())
     title = Column(Text(), nullable=False )
     Catalog_id = Column(Integer(), ForeignKey('Catalog.id'))
     Group_uid = Column(Integer(), ForeignKey('Group.uid'))
@@ -235,7 +235,7 @@ class Control(Base):
     
 
     def __repr__(self):
-        return f"Control(uid={self.uid},id={self.id},_class={self._class},title={self.title},Catalog_id={self.Catalog_id},Group_uid={self.Group_uid},Control_uid={self.Control_uid},)"
+        return f"Control(uid={self.uid},id={self.id},class_={self.class_},title={self.title},Catalog_id={self.Catalog_id},Group_uid={self.Group_uid},Control_uid={self.Control_uid},)"
 
 
 
@@ -701,7 +701,7 @@ class Property(Base):
     uuid = Column(Text())
     ns = Column(Text())
     value = Column(Text(), nullable=False )
-    _class = Column(Text())
+    class_ = Column(Text())
     remarks = Column(Text())
     group = Column(Text())
     HasPropsAndLinks_id = Column(Integer(), ForeignKey('HasPropsAndLinks.id'))
@@ -781,7 +781,7 @@ class Property(Base):
     
 
     def __repr__(self):
-        return f"Property(id={self.id},name={self.name},uuid={self.uuid},ns={self.ns},value={self.value},_class={self._class},remarks={self.remarks},group={self.group},HasPropsAndLinks_id={self.HasPropsAndLinks_id},OscalCommon_id={self.OscalCommon_id},Group_uid={self.Group_uid},Control_uid={self.Control_uid},Role_uid={self.Role_uid},ResponsibleParty_id={self.ResponsibleParty_id},ResponsibleRole_id={self.ResponsibleRole_id},Action_id={self.Action_id},Citation_id={self.Citation_id},ProfileGroup_uid={self.ProfileGroup_uid},ParameterSetting_id={self.ParameterSetting_id},ReviewedControls_id={self.ReviewedControls_id},ControlSelection_id={self.ControlSelection_id},ControlObjectiveSelection_id={self.ControlObjectiveSelection_id},AssessmentSubject_id={self.AssessmentSubject_id},SelectSubjectById_id={self.SelectSubjectById_id},SubjectReference_id={self.SubjectReference_id},AssessmentSubjectPlaceholder_id={self.AssessmentSubjectPlaceholder_id},AssessmentPlatform_id={self.AssessmentPlatform_id},UsesComponent_id={self.UsesComponent_id},LocalObjective_id={self.LocalObjective_id},AssessmentMethod_id={self.AssessmentMethod_id},Activity_id={self.Activity_id},Step_id={self.Step_id},Task_id={self.Task_id},AssociatedActivity_id={self.AssociatedActivity_id},AssessmentPart_id={self.AssessmentPart_id},TermsAndConditionsPart_id={self.TermsAndConditionsPart_id},ControlPart_uid={self.ControlPart_uid},ImplementationResponsibleRole_id={self.ImplementationResponsibleRole_id},ImplementationResponsibleParty_id={self.ImplementationResponsibleParty_id},OriginActor_id={self.OriginActor_id},RelatedTask_id={self.RelatedTask_id},Observation_id={self.Observation_id},RelevantEvidence_id={self.RelevantEvidence_id},Finding_id={self.Finding_id},FindingTarget_id={self.FindingTarget_id},Risk_id={self.Risk_id},Characterization_id={self.Characterization_id},Facet_id={self.Facet_id},MitigatingFactor_id={self.MitigatingFactor_id},Response_id={self.Response_id},RequiredAsset_id={self.RequiredAsset_id},RiskLogEntry_id={self.RiskLogEntry_id},RiskResponseReference_id={self.RiskResponseReference_id},InformationType_id={self.InformationType_id},ImpactLevel_id={self.ImpactLevel_id},AuthorizationBoundary_id={self.AuthorizationBoundary_id},Diagram_id={self.Diagram_id},NetworkArchitecture_id={self.NetworkArchitecture_id},DataFlow_id={self.DataFlow_id},SystemImplementation_id={self.SystemImplementation_id},LeveragedAuthorization_id={self.LeveragedAuthorization_id},Export_id={self.Export_id},ProvidedControlImplementation_id={self.ProvidedControlImplementation_id},ControlResponsibility_id={self.ControlResponsibility_id},InheritedControlImplementation_id={self.InheritedControlImplementation_id},SatisfiedControlImplementation_id={self.SatisfiedControlImplementation_id},SspSystemCharacteristicsResponsibleParty_id={self.SspSystemCharacteristicsResponsibleParty_id},SspImplementedRequirementResponsibleRole_id={self.SspImplementedRequirementResponsibleRole_id},SspByComponentResponsibleRole_id={self.SspByComponentResponsibleRole_id},Result_id={self.Result_id},AssessmentLogEntry_id={self.AssessmentLogEntry_id},DefinedComponent_id={self.DefinedComponent_id},Capability_id={self.Capability_id},ControlImplementationSet_id={self.ControlImplementationSet_id},ImplementedRequirement_id={self.ImplementedRequirement_id},ImplementedControlStatement_id={self.ImplementedControlStatement_id},MappingProvenance_id={self.MappingProvenance_id},Mapping_id={self.Mapping_id},Map_id={self.Map_id},MappingItem_id={self.MappingItem_id},MappingResourceReference_id={self.MappingResourceReference_id},PoamItem_id={self.PoamItem_id},)"
+        return f"Property(id={self.id},name={self.name},uuid={self.uuid},ns={self.ns},value={self.value},class_={self.class_},remarks={self.remarks},group={self.group},HasPropsAndLinks_id={self.HasPropsAndLinks_id},OscalCommon_id={self.OscalCommon_id},Group_uid={self.Group_uid},Control_uid={self.Control_uid},Role_uid={self.Role_uid},ResponsibleParty_id={self.ResponsibleParty_id},ResponsibleRole_id={self.ResponsibleRole_id},Action_id={self.Action_id},Citation_id={self.Citation_id},ProfileGroup_uid={self.ProfileGroup_uid},ParameterSetting_id={self.ParameterSetting_id},ReviewedControls_id={self.ReviewedControls_id},ControlSelection_id={self.ControlSelection_id},ControlObjectiveSelection_id={self.ControlObjectiveSelection_id},AssessmentSubject_id={self.AssessmentSubject_id},SelectSubjectById_id={self.SelectSubjectById_id},SubjectReference_id={self.SubjectReference_id},AssessmentSubjectPlaceholder_id={self.AssessmentSubjectPlaceholder_id},AssessmentPlatform_id={self.AssessmentPlatform_id},UsesComponent_id={self.UsesComponent_id},LocalObjective_id={self.LocalObjective_id},AssessmentMethod_id={self.AssessmentMethod_id},Activity_id={self.Activity_id},Step_id={self.Step_id},Task_id={self.Task_id},AssociatedActivity_id={self.AssociatedActivity_id},AssessmentPart_id={self.AssessmentPart_id},TermsAndConditionsPart_id={self.TermsAndConditionsPart_id},ControlPart_uid={self.ControlPart_uid},ImplementationResponsibleRole_id={self.ImplementationResponsibleRole_id},ImplementationResponsibleParty_id={self.ImplementationResponsibleParty_id},OriginActor_id={self.OriginActor_id},RelatedTask_id={self.RelatedTask_id},Observation_id={self.Observation_id},RelevantEvidence_id={self.RelevantEvidence_id},Finding_id={self.Finding_id},FindingTarget_id={self.FindingTarget_id},Risk_id={self.Risk_id},Characterization_id={self.Characterization_id},Facet_id={self.Facet_id},MitigatingFactor_id={self.MitigatingFactor_id},Response_id={self.Response_id},RequiredAsset_id={self.RequiredAsset_id},RiskLogEntry_id={self.RiskLogEntry_id},RiskResponseReference_id={self.RiskResponseReference_id},InformationType_id={self.InformationType_id},ImpactLevel_id={self.ImpactLevel_id},AuthorizationBoundary_id={self.AuthorizationBoundary_id},Diagram_id={self.Diagram_id},NetworkArchitecture_id={self.NetworkArchitecture_id},DataFlow_id={self.DataFlow_id},SystemImplementation_id={self.SystemImplementation_id},LeveragedAuthorization_id={self.LeveragedAuthorization_id},Export_id={self.Export_id},ProvidedControlImplementation_id={self.ProvidedControlImplementation_id},ControlResponsibility_id={self.ControlResponsibility_id},InheritedControlImplementation_id={self.InheritedControlImplementation_id},SatisfiedControlImplementation_id={self.SatisfiedControlImplementation_id},SspSystemCharacteristicsResponsibleParty_id={self.SspSystemCharacteristicsResponsibleParty_id},SspImplementedRequirementResponsibleRole_id={self.SspImplementedRequirementResponsibleRole_id},SspByComponentResponsibleRole_id={self.SspByComponentResponsibleRole_id},Result_id={self.Result_id},AssessmentLogEntry_id={self.AssessmentLogEntry_id},DefinedComponent_id={self.DefinedComponent_id},Capability_id={self.Capability_id},ControlImplementationSet_id={self.ControlImplementationSet_id},ImplementedRequirement_id={self.ImplementedRequirement_id},ImplementedControlStatement_id={self.ImplementedControlStatement_id},MappingProvenance_id={self.MappingProvenance_id},Mapping_id={self.Mapping_id},Map_id={self.Map_id},MappingItem_id={self.MappingItem_id},MappingResourceReference_id={self.MappingResourceReference_id},PoamItem_id={self.PoamItem_id},)"
 
 
 
@@ -852,6 +852,7 @@ class Link(Base):
     RequiredAsset_id = Column(Integer(), ForeignKey('RequiredAsset.id'))
     RiskLogEntry_id = Column(Integer(), ForeignKey('RiskLogEntry.id'))
     RiskResponseReference_id = Column(Integer(), ForeignKey('RiskResponseReference.id'))
+    SystemCharacteristics_id = Column(Integer(), ForeignKey('SystemCharacteristics.id'))
     InformationType_id = Column(Integer(), ForeignKey('InformationType.id'))
     ImpactLevel_id = Column(Integer(), ForeignKey('ImpactLevel.id'))
     AuthorizationBoundary_id = Column(Integer(), ForeignKey('AuthorizationBoundary.id'))
@@ -884,7 +885,7 @@ class Link(Base):
     
 
     def __repr__(self):
-        return f"Link(id={self.id},href={self.href},rel={self.rel},resource_fragment={self.resource_fragment},media_type={self.media_type},text={self.text},HasPropsAndLinks_id={self.HasPropsAndLinks_id},OscalCommon_id={self.OscalCommon_id},Group_uid={self.Group_uid},Control_uid={self.Control_uid},Metadata_id={self.Metadata_id},Revision_id={self.Revision_id},Role_uid={self.Role_uid},Location_id={self.Location_id},Party_id={self.Party_id},ResponsibleParty_id={self.ResponsibleParty_id},ResponsibleRole_id={self.ResponsibleRole_id},Action_id={self.Action_id},Citation_id={self.Citation_id},Part_uid={self.Part_uid},Parameter_uid={self.Parameter_uid},ProfileGroup_uid={self.ProfileGroup_uid},ParameterSetting_id={self.ParameterSetting_id},Addition_id={self.Addition_id},ReviewedControls_id={self.ReviewedControls_id},ControlSelection_id={self.ControlSelection_id},ControlObjectiveSelection_id={self.ControlObjectiveSelection_id},AssessmentSubject_id={self.AssessmentSubject_id},SelectSubjectById_id={self.SelectSubjectById_id},SubjectReference_id={self.SubjectReference_id},AssessmentSubjectPlaceholder_id={self.AssessmentSubjectPlaceholder_id},AssessmentPlatform_id={self.AssessmentPlatform_id},UsesComponent_id={self.UsesComponent_id},LocalObjective_id={self.LocalObjective_id},AssessmentMethod_id={self.AssessmentMethod_id},Activity_id={self.Activity_id},Step_id={self.Step_id},Task_id={self.Task_id},AssociatedActivity_id={self.AssociatedActivity_id},AssessmentPart_id={self.AssessmentPart_id},TermsAndConditionsPart_id={self.TermsAndConditionsPart_id},ControlPart_uid={self.ControlPart_uid},ImplementationResponsibleRole_id={self.ImplementationResponsibleRole_id},ImplementationResponsibleParty_id={self.ImplementationResponsibleParty_id},OriginActor_id={self.OriginActor_id},RelatedTask_id={self.RelatedTask_id},Observation_id={self.Observation_id},RelevantEvidence_id={self.RelevantEvidence_id},Finding_id={self.Finding_id},FindingTarget_id={self.FindingTarget_id},Risk_id={self.Risk_id},Characterization_id={self.Characterization_id},Facet_id={self.Facet_id},MitigatingFactor_id={self.MitigatingFactor_id},Response_id={self.Response_id},RequiredAsset_id={self.RequiredAsset_id},RiskLogEntry_id={self.RiskLogEntry_id},RiskResponseReference_id={self.RiskResponseReference_id},InformationType_id={self.InformationType_id},ImpactLevel_id={self.ImpactLevel_id},AuthorizationBoundary_id={self.AuthorizationBoundary_id},NetworkArchitecture_id={self.NetworkArchitecture_id},DataFlow_id={self.DataFlow_id},SystemImplementation_id={self.SystemImplementation_id},SspImplementedRequirement_id={self.SspImplementedRequirement_id},SspStatement_id={self.SspStatement_id},Export_id={self.Export_id},ProvidedControlImplementation_id={self.ProvidedControlImplementation_id},ControlResponsibility_id={self.ControlResponsibility_id},InheritedControlImplementation_id={self.InheritedControlImplementation_id},SatisfiedControlImplementation_id={self.SatisfiedControlImplementation_id},SspSystemCharacteristicsResponsibleParty_id={self.SspSystemCharacteristicsResponsibleParty_id},SspImplementedRequirementResponsibleRole_id={self.SspImplementedRequirementResponsibleRole_id},SspByComponentResponsibleRole_id={self.SspByComponentResponsibleRole_id},Result_id={self.Result_id},AssessmentLogEntry_id={self.AssessmentLogEntry_id},DefinedComponent_id={self.DefinedComponent_id},Capability_id={self.Capability_id},ControlImplementationSet_id={self.ControlImplementationSet_id},ImplementedRequirement_id={self.ImplementedRequirement_id},ImplementedControlStatement_id={self.ImplementedControlStatement_id},MappingProvenance_id={self.MappingProvenance_id},Mapping_id={self.Mapping_id},Map_id={self.Map_id},MappingItem_id={self.MappingItem_id},MappingResourceReference_id={self.MappingResourceReference_id},PoamItem_id={self.PoamItem_id},)"
+        return f"Link(id={self.id},href={self.href},rel={self.rel},resource_fragment={self.resource_fragment},media_type={self.media_type},text={self.text},HasPropsAndLinks_id={self.HasPropsAndLinks_id},OscalCommon_id={self.OscalCommon_id},Group_uid={self.Group_uid},Control_uid={self.Control_uid},Metadata_id={self.Metadata_id},Revision_id={self.Revision_id},Role_uid={self.Role_uid},Location_id={self.Location_id},Party_id={self.Party_id},ResponsibleParty_id={self.ResponsibleParty_id},ResponsibleRole_id={self.ResponsibleRole_id},Action_id={self.Action_id},Citation_id={self.Citation_id},Part_uid={self.Part_uid},Parameter_uid={self.Parameter_uid},ProfileGroup_uid={self.ProfileGroup_uid},ParameterSetting_id={self.ParameterSetting_id},Addition_id={self.Addition_id},ReviewedControls_id={self.ReviewedControls_id},ControlSelection_id={self.ControlSelection_id},ControlObjectiveSelection_id={self.ControlObjectiveSelection_id},AssessmentSubject_id={self.AssessmentSubject_id},SelectSubjectById_id={self.SelectSubjectById_id},SubjectReference_id={self.SubjectReference_id},AssessmentSubjectPlaceholder_id={self.AssessmentSubjectPlaceholder_id},AssessmentPlatform_id={self.AssessmentPlatform_id},UsesComponent_id={self.UsesComponent_id},LocalObjective_id={self.LocalObjective_id},AssessmentMethod_id={self.AssessmentMethod_id},Activity_id={self.Activity_id},Step_id={self.Step_id},Task_id={self.Task_id},AssociatedActivity_id={self.AssociatedActivity_id},AssessmentPart_id={self.AssessmentPart_id},TermsAndConditionsPart_id={self.TermsAndConditionsPart_id},ControlPart_uid={self.ControlPart_uid},ImplementationResponsibleRole_id={self.ImplementationResponsibleRole_id},ImplementationResponsibleParty_id={self.ImplementationResponsibleParty_id},OriginActor_id={self.OriginActor_id},RelatedTask_id={self.RelatedTask_id},Observation_id={self.Observation_id},RelevantEvidence_id={self.RelevantEvidence_id},Finding_id={self.Finding_id},FindingTarget_id={self.FindingTarget_id},Risk_id={self.Risk_id},Characterization_id={self.Characterization_id},Facet_id={self.Facet_id},MitigatingFactor_id={self.MitigatingFactor_id},Response_id={self.Response_id},RequiredAsset_id={self.RequiredAsset_id},RiskLogEntry_id={self.RiskLogEntry_id},RiskResponseReference_id={self.RiskResponseReference_id},SystemCharacteristics_id={self.SystemCharacteristics_id},InformationType_id={self.InformationType_id},ImpactLevel_id={self.ImpactLevel_id},AuthorizationBoundary_id={self.AuthorizationBoundary_id},NetworkArchitecture_id={self.NetworkArchitecture_id},DataFlow_id={self.DataFlow_id},SystemImplementation_id={self.SystemImplementation_id},SspImplementedRequirement_id={self.SspImplementedRequirement_id},SspStatement_id={self.SspStatement_id},Export_id={self.Export_id},ProvidedControlImplementation_id={self.ProvidedControlImplementation_id},ControlResponsibility_id={self.ControlResponsibility_id},InheritedControlImplementation_id={self.InheritedControlImplementation_id},SatisfiedControlImplementation_id={self.SatisfiedControlImplementation_id},SspSystemCharacteristicsResponsibleParty_id={self.SspSystemCharacteristicsResponsibleParty_id},SspImplementedRequirementResponsibleRole_id={self.SspImplementedRequirementResponsibleRole_id},SspByComponentResponsibleRole_id={self.SspByComponentResponsibleRole_id},Result_id={self.Result_id},AssessmentLogEntry_id={self.AssessmentLogEntry_id},DefinedComponent_id={self.DefinedComponent_id},Capability_id={self.Capability_id},ControlImplementationSet_id={self.ControlImplementationSet_id},ImplementedRequirement_id={self.ImplementedRequirement_id},ImplementedControlStatement_id={self.ImplementedControlStatement_id},MappingProvenance_id={self.MappingProvenance_id},Mapping_id={self.Mapping_id},Map_id={self.Map_id},MappingItem_id={self.MappingItem_id},MappingResourceReference_id={self.MappingResourceReference_id},PoamItem_id={self.PoamItem_id},)"
 
 
 
@@ -1030,7 +1031,7 @@ class Part(Base):
     id = Column(Text())
     name = Column(Text(), nullable=False )
     ns = Column(Text())
-    _class = Column(Text())
+    class_ = Column(Text())
     title = Column(Text())
     prose = Column(Text())
     Group_uid = Column(Integer(), ForeignKey('Group.uid'))
@@ -1053,7 +1054,7 @@ class Part(Base):
     
 
     def __repr__(self):
-        return f"Part(uid={self.uid},id={self.id},name={self.name},ns={self.ns},_class={self._class},title={self.title},prose={self.prose},Group_uid={self.Group_uid},Control_uid={self.Control_uid},Part_uid={self.Part_uid},ProfileGroup_uid={self.ProfileGroup_uid},Addition_id={self.Addition_id},)"
+        return f"Part(uid={self.uid},id={self.id},name={self.name},ns={self.ns},class_={self.class_},title={self.title},prose={self.prose},Group_uid={self.Group_uid},Control_uid={self.Control_uid},Part_uid={self.Part_uid},ProfileGroup_uid={self.ProfileGroup_uid},Addition_id={self.Addition_id},)"
 
 
 
@@ -1068,7 +1069,7 @@ class Parameter(Base):
 
     uid = Column(Integer(), primary_key=True, autoincrement=True , nullable=False )
     id = Column(Text(), nullable=False )
-    _class = Column(Text())
+    class_ = Column(Text())
     depends_on = Column(Text())
     label = Column(Text())
     usage = Column(Text())
@@ -1104,7 +1105,7 @@ class Parameter(Base):
     
 
     def __repr__(self):
-        return f"Parameter(uid={self.uid},id={self.id},_class={self._class},depends_on={self.depends_on},label={self.label},usage={self.usage},remarks={self.remarks},Catalog_id={self.Catalog_id},Group_uid={self.Group_uid},Control_uid={self.Control_uid},ProfileGroup_uid={self.ProfileGroup_uid},Addition_id={self.Addition_id},select_id={self.select_id},)"
+        return f"Parameter(uid={self.uid},id={self.id},class_={self.class_},depends_on={self.depends_on},label={self.label},usage={self.usage},remarks={self.remarks},Catalog_id={self.Catalog_id},Group_uid={self.Group_uid},Control_uid={self.Control_uid},ProfileGroup_uid={self.ProfileGroup_uid},Addition_id={self.Addition_id},select_id={self.select_id},)"
 
 
 
@@ -1416,7 +1417,7 @@ class ProfileGroup(Base):
 
     uid = Column(Integer(), primary_key=True, autoincrement=True , nullable=False )
     id = Column(Text())
-    _class = Column(Text())
+    class_ = Column(Text())
     title = Column(Text(), nullable=False )
     remarks = Column(Text())
     MergeCustom_id = Column(Integer(), ForeignKey('MergeCustom.id'))
@@ -1448,7 +1449,7 @@ class ProfileGroup(Base):
     
 
     def __repr__(self):
-        return f"ProfileGroup(uid={self.uid},id={self.id},_class={self._class},title={self.title},remarks={self.remarks},MergeCustom_id={self.MergeCustom_id},ProfileGroup_uid={self.ProfileGroup_uid},)"
+        return f"ProfileGroup(uid={self.uid},id={self.id},class_={self.class_},title={self.title},remarks={self.remarks},MergeCustom_id={self.MergeCustom_id},ProfileGroup_uid={self.ProfileGroup_uid},)"
 
 
 
@@ -1488,7 +1489,7 @@ class ParameterSetting(Base):
 
     id = Column(Integer(), primary_key=True, autoincrement=True , nullable=False )
     param_id = Column(Text(), nullable=False )
-    _class = Column(Text())
+    class_ = Column(Text())
     depends_on = Column(Text())
     label = Column(Text())
     usage = Column(Text())
@@ -1519,7 +1520,7 @@ class ParameterSetting(Base):
     
 
     def __repr__(self):
-        return f"ParameterSetting(id={self.id},param_id={self.param_id},_class={self._class},depends_on={self.depends_on},label={self.label},usage={self.usage},ProfileModify_id={self.ProfileModify_id},select_id={self.select_id},)"
+        return f"ParameterSetting(id={self.id},param_id={self.param_id},class_={self.class_},depends_on={self.depends_on},label={self.label},usage={self.usage},ProfileModify_id={self.ProfileModify_id},select_id={self.select_id},)"
 
 
 
@@ -2508,7 +2509,7 @@ class AssessmentPart(Base):
     uuid = Column(Text())
     name = Column(Text(), nullable=False )
     ns = Column(Text())
-    _class = Column(Text())
+    class_ = Column(Text())
     title = Column(Text())
     prose = Column(Text())
     AssessmentPart_id = Column(Integer(), ForeignKey('AssessmentPart.id'))
@@ -2528,7 +2529,7 @@ class AssessmentPart(Base):
     
 
     def __repr__(self):
-        return f"AssessmentPart(id={self.id},uuid={self.uuid},name={self.name},ns={self.ns},_class={self._class},title={self.title},prose={self.prose},AssessmentPart_id={self.AssessmentPart_id},Attestation_id={self.Attestation_id},)"
+        return f"AssessmentPart(id={self.id},uuid={self.uuid},name={self.name},ns={self.ns},class_={self.class_},title={self.title},prose={self.prose},AssessmentPart_id={self.AssessmentPart_id},Attestation_id={self.Attestation_id},)"
 
 
 
@@ -2545,7 +2546,7 @@ class ControlPart(Base):
     id = Column(Text())
     name = Column(Text(), nullable=False )
     ns = Column(Text())
-    _class = Column(Text())
+    class_ = Column(Text())
     title = Column(Text())
     prose = Column(Text())
     LocalObjective_id = Column(Integer(), ForeignKey('LocalObjective.id'))
@@ -2565,7 +2566,7 @@ class ControlPart(Base):
     
 
     def __repr__(self):
-        return f"ControlPart(uid={self.uid},id={self.id},name={self.name},ns={self.ns},_class={self._class},title={self.title},prose={self.prose},LocalObjective_id={self.LocalObjective_id},ControlPart_uid={self.ControlPart_uid},)"
+        return f"ControlPart(uid={self.uid},id={self.id},name={self.name},ns={self.ns},class_={self.class_},title={self.title},prose={self.prose},LocalObjective_id={self.LocalObjective_id},ControlPart_uid={self.ControlPart_uid},)"
 
 
 
@@ -3686,6 +3687,14 @@ class SystemCharacteristics(Base):
     
     # One-To-Many: OneToAnyMapping(source_class='SystemCharacteristics', source_slot='system_ids', mapping_type=None, target_class='SystemId', target_slot='SystemCharacteristics_id', join_class=None, uses_join_table=None, multivalued=False)
     system_ids = relationship( "SystemId", foreign_keys="[SystemId.SystemCharacteristics_id]")
+    
+    
+    # One-To-Many: OneToAnyMapping(source_class='SystemCharacteristics', source_slot='props', mapping_type=None, target_class='SspSystemCharacteristicsProp', target_slot='SystemCharacteristics_id', join_class=None, uses_join_table=None, multivalued=False)
+    props = relationship( "SspSystemCharacteristicsProp", foreign_keys="[SspSystemCharacteristicsProp.SystemCharacteristics_id]")
+    
+    
+    # One-To-Many: OneToAnyMapping(source_class='SystemCharacteristics', source_slot='links', mapping_type=None, target_class='Link', target_slot='SystemCharacteristics_id', join_class=None, uses_join_table=None, multivalued=False)
+    links = relationship( "Link", foreign_keys="[Link.SystemCharacteristics_id]")
     
     
     # One-To-Many: OneToAnyMapping(source_class='SystemCharacteristics', source_slot='responsible_parties', mapping_type=None, target_class='SspSystemCharacteristicsResponsibleParty', target_slot='SystemCharacteristics_id', join_class=None, uses_join_table=None, multivalued=False)
@@ -5813,14 +5822,14 @@ class MetadataProperty(Property):
     uuid = Column(Text())
     ns = Column(Text())
     value = Column(Text(), nullable=False )
-    _class = Column(Text())
+    class_ = Column(Text())
     remarks = Column(Text())
     group = Column(Text())
     Metadata_id = Column(Integer(), ForeignKey('Metadata.id'))
     
 
     def __repr__(self):
-        return f"MetadataProperty(id={self.id},name={self.name},uuid={self.uuid},ns={self.ns},value={self.value},_class={self._class},remarks={self.remarks},group={self.group},Metadata_id={self.Metadata_id},)"
+        return f"MetadataProperty(id={self.id},name={self.name},uuid={self.uuid},ns={self.ns},value={self.value},class_={self.class_},remarks={self.remarks},group={self.group},Metadata_id={self.Metadata_id},)"
 
 
 
@@ -5843,14 +5852,14 @@ class RevisionProperty(Property):
     uuid = Column(Text())
     ns = Column(Text())
     value = Column(Text(), nullable=False )
-    _class = Column(Text())
+    class_ = Column(Text())
     remarks = Column(Text())
     group = Column(Text())
     Revision_id = Column(Integer(), ForeignKey('Revision.id'))
     
 
     def __repr__(self):
-        return f"RevisionProperty(id={self.id},name={self.name},uuid={self.uuid},ns={self.ns},value={self.value},_class={self._class},remarks={self.remarks},group={self.group},Revision_id={self.Revision_id},)"
+        return f"RevisionProperty(id={self.id},name={self.name},uuid={self.uuid},ns={self.ns},value={self.value},class_={self.class_},remarks={self.remarks},group={self.group},Revision_id={self.Revision_id},)"
 
 
 
@@ -5873,14 +5882,14 @@ class LocationProperty(Property):
     uuid = Column(Text())
     ns = Column(Text())
     value = Column(Text(), nullable=False )
-    _class = Column(Text())
+    class_ = Column(Text())
     remarks = Column(Text())
     group = Column(Text())
     Location_id = Column(Integer(), ForeignKey('Location.id'))
     
 
     def __repr__(self):
-        return f"LocationProperty(id={self.id},name={self.name},uuid={self.uuid},ns={self.ns},value={self.value},_class={self._class},remarks={self.remarks},group={self.group},Location_id={self.Location_id},)"
+        return f"LocationProperty(id={self.id},name={self.name},uuid={self.uuid},ns={self.ns},value={self.value},class_={self.class_},remarks={self.remarks},group={self.group},Location_id={self.Location_id},)"
 
 
 
@@ -5903,14 +5912,14 @@ class PartyProperty(Property):
     uuid = Column(Text())
     ns = Column(Text())
     value = Column(Text(), nullable=False )
-    _class = Column(Text())
+    class_ = Column(Text())
     remarks = Column(Text())
     group = Column(Text())
     Party_id = Column(Integer(), ForeignKey('Party.id'))
     
 
     def __repr__(self):
-        return f"PartyProperty(id={self.id},name={self.name},uuid={self.uuid},ns={self.ns},value={self.value},_class={self._class},remarks={self.remarks},group={self.group},Party_id={self.Party_id},)"
+        return f"PartyProperty(id={self.id},name={self.name},uuid={self.uuid},ns={self.ns},value={self.value},class_={self.class_},remarks={self.remarks},group={self.group},Party_id={self.Party_id},)"
 
 
 
@@ -5933,14 +5942,14 @@ class ResourceProperty(Property):
     uuid = Column(Text())
     ns = Column(Text())
     value = Column(Text(), nullable=False )
-    _class = Column(Text())
+    class_ = Column(Text())
     remarks = Column(Text())
     group = Column(Text())
     Resource_id = Column(Integer(), ForeignKey('Resource.id'))
     
 
     def __repr__(self):
-        return f"ResourceProperty(id={self.id},name={self.name},uuid={self.uuid},ns={self.ns},value={self.value},_class={self._class},remarks={self.remarks},group={self.group},Resource_id={self.Resource_id},)"
+        return f"ResourceProperty(id={self.id},name={self.name},uuid={self.uuid},ns={self.ns},value={self.value},class_={self.class_},remarks={self.remarks},group={self.group},Resource_id={self.Resource_id},)"
 
 
 
@@ -5963,14 +5972,14 @@ class PartProperty(Property):
     uuid = Column(Text())
     ns = Column(Text())
     value = Column(Text(), nullable=False )
-    _class = Column(Text())
+    class_ = Column(Text())
     remarks = Column(Text())
     group = Column(Text())
     Part_uid = Column(Integer(), ForeignKey('Part.uid'))
     
 
     def __repr__(self):
-        return f"PartProperty(id={self.id},name={self.name},uuid={self.uuid},ns={self.ns},value={self.value},_class={self._class},remarks={self.remarks},group={self.group},Part_uid={self.Part_uid},)"
+        return f"PartProperty(id={self.id},name={self.name},uuid={self.uuid},ns={self.ns},value={self.value},class_={self.class_},remarks={self.remarks},group={self.group},Part_uid={self.Part_uid},)"
 
 
 
@@ -5993,14 +6002,14 @@ class ParameterProperty(Property):
     uuid = Column(Text())
     ns = Column(Text())
     value = Column(Text(), nullable=False )
-    _class = Column(Text())
+    class_ = Column(Text())
     remarks = Column(Text())
     group = Column(Text())
     Parameter_uid = Column(Integer(), ForeignKey('Parameter.uid'))
     
 
     def __repr__(self):
-        return f"ParameterProperty(id={self.id},name={self.name},uuid={self.uuid},ns={self.ns},value={self.value},_class={self._class},remarks={self.remarks},group={self.group},Parameter_uid={self.Parameter_uid},)"
+        return f"ParameterProperty(id={self.id},name={self.name},uuid={self.uuid},ns={self.ns},value={self.value},class_={self.class_},remarks={self.remarks},group={self.group},Parameter_uid={self.Parameter_uid},)"
 
 
 
@@ -6072,14 +6081,14 @@ class ProfileAlterationProperty(Property):
     uuid = Column(Text())
     ns = Column(Text())
     value = Column(Text(), nullable=False )
-    _class = Column(Text())
+    class_ = Column(Text())
     remarks = Column(Text())
     group = Column(Text())
     Addition_id = Column(Integer(), ForeignKey('Addition.id'))
     
 
     def __repr__(self):
-        return f"ProfileAlterationProperty(id={self.id},name={self.name},uuid={self.uuid},ns={self.ns},value={self.value},_class={self._class},remarks={self.remarks},group={self.group},Addition_id={self.Addition_id},)"
+        return f"ProfileAlterationProperty(id={self.id},name={self.name},uuid={self.uuid},ns={self.ns},value={self.value},class_={self.class_},remarks={self.remarks},group={self.group},Addition_id={self.Addition_id},)"
 
 
 
@@ -6125,7 +6134,7 @@ class TermsAndConditionsPart(AssessmentPart):
     uuid = Column(Text())
     name = Column(Enum('rules-of-engagement', 'disclosures', 'assessment-inclusions', 'assessment-exclusions', 'results-delivery', 'assumptions', 'methodology', name='TermsAndConditionsPartNameEnum'), nullable=False )
     ns = Column(Text())
-    _class = Column(Text())
+    class_ = Column(Text())
     title = Column(Text())
     prose = Column(Text())
     TermsAndConditions_id = Column(Integer(), ForeignKey('TermsAndConditions.id'))
@@ -6145,7 +6154,7 @@ class TermsAndConditionsPart(AssessmentPart):
     
 
     def __repr__(self):
-        return f"TermsAndConditionsPart(id={self.id},uuid={self.uuid},name={self.name},ns={self.ns},_class={self._class},title={self.title},prose={self.prose},TermsAndConditions_id={self.TermsAndConditions_id},TermsAndConditionsPart_id={self.TermsAndConditionsPart_id},)"
+        return f"TermsAndConditionsPart(id={self.id},uuid={self.uuid},name={self.name},ns={self.ns},class_={self.class_},title={self.title},prose={self.prose},TermsAndConditions_id={self.TermsAndConditions_id},TermsAndConditionsPart_id={self.TermsAndConditionsPart_id},)"
 
 
 
@@ -6168,7 +6177,7 @@ class ImplementationCommonProperty(Property):
     uuid = Column(Text())
     ns = Column(Text())
     value = Column(Text(), nullable=False )
-    _class = Column(Text())
+    class_ = Column(Text())
     remarks = Column(Text())
     group = Column(Text())
     SystemComponent_id = Column(Integer(), ForeignKey('SystemComponent.id'))
@@ -6178,7 +6187,7 @@ class ImplementationCommonProperty(Property):
     
 
     def __repr__(self):
-        return f"ImplementationCommonProperty(id={self.id},name={self.name},uuid={self.uuid},ns={self.ns},value={self.value},_class={self._class},remarks={self.remarks},group={self.group},SystemComponent_id={self.SystemComponent_id},SystemUser_id={self.SystemUser_id},InventoryItem_id={self.InventoryItem_id},ImplementedComponent_id={self.ImplementedComponent_id},)"
+        return f"ImplementationCommonProperty(id={self.id},name={self.name},uuid={self.uuid},ns={self.ns},value={self.value},class_={self.class_},remarks={self.remarks},group={self.group},SystemComponent_id={self.SystemComponent_id},SystemUser_id={self.SystemUser_id},InventoryItem_id={self.InventoryItem_id},ImplementedComponent_id={self.ImplementedComponent_id},)"
 
 
 
@@ -6337,13 +6346,14 @@ class SspSystemCharacteristicsProp(Property):
     uuid = Column(Text())
     ns = Column(Text())
     value = Column(Text(), nullable=False )
-    _class = Column(Text())
+    class_ = Column(Text())
     remarks = Column(Text())
     group = Column(Text())
+    SystemCharacteristics_id = Column(Integer(), ForeignKey('SystemCharacteristics.id'))
     
 
     def __repr__(self):
-        return f"SspSystemCharacteristicsProp(id={self.id},name={self.name},uuid={self.uuid},ns={self.ns},value={self.value},_class={self._class},remarks={self.remarks},group={self.group},)"
+        return f"SspSystemCharacteristicsProp(id={self.id},name={self.name},uuid={self.uuid},ns={self.ns},value={self.value},class_={self.class_},remarks={self.remarks},group={self.group},SystemCharacteristics_id={self.SystemCharacteristics_id},)"
 
 
 
@@ -6366,14 +6376,14 @@ class SspSystemInformationProp(Property):
     uuid = Column(Text())
     ns = Column(Text())
     value = Column(Enum('yes', 'no', name='PrivacyDesignationEnum'), nullable=False )
-    _class = Column(Text())
+    class_ = Column(Text())
     remarks = Column(Text())
     group = Column(Text())
     SystemInformation_id = Column(Integer(), ForeignKey('SystemInformation.id'))
     
 
     def __repr__(self):
-        return f"SspSystemInformationProp(id={self.id},name={self.name},uuid={self.uuid},ns={self.ns},value={self.value},_class={self._class},remarks={self.remarks},group={self.group},SystemInformation_id={self.SystemInformation_id},)"
+        return f"SspSystemInformationProp(id={self.id},name={self.name},uuid={self.uuid},ns={self.ns},value={self.value},class_={self.class_},remarks={self.remarks},group={self.group},SystemInformation_id={self.SystemInformation_id},)"
 
 
 
@@ -6396,7 +6406,7 @@ class SspControlOriginationProp(Property):
     uuid = Column(Text())
     ns = Column(Text())
     value = Column(Enum('organization', 'system-specific', 'customer-configured', 'customer-provided', 'inherited', name='ControlOriginationValueEnum'), nullable=False )
-    _class = Column(Text())
+    class_ = Column(Text())
     remarks = Column(Text())
     group = Column(Text())
     SspImplementedRequirement_id = Column(Integer(), ForeignKey('SspImplementedRequirement.id'))
@@ -6405,7 +6415,7 @@ class SspControlOriginationProp(Property):
     
 
     def __repr__(self):
-        return f"SspControlOriginationProp(id={self.id},name={self.name},uuid={self.uuid},ns={self.ns},value={self.value},_class={self._class},remarks={self.remarks},group={self.group},SspImplementedRequirement_id={self.SspImplementedRequirement_id},SspStatement_id={self.SspStatement_id},ByComponent_id={self.ByComponent_id},)"
+        return f"SspControlOriginationProp(id={self.id},name={self.name},uuid={self.uuid},ns={self.ns},value={self.value},class_={self.class_},remarks={self.remarks},group={self.group},SspImplementedRequirement_id={self.SspImplementedRequirement_id},SspStatement_id={self.SspStatement_id},ByComponent_id={self.ByComponent_id},)"
 
 
 
@@ -6428,7 +6438,7 @@ class SspAllowsAuthenticatedScanProp(Property):
     uuid = Column(Text())
     ns = Column(Text())
     value = Column(Enum('yes', 'no', name='AllowsAuthenticatedScanEnum'), nullable=False )
-    _class = Column(Text())
+    class_ = Column(Text())
     remarks = Column(Text())
     group = Column(Text())
     SspSystemComponent_id = Column(Integer(), ForeignKey('SspSystemComponent.id'))
@@ -6436,7 +6446,7 @@ class SspAllowsAuthenticatedScanProp(Property):
     
 
     def __repr__(self):
-        return f"SspAllowsAuthenticatedScanProp(id={self.id},name={self.name},uuid={self.uuid},ns={self.ns},value={self.value},_class={self._class},remarks={self.remarks},group={self.group},SspSystemComponent_id={self.SspSystemComponent_id},SspInventoryItem_id={self.SspInventoryItem_id},)"
+        return f"SspAllowsAuthenticatedScanProp(id={self.id},name={self.name},uuid={self.uuid},ns={self.ns},value={self.value},class_={self.class_},remarks={self.remarks},group={self.group},SspSystemComponent_id={self.SspSystemComponent_id},SspInventoryItem_id={self.SspInventoryItem_id},)"
 
 
 

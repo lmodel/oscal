@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: Capability
+# metamodel_version: 1.11.0# version: 1.2.3id: Capability
 schema_generating: true
 description: A grouping of other components and/or capabilities.
 display_name: Capability

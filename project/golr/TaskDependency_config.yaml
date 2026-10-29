@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: TaskDependency
+# metamodel_version: 1.11.0# version: 1.2.3id: TaskDependency
 schema_generating: true
 description: Used to indicate that a task is dependent on another task.
 display_name: TaskDependency

@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: RequiredAsset
+# metamodel_version: 1.11.0# version: 1.2.3id: RequiredAsset
 schema_generating: true
 description: Identifies an asset required to achieve remediation.
 display_name: RequiredAsset

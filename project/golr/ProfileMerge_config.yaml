@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: ProfileMerge
+# metamodel_version: 1.11.0# version: 1.2.3id: ProfileMerge
 schema_generating: true
 description: Provides structuring directives that instruct how controls are organized
   after profile resolution.

@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: SecurityImpactLevel
+# metamodel_version: 1.11.0# version: 1.2.3id: SecurityImpactLevel
 schema_generating: true
 description: The overall level of expected impact resulting from unauthorized disclosure,
   modification, or loss of access to information.

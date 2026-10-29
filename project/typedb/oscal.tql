@@ -8,7 +8,7 @@ define
   attribute remarks, value string;
   attribute uuid, value string;
   attribute id, value string;
-  attribute -class, value string;
+  attribute class-, value string;
   attribute title, value string;
   attribute published, value datetime;
   attribute last-modified, value datetime;
@@ -175,7 +175,7 @@ define
   
   entity group,
       owns id,
-      owns -class,
+      owns class-,
       owns title @card(1..1),
       plays groups:group,
       plays params:group,
@@ -184,7 +184,7 @@ define
   
   entity control,
       owns id @card(1..1),
-      owns -class,
+      owns class-,
       owns title @card(1..1),
       plays controls:control,
       plays params:control,
@@ -292,7 +292,7 @@ define
       owns uuid,
       owns ns,
       owns value-attr @card(1..1),
-      owns -class,
+      owns class-,
       owns remarks,
       owns group-attr,
       plays props:property;
@@ -359,14 +359,14 @@ define
       owns id,
       owns name @card(1..1),
       owns ns,
-      owns -class,
+      owns class-,
       owns title,
       owns prose,
       plays parts:part;
   
   entity parameter,
       owns id @card(1..1),
-      owns -class,
+      owns class-,
       owns depends-on,
       owns label-attr,
       owns usage,
@@ -451,7 +451,7 @@ define
   
   entity profilegroup,
       owns id,
-      owns -class,
+      owns class-,
       owns title @card(1..1),
       plays groups:profilegroup,
       plays params:profilegroup,
@@ -465,7 +465,7 @@ define
   
   entity parametersetting,
       owns param-id @card(1..1),
-      owns -class,
+      owns class-,
       owns depends-on,
       owns label-attr,
       owns usage,
@@ -697,7 +697,7 @@ define
       owns uuid,
       owns name @card(1..1),
       owns ns,
-      owns -class,
+      owns class-,
       owns title,
       owns prose,
       plays part-rel:assessmentpart,
@@ -710,7 +710,7 @@ define
       owns id,
       owns name @card(1..1),
       owns ns,
-      owns -class,
+      owns class-,
       owns title,
       owns prose,
       plays parts:controlpart;
@@ -981,6 +981,8 @@ define
       owns remarks,
       plays system-characteristics:systemcharacteristics,
       plays system-ids:systemcharacteristics,
+      plays props:systemcharacteristics,
+      plays links-attr:systemcharacteristics,
       plays system-information:systemcharacteristics,
       plays security-impact-level:systemcharacteristics,
       plays system-status:systemcharacteristics,
@@ -1173,7 +1175,8 @@ define
       plays links-attr:satisfiedcontrolimplementation,
       plays responsible-roles:satisfiedcontrolimplementation;
   
-  entity sspsystemcharacteristicsprop, sub property;
+  entity sspsystemcharacteristicsprop, sub property,
+      plays props:sspsystemcharacteristicsprop;
   
   entity sspsysteminformationprop, sub property,
       plays props:sspsysteminformationprop;
@@ -1469,6 +1472,8 @@ define
       relates resourceproperty,
       relates addition,
       relates profilealterationproperty,
+      relates systemcharacteristics,
+      relates sspsystemcharacteristicsprop,
       relates systeminformation,
       relates sspsysteminformationprop,
       relates informationtype,
@@ -1493,6 +1498,7 @@ define
       relates haspropsandlinks,
       relates link,
       relates addition,
+      relates systemcharacteristics,
       relates systeminformation,
       relates sspsysteminformationlink,
       relates informationtype,

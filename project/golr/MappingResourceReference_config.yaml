@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: MappingResourceReference
+# metamodel_version: 1.11.0# version: 1.2.3id: MappingResourceReference
 schema_generating: true
 description: A reference to the source or target resource for a mapping.
 display_name: MappingResourceReference

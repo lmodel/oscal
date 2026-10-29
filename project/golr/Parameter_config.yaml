@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: Parameter
+# metamodel_version: 1.11.0# version: 1.2.3id: Parameter
 schema_generating: true
 description: Parameters provide a mechanism for the dynamic assignment of value(s)
   in a control.
@@ -9,10 +9,10 @@ fields:
 - id: id
   description: A unique identifier for the parameter.
   display_name: Parameter_id
-- id: _class
+- id: class_
   description: A textual label that provides a characterization of the type, purpose,
     use or scope of the parameter.
-  display_name: Parameter__class
+  display_name: Parameter_class_
 - id: depends_on
   description: (deprecated) Another parameter invoking this one. This construct has
     been deprecated and should not be used.

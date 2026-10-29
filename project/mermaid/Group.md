@@ -8,7 +8,7 @@
       HasPropsAndLinks <|-- Group
         click HasPropsAndLinks href "../HasPropsAndLinks"
       
-      Group : _class
+      Group : class_
         
       Group : controls
         

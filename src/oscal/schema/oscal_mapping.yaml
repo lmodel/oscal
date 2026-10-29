@@ -11,8 +11,8 @@ see_also:
 source: http://csrc.nist.gov/ns/oscal/1.2.3/oscal-mapping-schema.json
 version: 1.2.3
 annotations:
-  uuid: fb0aef69-f6c8-4dfa-abb8-e8be0700d426
-  last-modified: "2026-03-27T10:00:00Z"
+  uuid: c0e7d3b6-870a-4d01-a0ca-06a2bb78a644
+  last-modified: "2026-10-29T01:02:04Z"
 notes:
   - "Every time the content of an OSCAL file changes, the following must also change:"
   - A new UUID value must be generated and assigned to the root element's uuid.

@@ -10,8 +10,8 @@ see_also:
 source: http://csrc.nist.gov/ns/oscal/1.2.3/oscal-ar-schema.json
 version: 1.2.3
 annotations:
-  uuid: 0b4113f1-f134-44d8-927b-34d721ed1d8a
-  last-modified: "2026-03-27T10:00:00Z"
+  uuid: f3f000cb-9316-4025-a992-1295c79e8d32
+  last-modified: "2026-10-29T01:02:04Z"
 notes:
   - "Every time the content of an OSCAL file changes, the following must also change:"
   - A new UUID value must be generated and assigned to the root element's uuid.

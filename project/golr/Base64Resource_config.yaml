@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: Base64Resource
+# metamodel_version: 1.11.0# version: 1.2.3id: Base64Resource
 schema_generating: true
 description: A resource encoded using the Base64 alphabet defined by RFC 2045.
 display_name: Base64Resource
