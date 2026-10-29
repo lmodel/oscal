@@ -57,6 +57,16 @@ skip = [
   "project/*",
   "src/oscal/datamodel/oscal_pydantic.py",
   "src/oscal/datamodel/oscal.py",
+  # OSCAL's metaschema, the third-party fixtures and the neighbours' adapt
+  # copies, copied as published, and files copied in by the KTL sidecar sync
+  # or written by npm, not by hand.
+  "src/oscal/schema/metaschema/*",
+  "tests/data/cncf-ai-benchmarks/*",
+  "tests/data/invalid/cncf-ai-benchmarks/*",
+  "tests/data/luigi_carpio/*",
+  "tests/neighbours/*",
+  ".lokf/scripts/*",
+  "website/package-lock.json",
 ]
 
 # Reminder: words have to be lowercased for the ignore-words-list
@@ -75,4 +85,14 @@ extend-exclude = [
   "project/*",
   "src/oscal/datamodel/oscal_pydantic.py",
   "src/oscal/datamodel/oscal.py",
+  # OSCAL's metaschema, the third-party fixtures and the neighbours' adapt
+  # copies, copied as published, and files copied in by the KTL sidecar sync
+  # or written by npm, not by hand.
+  "src/oscal/schema/metaschema/*",
+  "tests/data/cncf-ai-benchmarks/*",
+  "tests/data/invalid/cncf-ai-benchmarks/*",
+  "tests/data/luigi_carpio/*",
+  "tests/neighbours/*",
+  ".lokf/scripts/*",
+  "website/package-lock.json",
 ]
