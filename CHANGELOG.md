@@ -6,6 +6,8 @@ The `v0.0.0` tag is a baseline, not a release: it marks where versioning starts 
 
 ## [Unreleased]
 
+## [0.1.0] - 2026-10-29
+
 ### Added
 
 - **A LinkML schema of OSCAL 1.2.3, one module for each of its eight models**: catalog, profile, component definition, system security plan, assessment plan, assessment results, plan of action and milestones, and mapping collection.
