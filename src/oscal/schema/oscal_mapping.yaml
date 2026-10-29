@@ -7,12 +7,12 @@ description: |-
 license: Apache-2.0
 see_also:
   - https://pages.nist.gov/OSCAL/
-  - https://pages.nist.gov/OSCAL/learn/concepts/layer/mapping/
+  - https://pages.nist.gov/OSCAL/learn/concepts/layer/control/mapping/
 source: http://csrc.nist.gov/ns/oscal/1.2.3/oscal-mapping-schema.json
 version: 1.2.3
 annotations:
-  uuid: c0e7d3b6-870a-4d01-a0ca-06a2bb78a644
-  last-modified: "2026-10-29T01:02:04Z"
+  uuid: 6d5fe060-be0c-4f39-b37f-a3a2cbd63815
+  last-modified: "2026-10-29T01:17:25Z"
 notes:
   - "Every time the content of an OSCAL file changes, the following must also change:"
   - A new UUID value must be generated and assigned to the root element's uuid.
