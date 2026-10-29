@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: Location
+# metamodel_version: 1.11.0# version: 1.2.3id: Location
 schema_generating: true
 description: A physical point of presence, which may be associated with people, organizations,
   or other concepts within the current or linked OSCAL document.

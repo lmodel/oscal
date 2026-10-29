@@ -50,16 +50,21 @@ _test-linkml-validate:
 		"Risk": "src/oscal/schema/oscal_assessment_plan.yaml",
 		"Role": "src/oscal/schema/oscal_catalog.yaml",
 		"SystemComponent": "src/oscal/schema/oscal_component.yaml",
+		"Catalog": "src/oscal/schema/oscal_catalog.yaml",
+		"Profile": "src/oscal/schema/oscal_profile.yaml",
+		"SystemSecurityPlan": "src/oscal/schema/oscal_ssp.yaml",
+		"PlanOfActionAndMilestones": "src/oscal/schema/oscal_poam.yaml",
+		"MappingCollection": "src/oscal/schema/oscal_mapping.yaml",
+		"AtFrequency": "src/oscal/schema/oscal_assessment_plan.yaml",
+		"PortRange": "src/oscal/schema/oscal_assessment_plan.yaml",
 	}
 
 	failures = []
 	for subset, expected_ok in (("valid", True), ("invalid", False)):
 		for fixture in sorted((Path("tests/data") / subset).glob("*.yaml")):
 			target_class = fixture.stem.split("-")[0]
-			schema_path = schema_map.get(target_class)
-			if schema_path is None:
-				print(f"[linkml-validate] SKIP {fixture}: no standalone schema mapping")
-				continue
+			# A class with no module of its own here is checked against the umbrella.
+			schema_path = schema_map.get(target_class, "src/oscal/schema/oscal.yaml")
 
 			result = subprocess.run(
 				[
@@ -141,7 +146,7 @@ test-luigi-carpio:
 	import re
 	from pathlib import Path
 	import oscal.datamodel.oscal as model
-	
+
 	def normalize_keys(value):
 		if isinstance(value, dict):
 			return {
@@ -270,7 +275,7 @@ gen-merged-schema:
   uv run gen-linkml --mergeimports -o {{dest}}/linkml/{{schema_name}}.merged.linkml.yaml {{source_schema_path}}
 
 # gen-yaml CLI hits the linkml-runtime 1.11.0 RepresenterError (JsonObj missing SafeDumper representer).
-# Use the same patched script as _gen-yaml until linkml-runtime > 1.11.0 lands.
+# Use the patched script until linkml-runtime > 1.11.0 lands.
 # Generate resolved YAML schema (patched yamlgen)
 [group('model development - extended')]
 gen-yaml-artifact:
@@ -457,3 +462,26 @@ gen-project-extended: \
   gen-pandera-artifact \
   gen-markdown-datadict-artifact \
   gen-golr-artifact
+
+# ============ Knowledge bundle: the adapted domain schema ============
+
+# `.lokf/oscal.yaml` is the copy `lokf adapt` writes from the schema so that it
+# can sit beside `.lokf/lokf.yaml` (`lokf adapt --help` lists the moves). The
+# roots are the eight OSCAL models, the classes a knowledge concept may use as
+# its `type`. OSCAL gives none of them an identifier slot, so each keeps its
+# required `uuid` and `metadata`, and a concept's `id` names it beside them.
+# The recipes run the `lokf` the sidecar's floor pins (0.9.0 or later);
+# LOKF_CMD runs another, such as a checkout:
+# LOKF_CMD="uv run --project ../lokf lokf" just lokf-adapt
+lokf_cmd := env_var_or_default("LOKF_CMD", "uv run --project .lokf lokf")
+lokf_adapt_roots := "--root Catalog --root Profile --root ComponentDefinition --root SystemSecurityPlan --root AssessmentPlan --root AssessmentResults --root PlanOfActionAndMilestones --root MappingCollection"
+
+# Rewrite .lokf/oscal.yaml from the schema (run after every schema change)
+[group('knowledge bundle')]
+lokf-adapt:
+  {{lokf_cmd}} adapt {{source_schema_path}} {{lokf_adapt_roots}} --lokf .lokf/lokf.yaml -o .lokf/oscal.yaml
+
+# Fail when .lokf/oscal.yaml is stale against the schema or .lokf/lokf.yaml
+[group('knowledge bundle')]
+lokf-adapt-check:
+  {{lokf_cmd}} adapt {{source_schema_path}} {{lokf_adapt_roots}} --lokf .lokf/lokf.yaml -o .lokf/oscal.yaml --check

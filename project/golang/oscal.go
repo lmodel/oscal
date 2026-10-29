@@ -59,6 +59,14 @@ type LocationPropTypeEnum string
 
 const (
 	LocationPropTypeEnumData-center LocationPropTypeEnum = "data-center"
+	LocationPropTypeEnumRegion LocationPropTypeEnum = "region"
+	LocationPropTypeEnumZone LocationPropTypeEnum = "zone"
+	LocationPropTypeEnumHeadquarters LocationPropTypeEnum = "headquarters"
+	LocationPropTypeEnumRegional-office LocationPropTypeEnum = "regional-office"
+	LocationPropTypeEnumSatellite-office LocationPropTypeEnum = "satellite-office"
+	LocationPropTypeEnumEdge LocationPropTypeEnum = "edge"
+	LocationPropTypeEnumCdn LocationPropTypeEnum = "cdn"
+	LocationPropTypeEnumDomain LocationPropTypeEnum = "domain"
 )
 // Curated OSCAL location class values for data-center type. Other values are permitted (OSCAL allow-other="yes").
 type LocationDataCenterClassEnum string
@@ -66,6 +74,11 @@ type LocationDataCenterClassEnum string
 const (
 	LocationDataCenterClassEnumPrimary LocationDataCenterClassEnum = "primary"
 	LocationDataCenterClassEnumAlternate LocationDataCenterClassEnum = "alternate"
+	LocationDataCenterClassEnumPeer LocationDataCenterClassEnum = "peer"
+	LocationDataCenterClassEnumAvailability LocationDataCenterClassEnum = "availability"
+	LocationDataCenterClassEnumSub LocationDataCenterClassEnum = "sub"
+	LocationDataCenterClassEnumFault LocationDataCenterClassEnum = "fault"
+	LocationDataCenterClassEnumFailure LocationDataCenterClassEnum = "failure"
 )
 // Curated external identifier scheme values for metadata parties. Other values are permitted (OSCAL allow-other="yes").
 type PartyExternalIdSchemeEnum string
@@ -206,12 +219,17 @@ const (
 	ControlPropNameEnumAlt-identifier ControlPropNameEnum = "alt-identifier"
 	ControlPropNameEnumStatus ControlPropNameEnum = "status"
 )
-// Allowed OSCAL status property values for catalog controls.
+// Curated OSCAL status property values for catalog controls. Other values are permitted (OSCAL allow-other="yes").
 type ControlPropStatusValueEnum string
 
 const (
 	ControlPropStatusValueEnumWithdrawn ControlPropStatusValueEnum = "withdrawn"
-	ControlPropStatusValueEnumWithdrawn ControlPropStatusValueEnum = "Withdrawn"
+	ControlPropStatusValueEnumReserved ControlPropStatusValueEnum = "reserved"
+	ControlPropStatusValueEnumDeprecated ControlPropStatusValueEnum = "deprecated"
+	ControlPropStatusValueEnumConditional ControlPropStatusValueEnum = "conditional"
+	ControlPropStatusValueEnumSuperseded ControlPropStatusValueEnum = "superseded"
+	ControlPropStatusValueEnumModified ControlPropStatusValueEnum = "modified"
+	ControlPropStatusValueEnumExperimental ControlPropStatusValueEnum = "experimental"
 )
 // Curated OSCAL link relation values for catalog controls. Other values are permitted (OSCAL allow-other="yes").
 type ControlLinkRelEnum string
@@ -448,6 +466,9 @@ const (
 	ComponentTypeEnumStandard ComponentTypeEnum = "standard"
 	ComponentTypeEnumValidation ComponentTypeEnum = "validation"
 	ComponentTypeEnumNetwork ComponentTypeEnum = "network"
+	ComponentTypeEnumRegion ComponentTypeEnum = "region"
+	ComponentTypeEnumZone ComponentTypeEnum = "zone"
+	ComponentTypeEnumResource-container ComponentTypeEnum = "resource-container"
 )
 type ComponentStateEnum string
 
@@ -1510,7 +1531,7 @@ type Group struct {
 	// Identifies the group for the purpose of cross-linking within the defining instance or from other instances that reference the catalog.
 	Id *string `json:"id,omitempty"`
 	// A textual label that provides a sub-type or characterization of the group.
-	Class *string `json:"_class,omitempty"`
+	Class *string `json:"class_,omitempty"`
 	// A name given to the group, which may be used by a tool for display and navigation.
 	Title string `json:"title"`
 	// Parameters providing a mechanism for the dynamic assignment of value(s) in a control.
@@ -1530,7 +1551,7 @@ type Control struct {
 	// Identifies a control such that it can be referenced in the defining catalog and other OSCAL instances (e.g., profiles).
 	Id string `json:"id"`
 	// A textual label that provides a sub-type or characterization of the control.
-	Class *string `json:"_class,omitempty"`
+	Class *string `json:"class_,omitempty"`
 	// A name given to the control, which may be used by a tool for display and navigation.
 	Title string `json:"title"`
 	// Parameters providing a mechanism for the dynamic assignment of value(s) in a control.
@@ -1738,7 +1759,7 @@ type Property struct {
 	// Indicates the value of the attribute, characteristic, or quality.
 	Value string `json:"value"`
 	// A textual label that provides a sub-type or characterization of the property's name.
-	Class *string `json:"_class,omitempty"`
+	Class *string `json:"class_,omitempty"`
 	// Additional commentary about the containing object.
 	Remarks *string `json:"remarks,omitempty"`
 	// An identifier for relating distinct sets of properties.
@@ -1874,7 +1895,7 @@ type Part struct {
 	// An optional namespace qualifying the part's name. This allows different organizations to associate distinct semantics with the same name.
 	Ns *string `json:"ns,omitempty"`
 	// An optional textual providing a sub-type or characterization of the part's name, or a category to which the part belongs.
-	Class *string `json:"_class,omitempty"`
+	Class *string `json:"class_,omitempty"`
 	// An optional name given to the part, which may be used by a tool for display and navigation.
 	Title *string `json:"title,omitempty"`
 	// Permits multiple paragraphs, lists, tables etc.
@@ -1890,7 +1911,7 @@ type Parameter struct {
 	// A unique identifier for the parameter.
 	Id string `json:"id"`
 	// A textual label that provides a characterization of the type, purpose, use or scope of the parameter.
-	Class *string `json:"_class,omitempty"`
+	Class *string `json:"class_,omitempty"`
 	// (deprecated) Another parameter invoking this one. This construct has been deprecated and should not be used.
 	DependsOn *string `json:"depends_on,omitempty"`
 	// A short, placeholder name for the parameter, which can be used as a substitute for a value if no value is assigned.
@@ -2032,7 +2053,7 @@ type ProfileGroup struct {
 	// A unique human-oriented identifier within a particular context.
 	Id *string `json:"id,omitempty"`
 	// A textual label that provides a sub-type or characterization.
-	Class *string `json:"_class,omitempty"`
+	Class *string `json:"class_,omitempty"`
 	// A human-readable name or title.
 	Title string `json:"title"`
 	// Parameters providing a mechanism for the dynamic assignment of value(s) in a control.
@@ -2060,7 +2081,7 @@ type ParameterSetting struct {
 	// The identifier for the parameter being set or referenced.
 	ParamId string `json:"param_id"`
 	// A textual label that provides a sub-type or characterization.
-	Class *string `json:"_class,omitempty"`
+	Class *string `json:"class_,omitempty"`
 	// (deprecated) Another parameter invoking this one. This construct has been deprecated and should not be used.
 	DependsOn *string `json:"depends_on,omitempty"`
 	// A short, placeholder name for the parameter, which can be used as a substitute for a value if no value is assigned.
@@ -2493,7 +2514,7 @@ type AssessmentPart struct {
 	// An optional namespace qualifying a name. Allows different organizations to associate distinct semantics with the same name.
 	Ns *string `json:"ns,omitempty"`
 	// A textual label that provides a sub-type or characterization.
-	Class *string `json:"_class,omitempty"`
+	Class *string `json:"class_,omitempty"`
 	// A human-readable name or title.
 	Title *string `json:"title,omitempty"`
 	// Permits multiple paragraphs, lists, tables etc.
@@ -2519,7 +2540,7 @@ type ControlPart struct {
 	// An optional namespace qualifying a name. Allows different organizations to associate distinct semantics with the same name.
 	Ns *string `json:"ns,omitempty"`
 	// A textual label that provides a sub-type or characterization.
-	Class *string `json:"_class,omitempty"`
+	Class *string `json:"class_,omitempty"`
 	// A human-readable name or title.
 	Title *string `json:"title,omitempty"`
 	// Permits multiple paragraphs, lists, tables etc.
@@ -3028,6 +3049,10 @@ type SystemCharacteristics struct {
 	SystemNameShort *string `json:"system_name_short,omitempty"`
 	// A human-readable description.
 	Description string `json:"description"`
+	// A list of properties.
+	Props []SspSystemCharacteristicsProp `json:"props,omitempty"`
+	// A list of links.
+	Links []Link `json:"links,omitempty"`
 	// The date the system received its authorization.
 	DateAuthorized *string `json:"date_authorized,omitempty"`
 	// The overall information system sensitivity categorization, such as defined by FIPS-199.

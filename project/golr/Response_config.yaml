@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: Response
+# metamodel_version: 1.11.0# version: 1.2.3id: Response
 schema_generating: true
 description: Describes either recommended or an actual plan for addressing the risk.
 display_name: Response

@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: SatisfiedControlImplementation
+# metamodel_version: 1.11.0# version: 1.2.3id: SatisfiedControlImplementation
 schema_generating: true
 description: Describes how this system satisfies a responsibility imposed by a leveraged
   system.

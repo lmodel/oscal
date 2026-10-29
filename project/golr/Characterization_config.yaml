@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: Characterization
+# metamodel_version: 1.11.0# version: 1.2.3id: Characterization
 schema_generating: true
 description: A collection of descriptive data about the containing object from a specific
   origin.

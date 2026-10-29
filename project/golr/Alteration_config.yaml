@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: Alteration
+# metamodel_version: 1.11.0# version: 1.2.3id: Alteration
 schema_generating: true
 description: Specifies changes to be made to an included control when a profile is
   resolved.

@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: Profile
+# metamodel_version: 1.11.0# version: 1.2.3id: Profile
 schema_generating: true
 description: An OSCAL Profile that designates a set of controls from one or more catalogs
   or profiles, optionally restructures and modifies them, to describe a basis for

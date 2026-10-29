@@ -30,7 +30,7 @@ from pydantic import (
 
 
 metamodel_version = "1.11.0"
-version = "1.2.1"
+version = "1.2.3"
 
 
 class ConfiguredBaseModel(BaseModel):
@@ -67,13 +67,27 @@ class LinkMLMeta(RootModel):
 
 
 linkml_meta = LinkMLMeta({'annotations': {'last-modified': {'tag': 'last-modified',
-                                       'value': '2026-03-27T10:00:00Z'},
+                                       'value': '2026-10-28T23:30:00Z'},
+                     'oscal_commit': {'tag': 'oscal_commit',
+                                      'value': 'e061961c7702afeabffdf5e59894d35e748dade1'},
+                     'oscal_tag': {'tag': 'oscal_tag', 'value': 'v1.2.3'},
                      'uuid': {'tag': 'uuid',
-                              'value': 'e0b9845b-6de4-4f52-a96c-56255f507520'}},
+                              'value': '5bda39c3-8ebf-4717-b21f-c96a20c27f18'}},
+     'comments': ['The version is the OSCAL release the model renders. Its tag and '
+                  'commit are in the annotations, and src/oscal/schema/metaschema/ '
+                  "holds that commit's metaschema sources, where every "
+                  "allowed-values list an enum renders is defined; each enum's "
+                  'oscal_allowed_values annotation names its lists. '
+                  'scripts/check_upstream_release.py reads the same pins and '
+                  'reports when NIST tags a newer release or the copy drifts. The '
+                  "release tags are the schema's own versions."],
      'default_prefix': 'oscal',
      'default_range': 'string',
-     'description': 'OSCAL: Open Security Controls Assessment Language: LinkML '
-                    'Schema',
+     'description': "A LinkML model of NIST's Open Security Controls Assessment "
+                    'Language (OSCAL) 1.2.3: the catalog, profile, component '
+                    'definition, system security plan, assessment plan, assessment '
+                    'results, plan of action and milestones, and mapping '
+                    'collection models, each in a module of its own.',
      'id': 'https://w3id.org/lmodel/oscal',
      'imports': ['linkml:types',
                  './oscal_catalog',
@@ -83,12 +97,11 @@ linkml_meta = LinkMLMeta({'annotations': {'last-modified': {'tag': 'last-modifie
                  './oscal_assessment_results',
                  './oscal_component',
                  './oscal_mapping',
-                 './oscal_poam',
-                 './oscal'],
+                 './oscal_poam'],
      'license': 'Apache-2.0',
      'name': 'oscal',
-     'notes': ["{'Every time the content of an OSCAL file changes, the following "
-               "must also change': None}",
+     'notes': ['Every time the content of an OSCAL file changes, the following '
+               'must also change:',
                'A new UUID value must be generated and assigned to the root '
                "element's uuid.",
                'The last-modified field in metadata must be assigned with the date '
@@ -104,9 +117,13 @@ linkml_meta = LinkMLMeta({'annotations': {'last-modified': {'tag': 'last-modifie
                              'prefix_reference': 'https://w3id.org/linkml/'},
                   'oscal': {'prefix_prefix': 'oscal',
                             'prefix_reference': 'https://w3id.org/lmodel/oscal/'}},
-     'see_also': ['https://lmodel.github.io/oscal'],
+     'see_also': ['https://lmodel.github.io/oscal',
+                  'https://pages.nist.gov/OSCAL/',
+                  'https://pages.nist.gov/OSCAL-Reference/models/v1.2.3/',
+                  'https://github.com/usnistgov/OSCAL/releases/tag/v1.2.3'],
+     'source': 'https://github.com/usnistgov/OSCAL/tree/e061961c7702afeabffdf5e59894d35e748dade1/src/metaschema',
      'source_file': 'src/oscal/schema/oscal.yaml',
-     'title': 'oscal'} )
+     'title': 'Open Security Controls Assessment Language (OSCAL)'} )
 
 class PartyTypeEnum(str, Enum):
     person = "person"
@@ -176,6 +193,14 @@ class LocationPropTypeEnum(str, Enum):
 
     """
     data_center = "data-center"
+    region = "region"
+    zone = "zone"
+    headquarters = "headquarters"
+    regional_office = "regional-office"
+    satellite_office = "satellite-office"
+    edge = "edge"
+    cdn = "cdn"
+    domain = "domain"
 
 
 class LocationDataCenterClassEnum(str, Enum):
@@ -185,6 +210,11 @@ class LocationDataCenterClassEnum(str, Enum):
     """
     primary = "primary"
     alternate = "alternate"
+    peer = "peer"
+    availability = "availability"
+    sub = "sub"
+    fault = "fault"
+    failure = "failure"
 
 
 class PartyExternalIdSchemeEnum(str, Enum):
@@ -346,10 +376,15 @@ class ControlPropNameEnum(str, Enum):
 
 class ControlPropStatusValueEnum(str, Enum):
     """
-    Allowed OSCAL status property values for catalog controls.
+    Curated OSCAL status property values for catalog controls. Other values are permitted (OSCAL allow-other="yes").
     """
     withdrawn = "withdrawn"
-    Withdrawn = "Withdrawn"
+    reserved = "reserved"
+    deprecated = "deprecated"
+    conditional = "conditional"
+    superseded = "superseded"
+    modified = "modified"
+    experimental = "experimental"
 
 
 class ControlLinkRelEnum(str, Enum):
@@ -612,6 +647,9 @@ class ComponentTypeEnum(str, Enum):
     standard = "standard"
     validation = "validation"
     network = "network"
+    region = "region"
+    zone = "zone"
+    resource_container = "resource-container"
 
 
 class ComponentStateEnum(str, Enum):
@@ -1704,13 +1742,14 @@ class HasPropsAndLinks(ConfiguredBaseModel):
     """
     Mixin providing the props and links slots that are common to many OSCAL objects.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_catalog',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_catalog',
          'in_subset': ['oscal_catalog'],
          'mixin': True})
 
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -1730,6 +1769,7 @@ class HasPropsAndLinks(ConfiguredBaseModel):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -1753,7 +1793,7 @@ class OscalCommon(HasPropsAndLinks):
     """
     Mixin providing props, links, and remarks slots common to most OSCAL objects. Extends HasPropsAndLinks.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_catalog',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_catalog',
          'in_subset': ['oscal_catalog'],
          'mixin': True,
          'mixins': ['HasPropsAndLinks']})
@@ -1807,6 +1847,7 @@ class OscalCommon(HasPropsAndLinks):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -1826,6 +1867,7 @@ class OscalCommon(HasPropsAndLinks):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -1849,7 +1891,7 @@ class HasResponsibleRoles(ConfiguredBaseModel):
     """
     Mixin providing the responsible-roles slot for objects that carry role assignments.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_catalog',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_catalog',
          'in_subset': ['oscal_catalog'],
          'mixin': True})
 
@@ -1867,7 +1909,7 @@ class HasResponsibleParties(ConfiguredBaseModel):
     """
     Mixin providing the responsible-parties slot for objects that carry party assignments.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_catalog',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_catalog',
          'in_subset': ['oscal_catalog'],
          'mixin': True})
 
@@ -1878,7 +1920,7 @@ class OscalDocument(ConfiguredBaseModel):
     """
     A root wrapper for an OSCAL document, which may be of any OSCAL document type (e.g. Catalog, Profile, Assessment Plan, SSP).
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_catalog',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_catalog',
          'in_subset': ['oscal_catalog'],
          'tree_root': True})
 
@@ -1889,7 +1931,7 @@ class CatalogDocument(OscalDocument):
     """
     Root wrapper for an OSCAL Catalog document.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_catalog',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_catalog',
          'in_subset': ['oscal_catalog'],
          'slot_usage': {'catalog': {'name': 'catalog', 'required': True}}})
 
@@ -1900,7 +1942,7 @@ class Catalog(ConfiguredBaseModel):
     """
     A structured, organized collection of control information.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_catalog',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_catalog',
          'in_subset': ['oscal_catalog'],
          'slot_usage': {'metadata': {'name': 'metadata', 'required': True},
                         'uuid': {'description': 'Provides a globally unique means to '
@@ -1985,13 +2027,13 @@ class Group(HasPropsAndLinks):
     """
     A group of controls, or of groups of controls.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_catalog',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_catalog',
          'in_subset': ['oscal_catalog'],
          'mixins': ['HasPropsAndLinks'],
-         'slot_usage': {'_class': {'description': 'A textual label that provides a '
+         'slot_usage': {'class_': {'description': 'A textual label that provides a '
                                                   'sub-type or characterization of the '
                                                   'group.',
-                                   'name': '_class'},
+                                   'name': 'class_'},
                         'id': {'description': 'Identifies the group for the purpose of '
                                               'cross-linking within the defining '
                                               'instance or from other instances that '
@@ -2013,7 +2055,12 @@ class Group(HasPropsAndLinks):
                        'ControlPart',
                        'SystemId',
                        'ThreatId']} })
-    class_: Optional[str] = Field(default=None, alias="_class", description="""A textual label that provides a sub-type or characterization of the group.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Group',
+    class_: Optional[str] = Field(default=None, description="""A textual label that provides a sub-type or characterization of the group.""", json_schema_extra = { "linkml_meta": {'comments': ["OSCAL's key is `class`. A slot or alias named `class` makes the "
+                      'generated dataclasses invalid Python, and gen-doc names a page '
+                      'after the slot, so `_class` hid its page from the site. '
+                      '`class_` is the spelling the generated Pydantic model gives a '
+                      'slot named `class`.'],
+         'domain_of': ['Group',
                        'Control',
                        'Property',
                        'Part',
@@ -2072,6 +2119,7 @@ class Group(HasPropsAndLinks):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -2091,6 +2139,7 @@ class Group(HasPropsAndLinks):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -2114,13 +2163,13 @@ class Control(HasPropsAndLinks):
     """
     A structured object representing a requirement or guideline, which when implemented will reduce an aspect of risk related to an information system and its information.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_catalog',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_catalog',
          'in_subset': ['oscal_catalog'],
          'mixins': ['HasPropsAndLinks'],
-         'slot_usage': {'_class': {'description': 'A textual label that provides a '
+         'slot_usage': {'class_': {'description': 'A textual label that provides a '
                                                   'sub-type or characterization of the '
                                                   'control.',
-                                   'name': '_class'},
+                                   'name': 'class_'},
                         'id': {'description': 'Identifies a control such that it can '
                                               'be referenced in the defining catalog '
                                               'and other OSCAL instances (e.g., '
@@ -2143,7 +2192,12 @@ class Control(HasPropsAndLinks):
                        'ControlPart',
                        'SystemId',
                        'ThreatId']} })
-    class_: Optional[str] = Field(default=None, alias="_class", description="""A textual label that provides a sub-type or characterization of the control.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Group',
+    class_: Optional[str] = Field(default=None, description="""A textual label that provides a sub-type or characterization of the control.""", json_schema_extra = { "linkml_meta": {'comments': ["OSCAL's key is `class`. A slot or alias named `class` makes the "
+                      'generated dataclasses invalid Python, and gen-doc names a page '
+                      'after the slot, so `_class` hid its page from the site. '
+                      '`class_` is the spelling the generated Pydantic model gives a '
+                      'slot named `class`.'],
+         'domain_of': ['Group',
                        'Control',
                        'Property',
                        'Part',
@@ -2201,6 +2255,7 @@ class Control(HasPropsAndLinks):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -2220,6 +2275,7 @@ class Control(HasPropsAndLinks):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -2243,7 +2299,7 @@ class Metadata(HasResponsibleParties, OscalCommon):
     """
     Provides information about the containing document, and defines concepts shared across the document.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_catalog',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_catalog',
          'in_subset': ['oscal_metadata'],
          'mixins': ['OscalCommon', 'HasResponsibleParties'],
          'slot_usage': {'last-modified': {'description': 'The date and time the '
@@ -2360,6 +2416,7 @@ class Metadata(HasResponsibleParties, OscalCommon):
     props: Optional[list[MetadataProperty]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -2379,6 +2436,7 @@ class Metadata(HasResponsibleParties, OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -2402,7 +2460,7 @@ class Revision(OscalCommon):
     """
     An entry in a sequential list of revisions to the containing document.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_catalog',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_catalog',
          'in_subset': ['oscal_metadata'],
          'mixins': ['OscalCommon'],
          'slot_usage': {'links': {'name': 'links', 'range': 'Link'},
@@ -2496,6 +2554,7 @@ class Revision(OscalCommon):
     props: Optional[list[RevisionProperty]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -2515,6 +2574,7 @@ class Revision(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -2538,7 +2598,7 @@ class DocumentId(ConfiguredBaseModel):
     """
     A document identifier qualified by an identifier scheme.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_catalog',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_catalog',
          'in_subset': ['oscal_metadata'],
          'slot_usage': {'identifier': {'name': 'identifier', 'required': True},
                         'scheme': {'any_of': [{'range': 'DocumentIdSchemeEnum'},
@@ -2554,7 +2614,7 @@ class Role(OscalCommon):
     """
     Defines a function, which might be assigned to a party in a specific situation.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_catalog',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_catalog',
          'in_subset': ['oscal_metadata'],
          'mixins': ['OscalCommon'],
          'slot_usage': {'id': {'description': 'A unique identifier for the role.',
@@ -2705,6 +2765,7 @@ class Role(OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -2724,6 +2785,7 @@ class Role(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -2747,7 +2809,7 @@ class Location(OscalCommon):
     """
     A physical point of presence, which may be associated with people, organizations, or other concepts within the current or linked OSCAL document.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_catalog',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_catalog',
          'in_subset': ['oscal_metadata'],
          'mixins': ['OscalCommon'],
          'slot_usage': {'props': {'name': 'props', 'range': 'LocationProperty'},
@@ -2892,6 +2954,7 @@ class Location(OscalCommon):
     props: Optional[list[LocationProperty]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -2911,6 +2974,7 @@ class Location(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -2934,7 +2998,7 @@ class Party(OscalCommon):
     """
     An organization or person, which may be associated with roles or other concepts within the current or linked OSCAL document.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_catalog',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_catalog',
          'in_subset': ['oscal_metadata'],
          'mixins': ['OscalCommon'],
          'rules': [{'description': 'A party may have inline addresses or location UUID '
@@ -3093,6 +3157,7 @@ class Party(OscalCommon):
     props: Optional[list[PartyProperty]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -3112,6 +3177,7 @@ class Party(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -3135,7 +3201,7 @@ class PartyExternalId(ConfiguredBaseModel):
     """
     An identifier for a person or organization using a designated scheme, e.g. an Open Researcher and Contributor ID (ORCID).
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_catalog',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_catalog',
          'in_subset': ['oscal_metadata'],
          'slot_usage': {'id': {'name': 'id', 'range': 'string', 'required': True},
                         'scheme': {'any_of': [{'range': 'PartyExternalIdSchemeEnum'},
@@ -3163,7 +3229,7 @@ class ResponsibleParty(OscalCommon):
     """
     A reference to a set of persons and/or organizations that have responsibility for performing the referenced role in the context of the containing object.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_catalog',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_catalog',
          'in_subset': ['oscal_metadata'],
          'mixins': ['OscalCommon'],
          'slot_usage': {'party-uuids': {'name': 'party-uuids', 'required': True},
@@ -3230,6 +3296,7 @@ class ResponsibleParty(OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -3249,6 +3316,7 @@ class ResponsibleParty(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -3272,7 +3340,7 @@ class ResponsibleRole(OscalCommon):
     """
     A reference to a role with responsibility for performing a function relative to the containing object, optionally associated with a set of persons and/or organizations that perform that role.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_catalog',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_catalog',
          'in_subset': ['oscal_metadata'],
          'mixins': ['OscalCommon'],
          'slot_usage': {'role-id': {'description': 'A human-oriented identifier '
@@ -3334,6 +3402,7 @@ class ResponsibleRole(OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -3353,6 +3422,7 @@ class ResponsibleRole(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -3376,7 +3446,7 @@ class Action(HasResponsibleParties, OscalCommon):
     """
     An action applied by a role within a given party to the content.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_catalog',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_catalog',
          'in_subset': ['oscal_metadata'],
          'mixins': ['OscalCommon', 'HasResponsibleParties'],
          'slot_usage': {'system': {'any_of': [{'range': 'ActionSystemEnum'},
@@ -3513,6 +3583,7 @@ class Action(HasResponsibleParties, OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -3532,6 +3603,7 @@ class Action(HasResponsibleParties, OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -3555,7 +3627,7 @@ class TelephoneNumber(ConfiguredBaseModel):
     """
     A telephone service number as defined by ITU-T E.164.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_catalog',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_catalog',
          'in_subset': ['oscal_metadata'],
          'slot_usage': {'number': {'name': 'number', 'required': True},
                         'type': {'any_of': [{'range': 'PhoneTypeEnum'},
@@ -3588,7 +3660,7 @@ class Address(ConfiguredBaseModel):
     """
     A postal address for the location.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_catalog',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_catalog',
          'in_subset': ['oscal_metadata'],
          'slot_usage': {'type': {'any_of': [{'range': 'AddressTypeEnum'},
                                             {'range': 'string'}],
@@ -3628,7 +3700,7 @@ class Hash(ConfiguredBaseModel):
     """
     A representation of a cryptographic digest generated over a resource using a specified hash algorithm.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_catalog',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_catalog',
          'in_subset': ['oscal_metadata'],
          'slot_usage': {'algorithm': {'name': 'algorithm', 'required': True},
                         'value': {'name': 'value', 'required': True}}})
@@ -3642,12 +3714,12 @@ class Property(ConfiguredBaseModel):
     """
     An attribute, characteristic, or quality of the containing object expressed as a namespace qualified name/value pair.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_catalog',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_catalog',
          'in_subset': ['oscal_metadata'],
-         'slot_usage': {'_class': {'description': 'A textual label that provides a '
+         'slot_usage': {'class_': {'description': 'A textual label that provides a '
                                                   'sub-type or characterization of the '
                                                   "property's name.",
-                                   'name': '_class'},
+                                   'name': 'class_'},
                         'name': {'description': 'A textual label, within a namespace, '
                                                 'that identifies a specific attribute, '
                                                 'characteristic, or quality of the '
@@ -3734,7 +3806,12 @@ class Property(ConfiguredBaseModel):
                        'Map',
                        'MappingResourceReference']} })
     value: str = Field(default=..., description="""Indicates the value of the attribute, characteristic, or quality.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Hash', 'Property', 'Base64Resource', 'Facet']} })
-    class_: Optional[str] = Field(default=None, alias="_class", description="""A textual label that provides a sub-type or characterization of the property's name.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Group',
+    class_: Optional[str] = Field(default=None, description="""A textual label that provides a sub-type or characterization of the property's name.""", json_schema_extra = { "linkml_meta": {'comments': ["OSCAL's key is `class`. A slot or alias named `class` makes the "
+                      'generated dataclasses invalid Python, and gen-doc names a page '
+                      'after the slot, so `_class` hid its page from the site. '
+                      '`class_` is the spelling the generated Pydantic model gives a '
+                      'slot named `class`.'],
+         'domain_of': ['Group',
                        'Control',
                        'Property',
                        'Part',
@@ -3796,7 +3873,7 @@ class MetadataProperty(Property):
     """
     Metadata-scoped OSCAL property.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_catalog',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_catalog',
          'in_subset': ['oscal_metadata'],
          'slot_usage': {'name': {'name': 'name', 'range': 'MetadataPropNameEnum'}}})
 
@@ -3867,7 +3944,12 @@ class MetadataProperty(Property):
                        'Map',
                        'MappingResourceReference']} })
     value: str = Field(default=..., description="""Indicates the value of the attribute, characteristic, or quality.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Hash', 'Property', 'Base64Resource', 'Facet']} })
-    class_: Optional[str] = Field(default=None, alias="_class", description="""A textual label that provides a sub-type or characterization of the property's name.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Group',
+    class_: Optional[str] = Field(default=None, description="""A textual label that provides a sub-type or characterization of the property's name.""", json_schema_extra = { "linkml_meta": {'comments': ["OSCAL's key is `class`. A slot or alias named `class` makes the "
+                      'generated dataclasses invalid Python, and gen-doc names a page '
+                      'after the slot, so `_class` hid its page from the site. '
+                      '`class_` is the spelling the generated Pydantic model gives a '
+                      'slot named `class`.'],
+         'domain_of': ['Group',
                        'Control',
                        'Property',
                        'Part',
@@ -3929,7 +4011,7 @@ class RevisionProperty(Property):
     """
     Revision-scoped OSCAL property.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_catalog',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_catalog',
          'in_subset': ['oscal_metadata'],
          'slot_usage': {'name': {'name': 'name', 'range': 'RevisionPropNameEnum'}}})
 
@@ -4000,7 +4082,12 @@ class RevisionProperty(Property):
                        'Map',
                        'MappingResourceReference']} })
     value: str = Field(default=..., description="""Indicates the value of the attribute, characteristic, or quality.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Hash', 'Property', 'Base64Resource', 'Facet']} })
-    class_: Optional[str] = Field(default=None, alias="_class", description="""A textual label that provides a sub-type or characterization of the property's name.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Group',
+    class_: Optional[str] = Field(default=None, description="""A textual label that provides a sub-type or characterization of the property's name.""", json_schema_extra = { "linkml_meta": {'comments': ["OSCAL's key is `class`. A slot or alias named `class` makes the "
+                      'generated dataclasses invalid Python, and gen-doc names a page '
+                      'after the slot, so `_class` hid its page from the site. '
+                      '`class_` is the spelling the generated Pydantic model gives a '
+                      'slot named `class`.'],
+         'domain_of': ['Group',
                        'Control',
                        'Property',
                        'Part',
@@ -4062,11 +4149,11 @@ class LocationProperty(Property):
     """
     Location-scoped OSCAL property.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_catalog',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_catalog',
          'in_subset': ['oscal_metadata'],
-         'slot_usage': {'_class': {'any_of': [{'range': 'LocationDataCenterClassEnum'},
+         'slot_usage': {'class_': {'any_of': [{'range': 'LocationDataCenterClassEnum'},
                                               {'range': 'string'}],
-                                   'name': '_class'},
+                                   'name': 'class_'},
                         'name': {'name': 'name', 'range': 'LocationPropNameEnum'},
                         'value': {'any_of': [{'range': 'LocationPropTypeEnum'},
                                              {'range': 'string'}],
@@ -4140,7 +4227,12 @@ class LocationProperty(Property):
                        'MappingResourceReference']} })
     value: Union[LocationPropTypeEnum, str] = Field(default=..., description="""Indicates the value of the attribute, characteristic, or quality.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'LocationPropTypeEnum'}, {'range': 'string'}],
          'domain_of': ['Hash', 'Property', 'Base64Resource', 'Facet']} })
-    class_: Optional[Union[LocationDataCenterClassEnum, str]] = Field(default=None, alias="_class", description="""A textual label that provides a sub-type or characterization of the property's name.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'LocationDataCenterClassEnum'}, {'range': 'string'}],
+    class_: Optional[Union[LocationDataCenterClassEnum, str]] = Field(default=None, description="""A textual label that provides a sub-type or characterization of the property's name.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'LocationDataCenterClassEnum'}, {'range': 'string'}],
+         'comments': ["OSCAL's key is `class`. A slot or alias named `class` makes the "
+                      'generated dataclasses invalid Python, and gen-doc names a page '
+                      'after the slot, so `_class` hid its page from the site. '
+                      '`class_` is the spelling the generated Pydantic model gives a '
+                      'slot named `class`.'],
          'domain_of': ['Group',
                        'Control',
                        'Property',
@@ -4203,7 +4295,7 @@ class PartyProperty(Property):
     """
     Party-scoped OSCAL property.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_catalog',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_catalog',
          'in_subset': ['oscal_metadata'],
          'slot_usage': {'name': {'name': 'name', 'range': 'PartyPropNameEnum'}}})
 
@@ -4274,7 +4366,12 @@ class PartyProperty(Property):
                        'Map',
                        'MappingResourceReference']} })
     value: str = Field(default=..., description="""Indicates the value of the attribute, characteristic, or quality.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Hash', 'Property', 'Base64Resource', 'Facet']} })
-    class_: Optional[str] = Field(default=None, alias="_class", description="""A textual label that provides a sub-type or characterization of the property's name.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Group',
+    class_: Optional[str] = Field(default=None, description="""A textual label that provides a sub-type or characterization of the property's name.""", json_schema_extra = { "linkml_meta": {'comments': ["OSCAL's key is `class`. A slot or alias named `class` makes the "
+                      'generated dataclasses invalid Python, and gen-doc names a page '
+                      'after the slot, so `_class` hid its page from the site. '
+                      '`class_` is the spelling the generated Pydantic model gives a '
+                      'slot named `class`.'],
+         'domain_of': ['Group',
                        'Control',
                        'Property',
                        'Part',
@@ -4336,7 +4433,7 @@ class ResourceProperty(Property):
     """
     Back-matter resource-scoped OSCAL property.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_catalog',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_catalog',
          'in_subset': ['oscal_back_matter'],
          'slot_usage': {'name': {'name': 'name', 'range': 'ResourcePropNameEnum'},
                         'value': {'any_of': [{'range': 'ResourcePropTypeEnum'},
@@ -4411,7 +4508,12 @@ class ResourceProperty(Property):
                        'MappingResourceReference']} })
     value: Union[ResourcePropTypeEnum, str] = Field(default=..., description="""Indicates the value of the attribute, characteristic, or quality.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'ResourcePropTypeEnum'}, {'range': 'string'}],
          'domain_of': ['Hash', 'Property', 'Base64Resource', 'Facet']} })
-    class_: Optional[str] = Field(default=None, alias="_class", description="""A textual label that provides a sub-type or characterization of the property's name.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Group',
+    class_: Optional[str] = Field(default=None, description="""A textual label that provides a sub-type or characterization of the property's name.""", json_schema_extra = { "linkml_meta": {'comments': ["OSCAL's key is `class`. A slot or alias named `class` makes the "
+                      'generated dataclasses invalid Python, and gen-doc names a page '
+                      'after the slot, so `_class` hid its page from the site. '
+                      '`class_` is the spelling the generated Pydantic model gives a '
+                      'slot named `class`.'],
+         'domain_of': ['Group',
                        'Control',
                        'Property',
                        'Part',
@@ -4473,7 +4575,7 @@ class PartProperty(Property):
     """
     Control-common part-scoped OSCAL property.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_catalog',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_catalog',
          'in_subset': ['oscal_control_common'],
          'slot_usage': {'name': {'name': 'name', 'range': 'PartPropNameEnum'}}})
 
@@ -4544,7 +4646,12 @@ class PartProperty(Property):
                        'Map',
                        'MappingResourceReference']} })
     value: str = Field(default=..., description="""Indicates the value of the attribute, characteristic, or quality.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Hash', 'Property', 'Base64Resource', 'Facet']} })
-    class_: Optional[str] = Field(default=None, alias="_class", description="""A textual label that provides a sub-type or characterization of the property's name.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Group',
+    class_: Optional[str] = Field(default=None, description="""A textual label that provides a sub-type or characterization of the property's name.""", json_schema_extra = { "linkml_meta": {'comments': ["OSCAL's key is `class`. A slot or alias named `class` makes the "
+                      'generated dataclasses invalid Python, and gen-doc names a page '
+                      'after the slot, so `_class` hid its page from the site. '
+                      '`class_` is the spelling the generated Pydantic model gives a '
+                      'slot named `class`.'],
+         'domain_of': ['Group',
                        'Control',
                        'Property',
                        'Part',
@@ -4606,7 +4713,7 @@ class ParameterProperty(Property):
     """
     Control-common parameter-scoped OSCAL property.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_catalog',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_catalog',
          'in_subset': ['oscal_control_common'],
          'slot_usage': {'name': {'any_of': [{'range': 'ParameterPropNameEnum'},
                                             {'range': 'RmfParameterPropNameEnum'}],
@@ -4681,7 +4788,12 @@ class ParameterProperty(Property):
                        'Map',
                        'MappingResourceReference']} })
     value: str = Field(default=..., description="""Indicates the value of the attribute, characteristic, or quality.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Hash', 'Property', 'Base64Resource', 'Facet']} })
-    class_: Optional[str] = Field(default=None, alias="_class", description="""A textual label that provides a sub-type or characterization of the property's name.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Group',
+    class_: Optional[str] = Field(default=None, description="""A textual label that provides a sub-type or characterization of the property's name.""", json_schema_extra = { "linkml_meta": {'comments': ["OSCAL's key is `class`. A slot or alias named `class` makes the "
+                      'generated dataclasses invalid Python, and gen-doc names a page '
+                      'after the slot, so `_class` hid its page from the site. '
+                      '`class_` is the spelling the generated Pydantic model gives a '
+                      'slot named `class`.'],
+         'domain_of': ['Group',
                        'Control',
                        'Property',
                        'Part',
@@ -4743,7 +4855,7 @@ class MetadataPartyExternalId(PartyExternalId):
     """
     Metadata-scoped external identifier.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_catalog',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_catalog',
          'in_subset': ['oscal_metadata']})
 
     scheme: Union[PartyExternalIdSchemeEnum, str] = Field(default=..., description="""Indicates the type of external identifier.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'PartyExternalIdSchemeEnum'}, {'range': 'URIType'}],
@@ -4764,7 +4876,7 @@ class Link(ConfiguredBaseModel):
     """
     A reference to a local or remote resource, that has a specific relation to the containing object.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_catalog',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_catalog',
          'in_subset': ['oscal_metadata'],
          'slot_usage': {'href': {'description': 'A resolvable URL reference to a '
                                                 'resource.',
@@ -4795,7 +4907,7 @@ class BackMatter(ConfiguredBaseModel):
     """
     A collection of resources that may be referenced from within the OSCAL document instance.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_catalog',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_catalog',
          'in_subset': ['oscal_back_matter']})
 
     resources: Optional[list[Resource]] = Field(default=None, description="""A resource associated with content in the containing document instance. A resource may be directly included in the document using base64 encoding or may point to one or more equivalent internet resources.""", json_schema_extra = { "linkml_meta": {'domain_of': ['BackMatter']} })
@@ -4805,7 +4917,7 @@ class Resource(ConfiguredBaseModel):
     """
     A resource associated with content in the containing document instance. A resource may be directly included in the document using base64 encoding or may point to one or more equivalent internet resources.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_catalog',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_catalog',
          'in_subset': ['oscal_back_matter'],
          'slot_usage': {'description': {'description': 'An optional short summary of '
                                                        'the resource used to indicate '
@@ -4959,6 +5071,7 @@ class Resource(ConfiguredBaseModel):
     props: Optional[list[ResourceProperty]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -5032,7 +5145,7 @@ class Citation(HasPropsAndLinks):
     """
     An optional citation consisting of end note text using structured markup.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_catalog',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_catalog',
          'in_subset': ['oscal_back_matter'],
          'mixins': ['HasPropsAndLinks'],
          'slot_usage': {'links': {'name': 'links', 'range': 'Link'},
@@ -5044,6 +5157,7 @@ class Citation(HasPropsAndLinks):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -5063,6 +5177,7 @@ class Citation(HasPropsAndLinks):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -5086,7 +5201,7 @@ class ResourceLink(ConfiguredBaseModel):
     """
     A URL-based pointer to an external resource with an optional hash for verification and change detection.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_catalog',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_catalog',
          'in_subset': ['oscal_back_matter'],
          'slot_usage': {'href': {'description': 'A resolvable URL pointing to the '
                                                 'referenced resource.',
@@ -5111,7 +5226,7 @@ class Base64Resource(ConfiguredBaseModel):
     """
     A resource encoded using the Base64 alphabet defined by RFC 2045.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_catalog',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_catalog',
          'in_subset': ['oscal_back_matter'],
          'slot_usage': {'value': {'name': 'value',
                                   'range': 'Base64Type',
@@ -5126,14 +5241,14 @@ class Part(HasPropsAndLinks):
     """
     An annotated, markup-based textual element of a control's or catalog group's definition, or a child of another part.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_catalog',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_catalog',
          'in_subset': ['oscal_control_common'],
          'mixins': ['HasPropsAndLinks'],
-         'slot_usage': {'_class': {'description': 'An optional textual providing a '
+         'slot_usage': {'class_': {'description': 'An optional textual providing a '
                                                   'sub-type or characterization of the '
                                                   "part's name, or a category to which "
                                                   'the part belongs.',
-                                   'name': '_class'},
+                                   'name': 'class_'},
                         'id': {'description': 'A unique identifier for the part.',
                                'name': 'id'},
                         'name': {'description': 'A textual label that uniquely '
@@ -5180,7 +5295,12 @@ class Part(HasPropsAndLinks):
                        'ControlPart',
                        'Map',
                        'MappingResourceReference']} })
-    class_: Optional[str] = Field(default=None, alias="_class", description="""An optional textual providing a sub-type or characterization of the part's name, or a category to which the part belongs.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Group',
+    class_: Optional[str] = Field(default=None, description="""An optional textual providing a sub-type or characterization of the part's name, or a category to which the part belongs.""", json_schema_extra = { "linkml_meta": {'comments': ["OSCAL's key is `class`. A slot or alias named `class` makes the "
+                      'generated dataclasses invalid Python, and gen-doc names a page '
+                      'after the slot, so `_class` hid its page from the site. '
+                      '`class_` is the spelling the generated Pydantic model gives a '
+                      'slot named `class`.'],
+         'domain_of': ['Group',
                        'Control',
                        'Property',
                        'Part',
@@ -5237,6 +5357,7 @@ class Part(HasPropsAndLinks):
     props: Optional[list[PartProperty]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -5256,6 +5377,7 @@ class Part(HasPropsAndLinks):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -5279,7 +5401,7 @@ class Parameter(OscalCommon):
     """
     Parameters provide a mechanism for the dynamic assignment of value(s) in a control.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_catalog',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_catalog',
          'in_subset': ['oscal_control_common'],
          'mixins': ['OscalCommon'],
          'rules': [{'description': 'A parameter may have prescribed values or a '
@@ -5295,11 +5417,11 @@ class Parameter(OscalCommon):
                     'preconditions': {'slot_conditions': {'select': {'name': 'select',
                                                                      'value_presence': 'PRESENT'}}},
                     'title': 'select-xor-values'}],
-         'slot_usage': {'_class': {'description': 'A textual label that provides a '
+         'slot_usage': {'class_': {'description': 'A textual label that provides a '
                                                   'characterization of the type, '
                                                   'purpose, use or scope of the '
                                                   'parameter.',
-                                   'name': '_class'},
+                                   'name': 'class_'},
                         'id': {'description': 'A unique identifier for the parameter.',
                                'name': 'id',
                                'required': True},
@@ -5315,7 +5437,12 @@ class Parameter(OscalCommon):
                        'ControlPart',
                        'SystemId',
                        'ThreatId']} })
-    class_: Optional[str] = Field(default=None, alias="_class", description="""A textual label that provides a characterization of the type, purpose, use or scope of the parameter.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Group',
+    class_: Optional[str] = Field(default=None, description="""A textual label that provides a characterization of the type, purpose, use or scope of the parameter.""", json_schema_extra = { "linkml_meta": {'comments': ["OSCAL's key is `class`. A slot or alias named `class` makes the "
+                      'generated dataclasses invalid Python, and gen-doc names a page '
+                      'after the slot, so `_class` hid its page from the site. '
+                      '`class_` is the spelling the generated Pydantic model gives a '
+                      'slot named `class`.'],
+         'domain_of': ['Group',
                        'Control',
                        'Property',
                        'Part',
@@ -5380,6 +5507,7 @@ class Parameter(OscalCommon):
     props: Optional[list[ParameterProperty]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -5399,6 +5527,7 @@ class Parameter(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -5422,7 +5551,7 @@ class ParameterConstraint(ConfiguredBaseModel):
     """
     A formal or informal expression of a constraint or test.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_catalog',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_catalog',
          'in_subset': ['oscal_control_common'],
          'slot_usage': {'description': {'description': 'A textual summary of the '
                                                        'constraint to be applied.',
@@ -5484,7 +5613,7 @@ class ConstraintTest(ConfiguredBaseModel):
     """
     A test expression which is expected to be evaluated by a tool.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_catalog',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_catalog',
          'in_subset': ['oscal_control_common'],
          'slot_usage': {'expression': {'name': 'expression', 'required': True}}})
 
@@ -5541,7 +5670,7 @@ class ParameterGuideline(ConfiguredBaseModel):
     """
     A prose statement that provides a recommendation for the use of a parameter.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_catalog',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_catalog',
          'in_subset': ['oscal_control_common'],
          'slot_usage': {'prose': {'description': 'Prose permits multiple paragraphs, '
                                                  'lists, tables etc.',
@@ -5555,7 +5684,7 @@ class ParameterSelection(ConfiguredBaseModel):
     """
     Presenting a choice among alternatives.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_catalog',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_catalog',
          'in_subset': ['oscal_control_common']})
 
     how_many: Optional[ParameterCardinalityEnum] = Field(default=None, description="""Describes the number of selections that must occur. Without this setting, only one value should be assumed to be permitted.""", json_schema_extra = { "linkml_meta": {'aliases': ['how_many'], 'domain_of': ['ParameterSelection']} })
@@ -5566,7 +5695,7 @@ class IncludeAll(ConfiguredBaseModel):
     """
     Include all controls from the imported catalog or profile resources.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_catalog',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_catalog',
          'in_subset': ['oscal_control_common']})
 
     pass
@@ -5576,7 +5705,7 @@ class ControlMatching(ConfiguredBaseModel):
     """
     Selecting a set of controls by matching their IDs with a wildcard pattern.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_catalog',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_catalog',
          'in_subset': ['oscal_control_common']})
 
     remarks: Optional[str] = Field(default=None, description="""Additional commentary about the containing object.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OscalCommon',
@@ -5632,7 +5761,7 @@ class SelectControlById(ConfiguredBaseModel):
     """
     Select a control or controls from an imported control set.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_catalog',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_catalog',
          'in_subset': ['oscal_control_common']})
 
     with_child_controls: Optional[WithChildControlsEnum] = Field(default=None, description="""When a control is included, whether its child (dependent) controls are also included.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SelectControlById']} })
@@ -5644,7 +5773,7 @@ class ProfileDocument(OscalDocument):
     """
     Root wrapper for an OSCAL Profile document.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_profile',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_profile',
          'in_subset': ['profile'],
          'slot_usage': {'profile': {'name': 'profile', 'required': True}}})
 
@@ -5655,7 +5784,7 @@ class Profile(ConfiguredBaseModel):
     """
     An OSCAL Profile that designates a set of controls from one or more catalogs or profiles, optionally restructures and modifies them, to describe a basis for a security standard or body of practice.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_profile',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_profile',
          'in_subset': ['profile'],
          'slot_usage': {'imports': {'name': 'imports', 'required': True},
                         'metadata': {'name': 'metadata', 'required': True},
@@ -5738,7 +5867,7 @@ class ProfileImport(ConfiguredBaseModel):
     """
     Designates a referenced source catalog or profile that provides a source of control information for use in creating a new overlay or baseline.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_profile',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_profile',
          'in_subset': ['profile'],
          'slot_usage': {'exclude-controls': {'name': 'exclude-controls',
                                              'range': 'SelectControlById'},
@@ -5769,7 +5898,7 @@ class ProfileMerge(ConfiguredBaseModel):
     """
     Provides structuring directives that instruct how controls are organized after profile resolution.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_profile',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_profile',
          'in_subset': ['profile']})
 
     combine: Optional[CombinationRule] = Field(default=None, description="""Defines how to resolve duplicate instances of the same control.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProfileMerge']} })
@@ -5782,7 +5911,7 @@ class CombinationRule(ConfiguredBaseModel):
     """
     Defines how to resolve duplicate instances of the same control (e.g., controls with the same ID) encountered in a profile merge.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_profile',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_profile',
          'in_subset': ['profile'],
          'slot_usage': {'method': {'name': 'method', 'range': 'CombinationMethodEnum'}}})
 
@@ -5793,7 +5922,7 @@ class MergeFlat(ConfiguredBaseModel):
     """
     Directs that controls appear without any grouping structure after profile resolution.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_profile',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_profile',
          'in_subset': ['profile']})
 
     pass
@@ -5803,7 +5932,7 @@ class MergeCustom(ConfiguredBaseModel):
     """
     Provides an alternate grouping structure that selected controls will be placed in after profile resolution.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_profile',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_profile',
          'in_subset': ['profile'],
          'slot_usage': {'groups': {'name': 'groups', 'range': 'ProfileGroup'}}})
 
@@ -5815,7 +5944,7 @@ class ProfileGroup(OscalCommon):
     """
     A group of (selected) controls or of groups of controls within a profile custom merge structure.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_profile',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_profile',
          'in_subset': ['profile'],
          'mixins': ['OscalCommon'],
          'slot_usage': {'groups': {'name': 'groups', 'range': 'ProfileGroup'},
@@ -5831,7 +5960,12 @@ class ProfileGroup(OscalCommon):
                        'ControlPart',
                        'SystemId',
                        'ThreatId']} })
-    class_: Optional[str] = Field(default=None, alias="_class", description="""A textual label that provides a sub-type or characterization.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Group',
+    class_: Optional[str] = Field(default=None, description="""A textual label that provides a sub-type or characterization.""", json_schema_extra = { "linkml_meta": {'comments': ["OSCAL's key is `class`. A slot or alias named `class` makes the "
+                      'generated dataclasses invalid Python, and gen-doc names a page '
+                      'after the slot, so `_class` hid its page from the site. '
+                      '`class_` is the spelling the generated Pydantic model gives a '
+                      'slot named `class`.'],
+         'domain_of': ['Group',
                        'Control',
                        'Property',
                        'Part',
@@ -5936,6 +6070,7 @@ class ProfileGroup(OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -5955,6 +6090,7 @@ class ProfileGroup(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -5978,7 +6114,7 @@ class ProfileModify(ConfiguredBaseModel):
     """
     Set parameters or amend controls in resolution.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_profile',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_profile',
          'in_subset': ['profile'],
          'slot_usage': {'set-parameters': {'description': 'A parameter setting to be '
                                                           'propagated to points of '
@@ -5999,13 +6135,18 @@ class ParameterSetting(HasPropsAndLinks):
     """
     A parameter setting to be propagated to points of insertion in a resolved profile.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_profile',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_profile',
          'in_subset': ['profile'],
          'mixins': ['HasPropsAndLinks'],
          'slot_usage': {'param-id': {'name': 'param-id', 'required': True}}})
 
     param_id: str = Field(default=..., description="""The identifier for the parameter being set or referenced.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ParameterSetting', 'SetParameter']} })
-    class_: Optional[str] = Field(default=None, alias="_class", description="""A textual label that provides a sub-type or characterization.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Group',
+    class_: Optional[str] = Field(default=None, description="""A textual label that provides a sub-type or characterization.""", json_schema_extra = { "linkml_meta": {'comments': ["OSCAL's key is `class`. A slot or alias named `class` makes the "
+                      'generated dataclasses invalid Python, and gen-doc names a page '
+                      'after the slot, so `_class` hid its page from the site. '
+                      '`class_` is the spelling the generated Pydantic model gives a '
+                      'slot named `class`.'],
+         'domain_of': ['Group',
                        'Control',
                        'Property',
                        'Part',
@@ -6024,6 +6165,7 @@ class ParameterSetting(HasPropsAndLinks):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -6043,6 +6185,7 @@ class ParameterSetting(HasPropsAndLinks):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -6066,7 +6209,7 @@ class Alteration(ConfiguredBaseModel):
     """
     Specifies changes to be made to an included control when a profile is resolved.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_profile',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_profile',
          'in_subset': ['profile'],
          'slot_usage': {'control-id': {'name': 'control-id', 'required': True}}})
 
@@ -6083,7 +6226,7 @@ class Removal(ConfiguredBaseModel):
     """
     Specifies objects to be removed from a control based on aspects of the object that must all match.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_profile',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_profile',
          'in_subset': ['profile']})
 
     by_name: Optional[str] = Field(default=None, description="""Identify items to remove by their assigned name.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Removal']} })
@@ -6143,7 +6286,7 @@ class Addition(ConfiguredBaseModel):
     """
     Specifies content to be added into controls in resolution.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_profile',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_profile',
          'in_subset': ['profile'],
          'slot_usage': {'props': {'name': 'props',
                                   'range': 'ProfileAlterationProperty'}}})
@@ -6188,6 +6331,7 @@ class Addition(ConfiguredBaseModel):
     props: Optional[list[ProfileAlterationProperty]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -6207,6 +6351,7 @@ class Addition(ConfiguredBaseModel):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -6240,7 +6385,7 @@ class ProfileAlterationProperty(Property):
     """
     OSCAL property entries allowed in profile modify additions.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_profile',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_profile',
          'in_subset': ['profile'],
          'slot_usage': {'name': {'name': 'name', 'range': 'AlterationPropNameEnum'}}})
 
@@ -6311,7 +6456,12 @@ class ProfileAlterationProperty(Property):
                        'Map',
                        'MappingResourceReference']} })
     value: str = Field(default=..., description="""Indicates the value of the attribute, characteristic, or quality.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Hash', 'Property', 'Base64Resource', 'Facet']} })
-    class_: Optional[str] = Field(default=None, alias="_class", description="""A textual label that provides a sub-type or characterization of the property's name.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Group',
+    class_: Optional[str] = Field(default=None, description="""A textual label that provides a sub-type or characterization of the property's name.""", json_schema_extra = { "linkml_meta": {'comments': ["OSCAL's key is `class`. A slot or alias named `class` makes the "
+                      'generated dataclasses invalid Python, and gen-doc names a page '
+                      'after the slot, so `_class` hid its page from the site. '
+                      '`class_` is the spelling the generated Pydantic model gives a '
+                      'slot named `class`.'],
+         'domain_of': ['Group',
                        'Control',
                        'Property',
                        'Part',
@@ -6373,7 +6523,7 @@ class InsertControls(ConfiguredBaseModel):
     """
     Specifies which controls to use in the containing context (as part of a group or custom merge structure).
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_profile',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_profile',
          'in_subset': ['profile'],
          'slot_usage': {'exclude-controls': {'name': 'exclude-controls',
                                              'range': 'SelectControlById'},
@@ -6394,7 +6544,7 @@ class AssessmentPlanDocument(OscalDocument):
     """
     Root wrapper for an OSCAL Assessment Plan document.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_plan',
          'in_subset': ['assessment_plan'],
          'slot_usage': {'assessment-plan': {'name': 'assessment-plan',
                                             'required': True}}})
@@ -6406,7 +6556,7 @@ class AssessmentPlan(ConfiguredBaseModel):
     """
     An assessment plan, such as those provided by a FedRAMP assessor.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_plan',
          'in_subset': ['assessment_plan'],
          'slot_usage': {'import-ssp': {'name': 'import-ssp', 'required': True},
                         'metadata': {'name': 'metadata', 'required': True},
@@ -6503,7 +6653,7 @@ class ImportSSP(ConfiguredBaseModel):
     """
     Used by the assessment plan and POA&M to import information about the system.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_plan',
          'in_subset': ['assessment_common'],
          'slot_usage': {'href': {'name': 'href', 'required': True}}})
 
@@ -6569,7 +6719,7 @@ class LocalDefinitions(ConfiguredBaseModel):
     """
     Used to define data objects that are used in the assessment plan, that do not appear in the referenced SSP.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_plan',
          'in_subset': ['assessment_plan']})
 
     components: Optional[list[SystemComponent]] = Field(default=None, description="""A collection of system components.""", json_schema_extra = { "linkml_meta": {'domain_of': ['LocalDefinitions',
@@ -6639,7 +6789,7 @@ class TermsAndConditions(ConfiguredBaseModel):
     """
     Used to define various terms and conditions under which an assessment can be performed.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_plan',
          'in_subset': ['assessment_plan'],
          'slot_usage': {'parts': {'name': 'parts', 'range': 'TermsAndConditionsPart'}}})
 
@@ -6659,7 +6809,7 @@ class ReviewedControls(OscalCommon):
     """
     Identifies the controls being assessed and their control objectives.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_plan',
          'in_subset': ['assessment_common'],
          'mixins': ['OscalCommon'],
          'slot_usage': {'control-selections': {'name': 'control-selections',
@@ -6765,6 +6915,7 @@ class ReviewedControls(OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -6784,6 +6935,7 @@ class ReviewedControls(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -6807,7 +6959,7 @@ class ControlSelection(OscalCommon):
     """
     Identifies the controls being assessed.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_plan',
          'in_subset': ['assessment_common'],
          'mixins': ['OscalCommon'],
          'slot_usage': {'exclude-controls': {'name': 'exclude-controls',
@@ -6920,6 +7072,7 @@ class ControlSelection(OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -6939,6 +7092,7 @@ class ControlSelection(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -6962,7 +7116,7 @@ class ControlObjectiveSelection(OscalCommon):
     """
     Identifies the control objectives of the assessment.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_plan',
          'in_subset': ['assessment_common'],
          'mixins': ['OscalCommon']})
 
@@ -7071,6 +7225,7 @@ class ControlObjectiveSelection(OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -7090,6 +7245,7 @@ class ControlObjectiveSelection(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -7113,7 +7269,7 @@ class AssessmentSelectControlById(ConfiguredBaseModel):
     """
     Select a specific control for inclusion/exclusion in the assessment by literal control ID and optional statement IDs.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_plan',
          'in_subset': ['assessment_common'],
          'slot_usage': {'control-id': {'name': 'control-id', 'required': True}}})
 
@@ -7129,7 +7285,7 @@ class SelectObjectiveById(ConfiguredBaseModel):
     """
     Used to select a control objective for inclusion/exclusion.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_plan',
          'in_subset': ['assessment_common'],
          'slot_usage': {'objective-id': {'name': 'objective-id', 'required': True}}})
 
@@ -7186,7 +7342,7 @@ class AssessmentSubject(OscalCommon):
     """
     Identifies system elements being assessed, such as components, inventory items, and locations.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_plan',
          'in_subset': ['assessment_common'],
          'mixins': ['OscalCommon'],
          'slot_usage': {'type': {'any_of': [{'range': 'AssessmentSubjectTypeEnum'},
@@ -7314,6 +7470,7 @@ class AssessmentSubject(OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -7333,6 +7490,7 @@ class AssessmentSubject(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -7356,7 +7514,7 @@ class SelectSubjectById(OscalCommon):
     """
     Identifies a set of assessment subjects to include/exclude by UUID.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_plan',
          'in_subset': ['assessment_common'],
          'mixins': ['OscalCommon'],
          'slot_usage': {'subject-uuid': {'name': 'subject-uuid', 'required': True},
@@ -7430,6 +7588,7 @@ class SelectSubjectById(OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -7449,6 +7608,7 @@ class SelectSubjectById(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -7472,7 +7632,7 @@ class SubjectReference(OscalCommon):
     """
     A human-oriented identifier reference to a resource. Use type to indicate whether the identified resource is a component, inventory item, location, user, or something else.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_plan',
          'in_subset': ['assessment_common'],
          'mixins': ['OscalCommon'],
          'slot_usage': {'subject-uuid': {'name': 'subject-uuid', 'required': True},
@@ -7580,6 +7740,7 @@ class SubjectReference(OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -7599,6 +7760,7 @@ class SubjectReference(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -7622,7 +7784,7 @@ class AssessmentSubjectPlaceholder(OscalCommon):
     """
     Used when the assessment subjects will be determined as part of one or more other assessment activities.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_plan',
          'in_subset': ['assessment_common'],
          'mixins': ['OscalCommon'],
          'slot_usage': {'sources': {'name': 'sources',
@@ -7781,6 +7943,7 @@ class AssessmentSubjectPlaceholder(OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -7800,6 +7963,7 @@ class AssessmentSubjectPlaceholder(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -7823,7 +7987,7 @@ class AssessmentSubjectSource(ConfiguredBaseModel):
     """
     Assessment subjects will be identified while conducting the referenced activity.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_plan',
          'in_subset': ['assessment_common'],
          'slot_usage': {'task-uuid': {'name': 'task-uuid', 'required': True}}})
 
@@ -7880,7 +8044,7 @@ class AssessmentAssets(ConfiguredBaseModel):
     """
     Identifies the assets used to perform this assessment.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_plan',
          'in_subset': ['assessment_common'],
          'slot_usage': {'assessment-platforms': {'name': 'assessment-platforms',
                                                  'required': True}}})
@@ -7898,7 +8062,7 @@ class AssessmentPlatform(OscalCommon):
     """
     Used to represent the toolset used to perform aspects of the assessment.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_plan',
          'in_subset': ['assessment_common'],
          'mixins': ['OscalCommon'],
          'slot_usage': {'uuid': {'name': 'uuid', 'required': True}}})
@@ -8039,6 +8203,7 @@ class AssessmentPlatform(OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -8058,6 +8223,7 @@ class AssessmentPlatform(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -8081,7 +8247,7 @@ class UsesComponent(HasResponsibleParties, OscalCommon):
     """
     The set of components that are used by the assessment platform.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_plan',
          'in_subset': ['assessment_common'],
          'mixins': ['OscalCommon', 'HasResponsibleParties'],
          'slot_usage': {'component-uuid': {'name': 'component-uuid', 'required': True}}})
@@ -8140,6 +8306,7 @@ class UsesComponent(HasResponsibleParties, OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -8159,6 +8326,7 @@ class UsesComponent(HasResponsibleParties, OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -8182,7 +8350,7 @@ class LocalObjective(OscalCommon):
     """
     A local definition of a control objective for this assessment. Uses catalog syntax for control objective and assessment actions.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_plan',
          'in_subset': ['assessment_common'],
          'mixins': ['OscalCommon'],
          'slot_usage': {'control-id': {'name': 'control-id', 'required': True},
@@ -8303,6 +8471,7 @@ class LocalObjective(OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -8322,6 +8491,7 @@ class LocalObjective(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -8345,7 +8515,7 @@ class AssessmentMethod(OscalCommon):
     """
     A local definition of a control objective.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_plan',
          'in_subset': ['assessment_common'],
          'mixins': ['OscalCommon'],
          'slot_usage': {'part': {'name': 'part', 'required': True},
@@ -8502,6 +8672,7 @@ class AssessmentMethod(OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -8521,6 +8692,7 @@ class AssessmentMethod(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -8544,7 +8716,7 @@ class Activity(HasResponsibleRoles, OscalCommon):
     """
     Identifies an assessment or related process that can be performed. In the assessment plan, this is an intended activity.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_plan',
          'in_subset': ['assessment_common'],
          'mixins': ['OscalCommon', 'HasResponsibleRoles'],
          'slot_usage': {'description': {'name': 'description', 'required': True},
@@ -8744,6 +8916,7 @@ class Activity(HasResponsibleRoles, OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -8763,6 +8936,7 @@ class Activity(HasResponsibleRoles, OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -8786,7 +8960,7 @@ class Step(HasResponsibleRoles, OscalCommon):
     """
     Identifies an individual step in a series of steps related to an activity, such as an assessment test or examination procedure.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_plan',
          'in_subset': ['assessment_common'],
          'mixins': ['OscalCommon', 'HasResponsibleRoles'],
          'slot_usage': {'description': {'name': 'description', 'required': True},
@@ -8985,6 +9159,7 @@ class Step(HasResponsibleRoles, OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -9004,6 +9179,7 @@ class Step(HasResponsibleRoles, OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -9027,7 +9203,7 @@ class Task(HasResponsibleRoles, OscalCommon):
     """
     Represents a scheduled event or milestone, which may be associated with a series of assessment actions.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_plan',
          'in_subset': ['assessment_common'],
          'mixins': ['OscalCommon', 'HasResponsibleRoles'],
          'slot_usage': {'subjects': {'name': 'subjects', 'range': 'AssessmentSubject'},
@@ -9256,6 +9432,7 @@ class Task(HasResponsibleRoles, OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -9275,6 +9452,7 @@ class Task(HasResponsibleRoles, OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -9298,7 +9476,7 @@ class EventTiming(ConfiguredBaseModel):
     """
     The timing under which the task is intended to occur.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_plan',
          'in_subset': ['assessment_common']})
 
     on_date: Optional[OnDateCondition] = Field(default=None, description="""The task is intended to occur on the specified date.""", json_schema_extra = { "linkml_meta": {'domain_of': ['EventTiming']} })
@@ -9310,7 +9488,7 @@ class OnDateCondition(ConfiguredBaseModel):
     """
     The task is intended to occur on the specified date.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_plan',
          'in_subset': ['assessment_common'],
          'slot_usage': {'date': {'name': 'date', 'required': True}}})
 
@@ -9367,7 +9545,7 @@ class WithinDateRange(ConfiguredBaseModel):
     """
     The task is intended to occur within the specified date range.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_plan',
          'in_subset': ['assessment_common'],
          'slot_usage': {'end': {'name': 'end', 'required': True},
                         'start': {'name': 'start', 'required': True}}})
@@ -9434,12 +9612,12 @@ class AtFrequency(ConfiguredBaseModel):
     """
     The task is intended to occur at the specified frequency.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_plan',
          'in_subset': ['assessment_common'],
          'slot_usage': {'period': {'name': 'period', 'required': True},
                         'unit': {'name': 'unit', 'required': True}}})
 
-    period: int = Field(default=..., description="""The task must occur every period (in the given units).""", json_schema_extra = { "linkml_meta": {'domain_of': ['AtFrequency']} })
+    period: int = Field(default=..., description="""The task must occur every period (in the given units).""", ge=1, json_schema_extra = { "linkml_meta": {'domain_of': ['AtFrequency']} })
     unit: TimingUnitEnum = Field(default=..., description="""The unit of time for the period.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AtFrequency']} })
     remarks: Optional[str] = Field(default=None, description="""Additional commentary about the containing object.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OscalCommon',
                        'Property',
@@ -9493,7 +9671,7 @@ class TaskDependency(ConfiguredBaseModel):
     """
     Used to indicate that a task is dependent on another task.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_plan',
          'in_subset': ['assessment_common'],
          'slot_usage': {'task-uuid': {'name': 'task-uuid', 'required': True}}})
 
@@ -9550,7 +9728,7 @@ class AssociatedActivity(HasResponsibleRoles, OscalCommon):
     """
     Identifies an individual activity to be performed as part of a task.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_plan',
          'in_subset': ['assessment_common'],
          'mixins': ['OscalCommon', 'HasResponsibleRoles'],
          'slot_usage': {'activity-uuid': {'name': 'activity-uuid', 'required': True},
@@ -9623,6 +9801,7 @@ class AssociatedActivity(HasResponsibleRoles, OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -9642,6 +9821,7 @@ class AssociatedActivity(HasResponsibleRoles, OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -9665,7 +9845,7 @@ class AssessmentPart(HasPropsAndLinks):
     """
     A partition of an assessment plan or results or a child of another part.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_plan',
          'in_subset': ['assessment_common'],
          'mixins': ['HasPropsAndLinks'],
          'slot_usage': {'name': {'any_of': [{'range': 'AssessmentPartNameEnum'},
@@ -9741,7 +9921,12 @@ class AssessmentPart(HasPropsAndLinks):
                        'ControlPart',
                        'Map',
                        'MappingResourceReference']} })
-    class_: Optional[str] = Field(default=None, alias="_class", description="""A textual label that provides a sub-type or characterization.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Group',
+    class_: Optional[str] = Field(default=None, description="""A textual label that provides a sub-type or characterization.""", json_schema_extra = { "linkml_meta": {'comments': ["OSCAL's key is `class`. A slot or alias named `class` makes the "
+                      'generated dataclasses invalid Python, and gen-doc names a page '
+                      'after the slot, so `_class` hid its page from the site. '
+                      '`class_` is the spelling the generated Pydantic model gives a '
+                      'slot named `class`.'],
+         'domain_of': ['Group',
                        'Control',
                        'Property',
                        'Part',
@@ -9798,6 +9983,7 @@ class AssessmentPart(HasPropsAndLinks):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -9817,6 +10003,7 @@ class AssessmentPart(HasPropsAndLinks):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -9840,7 +10027,7 @@ class TermsAndConditionsPart(AssessmentPart):
     """
     A terms-and-conditions scoped assessment part.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_plan',
          'in_subset': ['assessment_plan'],
          'slot_usage': {'name': {'name': 'name',
                                  'range': 'TermsAndConditionsPartNameEnum',
@@ -9914,7 +10101,12 @@ class TermsAndConditionsPart(AssessmentPart):
                        'ControlPart',
                        'Map',
                        'MappingResourceReference']} })
-    class_: Optional[str] = Field(default=None, alias="_class", description="""A textual label that provides a sub-type or characterization.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Group',
+    class_: Optional[str] = Field(default=None, description="""A textual label that provides a sub-type or characterization.""", json_schema_extra = { "linkml_meta": {'comments': ["OSCAL's key is `class`. A slot or alias named `class` makes the "
+                      'generated dataclasses invalid Python, and gen-doc names a page '
+                      'after the slot, so `_class` hid its page from the site. '
+                      '`class_` is the spelling the generated Pydantic model gives a '
+                      'slot named `class`.'],
+         'domain_of': ['Group',
                        'Control',
                        'Property',
                        'Part',
@@ -9971,6 +10163,7 @@ class TermsAndConditionsPart(AssessmentPart):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -9990,6 +10183,7 @@ class TermsAndConditionsPart(AssessmentPart):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -10013,7 +10207,7 @@ class ControlPart(HasPropsAndLinks):
     """
     An annotated, markup-based textual element of a control's or catalog group's definition, or a child of another part.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_plan',
          'in_subset': ['oscal_control_common'],
          'mixins': ['HasPropsAndLinks'],
          'slot_usage': {'name': {'name': 'name', 'required': True},
@@ -10043,7 +10237,12 @@ class ControlPart(HasPropsAndLinks):
                        'ControlPart',
                        'Map',
                        'MappingResourceReference']} })
-    class_: Optional[str] = Field(default=None, alias="_class", description="""A textual label that provides a sub-type or characterization.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Group',
+    class_: Optional[str] = Field(default=None, description="""A textual label that provides a sub-type or characterization.""", json_schema_extra = { "linkml_meta": {'comments': ["OSCAL's key is `class`. A slot or alias named `class` makes the "
+                      'generated dataclasses invalid Python, and gen-doc names a page '
+                      'after the slot, so `_class` hid its page from the site. '
+                      '`class_` is the spelling the generated Pydantic model gives a '
+                      'slot named `class`.'],
+         'domain_of': ['Group',
                        'Control',
                        'Property',
                        'Part',
@@ -10100,6 +10299,7 @@ class ControlPart(HasPropsAndLinks):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -10119,6 +10319,7 @@ class ControlPart(HasPropsAndLinks):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -10142,7 +10343,7 @@ class SetParameter(ConfiguredBaseModel):
     """
     Identifies the parameter that will be set by the enclosed value.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_plan',
          'in_subset': ['implementation_common'],
          'slot_usage': {'param-id': {'name': 'param-id', 'required': True},
                         'values': {'name': 'values', 'required': True}}})
@@ -10201,7 +10402,7 @@ class SystemComponent(HasResponsibleRoles, OscalCommon):
     """
     A defined component that can be part of an implemented system.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_plan',
          'in_subset': ['implementation_common'],
          'mixins': ['OscalCommon', 'HasResponsibleRoles'],
          'slot_usage': {'description': {'name': 'description', 'required': True},
@@ -10435,6 +10636,7 @@ class SystemComponent(HasResponsibleRoles, OscalCommon):
     props: Optional[list[ImplementationCommonProperty]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -10454,6 +10656,7 @@ class SystemComponent(HasResponsibleRoles, OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[ImplementationCommonLink]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -10477,7 +10680,7 @@ class ComponentStatus(ConfiguredBaseModel):
     """
     Describes the operational status of the system component.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_plan',
          'in_subset': ['implementation_common'],
          'slot_usage': {'state': {'description': 'The operational status.',
                                   'name': 'state',
@@ -10541,7 +10744,7 @@ class Protocol(ConfiguredBaseModel):
     """
     Information about the protocol used to provide a service.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_plan',
          'in_subset': ['implementation_common'],
          'slot_usage': {'name': {'name': 'name', 'range': 'string'}}})
 
@@ -10646,17 +10849,21 @@ class PortRange(ConfiguredBaseModel):
     """
     Where applicable, the transport layer protocol port range.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_plan',
          'in_subset': ['implementation_common'],
-         'slot_usage': {'end': {'name': 'end', 'range': 'NonNegativeIntegerType'},
-                        'start': {'name': 'start', 'range': 'NonNegativeIntegerType'}}})
+         'slot_usage': {'end': {'minimum_value': 0,
+                                'name': 'end',
+                                'range': 'NonNegativeIntegerType'},
+                        'start': {'minimum_value': 0,
+                                  'name': 'start',
+                                  'range': 'NonNegativeIntegerType'}}})
 
-    start: Optional[int] = Field(default=None, description="""The start date/time.""", json_schema_extra = { "linkml_meta": {'domain_of': ['WithinDateRange',
+    start: Optional[int] = Field(default=None, description="""The start date/time.""", ge=0, json_schema_extra = { "linkml_meta": {'domain_of': ['WithinDateRange',
                        'PortRange',
                        'RiskLogEntry',
                        'Result',
                        'AssessmentLogEntry']} })
-    end: Optional[int] = Field(default=None, description="""The end date/time.""", json_schema_extra = { "linkml_meta": {'domain_of': ['WithinDateRange',
+    end: Optional[int] = Field(default=None, description="""The end date/time.""", ge=0, json_schema_extra = { "linkml_meta": {'domain_of': ['WithinDateRange',
                        'PortRange',
                        'RiskLogEntry',
                        'Result',
@@ -10714,7 +10921,7 @@ class ImplementationStatus(ConfiguredBaseModel):
     """
     Indicates the degree to which a given control is implemented.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_plan',
          'in_subset': ['implementation_common'],
          'slot_usage': {'state': {'any_of': [{'range': 'ImplementationStatusStateEnum'},
                                              {'range': 'string'}],
@@ -10785,7 +10992,7 @@ class SystemUser(OscalCommon):
     """
     A type of user that interacts with the system based on an associated role.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_plan',
          'in_subset': ['implementation_common'],
          'mixins': ['OscalCommon'],
          'slot_usage': {'links': {'name': 'links', 'range': 'ImplementationCommonLink'},
@@ -10980,6 +11187,7 @@ class SystemUser(OscalCommon):
     props: Optional[list[ImplementationCommonProperty]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -10999,6 +11207,7 @@ class SystemUser(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[ImplementationCommonLink]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -11022,7 +11231,7 @@ class AuthorizedPrivilege(ConfiguredBaseModel):
     """
     Identifies a specific system privilege held by the user, along with an associated description and/or rationale for the privilege.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_plan',
          'in_subset': ['implementation_common'],
          'slot_usage': {'functions-performed': {'name': 'functions-performed',
                                                 'required': True},
@@ -11118,7 +11327,7 @@ class InventoryItem(HasResponsibleParties, OscalCommon):
     """
     A single managed inventory item within the system.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_plan',
          'in_subset': ['implementation_common'],
          'mixins': ['OscalCommon', 'HasResponsibleParties'],
          'slot_usage': {'description': {'name': 'description', 'required': True},
@@ -11281,6 +11490,7 @@ class InventoryItem(HasResponsibleParties, OscalCommon):
     props: Optional[list[ImplementationCommonProperty]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -11300,6 +11510,7 @@ class InventoryItem(HasResponsibleParties, OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[ImplementationCommonLink]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -11323,7 +11534,7 @@ class ImplementedComponent(HasResponsibleParties, OscalCommon):
     """
     The set of components that are implemented in a given system inventory item.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_plan',
          'in_subset': ['implementation_common'],
          'mixins': ['OscalCommon', 'HasResponsibleParties'],
          'slot_usage': {'component-uuid': {'name': 'component-uuid', 'required': True},
@@ -11387,6 +11598,7 @@ class ImplementedComponent(HasResponsibleParties, OscalCommon):
     props: Optional[list[ImplementationCommonProperty]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -11406,6 +11618,7 @@ class ImplementedComponent(HasResponsibleParties, OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[ImplementationCommonLink]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -11429,7 +11642,7 @@ class SystemId(ConfiguredBaseModel):
     """
     A human-oriented, globally unique identifier for a system.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_plan',
          'in_subset': ['implementation_common'],
          'slot_usage': {'id': {'name': 'id', 'range': 'string', 'required': True},
                         'identifier-type': {'any_of': [{'range': 'SystemIdentifierTypeEnum'},
@@ -11454,7 +11667,7 @@ class ImplementationCommonProperty(Property):
     """
     Implementation-common scoped OSCAL property.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_plan',
          'in_subset': ['implementation_common'],
          'slot_usage': {'name': {'name': 'name', 'range': 'ImplementationPropNameEnum'},
                         'value': {'any_of': [{'range': 'ImplementationYesNoEnum'},
@@ -11542,7 +11755,12 @@ class ImplementationCommonProperty(Property):
                     {'range': 'UserPrivilegeLevelEnum'},
                     {'range': 'string'}],
          'domain_of': ['Hash', 'Property', 'Base64Resource', 'Facet']} })
-    class_: Optional[str] = Field(default=None, alias="_class", description="""A textual label that provides a sub-type or characterization of the property's name.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Group',
+    class_: Optional[str] = Field(default=None, description="""A textual label that provides a sub-type or characterization of the property's name.""", json_schema_extra = { "linkml_meta": {'comments': ["OSCAL's key is `class`. A slot or alias named `class` makes the "
+                      'generated dataclasses invalid Python, and gen-doc names a page '
+                      'after the slot, so `_class` hid its page from the site. '
+                      '`class_` is the spelling the generated Pydantic model gives a '
+                      'slot named `class`.'],
+         'domain_of': ['Group',
                        'Control',
                        'Property',
                        'Part',
@@ -11604,7 +11822,7 @@ class ImplementationCommonLink(Link):
     """
     Implementation-common scoped OSCAL link.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_plan',
          'in_subset': ['implementation_common'],
          'slot_usage': {'rel': {'any_of': [{'range': 'ImplementationLinkRelEnum'},
                                            {'range': 'TokenType'}],
@@ -11631,7 +11849,7 @@ class ImplementationResponsibleRole(ResponsibleRole):
     """
     Implementation-common scoped responsible role.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_plan',
          'in_subset': ['implementation_common'],
          'slot_usage': {'role-id': {'any_of': [{'range': 'ImplementationResponsibleRoleIdEnum'},
                                                {'range': 'TokenType'}],
@@ -11693,6 +11911,7 @@ class ImplementationResponsibleRole(ResponsibleRole):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -11712,6 +11931,7 @@ class ImplementationResponsibleRole(ResponsibleRole):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -11735,7 +11955,7 @@ class ImplementationResponsibleParty(ResponsibleParty):
     """
     Implementation-common scoped responsible party.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_plan',
          'in_subset': ['implementation_common'],
          'slot_usage': {'role-id': {'any_of': [{'range': 'ImplementationResponsibleRoleIdEnum'},
                                                {'range': 'TokenType'}],
@@ -11797,6 +12017,7 @@ class ImplementationResponsibleParty(ResponsibleParty):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -11816,6 +12037,7 @@ class ImplementationResponsibleParty(ResponsibleParty):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -11839,7 +12061,7 @@ class Origin(ConfiguredBaseModel):
     """
     Identifies the source of the finding, such as a tool, interviewed person, or activity.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_plan',
          'in_subset': ['assessment_common'],
          'slot_usage': {'actors': {'name': 'actors', 'required': True}}})
 
@@ -11851,7 +12073,7 @@ class OriginActor(HasPropsAndLinks):
     """
     The actor that produces an observation, a finding, or a risk.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_plan',
          'in_subset': ['assessment_common'],
          'mixins': ['HasPropsAndLinks'],
          'slot_usage': {'actor-uuid': {'name': 'actor-uuid', 'required': True},
@@ -11881,6 +12103,7 @@ class OriginActor(HasPropsAndLinks):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -11900,6 +12123,7 @@ class OriginActor(HasPropsAndLinks):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -11923,7 +12147,7 @@ class RelatedTask(HasResponsibleParties, OscalCommon):
     """
     Identifies an individual task for which the containing object is a consequence of.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_plan',
          'in_subset': ['assessment_common'],
          'mixins': ['OscalCommon', 'HasResponsibleParties'],
          'slot_usage': {'subjects': {'name': 'subjects', 'range': 'AssessmentSubject'},
@@ -11988,6 +12212,7 @@ class RelatedTask(HasResponsibleParties, OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -12007,6 +12232,7 @@ class RelatedTask(HasResponsibleParties, OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -12030,7 +12256,7 @@ class IdentifiedSubject(ConfiguredBaseModel):
     """
     Used to detail assessment subjects that were identified by this task.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_plan',
          'in_subset': ['assessment_common'],
          'slot_usage': {'subject-placeholder-uuid': {'name': 'subject-placeholder-uuid',
                                                      'required': True},
@@ -12052,7 +12278,7 @@ class Observation(OscalCommon):
     """
     Describes an individual observation.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_plan',
          'in_subset': ['assessment_common'],
          'mixins': ['OscalCommon'],
          'slot_usage': {'collected': {'name': 'collected', 'required': True},
@@ -12260,6 +12486,7 @@ class Observation(OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -12279,6 +12506,7 @@ class Observation(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -12302,7 +12530,7 @@ class RelevantEvidence(OscalCommon):
     """
     Links this observation to relevant evidence.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_plan',
          'in_subset': ['assessment_common'],
          'mixins': ['OscalCommon'],
          'slot_usage': {'description': {'name': 'description', 'required': True}}})
@@ -12415,6 +12643,7 @@ class RelevantEvidence(OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -12434,6 +12663,7 @@ class RelevantEvidence(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -12457,7 +12687,7 @@ class Finding(OscalCommon):
     """
     Describes an individual finding.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_plan',
          'in_subset': ['assessment_common'],
          'mixins': ['OscalCommon'],
          'slot_usage': {'description': {'name': 'description', 'required': True},
@@ -12654,6 +12884,7 @@ class Finding(OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -12673,6 +12904,7 @@ class Finding(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -12696,7 +12928,7 @@ class FindingTarget(OscalCommon):
     """
     Captures an assessor's conclusions regarding the degree to which an objective is satisfied.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_plan',
          'in_subset': ['assessment_common'],
          'mixins': ['OscalCommon'],
          'slot_usage': {'status': {'inlined': True,
@@ -12861,6 +13093,7 @@ class FindingTarget(OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -12880,6 +13113,7 @@ class FindingTarget(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -12903,7 +13137,7 @@ class ObjectiveStatus(ConfiguredBaseModel):
     """
     A determination of if the objective is satisfied or not within a given system.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_plan',
          'in_subset': ['assessment_common'],
          'slot_usage': {'state': {'description': 'An indication as to whether the '
                                                  'objective is satisfied or not.',
@@ -12970,7 +13204,7 @@ class RelatedObservation(ConfiguredBaseModel):
     """
     Relates the identified element to a set of referenced observations.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_plan',
          'in_subset': ['assessment_common'],
          'slot_usage': {'observation-uuid': {'name': 'observation-uuid',
                                              'required': True}}})
@@ -13028,7 +13262,7 @@ class AssociatedRisk(ConfiguredBaseModel):
     """
     Relates the finding to a set of referenced risks.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_plan',
          'in_subset': ['assessment_common'],
          'slot_usage': {'risk-uuid': {'name': 'risk-uuid', 'required': True}}})
 
@@ -13085,7 +13319,7 @@ class Risk(HasPropsAndLinks):
     """
     An identified risk.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_plan',
          'in_subset': ['assessment_common'],
          'mixins': ['HasPropsAndLinks'],
          'slot_usage': {'description': {'name': 'description', 'required': True},
@@ -13250,6 +13484,7 @@ class Risk(HasPropsAndLinks):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -13269,6 +13504,7 @@ class Risk(HasPropsAndLinks):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -13292,7 +13528,7 @@ class ThreatId(ConfiguredBaseModel):
     """
     A pointer, by ID, to an externally-defined threat.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_plan',
          'in_subset': ['assessment_common'],
          'slot_usage': {'id': {'name': 'id', 'range': 'URIType', 'required': True},
                         'system': {'description': 'Specifies the system or scheme from '
@@ -13327,7 +13563,7 @@ class Characterization(HasPropsAndLinks):
     """
     A collection of descriptive data about the containing object from a specific origin.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_plan',
          'in_subset': ['assessment_common'],
          'mixins': ['HasPropsAndLinks'],
          'slot_usage': {'facets': {'name': 'facets', 'required': True},
@@ -13338,6 +13574,7 @@ class Characterization(HasPropsAndLinks):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -13357,6 +13594,7 @@ class Characterization(HasPropsAndLinks):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -13380,7 +13618,7 @@ class Facet(OscalCommon):
     """
     An individual characteristic that is part of a larger set produced by the same actor.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_plan',
          'in_subset': ['assessment_common'],
          'mixins': ['OscalCommon'],
          'slot_usage': {'name': {'name': 'name', 'required': True},
@@ -13449,6 +13687,7 @@ class Facet(OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -13468,6 +13707,7 @@ class Facet(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -13491,7 +13731,7 @@ class MitigatingFactor(HasPropsAndLinks):
     """
     Describes an existing mitigating factor that may affect the overall determination of the risk.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_plan',
          'in_subset': ['assessment_common'],
          'mixins': ['HasPropsAndLinks'],
          'slot_usage': {'description': {'name': 'description', 'required': True},
@@ -13610,6 +13850,7 @@ class MitigatingFactor(HasPropsAndLinks):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -13629,6 +13870,7 @@ class MitigatingFactor(HasPropsAndLinks):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -13652,7 +13894,7 @@ class Response(OscalCommon):
     """
     Describes either recommended or an actual plan for addressing the risk.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_plan',
          'in_subset': ['assessment_common'],
          'mixins': ['OscalCommon'],
          'slot_usage': {'description': {'name': 'description', 'required': True},
@@ -13849,6 +14091,7 @@ class Response(OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -13868,6 +14111,7 @@ class Response(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -13891,7 +14135,7 @@ class RequiredAsset(OscalCommon):
     """
     Identifies an asset required to achieve remediation.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_plan',
          'in_subset': ['assessment_common'],
          'mixins': ['OscalCommon'],
          'slot_usage': {'description': {'name': 'description', 'required': True},
@@ -14089,6 +14333,7 @@ class RequiredAsset(OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -14108,6 +14353,7 @@ class RequiredAsset(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -14131,7 +14377,7 @@ class RiskLog(ConfiguredBaseModel):
     """
     A log of all risk-related tasks taken.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_plan',
          'in_subset': ['assessment_common'],
          'slot_usage': {'entries': {'name': 'entries', 'required': True}}})
 
@@ -14142,7 +14388,7 @@ class RiskLogEntry(OscalCommon):
     """
     Identifies an individual risk response that occurred as part of managing an identified risk.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_plan',
          'in_subset': ['assessment_common'],
          'mixins': ['OscalCommon'],
          'slot_usage': {'start': {'name': 'start', 'required': True},
@@ -14346,6 +14592,7 @@ class RiskLogEntry(OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -14365,6 +14612,7 @@ class RiskLogEntry(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -14388,7 +14636,7 @@ class LoggedBy(ConfiguredBaseModel):
     """
     Used to indicate who created a log entry in what role.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_plan',
          'in_subset': ['assessment_common'],
          'slot_usage': {'party-uuid': {'name': 'party-uuid', 'required': True}}})
 
@@ -14449,7 +14697,7 @@ class RiskResponseReference(OscalCommon):
     """
     Identifies an individual risk response that this log entry is for.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_plan',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_plan',
          'in_subset': ['assessment_common'],
          'mixins': ['OscalCommon'],
          'slot_usage': {'response-uuid': {'name': 'response-uuid', 'required': True}}})
@@ -14505,6 +14753,7 @@ class RiskResponseReference(OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -14524,6 +14773,7 @@ class RiskResponseReference(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -14547,7 +14797,7 @@ class SspDocument(OscalDocument):
     """
     Root wrapper for an OSCAL System Security Plan document.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_ssp',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_ssp',
          'in_subset': ['ssp'],
          'slot_usage': {'system-security-plan': {'name': 'system-security-plan',
                                                  'required': True}}})
@@ -14559,7 +14809,7 @@ class SystemSecurityPlan(ConfiguredBaseModel):
     """
     A system security plan, such as those described in NIST SP 800-18.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_ssp',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_ssp',
          'in_subset': ['ssp'],
          'slot_usage': {'control-implementation': {'name': 'control-implementation',
                                                    'required': True},
@@ -14649,7 +14899,7 @@ class ImportProfile(ConfiguredBaseModel):
     """
     Used to import the OSCAL profile representing the system's control baseline.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_ssp',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_ssp',
          'in_subset': ['ssp'],
          'slot_usage': {'href': {'name': 'href', 'required': True}}})
 
@@ -14715,7 +14965,7 @@ class SystemCharacteristics(ConfiguredBaseModel):
     """
     Contains the characteristics of the system, such as its name, purpose, and security impact level.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_ssp',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_ssp',
          'in_subset': ['ssp'],
          'slot_usage': {'authorization-boundary': {'name': 'authorization-boundary',
                                                    'required': True},
@@ -14782,6 +15032,47 @@ class SystemCharacteristics(ConfiguredBaseModel):
                        'ImplementedControlStatement',
                        'QualifierItem',
                        'PoamItem']} })
+    props: Optional[list[SspSystemCharacteristicsProp]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
+                       'Resource',
+                       'Addition',
+                       'SystemCharacteristics',
+                       'SystemInformation',
+                       'InformationType',
+                       'ImpactLevel',
+                       'AuthorizationBoundary',
+                       'Diagram',
+                       'NetworkArchitecture',
+                       'DataFlow',
+                       'SystemImplementation',
+                       'LeveragedAuthorization',
+                       'SspImplementedRequirement',
+                       'SspStatement',
+                       'ByComponent',
+                       'Export',
+                       'ProvidedControlImplementation',
+                       'ControlResponsibility',
+                       'InheritedControlImplementation',
+                       'SatisfiedControlImplementation']} })
+    links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
+                       'Addition',
+                       'SystemCharacteristics',
+                       'SystemInformation',
+                       'InformationType',
+                       'ImpactLevel',
+                       'AuthorizationBoundary',
+                       'Diagram',
+                       'NetworkArchitecture',
+                       'DataFlow',
+                       'SystemImplementation',
+                       'LeveragedAuthorization',
+                       'SspImplementedRequirement',
+                       'SspStatement',
+                       'ByComponent',
+                       'Export',
+                       'ProvidedControlImplementation',
+                       'ControlResponsibility',
+                       'InheritedControlImplementation',
+                       'SatisfiedControlImplementation']} })
     date_authorized: Optional[str] = Field(default=None, description="""The date the system received its authorization.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SystemCharacteristics', 'LeveragedAuthorization']} })
     security_sensitivity_level: Optional[str] = Field(default=None, description="""The overall information system sensitivity categorization, such as defined by FIPS-199.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SystemCharacteristics']} })
     system_information: SystemInformation = Field(default=..., description="""Contains details about all information types that are stored, processed, or transmitted by the system.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SystemCharacteristics']} })
@@ -14843,7 +15134,7 @@ class SystemInformation(ConfiguredBaseModel):
     """
     Contains details about all information types that are stored, processed, or transmitted by the system, such as privacy information.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_ssp',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_ssp',
          'in_subset': ['ssp'],
          'slot_usage': {'information-types': {'name': 'information-types',
                                               'required': True},
@@ -14854,6 +15145,7 @@ class SystemInformation(ConfiguredBaseModel):
     props: Optional[list[SspSystemInformationProp]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -14873,6 +15165,7 @@ class SystemInformation(ConfiguredBaseModel):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[SspSystemInformationLink]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -14897,7 +15190,7 @@ class InformationType(ConfiguredBaseModel):
     """
     Contains details about one information type that is stored, processed, or transmitted by the system, such as privacy information, and its impact level.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_ssp',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_ssp',
          'in_subset': ['ssp'],
          'slot_usage': {'description': {'name': 'description', 'required': True},
                         'title': {'name': 'title', 'required': True}}})
@@ -15041,6 +15334,7 @@ class InformationType(ConfiguredBaseModel):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -15060,6 +15354,7 @@ class InformationType(ConfiguredBaseModel):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -15086,7 +15381,7 @@ class InformationTypeCategorization(ConfiguredBaseModel):
     """
     A set of information type identifiers qualified by the given identification system used.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_ssp', 'in_subset': ['ssp']})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_ssp', 'in_subset': ['ssp']})
 
     system: Union[InformationTypeCategorizationSystemEnum, str] = Field(default=..., description="""Specifies the information type identification system used. Recommended values are in InformationTypeCategorizationSystemEnum; other values are permitted (OSCAL allow-other=\"yes\").""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'InformationTypeCategorizationSystemEnum'},
                     {'range': 'URIType'}],
@@ -15098,7 +15393,7 @@ class ImpactLevel(ConfiguredBaseModel):
     """
     The expected level of impact resulting from the described information's confidentiality, integrity, or availability affect.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_ssp',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_ssp',
          'in_subset': ['ssp'],
          'slot_usage': {'base': {'any_of': [{'range': 'Fips199ImpactLevelEnum'},
                                             {'range': 'string'}],
@@ -15111,6 +15406,7 @@ class ImpactLevel(ConfiguredBaseModel):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -15130,6 +15426,7 @@ class ImpactLevel(ConfiguredBaseModel):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -15158,7 +15455,7 @@ class SecurityImpactLevel(ConfiguredBaseModel):
     """
     The overall level of expected impact resulting from unauthorized disclosure, modification, or loss of access to information.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_ssp',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_ssp',
          'in_subset': ['ssp'],
          'slot_usage': {'security-objective-availability': {'name': 'security-objective-availability',
                                                             'required': True},
@@ -15176,7 +15473,7 @@ class SystemStatus(ConfiguredBaseModel):
     """
     Describes the operational status of the system.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_ssp', 'in_subset': ['ssp']})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_ssp', 'in_subset': ['ssp']})
 
     remarks: Optional[str] = Field(default=None, description="""Additional commentary about the containing object.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OscalCommon',
                        'Property',
@@ -15235,7 +15532,7 @@ class AuthorizationBoundary(ConfiguredBaseModel):
     """
     A description of this system's authorization boundary, optionally supplemented with diagrams that illustrate the authorization boundary.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_ssp',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_ssp',
          'in_subset': ['ssp'],
          'slot_usage': {'description': {'name': 'description', 'required': True}}})
 
@@ -15291,6 +15588,7 @@ class AuthorizationBoundary(ConfiguredBaseModel):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -15310,6 +15608,7 @@ class AuthorizationBoundary(ConfiguredBaseModel):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -15380,7 +15679,7 @@ class Diagram(ConfiguredBaseModel):
     """
     A graphic that provides a visual representation the system, or some aspect of it.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_ssp',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_ssp',
          'in_subset': ['ssp'],
          'slot_usage': {'links': {'name': 'links', 'range': 'SspDiagramLink'},
                         'uuid': {'name': 'uuid', 'required': True}}})
@@ -15489,6 +15788,7 @@ class Diagram(ConfiguredBaseModel):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -15508,6 +15808,7 @@ class Diagram(ConfiguredBaseModel):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[SspDiagramLink]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -15578,7 +15879,7 @@ class NetworkArchitecture(ConfiguredBaseModel):
     """
     A description of the system's network architecture, optionally supplemented with diagrams that illustrate the network architecture.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_ssp',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_ssp',
          'in_subset': ['ssp'],
          'slot_usage': {'description': {'name': 'description', 'required': True}}})
 
@@ -15634,6 +15935,7 @@ class NetworkArchitecture(ConfiguredBaseModel):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -15653,6 +15955,7 @@ class NetworkArchitecture(ConfiguredBaseModel):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -15723,7 +16026,7 @@ class DataFlow(ConfiguredBaseModel):
     """
     A description of the logical flow of information within the system and across its boundaries, optionally supplemented with diagrams.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_ssp',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_ssp',
          'in_subset': ['ssp'],
          'slot_usage': {'description': {'name': 'description', 'required': True}}})
 
@@ -15779,6 +16082,7 @@ class DataFlow(ConfiguredBaseModel):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -15798,6 +16102,7 @@ class DataFlow(ConfiguredBaseModel):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -15868,7 +16173,7 @@ class SystemImplementation(ConfiguredBaseModel):
     """
     Provides information as to how the system is implemented.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_ssp',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_ssp',
          'in_subset': ['ssp'],
          'slot_usage': {'components': {'name': 'components',
                                        'range': 'SspSystemComponent',
@@ -15879,6 +16184,7 @@ class SystemImplementation(ConfiguredBaseModel):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -15898,6 +16204,7 @@ class SystemImplementation(ConfiguredBaseModel):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -15981,7 +16288,7 @@ class LeveragedAuthorization(ConfiguredBaseModel):
     """
     A description of another authorized system from which this system inherits capabilities that satisfy security requirements. Another term for this concept is a common control provider.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_ssp',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_ssp',
          'in_subset': ['ssp'],
          'slot_usage': {'date-authorized': {'name': 'date-authorized',
                                             'required': True},
@@ -16080,6 +16387,7 @@ class LeveragedAuthorization(ConfiguredBaseModel):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -16099,6 +16407,7 @@ class LeveragedAuthorization(ConfiguredBaseModel):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[SspLeveragedAuthorizationLink]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -16170,7 +16479,7 @@ class SspControlImplementation(ConfiguredBaseModel):
     """
     Describes how the system satisfies a set of controls.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_ssp',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_ssp',
          'in_subset': ['ssp'],
          'slot_usage': {'description': {'name': 'description', 'required': True},
                         'implemented-requirements': {'name': 'implemented-requirements',
@@ -16244,7 +16553,7 @@ class SspImplementedRequirement(ConfiguredBaseModel):
     """
     Describes how the system satisfies an individual control.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_ssp',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_ssp',
          'in_subset': ['ssp'],
          'slot_usage': {'control-id': {'name': 'control-id', 'required': True},
                         'props': {'name': 'props',
@@ -16319,6 +16628,7 @@ class SspImplementedRequirement(ConfiguredBaseModel):
     props: Optional[list[SspControlOriginationProp]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -16338,6 +16648,7 @@ class SspImplementedRequirement(ConfiguredBaseModel):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -16423,7 +16734,7 @@ class SspStatement(ConfiguredBaseModel):
     """
     Identifies which statements within a control are addressed.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_ssp',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_ssp',
          'in_subset': ['ssp'],
          'slot_usage': {'props': {'name': 'props',
                                   'range': 'SspControlOriginationProp'},
@@ -16488,6 +16799,7 @@ class SspStatement(ConfiguredBaseModel):
     props: Optional[list[SspControlOriginationProp]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -16507,6 +16819,7 @@ class SspStatement(ConfiguredBaseModel):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -16585,7 +16898,7 @@ class ByComponent(ConfiguredBaseModel):
     """
     Defines how the referenced component implements a set of controls.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_ssp',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_ssp',
          'in_subset': ['ssp'],
          'slot_usage': {'component-uuid': {'name': 'component-uuid', 'required': True},
                         'description': {'name': 'description', 'required': True},
@@ -16709,6 +17022,7 @@ class ByComponent(ConfiguredBaseModel):
     props: Optional[list[SspControlOriginationProp]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -16728,6 +17042,7 @@ class ByComponent(ConfiguredBaseModel):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[SspByComponentLink]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -16815,7 +17130,7 @@ class Export(ConfiguredBaseModel):
     """
     Defines a set of control implementations that are provided as reference implementations for use by organizations implementing the leveraged system.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_ssp', 'in_subset': ['ssp']})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_ssp', 'in_subset': ['ssp']})
 
     description: Optional[str] = Field(default=None, description="""A human-readable description.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Role',
                        'Resource',
@@ -16869,6 +17184,7 @@ class Export(ConfiguredBaseModel):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -16888,6 +17204,7 @@ class Export(ConfiguredBaseModel):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -16913,7 +17230,7 @@ class ProvidedControlImplementation(ConfiguredBaseModel):
     """
     Describes a capability which may be inherited by a leveraging system.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_ssp',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_ssp',
          'in_subset': ['ssp'],
          'slot_usage': {'description': {'name': 'description', 'required': True},
                         'responsible-roles': {'name': 'responsible-roles',
@@ -17024,6 +17341,7 @@ class ProvidedControlImplementation(ConfiguredBaseModel):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -17043,6 +17361,7 @@ class ProvidedControlImplementation(ConfiguredBaseModel):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -17120,7 +17439,7 @@ class ControlResponsibility(ConfiguredBaseModel):
     """
     Describes a control implementation responsibility imposed on a leveraging system.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_ssp',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_ssp',
          'in_subset': ['ssp'],
          'slot_usage': {'description': {'name': 'description', 'required': True},
                         'responsible-roles': {'name': 'responsible-roles',
@@ -17232,6 +17551,7 @@ class ControlResponsibility(ConfiguredBaseModel):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -17251,6 +17571,7 @@ class ControlResponsibility(ConfiguredBaseModel):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -17328,7 +17649,7 @@ class InheritedControlImplementation(ConfiguredBaseModel):
     """
     Describes a control implementation inherited by a leveraging system.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_ssp',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_ssp',
          'in_subset': ['ssp'],
          'slot_usage': {'description': {'name': 'description', 'required': True},
                         'responsible-roles': {'name': 'responsible-roles',
@@ -17440,6 +17761,7 @@ class InheritedControlImplementation(ConfiguredBaseModel):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -17459,6 +17781,7 @@ class InheritedControlImplementation(ConfiguredBaseModel):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -17536,7 +17859,7 @@ class SatisfiedControlImplementation(ConfiguredBaseModel):
     """
     Describes how this system satisfies a responsibility imposed by a leveraged system.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_ssp',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_ssp',
          'in_subset': ['ssp'],
          'slot_usage': {'description': {'name': 'description', 'required': True},
                         'responsible-roles': {'name': 'responsible-roles',
@@ -17648,6 +17971,7 @@ class SatisfiedControlImplementation(ConfiguredBaseModel):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -17667,6 +17991,7 @@ class SatisfiedControlImplementation(ConfiguredBaseModel):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -17744,7 +18069,7 @@ class SspSystemCharacteristicsProp(Property):
     """
     SSP-scoped property used in system characteristics.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_ssp',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_ssp',
          'in_subset': ['ssp'],
          'slot_usage': {'name': {'name': 'name',
                                  'range': 'SystemCharacteristicsPropNameEnum'},
@@ -17825,7 +18150,12 @@ class SspSystemCharacteristicsProp(Property):
                     {'range': 'CloudServiceModelEnum'},
                     {'range': 'string'}],
          'domain_of': ['Hash', 'Property', 'Base64Resource', 'Facet']} })
-    class_: Optional[str] = Field(default=None, alias="_class", description="""A textual label that provides a sub-type or characterization of the property's name.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Group',
+    class_: Optional[str] = Field(default=None, description="""A textual label that provides a sub-type or characterization of the property's name.""", json_schema_extra = { "linkml_meta": {'comments': ["OSCAL's key is `class`. A slot or alias named `class` makes the "
+                      'generated dataclasses invalid Python, and gen-doc names a page '
+                      'after the slot, so `_class` hid its page from the site. '
+                      '`class_` is the spelling the generated Pydantic model gives a '
+                      'slot named `class`.'],
+         'domain_of': ['Group',
                        'Control',
                        'Property',
                        'Part',
@@ -17887,7 +18217,7 @@ class SspSystemInformationProp(Property):
     """
     SSP-scoped property used in system information.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_ssp',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_ssp',
          'in_subset': ['ssp'],
          'slot_usage': {'name': {'name': 'name',
                                  'range': 'SystemInformationPropNameEnum'},
@@ -17960,7 +18290,12 @@ class SspSystemInformationProp(Property):
                        'Map',
                        'MappingResourceReference']} })
     value: PrivacyDesignationEnum = Field(default=..., description="""Indicates the value of the attribute, characteristic, or quality.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Hash', 'Property', 'Base64Resource', 'Facet']} })
-    class_: Optional[str] = Field(default=None, alias="_class", description="""A textual label that provides a sub-type or characterization of the property's name.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Group',
+    class_: Optional[str] = Field(default=None, description="""A textual label that provides a sub-type or characterization of the property's name.""", json_schema_extra = { "linkml_meta": {'comments': ["OSCAL's key is `class`. A slot or alias named `class` makes the "
+                      'generated dataclasses invalid Python, and gen-doc names a page '
+                      'after the slot, so `_class` hid its page from the site. '
+                      '`class_` is the spelling the generated Pydantic model gives a '
+                      'slot named `class`.'],
+         'domain_of': ['Group',
                        'Control',
                        'Property',
                        'Part',
@@ -18022,7 +18357,7 @@ class SspControlOriginationProp(Property):
     """
     SSP-scoped property used in implemented requirement and by-component contexts.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_ssp',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_ssp',
          'in_subset': ['ssp'],
          'slot_usage': {'name': {'name': 'name',
                                  'range': 'ControlOriginationPropNameEnum'},
@@ -18096,7 +18431,12 @@ class SspControlOriginationProp(Property):
                        'Map',
                        'MappingResourceReference']} })
     value: ControlOriginationValueEnum = Field(default=..., description="""Indicates the value of the attribute, characteristic, or quality.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Hash', 'Property', 'Base64Resource', 'Facet']} })
-    class_: Optional[str] = Field(default=None, alias="_class", description="""A textual label that provides a sub-type or characterization of the property's name.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Group',
+    class_: Optional[str] = Field(default=None, description="""A textual label that provides a sub-type or characterization of the property's name.""", json_schema_extra = { "linkml_meta": {'comments': ["OSCAL's key is `class`. A slot or alias named `class` makes the "
+                      'generated dataclasses invalid Python, and gen-doc names a page '
+                      'after the slot, so `_class` hid its page from the site. '
+                      '`class_` is the spelling the generated Pydantic model gives a '
+                      'slot named `class`.'],
+         'domain_of': ['Group',
                        'Control',
                        'Property',
                        'Part',
@@ -18158,7 +18498,7 @@ class SspAllowsAuthenticatedScanProp(Property):
     """
     SSP-scoped property used for component and inventory allows-authenticated-scan.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_ssp',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_ssp',
          'in_subset': ['ssp'],
          'slot_usage': {'name': {'name': 'name', 'range': 'string'},
                         'value': {'name': 'value',
@@ -18231,7 +18571,12 @@ class SspAllowsAuthenticatedScanProp(Property):
                        'Map',
                        'MappingResourceReference']} })
     value: AllowsAuthenticatedScanEnum = Field(default=..., description="""Indicates the value of the attribute, characteristic, or quality.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Hash', 'Property', 'Base64Resource', 'Facet']} })
-    class_: Optional[str] = Field(default=None, alias="_class", description="""A textual label that provides a sub-type or characterization of the property's name.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Group',
+    class_: Optional[str] = Field(default=None, description="""A textual label that provides a sub-type or characterization of the property's name.""", json_schema_extra = { "linkml_meta": {'comments': ["OSCAL's key is `class`. A slot or alias named `class` makes the "
+                      'generated dataclasses invalid Python, and gen-doc names a page '
+                      'after the slot, so `_class` hid its page from the site. '
+                      '`class_` is the spelling the generated Pydantic model gives a '
+                      'slot named `class`.'],
+         'domain_of': ['Group',
                        'Control',
                        'Property',
                        'Part',
@@ -18293,7 +18638,7 @@ class SspSystemInformationLink(Link):
     """
     SSP-scoped link used in system information.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_ssp',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_ssp',
          'in_subset': ['ssp'],
          'slot_usage': {'rel': {'any_of': [{'range': 'SystemInformationLinkRelEnum'},
                                            {'range': 'string'}],
@@ -18320,7 +18665,7 @@ class SspDiagramLink(Link):
     """
     SSP-scoped link used in diagram objects.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_ssp',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_ssp',
          'in_subset': ['ssp'],
          'slot_usage': {'rel': {'any_of': [{'range': 'DiagramLinkRelEnum'},
                                            {'range': 'string'}],
@@ -18347,7 +18692,7 @@ class SspLeveragedAuthorizationLink(Link):
     """
     SSP-scoped link used in leveraged authorization objects.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_ssp',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_ssp',
          'in_subset': ['ssp'],
          'slot_usage': {'rel': {'any_of': [{'range': 'LeveragedAuthorizationLinkRelEnum'},
                                            {'range': 'string'}],
@@ -18375,7 +18720,7 @@ class SspByComponentLink(Link):
     """
     SSP-scoped link used in by-component contexts.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_ssp',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_ssp',
          'in_subset': ['ssp'],
          'slot_usage': {'rel': {'any_of': [{'range': 'ByComponentLinkRelEnum'},
                                            {'range': 'string'}],
@@ -18402,7 +18747,7 @@ class SspSystemCharacteristicsResponsibleParty(ResponsibleParty):
     """
     SSP-scoped responsible party for system characteristics.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_ssp',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_ssp',
          'in_subset': ['ssp'],
          'slot_usage': {'role-id': {'any_of': [{'range': 'SystemCharacteristicsResponsibleRoleIdEnum'},
                                                {'range': 'TokenType'}],
@@ -18464,6 +18809,7 @@ class SspSystemCharacteristicsResponsibleParty(ResponsibleParty):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -18483,6 +18829,7 @@ class SspSystemCharacteristicsResponsibleParty(ResponsibleParty):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -18506,7 +18853,7 @@ class SspImplementedRequirementResponsibleRole(ResponsibleRole):
     """
     SSP-scoped responsible role used by implemented requirement and statement contexts.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_ssp',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_ssp',
          'in_subset': ['ssp'],
          'slot_usage': {'role-id': {'any_of': [{'range': 'ImplementedRequirementResponsibleRoleIdEnum'},
                                                {'range': 'TokenType'}],
@@ -18568,6 +18915,7 @@ class SspImplementedRequirementResponsibleRole(ResponsibleRole):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -18587,6 +18935,7 @@ class SspImplementedRequirementResponsibleRole(ResponsibleRole):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -18610,7 +18959,7 @@ class SspByComponentResponsibleRole(ResponsibleRole):
     """
     SSP-scoped responsible role used by by-component contexts.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_ssp',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_ssp',
          'in_subset': ['ssp'],
          'slot_usage': {'role-id': {'any_of': [{'range': 'ByComponentResponsibleRoleIdEnum'},
                                                {'range': 'TokenType'}],
@@ -18672,6 +19021,7 @@ class SspByComponentResponsibleRole(ResponsibleRole):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -18691,6 +19041,7 @@ class SspByComponentResponsibleRole(ResponsibleRole):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -18714,7 +19065,7 @@ class SspSystemComponent(SystemComponent):
     """
     SSP-scoped system component with allows-authenticated-scan property typing.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_ssp',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_ssp',
          'in_subset': ['ssp'],
          'slot_usage': {'props': {'name': 'props',
                                   'range': 'SspAllowsAuthenticatedScanProp'}}})
@@ -18933,6 +19284,7 @@ class SspSystemComponent(SystemComponent):
     props: Optional[list[SspAllowsAuthenticatedScanProp]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -18952,6 +19304,7 @@ class SspSystemComponent(SystemComponent):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[ImplementationCommonLink]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -18975,7 +19328,7 @@ class SspInventoryItem(InventoryItem):
     """
     SSP-scoped inventory item with allows-authenticated-scan property typing.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_ssp',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_ssp',
          'in_subset': ['ssp'],
          'slot_usage': {'props': {'name': 'props',
                                   'range': 'SspAllowsAuthenticatedScanProp'}}})
@@ -19132,6 +19485,7 @@ class SspInventoryItem(InventoryItem):
     props: Optional[list[SspAllowsAuthenticatedScanProp]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -19151,6 +19505,7 @@ class SspInventoryItem(InventoryItem):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[ImplementationCommonLink]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -19174,7 +19529,7 @@ class AssessmentResultsDocument(OscalDocument):
     """
     Root wrapper for an OSCAL Assessment Results document.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_results',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_results',
          'in_subset': ['assessment_results'],
          'slot_usage': {'assessment-results': {'name': 'assessment-results',
                                                'required': True}}})
@@ -19186,7 +19541,7 @@ class AssessmentResults(ConfiguredBaseModel):
     """
     Security assessment results, such as those provided by a FedRAMP assessor in a security assessment report.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_results',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_results',
          'in_subset': ['assessment_results'],
          'slot_usage': {'import-ap': {'name': 'import-ap', 'required': True},
                         'local-definitions': {'inlined': True,
@@ -19279,7 +19634,7 @@ class ImportAssessmentPlan(ConfiguredBaseModel):
     """
     Used by assessment-results to import information about the original plan for assessing the system.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_results',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_results',
          'in_subset': ['assessment_results'],
          'slot_usage': {'href': {'name': 'href', 'required': True}}})
 
@@ -19345,7 +19700,7 @@ class AssessmentResultsLocalDefinitions(ConfiguredBaseModel):
     """
     Used to define data objects that are referenced by the assessment results but do not appear in the imported assessment plan.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_results',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_results',
          'in_subset': ['assessment_results']})
 
     objectives_and_methods: Optional[list[LocalObjective]] = Field(default=None, description="""A collection of locally-defined control objectives.""", json_schema_extra = { "linkml_meta": {'domain_of': ['LocalDefinitions', 'AssessmentResultsLocalDefinitions']} })
@@ -19402,7 +19757,7 @@ class Result(OscalCommon):
     """
     Identifies all of the assessment observations and findings, initial and residual risks, deviations, and disposition for a particular execution of the assessment.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_results',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_results',
          'in_subset': ['assessment_results'],
          'mixins': ['OscalCommon'],
          'slot_usage': {'assessment-log': {'inlined': True, 'name': 'assessment-log'},
@@ -19620,6 +19975,7 @@ class Result(OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -19639,6 +19995,7 @@ class Result(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -19662,7 +20019,7 @@ class ResultLocalDefinitions(ConfiguredBaseModel):
     """
     Used to define local implementation and assessment assets referenced by a result that do not appear in the imported system security plan.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_results',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_results',
          'in_subset': ['assessment_results']})
 
     components: Optional[list[SystemComponent]] = Field(default=None, description="""A collection of system components.""", json_schema_extra = { "linkml_meta": {'domain_of': ['LocalDefinitions',
@@ -19688,7 +20045,7 @@ class Attestation(HasResponsibleParties):
     """
     A set of textual attestation statements, typically written by the assessor.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_results',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_results',
          'in_subset': ['assessment_results'],
          'mixins': ['HasResponsibleParties'],
          'slot_usage': {'parts': {'name': 'parts',
@@ -19712,7 +20069,7 @@ class AssessmentLog(ConfiguredBaseModel):
     """
     A log of all assessment-related actions taken.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_results',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_results',
          'in_subset': ['assessment_results'],
          'slot_usage': {'entries': {'name': 'entries',
                                     'range': 'AssessmentLogEntry',
@@ -19725,7 +20082,7 @@ class AssessmentLogEntry(OscalCommon):
     """
     Identifies the result of an action and/or task that occurred as part of executing an assessment plan or assessment event.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_assessment_results',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_assessment_results',
          'in_subset': ['assessment_results'],
          'mixins': ['OscalCommon'],
          'slot_usage': {'start': {'name': 'start', 'required': True},
@@ -19927,6 +20284,7 @@ class AssessmentLogEntry(OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -19946,6 +20304,7 @@ class AssessmentLogEntry(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -19969,7 +20328,7 @@ class ComponentDefinitionDocument(OscalDocument):
     """
     Root wrapper for an OSCAL Component Definition document.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_component',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_component',
          'in_subset': ['component_definition'],
          'slot_usage': {'component-definition': {'name': 'component-definition',
                                                  'required': True}}})
@@ -19981,7 +20340,7 @@ class ComponentDefinition(ConfiguredBaseModel):
     """
     A collection of component descriptions, which may optionally be grouped by capability.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_component',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_component',
          'in_subset': ['component_definition'],
          'slot_usage': {'components': {'name': 'components',
                                        'range': 'DefinedComponent'},
@@ -20070,7 +20429,7 @@ class ImportComponentDefinition(ConfiguredBaseModel):
     """
     Loads a component definition from another resource.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_component',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_component',
          'in_subset': ['component_definition'],
          'slot_usage': {'href': {'name': 'href', 'required': True}}})
 
@@ -20136,7 +20495,7 @@ class DefinedComponent(HasResponsibleRoles, OscalCommon):
     """
     A defined component that can be part of an implemented system.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_component',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_component',
          'in_subset': ['component_definition'],
          'mixins': ['OscalCommon', 'HasResponsibleRoles'],
          'slot_usage': {'description': {'name': 'description', 'required': True},
@@ -20353,6 +20712,7 @@ class DefinedComponent(HasResponsibleRoles, OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -20372,6 +20732,7 @@ class DefinedComponent(HasResponsibleRoles, OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -20395,7 +20756,7 @@ class Capability(OscalCommon):
     """
     A grouping of other components and/or capabilities.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_component',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_component',
          'in_subset': ['component_definition'],
          'mixins': ['OscalCommon'],
          'slot_usage': {'description': {'name': 'description', 'required': True},
@@ -20562,6 +20923,7 @@ class Capability(OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -20581,6 +20943,7 @@ class Capability(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -20604,7 +20967,7 @@ class IncorporatesComponent(ConfiguredBaseModel):
     """
     The collection of components comprising a capability.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_component',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_component',
          'in_subset': ['component_definition'],
          'slot_usage': {'component-uuid': {'name': 'component-uuid', 'required': True},
                         'description': {'name': 'description', 'required': True}}})
@@ -20668,7 +21031,7 @@ class ControlImplementationSet(HasPropsAndLinks):
     """
     Defines how the component or capability supports a set of controls.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_component',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_component',
          'in_subset': ['component_definition'],
          'mixins': ['HasPropsAndLinks'],
          'slot_usage': {'description': {'name': 'description', 'required': True},
@@ -20795,6 +21158,7 @@ class ControlImplementationSet(HasPropsAndLinks):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -20814,6 +21178,7 @@ class ControlImplementationSet(HasPropsAndLinks):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -20837,7 +21202,7 @@ class ImplementedRequirement(HasResponsibleRoles, HasPropsAndLinks):
     """
     Describes how the containing component or capability implements an individual control.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_component',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_component',
          'in_subset': ['component_definition'],
          'mixins': ['HasPropsAndLinks', 'HasResponsibleRoles'],
          'slot_usage': {'control-id': {'name': 'control-id', 'required': True},
@@ -21013,6 +21378,7 @@ class ImplementedRequirement(HasResponsibleRoles, HasPropsAndLinks):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -21032,6 +21398,7 @@ class ImplementedRequirement(HasResponsibleRoles, HasPropsAndLinks):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -21063,7 +21430,7 @@ class ImplementedControlStatement(HasResponsibleRoles, HasPropsAndLinks):
     """
     Identifies which statements within a control are addressed.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_component',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_component',
          'in_subset': ['component_definition'],
          'mixins': ['HasPropsAndLinks', 'HasResponsibleRoles'],
          'slot_usage': {'description': {'name': 'description', 'required': True},
@@ -21221,6 +21588,7 @@ class ImplementedControlStatement(HasResponsibleRoles, HasPropsAndLinks):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -21240,6 +21608,7 @@ class ImplementedControlStatement(HasResponsibleRoles, HasPropsAndLinks):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -21271,7 +21640,7 @@ class MappingCollectionDocument(OscalDocument):
     """
     Root wrapper for an OSCAL Mapping Collection document.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_mapping',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_mapping',
          'in_subset': ['mapping_collection'],
          'slot_usage': {'mapping-collection': {'name': 'mapping-collection',
                                                'required': True}}})
@@ -21283,7 +21652,7 @@ class MappingCollection(ConfiguredBaseModel):
     """
     A collection of control mappings between source and target resources.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_mapping',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_mapping',
          'in_subset': ['mapping_collection'],
          'slot_usage': {'mappings': {'name': 'mappings', 'required': True},
                         'metadata': {'name': 'metadata', 'required': True},
@@ -21366,7 +21735,7 @@ class MappingProvenance(HasResponsibleParties, OscalCommon):
     """
     Mapping-level provenance details and mapping defaults.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_mapping',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_mapping',
          'in_subset': ['mapping_collection'],
          'mixins': ['OscalCommon', 'HasResponsibleParties'],
          'slot_usage': {'mapping-description': {'name': 'mapping-description',
@@ -21440,6 +21809,7 @@ class MappingProvenance(HasResponsibleParties, OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -21459,6 +21829,7 @@ class MappingProvenance(HasResponsibleParties, OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -21482,7 +21853,7 @@ class Mapping(OscalCommon):
     """
     A mapping between two mapped resources.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_mapping',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_mapping',
          'in_subset': ['mapping_collection'],
          'mixins': ['OscalCommon'],
          'slot_usage': {'maps': {'name': 'maps', 'required': True},
@@ -21610,6 +21981,7 @@ class Mapping(OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -21629,6 +22001,7 @@ class Mapping(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -21652,7 +22025,7 @@ class Map(OscalCommon):
     """
     A relationship-based mapping entry between source and target sets.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_mapping',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_mapping',
          'in_subset': ['mapping_collection'],
          'mixins': ['OscalCommon'],
          'slot_usage': {'relationship': {'name': 'relationship', 'required': True},
@@ -21777,6 +22150,7 @@ class Map(OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -21796,6 +22170,7 @@ class Map(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -21819,7 +22194,7 @@ class MappingItem(OscalCommon):
     """
     A source or target item participating in a mapping entry.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_mapping',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_mapping',
          'in_subset': ['mapping_collection'],
          'mixins': ['OscalCommon'],
          'slot_usage': {'id-ref': {'name': 'id-ref', 'required': True},
@@ -21891,6 +22266,7 @@ class MappingItem(OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -21910,6 +22286,7 @@ class MappingItem(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -21933,7 +22310,7 @@ class MappingResourceReference(OscalCommon):
     """
     A reference to the source or target resource for a mapping.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_mapping',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_mapping',
          'in_subset': ['mapping_collection'],
          'mixins': ['OscalCommon'],
          'slot_usage': {'href': {'name': 'href', 'required': True},
@@ -22026,6 +22403,7 @@ class MappingResourceReference(OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -22045,6 +22423,7 @@ class MappingResourceReference(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -22068,7 +22447,7 @@ class QualifierItem(ConfiguredBaseModel):
     """
     A qualifier describing requirements or incompatibilities.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_mapping',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_mapping',
          'in_subset': ['mapping_collection'],
          'slot_usage': {'category': {'name': 'category',
                                      'range': 'QualifierCategoryEnum',
@@ -22181,7 +22560,7 @@ class GapSummary(ConfiguredBaseModel):
     """
     A summary of controls that were not mapped.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_mapping',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_mapping',
          'in_subset': ['mapping_collection'],
          'slot_usage': {'unmapped-controls': {'name': 'unmapped-controls',
                                               'required': True},
@@ -22246,7 +22625,7 @@ class ConfidenceScore(ConfiguredBaseModel):
     """
     Confidence represented as a category and/or percentage value.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_mapping',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_mapping',
          'in_subset': ['mapping_collection'],
          'slot_usage': {'category': {'any_of': [{'range': 'ConfidenceCategoryEnum'},
                                                 {'range': 'string'}],
@@ -22261,7 +22640,7 @@ class Coverage(ConfiguredBaseModel):
     """
     A percentage representing target coverage by source mappings.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_mapping',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_mapping',
          'in_subset': ['mapping_collection'],
          'slot_usage': {'target-coverage': {'name': 'target-coverage',
                                             'required': True}}})
@@ -22275,7 +22654,7 @@ class PoamDocument(OscalDocument):
     """
     Root wrapper for an OSCAL Plan of Action and Milestones document.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_poam',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_poam',
          'in_subset': ['poam'],
          'slot_usage': {'plan-of-action-and-milestones': {'name': 'plan-of-action-and-milestones',
                                                           'required': True}}})
@@ -22287,7 +22666,7 @@ class PlanOfActionAndMilestones(ConfiguredBaseModel):
     """
     A plan of action and milestones that identifies initial and residual risks, deviations, and disposition.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_poam',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_poam',
          'in_subset': ['poam'],
          'slot_usage': {'local-definitions': {'inlined': True,
                                               'name': 'local-definitions',
@@ -22380,7 +22759,8 @@ class PoamLocalDefinitions(ConfiguredBaseModel):
     """
     Allows components and inventory items to be defined within the POA&M for cases where no OSCAL SSP is available with the POA&M.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_poam', 'in_subset': ['poam']})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_poam',
+         'in_subset': ['poam']})
 
     components: Optional[list[SystemComponent]] = Field(default=None, description="""A collection of system components.""", json_schema_extra = { "linkml_meta": {'domain_of': ['LocalDefinitions',
                        'AssessmentAssets',
@@ -22447,7 +22827,7 @@ class PoamItem(OscalCommon):
     """
     Describes an individual POA&M item.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_poam',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_poam',
          'in_subset': ['poam'],
          'mixins': ['OscalCommon'],
          'slot_usage': {'description': {'name': 'description', 'required': True},
@@ -22641,6 +23021,7 @@ class PoamItem(OscalCommon):
     props: Optional[list[Property]] = Field(default=None, description="""A list of properties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Resource',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -22660,6 +23041,7 @@ class PoamItem(OscalCommon):
                        'SatisfiedControlImplementation']} })
     links: Optional[list[Link]] = Field(default=None, description="""A list of links.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HasPropsAndLinks',
                        'Addition',
+                       'SystemCharacteristics',
                        'SystemInformation',
                        'InformationType',
                        'ImpactLevel',
@@ -22683,7 +23065,7 @@ class RelatedFinding(ConfiguredBaseModel):
     """
     Relates a POA&M item to a referenced finding.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal_poam',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_poam',
          'in_subset': ['poam'],
          'slot_usage': {'finding-uuid': {'name': 'finding-uuid', 'required': True}}})
 

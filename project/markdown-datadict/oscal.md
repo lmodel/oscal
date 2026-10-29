@@ -4,10 +4,10 @@
 
 **metamodel version:** 1.11.0
 
-**version:** 1.2.1
+**version:** 1.2.3
 
 
-OSCAL: Open Security Controls Assessment Language: LinkML Schema
+A LinkML model of NIST's Open Security Controls Assessment Language (OSCAL) 1.2.3: the catalog, profile, component definition, system security plan, assessment plan, assessment results, plan of action and milestones, and mapping collection models, each in a module of its own.
 
 
 ## Class Diagram
@@ -105,7 +105,7 @@ AssessmentMethod {
 }
 AssessmentPart {
     TokenType name  
-    TokenType _class  
+    TokenType class_  
     URIType ns  
     MarkupMultilineType prose  
     MarkupLineType title  
@@ -229,7 +229,7 @@ ConstraintTest {
 }
 Control {
     TokenType id  
-    TokenType _class  
+    TokenType class_  
     MarkupLineType title  
 }
 ControlImplementationSet {
@@ -248,7 +248,7 @@ ControlObjectiveSelection {
 ControlPart {
     TokenType id  
     TokenType name  
-    TokenType _class  
+    TokenType class_  
     URIType ns  
     MarkupMultilineType prose  
     MarkupLineType title  
@@ -320,7 +320,7 @@ GapSummary {
 }
 Group {
     TokenType id  
-    TokenType _class  
+    TokenType class_  
     MarkupLineType title  
 }
 Hash {
@@ -345,7 +345,7 @@ ImplementationCommonLink {
 ImplementationCommonProperty {
     ImplementationPropNameEnum name  
     string value  
-    TokenType _class  
+    TokenType class_  
     TokenType group  
     URIType ns  
     MarkupMultilineType remarks  
@@ -458,7 +458,7 @@ Location {
 }
 LocationProperty {
     LocationPropNameEnum name  
-    TokenType _class  
+    TokenType class_  
     string value  
     TokenType group  
     URIType ns  
@@ -529,7 +529,7 @@ MetadataPartyExternalId {
 }
 MetadataProperty {
     MetadataPropNameEnum name  
-    TokenType _class  
+    TokenType class_  
     TokenType group  
     URIType ns  
     MarkupMultilineType remarks  
@@ -574,7 +574,7 @@ OriginActor {
 }
 Parameter {
     TokenType id  
-    TokenType _class  
+    TokenType class_  
     TokenType depends_on  
     MarkupLineType label  
     MarkupMultilineType usage  
@@ -589,7 +589,7 @@ ParameterGuideline {
 }
 ParameterProperty {
     TokenType name  
-    TokenType _class  
+    TokenType class_  
     TokenType group  
     URIType ns  
     MarkupMultilineType remarks  
@@ -601,7 +601,7 @@ ParameterSelection {
     ParameterCardinalityEnum how_many  
 }
 ParameterSetting {
-    TokenType _class  
+    TokenType class_  
     TokenType depends_on  
     MarkupLineType label  
     TokenType param_id  
@@ -611,14 +611,14 @@ ParameterSetting {
 Part {
     TokenType id  
     TokenType name  
-    TokenType _class  
+    TokenType class_  
     URIType ns  
     MarkupMultilineType prose  
     MarkupLineType title  
 }
 PartProperty {
     PartPropNameEnum name  
-    TokenType _class  
+    TokenType class_  
     TokenType group  
     URIType ns  
     MarkupMultilineType remarks  
@@ -637,7 +637,7 @@ Party {
 }
 PartyProperty {
     PartyPropNameEnum name  
-    TokenType _class  
+    TokenType class_  
     TokenType group  
     URIType ns  
     MarkupMultilineType remarks  
@@ -670,7 +670,7 @@ Profile {
 }
 ProfileAlterationProperty {
     AlterationPropNameEnum name  
-    TokenType _class  
+    TokenType class_  
     TokenType group  
     URIType ns  
     MarkupMultilineType remarks  
@@ -682,7 +682,7 @@ ProfileDocument {
 }
 ProfileGroup {
     TokenType id  
-    TokenType _class  
+    TokenType class_  
     MarkupLineType title  
     MarkupMultilineType remarks  
 }
@@ -697,7 +697,7 @@ ProfileModify {
 }
 Property {
     TokenType name  
-    TokenType _class  
+    TokenType class_  
     TokenType group  
     URIType ns  
     MarkupMultilineType remarks  
@@ -765,7 +765,7 @@ ResourceLink {
 ResourceProperty {
     ResourcePropNameEnum name  
     string value  
-    TokenType _class  
+    TokenType class_  
     TokenType group  
     URIType ns  
     MarkupMultilineType remarks  
@@ -813,7 +813,7 @@ Revision {
 }
 RevisionProperty {
     RevisionPropNameEnum name  
-    TokenType _class  
+    TokenType class_  
     TokenType group  
     URIType ns  
     MarkupMultilineType remarks  
@@ -883,7 +883,7 @@ SetParameter {
 SspAllowsAuthenticatedScanProp {
     string name  
     AllowsAuthenticatedScanEnum value  
-    TokenType _class  
+    TokenType class_  
     TokenType group  
     URIType ns  
     MarkupMultilineType remarks  
@@ -907,7 +907,7 @@ SspControlImplementation {
 SspControlOriginationProp {
     ControlOriginationPropNameEnum name  
     ControlOriginationValueEnum value  
-    TokenType _class  
+    TokenType class_  
     TokenType group  
     URIType ns  
     MarkupMultilineType remarks  
@@ -953,7 +953,7 @@ SspStatement {
 SspSystemCharacteristicsProp {
     SystemCharacteristicsPropNameEnum name  
     string value  
-    TokenType _class  
+    TokenType class_  
     TokenType group  
     URIType ns  
     MarkupMultilineType remarks  
@@ -982,7 +982,7 @@ SspSystemInformationLink {
 SspSystemInformationProp {
     SystemInformationPropNameEnum name  
     PrivacyDesignationEnum value  
-    TokenType _class  
+    TokenType class_  
     TokenType group  
     URIType ns  
     MarkupMultilineType remarks  
@@ -1061,7 +1061,7 @@ TermsAndConditions {
 }
 TermsAndConditionsPart {
     TermsAndConditionsPartNameEnum name  
-    TokenType _class  
+    TokenType class_  
     URIType ns  
     MarkupMultilineType prose  
     MarkupLineType title  
@@ -1505,6 +1505,7 @@ SystemCharacteristics ||--|o SecurityImpactLevel : "security-impact-level"
 SystemCharacteristics ||--|| AuthorizationBoundary : "authorization-boundary"
 SystemCharacteristics ||--|| SystemInformation : "system-information"
 SystemCharacteristics ||--|| SystemStatus : "system-status"
+SystemCharacteristics ||--}o Link : "links"
 SystemCharacteristics ||--}o SspSystemCharacteristicsProp : "props"
 SystemCharacteristics ||--}o SspSystemCharacteristicsResponsibleParty : "responsible-parties"
 SystemCharacteristics ||--}| SystemId : "system-ids"
@@ -2137,7 +2138,7 @@ Attestation ||--}| AssessmentPart : "parts"
 | **[name](#Name)** | <sub>1..1</sub> | TokenType | A textual label that uniquely identifies an attribute or semantic type. |
 | **[links](#Links)** | <sub>0..\*</sub> | [Link](#Link) | A list of links. |
 | **[props](#Props)** | <sub>0..\*</sub> | [Property](#Property) | A list of properties. |
-| **[_class](#Class)** | <sub>0..1</sub> | TokenType | A textual label that provides a sub-type or characterization. |
+| **[class_](#Class)** | <sub>0..1</sub> | TokenType | A textual label that provides a sub-type or characterization. |
 | **[ns](#Ns)** | <sub>0..1</sub> | URIType | An optional namespace qualifying a name. Allows different organizations to associate distinct semantics with the same name. |
 | **[parts](#Parts)** | <sub>0..\*</sub> | [AssessmentPart](#AssessmentPart) | A collection of parts. |
 | **[prose](#Prose)** | <sub>0..1</sub> | MarkupMultilineType | Permits multiple paragraphs, lists, tables etc. |
@@ -2981,6 +2982,7 @@ SystemCharacteristics ||--|o SecurityImpactLevel : "security-impact-level"
 SystemCharacteristics ||--|| AuthorizationBoundary : "authorization-boundary"
 SystemCharacteristics ||--|| SystemInformation : "system-information"
 SystemCharacteristics ||--|| SystemStatus : "system-status"
+SystemCharacteristics ||--}o Link : "links"
 SystemCharacteristics ||--}o SspSystemCharacteristicsProp : "props"
 SystemCharacteristics ||--}o SspSystemCharacteristicsResponsibleParty : "responsible-parties"
 SystemCharacteristics ||--}| SystemId : "system-ids"
@@ -3908,7 +3910,7 @@ Part ||--}o PartProperty : "props"
 | **[id](#Id)** | <sub>1..1</sub> | TokenType | Identifies a control such that it can be referenced in the defining catalog and other OSCAL instances (e.g., profiles). |
 | **[links](#Links)** | <sub>0..\*</sub> | [Link](#Link) | A list of links. |
 | **[props](#Props)** | <sub>0..\*</sub> | [Property](#Property) | A list of properties. |
-| **[_class](#Class)** | <sub>0..1</sub> | TokenType | A textual label that provides a sub-type or characterization of the control. |
+| **[class_](#Class)** | <sub>0..1</sub> | TokenType | A textual label that provides a sub-type or characterization of the control. |
 | **[controls](#Controls)** | <sub>0..\*</sub> | [Control](#Control) | A collection of controls. |
 | **[params](#Params)** | <sub>0..\*</sub> | [Parameter](#Parameter) | Parameters providing a mechanism for the dynamic assignment of value(s) in a control. |
 | **[parts](#Parts)** | <sub>0..\*</sub> | [Part](#Part) | A collection of parts. |
@@ -4126,7 +4128,7 @@ LocalObjective ||--}| ControlPart : "parts"
 | **[name](#Name)** | <sub>1..1</sub> | TokenType | A textual label that uniquely identifies an attribute or semantic type. |
 | **[links](#Links)** | <sub>0..\*</sub> | [Link](#Link) | A list of links. |
 | **[props](#Props)** | <sub>0..\*</sub> | [Property](#Property) | A list of properties. |
-| **[_class](#Class)** | <sub>0..1</sub> | TokenType | A textual label that provides a sub-type or characterization. |
+| **[class_](#Class)** | <sub>0..1</sub> | TokenType | A textual label that provides a sub-type or characterization. |
 | **[ns](#Ns)** | <sub>0..1</sub> | URIType | An optional namespace qualifying a name. Allows different organizations to associate distinct semantics with the same name. |
 | **[parts](#Parts)** | <sub>0..\*</sub> | [ControlPart](#ControlPart) | A collection of parts. |
 | **[prose](#Prose)** | <sub>0..1</sub> | MarkupMultilineType | Permits multiple paragraphs, lists, tables etc. |
@@ -4346,6 +4348,7 @@ SystemCharacteristics ||--|o SecurityImpactLevel : "security-impact-level"
 SystemCharacteristics ||--|| AuthorizationBoundary : "authorization-boundary"
 SystemCharacteristics ||--|| SystemInformation : "system-information"
 SystemCharacteristics ||--|| SystemStatus : "system-status"
+SystemCharacteristics ||--}o Link : "links"
 SystemCharacteristics ||--}o SspSystemCharacteristicsProp : "props"
 SystemCharacteristics ||--}o SspSystemCharacteristicsResponsibleParty : "responsible-parties"
 SystemCharacteristics ||--}| SystemId : "system-ids"
@@ -4996,7 +4999,7 @@ ProfileGroup ||--}o Property : "props"
 | **[id](#Id)** | <sub>0..1</sub> | TokenType | Identifies the group for the purpose of cross-linking within the defining instance or from other instances that reference the catalog. |
 | **[links](#Links)** | <sub>0..\*</sub> | [Link](#Link) | A list of links. |
 | **[props](#Props)** | <sub>0..\*</sub> | [Property](#Property) | A list of properties. |
-| **[_class](#Class)** | <sub>0..1</sub> | TokenType | A textual label that provides a sub-type or characterization of the group. |
+| **[class_](#Class)** | <sub>0..1</sub> | TokenType | A textual label that provides a sub-type or characterization of the group. |
 | **[controls](#Controls)** | <sub>0..\*</sub> | [Control](#Control) | A collection of controls. |
 | **[groups](#Groups)** | <sub>0..\*</sub> | [Group](#Group) | A collection of control groups. |
 | **[params](#Params)** | <sub>0..\*</sub> | [Parameter](#Parameter) | Parameters providing a mechanism for the dynamic assignment of value(s) in a control. |
@@ -5247,7 +5250,7 @@ SystemUser ||--}o ImplementationCommonProperty : "props"
 | Name | Cardinality: | Type | Description |
 | --- | --- | --- | --- |
 | **[name](#Name)** | <sub>1..1</sub> | [ImplementationPropNameEnum](#ImplementationPropNameEnum) | A textual label, within a namespace, that identifies a specific attribute, characteristic, or quality of the property's containing object. |
-| **[_class](#Class)** | <sub>0..1</sub> | TokenType | A textual label that provides a sub-type or characterization of the property's name. |
+| **[class_](#Class)** | <sub>0..1</sub> | TokenType | A textual label that provides a sub-type or characterization of the property's name. |
 | **[group](#Group)** | <sub>0..1</sub> | TokenType | An identifier for relating distinct sets of properties. |
 | **[ns](#Ns)** | <sub>0..1</sub> | URIType | A namespace qualifying the property's name. This allows different organizations to associate distinct semantics with the same name. |
 | **[remarks](#Remarks)** | <sub>0..1</sub> | MarkupMultilineType | Additional commentary about the containing object. |
@@ -6276,6 +6279,9 @@ SspImplementedRequirement {
 SspStatement {
 
 }
+SystemCharacteristics {
+
+}
 SystemImplementation {
 
 }
@@ -6355,6 +6361,16 @@ SspStatement ||--}o ByComponent : "by-components"
 SspStatement ||--}o Link : "links"
 SspStatement ||--}o SspControlOriginationProp : "props"
 SspStatement ||--}o SspImplementedRequirementResponsibleRole : "responsible-roles"
+SystemCharacteristics ||--|o DataFlow : "data-flow"
+SystemCharacteristics ||--|o NetworkArchitecture : "network-architecture"
+SystemCharacteristics ||--|o SecurityImpactLevel : "security-impact-level"
+SystemCharacteristics ||--|| AuthorizationBoundary : "authorization-boundary"
+SystemCharacteristics ||--|| SystemInformation : "system-information"
+SystemCharacteristics ||--|| SystemStatus : "system-status"
+SystemCharacteristics ||--}o Link : "links"
+SystemCharacteristics ||--}o SspSystemCharacteristicsProp : "props"
+SystemCharacteristics ||--}o SspSystemCharacteristicsResponsibleParty : "responsible-parties"
+SystemCharacteristics ||--}| SystemId : "system-ids"
 SystemImplementation ||--}o LeveragedAuthorization : "leveraged-authorizations"
 SystemImplementation ||--}o Link : "links"
 SystemImplementation ||--}o Property : "props"
@@ -6407,6 +6423,7 @@ SystemInformation ||--}| InformationType : "information-types"
  *  **[SatisfiedControlImplementation](#SatisfiedControlImplementation)** : links  <sub>0..\*</sub> 
  *  **[SspImplementedRequirement](#SspImplementedRequirement)** : links  <sub>0..\*</sub> 
  *  **[SspStatement](#SspStatement)** : links  <sub>0..\*</sub> 
+ *  **[SystemCharacteristics](#SystemCharacteristics)** : links  <sub>0..\*</sub> 
  *  **[SystemImplementation](#SystemImplementation)** : links  <sub>0..\*</sub> 
  *  **[SystemInformation](#SystemInformation)** : links  <sub>0..\*</sub> 
 
@@ -6690,7 +6707,7 @@ Location ||--}o TelephoneNumber : "telephone-numbers"
 | **[ns](#Ns)** | <sub>0..1</sub> | URIType | A namespace qualifying the property's name. This allows different organizations to associate distinct semantics with the same name. |
 | **[remarks](#Remarks)** | <sub>0..1</sub> | MarkupMultilineType | Additional commentary about the containing object. |
 | **[uuid](#Uuid)** | <sub>0..1</sub> | UUIDType | A unique identifier for a property. |
-| **[_class](#Class)** | <sub>0..1</sub> | TokenType | A textual label that provides a sub-type or characterization of the property's name. |
+| **[class_](#Class)** | <sub>0..1</sub> | TokenType | A textual label that provides a sub-type or characterization of the property's name. |
 | **[value](#Value)** | <sub>1..1</sub> | string | Indicates the value of the attribute, characteristic, or quality. |
 
 #### Parents
@@ -7533,7 +7550,7 @@ Metadata ||--}o Role : "roles"
 | Name | Cardinality: | Type | Description |
 | --- | --- | --- | --- |
 | **[name](#Name)** | <sub>1..1</sub> | [MetadataPropNameEnum](#MetadataPropNameEnum) | A textual label, within a namespace, that identifies a specific attribute, characteristic, or quality of the property's containing object. |
-| **[_class](#Class)** | <sub>0..1</sub> | TokenType | A textual label that provides a sub-type or characterization of the property's name. |
+| **[class_](#Class)** | <sub>0..1</sub> | TokenType | A textual label that provides a sub-type or characterization of the property's name. |
 | **[group](#Group)** | <sub>0..1</sub> | TokenType | An identifier for relating distinct sets of properties. |
 | **[ns](#Ns)** | <sub>0..1</sub> | URIType | A namespace qualifying the property's name. This allows different organizations to associate distinct semantics with the same name. |
 | **[remarks](#Remarks)** | <sub>0..1</sub> | MarkupMultilineType | Additional commentary about the containing object. |
@@ -7645,6 +7662,7 @@ SystemCharacteristics ||--|o SecurityImpactLevel : "security-impact-level"
 SystemCharacteristics ||--|| AuthorizationBoundary : "authorization-boundary"
 SystemCharacteristics ||--|| SystemInformation : "system-information"
 SystemCharacteristics ||--|| SystemStatus : "system-status"
+SystemCharacteristics ||--}o Link : "links"
 SystemCharacteristics ||--}o SspSystemCharacteristicsProp : "props"
 SystemCharacteristics ||--}o SspSystemCharacteristicsResponsibleParty : "responsible-parties"
 SystemCharacteristics ||--}| SystemId : "system-ids"
@@ -8095,7 +8113,7 @@ ProfileGroup ||--}o Property : "props"
 | --- | --- | --- | --- |
 | **[id](#Id)** | <sub>1..1</sub> | TokenType | A unique identifier for the parameter. |
 | **[remarks](#Remarks)** | <sub>0..1</sub> | MarkupMultilineType | Additional commentary about the containing object. |
-| **[_class](#Class)** | <sub>0..1</sub> | TokenType | A textual label that provides a characterization of the type, purpose, use or scope of the parameter. |
+| **[class_](#Class)** | <sub>0..1</sub> | TokenType | A textual label that provides a characterization of the type, purpose, use or scope of the parameter. |
 | **[constraints](#Constraints)** | <sub>0..\*</sub> | [ParameterConstraint](#ParameterConstraint) | A formal or informal expression of a constraint or test. |
 | **[depends-on](#Depends-on)** | <sub>0..1</sub> | TokenType | (deprecated) Another parameter invoking this one. This construct has been deprecated and should not be used. |
 | **[guidelines](#Guidelines)** | <sub>0..\*</sub> | [ParameterGuideline](#ParameterGuideline) | A prose statement that provides a recommendation for the use of a parameter. |
@@ -8238,7 +8256,7 @@ Parameter ||--}o ParameterProperty : "props"
 | Name | Cardinality: | Type | Description |
 | --- | --- | --- | --- |
 | **[name](#Name)** | <sub>1..1</sub> | TokenType | A textual label, within a namespace, that identifies a specific attribute, characteristic, or quality of the property's containing object. |
-| **[_class](#Class)** | <sub>0..1</sub> | TokenType | A textual label that provides a sub-type or characterization of the property's name. |
+| **[class_](#Class)** | <sub>0..1</sub> | TokenType | A textual label that provides a sub-type or characterization of the property's name. |
 | **[group](#Group)** | <sub>0..1</sub> | TokenType | An identifier for relating distinct sets of properties. |
 | **[ns](#Ns)** | <sub>0..1</sub> | URIType | A namespace qualifying the property's name. This allows different organizations to associate distinct semantics with the same name. |
 | **[remarks](#Remarks)** | <sub>0..1</sub> | MarkupMultilineType | Additional commentary about the containing object. |
@@ -8345,7 +8363,7 @@ ProfileModify ||--}o ParameterSetting : "set-parameters"
 | --- | --- | --- | --- |
 | **[links](#Links)** | <sub>0..\*</sub> | [Link](#Link) | A list of links. |
 | **[props](#Props)** | <sub>0..\*</sub> | [Property](#Property) | A list of properties. |
-| **[_class](#Class)** | <sub>0..1</sub> | TokenType | A textual label that provides a sub-type or characterization. |
+| **[class_](#Class)** | <sub>0..1</sub> | TokenType | A textual label that provides a sub-type or characterization. |
 | **[constraints](#Constraints)** | <sub>0..\*</sub> | [ParameterConstraint](#ParameterConstraint) | A formal or informal expression of a constraint or test. |
 | **[depends-on](#Depends-on)** | <sub>0..1</sub> | TokenType | (deprecated) Another parameter invoking this one. This construct has been deprecated and should not be used. |
 | **[guidelines](#Guidelines)** | <sub>0..\*</sub> | [ParameterGuideline](#ParameterGuideline) | A prose statement that provides a recommendation for the use of a parameter. |
@@ -8455,7 +8473,7 @@ TermsAndConditions ||--}o TermsAndConditionsPart : "parts"
 | **[id](#Id)** | <sub>0..1</sub> | TokenType | A unique identifier for the part. |
 | **[name](#Name)** | <sub>1..1</sub> | TokenType | A textual label that uniquely identifies the part's semantic type, which exists in a value space qualified by the ns. |
 | **[links](#Links)** | <sub>0..\*</sub> | [Link](#Link) | A list of links. |
-| **[_class](#Class)** | <sub>0..1</sub> | TokenType | An optional textual providing a sub-type or characterization of the part's name, or a category to which the part belongs. |
+| **[class_](#Class)** | <sub>0..1</sub> | TokenType | An optional textual providing a sub-type or characterization of the part's name, or a category to which the part belongs. |
 | **[ns](#Ns)** | <sub>0..1</sub> | URIType | An optional namespace qualifying the part's name. This allows different organizations to associate distinct semantics with the same name. |
 | **[parts](#Parts)** | <sub>0..\*</sub> | [Part](#Part) | A collection of parts. |
 | **[props](#Props)** | <sub>0..\*</sub> | [PartProperty](#PartProperty) | A list of properties. |
@@ -8506,7 +8524,7 @@ Part ||--}o PartProperty : "props"
 | Name | Cardinality: | Type | Description |
 | --- | --- | --- | --- |
 | **[name](#Name)** | <sub>1..1</sub> | [PartPropNameEnum](#PartPropNameEnum) | A textual label, within a namespace, that identifies a specific attribute, characteristic, or quality of the property's containing object. |
-| **[_class](#Class)** | <sub>0..1</sub> | TokenType | A textual label that provides a sub-type or characterization of the property's name. |
+| **[class_](#Class)** | <sub>0..1</sub> | TokenType | A textual label that provides a sub-type or characterization of the property's name. |
 | **[group](#Group)** | <sub>0..1</sub> | TokenType | An identifier for relating distinct sets of properties. |
 | **[ns](#Ns)** | <sub>0..1</sub> | URIType | A namespace qualifying the property's name. This allows different organizations to associate distinct semantics with the same name. |
 | **[remarks](#Remarks)** | <sub>0..1</sub> | MarkupMultilineType | Additional commentary about the containing object. |
@@ -8663,7 +8681,7 @@ Party ||--}o TelephoneNumber : "telephone-numbers"
 | Name | Cardinality: | Type | Description |
 | --- | --- | --- | --- |
 | **[name](#Name)** | <sub>1..1</sub> | [PartyPropNameEnum](#PartyPropNameEnum) | A textual label, within a namespace, that identifies a specific attribute, characteristic, or quality of the property's containing object. |
-| **[_class](#Class)** | <sub>0..1</sub> | TokenType | A textual label that provides a sub-type or characterization of the property's name. |
+| **[class_](#Class)** | <sub>0..1</sub> | TokenType | A textual label that provides a sub-type or characterization of the property's name. |
 | **[group](#Group)** | <sub>0..1</sub> | TokenType | An identifier for relating distinct sets of properties. |
 | **[ns](#Ns)** | <sub>0..1</sub> | URIType | A namespace qualifying the property's name. This allows different organizations to associate distinct semantics with the same name. |
 | **[remarks](#Remarks)** | <sub>0..1</sub> | MarkupMultilineType | Additional commentary about the containing object. |
@@ -9108,7 +9126,7 @@ Addition ||--}o ProfileAlterationProperty : "props"
 | Name | Cardinality: | Type | Description |
 | --- | --- | --- | --- |
 | **[name](#Name)** | <sub>1..1</sub> | [AlterationPropNameEnum](#AlterationPropNameEnum) | A textual label, within a namespace, that identifies a specific attribute, characteristic, or quality of the property's containing object. |
-| **[_class](#Class)** | <sub>0..1</sub> | TokenType | A textual label that provides a sub-type or characterization of the property's name. |
+| **[class_](#Class)** | <sub>0..1</sub> | TokenType | A textual label that provides a sub-type or characterization of the property's name. |
 | **[group](#Group)** | <sub>0..1</sub> | TokenType | An identifier for relating distinct sets of properties. |
 | **[ns](#Ns)** | <sub>0..1</sub> | URIType | A namespace qualifying the property's name. This allows different organizations to associate distinct semantics with the same name. |
 | **[remarks](#Remarks)** | <sub>0..1</sub> | MarkupMultilineType | Additional commentary about the containing object. |
@@ -9216,7 +9234,7 @@ ProfileGroup ||--}o Property : "props"
 | --- | --- | --- | --- |
 | **[id](#Id)** | <sub>0..1</sub> | TokenType | A unique human-oriented identifier within a particular context. |
 | **[remarks](#Remarks)** | <sub>0..1</sub> | MarkupMultilineType | Additional commentary about the containing object. |
-| **[_class](#Class)** | <sub>0..1</sub> | TokenType | A textual label that provides a sub-type or characterization. |
+| **[class_](#Class)** | <sub>0..1</sub> | TokenType | A textual label that provides a sub-type or characterization. |
 | **[groups](#Groups)** | <sub>0..\*</sub> | [ProfileGroup](#ProfileGroup) | A collection of control groups. |
 | **[insert-controls](#Insert-controls)** | <sub>0..\*</sub> | [InsertControls](#InsertControls) | Specifies which controls to use in the containing context. |
 | **[params](#Params)** | <sub>0..\*</sub> | [Parameter](#Parameter) | Parameters providing a mechanism for the dynamic assignment of value(s) in a control. |
@@ -9448,6 +9466,9 @@ SspImplementedRequirement {
 SspStatement {
 
 }
+SystemCharacteristics {
+
+}
 SystemImplementation {
 
 }
@@ -9519,6 +9540,16 @@ SspStatement ||--}o ByComponent : "by-components"
 SspStatement ||--}o Link : "links"
 SspStatement ||--}o SspControlOriginationProp : "props"
 SspStatement ||--}o SspImplementedRequirementResponsibleRole : "responsible-roles"
+SystemCharacteristics ||--|o DataFlow : "data-flow"
+SystemCharacteristics ||--|o NetworkArchitecture : "network-architecture"
+SystemCharacteristics ||--|o SecurityImpactLevel : "security-impact-level"
+SystemCharacteristics ||--|| AuthorizationBoundary : "authorization-boundary"
+SystemCharacteristics ||--|| SystemInformation : "system-information"
+SystemCharacteristics ||--|| SystemStatus : "system-status"
+SystemCharacteristics ||--}o Link : "links"
+SystemCharacteristics ||--}o SspSystemCharacteristicsProp : "props"
+SystemCharacteristics ||--}o SspSystemCharacteristicsResponsibleParty : "responsible-parties"
+SystemCharacteristics ||--}| SystemId : "system-ids"
 SystemImplementation ||--}o LeveragedAuthorization : "leveraged-authorizations"
 SystemImplementation ||--}o Link : "links"
 SystemImplementation ||--}o Property : "props"
@@ -9536,7 +9567,7 @@ SystemInformation ||--}| InformationType : "information-types"
 | Name | Cardinality: | Type | Description |
 | --- | --- | --- | --- |
 | **[name](#Name)** | <sub>1..1</sub> | TokenType | A textual label, within a namespace, that identifies a specific attribute, characteristic, or quality of the property's containing object. |
-| **[_class](#Class)** | <sub>0..1</sub> | TokenType | A textual label that provides a sub-type or characterization of the property's name. |
+| **[class_](#Class)** | <sub>0..1</sub> | TokenType | A textual label that provides a sub-type or characterization of the property's name. |
 | **[group](#Group)** | <sub>0..1</sub> | TokenType | An identifier for relating distinct sets of properties. |
 | **[ns](#Ns)** | <sub>0..1</sub> | URIType | A namespace qualifying the property's name. This allows different organizations to associate distinct semantics with the same name. |
 | **[remarks](#Remarks)** | <sub>0..1</sub> | MarkupMultilineType | Additional commentary about the containing object. |
@@ -9579,6 +9610,7 @@ SystemInformation ||--}| InformationType : "information-types"
  *  **[SatisfiedControlImplementation](#SatisfiedControlImplementation)** : props  <sub>0..\*</sub> 
  *  **[SspImplementedRequirement](#SspImplementedRequirement)** : props  <sub>0..\*</sub> 
  *  **[SspStatement](#SspStatement)** : props  <sub>0..\*</sub> 
+ *  **[SystemCharacteristics](#SystemCharacteristics)** : props  <sub>0..\*</sub> 
  *  **[SystemImplementation](#SystemImplementation)** : props  <sub>0..\*</sub> 
  *  **[SystemInformation](#SystemInformation)** : props  <sub>0..\*</sub> 
 
@@ -10176,7 +10208,7 @@ Resource ||--}o ResourceProperty : "props"
 | Name | Cardinality: | Type | Description |
 | --- | --- | --- | --- |
 | **[name](#Name)** | <sub>1..1</sub> | [ResourcePropNameEnum](#ResourcePropNameEnum) | A textual label, within a namespace, that identifies a specific attribute, characteristic, or quality of the property's containing object. |
-| **[_class](#Class)** | <sub>0..1</sub> | TokenType | A textual label that provides a sub-type or characterization of the property's name. |
+| **[class_](#Class)** | <sub>0..1</sub> | TokenType | A textual label that provides a sub-type or characterization of the property's name. |
 | **[group](#Group)** | <sub>0..1</sub> | TokenType | An identifier for relating distinct sets of properties. |
 | **[ns](#Ns)** | <sub>0..1</sub> | URIType | A namespace qualifying the property's name. This allows different organizations to associate distinct semantics with the same name. |
 | **[remarks](#Remarks)** | <sub>0..1</sub> | MarkupMultilineType | Additional commentary about the containing object. |
@@ -10309,6 +10341,7 @@ SystemCharacteristics ||--|o SecurityImpactLevel : "security-impact-level"
 SystemCharacteristics ||--|| AuthorizationBoundary : "authorization-boundary"
 SystemCharacteristics ||--|| SystemInformation : "system-information"
 SystemCharacteristics ||--|| SystemStatus : "system-status"
+SystemCharacteristics ||--}o Link : "links"
 SystemCharacteristics ||--}o SspSystemCharacteristicsProp : "props"
 SystemCharacteristics ||--}o SspSystemCharacteristicsResponsibleParty : "responsible-parties"
 SystemCharacteristics ||--}| SystemId : "system-ids"
@@ -10840,7 +10873,7 @@ Revision ||--}o RevisionProperty : "props"
 | Name | Cardinality: | Type | Description |
 | --- | --- | --- | --- |
 | **[name](#Name)** | <sub>1..1</sub> | [RevisionPropNameEnum](#RevisionPropNameEnum) | A textual label, within a namespace, that identifies a specific attribute, characteristic, or quality of the property's containing object. |
-| **[_class](#Class)** | <sub>0..1</sub> | TokenType | A textual label that provides a sub-type or characterization of the property's name. |
+| **[class_](#Class)** | <sub>0..1</sub> | TokenType | A textual label that provides a sub-type or characterization of the property's name. |
 | **[group](#Group)** | <sub>0..1</sub> | TokenType | An identifier for relating distinct sets of properties. |
 | **[ns](#Ns)** | <sub>0..1</sub> | URIType | A namespace qualifying the property's name. This allows different organizations to associate distinct semantics with the same name. |
 | **[remarks](#Remarks)** | <sub>0..1</sub> | MarkupMultilineType | Additional commentary about the containing object. |
@@ -11283,6 +11316,7 @@ SystemCharacteristics ||--|o SecurityImpactLevel : "security-impact-level"
 SystemCharacteristics ||--|| AuthorizationBoundary : "authorization-boundary"
 SystemCharacteristics ||--|| SystemInformation : "system-information"
 SystemCharacteristics ||--|| SystemStatus : "system-status"
+SystemCharacteristics ||--}o Link : "links"
 SystemCharacteristics ||--}o SspSystemCharacteristicsProp : "props"
 SystemCharacteristics ||--}o SspSystemCharacteristicsResponsibleParty : "responsible-parties"
 SystemCharacteristics ||--}| SystemId : "system-ids"
@@ -11545,7 +11579,7 @@ SspSystemComponent ||--}o SspAllowsAuthenticatedScanProp : "props"
 | Name | Cardinality: | Type | Description |
 | --- | --- | --- | --- |
 | **[name](#Name)** | <sub>1..1</sub> | string | A textual label, within a namespace, that identifies a specific attribute, characteristic, or quality of the property's containing object. |
-| **[_class](#Class)** | <sub>0..1</sub> | TokenType | A textual label that provides a sub-type or characterization of the property's name. |
+| **[class_](#Class)** | <sub>0..1</sub> | TokenType | A textual label that provides a sub-type or characterization of the property's name. |
 | **[group](#Group)** | <sub>0..1</sub> | TokenType | An identifier for relating distinct sets of properties. |
 | **[ns](#Ns)** | <sub>0..1</sub> | URIType | A namespace qualifying the property's name. This allows different organizations to associate distinct semantics with the same name. |
 | **[remarks](#Remarks)** | <sub>0..1</sub> | MarkupMultilineType | Additional commentary about the containing object. |
@@ -11787,7 +11821,7 @@ SspStatement ||--}o SspImplementedRequirementResponsibleRole : "responsible-role
 | Name | Cardinality: | Type | Description |
 | --- | --- | --- | --- |
 | **[name](#Name)** | <sub>1..1</sub> | [ControlOriginationPropNameEnum](#ControlOriginationPropNameEnum) | A textual label, within a namespace, that identifies a specific attribute, characteristic, or quality of the property's containing object. |
-| **[_class](#Class)** | <sub>0..1</sub> | TokenType | A textual label that provides a sub-type or characterization of the property's name. |
+| **[class_](#Class)** | <sub>0..1</sub> | TokenType | A textual label that provides a sub-type or characterization of the property's name. |
 | **[group](#Group)** | <sub>0..1</sub> | TokenType | An identifier for relating distinct sets of properties. |
 | **[ns](#Ns)** | <sub>0..1</sub> | URIType | A namespace qualifying the property's name. This allows different organizations to associate distinct semantics with the same name. |
 | **[remarks](#Remarks)** | <sub>0..1</sub> | MarkupMultilineType | Additional commentary about the containing object. |
@@ -12209,6 +12243,7 @@ SystemCharacteristics ||--|o SecurityImpactLevel : "security-impact-level"
 SystemCharacteristics ||--|| AuthorizationBoundary : "authorization-boundary"
 SystemCharacteristics ||--|| SystemInformation : "system-information"
 SystemCharacteristics ||--|| SystemStatus : "system-status"
+SystemCharacteristics ||--}o Link : "links"
 SystemCharacteristics ||--}o SspSystemCharacteristicsProp : "props"
 SystemCharacteristics ||--}o SspSystemCharacteristicsResponsibleParty : "responsible-parties"
 SystemCharacteristics ||--}| SystemId : "system-ids"
@@ -12220,7 +12255,7 @@ SystemCharacteristics ||--}| SystemId : "system-ids"
 | Name | Cardinality: | Type | Description |
 | --- | --- | --- | --- |
 | **[name](#Name)** | <sub>1..1</sub> | [SystemCharacteristicsPropNameEnum](#SystemCharacteristicsPropNameEnum) | A textual label, within a namespace, that identifies a specific attribute, characteristic, or quality of the property's containing object. |
-| **[_class](#Class)** | <sub>0..1</sub> | TokenType | A textual label that provides a sub-type or characterization of the property's name. |
+| **[class_](#Class)** | <sub>0..1</sub> | TokenType | A textual label that provides a sub-type or characterization of the property's name. |
 | **[group](#Group)** | <sub>0..1</sub> | TokenType | An identifier for relating distinct sets of properties. |
 | **[ns](#Ns)** | <sub>0..1</sub> | URIType | A namespace qualifying the property's name. This allows different organizations to associate distinct semantics with the same name. |
 | **[remarks](#Remarks)** | <sub>0..1</sub> | MarkupMultilineType | Additional commentary about the containing object. |
@@ -12265,6 +12300,7 @@ SystemCharacteristics ||--|o SecurityImpactLevel : "security-impact-level"
 SystemCharacteristics ||--|| AuthorizationBoundary : "authorization-boundary"
 SystemCharacteristics ||--|| SystemInformation : "system-information"
 SystemCharacteristics ||--|| SystemStatus : "system-status"
+SystemCharacteristics ||--}o Link : "links"
 SystemCharacteristics ||--}o SspSystemCharacteristicsProp : "props"
 SystemCharacteristics ||--}o SspSystemCharacteristicsResponsibleParty : "responsible-parties"
 SystemCharacteristics ||--}| SystemId : "system-ids"
@@ -12428,7 +12464,7 @@ SystemInformation ||--}| InformationType : "information-types"
 | Name | Cardinality: | Type | Description |
 | --- | --- | --- | --- |
 | **[name](#Name)** | <sub>1..1</sub> | [SystemInformationPropNameEnum](#SystemInformationPropNameEnum) | A textual label, within a namespace, that identifies a specific attribute, characteristic, or quality of the property's containing object. |
-| **[_class](#Class)** | <sub>0..1</sub> | TokenType | A textual label that provides a sub-type or characterization of the property's name. |
+| **[class_](#Class)** | <sub>0..1</sub> | TokenType | A textual label that provides a sub-type or characterization of the property's name. |
 | **[group](#Group)** | <sub>0..1</sub> | TokenType | An identifier for relating distinct sets of properties. |
 | **[ns](#Ns)** | <sub>0..1</sub> | URIType | A namespace qualifying the property's name. This allows different organizations to associate distinct semantics with the same name. |
 | **[remarks](#Remarks)** | <sub>0..1</sub> | MarkupMultilineType | Additional commentary about the containing object. |
@@ -12591,6 +12627,9 @@ AuthorizationBoundary {
 DataFlow {
 
 }
+Link {
+
+}
 NetworkArchitecture {
 
 }
@@ -12636,6 +12675,7 @@ SystemCharacteristics ||--|o SecurityImpactLevel : "security-impact-level"
 SystemCharacteristics ||--|| AuthorizationBoundary : "authorization-boundary"
 SystemCharacteristics ||--|| SystemInformation : "system-information"
 SystemCharacteristics ||--|| SystemStatus : "system-status"
+SystemCharacteristics ||--}o Link : "links"
 SystemCharacteristics ||--}o SspSystemCharacteristicsProp : "props"
 SystemCharacteristics ||--}o SspSystemCharacteristicsResponsibleParty : "responsible-parties"
 SystemCharacteristics ||--}| SystemId : "system-ids"
@@ -12659,6 +12699,7 @@ SystemSecurityPlan ||--|| SystemImplementation : "system-implementation"
 | **[authorization-boundary](#Authorization-boundary)** | <sub>1..1</sub> | [AuthorizationBoundary](#AuthorizationBoundary) | A description of this system's authorization boundary, optionally supplemented with diagrams that illustrate the authorization boundary. |
 | **[data-flow](#Data-flow)** | <sub>0..1</sub> | [DataFlow](#DataFlow) | A description of the logical flow of information within the system and across its boundaries, optionally supplemented with diagrams. |
 | **[date-authorized](#Date-authorized)** | <sub>0..1</sub> | string | The date the system received its authorization. |
+| **[links](#Links)** | <sub>0..\*</sub> | [Link](#Link) | A list of links. |
 | **[network-architecture](#Network-architecture)** | <sub>0..1</sub> | [NetworkArchitecture](#NetworkArchitecture) | A description of the system's network architecture, optionally supplemented with diagrams that illustrate the network architecture. |
 | **[props](#Props)** | <sub>0..\*</sub> | [SspSystemCharacteristicsProp](#SspSystemCharacteristicsProp) | A list of properties. |
 | **[remarks](#Remarks)** | <sub>0..1</sub> | MarkupMultilineType | Additional commentary about the containing object. |
@@ -12827,6 +12868,7 @@ SystemCharacteristics ||--|o SecurityImpactLevel : "security-impact-level"
 SystemCharacteristics ||--|| AuthorizationBoundary : "authorization-boundary"
 SystemCharacteristics ||--|| SystemInformation : "system-information"
 SystemCharacteristics ||--|| SystemStatus : "system-status"
+SystemCharacteristics ||--}o Link : "links"
 SystemCharacteristics ||--}o SspSystemCharacteristicsProp : "props"
 SystemCharacteristics ||--}o SspSystemCharacteristicsResponsibleParty : "responsible-parties"
 SystemCharacteristics ||--}| SystemId : "system-ids"
@@ -12961,6 +13003,7 @@ SystemCharacteristics ||--|o SecurityImpactLevel : "security-impact-level"
 SystemCharacteristics ||--|| AuthorizationBoundary : "authorization-boundary"
 SystemCharacteristics ||--|| SystemInformation : "system-information"
 SystemCharacteristics ||--|| SystemStatus : "system-status"
+SystemCharacteristics ||--}o Link : "links"
 SystemCharacteristics ||--}o SspSystemCharacteristicsProp : "props"
 SystemCharacteristics ||--}o SspSystemCharacteristicsResponsibleParty : "responsible-parties"
 SystemCharacteristics ||--}| SystemId : "system-ids"
@@ -13036,6 +13079,7 @@ SystemCharacteristics ||--|o SecurityImpactLevel : "security-impact-level"
 SystemCharacteristics ||--|| AuthorizationBoundary : "authorization-boundary"
 SystemCharacteristics ||--|| SystemInformation : "system-information"
 SystemCharacteristics ||--|| SystemStatus : "system-status"
+SystemCharacteristics ||--}o Link : "links"
 SystemCharacteristics ||--}o SspSystemCharacteristicsProp : "props"
 SystemCharacteristics ||--}o SspSystemCharacteristicsResponsibleParty : "responsible-parties"
 SystemCharacteristics ||--}| SystemId : "system-ids"
@@ -13093,6 +13137,7 @@ SystemCharacteristics ||--|o SecurityImpactLevel : "security-impact-level"
 SystemCharacteristics ||--|| AuthorizationBoundary : "authorization-boundary"
 SystemCharacteristics ||--|| SystemInformation : "system-information"
 SystemCharacteristics ||--|| SystemStatus : "system-status"
+SystemCharacteristics ||--}o Link : "links"
 SystemCharacteristics ||--}o SspSystemCharacteristicsProp : "props"
 SystemCharacteristics ||--}o SspSystemCharacteristicsResponsibleParty : "responsible-parties"
 SystemCharacteristics ||--}| SystemId : "system-ids"
@@ -13464,7 +13509,7 @@ TermsAndConditionsPart ||--}o TermsAndConditionsPart : "parts"
 | Name | Cardinality: | Type | Description |
 | --- | --- | --- | --- |
 | **[name](#Name)** | <sub>1..1</sub> | [TermsAndConditionsPartNameEnum](#TermsAndConditionsPartNameEnum) | A textual label that uniquely identifies an attribute or semantic type. |
-| **[_class](#Class)** | <sub>0..1</sub> | TokenType | A textual label that provides a sub-type or characterization. |
+| **[class_](#Class)** | <sub>0..1</sub> | TokenType | A textual label that provides a sub-type or characterization. |
 | **[ns](#Ns)** | <sub>0..1</sub> | URIType | An optional namespace qualifying a name. Allows different organizations to associate distinct semantics with the same name. |
 | **[prose](#Prose)** | <sub>0..1</sub> | MarkupMultilineType | Permits multiple paragraphs, lists, tables etc. |
 | **[title](#Title)** | <sub>0..1</sub> | MarkupLineType | A human-readable name or title. |
@@ -13907,7 +13952,7 @@ OscalCommon ||--}o Property : "props"
 | <a id="ControlResponsibilityUuid"></a>**ControlResponsibility_uuid**<br/>A machine-oriented, globally unique identifier with a cross-instance scope. | <sub>1..1</sub><br/>UUIDType |  |
 | <a id="ControlSelectionExclude-controls"></a>**ControlSelection_exclude-controls**<br/>Control-selection entries to exclude in the containing OSCAL context. The concrete entry class is selected by class-level slot_usage. | <sub>0..\*</sub><br/>[AssessmentSelectControlById](#AssessmentSelectControlById) |  |
 | <a id="ControlSelectionInclude-controls"></a>**ControlSelection_include-controls**<br/>Control-selection entries to include in the containing OSCAL context. The concrete entry class is selected by class-level slot_usage. | <sub>0..\*</sub><br/>[AssessmentSelectControlById](#AssessmentSelectControlById) |  |
-| <a id="ControlClass"></a>**Control__class**<br/>A textual label that provides a sub-type or characterization of the control. | <sub>0..1</sub><br/>TokenType |  |
+| <a id="ControlClass"></a>**Control_class_**<br/>A textual label that provides a sub-type or characterization of the control. | <sub>0..1</sub><br/>TokenType |  |
 | <a id="ControlId"></a>**Control_id**<br/>Identifies a control such that it can be referenced in the defining catalog and other OSCAL instances (e.g., profiles). | <sub>1..1</sub><br/>TokenType |  |
 | <a id="ControlTitle"></a>**Control_title**<br/>A name given to the control, which may be used by a tool for display and navigation. | <sub>1..1</sub><br/>MarkupLineType |  |
 | <a id="CoverageTarget-coverage"></a>**Coverage_target-coverage**<br/>Percentage coverage of targets by sources. | <sub>1..1</sub><br/>float |  |
@@ -13932,7 +13977,7 @@ OscalCommon ||--}o Property : "props"
 | <a id="FindingUuid"></a>**Finding_uuid**<br/>A machine-oriented, globally unique identifier with a cross-instance scope. | <sub>1..1</sub><br/>UUIDType |  |
 | <a id="GapSummaryUnmapped-controls"></a>**GapSummary_unmapped-controls**<br/>Controls that remain unmapped. | <sub>1..\*</sub><br/>[SelectControlById](#SelectControlById) |  |
 | <a id="GapSummaryUuid"></a>**GapSummary_uuid**<br/>A machine-oriented, globally unique identifier with a cross-instance scope. | <sub>1..1</sub><br/>UUIDType |  |
-| <a id="GroupClass"></a>**Group__class**<br/>A textual label that provides a sub-type or characterization of the group. | <sub>0..1</sub><br/>TokenType |  |
+| <a id="GroupClass"></a>**Group_class_**<br/>A textual label that provides a sub-type or characterization of the group. | <sub>0..1</sub><br/>TokenType |  |
 | <a id="GroupId"></a>**Group_id**<br/>Identifies the group for the purpose of cross-linking within the defining instance or from other instances that reference the catalog. | <sub>0..1</sub><br/>TokenType |  |
 | <a id="GroupTitle"></a>**Group_title**<br/>A name given to the group, which may be used by a tool for display and navigation. | <sub>1..1</sub><br/>MarkupLineType |  |
 | <a id="HashAlgorithm"></a>**Hash_algorithm**<br/>The digest method by which a hash is derived. Recommended values are in HashAlgorithmEnum; other values are permitted (OSCAL allow-other="yes"). | <sub>1..1</sub><br/>string |  |
@@ -13986,7 +14031,7 @@ OscalCommon ||--}o Property : "props"
 | <a id="LinkRel"></a>**Link_rel**<br/>Describes the type of relationship provided by the link's hypertext reference. This can be an indicator of the link's purpose. | <sub>0..1</sub><br/>TokenType |  |
 | <a id="LocalObjectiveControl-id"></a>**LocalObjective_control-id**<br/>A reference to a control by its identifier. | <sub>1..1</sub><br/>TokenType |  |
 | <a id="LocalObjectiveParts"></a>**LocalObjective_parts**<br/>A collection of parts. | <sub>1..\*</sub><br/>[ControlPart](#ControlPart) |  |
-| <a id="LocationPropertyClass"></a>**LocationProperty__class**<br/>A textual label that provides a sub-type or characterization. | <sub>0..1</sub><br/>TokenType |  |
+| <a id="LocationPropertyClass"></a>**LocationProperty_class_**<br/>A textual label that provides a sub-type or characterization. | <sub>0..1</sub><br/>TokenType |  |
 | <a id="LocationPropertyName"></a>**LocationProperty_name**<br/>A textual label that uniquely identifies an attribute or semantic type. | <sub>1..1</sub><br/>[LocationPropNameEnum](#LocationPropNameEnum) |  |
 | <a id="LocationPropertyValue"></a>**LocationProperty_value**<br/>The value associated with the containing object. | <sub>1..1</sub><br/>string |  |
 | <a id="LocationProps"></a>**Location_props**<br/>A list of properties. | <sub>0..\*</sub><br/>[LocationProperty](#LocationProperty) |  |
@@ -14041,11 +14086,11 @@ OscalCommon ||--}o Property : "props"
 | <a id="ParameterGuidelineProse"></a>**ParameterGuideline_prose**<br/>Prose permits multiple paragraphs, lists, tables etc. | <sub>1..1</sub><br/>MarkupMultilineType |  |
 | <a id="ParameterPropertyName"></a>**ParameterProperty_name**<br/>A textual label that uniquely identifies an attribute or semantic type. | <sub>1..1</sub><br/>TokenType |  |
 | <a id="ParameterSettingParam-id"></a>**ParameterSetting_param-id**<br/>The identifier for the parameter being set or referenced. | <sub>1..1</sub><br/>TokenType |  |
-| <a id="ParameterClass"></a>**Parameter__class**<br/>A textual label that provides a characterization of the type, purpose, use or scope of the parameter. | <sub>0..1</sub><br/>TokenType |  |
+| <a id="ParameterClass"></a>**Parameter_class_**<br/>A textual label that provides a characterization of the type, purpose, use or scope of the parameter. | <sub>0..1</sub><br/>TokenType |  |
 | <a id="ParameterId"></a>**Parameter_id**<br/>A unique identifier for the parameter. | <sub>1..1</sub><br/>TokenType |  |
 | <a id="ParameterProps"></a>**Parameter_props**<br/>A list of properties. | <sub>0..\*</sub><br/>[ParameterProperty](#ParameterProperty) |  |
 | <a id="PartPropertyName"></a>**PartProperty_name**<br/>A textual label that uniquely identifies an attribute or semantic type. | <sub>1..1</sub><br/>[PartPropNameEnum](#PartPropNameEnum) |  |
-| <a id="PartClass"></a>**Part__class**<br/>An optional textual providing a sub-type or characterization of the part's name, or a category to which the part belongs. | <sub>0..1</sub><br/>TokenType |  |
+| <a id="PartClass"></a>**Part_class_**<br/>An optional textual providing a sub-type or characterization of the part's name, or a category to which the part belongs. | <sub>0..1</sub><br/>TokenType |  |
 | <a id="PartId"></a>**Part_id**<br/>A unique identifier for the part. | <sub>0..1</sub><br/>TokenType |  |
 | <a id="PartName"></a>**Part_name**<br/>A textual label that uniquely identifies the part's semantic type, which exists in a value space qualified by the ns. | <sub>1..1</sub><br/>TokenType |  |
 | <a id="PartNs"></a>**Part_ns**<br/>An optional namespace qualifying the part's name. This allows different organizations to associate distinct semantics with the same name. | <sub>0..1</sub><br/>URIType |  |
@@ -14080,7 +14125,7 @@ OscalCommon ||--}o Property : "props"
 | <a id="ProfileImports"></a>**Profile_imports**<br/>Designates source catalog or profile resources to be imported into the profile. | <sub>1..\*</sub><br/>[ProfileImport](#ProfileImport) |  |
 | <a id="ProfileMetadata"></a>**Profile_metadata**<br/>Provides information about the containing document, and defines concepts shared across the document. | <sub>1..1</sub><br/>[Metadata](#Metadata) |  |
 | <a id="ProfileUuid"></a>**Profile_uuid**<br/>A machine-oriented, globally unique identifier with a cross-instance scope. | <sub>1..1</sub><br/>UUIDType |  |
-| <a id="PropertyClass"></a>**Property__class**<br/>A textual label that provides a sub-type or characterization of the property's name. | <sub>0..1</sub><br/>TokenType |  |
+| <a id="PropertyClass"></a>**Property_class_**<br/>A textual label that provides a sub-type or characterization of the property's name. | <sub>0..1</sub><br/>TokenType |  |
 | <a id="PropertyName"></a>**Property_name**<br/>A textual label, within a namespace, that identifies a specific attribute, characteristic, or quality of the property's containing object. | <sub>1..1</sub><br/>TokenType |  |
 | <a id="PropertyNs"></a>**Property_ns**<br/>A namespace qualifying the property's name. This allows different organizations to associate distinct semantics with the same name. | <sub>0..1</sub><br/>URIType |  |
 | <a id="PropertyUuid"></a>**Property_uuid**<br/>A unique identifier for a property. | <sub>0..1</sub><br/>UUIDType |  |
@@ -14232,7 +14277,6 @@ OscalCommon ||--}o Property : "props"
 | <a id="UsesComponentComponent-uuid"></a>**UsesComponent_component-uuid**<br/>A UUID reference to a component. | <sub>1..1</sub><br/>UUIDType |  |
 | <a id="WithinDateRangeEnd"></a>**WithinDateRange_end**<br/>The end date/time. | <sub>1..1</sub><br/>DateTimeWithTimezoneType |  |
 | <a id="WithinDateRangeStart"></a>**WithinDateRange_start**<br/>The start date/time. | <sub>1..1</sub><br/>DateTimeWithTimezoneType |  |
-| <a id="Class"></a>**_class**<br/>A textual label that provides a sub-type or characterization. | <sub>0..1</sub><br/>TokenType | [AssessmentPart](#AssessmentPart), [Control](#Control), [ControlPart](#ControlPart), [Group](#Group), [ImplementationCommonProperty](#ImplementationCommonProperty), [LocationProperty](#LocationProperty), [MetadataProperty](#MetadataProperty), [Parameter](#Parameter), [ParameterProperty](#ParameterProperty), [ParameterSetting](#ParameterSetting), [Part](#Part), [PartProperty](#PartProperty), [PartyProperty](#PartyProperty), [ProfileAlterationProperty](#ProfileAlterationProperty), [ProfileGroup](#ProfileGroup), [Property](#Property), [ResourceProperty](#ResourceProperty), [RevisionProperty](#RevisionProperty), [SspAllowsAuthenticatedScanProp](#SspAllowsAuthenticatedScanProp), [SspControlOriginationProp](#SspControlOriginationProp), [SspSystemCharacteristicsProp](#SspSystemCharacteristicsProp), [SspSystemInformationProp](#SspSystemInformationProp), [TermsAndConditionsPart](#TermsAndConditionsPart) |
 | <a id="Actions"></a>**actions**<br/>An action applied by a role within a given party to the content. | <sub>0..\*</sub><br/>[Action](#Action) | [Metadata](#Metadata) |
 | <a id="Activities"></a>**activities**<br/>A collection of activities. | <sub>0..\*</sub><br/>[Activity](#Activity) | [AssessmentResultsLocalDefinitions](#AssessmentResultsLocalDefinitions), [LocalDefinitions](#LocalDefinitions) |
 | <a id="Activity-uuid"></a>**activity-uuid**<br/>A UUID reference to an activity. | <sub>0..1</sub><br/>UUIDType | [AssociatedActivity](#AssociatedActivity) |
@@ -14276,6 +14320,7 @@ OscalCommon ||--}o Property : "props"
 | <a id="Choice"></a>**choice**<br/>A value selection among several such options. | <sub>0..\*</sub><br/>MarkupLineType | [ParameterSelection](#ParameterSelection) |
 | <a id="Citation"></a>**citation**<br/>An optional citation consisting of end note text using structured markup. | <sub>0..1</sub><br/>[Citation](#Citation) | [Resource](#Resource) |
 | <a id="City"></a>**city**<br/>City, town or geographical region for the mailing address. | <sub>0..1</sub><br/>string | [Address](#Address) |
+| <a id="Class"></a>**class_**<br/>A textual label that provides a sub-type or characterization. | <sub>0..1</sub><br/>TokenType | [AssessmentPart](#AssessmentPart), [Control](#Control), [ControlPart](#ControlPart), [Group](#Group), [ImplementationCommonProperty](#ImplementationCommonProperty), [LocationProperty](#LocationProperty), [MetadataProperty](#MetadataProperty), [Parameter](#Parameter), [ParameterProperty](#ParameterProperty), [ParameterSetting](#ParameterSetting), [Part](#Part), [PartProperty](#PartProperty), [PartyProperty](#PartyProperty), [ProfileAlterationProperty](#ProfileAlterationProperty), [ProfileGroup](#ProfileGroup), [Property](#Property), [ResourceProperty](#ResourceProperty), [RevisionProperty](#RevisionProperty), [SspAllowsAuthenticatedScanProp](#SspAllowsAuthenticatedScanProp), [SspControlOriginationProp](#SspControlOriginationProp), [SspSystemCharacteristicsProp](#SspSystemCharacteristicsProp), [SspSystemInformationProp](#SspSystemInformationProp), [TermsAndConditionsPart](#TermsAndConditionsPart) |
 | <a id="Collected"></a>**collected**<br/>Date/time stamp identifying when the finding information was collected. | <sub>0..1</sub><br/>DateTimeWithTimezoneType | [Observation](#Observation) |
 | <a id="Combine"></a>**combine**<br/>Defines how to resolve duplicate instances of the same control. | <sub>0..1</sub><br/>[CombinationRule](#CombinationRule) | [ProfileMerge](#ProfileMerge) |
 | <a id="Component-definition"></a>**component-definition**<br/>The root component-definition object. | <sub>0..1</sub><br/>[ComponentDefinition](#ComponentDefinition) | [ComponentDefinitionDocument](#ComponentDefinitionDocument) |
@@ -14355,7 +14400,7 @@ OscalCommon ||--}o Property : "props"
 | <a id="Last-modified"></a>**last-modified**<br/>The date and time the document was last modified. | <sub>0..1</sub><br/>DateTimeWithTimezoneType | [Metadata](#Metadata), [Revision](#Revision) |
 | <a id="Leveraged-authorizations"></a>**leveraged-authorizations**<br/>A description of another authorized system from which this system inherits capabilities that satisfy security requirements. | <sub>0..\*</sub><br/>[LeveragedAuthorization](#LeveragedAuthorization) | [SystemImplementation](#SystemImplementation) |
 | <a id="Lifecycle"></a>**lifecycle**<br/>Identifies whether this is a recommendation or an actual plan. Recommended values are in ResponseLifecycleEnum; other values are permitted (OSCAL allow-other="yes"). | <sub>0..1</sub><br/>string | [Response](#Response) |
-| <a id="Links"></a>**links**<br/>A list of links. | <sub>0..\*</sub><br/>[Link](#Link) | [Action](#Action), [Activity](#Activity), [Addition](#Addition), [AssessmentLogEntry](#AssessmentLogEntry), [AssessmentMethod](#AssessmentMethod), [AssessmentPart](#AssessmentPart), [AssessmentPlatform](#AssessmentPlatform), [AssessmentSubject](#AssessmentSubject), [AssessmentSubjectPlaceholder](#AssessmentSubjectPlaceholder), [AssociatedActivity](#AssociatedActivity), [AuthorizationBoundary](#AuthorizationBoundary), [ByComponent](#ByComponent), [Capability](#Capability), [Characterization](#Characterization), [Citation](#Citation), [Control](#Control), [ControlImplementationSet](#ControlImplementationSet), [ControlObjectiveSelection](#ControlObjectiveSelection), [ControlPart](#ControlPart), [ControlResponsibility](#ControlResponsibility), [ControlSelection](#ControlSelection), [DataFlow](#DataFlow), [DefinedComponent](#DefinedComponent), [Diagram](#Diagram), [Export](#Export), [Facet](#Facet), [Finding](#Finding), [FindingTarget](#FindingTarget), [Group](#Group), [HasPropsAndLinks](#HasPropsAndLinks), [ImpactLevel](#ImpactLevel), [ImplementationResponsibleParty](#ImplementationResponsibleParty), [ImplementationResponsibleRole](#ImplementationResponsibleRole), [ImplementedComponent](#ImplementedComponent), [ImplementedControlStatement](#ImplementedControlStatement), [ImplementedRequirement](#ImplementedRequirement), [InformationType](#InformationType), [InheritedControlImplementation](#InheritedControlImplementation), [InventoryItem](#InventoryItem), [LeveragedAuthorization](#LeveragedAuthorization), [LocalObjective](#LocalObjective), [Location](#Location), [Map](#Map), [Mapping](#Mapping), [MappingItem](#MappingItem), [MappingProvenance](#MappingProvenance), [MappingResourceReference](#MappingResourceReference), [Metadata](#Metadata), [MitigatingFactor](#MitigatingFactor), [NetworkArchitecture](#NetworkArchitecture), [Observation](#Observation), [OriginActor](#OriginActor), [OscalCommon](#OscalCommon), [Parameter](#Parameter), [ParameterSetting](#ParameterSetting), [Part](#Part), [Party](#Party), [PoamItem](#PoamItem), [ProfileGroup](#ProfileGroup), [ProvidedControlImplementation](#ProvidedControlImplementation), [RelatedTask](#RelatedTask), [RelevantEvidence](#RelevantEvidence), [RequiredAsset](#RequiredAsset), [Response](#Response), [ResponsibleParty](#ResponsibleParty), [ResponsibleRole](#ResponsibleRole), [Result](#Result), [ReviewedControls](#ReviewedControls), [Revision](#Revision), [Risk](#Risk), [RiskLogEntry](#RiskLogEntry), [RiskResponseReference](#RiskResponseReference), [Role](#Role), [SatisfiedControlImplementation](#SatisfiedControlImplementation), [SelectSubjectById](#SelectSubjectById), [SspByComponentResponsibleRole](#SspByComponentResponsibleRole), [SspImplementedRequirement](#SspImplementedRequirement), [SspImplementedRequirementResponsibleRole](#SspImplementedRequirementResponsibleRole), [SspInventoryItem](#SspInventoryItem), [SspStatement](#SspStatement), [SspSystemCharacteristicsResponsibleParty](#SspSystemCharacteristicsResponsibleParty), [SspSystemComponent](#SspSystemComponent), [Step](#Step), [SubjectReference](#SubjectReference), [SystemComponent](#SystemComponent), [SystemImplementation](#SystemImplementation), [SystemInformation](#SystemInformation), [SystemUser](#SystemUser), [Task](#Task), [TermsAndConditionsPart](#TermsAndConditionsPart), [UsesComponent](#UsesComponent) |
+| <a id="Links"></a>**links**<br/>A list of links. | <sub>0..\*</sub><br/>[Link](#Link) | [Action](#Action), [Activity](#Activity), [Addition](#Addition), [AssessmentLogEntry](#AssessmentLogEntry), [AssessmentMethod](#AssessmentMethod), [AssessmentPart](#AssessmentPart), [AssessmentPlatform](#AssessmentPlatform), [AssessmentSubject](#AssessmentSubject), [AssessmentSubjectPlaceholder](#AssessmentSubjectPlaceholder), [AssociatedActivity](#AssociatedActivity), [AuthorizationBoundary](#AuthorizationBoundary), [ByComponent](#ByComponent), [Capability](#Capability), [Characterization](#Characterization), [Citation](#Citation), [Control](#Control), [ControlImplementationSet](#ControlImplementationSet), [ControlObjectiveSelection](#ControlObjectiveSelection), [ControlPart](#ControlPart), [ControlResponsibility](#ControlResponsibility), [ControlSelection](#ControlSelection), [DataFlow](#DataFlow), [DefinedComponent](#DefinedComponent), [Diagram](#Diagram), [Export](#Export), [Facet](#Facet), [Finding](#Finding), [FindingTarget](#FindingTarget), [Group](#Group), [HasPropsAndLinks](#HasPropsAndLinks), [ImpactLevel](#ImpactLevel), [ImplementationResponsibleParty](#ImplementationResponsibleParty), [ImplementationResponsibleRole](#ImplementationResponsibleRole), [ImplementedComponent](#ImplementedComponent), [ImplementedControlStatement](#ImplementedControlStatement), [ImplementedRequirement](#ImplementedRequirement), [InformationType](#InformationType), [InheritedControlImplementation](#InheritedControlImplementation), [InventoryItem](#InventoryItem), [LeveragedAuthorization](#LeveragedAuthorization), [LocalObjective](#LocalObjective), [Location](#Location), [Map](#Map), [Mapping](#Mapping), [MappingItem](#MappingItem), [MappingProvenance](#MappingProvenance), [MappingResourceReference](#MappingResourceReference), [Metadata](#Metadata), [MitigatingFactor](#MitigatingFactor), [NetworkArchitecture](#NetworkArchitecture), [Observation](#Observation), [OriginActor](#OriginActor), [OscalCommon](#OscalCommon), [Parameter](#Parameter), [ParameterSetting](#ParameterSetting), [Part](#Part), [Party](#Party), [PoamItem](#PoamItem), [ProfileGroup](#ProfileGroup), [ProvidedControlImplementation](#ProvidedControlImplementation), [RelatedTask](#RelatedTask), [RelevantEvidence](#RelevantEvidence), [RequiredAsset](#RequiredAsset), [Response](#Response), [ResponsibleParty](#ResponsibleParty), [ResponsibleRole](#ResponsibleRole), [Result](#Result), [ReviewedControls](#ReviewedControls), [Revision](#Revision), [Risk](#Risk), [RiskLogEntry](#RiskLogEntry), [RiskResponseReference](#RiskResponseReference), [Role](#Role), [SatisfiedControlImplementation](#SatisfiedControlImplementation), [SelectSubjectById](#SelectSubjectById), [SspByComponentResponsibleRole](#SspByComponentResponsibleRole), [SspImplementedRequirement](#SspImplementedRequirement), [SspImplementedRequirementResponsibleRole](#SspImplementedRequirementResponsibleRole), [SspInventoryItem](#SspInventoryItem), [SspStatement](#SspStatement), [SspSystemCharacteristicsResponsibleParty](#SspSystemCharacteristicsResponsibleParty), [SspSystemComponent](#SspSystemComponent), [Step](#Step), [SubjectReference](#SubjectReference), [SystemCharacteristics](#SystemCharacteristics), [SystemComponent](#SystemComponent), [SystemImplementation](#SystemImplementation), [SystemInformation](#SystemInformation), [SystemUser](#SystemUser), [Task](#Task), [TermsAndConditionsPart](#TermsAndConditionsPart), [UsesComponent](#UsesComponent) |
 | <a id="Local-definitions"></a>**local-definitions**<br/>Used to define data objects that do not appear in the referenced SSP. | <sub>0..1</sub><br/>[LocalDefinitions](#LocalDefinitions) | [AssessmentPlan](#AssessmentPlan), [AssessmentResults](#AssessmentResults), [PlanOfActionAndMilestones](#PlanOfActionAndMilestones), [Result](#Result) |
 | <a id="Location-uuids"></a>**location-uuids**<br/>Reference to a location by UUID. | <sub>0..\*</sub><br/>UUIDType | [Party](#Party) |
 | <a id="Locations"></a>**locations**<br/>A physical point of presence, which may be associated with people, organizations, or other concepts within the current or linked OSCAL document. | <sub>0..\*</sub><br/>[Location](#Location) | [Metadata](#Metadata) |
@@ -14730,12 +14775,15 @@ Curated component type values. Other values are permitted (OSCAL allow-other="ye
 | plan | None |  |
 | policy | None |  |
 | process-procedure | None |  |
+| region | None |  |
+| resource-container | None |  |
 | service | None |  |
 | software | None |  |
 | standard | None |  |
 | system | None |  |
 | this-system | None |  |
 | validation | None |  |
+| zone | None |  |
 
 ### ConfidenceCategoryEnum
 
@@ -14833,11 +14881,16 @@ Allowed OSCAL property names for catalog controls.
 
 ### ControlPropStatusValueEnum
 
-Allowed OSCAL status property values for catalog controls.
+Curated OSCAL status property values for catalog controls. Other values are permitted (OSCAL allow-other="yes").
 
 | Text | Meaning: | Description |
 | --- | --- | --- |
-| Withdrawn | None |  |
+| conditional | None |  |
+| deprecated | None |  |
+| experimental | None |  |
+| modified | None |  |
+| reserved | None |  |
+| superseded | None |  |
 | withdrawn | None |  |
 
 ### ControlStatementPartNameEnum
@@ -15163,7 +15216,12 @@ Curated OSCAL location class values for data-center type. Other values are permi
 | Text | Meaning: | Description |
 | --- | --- | --- |
 | alternate | None |  |
+| availability | None |  |
+| failure | None |  |
+| fault | None |  |
+| peer | None |  |
 | primary | None |  |
+| sub | None |  |
 
 ### LocationPropNameEnum
 
@@ -15183,7 +15241,15 @@ Curated OSCAL location type property values. Other values are permitted (OSCAL a
 
 | Text | Meaning: | Description |
 | --- | --- | --- |
+| cdn | None |  |
 | data-center | None |  |
+| domain | None |  |
+| edge | None |  |
+| headquarters | None |  |
+| region | None |  |
+| regional-office | None |  |
+| satellite-office | None |  |
+| zone | None |  |
 
 ### MappingMethodEnum
 

@@ -68,6 +68,14 @@ export enum LocationPropNameEnum {
 export enum LocationPropTypeEnum {
     
     data_center = "data-center",
+    region = "region",
+    zone = "zone",
+    headquarters = "headquarters",
+    regional_office = "regional-office",
+    satellite_office = "satellite-office",
+    edge = "edge",
+    cdn = "cdn",
+    domain = "domain",
 };
 /**
 * Curated OSCAL location class values for data-center type. Other values are permitted (OSCAL allow-other="yes").
@@ -77,6 +85,11 @@ export enum LocationDataCenterClassEnum {
     
     primary = "primary",
     alternate = "alternate",
+    peer = "peer",
+    availability = "availability",
+    sub = "sub",
+    fault = "fault",
+    failure = "failure",
 };
 /**
 * Curated external identifier scheme values for metadata parties. Other values are permitted (OSCAL allow-other="yes").
@@ -237,12 +250,17 @@ export enum ControlPropNameEnum {
     status = "status",
 };
 /**
-* Allowed OSCAL status property values for catalog controls.
+* Curated OSCAL status property values for catalog controls. Other values are permitted (OSCAL allow-other="yes").
 */
 export enum ControlPropStatusValueEnum {
     
     withdrawn = "withdrawn",
-    Withdrawn = "Withdrawn",
+    reserved = "reserved",
+    deprecated = "deprecated",
+    conditional = "conditional",
+    superseded = "superseded",
+    modified = "modified",
+    experimental = "experimental",
 };
 /**
 * Curated OSCAL link relation values for catalog controls. Other values are permitted (OSCAL allow-other="yes").
@@ -510,6 +528,9 @@ export enum ComponentTypeEnum {
     standard = "standard",
     validation = "validation",
     network = "network",
+    region = "region",
+    zone = "zone",
+    resource_container = "resource-container",
 };
 
 export enum ComponentStateEnum {
@@ -1682,7 +1703,7 @@ export interface Group extends HasPropsAndLinks {
     /** Identifies the group for the purpose of cross-linking within the defining instance or from other instances that reference the catalog. */
     id?: string,
     /** A textual label that provides a sub-type or characterization of the group. */
-    _class?: string,
+    class_?: string,
     /** A name given to the group, which may be used by a tool for display and navigation. */
     title: string,
     /** Parameters providing a mechanism for the dynamic assignment of value(s) in a control. */
@@ -1703,7 +1724,7 @@ export interface Control extends HasPropsAndLinks {
     /** Identifies a control such that it can be referenced in the defining catalog and other OSCAL instances (e.g., profiles). */
     id: string,
     /** A textual label that provides a sub-type or characterization of the control. */
-    _class?: string,
+    class_?: string,
     /** A name given to the control, which may be used by a tool for display and navigation. */
     title: string,
     /** Parameters providing a mechanism for the dynamic assignment of value(s) in a control. */
@@ -1935,7 +1956,7 @@ export interface Property {
     /** Indicates the value of the attribute, characteristic, or quality. */
     value: string,
     /** A textual label that provides a sub-type or characterization of the property's name. */
-    _class?: string,
+    class_?: string,
     /** Additional commentary about the containing object. */
     remarks?: string,
     /** An identifier for relating distinct sets of properties. */
@@ -2096,7 +2117,7 @@ export interface Part extends HasPropsAndLinks {
     /** An optional namespace qualifying the part's name. This allows different organizations to associate distinct semantics with the same name. */
     ns?: string,
     /** An optional textual providing a sub-type or characterization of the part's name, or a category to which the part belongs. */
-    _class?: string,
+    class_?: string,
     /** An optional name given to the part, which may be used by a tool for display and navigation. */
     title?: string,
     /** Permits multiple paragraphs, lists, tables etc. */
@@ -2113,7 +2134,7 @@ export interface Parameter extends OscalCommon {
     /** A unique identifier for the parameter. */
     id: string,
     /** A textual label that provides a characterization of the type, purpose, use or scope of the parameter. */
-    _class?: string,
+    class_?: string,
     /** (deprecated) Another parameter invoking this one. This construct has been deprecated and should not be used. */
     depends_on?: string,
     /** A short, placeholder name for the parameter, which can be used as a substitute for a value if no value is assigned. */
@@ -2296,7 +2317,7 @@ export interface ProfileGroup extends OscalCommon {
     /** A unique human-oriented identifier within a particular context. */
     id?: string,
     /** A textual label that provides a sub-type or characterization. */
-    _class?: string,
+    class_?: string,
     /** A human-readable name or title. */
     title: string,
     /** Parameters providing a mechanism for the dynamic assignment of value(s) in a control. */
@@ -2328,7 +2349,7 @@ export interface ParameterSetting extends HasPropsAndLinks {
     /** The identifier for the parameter being set or referenced. */
     param_id: string,
     /** A textual label that provides a sub-type or characterization. */
-    _class?: string,
+    class_?: string,
     /** (deprecated) Another parameter invoking this one. This construct has been deprecated and should not be used. */
     depends_on?: string,
     /** A short, placeholder name for the parameter, which can be used as a substitute for a value if no value is assigned. */
@@ -2825,7 +2846,7 @@ export interface AssessmentPart extends HasPropsAndLinks {
     /** An optional namespace qualifying a name. Allows different organizations to associate distinct semantics with the same name. */
     ns?: string,
     /** A textual label that provides a sub-type or characterization. */
-    _class?: string,
+    class_?: string,
     /** A human-readable name or title. */
     title?: string,
     /** Permits multiple paragraphs, lists, tables etc. */
@@ -2853,7 +2874,7 @@ export interface ControlPart extends HasPropsAndLinks {
     /** An optional namespace qualifying a name. Allows different organizations to associate distinct semantics with the same name. */
     ns?: string,
     /** A textual label that provides a sub-type or characterization. */
-    _class?: string,
+    class_?: string,
     /** A human-readable name or title. */
     title?: string,
     /** Permits multiple paragraphs, lists, tables etc. */
@@ -3435,6 +3456,10 @@ export interface SystemCharacteristics {
     system_name_short?: string,
     /** A human-readable description. */
     description: string,
+    /** A list of properties. */
+    props?: SspSystemCharacteristicsProp[],
+    /** A list of links. */
+    links?: Link[],
     /** The date the system received its authorization. */
     date_authorized?: string,
     /** The overall information system sensitivity categorization, such as defined by FIPS-199. */

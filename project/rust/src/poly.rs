@@ -1623,9 +1623,9 @@ pub trait Group : HasPropsAndLinks   {
     // fn id_mut(&mut self) -> &mut Option<&'a str>;
     // fn set_id(&mut self, value: Option<&'a str>);
 
-    fn _class<'a>(&'a self) -> Option<&'a str>;
-    // fn _class_mut(&mut self) -> &mut Option<&'a str>;
-    // fn set__class(&mut self, value: Option<&'a str>);
+    fn class_<'a>(&'a self) -> Option<&'a str>;
+    // fn class__mut(&mut self) -> &mut Option<&'a str>;
+    // fn set_class_(&mut self, value: Option<&'a str>);
 
     fn title<'a>(&'a self) -> &'a str;
     // fn title_mut(&mut self) -> &mut &'a str;
@@ -1654,8 +1654,8 @@ impl Group for crate::Group {
         fn id<'a>(&'a self) -> Option<&'a str> {
         return self.id.as_deref();
     }
-        fn _class<'a>(&'a self) -> Option<&'a str> {
-        return self._class.as_deref();
+        fn class_<'a>(&'a self) -> Option<&'a str> {
+        return self.class_.as_deref();
     }
         fn title<'a>(&'a self) -> &'a str {
         return &self.title[..];
@@ -1681,9 +1681,9 @@ pub trait Control : HasPropsAndLinks   {
     // fn id_mut(&mut self) -> &mut &'a str;
     // fn set_id(&mut self, value: String);
 
-    fn _class<'a>(&'a self) -> Option<&'a str>;
-    // fn _class_mut(&mut self) -> &mut Option<&'a str>;
-    // fn set__class(&mut self, value: Option<&'a str>);
+    fn class_<'a>(&'a self) -> Option<&'a str>;
+    // fn class__mut(&mut self) -> &mut Option<&'a str>;
+    // fn set_class_(&mut self, value: Option<&'a str>);
 
     fn title<'a>(&'a self) -> &'a str;
     // fn title_mut(&mut self) -> &mut &'a str;
@@ -1708,8 +1708,8 @@ impl Control for crate::Control {
         fn id<'a>(&'a self) -> &'a str {
         return &self.id[..];
     }
-        fn _class<'a>(&'a self) -> Option<&'a str> {
-        return self._class.as_deref();
+        fn class_<'a>(&'a self) -> Option<&'a str> {
+        return self.class_.as_deref();
     }
         fn title<'a>(&'a self) -> &'a str {
         return &self.title[..];
@@ -2391,9 +2391,9 @@ pub trait Property   {
     // fn value_mut(&mut self) -> &mut property_utl::value_range;
     // fn set_value(&mut self, value: String);
 
-    fn _class(&self) -> Option<property_utl::_class_range>;
-    // fn _class_mut(&mut self) -> &mut Option<property_utl::_class_range>;
-    // fn set__class(&mut self, value: Option<&'a str>);
+    fn class_(&self) -> Option<property_utl::class__range>;
+    // fn class__mut(&mut self) -> &mut Option<property_utl::class__range>;
+    // fn set_class_(&mut self, value: Option<&'a str>);
 
     fn remarks<'a>(&'a self) -> Option<&'a str>;
     // fn remarks_mut(&mut self) -> &mut Option<&'a str>;
@@ -2419,8 +2419,8 @@ impl Property for crate::Property {
         fn value(&self) -> property_utl::value_range {
             property_utl::value_range::String(self.value.clone())
     }
-        fn _class(&self) -> Option<property_utl::_class_range> {
-                self._class.as_ref().map(|v| property_utl::_class_range::String(v.clone()))
+        fn class_(&self) -> Option<property_utl::class__range> {
+                self.class_.as_ref().map(|v| property_utl::class__range::String(v.clone()))
     }
         fn remarks<'a>(&'a self) -> Option<&'a str> {
         return self.remarks.as_deref();
@@ -2442,8 +2442,8 @@ impl Property for crate::MetadataProperty {
         fn value(&self) -> property_utl::value_range {
             property_utl::value_range::String(self.value.clone())
     }
-        fn _class(&self) -> Option<property_utl::_class_range> {
-                self._class.as_ref().map(|v| property_utl::_class_range::String(v.clone()))
+        fn class_(&self) -> Option<property_utl::class__range> {
+                self.class_.as_ref().map(|v| property_utl::class__range::String(v.clone()))
     }
         fn remarks<'a>(&'a self) -> Option<&'a str> {
         return self.remarks.as_deref();
@@ -2465,8 +2465,8 @@ impl Property for crate::RevisionProperty {
         fn value(&self) -> property_utl::value_range {
             property_utl::value_range::String(self.value.clone())
     }
-        fn _class(&self) -> Option<property_utl::_class_range> {
-                self._class.as_ref().map(|v| property_utl::_class_range::String(v.clone()))
+        fn class_(&self) -> Option<property_utl::class__range> {
+                self.class_.as_ref().map(|v| property_utl::class__range::String(v.clone()))
     }
         fn remarks<'a>(&'a self) -> Option<&'a str> {
         return self.remarks.as_deref();
@@ -2505,10 +2505,10 @@ impl Property for crate::LocationProperty {
                 location_property_utl::value_range::AllowsAuthenticatedScanEnum(x) => property_utl::value_range::AllowsAuthenticatedScanEnum(x.clone()),
             }
     }
-        fn _class(&self) -> Option<property_utl::_class_range> {
-                self._class.as_ref().map(|v| match v {
-                    location_property_utl::_class_range::String(x) => property_utl::_class_range::String(x.clone()),
-                    location_property_utl::_class_range::LocationDataCenterClassEnum(x) => property_utl::_class_range::LocationDataCenterClassEnum(x.clone()),
+        fn class_(&self) -> Option<property_utl::class__range> {
+                self.class_.as_ref().map(|v| match v {
+                    location_property_utl::class__range::String(x) => property_utl::class__range::String(x.clone()),
+                    location_property_utl::class__range::LocationDataCenterClassEnum(x) => property_utl::class__range::LocationDataCenterClassEnum(x.clone()),
                 })
     }
         fn remarks<'a>(&'a self) -> Option<&'a str> {
@@ -2531,8 +2531,8 @@ impl Property for crate::PartyProperty {
         fn value(&self) -> property_utl::value_range {
             property_utl::value_range::String(self.value.clone())
     }
-        fn _class(&self) -> Option<property_utl::_class_range> {
-                self._class.as_ref().map(|v| property_utl::_class_range::String(v.clone()))
+        fn class_(&self) -> Option<property_utl::class__range> {
+                self.class_.as_ref().map(|v| property_utl::class__range::String(v.clone()))
     }
         fn remarks<'a>(&'a self) -> Option<&'a str> {
         return self.remarks.as_deref();
@@ -2571,8 +2571,8 @@ impl Property for crate::ResourceProperty {
                 resource_property_utl::value_range::AllowsAuthenticatedScanEnum(x) => property_utl::value_range::AllowsAuthenticatedScanEnum(x.clone()),
             }
     }
-        fn _class(&self) -> Option<property_utl::_class_range> {
-                self._class.as_ref().map(|v| property_utl::_class_range::String(v.clone()))
+        fn class_(&self) -> Option<property_utl::class__range> {
+                self.class_.as_ref().map(|v| property_utl::class__range::String(v.clone()))
     }
         fn remarks<'a>(&'a self) -> Option<&'a str> {
         return self.remarks.as_deref();
@@ -2594,8 +2594,8 @@ impl Property for crate::PartProperty {
         fn value(&self) -> property_utl::value_range {
             property_utl::value_range::String(self.value.clone())
     }
-        fn _class(&self) -> Option<property_utl::_class_range> {
-                self._class.as_ref().map(|v| property_utl::_class_range::String(v.clone()))
+        fn class_(&self) -> Option<property_utl::class__range> {
+                self.class_.as_ref().map(|v| property_utl::class__range::String(v.clone()))
     }
         fn remarks<'a>(&'a self) -> Option<&'a str> {
         return self.remarks.as_deref();
@@ -2632,8 +2632,8 @@ impl Property for crate::ParameterProperty {
         fn value(&self) -> property_utl::value_range {
             property_utl::value_range::String(self.value.clone())
     }
-        fn _class(&self) -> Option<property_utl::_class_range> {
-                self._class.as_ref().map(|v| property_utl::_class_range::String(v.clone()))
+        fn class_(&self) -> Option<property_utl::class__range> {
+                self.class_.as_ref().map(|v| property_utl::class__range::String(v.clone()))
     }
         fn remarks<'a>(&'a self) -> Option<&'a str> {
         return self.remarks.as_deref();
@@ -2655,8 +2655,8 @@ impl Property for crate::ProfileAlterationProperty {
         fn value(&self) -> property_utl::value_range {
             property_utl::value_range::String(self.value.clone())
     }
-        fn _class(&self) -> Option<property_utl::_class_range> {
-                self._class.as_ref().map(|v| property_utl::_class_range::String(v.clone()))
+        fn class_(&self) -> Option<property_utl::class__range> {
+                self.class_.as_ref().map(|v| property_utl::class__range::String(v.clone()))
     }
         fn remarks<'a>(&'a self) -> Option<&'a str> {
         return self.remarks.as_deref();
@@ -2695,8 +2695,8 @@ impl Property for crate::ImplementationCommonProperty {
                 implementation_common_property_utl::value_range::AllowsAuthenticatedScanEnum(x) => property_utl::value_range::AllowsAuthenticatedScanEnum(x.clone()),
             }
     }
-        fn _class(&self) -> Option<property_utl::_class_range> {
-                self._class.as_ref().map(|v| property_utl::_class_range::String(v.clone()))
+        fn class_(&self) -> Option<property_utl::class__range> {
+                self.class_.as_ref().map(|v| property_utl::class__range::String(v.clone()))
     }
         fn remarks<'a>(&'a self) -> Option<&'a str> {
         return self.remarks.as_deref();
@@ -2735,8 +2735,8 @@ impl Property for crate::SspSystemCharacteristicsProp {
                 ssp_system_characteristics_prop_utl::value_range::AllowsAuthenticatedScanEnum(x) => property_utl::value_range::AllowsAuthenticatedScanEnum(x.clone()),
             }
     }
-        fn _class(&self) -> Option<property_utl::_class_range> {
-                self._class.as_ref().map(|v| property_utl::_class_range::String(v.clone()))
+        fn class_(&self) -> Option<property_utl::class__range> {
+                self.class_.as_ref().map(|v| property_utl::class__range::String(v.clone()))
     }
         fn remarks<'a>(&'a self) -> Option<&'a str> {
         return self.remarks.as_deref();
@@ -2758,8 +2758,8 @@ impl Property for crate::SspSystemInformationProp {
         fn value(&self) -> property_utl::value_range {
             property_utl::value_range::PrivacyDesignationEnum(self.value.clone())
     }
-        fn _class(&self) -> Option<property_utl::_class_range> {
-                self._class.as_ref().map(|v| property_utl::_class_range::String(v.clone()))
+        fn class_(&self) -> Option<property_utl::class__range> {
+                self.class_.as_ref().map(|v| property_utl::class__range::String(v.clone()))
     }
         fn remarks<'a>(&'a self) -> Option<&'a str> {
         return self.remarks.as_deref();
@@ -2781,8 +2781,8 @@ impl Property for crate::SspControlOriginationProp {
         fn value(&self) -> property_utl::value_range {
             property_utl::value_range::ControlOriginationValueEnum(self.value.clone())
     }
-        fn _class(&self) -> Option<property_utl::_class_range> {
-                self._class.as_ref().map(|v| property_utl::_class_range::String(v.clone()))
+        fn class_(&self) -> Option<property_utl::class__range> {
+                self.class_.as_ref().map(|v| property_utl::class__range::String(v.clone()))
     }
         fn remarks<'a>(&'a self) -> Option<&'a str> {
         return self.remarks.as_deref();
@@ -2804,8 +2804,8 @@ impl Property for crate::SspAllowsAuthenticatedScanProp {
         fn value(&self) -> property_utl::value_range {
             property_utl::value_range::AllowsAuthenticatedScanEnum(self.value.clone())
     }
-        fn _class(&self) -> Option<property_utl::_class_range> {
-                self._class.as_ref().map(|v| property_utl::_class_range::String(v.clone()))
+        fn class_(&self) -> Option<property_utl::class__range> {
+                self.class_.as_ref().map(|v| property_utl::class__range::String(v.clone()))
     }
         fn remarks<'a>(&'a self) -> Option<&'a str> {
         return self.remarks.as_deref();
@@ -2888,21 +2888,21 @@ impl Property for crate::PropertyOrSubtype {
 
         }
     }
-        fn _class(&self) -> Option<property_utl::_class_range> {
+        fn class_(&self) -> Option<property_utl::class__range> {
         match self {
-                PropertyOrSubtype::MetadataProperty(val) => val._class(),
-                PropertyOrSubtype::RevisionProperty(val) => val._class(),
-                PropertyOrSubtype::LocationProperty(val) => val._class(),
-                PropertyOrSubtype::PartyProperty(val) => val._class(),
-                PropertyOrSubtype::ResourceProperty(val) => val._class(),
-                PropertyOrSubtype::PartProperty(val) => val._class(),
-                PropertyOrSubtype::ParameterProperty(val) => val._class(),
-                PropertyOrSubtype::ProfileAlterationProperty(val) => val._class(),
-                PropertyOrSubtype::ImplementationCommonProperty(val) => val._class(),
-                PropertyOrSubtype::SspSystemCharacteristicsProp(val) => val._class(),
-                PropertyOrSubtype::SspSystemInformationProp(val) => val._class(),
-                PropertyOrSubtype::SspControlOriginationProp(val) => val._class(),
-                PropertyOrSubtype::SspAllowsAuthenticatedScanProp(val) => val._class(),
+                PropertyOrSubtype::MetadataProperty(val) => val.class_(),
+                PropertyOrSubtype::RevisionProperty(val) => val.class_(),
+                PropertyOrSubtype::LocationProperty(val) => val.class_(),
+                PropertyOrSubtype::PartyProperty(val) => val.class_(),
+                PropertyOrSubtype::ResourceProperty(val) => val.class_(),
+                PropertyOrSubtype::PartProperty(val) => val.class_(),
+                PropertyOrSubtype::ParameterProperty(val) => val.class_(),
+                PropertyOrSubtype::ProfileAlterationProperty(val) => val.class_(),
+                PropertyOrSubtype::ImplementationCommonProperty(val) => val.class_(),
+                PropertyOrSubtype::SspSystemCharacteristicsProp(val) => val.class_(),
+                PropertyOrSubtype::SspSystemInformationProp(val) => val.class_(),
+                PropertyOrSubtype::SspControlOriginationProp(val) => val.class_(),
+                PropertyOrSubtype::SspAllowsAuthenticatedScanProp(val) => val.class_(),
 
         }
     }
@@ -3415,9 +3415,9 @@ pub trait Part : HasPropsAndLinks   {
     // fn ns_mut(&mut self) -> &mut Option<&'a str>;
     // fn set_ns(&mut self, value: Option<&'a str>);
 
-    fn _class<'a>(&'a self) -> Option<&'a str>;
-    // fn _class_mut(&mut self) -> &mut Option<&'a str>;
-    // fn set__class(&mut self, value: Option<&'a str>);
+    fn class_<'a>(&'a self) -> Option<&'a str>;
+    // fn class__mut(&mut self) -> &mut Option<&'a str>;
+    // fn set_class_(&mut self, value: Option<&'a str>);
 
     fn title<'a>(&'a self) -> Option<&'a str>;
     // fn title_mut(&mut self) -> &mut Option<&'a str>;
@@ -3444,8 +3444,8 @@ impl Part for crate::Part {
         fn ns<'a>(&'a self) -> Option<&'a str> {
         return self.ns.as_deref();
     }
-        fn _class<'a>(&'a self) -> Option<&'a str> {
-        return self._class.as_deref();
+        fn class_<'a>(&'a self) -> Option<&'a str> {
+        return self.class_.as_deref();
     }
         fn title<'a>(&'a self) -> Option<&'a str> {
         return self.title.as_deref();
@@ -3465,9 +3465,9 @@ pub trait Parameter : OscalCommon   {
     // fn id_mut(&mut self) -> &mut &'a str;
     // fn set_id(&mut self, value: String);
 
-    fn _class<'a>(&'a self) -> Option<&'a str>;
-    // fn _class_mut(&mut self) -> &mut Option<&'a str>;
-    // fn set__class(&mut self, value: Option<&'a str>);
+    fn class_<'a>(&'a self) -> Option<&'a str>;
+    // fn class__mut(&mut self) -> &mut Option<&'a str>;
+    // fn set_class_(&mut self, value: Option<&'a str>);
 
     fn depends_on<'a>(&'a self) -> Option<&'a str>;
     // fn depends_on_mut(&mut self) -> &mut Option<&'a str>;
@@ -3504,8 +3504,8 @@ impl Parameter for crate::Parameter {
         fn id<'a>(&'a self) -> &'a str {
         return &self.id[..];
     }
-        fn _class<'a>(&'a self) -> Option<&'a str> {
-        return self._class.as_deref();
+        fn class_<'a>(&'a self) -> Option<&'a str> {
+        return self.class_.as_deref();
     }
         fn depends_on<'a>(&'a self) -> Option<&'a str> {
         return self.depends_on.as_deref();
@@ -3873,9 +3873,9 @@ pub trait ProfileGroup : OscalCommon   {
     // fn id_mut(&mut self) -> &mut Option<&'a str>;
     // fn set_id(&mut self, value: Option<&'a str>);
 
-    fn _class<'a>(&'a self) -> Option<&'a str>;
-    // fn _class_mut(&mut self) -> &mut Option<&'a str>;
-    // fn set__class(&mut self, value: Option<&'a str>);
+    fn class_<'a>(&'a self) -> Option<&'a str>;
+    // fn class__mut(&mut self) -> &mut Option<&'a str>;
+    // fn set_class_(&mut self, value: Option<&'a str>);
 
     fn title<'a>(&'a self) -> &'a str;
     // fn title_mut(&mut self) -> &mut &'a str;
@@ -3904,8 +3904,8 @@ impl ProfileGroup for crate::ProfileGroup {
         fn id<'a>(&'a self) -> Option<&'a str> {
         return self.id.as_deref();
     }
-        fn _class<'a>(&'a self) -> Option<&'a str> {
-        return self._class.as_deref();
+        fn class_<'a>(&'a self) -> Option<&'a str> {
+        return self.class_.as_deref();
     }
         fn title<'a>(&'a self) -> &'a str {
         return &self.title[..];
@@ -3954,9 +3954,9 @@ pub trait ParameterSetting : HasPropsAndLinks   {
     // fn param_id_mut(&mut self) -> &mut &'a str;
     // fn set_param_id(&mut self, value: String);
 
-    fn _class<'a>(&'a self) -> Option<&'a str>;
-    // fn _class_mut(&mut self) -> &mut Option<&'a str>;
-    // fn set__class(&mut self, value: Option<&'a str>);
+    fn class_<'a>(&'a self) -> Option<&'a str>;
+    // fn class__mut(&mut self) -> &mut Option<&'a str>;
+    // fn set_class_(&mut self, value: Option<&'a str>);
 
     fn depends_on<'a>(&'a self) -> Option<&'a str>;
     // fn depends_on_mut(&mut self) -> &mut Option<&'a str>;
@@ -3993,8 +3993,8 @@ impl ParameterSetting for crate::ParameterSetting {
         fn param_id<'a>(&'a self) -> &'a str {
         return &self.param_id[..];
     }
-        fn _class<'a>(&'a self) -> Option<&'a str> {
-        return self._class.as_deref();
+        fn class_<'a>(&'a self) -> Option<&'a str> {
+        return self.class_.as_deref();
     }
         fn depends_on<'a>(&'a self) -> Option<&'a str> {
         return self.depends_on.as_deref();
@@ -5145,9 +5145,9 @@ pub trait AssessmentPart : HasPropsAndLinks   {
     // fn ns_mut(&mut self) -> &mut Option<&'a str>;
     // fn set_ns(&mut self, value: Option<&'a str>);
 
-    fn _class<'a>(&'a self) -> Option<&'a str>;
-    // fn _class_mut(&mut self) -> &mut Option<&'a str>;
-    // fn set__class(&mut self, value: Option<&'a str>);
+    fn class_<'a>(&'a self) -> Option<&'a str>;
+    // fn class__mut(&mut self) -> &mut Option<&'a str>;
+    // fn set_class_(&mut self, value: Option<&'a str>);
 
     fn title<'a>(&'a self) -> Option<&'a str>;
     // fn title_mut(&mut self) -> &mut Option<&'a str>;
@@ -5174,8 +5174,8 @@ impl AssessmentPart for crate::AssessmentPart {
         fn ns<'a>(&'a self) -> Option<&'a str> {
         return self.ns.as_deref();
     }
-        fn _class<'a>(&'a self) -> Option<&'a str> {
-        return self._class.as_deref();
+        fn class_<'a>(&'a self) -> Option<&'a str> {
+        return self.class_.as_deref();
     }
         fn title<'a>(&'a self) -> Option<&'a str> {
         return self.title.as_deref();
@@ -5201,8 +5201,8 @@ impl AssessmentPart for crate::TermsAndConditionsPart {
         fn ns<'a>(&'a self) -> Option<&'a str> {
         return self.ns.as_deref();
     }
-        fn _class<'a>(&'a self) -> Option<&'a str> {
-        return self._class.as_deref();
+        fn class_<'a>(&'a self) -> Option<&'a str> {
+        return self.class_.as_deref();
     }
         fn title<'a>(&'a self) -> Option<&'a str> {
         return self.title.as_deref();
@@ -5234,9 +5234,9 @@ impl AssessmentPart for crate::AssessmentPartOrSubtype {
 
         }
     }
-        fn _class<'a>(&'a self) -> Option<&'a str> {
+        fn class_<'a>(&'a self) -> Option<&'a str> {
         match self {
-                AssessmentPartOrSubtype::TermsAndConditionsPart(val) => val._class(),
+                AssessmentPartOrSubtype::TermsAndConditionsPart(val) => val.class_(),
 
         }
     }
@@ -5283,9 +5283,9 @@ pub trait ControlPart : HasPropsAndLinks   {
     // fn ns_mut(&mut self) -> &mut Option<&'a str>;
     // fn set_ns(&mut self, value: Option<&'a str>);
 
-    fn _class<'a>(&'a self) -> Option<&'a str>;
-    // fn _class_mut(&mut self) -> &mut Option<&'a str>;
-    // fn set__class(&mut self, value: Option<&'a str>);
+    fn class_<'a>(&'a self) -> Option<&'a str>;
+    // fn class__mut(&mut self) -> &mut Option<&'a str>;
+    // fn set_class_(&mut self, value: Option<&'a str>);
 
     fn title<'a>(&'a self) -> Option<&'a str>;
     // fn title_mut(&mut self) -> &mut Option<&'a str>;
@@ -5312,8 +5312,8 @@ impl ControlPart for crate::ControlPart {
         fn ns<'a>(&'a self) -> Option<&'a str> {
         return self.ns.as_deref();
     }
-        fn _class<'a>(&'a self) -> Option<&'a str> {
-        return self._class.as_deref();
+        fn class_<'a>(&'a self) -> Option<&'a str> {
+        return self.class_.as_deref();
     }
         fn title<'a>(&'a self) -> Option<&'a str> {
         return self.title.as_deref();
@@ -6786,6 +6786,14 @@ pub trait SystemCharacteristics   {
     // fn description_mut(&mut self) -> &mut &'a str;
     // fn set_description(&mut self, value: String);
 
+    fn props<'a>(&'a self) -> Option<impl poly_containers::SeqRef<'a, crate::SspSystemCharacteristicsProp>>;
+    // fn props_mut(&mut self) -> &mut Option<impl poly_containers::SeqRef<'a, crate::SspSystemCharacteristicsProp>>;
+    // fn set_props<E>(&mut self, value: Option<&Vec<E>>) where E: Into<SspSystemCharacteristicsProp>;
+
+    fn links<'a>(&'a self) -> Option<impl poly_containers::SeqRef<'a, LinkOrSubtype>>;
+    // fn links_mut(&mut self) -> &mut Option<impl poly_containers::SeqRef<'a, LinkOrSubtype>>;
+    // fn set_links<E>(&mut self, value: Option<&Vec<E>>) where E: Into<Link>;
+
     fn date_authorized<'a>(&'a self) -> Option<&'a str>;
     // fn date_authorized_mut(&mut self) -> &mut Option<&'a str>;
     // fn set_date_authorized(&mut self, value: Option<&'a str>);
@@ -6841,6 +6849,12 @@ impl SystemCharacteristics for crate::SystemCharacteristics {
     }
         fn description<'a>(&'a self) -> &'a str {
         return &self.description[..];
+    }
+        fn props<'a>(&'a self) -> Option<impl poly_containers::SeqRef<'a, crate::SspSystemCharacteristicsProp>> {
+        return self.props.as_ref();
+    }
+        fn links<'a>(&'a self) -> Option<impl poly_containers::SeqRef<'a, LinkOrSubtype>> {
+        return self.links.as_ref();
     }
         fn date_authorized<'a>(&'a self) -> Option<&'a str> {
         return self.date_authorized.as_deref();

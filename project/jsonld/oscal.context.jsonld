@@ -3,134 +3,123 @@
       "xsd": "http://www.w3.org/2001/XMLSchema#",
       "linkml": "https://w3id.org/linkml/",
       "oscal": "https://w3id.org/lmodel/oscal/",
-      "oscal_assessment_plan": "https://w3id.org/lmodel/oscal_assessment_plan/",
-      "oscal_assessment_results": "https://w3id.org/lmodel/oscal_assessment_results/",
-      "oscal_catalog": "https://w3id.org/lmodel/oscal_catalog/",
-      "oscal_component": "https://w3id.org/lmodel/oscal_component/",
-      "oscal_mapping": "https://w3id.org/lmodel/oscal_mapping/",
-      "oscal_poam": "https://w3id.org/lmodel/oscal_poam/",
-      "oscal_profile": "https://w3id.org/lmodel/oscal_profile/",
-      "oscal_ssp": "https://w3id.org/lmodel/oscal_ssp/",
       "skos": "http://www.w3.org/2004/02/skos/core#",
       "@vocab": "https://w3id.org/lmodel/oscal/",
-      "_class": {
-         "@id": "oscal_catalog:_class"
-      },
       "actions": {
          "@type": "@id",
-         "@id": "oscal_catalog:actions"
+         "@id": "actions"
       },
       "activities": {
          "@type": "@id",
-         "@id": "oscal_assessment_plan:activities"
+         "@id": "activities"
       },
       "activity_uuid": {
-         "@id": "oscal_assessment_plan:activity_uuid"
+         "@id": "activity_uuid"
       },
       "actor_uuid": {
-         "@id": "oscal_assessment_plan:actor_uuid"
+         "@id": "actor_uuid"
       },
       "actors": {
          "@type": "@id",
-         "@id": "oscal_assessment_plan:actors"
+         "@id": "actors"
       },
       "addr_lines": {
-         "@id": "oscal_catalog:addr_lines"
+         "@id": "addr_lines"
       },
       "address": {
          "@type": "@id",
-         "@id": "oscal_catalog:address"
+         "@id": "address"
       },
       "addresses": {
          "@type": "@id",
-         "@id": "oscal_catalog:addresses"
+         "@id": "addresses"
       },
       "adds": {
          "@type": "@id",
-         "@id": "oscal_profile:adds"
+         "@id": "adds"
       },
       "adjustment_justification": {
-         "@id": "oscal_ssp:adjustment_justification"
+         "@id": "adjustment_justification"
       },
       "algorithm": {
-         "@id": "oscal_catalog:algorithm"
+         "@id": "algorithm"
       },
       "alters": {
          "@type": "@id",
-         "@id": "oscal_profile:alters"
+         "@id": "alters"
       },
       "as_is": {
          "@type": "xsd:boolean",
-         "@id": "oscal_profile:as_is"
+         "@id": "as_is"
       },
       "assessment_assets": {
          "@type": "@id",
-         "@id": "oscal_assessment_plan:assessment_assets"
+         "@id": "assessment_assets"
       },
       "assessment_log": {
          "@type": "@id",
-         "@id": "oscal_assessment_results:assessment_log"
+         "@id": "assessment_log"
       },
       "assessment_plan": {
          "@type": "@id",
-         "@id": "oscal_assessment_plan:assessment_plan"
+         "@id": "assessment_plan"
       },
       "assessment_platforms": {
          "@type": "@id",
-         "@id": "oscal_assessment_plan:assessment_platforms"
+         "@id": "assessment_platforms"
       },
       "assessment_results": {
          "@type": "@id",
-         "@id": "oscal_assessment_results:assessment_results"
+         "@id": "assessment_results"
       },
       "assessment_subjects": {
          "@type": "@id",
-         "@id": "oscal_assessment_plan:assessment_subjects"
+         "@id": "assessment_subjects"
       },
       "associated_activities": {
          "@type": "@id",
-         "@id": "oscal_assessment_plan:associated_activities"
+         "@id": "associated_activities"
       },
       "at_frequency": {
          "@type": "@id",
-         "@id": "oscal_assessment_plan:at_frequency"
+         "@id": "at_frequency"
       },
       "attestations": {
          "@type": "@id",
-         "@id": "oscal_assessment_results:attestations"
+         "@id": "attestations"
       },
       "authorization_boundary": {
          "@type": "@id",
-         "@id": "oscal_ssp:authorization_boundary"
+         "@id": "authorization_boundary"
       },
       "authorized_privileges": {
          "@type": "@id",
-         "@id": "oscal_assessment_plan:authorized_privileges"
+         "@id": "authorized_privileges"
       },
       "availability_impact": {
          "@type": "@id",
-         "@id": "oscal_ssp:availability_impact"
+         "@id": "availability_impact"
       },
       "back_matter": {
          "@type": "@id",
-         "@id": "oscal_catalog:back_matter"
+         "@id": "back_matter"
       },
       "base": {
-         "@id": "oscal_ssp:base"
+         "@id": "base"
       },
       "base64": {
          "@type": "@id",
-         "@id": "oscal_catalog:base64"
+         "@id": "base64"
       },
       "by_class": {
-         "@id": "oscal_profile:by_class"
+         "@id": "by_class"
       },
       "by_components": {
          "@type": "@id",
-         "@id": "oscal_ssp:by_components"
+         "@id": "by_components"
       },
       "by_id": {
-         "@id": "oscal_profile:by_id"
+         "@id": "by_id"
       },
       "by_item_name": {
          "@context": {
@@ -138,220 +127,223 @@
             "description": "skos:prefLabel",
             "meaning": "@id"
          },
-         "@id": "oscal_profile:by_item_name"
+         "@id": "by_item_name"
       },
       "by_name": {
-         "@id": "oscal_profile:by_name"
+         "@id": "by_name"
       },
       "by_ns": {
          "@type": "xsd:anyURI",
-         "@id": "oscal_profile:by_ns"
+         "@id": "by_ns"
       },
       "capabilities": {
          "@type": "@id",
-         "@id": "oscal_component:capabilities"
+         "@id": "capabilities"
       },
       "caption": {
-         "@id": "oscal_ssp:caption"
+         "@id": "caption"
       },
       "catalog": {
          "@type": "@id",
-         "@id": "oscal_catalog:catalog"
+         "@id": "catalog"
       },
       "categorizations": {
          "@type": "@id",
-         "@id": "oscal_ssp:categorizations"
+         "@id": "categorizations"
       },
       "category": {
-         "@id": "oscal_mapping:category"
+         "@id": "category"
       },
       "characterizations": {
          "@type": "@id",
-         "@id": "oscal_assessment_plan:characterizations"
+         "@id": "characterizations"
       },
       "choice": {
-         "@id": "oscal_catalog:choice"
+         "@id": "choice"
       },
       "citation": {
          "@type": "@id",
-         "@id": "oscal_catalog:citation"
+         "@id": "citation"
       },
       "city": {
-         "@id": "oscal_catalog:city"
+         "@id": "city"
+      },
+      "class_": {
+         "@id": "class_"
       },
       "collected": {
          "@type": "xsd:dateTime",
-         "@id": "oscal_assessment_plan:collected"
+         "@id": "collected"
       },
       "combine": {
          "@type": "@id",
-         "@id": "oscal_profile:combine"
+         "@id": "combine"
       },
       "component_definition": {
          "@type": "@id",
-         "@id": "oscal_component:component_definition"
+         "@id": "component_definition"
       },
       "component_uuid": {
-         "@id": "oscal_assessment_plan:component_uuid"
+         "@id": "component_uuid"
       },
       "components": {
          "@type": "@id",
-         "@id": "oscal_assessment_plan:components"
+         "@id": "components"
       },
       "confidence_score": {
          "@type": "@id",
-         "@id": "oscal_mapping:confidence_score"
+         "@id": "confidence_score"
       },
       "confidentiality_impact": {
          "@type": "@id",
-         "@id": "oscal_ssp:confidentiality_impact"
+         "@id": "confidentiality_impact"
       },
       "constraints": {
          "@type": "@id",
-         "@id": "oscal_catalog:constraints"
+         "@id": "constraints"
       },
       "control_id": {
-         "@id": "oscal_catalog:control_id"
+         "@id": "control_id"
       },
       "control_implementation": {
          "@type": "@id",
-         "@id": "oscal_ssp:control_implementation"
+         "@id": "control_implementation"
       },
       "control_implementations": {
          "@type": "@id",
-         "@id": "oscal_component:control_implementations"
+         "@id": "control_implementations"
       },
       "control_objective_selections": {
          "@type": "@id",
-         "@id": "oscal_assessment_plan:control_objective_selections"
+         "@id": "control_objective_selections"
       },
       "control_selections": {
          "@type": "@id",
-         "@id": "oscal_assessment_plan:control_selections"
+         "@id": "control_selections"
       },
       "controls": {
          "@type": "@id",
-         "@id": "oscal_catalog:controls"
+         "@id": "controls"
       },
       "country": {
-         "@id": "oscal_catalog:country"
+         "@id": "country"
       },
       "coverage": {
          "@type": "@id",
-         "@id": "oscal_mapping:coverage"
+         "@id": "coverage"
       },
       "custom": {
          "@type": "@id",
-         "@id": "oscal_profile:custom"
+         "@id": "custom"
       },
       "data_flow": {
          "@type": "@id",
-         "@id": "oscal_ssp:data_flow"
+         "@id": "data_flow"
       },
       "date": {
          "@type": "xsd:dateTime",
-         "@id": "oscal_catalog:date"
+         "@id": "date"
       },
       "date_authorized": {
-         "@id": "oscal_ssp:date_authorized"
+         "@id": "date_authorized"
       },
       "deadline": {
          "@type": "xsd:dateTime",
-         "@id": "oscal_assessment_plan:deadline"
+         "@id": "deadline"
       },
       "dependencies": {
          "@type": "@id",
-         "@id": "oscal_assessment_plan:dependencies"
+         "@id": "dependencies"
       },
       "depends_on": {
-         "@id": "oscal_catalog:depends_on"
+         "@id": "depends_on"
       },
       "description": {
-         "@id": "oscal_catalog:description"
+         "@id": "description"
       },
       "diagrams": {
          "@type": "@id",
-         "@id": "oscal_ssp:diagrams"
+         "@id": "diagrams"
       },
       "document_ids": {
          "@type": "@id",
-         "@id": "oscal_catalog:document_ids"
+         "@id": "document_ids"
       },
       "email_addresses": {
-         "@id": "oscal_catalog:email_addresses"
+         "@id": "email_addresses"
       },
       "end": {
          "@type": "xsd:dateTime",
-         "@id": "oscal_assessment_plan:end"
+         "@id": "end"
       },
       "entries": {
          "@type": "@id",
-         "@id": "oscal_assessment_plan:entries"
+         "@id": "entries"
       },
       "exclude_controls": {
-         "@id": "oscal_catalog:exclude_controls"
+         "@id": "exclude_controls"
       },
       "exclude_objectives": {
          "@type": "@id",
-         "@id": "oscal_assessment_plan:exclude_objectives"
+         "@id": "exclude_objectives"
       },
       "exclude_subjects": {
          "@type": "@id",
-         "@id": "oscal_assessment_plan:exclude_subjects"
+         "@id": "exclude_subjects"
       },
       "expires": {
          "@type": "xsd:dateTime",
-         "@id": "oscal_assessment_plan:expires"
+         "@id": "expires"
       },
       "export": {
          "@type": "@id",
-         "@id": "oscal_ssp:export"
+         "@id": "export"
       },
       "expression": {
-         "@id": "oscal_catalog:expression"
+         "@id": "expression"
       },
       "external_ids": {
          "@type": "@id",
-         "@id": "oscal_catalog:external_ids"
+         "@id": "external_ids"
       },
       "facets": {
          "@type": "@id",
-         "@id": "oscal_assessment_plan:facets"
+         "@id": "facets"
       },
       "filename": {
-         "@id": "oscal_catalog:filename"
+         "@id": "filename"
       },
       "finding_uuid": {
-         "@id": "oscal_poam:finding_uuid"
+         "@id": "finding_uuid"
       },
       "findings": {
          "@type": "@id",
-         "@id": "oscal_assessment_plan:findings"
+         "@id": "findings"
       },
       "flat": {
          "@type": "@id",
-         "@id": "oscal_profile:flat"
+         "@id": "flat"
       },
       "functions_performed": {
-         "@id": "oscal_assessment_plan:functions_performed"
+         "@id": "functions_performed"
       },
       "generation_method": {
-         "@id": "oscal_mapping:generation_method"
+         "@id": "generation_method"
       },
       "group": {
-         "@id": "oscal_catalog:group"
+         "@id": "group"
       },
       "groups": {
          "@type": "@id",
-         "@id": "oscal_catalog:groups"
+         "@id": "groups"
       },
       "guidelines": {
          "@type": "@id",
-         "@id": "oscal_catalog:guidelines"
+         "@id": "guidelines"
       },
       "hashes": {
          "@type": "@id",
-         "@id": "oscal_catalog:hashes"
+         "@id": "hashes"
       },
       "how_many": {
          "@context": {
@@ -359,162 +351,162 @@
             "description": "skos:prefLabel",
             "meaning": "@id"
          },
-         "@id": "oscal_catalog:how_many"
+         "@id": "how_many"
       },
       "href": {
          "@type": "xsd:anyURI",
-         "@id": "oscal_catalog:href"
+         "@id": "href"
       },
       "id": {
-         "@id": "oscal_catalog:id"
+         "@id": "id"
       },
       "id_ref": {
-         "@id": "oscal_mapping:id_ref"
+         "@id": "id_ref"
       },
       "identified_subject": {
          "@type": "@id",
-         "@id": "oscal_assessment_plan:identified_subject"
+         "@id": "identified_subject"
       },
       "identifier": {
-         "@id": "oscal_catalog:identifier"
+         "@id": "identifier"
       },
       "identifier_type": {
-         "@id": "oscal_assessment_plan:identifier_type"
+         "@id": "identifier_type"
       },
       "implementation_statement_uuid": {
-         "@id": "oscal_assessment_plan:implementation_statement_uuid"
+         "@id": "implementation_statement_uuid"
       },
       "implementation_status": {
          "@type": "@id",
-         "@id": "oscal_assessment_plan:implementation_status"
+         "@id": "implementation_status"
       },
       "implementation_uuid": {
-         "@id": "oscal_assessment_plan:implementation_uuid"
+         "@id": "implementation_uuid"
       },
       "implemented_components": {
          "@type": "@id",
-         "@id": "oscal_assessment_plan:implemented_components"
+         "@id": "implemented_components"
       },
       "implemented_requirements": {
-         "@id": "oscal_catalog:implemented_requirements"
+         "@id": "implemented_requirements"
       },
       "import_ap": {
          "@type": "@id",
-         "@id": "oscal_assessment_results:import_ap"
+         "@id": "import_ap"
       },
       "import_component_definitions": {
          "@type": "@id",
-         "@id": "oscal_component:import_component_definitions"
+         "@id": "import_component_definitions"
       },
       "import_profile": {
          "@type": "@id",
-         "@id": "oscal_ssp:import_profile"
+         "@id": "import_profile"
       },
       "import_ssp": {
          "@type": "@id",
-         "@id": "oscal_assessment_plan:import_ssp"
+         "@id": "import_ssp"
       },
       "imports": {
          "@type": "@id",
-         "@id": "oscal_profile:imports"
+         "@id": "imports"
       },
       "include_all": {
          "@type": "@id",
-         "@id": "oscal_catalog:include_all"
+         "@id": "include_all"
       },
       "include_controls": {
-         "@id": "oscal_catalog:include_controls"
+         "@id": "include_controls"
       },
       "include_objectives": {
          "@type": "@id",
-         "@id": "oscal_assessment_plan:include_objectives"
+         "@id": "include_objectives"
       },
       "include_subjects": {
          "@type": "@id",
-         "@id": "oscal_assessment_plan:include_subjects"
+         "@id": "include_subjects"
       },
       "incorporates_components": {
          "@type": "@id",
-         "@id": "oscal_component:incorporates_components"
+         "@id": "incorporates_components"
       },
       "information_type_ids": {
-         "@id": "oscal_ssp:information_type_ids"
+         "@id": "information_type_ids"
       },
       "information_types": {
          "@type": "@id",
-         "@id": "oscal_ssp:information_types"
+         "@id": "information_types"
       },
       "system": {
          "@type": "xsd:anyURI",
-         "@id": "oscal_catalog:system"
+         "@id": "system"
       },
       "inherited": {
          "@type": "@id",
-         "@id": "oscal_ssp:inherited"
+         "@id": "inherited"
       },
       "insert_controls": {
          "@type": "@id",
-         "@id": "oscal_profile:insert_controls"
+         "@id": "insert_controls"
       },
       "integrity_impact": {
          "@type": "@id",
-         "@id": "oscal_ssp:integrity_impact"
+         "@id": "integrity_impact"
       },
       "inventory_items": {
          "@type": "@id",
-         "@id": "oscal_assessment_plan:inventory_items"
+         "@id": "inventory_items"
       },
       "label": {
-         "@id": "oscal_catalog:label"
+         "@id": "label"
       },
       "last_modified": {
          "@type": "xsd:dateTime",
-         "@id": "oscal_catalog:last_modified"
+         "@id": "last_modified"
       },
       "leveraged_authorizations": {
          "@type": "@id",
-         "@id": "oscal_ssp:leveraged_authorizations"
+         "@id": "leveraged_authorizations"
       },
       "lifecycle": {
-         "@id": "oscal_assessment_plan:lifecycle"
+         "@id": "lifecycle"
       },
       "links": {
          "@type": "@id",
-         "@id": "oscal_catalog:links"
+         "@id": "links"
       },
       "local_definitions": {
          "@type": "@id",
-         "@id": "oscal_assessment_plan:local_definitions"
+         "@id": "local_definitions"
       },
       "location_uuids": {
-         "@id": "oscal_catalog:location_uuids"
+         "@id": "location_uuids"
       },
       "locations": {
          "@type": "@id",
-         "@id": "oscal_catalog:locations"
+         "@id": "locations"
       },
       "logged_by": {
          "@type": "@id",
-         "@id": "oscal_assessment_plan:logged_by"
+         "@id": "logged_by"
       },
       "mapping_collection": {
          "@type": "@id",
-         "@id": "oscal_mapping:mapping_collection"
+         "@id": "mapping_collection"
       },
       "mapping_description": {
-         "@id": "oscal_mapping:mapping_description"
+         "@id": "mapping_description"
       },
       "mappings": {
          "@type": "@id",
-         "@id": "oscal_mapping:mappings"
+         "@id": "mappings"
       },
       "maps": {
          "@type": "@id",
-         "@id": "oscal_mapping:maps"
+         "@id": "maps"
       },
       "matching": {
          "@type": "@id",
-         "@id": "oscal_catalog:matching"
+         "@id": "matching"
       },
       "matching_rationale": {
          "@context": {
@@ -522,67 +514,67 @@
             "description": "skos:prefLabel",
             "meaning": "@id"
          },
-         "@id": "oscal_mapping:matching_rationale"
+         "@id": "matching_rationale"
       },
       "media_type": {
-         "@id": "oscal_catalog:media_type"
+         "@id": "media_type"
       },
       "member_of_organizations": {
-         "@id": "oscal_catalog:member_of_organizations"
+         "@id": "member_of_organizations"
       },
       "merge": {
          "@type": "@id",
-         "@id": "oscal_profile:merge"
+         "@id": "merge"
       },
       "metadata": {
          "@type": "@id",
-         "@id": "oscal_catalog:metadata"
+         "@id": "metadata"
       },
       "method": {
-         "@id": "oscal_catalog:method"
+         "@id": "method"
       },
       "methods": {
-         "@id": "oscal_assessment_plan:methods"
+         "@id": "methods"
       },
       "mitigating_factors": {
          "@type": "@id",
-         "@id": "oscal_assessment_plan:mitigating_factors"
+         "@id": "mitigating_factors"
       },
       "modify": {
          "@type": "@id",
-         "@id": "oscal_profile:modify"
+         "@id": "modify"
       },
       "name": {
-         "@id": "oscal_catalog:name"
+         "@id": "name"
       },
       "network_architecture": {
          "@type": "@id",
-         "@id": "oscal_ssp:network_architecture"
+         "@id": "network_architecture"
       },
       "ns": {
          "@type": "xsd:anyURI",
-         "@id": "oscal_catalog:ns"
+         "@id": "ns"
       },
       "number": {
-         "@id": "oscal_catalog:number"
+         "@id": "number"
       },
       "objective_id": {
-         "@id": "oscal_assessment_plan:objective_id"
+         "@id": "objective_id"
       },
       "objectives_and_methods": {
          "@type": "@id",
-         "@id": "oscal_assessment_plan:objectives_and_methods"
+         "@id": "objectives_and_methods"
       },
       "observation_uuid": {
-         "@id": "oscal_assessment_plan:observation_uuid"
+         "@id": "observation_uuid"
       },
       "observations": {
          "@type": "@id",
-         "@id": "oscal_assessment_plan:observations"
+         "@id": "observations"
       },
       "on_date": {
          "@type": "@id",
-         "@id": "oscal_assessment_plan:on_date"
+         "@id": "on_date"
       },
       "order": {
          "@context": {
@@ -590,66 +582,66 @@
             "description": "skos:prefLabel",
             "meaning": "@id"
          },
-         "@id": "oscal_profile:order"
+         "@id": "order"
       },
       "origin": {
          "@type": "@id",
-         "@id": "oscal_assessment_plan:origin"
+         "@id": "origin"
       },
       "origins": {
          "@type": "@id",
-         "@id": "oscal_assessment_plan:origins"
+         "@id": "origins"
       },
       "oscal_version": {
-         "@id": "oscal_catalog:oscal_version"
+         "@id": "oscal_version"
       },
       "param_id": {
-         "@id": "oscal_catalog:param_id"
+         "@id": "param_id"
       },
       "params": {
          "@type": "@id",
-         "@id": "oscal_catalog:params"
+         "@id": "params"
       },
       "part": {
          "@type": "@id",
-         "@id": "oscal_assessment_plan:part"
+         "@id": "part"
       },
       "parties": {
          "@type": "@id",
-         "@id": "oscal_catalog:parties"
+         "@id": "parties"
       },
       "parts": {
          "@type": "@id",
-         "@id": "oscal_catalog:parts"
+         "@id": "parts"
       },
       "party_uuid": {
-         "@id": "oscal_assessment_plan:party_uuid"
+         "@id": "party_uuid"
       },
       "party_uuids": {
-         "@id": "oscal_catalog:party_uuids"
+         "@id": "party_uuids"
       },
       "pattern": {
-         "@id": "oscal_catalog:pattern"
+         "@id": "pattern"
       },
       "percentage": {
          "@type": "xsd:float",
-         "@id": "oscal_mapping:percentage"
+         "@id": "percentage"
       },
       "period": {
          "@type": "xsd:positiveInteger",
-         "@id": "oscal_assessment_plan:period"
+         "@id": "period"
       },
       "plan_of_action_and_milestones": {
          "@type": "@id",
-         "@id": "oscal_poam:plan_of_action_and_milestones"
+         "@id": "plan_of_action_and_milestones"
       },
       "poam_items": {
          "@type": "@id",
-         "@id": "oscal_poam:poam_items"
+         "@id": "poam_items"
       },
       "port_ranges": {
          "@type": "@id",
-         "@id": "oscal_assessment_plan:port_ranges"
+         "@id": "port_ranges"
       },
       "position": {
          "@context": {
@@ -657,10 +649,10 @@
             "description": "skos:prefLabel",
             "meaning": "@id"
          },
-         "@id": "oscal_profile:position"
+         "@id": "position"
       },
       "postal_code": {
-         "@id": "oscal_catalog:postal_code"
+         "@id": "postal_code"
       },
       "predicate": {
          "@context": {
@@ -668,214 +660,214 @@
             "description": "skos:prefLabel",
             "meaning": "@id"
          },
-         "@id": "oscal_mapping:predicate"
+         "@id": "predicate"
       },
       "profile": {
          "@type": "@id",
-         "@id": "oscal_profile:profile"
+         "@id": "profile"
       },
       "props": {
          "@type": "@id",
-         "@id": "oscal_catalog:props"
+         "@id": "props"
       },
       "prose": {
-         "@id": "oscal_catalog:prose"
+         "@id": "prose"
       },
       "protocols": {
          "@type": "@id",
-         "@id": "oscal_assessment_plan:protocols"
+         "@id": "protocols"
       },
       "provenance": {
          "@type": "@id",
-         "@id": "oscal_mapping:provenance"
+         "@id": "provenance"
       },
       "provided": {
          "@type": "@id",
-         "@id": "oscal_ssp:provided"
+         "@id": "provided"
       },
       "provided_uuid": {
-         "@id": "oscal_ssp:provided_uuid"
+         "@id": "provided_uuid"
       },
       "published": {
          "@type": "xsd:dateTime",
-         "@id": "oscal_catalog:published"
+         "@id": "published"
       },
       "purpose": {
-         "@id": "oscal_assessment_plan:purpose"
+         "@id": "purpose"
       },
       "qualifiers": {
          "@type": "@id",
-         "@id": "oscal_mapping:qualifiers"
+         "@id": "qualifiers"
       },
       "reason": {
-         "@id": "oscal_assessment_plan:reason"
+         "@id": "reason"
       },
       "rel": {
-         "@id": "oscal_catalog:rel"
+         "@id": "rel"
       },
       "related_controls": {
          "@type": "@id",
-         "@id": "oscal_assessment_plan:related_controls"
+         "@id": "related_controls"
       },
       "related_findings": {
          "@type": "@id",
-         "@id": "oscal_poam:related_findings"
+         "@id": "related_findings"
       },
       "related_observations": {
          "@type": "@id",
-         "@id": "oscal_assessment_plan:related_observations"
+         "@id": "related_observations"
       },
       "related_responses": {
          "@type": "@id",
-         "@id": "oscal_assessment_plan:related_responses"
+         "@id": "related_responses"
       },
       "related_risks": {
          "@type": "@id",
-         "@id": "oscal_assessment_plan:related_risks"
+         "@id": "related_risks"
       },
       "related_tasks": {
          "@type": "@id",
-         "@id": "oscal_assessment_plan:related_tasks"
+         "@id": "related_tasks"
       },
       "relationship": {
-         "@id": "oscal_mapping:relationship"
+         "@id": "relationship"
       },
       "relevant_evidence": {
          "@type": "@id",
-         "@id": "oscal_assessment_plan:relevant_evidence"
+         "@id": "relevant_evidence"
       },
       "remarks": {
-         "@id": "oscal_catalog:remarks"
+         "@id": "remarks"
       },
       "remediations": {
          "@type": "@id",
-         "@id": "oscal_assessment_plan:remediations"
+         "@id": "remediations"
       },
       "removes": {
          "@type": "@id",
-         "@id": "oscal_profile:removes"
+         "@id": "removes"
       },
       "required_assets": {
          "@type": "@id",
-         "@id": "oscal_assessment_plan:required_assets"
+         "@id": "required_assets"
       },
       "resource_fragment": {
-         "@id": "oscal_catalog:resource_fragment"
+         "@id": "resource_fragment"
       },
       "resources": {
          "@type": "@id",
-         "@id": "oscal_catalog:resources"
+         "@id": "resources"
       },
       "response_uuid": {
-         "@id": "oscal_assessment_plan:response_uuid"
+         "@id": "response_uuid"
       },
       "responsibilities": {
          "@type": "@id",
-         "@id": "oscal_ssp:responsibilities"
+         "@id": "responsibilities"
       },
       "responsibility_uuid": {
-         "@id": "oscal_ssp:responsibility_uuid"
+         "@id": "responsibility_uuid"
       },
       "responsible_parties": {
          "@type": "@id",
-         "@id": "oscal_catalog:responsible_parties"
+         "@id": "responsible_parties"
       },
       "responsible_roles": {
          "@type": "@id",
-         "@id": "oscal_catalog:responsible_roles"
+         "@id": "responsible_roles"
       },
       "results": {
          "@type": "@id",
-         "@id": "oscal_assessment_results:results"
+         "@id": "results"
       },
       "reviewed_controls": {
          "@type": "@id",
-         "@id": "oscal_assessment_plan:reviewed_controls"
+         "@id": "reviewed_controls"
       },
       "revisions": {
          "@type": "@id",
-         "@id": "oscal_catalog:revisions"
+         "@id": "revisions"
       },
       "risk_log": {
          "@type": "@id",
-         "@id": "oscal_assessment_plan:risk_log"
+         "@id": "risk_log"
       },
       "risk_uuid": {
-         "@id": "oscal_assessment_plan:risk_uuid"
+         "@id": "risk_uuid"
       },
       "risks": {
          "@type": "@id",
-         "@id": "oscal_assessment_plan:risks"
+         "@id": "risks"
       },
       "rlinks": {
          "@type": "@id",
-         "@id": "oscal_catalog:rlinks"
+         "@id": "rlinks"
       },
       "role_id": {
-         "@id": "oscal_catalog:role_id"
+         "@id": "role_id"
       },
       "role_ids": {
-         "@id": "oscal_assessment_plan:role_ids"
+         "@id": "role_ids"
       },
       "roles": {
          "@type": "@id",
-         "@id": "oscal_catalog:roles"
+         "@id": "roles"
       },
       "satisfied": {
          "@type": "@id",
-         "@id": "oscal_ssp:satisfied"
+         "@id": "satisfied"
       },
       "scheme": {
          "@type": "xsd:anyURI",
-         "@id": "oscal_catalog:scheme"
+         "@id": "scheme"
       },
       "security_impact_level": {
          "@type": "@id",
-         "@id": "oscal_ssp:security_impact_level"
+         "@id": "security_impact_level"
       },
       "security_objective_availability": {
-         "@id": "oscal_ssp:security_objective_availability"
+         "@id": "security_objective_availability"
       },
       "security_objective_confidentiality": {
-         "@id": "oscal_ssp:security_objective_confidentiality"
+         "@id": "security_objective_confidentiality"
       },
       "security_objective_integrity": {
-         "@id": "oscal_ssp:security_objective_integrity"
+         "@id": "security_objective_integrity"
       },
       "security_sensitivity_level": {
-         "@id": "oscal_ssp:security_sensitivity_level"
+         "@id": "security_sensitivity_level"
       },
       "select": {
          "@type": "@id",
-         "@id": "oscal_catalog:select"
+         "@id": "select"
       },
       "selected": {
-         "@id": "oscal_ssp:selected"
+         "@id": "selected"
       },
       "set_parameters": {
-         "@id": "oscal_catalog:set_parameters"
+         "@id": "set_parameters"
       },
       "short_name": {
-         "@id": "oscal_catalog:short_name"
+         "@id": "short_name"
       },
       "source": {
          "@type": "xsd:anyURI",
-         "@id": "oscal_component:source"
+         "@id": "source"
       },
       "source_gap_summary": {
          "@type": "@id",
-         "@id": "oscal_mapping:source_gap_summary"
+         "@id": "source_gap_summary"
       },
       "source_resource": {
          "@type": "@id",
-         "@id": "oscal_mapping:source_resource"
+         "@id": "source_resource"
       },
       "sources": {
-         "@id": "oscal_catalog:sources"
+         "@id": "sources"
       },
       "start": {
          "@type": "xsd:dateTime",
-         "@id": "oscal_assessment_plan:start"
+         "@id": "start"
       },
       "state": {
          "@context": {
@@ -883,29 +875,29 @@
             "description": "skos:prefLabel",
             "meaning": "@id"
          },
-         "@id": "oscal_ssp:state"
+         "@id": "state"
       },
       "statement": {
-         "@id": "oscal_assessment_plan:statement"
+         "@id": "statement"
       },
       "statement_id": {
-         "@id": "oscal_catalog:statement_id"
+         "@id": "statement_id"
       },
       "statement_ids": {
-         "@id": "oscal_assessment_plan:statement_ids"
+         "@id": "statement_ids"
       },
       "statements": {
-         "@id": "oscal_catalog:statements"
+         "@id": "statements"
       },
       "status": {
-         "@id": "oscal_catalog:status"
+         "@id": "status"
       },
       "status_change": {
-         "@id": "oscal_assessment_plan:status_change"
+         "@id": "status_change"
       },
       "steps": {
          "@type": "@id",
-         "@id": "oscal_assessment_plan:steps"
+         "@id": "steps"
       },
       "subject": {
          "@context": {
@@ -913,106 +905,106 @@
             "description": "skos:prefLabel",
             "meaning": "@id"
          },
-         "@id": "oscal_mapping:subject"
+         "@id": "subject"
       },
       "subject_placeholder_uuid": {
-         "@id": "oscal_assessment_plan:subject_placeholder_uuid"
+         "@id": "subject_placeholder_uuid"
       },
       "subject_uuid": {
-         "@id": "oscal_assessment_plan:subject_uuid"
+         "@id": "subject_uuid"
       },
       "subjects": {
-         "@id": "oscal_assessment_plan:subjects"
+         "@id": "subjects"
       },
       "system_characteristics": {
          "@type": "@id",
-         "@id": "oscal_ssp:system_characteristics"
+         "@id": "system_characteristics"
       },
       "system_id": {
          "@type": "@id",
-         "@id": "oscal_poam:system_id"
+         "@id": "system_id"
       },
       "system_ids": {
          "@type": "@id",
-         "@id": "oscal_ssp:system_ids"
+         "@id": "system_ids"
       },
       "system_implementation": {
          "@type": "@id",
-         "@id": "oscal_ssp:system_implementation"
+         "@id": "system_implementation"
       },
       "system_information": {
          "@type": "@id",
-         "@id": "oscal_ssp:system_information"
+         "@id": "system_information"
       },
       "system_name": {
-         "@id": "oscal_ssp:system_name"
+         "@id": "system_name"
       },
       "system_name_short": {
-         "@id": "oscal_ssp:system_name_short"
+         "@id": "system_name_short"
       },
       "system_security_plan": {
          "@type": "@id",
-         "@id": "oscal_ssp:system_security_plan"
+         "@id": "system_security_plan"
       },
       "system_status": {
          "@type": "@id",
-         "@id": "oscal_ssp:system_status"
+         "@id": "system_status"
       },
       "target": {
          "@type": "@id",
-         "@id": "oscal_assessment_plan:target"
+         "@id": "target"
       },
       "target_coverage": {
          "@type": "xsd:float",
-         "@id": "oscal_mapping:target_coverage"
+         "@id": "target_coverage"
       },
       "target_gap_summary": {
          "@type": "@id",
-         "@id": "oscal_mapping:target_gap_summary"
+         "@id": "target_gap_summary"
       },
       "target_id": {
-         "@id": "oscal_assessment_plan:target_id"
+         "@id": "target_id"
       },
       "target_resource": {
          "@type": "@id",
-         "@id": "oscal_mapping:target_resource"
+         "@id": "target_resource"
       },
       "targets": {
          "@type": "@id",
-         "@id": "oscal_mapping:targets"
+         "@id": "targets"
       },
       "task_uuid": {
-         "@id": "oscal_assessment_plan:task_uuid"
+         "@id": "task_uuid"
       },
       "tasks": {
          "@type": "@id",
-         "@id": "oscal_assessment_plan:tasks"
+         "@id": "tasks"
       },
       "telephone_numbers": {
          "@type": "@id",
-         "@id": "oscal_catalog:telephone_numbers"
+         "@id": "telephone_numbers"
       },
       "terms_and_conditions": {
          "@type": "@id",
-         "@id": "oscal_assessment_plan:terms_and_conditions"
+         "@id": "terms_and_conditions"
       },
       "tests": {
          "@type": "@id",
-         "@id": "oscal_catalog:tests"
+         "@id": "tests"
       },
       "text": {
-         "@id": "oscal_catalog:text"
+         "@id": "text"
       },
       "threat_ids": {
          "@type": "@id",
-         "@id": "oscal_assessment_plan:threat_ids"
+         "@id": "threat_ids"
       },
       "timing": {
          "@type": "@id",
-         "@id": "oscal_assessment_plan:timing"
+         "@id": "timing"
       },
       "title": {
-         "@id": "oscal_catalog:title"
+         "@id": "title"
       },
       "transport": {
          "@context": {
@@ -1020,13 +1012,13 @@
             "description": "skos:prefLabel",
             "meaning": "@id"
          },
-         "@id": "oscal_assessment_plan:transport"
+         "@id": "transport"
       },
       "type": {
-         "@id": "oscal_catalog:type"
+         "@id": "type"
       },
       "types": {
-         "@id": "oscal_assessment_plan:types"
+         "@id": "types"
       },
       "unit": {
          "@context": {
@@ -1034,38 +1026,38 @@
             "description": "skos:prefLabel",
             "meaning": "@id"
          },
-         "@id": "oscal_assessment_plan:unit"
+         "@id": "unit"
       },
       "unmapped_controls": {
          "@type": "@id",
-         "@id": "oscal_mapping:unmapped_controls"
+         "@id": "unmapped_controls"
       },
       "urls": {
          "@type": "xsd:anyURI",
-         "@id": "oscal_catalog:urls"
+         "@id": "urls"
       },
       "usage": {
-         "@id": "oscal_catalog:usage"
+         "@id": "usage"
       },
       "users": {
          "@type": "@id",
-         "@id": "oscal_assessment_plan:users"
+         "@id": "users"
       },
       "uses_components": {
          "@type": "@id",
-         "@id": "oscal_assessment_plan:uses_components"
+         "@id": "uses_components"
       },
       "uuid": {
-         "@id": "oscal_catalog:uuid"
+         "@id": "uuid"
       },
       "value": {
-         "@id": "oscal_catalog:value"
+         "@id": "value"
       },
       "values": {
-         "@id": "oscal_catalog:values"
+         "@id": "values"
       },
       "version": {
-         "@id": "oscal_catalog:version"
+         "@id": "version"
       },
       "with_child_controls": {
          "@context": {
@@ -1073,790 +1065,790 @@
             "description": "skos:prefLabel",
             "meaning": "@id"
          },
-         "@id": "oscal_catalog:with_child_controls"
+         "@id": "with_child_controls"
       },
       "with_ids": {
-         "@id": "oscal_catalog:with_ids"
+         "@id": "with_ids"
       },
       "within_date_range": {
          "@type": "@id",
-         "@id": "oscal_assessment_plan:within_date_range"
+         "@id": "within_date_range"
       },
       "Action": {
-         "@id": "oscal_catalog:Action"
+         "@id": "Action"
       },
       "Activity": {
-         "@id": "oscal_assessment_plan:Activity"
+         "@id": "Activity"
       },
       "Addition": {
-         "@id": "oscal_profile:Addition"
+         "@id": "Addition"
       },
       "Address": {
-         "@id": "oscal_catalog:Address"
+         "@id": "Address"
       },
       "Alteration": {
-         "@id": "oscal_profile:Alteration"
+         "@id": "Alteration"
       },
       "AssessmentAssets": {
-         "@id": "oscal_assessment_plan:AssessmentAssets"
+         "@id": "AssessmentAssets"
       },
       "AssessmentLog": {
-         "@id": "oscal_assessment_results:AssessmentLog"
+         "@id": "AssessmentLog"
       },
       "AssessmentLogEntry": {
-         "@id": "oscal_assessment_results:AssessmentLogEntry"
+         "@id": "AssessmentLogEntry"
       },
       "AssessmentMethod": {
-         "@id": "oscal_assessment_plan:AssessmentMethod"
+         "@id": "AssessmentMethod"
       },
       "AssessmentPart": {
-         "@id": "oscal_assessment_plan:AssessmentPart"
+         "@id": "AssessmentPart"
       },
       "AssessmentPlan": {
-         "@id": "oscal_assessment_plan:AssessmentPlan"
+         "@id": "AssessmentPlan"
       },
       "AssessmentPlanDocument": {
-         "@id": "oscal_assessment_plan:AssessmentPlanDocument"
+         "@id": "AssessmentPlanDocument"
       },
       "AssessmentPlatform": {
-         "@id": "oscal_assessment_plan:AssessmentPlatform"
+         "@id": "AssessmentPlatform"
       },
       "AssessmentResults": {
-         "@id": "oscal_assessment_results:AssessmentResults"
+         "@id": "AssessmentResults"
       },
       "AssessmentResultsDocument": {
-         "@id": "oscal_assessment_results:AssessmentResultsDocument"
+         "@id": "AssessmentResultsDocument"
       },
       "AssessmentResultsLocalDefinitions": {
-         "@id": "oscal_assessment_results:AssessmentResultsLocalDefinitions"
+         "@id": "AssessmentResultsLocalDefinitions"
       },
       "AssessmentSelectControlById": {
-         "@id": "oscal_assessment_plan:AssessmentSelectControlById"
+         "@id": "AssessmentSelectControlById"
       },
       "AssessmentSubject": {
-         "@id": "oscal_assessment_plan:AssessmentSubject"
+         "@id": "AssessmentSubject"
       },
       "AssessmentSubjectPlaceholder": {
-         "@id": "oscal_assessment_plan:AssessmentSubjectPlaceholder",
+         "@id": "AssessmentSubjectPlaceholder",
          "@context": {
             "sources": {
-               "@id": "oscal_catalog:sources",
+               "@id": "sources",
                "@type": "@id"
             }
          }
       },
       "AssessmentSubjectSource": {
-         "@id": "oscal_assessment_plan:AssessmentSubjectSource"
+         "@id": "AssessmentSubjectSource"
       },
       "AssociatedActivity": {
-         "@id": "oscal_assessment_plan:AssociatedActivity",
+         "@id": "AssociatedActivity",
          "@context": {
             "subjects": {
-               "@id": "oscal_assessment_plan:subjects",
+               "@id": "subjects",
                "@type": "@id"
             }
          }
       },
       "AssociatedRisk": {
-         "@id": "oscal_assessment_plan:AssociatedRisk"
+         "@id": "AssociatedRisk"
       },
       "AtFrequency": {
-         "@id": "oscal_assessment_plan:AtFrequency"
+         "@id": "AtFrequency"
       },
       "Attestation": {
-         "@id": "oscal_assessment_results:Attestation"
+         "@id": "Attestation"
       },
       "AuthorizationBoundary": {
-         "@id": "oscal_ssp:AuthorizationBoundary"
+         "@id": "AuthorizationBoundary"
       },
       "AuthorizedPrivilege": {
-         "@id": "oscal_assessment_plan:AuthorizedPrivilege"
+         "@id": "AuthorizedPrivilege"
       },
       "BackMatter": {
-         "@id": "oscal_catalog:BackMatter"
+         "@id": "BackMatter"
       },
       "Base64Resource": {
-         "@id": "oscal_catalog:Base64Resource",
+         "@id": "Base64Resource",
          "@context": {
             "value": {
-               "@id": "oscal_catalog:value",
+               "@id": "value",
                "@type": "xsd:base64Binary"
             }
          }
       },
       "ByComponent": {
-         "@id": "oscal_ssp:ByComponent",
+         "@id": "ByComponent",
          "@context": {
             "set_parameters": {
-               "@id": "oscal_catalog:set_parameters",
+               "@id": "set_parameters",
                "@type": "@id"
             }
          }
       },
       "Capability": {
-         "@id": "oscal_component:Capability"
+         "@id": "Capability"
       },
       "Catalog": {
-         "@id": "oscal_catalog:Catalog"
+         "@id": "Catalog"
       },
       "CatalogDocument": {
-         "@id": "oscal_catalog:CatalogDocument"
+         "@id": "CatalogDocument"
       },
       "Characterization": {
-         "@id": "oscal_assessment_plan:Characterization"
+         "@id": "Characterization"
       },
       "Citation": {
-         "@id": "oscal_catalog:Citation"
+         "@id": "Citation"
       },
       "CombinationRule": {
-         "@id": "oscal_profile:CombinationRule"
+         "@id": "CombinationRule"
       },
       "ComponentDefinition": {
-         "@id": "oscal_component:ComponentDefinition"
+         "@id": "ComponentDefinition"
       },
       "ComponentDefinitionDocument": {
-         "@id": "oscal_component:ComponentDefinitionDocument"
+         "@id": "ComponentDefinitionDocument"
       },
       "ComponentStatus": {
-         "@id": "oscal_assessment_plan:ComponentStatus"
+         "@id": "ComponentStatus"
       },
       "ConfidenceScore": {
-         "@id": "oscal_mapping:ConfidenceScore"
+         "@id": "ConfidenceScore"
       },
       "ConstraintTest": {
-         "@id": "oscal_catalog:ConstraintTest"
+         "@id": "ConstraintTest"
       },
       "Control": {
-         "@id": "oscal_catalog:Control"
+         "@id": "Control"
       },
       "ControlImplementationSet": {
-         "@id": "oscal_component:ControlImplementationSet",
+         "@id": "ControlImplementationSet",
          "@context": {
             "set_parameters": {
-               "@id": "oscal_catalog:set_parameters",
+               "@id": "set_parameters",
                "@type": "@id"
             },
             "implemented_requirements": {
-               "@id": "oscal_catalog:implemented_requirements",
+               "@id": "implemented_requirements",
                "@type": "@id"
             }
          }
       },
       "ControlMatching": {
-         "@id": "oscal_catalog:ControlMatching"
+         "@id": "ControlMatching"
       },
       "ControlObjectiveSelection": {
-         "@id": "oscal_assessment_plan:ControlObjectiveSelection"
+         "@id": "ControlObjectiveSelection"
       },
       "ControlPart": {
-         "@id": "oscal_assessment_plan:ControlPart"
+         "@id": "ControlPart"
       },
       "ControlResponsibility": {
-         "@id": "oscal_ssp:ControlResponsibility"
+         "@id": "ControlResponsibility"
       },
       "ControlSelection": {
-         "@id": "oscal_assessment_plan:ControlSelection",
+         "@id": "ControlSelection",
          "@context": {
             "include_controls": {
-               "@id": "oscal_catalog:include_controls",
+               "@id": "include_controls",
                "@type": "@id"
             },
             "exclude_controls": {
-               "@id": "oscal_catalog:exclude_controls",
+               "@id": "exclude_controls",
                "@type": "@id"
             }
          }
       },
       "Coverage": {
-         "@id": "oscal_mapping:Coverage"
+         "@id": "Coverage"
       },
       "DataFlow": {
-         "@id": "oscal_ssp:DataFlow"
+         "@id": "DataFlow"
       },
       "DefinedComponent": {
-         "@id": "oscal_component:DefinedComponent"
+         "@id": "DefinedComponent"
       },
       "Diagram": {
-         "@id": "oscal_ssp:Diagram"
+         "@id": "Diagram"
       },
       "DocumentId": {
-         "@id": "oscal_catalog:DocumentId"
+         "@id": "DocumentId"
       },
       "EventTiming": {
-         "@id": "oscal_assessment_plan:EventTiming"
+         "@id": "EventTiming"
       },
       "Export": {
-         "@id": "oscal_ssp:Export"
+         "@id": "Export"
       },
       "Facet": {
-         "@id": "oscal_assessment_plan:Facet"
+         "@id": "Facet"
       },
       "Finding": {
-         "@id": "oscal_assessment_plan:Finding"
+         "@id": "Finding"
       },
       "FindingTarget": {
-         "@id": "oscal_assessment_plan:FindingTarget",
+         "@id": "FindingTarget",
          "@context": {
             "status": {
-               "@id": "oscal_catalog:status",
+               "@id": "status",
                "@type": "@id"
             }
          }
       },
       "GapSummary": {
-         "@id": "oscal_mapping:GapSummary"
+         "@id": "GapSummary"
       },
       "Group": {
-         "@id": "oscal_catalog:Group"
+         "@id": "Group"
       },
       "Hash": {
-         "@id": "oscal_catalog:Hash"
+         "@id": "Hash"
       },
       "HasPropsAndLinks": {
-         "@id": "oscal_catalog:HasPropsAndLinks"
+         "@id": "HasPropsAndLinks"
       },
       "HasResponsibleParties": {
-         "@id": "oscal_catalog:HasResponsibleParties"
+         "@id": "HasResponsibleParties"
       },
       "HasResponsibleRoles": {
-         "@id": "oscal_catalog:HasResponsibleRoles"
+         "@id": "HasResponsibleRoles"
       },
       "IdentifiedSubject": {
-         "@id": "oscal_assessment_plan:IdentifiedSubject",
+         "@id": "IdentifiedSubject",
          "@context": {
             "subjects": {
-               "@id": "oscal_assessment_plan:subjects",
+               "@id": "subjects",
                "@type": "@id"
             }
          }
       },
       "ImpactLevel": {
-         "@id": "oscal_ssp:ImpactLevel"
+         "@id": "ImpactLevel"
       },
       "ImplementationCommonLink": {
-         "@id": "oscal_assessment_plan:ImplementationCommonLink"
+         "@id": "ImplementationCommonLink"
       },
       "ImplementationCommonProperty": {
-         "@id": "oscal_assessment_plan:ImplementationCommonProperty"
+         "@id": "ImplementationCommonProperty"
       },
       "ImplementationResponsibleParty": {
-         "@id": "oscal_assessment_plan:ImplementationResponsibleParty"
+         "@id": "ImplementationResponsibleParty"
       },
       "ImplementationResponsibleRole": {
-         "@id": "oscal_assessment_plan:ImplementationResponsibleRole"
+         "@id": "ImplementationResponsibleRole"
       },
       "ImplementationStatus": {
-         "@id": "oscal_assessment_plan:ImplementationStatus"
+         "@id": "ImplementationStatus"
       },
       "ImplementedComponent": {
-         "@id": "oscal_assessment_plan:ImplementedComponent"
+         "@id": "ImplementedComponent"
       },
       "ImplementedControlStatement": {
-         "@id": "oscal_component:ImplementedControlStatement"
+         "@id": "ImplementedControlStatement"
       },
       "ImplementedRequirement": {
-         "@id": "oscal_component:ImplementedRequirement",
+         "@id": "ImplementedRequirement",
          "@context": {
             "set_parameters": {
-               "@id": "oscal_catalog:set_parameters",
+               "@id": "set_parameters",
                "@type": "@id"
             },
             "statements": {
-               "@id": "oscal_catalog:statements",
+               "@id": "statements",
                "@type": "@id"
             }
          }
       },
       "ImportAssessmentPlan": {
-         "@id": "oscal_assessment_results:ImportAssessmentPlan"
+         "@id": "ImportAssessmentPlan"
       },
       "ImportComponentDefinition": {
-         "@id": "oscal_component:ImportComponentDefinition"
+         "@id": "ImportComponentDefinition"
       },
       "ImportProfile": {
-         "@id": "oscal_ssp:ImportProfile"
+         "@id": "ImportProfile"
       },
       "ImportSSP": {
-         "@id": "oscal_assessment_plan:ImportSSP"
+         "@id": "ImportSSP"
       },
       "IncludeAll": {
-         "@id": "oscal_catalog:IncludeAll"
+         "@id": "IncludeAll"
       },
       "IncorporatesComponent": {
-         "@id": "oscal_component:IncorporatesComponent"
+         "@id": "IncorporatesComponent"
       },
       "InformationType": {
-         "@id": "oscal_ssp:InformationType"
+         "@id": "InformationType"
       },
       "InformationTypeCategorization": {
-         "@id": "oscal_ssp:InformationTypeCategorization"
+         "@id": "InformationTypeCategorization"
       },
       "InheritedControlImplementation": {
-         "@id": "oscal_ssp:InheritedControlImplementation"
+         "@id": "InheritedControlImplementation"
       },
       "InsertControls": {
-         "@id": "oscal_profile:InsertControls",
+         "@id": "InsertControls",
          "@context": {
             "include_controls": {
-               "@id": "oscal_catalog:include_controls",
+               "@id": "include_controls",
                "@type": "@id"
             },
             "exclude_controls": {
-               "@id": "oscal_catalog:exclude_controls",
+               "@id": "exclude_controls",
                "@type": "@id"
             }
          }
       },
       "InventoryItem": {
-         "@id": "oscal_assessment_plan:InventoryItem"
+         "@id": "InventoryItem"
       },
       "LeveragedAuthorization": {
-         "@id": "oscal_ssp:LeveragedAuthorization"
+         "@id": "LeveragedAuthorization"
       },
       "Link": {
-         "@id": "oscal_catalog:Link"
+         "@id": "Link"
       },
       "LocalDefinitions": {
-         "@id": "oscal_assessment_plan:LocalDefinitions"
+         "@id": "LocalDefinitions"
       },
       "LocalObjective": {
-         "@id": "oscal_assessment_plan:LocalObjective"
+         "@id": "LocalObjective"
       },
       "Location": {
-         "@id": "oscal_catalog:Location"
+         "@id": "Location"
       },
       "LocationProperty": {
-         "@id": "oscal_catalog:LocationProperty"
+         "@id": "LocationProperty"
       },
       "LoggedBy": {
-         "@id": "oscal_assessment_plan:LoggedBy"
+         "@id": "LoggedBy"
       },
       "Map": {
-         "@id": "oscal_mapping:Map",
+         "@id": "Map",
          "@context": {
             "sources": {
-               "@id": "oscal_catalog:sources",
+               "@id": "sources",
                "@type": "@id"
             }
          }
       },
       "Mapping": {
-         "@id": "oscal_mapping:Mapping"
+         "@id": "Mapping"
       },
       "MappingCollection": {
-         "@id": "oscal_mapping:MappingCollection"
+         "@id": "MappingCollection"
       },
       "MappingCollectionDocument": {
-         "@id": "oscal_mapping:MappingCollectionDocument"
+         "@id": "MappingCollectionDocument"
       },
       "MappingItem": {
-         "@id": "oscal_mapping:MappingItem"
+         "@id": "MappingItem"
       },
       "MappingProvenance": {
-         "@id": "oscal_mapping:MappingProvenance"
+         "@id": "MappingProvenance"
       },
       "MappingResourceReference": {
-         "@id": "oscal_mapping:MappingResourceReference"
+         "@id": "MappingResourceReference"
       },
       "MergeCustom": {
-         "@id": "oscal_profile:MergeCustom"
+         "@id": "MergeCustom"
       },
       "MergeFlat": {
-         "@id": "oscal_profile:MergeFlat"
+         "@id": "MergeFlat"
       },
       "Metadata": {
-         "@id": "oscal_catalog:Metadata"
+         "@id": "Metadata"
       },
       "MetadataPartyExternalId": {
-         "@id": "oscal_catalog:MetadataPartyExternalId"
+         "@id": "MetadataPartyExternalId"
       },
       "MetadataProperty": {
-         "@id": "oscal_catalog:MetadataProperty"
+         "@id": "MetadataProperty"
       },
       "MitigatingFactor": {
-         "@id": "oscal_assessment_plan:MitigatingFactor",
+         "@id": "MitigatingFactor",
          "@context": {
             "subjects": {
-               "@id": "oscal_assessment_plan:subjects",
+               "@id": "subjects",
                "@type": "@id"
             }
          }
       },
       "NetworkArchitecture": {
-         "@id": "oscal_ssp:NetworkArchitecture"
+         "@id": "NetworkArchitecture"
       },
       "ObjectiveStatus": {
-         "@id": "oscal_assessment_plan:ObjectiveStatus"
+         "@id": "ObjectiveStatus"
       },
       "Observation": {
-         "@id": "oscal_assessment_plan:Observation",
+         "@id": "Observation",
          "@context": {
             "subjects": {
-               "@id": "oscal_assessment_plan:subjects",
+               "@id": "subjects",
                "@type": "@id"
             }
          }
       },
       "OnDateCondition": {
-         "@id": "oscal_assessment_plan:OnDateCondition"
+         "@id": "OnDateCondition"
       },
       "Origin": {
-         "@id": "oscal_assessment_plan:Origin"
+         "@id": "Origin"
       },
       "OriginActor": {
-         "@id": "oscal_assessment_plan:OriginActor"
+         "@id": "OriginActor"
       },
       "OscalCommon": {
-         "@id": "oscal_catalog:OscalCommon"
+         "@id": "OscalCommon"
       },
       "OscalDocument": {
-         "@id": "oscal_catalog:OscalDocument"
+         "@id": "OscalDocument"
       },
       "Parameter": {
-         "@id": "oscal_catalog:Parameter"
+         "@id": "Parameter"
       },
       "ParameterConstraint": {
-         "@id": "oscal_catalog:ParameterConstraint"
+         "@id": "ParameterConstraint"
       },
       "ParameterGuideline": {
-         "@id": "oscal_catalog:ParameterGuideline"
+         "@id": "ParameterGuideline"
       },
       "ParameterProperty": {
-         "@id": "oscal_catalog:ParameterProperty"
+         "@id": "ParameterProperty"
       },
       "ParameterSelection": {
-         "@id": "oscal_catalog:ParameterSelection"
+         "@id": "ParameterSelection"
       },
       "ParameterSetting": {
-         "@id": "oscal_profile:ParameterSetting"
+         "@id": "ParameterSetting"
       },
       "Part": {
-         "@id": "oscal_catalog:Part"
+         "@id": "Part"
       },
       "PartProperty": {
-         "@id": "oscal_catalog:PartProperty"
+         "@id": "PartProperty"
       },
       "Party": {
-         "@id": "oscal_catalog:Party"
+         "@id": "Party"
       },
       "PartyExternalId": {
-         "@id": "oscal_catalog:PartyExternalId"
+         "@id": "PartyExternalId"
       },
       "PartyProperty": {
-         "@id": "oscal_catalog:PartyProperty"
+         "@id": "PartyProperty"
       },
       "PlanOfActionAndMilestones": {
-         "@id": "oscal_poam:PlanOfActionAndMilestones"
+         "@id": "PlanOfActionAndMilestones"
       },
       "PoamDocument": {
-         "@id": "oscal_poam:PoamDocument"
+         "@id": "PoamDocument"
       },
       "PoamItem": {
-         "@id": "oscal_poam:PoamItem"
+         "@id": "PoamItem"
       },
       "PoamLocalDefinitions": {
-         "@id": "oscal_poam:PoamLocalDefinitions"
+         "@id": "PoamLocalDefinitions"
       },
       "PortRange": {
-         "@id": "oscal_assessment_plan:PortRange",
+         "@id": "PortRange",
          "@context": {
             "start": {
-               "@id": "oscal_assessment_plan:start",
+               "@id": "start",
                "@type": "xsd:nonNegativeInteger"
             },
             "end": {
-               "@id": "oscal_assessment_plan:end",
+               "@id": "end",
                "@type": "xsd:nonNegativeInteger"
             }
          }
       },
       "Profile": {
-         "@id": "oscal_profile:Profile"
+         "@id": "Profile"
       },
       "ProfileAlterationProperty": {
-         "@id": "oscal_profile:ProfileAlterationProperty"
+         "@id": "ProfileAlterationProperty"
       },
       "ProfileDocument": {
-         "@id": "oscal_profile:ProfileDocument"
+         "@id": "ProfileDocument"
       },
       "ProfileGroup": {
-         "@id": "oscal_profile:ProfileGroup"
+         "@id": "ProfileGroup"
       },
       "ProfileImport": {
-         "@id": "oscal_profile:ProfileImport",
+         "@id": "ProfileImport",
          "@context": {
             "include_controls": {
-               "@id": "oscal_catalog:include_controls",
+               "@id": "include_controls",
                "@type": "@id"
             },
             "exclude_controls": {
-               "@id": "oscal_catalog:exclude_controls",
+               "@id": "exclude_controls",
                "@type": "@id"
             }
          }
       },
       "ProfileMerge": {
-         "@id": "oscal_profile:ProfileMerge"
+         "@id": "ProfileMerge"
       },
       "ProfileModify": {
-         "@id": "oscal_profile:ProfileModify",
+         "@id": "ProfileModify",
          "@context": {
             "set_parameters": {
-               "@id": "oscal_catalog:set_parameters",
+               "@id": "set_parameters",
                "@type": "@id"
             }
          }
       },
       "Property": {
-         "@id": "oscal_catalog:Property"
+         "@id": "Property"
       },
       "Protocol": {
-         "@id": "oscal_assessment_plan:Protocol"
+         "@id": "Protocol"
       },
       "ProvidedControlImplementation": {
-         "@id": "oscal_ssp:ProvidedControlImplementation"
+         "@id": "ProvidedControlImplementation"
       },
       "QualifierItem": {
-         "@id": "oscal_mapping:QualifierItem"
+         "@id": "QualifierItem"
       },
       "RelatedFinding": {
-         "@id": "oscal_poam:RelatedFinding"
+         "@id": "RelatedFinding"
       },
       "RelatedObservation": {
-         "@id": "oscal_assessment_plan:RelatedObservation"
+         "@id": "RelatedObservation"
       },
       "RelatedTask": {
-         "@id": "oscal_assessment_plan:RelatedTask",
+         "@id": "RelatedTask",
          "@context": {
             "subjects": {
-               "@id": "oscal_assessment_plan:subjects",
+               "@id": "subjects",
                "@type": "@id"
             }
          }
       },
       "RelevantEvidence": {
-         "@id": "oscal_assessment_plan:RelevantEvidence"
+         "@id": "RelevantEvidence"
       },
       "Removal": {
-         "@id": "oscal_profile:Removal"
+         "@id": "Removal"
       },
       "RequiredAsset": {
-         "@id": "oscal_assessment_plan:RequiredAsset",
+         "@id": "RequiredAsset",
          "@context": {
             "subjects": {
-               "@id": "oscal_assessment_plan:subjects",
+               "@id": "subjects",
                "@type": "@id"
             }
          }
       },
       "Resource": {
-         "@id": "oscal_catalog:Resource"
+         "@id": "Resource"
       },
       "ResourceLink": {
-         "@id": "oscal_catalog:ResourceLink"
+         "@id": "ResourceLink"
       },
       "ResourceProperty": {
-         "@id": "oscal_catalog:ResourceProperty"
+         "@id": "ResourceProperty"
       },
       "Response": {
-         "@id": "oscal_assessment_plan:Response"
+         "@id": "Response"
       },
       "ResponsibleParty": {
-         "@id": "oscal_catalog:ResponsibleParty"
+         "@id": "ResponsibleParty"
       },
       "ResponsibleRole": {
-         "@id": "oscal_catalog:ResponsibleRole"
+         "@id": "ResponsibleRole"
       },
       "Result": {
-         "@id": "oscal_assessment_results:Result"
+         "@id": "Result"
       },
       "ResultLocalDefinitions": {
-         "@id": "oscal_assessment_results:ResultLocalDefinitions"
+         "@id": "ResultLocalDefinitions"
       },
       "ReviewedControls": {
-         "@id": "oscal_assessment_plan:ReviewedControls"
+         "@id": "ReviewedControls"
       },
       "Revision": {
-         "@id": "oscal_catalog:Revision"
+         "@id": "Revision"
       },
       "RevisionProperty": {
-         "@id": "oscal_catalog:RevisionProperty"
+         "@id": "RevisionProperty"
       },
       "Risk": {
-         "@id": "oscal_assessment_plan:Risk"
+         "@id": "Risk"
       },
       "RiskLog": {
-         "@id": "oscal_assessment_plan:RiskLog"
+         "@id": "RiskLog"
       },
       "RiskLogEntry": {
-         "@id": "oscal_assessment_plan:RiskLogEntry"
+         "@id": "RiskLogEntry"
       },
       "RiskResponseReference": {
-         "@id": "oscal_assessment_plan:RiskResponseReference"
+         "@id": "RiskResponseReference"
       },
       "Role": {
-         "@id": "oscal_catalog:Role"
+         "@id": "Role"
       },
       "SatisfiedControlImplementation": {
-         "@id": "oscal_ssp:SatisfiedControlImplementation"
+         "@id": "SatisfiedControlImplementation"
       },
       "SecurityImpactLevel": {
-         "@id": "oscal_ssp:SecurityImpactLevel"
+         "@id": "SecurityImpactLevel"
       },
       "SelectControlById": {
-         "@id": "oscal_catalog:SelectControlById"
+         "@id": "SelectControlById"
       },
       "SelectObjectiveById": {
-         "@id": "oscal_assessment_plan:SelectObjectiveById"
+         "@id": "SelectObjectiveById"
       },
       "SelectSubjectById": {
-         "@id": "oscal_assessment_plan:SelectSubjectById"
+         "@id": "SelectSubjectById"
       },
       "SetParameter": {
-         "@id": "oscal_assessment_plan:SetParameter"
+         "@id": "SetParameter"
       },
       "SspAllowsAuthenticatedScanProp": {
-         "@id": "oscal_ssp:SspAllowsAuthenticatedScanProp"
+         "@id": "SspAllowsAuthenticatedScanProp"
       },
       "SspByComponentLink": {
-         "@id": "oscal_ssp:SspByComponentLink"
+         "@id": "SspByComponentLink"
       },
       "SspByComponentResponsibleRole": {
-         "@id": "oscal_ssp:SspByComponentResponsibleRole"
+         "@id": "SspByComponentResponsibleRole"
       },
       "SspControlImplementation": {
-         "@id": "oscal_ssp:SspControlImplementation",
+         "@id": "SspControlImplementation",
          "@context": {
             "set_parameters": {
-               "@id": "oscal_catalog:set_parameters",
+               "@id": "set_parameters",
                "@type": "@id"
             },
             "implemented_requirements": {
-               "@id": "oscal_catalog:implemented_requirements",
+               "@id": "implemented_requirements",
                "@type": "@id"
             }
          }
       },
       "SspControlOriginationProp": {
-         "@id": "oscal_ssp:SspControlOriginationProp"
+         "@id": "SspControlOriginationProp"
       },
       "SspDiagramLink": {
-         "@id": "oscal_ssp:SspDiagramLink"
+         "@id": "SspDiagramLink"
       },
       "SspDocument": {
-         "@id": "oscal_ssp:SspDocument"
+         "@id": "SspDocument"
       },
       "SspImplementedRequirement": {
-         "@id": "oscal_ssp:SspImplementedRequirement",
+         "@id": "SspImplementedRequirement",
          "@context": {
             "set_parameters": {
-               "@id": "oscal_catalog:set_parameters",
+               "@id": "set_parameters",
                "@type": "@id"
             },
             "statements": {
-               "@id": "oscal_catalog:statements",
+               "@id": "statements",
                "@type": "@id"
             }
          }
       },
       "SspImplementedRequirementResponsibleRole": {
-         "@id": "oscal_ssp:SspImplementedRequirementResponsibleRole"
+         "@id": "SspImplementedRequirementResponsibleRole"
       },
       "SspInventoryItem": {
-         "@id": "oscal_ssp:SspInventoryItem"
+         "@id": "SspInventoryItem"
       },
       "SspLeveragedAuthorizationLink": {
-         "@id": "oscal_ssp:SspLeveragedAuthorizationLink"
+         "@id": "SspLeveragedAuthorizationLink"
       },
       "SspStatement": {
-         "@id": "oscal_ssp:SspStatement"
+         "@id": "SspStatement"
       },
       "SspSystemCharacteristicsProp": {
-         "@id": "oscal_ssp:SspSystemCharacteristicsProp"
+         "@id": "SspSystemCharacteristicsProp"
       },
       "SspSystemCharacteristicsResponsibleParty": {
-         "@id": "oscal_ssp:SspSystemCharacteristicsResponsibleParty"
+         "@id": "SspSystemCharacteristicsResponsibleParty"
       },
       "SspSystemComponent": {
-         "@id": "oscal_ssp:SspSystemComponent"
+         "@id": "SspSystemComponent"
       },
       "SspSystemInformationLink": {
-         "@id": "oscal_ssp:SspSystemInformationLink"
+         "@id": "SspSystemInformationLink"
       },
       "SspSystemInformationProp": {
-         "@id": "oscal_ssp:SspSystemInformationProp"
+         "@id": "SspSystemInformationProp"
       },
       "Step": {
-         "@id": "oscal_assessment_plan:Step"
+         "@id": "Step"
       },
       "SubjectReference": {
-         "@id": "oscal_assessment_plan:SubjectReference"
+         "@id": "SubjectReference"
       },
       "SystemCharacteristics": {
-         "@id": "oscal_ssp:SystemCharacteristics"
+         "@id": "SystemCharacteristics"
       },
       "SystemComponent": {
-         "@id": "oscal_assessment_plan:SystemComponent",
+         "@id": "SystemComponent",
          "@context": {
             "status": {
-               "@id": "oscal_catalog:status",
+               "@id": "status",
                "@type": "@id"
             }
          }
       },
       "SystemId": {
-         "@id": "oscal_assessment_plan:SystemId"
+         "@id": "SystemId"
       },
       "SystemImplementation": {
-         "@id": "oscal_ssp:SystemImplementation"
+         "@id": "SystemImplementation"
       },
       "SystemInformation": {
-         "@id": "oscal_ssp:SystemInformation"
+         "@id": "SystemInformation"
       },
       "SystemSecurityPlan": {
-         "@id": "oscal_ssp:SystemSecurityPlan"
+         "@id": "SystemSecurityPlan"
       },
       "SystemStatus": {
-         "@id": "oscal_ssp:SystemStatus"
+         "@id": "SystemStatus"
       },
       "SystemUser": {
-         "@id": "oscal_assessment_plan:SystemUser"
+         "@id": "SystemUser"
       },
       "Task": {
-         "@id": "oscal_assessment_plan:Task",
+         "@id": "Task",
          "@context": {
             "subjects": {
-               "@id": "oscal_assessment_plan:subjects",
+               "@id": "subjects",
                "@type": "@id"
             }
          }
       },
       "TaskDependency": {
-         "@id": "oscal_assessment_plan:TaskDependency"
+         "@id": "TaskDependency"
       },
       "TelephoneNumber": {
-         "@id": "oscal_catalog:TelephoneNumber"
+         "@id": "TelephoneNumber"
       },
       "TermsAndConditions": {
-         "@id": "oscal_assessment_plan:TermsAndConditions"
+         "@id": "TermsAndConditions"
       },
       "TermsAndConditionsPart": {
-         "@id": "oscal_assessment_plan:TermsAndConditionsPart"
+         "@id": "TermsAndConditionsPart"
       },
       "ThreatId": {
-         "@id": "oscal_assessment_plan:ThreatId",
+         "@id": "ThreatId",
          "@context": {
             "id": {
-               "@id": "oscal_catalog:id",
+               "@id": "id",
                "@type": "xsd:anyURI"
             }
          }
       },
       "UsesComponent": {
-         "@id": "oscal_assessment_plan:UsesComponent"
+         "@id": "UsesComponent"
       },
       "WithinDateRange": {
-         "@id": "oscal_assessment_plan:WithinDateRange"
+         "@id": "WithinDateRange"
       }
    }
 }

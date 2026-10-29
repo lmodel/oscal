@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: SystemInformation
+# metamodel_version: 1.11.0# version: 1.2.3id: SystemInformation
 schema_generating: true
 description: Contains details about all information types that are stored, processed,
   or transmitted by the system, such as privacy information.

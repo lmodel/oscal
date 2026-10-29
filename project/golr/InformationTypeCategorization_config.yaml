@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: InformationTypeCategorization
+# metamodel_version: 1.11.0# version: 1.2.3id: InformationTypeCategorization
 schema_generating: true
 description: A set of information type identifiers qualified by the given identification
   system used.

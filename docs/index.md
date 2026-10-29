@@ -1,5 +1,5 @@
 # oscal
 
-OSCAL: Open Security Controls Assessment Language: LinkML Schema
+Open Security Controls Assessment Language (LinkML)
 
 - Auto-generated [schema documentation](elements/index.md)

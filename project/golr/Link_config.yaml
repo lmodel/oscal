@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: Link
+# metamodel_version: 1.11.0# version: 1.2.3id: Link
 schema_generating: true
 description: A reference to a local or remote resource, that has a specific relation
   to the containing object.

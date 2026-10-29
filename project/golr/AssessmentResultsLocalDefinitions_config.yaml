@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: AssessmentResultsLocalDefinitions
+# metamodel_version: 1.11.0# version: 1.2.3id: AssessmentResultsLocalDefinitions
 schema_generating: true
 description: Used to define data objects that are referenced by the assessment results
   but do not appear in the imported assessment plan.

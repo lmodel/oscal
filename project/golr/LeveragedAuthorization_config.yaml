@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: LeveragedAuthorization
+# metamodel_version: 1.11.0# version: 1.2.3id: LeveragedAuthorization
 schema_generating: true
 description: A description of another authorized system from which this system inherits
   capabilities that satisfy security requirements. Another term for this concept is

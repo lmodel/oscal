@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: AssessmentPlatform
+# metamodel_version: 1.11.0# version: 1.2.3id: AssessmentPlatform
 schema_generating: true
 description: Used to represent the toolset used to perform aspects of the assessment.
 display_name: AssessmentPlatform

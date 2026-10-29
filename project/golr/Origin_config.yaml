@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: Origin
+# metamodel_version: 1.11.0# version: 1.2.3id: Origin
 schema_generating: true
 description: Identifies the source of the finding, such as a tool, interviewed person,
   or activity.

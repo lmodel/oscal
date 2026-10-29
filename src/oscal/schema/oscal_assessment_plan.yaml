@@ -1,31 +1,29 @@
 ---
-id: https://w3id.org/lmodel/oscal_assessment_plan
+id: https://w3id.org/lmodel/oscal/oscal_assessment_plan
 name: oscal_assessment_plan
-title: oscal_assessment_plan
+title: OSCAL Assessment Plan Model
 description: |-
   OSCAL Assessment Plan Model: LinkML Schema
 license: Apache-2.0
 see_also:
-  - https://lmodel.github.io/oscal_assessment_plan
   - https://pages.nist.gov/OSCAL/learn/concepts/layer/assessment/assessment-plan/
   - https://medium.com/@gregelin/an-orientation-to-oscal-in-the-devsecops-pipeline-b51e45f8503b
-source: http://csrc.nist.gov/ns/oscal/1.2.1/oscal-ap-schema.json
-version: 1.2.1
+source: http://csrc.nist.gov/ns/oscal/1.2.3/oscal-ap-schema.json
+version: 1.2.3
 annotations:
-  uuid: 64ef4098-cb23-4767-9e2a-2a8606756e39
-  last-modified: "2026-03-27T10:00:00Z"
+  uuid: 3601614b-b544-4cd8-a906-b0ff9ae040cc
+  last-modified: "2026-10-29T01:02:04Z"
 notes:
-  - Every time the content of an OSCAL file changes, the following must also change:
+  - "Every time the content of an OSCAL file changes, the following must also change:"
   - A new UUID value must be generated and assigned to the root element's uuid.
   - The last-modified field in metadata must be assigned with the date and time at the moment the file is saved with the modified content.
   - These are two mechanisms by which tools can quickly know if a file has changed since it was last encountered. This document level UUID is the only UUID in OSCAL associated with version control.
   - When converting between formats, such as XML to JSON, these values should remain the same. This enables tools to know the content within the two formats is equivalent.
 
 prefixes:
-  oscal_assessment_plan: https://w3id.org/lmodel/oscal_assessment_plan/
-  oscal_catalog: https://w3id.org/lmodel/oscal_catalog/
+  oscal: https://w3id.org/lmodel/oscal/
   linkml: https://w3id.org/linkml/
-default_prefix: oscal_assessment_plan
+default_prefix: oscal
 default_range: string
 
 imports:
@@ -36,16 +34,27 @@ types:
   NonNegativeIntegerType:
     uri: xsd:nonNegativeInteger
     base: int
-    description: A non-negative integer value (>= 0), as used for port range boundaries.
+    minimum_value: 0
+    description: >-
+      A non-negative integer value (>= 0), as used for port range boundaries.
+      OSCAL 1.2.2 restored this minimum in its JSON datatype. Each slot with
+      this range repeats it, because the generated Pydantic model reads a
+      minimum from the slot and not from the type.
 
   PositiveIntegerType:
     uri: xsd:positiveInteger
     base: int
-    description: A positive integer value (>= 1), as used for task recurrence periods.
+    minimum_value: 1
+    description: >-
+      A positive integer value (>= 1), as used for task recurrence periods.
+      OSCAL 1.2.2 restored this minimum in its JSON datatype. Each slot with
+      this range repeats it, because the generated Pydantic model reads a
+      minimum from the slot and not from the type.
 
 enums:
   TaskTypeEnum:
     annotations:
+      oscal_allowed_values: oscal-task-values
       allow_any: true
     description: >
       Curated task type values. Other values are permitted (OSCAL allow-other="yes").
@@ -54,6 +63,8 @@ enums:
       action:
 
   TimingUnitEnum:
+    annotations:
+      oscal_allowed_values: oscal-timing-unit-values
     permissible_values:
       seconds:
       minutes:
@@ -64,6 +75,7 @@ enums:
 
   AssessmentSubjectTypeEnum:
     annotations:
+      oscal_allowed_values: oscal-assessment-subject-values
       allow_any: true
     description: >
       Curated assessment subject type values. Other values are permitted (OSCAL allow-other="yes").
@@ -76,6 +88,7 @@ enums:
 
   SelectSubjectTypeEnum:
     annotations:
+      oscal_allowed_values: oscal-assessment-subject-type-values
       allow_any: true
     description: >
       Curated subject type values for subject selection. Other values are permitted (OSCAL allow-other="yes").
@@ -88,6 +101,8 @@ enums:
       resource:
 
   OriginActorTypeEnum:
+    annotations:
+      oscal_allowed_values: oscal-origin-actor-type-values
     permissible_values:
       tool:
       assessment-platform:
@@ -95,6 +110,7 @@ enums:
 
   ObservationMethodEnum:
     annotations:
+      oscal_allowed_values: oscal-observation-method-type-values
       allow_any: true
     description: >
       Curated observation method values. Other values are permitted (OSCAL allow-other="yes").
@@ -106,6 +122,7 @@ enums:
 
   ObservationTypeEnum:
     annotations:
+      oscal_allowed_values: oscal-observation-values
       allow_any: true
     description: >
       Curated observation type values. Other values are permitted (OSCAL allow-other="yes").
@@ -120,6 +137,7 @@ enums:
 
   RiskStatusEnum:
     annotations:
+      oscal_allowed_values: oscal-risk-status-values
       allow_any: true
     description: >
       Curated risk status values. Other values are permitted (OSCAL allow-other="yes").
@@ -132,17 +150,22 @@ enums:
       closed:
 
   FindingTargetTypeEnum:
+    annotations:
+      oscal_allowed_values: oscal-finding-target-values
     permissible_values:
       statement-id:
       objective-id:
 
   ObjectiveStatusStateEnum:
+    annotations:
+      oscal_allowed_values: oscal-finding-target-status-state-values
     permissible_values:
       satisfied:
       not-satisfied:
 
   ObjectiveStatusReasonEnum:
     annotations:
+      oscal_allowed_values: oscal-finding-target-reason-values
       allow_any: true
     description: >
       Curated objective status reason values. Other values are permitted (OSCAL allow-other="yes").
@@ -153,6 +176,7 @@ enums:
 
   ImplementationStatusStateEnum:
     annotations:
+      oscal_allowed_values: oscal-implementation-status-values
       allow_any: true
     description: >
       Curated implementation status state values. Other values are permitted (OSCAL allow-other="yes").
@@ -165,6 +189,7 @@ enums:
 
   ComponentTypeEnum:
     annotations:
+      oscal_allowed_values: oscal-component-type-values
       allow_any: true
     description: >
       Curated component type values. Other values are permitted (OSCAL allow-other="yes").
@@ -183,8 +208,13 @@ enums:
       standard:
       validation:
       network:
+      region:
+      zone:
+      resource-container:
 
   ComponentStateEnum:
+    annotations:
+      oscal_allowed_values: oscal-component-status-state-values
     permissible_values:
       under-development:
       operational:
@@ -192,11 +222,15 @@ enums:
       other:
 
   TransportEnum:
+    annotations:
+      oscal_allowed_values: oscal-component-protocol-transport-values
     permissible_values:
       TCP:
       UDP:
 
   ImplementationPropNameEnum:
+    annotations:
+      oscal_allowed_values: oscal-component-prop-name-values oscal-inventory-item-prop-name-values oscal-component-interconnection-prop-name-values oscal-user-prop-name-values oscal-software-component-prop-name oscal-component-hardware-service-software-prop-name-values
     description: Allowed OSCAL implementation-common property names.
     permissible_values:
       implementation-point:
@@ -246,6 +280,7 @@ enums:
 
   ImplementationLinkRelEnum:
     annotations:
+      oscal_allowed_values: oscal-component-link-rel-values oscal-service-component-link-rel-type oscal-component-prop-validation-link-rel-values oscal-component-interconnection-link-rel-values
       allow_any: true
     description: >-
       Curated implementation-common link relation values. Other values are
@@ -266,6 +301,7 @@ enums:
 
   ImplementationAssetTypeEnum:
     annotations:
+      oscal_allowed_values: oscal-component-asset-type-value
       allow_any: true
     description: >-
       Curated implementation asset type values. Other values are permitted
@@ -285,27 +321,37 @@ enums:
       appliance:
 
   ImplementationPointEnum:
+    annotations:
+      oscal_allowed_values: oscal-component-implementation-point-value
     permissible_values:
       internal:
       external:
 
   ImplementationIpAddressClassEnum:
+    annotations:
+      oscal_allowed_values: oscal-component-prop-ipaddress-class-values
     permissible_values:
       local:
       remote:
 
   ImplementationDirectionEnum:
+    annotations:
+      oscal_allowed_values: oscal-component-prop-direction-values
     permissible_values:
       incoming:
       outgoing:
 
   UserTypeEnum:
+    annotations:
+      oscal_allowed_values: oscal-user-prop-type-values
     permissible_values:
       internal:
       external:
       general-public:
 
   UserPrivilegeLevelEnum:
+    annotations:
+      oscal_allowed_values: oscal-user-prop-privilege-level-values
     permissible_values:
       privileged:
       non-privileged:
@@ -313,6 +359,7 @@ enums:
 
   InterconnectionResponsibleRoleIdEnum:
     annotations:
+      oscal_allowed_values: oscal-component-interconnection-responsible-role-id-values
       allow_any: true
     description: >-
       Curated interconnection responsible-role identifiers. Other values are
@@ -325,6 +372,7 @@ enums:
 
   ImplementationResponsibleRoleIdEnum:
     annotations:
+      oscal_allowed_values: oscal-component-responsible-role-id-values
       allow_any: true
     description: >-
       Curated implementation-common role identifiers used in responsible role
@@ -342,6 +390,8 @@ enums:
       provider:
 
   ImplementationYesNoEnum:
+    annotations:
+      oscal_allowed_values: oscal-component-public-value
     description: Implementation-common yes/no value set used by several properties.
     permissible_values:
       "yes":
@@ -349,6 +399,7 @@ enums:
 
   SystemIdentifierTypeEnum:
     annotations:
+      oscal_allowed_values: oscal-system-identifier-type-values
       allow_any: true
     description: >-
       Curated system identifier type URIs. Other values are permitted (OSCAL
@@ -362,6 +413,7 @@ enums:
 
   AssessmentPartNameEnum:
     annotations:
+      oscal_allowed_values: oscal-assessment-part-values
       allow_any: true
     description: >
       Curated assessment part name values. Other values are permitted (OSCAL allow-other="yes").
@@ -371,6 +423,8 @@ enums:
       objective:
 
   TermsAndConditionsPartNameEnum:
+    annotations:
+      oscal_allowed_values: oscal-terms-and-conditions-part-name
     description: Allowed part names in assessment plan terms-and-conditions.
     permissible_values:
       rules-of-engagement:
@@ -382,6 +436,8 @@ enums:
       methodology:
 
   OscalAssessmentObjectiveTypesEnum:
+    annotations:
+      oscal_allowed_values: oscal-assessment-objective-types
     description: Values from assessment-common set oscal-assessment-objective-types.
     permissible_values:
       "objective":
@@ -390,9 +446,10 @@ enums:
       "assessment-method":
 
   OscalRiskPropTypeValuesEnum:
-    description: Values from assessment-common set oscal-risk-prop-type-values.
     annotations:
+      oscal_allowed_values: oscal-risk-prop-type-values
       allow_any: true
+    description: Values from assessment-common set oscal-risk-prop-type-values.
     permissible_values:
       "vendor-check-in":
       "status-update":
@@ -406,6 +463,8 @@ enums:
       "dr-rejected":
 
   OscalRiskPropNameValuesEnum:
+    annotations:
+      oscal_allowed_values: oscal-risk-prop-name-values@risk
     description: Values from assessment-common set oscal-risk-prop-name-values.
     permissible_values:
       "false-positive":
@@ -414,9 +473,10 @@ enums:
       "priority":
 
   OscalCharacterizationFacetNameSystemValuesEnum:
-    description: Values from assessment-common set oscal-characterization-facet-name-system-values.
     annotations:
+      oscal_allowed_values: oscal-characterization-facet-name-system-values
       allow_any: true
+    description: Values from assessment-common set oscal-characterization-facet-name-system-values.
     permissible_values:
       "http://fedramp.gov":
       "http://fedramp.gov/ns/oscal":
@@ -429,17 +489,23 @@ enums:
       "https://www.first.org/cvss/v4-0":
 
   OscalFacetPropNameValuesEnum:
+    annotations:
+      oscal_allowed_values: oscal-facet-prop-name-values
     description: Values from assessment-common set oscal-facet-prop-name-values.
     permissible_values:
       "state":
 
   OscalFacetPropStateValuesEnum:
+    annotations:
+      oscal_allowed_values: oscal-facet-prop-state-values
     description: Values from assessment-common set oscal-facet-prop-state-values.
     permissible_values:
       "initial":
       "adjusted":
 
   OscalFacetNameCoreValuesEnum:
+    annotations:
+      oscal_allowed_values: oscal-facet-name-core-values
     description: Values from assessment-common set oscal-facet-name-core-values.
     permissible_values:
       "likelihood":
@@ -448,6 +514,8 @@ enums:
       "severity":
 
   OscalFacetFedrampValuesEnum:
+    annotations:
+      oscal_allowed_values: oscal-facet-fedramp-values
     description: Values from assessment-common set oscal-facet-fedramp-values.
     permissible_values:
       "likelihood":
@@ -455,11 +523,15 @@ enums:
       "risk":
 
   OscalFacetCveValuesEnum:
+    annotations:
+      oscal_allowed_values: oscal-facet-cve-values
     description: Values from assessment-common set oscal-facet-cve-values.
     permissible_values:
       "cve-id":
 
   OscalFacetCvss2NameValuesEnum:
+    annotations:
+      oscal_allowed_values: oscal-facet-cvss2-name-values
     description: Values from assessment-common set oscal-facet-cvss2-name-values.
     permissible_values:
       "access-vector":
@@ -478,6 +550,8 @@ enums:
       "availability-requirement":
 
   OscalFacetCvss2AccessVectorValuesEnum:
+    annotations:
+      oscal_allowed_values: oscal-facet-cvss2-access-vector-values
     description: Values from assessment-common set oscal-facet-cvss2-access-vector-values.
     permissible_values:
       "local":
@@ -485,6 +559,8 @@ enums:
       "network":
 
   OscalFacetCvss2AccessComplexityValuesEnum:
+    annotations:
+      oscal_allowed_values: oscal-facet-cvss2-access-complexity-values
     description: Values from assessment-common set oscal-facet-cvss2-access-complexity-values.
     permissible_values:
       "high":
@@ -492,6 +568,8 @@ enums:
       "low":
 
   OscalFacetCvss2AuthenticationValuesEnum:
+    annotations:
+      oscal_allowed_values: oscal-facet-cvss2-authentication-values
     description: Values from assessment-common set oscal-facet-cvss2-authentication-values.
     permissible_values:
       "multiple":
@@ -499,6 +577,8 @@ enums:
       "none":
 
   OscalFacetCvss2ConfidentialityImpactValuesEnum:
+    annotations:
+      oscal_allowed_values: oscal-facet-cvss2-confidentiality-impact-values
     description: Values from assessment-common set oscal-facet-cvss2-confidentiality-impact-values.
     permissible_values:
       "none":
@@ -506,6 +586,8 @@ enums:
       "complete":
 
   OscalFacetCvss2ExploitabilityValuesEnum:
+    annotations:
+      oscal_allowed_values: oscal-facet-cvss2-exploitability-values
     description: Values from assessment-common set oscal-facet-cvss2-exploitability-values.
     permissible_values:
       "unproven":
@@ -515,6 +597,8 @@ enums:
       "not-defined":
 
   OscalFacetCvss2RemediationLevelValuesEnum:
+    annotations:
+      oscal_allowed_values: oscal-facet-cvss2-remediation-level-values
     description: Values from assessment-common set oscal-facet-cvss2-remediation-level-values.
     permissible_values:
       "official-fix":
@@ -524,6 +608,8 @@ enums:
       "not-defined":
 
   OscalFacetCvss2ReportConfidenceValuesEnum:
+    annotations:
+      oscal_allowed_values: oscal-facet-cvss2-report-confidence-values
     description: Values from assessment-common set oscal-facet-cvss2-report-confidence-values.
     permissible_values:
       "unconfirmed":
@@ -532,6 +618,8 @@ enums:
       "not-defined":
 
   OscalFacetCvss2CollateralDamagePotentialValuesEnum:
+    annotations:
+      oscal_allowed_values: oscal-facet-cvss2-collateral-damage-potential-values
     description: Values from assessment-common set oscal-facet-cvss2-collateral-damage-potential-values.
     permissible_values:
       "none":
@@ -542,6 +630,8 @@ enums:
       "not-defined":
 
   OscalFacetCvss2CiaRequirementValuesEnum:
+    annotations:
+      oscal_allowed_values: oscal-facet-cvss2-cia-requirement-values
     description: Values from assessment-common set oscal-facet-cvss2-cia-requirement-values.
     permissible_values:
       "none":
@@ -551,6 +641,8 @@ enums:
       "not-defined":
 
   OscalFacetCvss3NameValuesEnum:
+    annotations:
+      oscal_allowed_values: oscal-facet-cvss3-name-values
     description: Values from assessment-common set oscal-facet-cvss3-name-values.
     permissible_values:
       "attack-vector":
@@ -577,6 +669,8 @@ enums:
       "availability-requirement":
 
   OscalFacetCvss3AccessVectorValuesEnum:
+    annotations:
+      oscal_allowed_values: oscal-facet-cvss3-access-vector-values
     description: Values from assessment-common set oscal-facet-cvss3-access-vector-values.
     permissible_values:
       "network":
@@ -585,12 +679,16 @@ enums:
       "physical":
 
   OscalFacetCvss3AccessComplexityValuesEnum:
+    annotations:
+      oscal_allowed_values: oscal-facet-cvss3-access-complexity-values
     description: Values from assessment-common set oscal-facet-cvss3-access-complexity-values.
     permissible_values:
       "high":
       "low":
 
   OscalFacetCvss3CiaImpactValuesEnum:
+    annotations:
+      oscal_allowed_values: oscal-facet-cvss3-cia-impact-values
     description: Values from assessment-common set oscal-facet-cvss3-cia-impact-values.
     permissible_values:
       "none":
@@ -598,18 +696,24 @@ enums:
       "high":
 
   OscalFacetCvss3UserInteractionEnum:
+    annotations:
+      oscal_allowed_values: oscal-facet-cvss3-user-interaction
     description: Values from assessment-common set oscal-facet-cvss3-user-interaction.
     permissible_values:
       "none":
       "required":
 
   OscalFacetCvss3ScopeEnum:
+    annotations:
+      oscal_allowed_values: oscal-facet-cvss3-scope
     description: Values from assessment-common set oscal-facet-cvss3-scope.
     permissible_values:
       "unchanged":
       "changed":
 
   OscalFacetCvss3ExploitCodeMaturityValuesEnum:
+    annotations:
+      oscal_allowed_values: oscal-facet-cvss3-exploit-code-maturity-values
     description: Values from assessment-common set oscal-facet-cvss3-exploit-code-maturity-values.
     permissible_values:
       "not-defined":
@@ -619,6 +723,8 @@ enums:
       "high":
 
   OscalFacetCvss3RemediationLevelEnum:
+    annotations:
+      oscal_allowed_values: oscal-facet-cvss3-remediation-level
     description: Values from assessment-common set oscal-facet-cvss3-remediation-level.
     permissible_values:
       "not-defined":
@@ -628,6 +734,8 @@ enums:
       "unavailable":
 
   OscalFacetCvss3ReportConfidenceValuesEnum:
+    annotations:
+      oscal_allowed_values: oscal-facet-cvss3-report-confidence-values
     description: Values from assessment-common set oscal-facet-cvss3-report-confidence-values.
     permissible_values:
       "not-defined":
@@ -636,6 +744,8 @@ enums:
       "confirmed":
 
   OscalFacetCvss3CiaRequirementValuesEnum:
+    annotations:
+      oscal_allowed_values: oscal-facet-cvss3-cia-requirement-values
     description: Values from assessment-common set oscal-facet-cvss3-cia-requirement-values.
     permissible_values:
       "not-defined":
@@ -644,6 +754,8 @@ enums:
       "high":
 
   OscalFacetCvss3ModifiedAttackVectorValuesEnum:
+    annotations:
+      oscal_allowed_values: oscal-facet-cvss3-modified-attack-vector-values
     description: Values from assessment-common set oscal-facet-cvss3-modified-attack-vector-values.
     permissible_values:
       "not-defined":
@@ -653,6 +765,8 @@ enums:
       "physical":
 
   OscalFacetCvss3ModifiedAttackComplexityValuesEnum:
+    annotations:
+      oscal_allowed_values: oscal-facet-cvss3-modified-attack-complexity-values
     description: Values from assessment-common set oscal-facet-cvss3-modified-attack-complexity-values.
     permissible_values:
       "not-defined":
@@ -660,6 +774,8 @@ enums:
       "low":
 
   OscalFacetCvss3ModifiedCiaValuesEnum:
+    annotations:
+      oscal_allowed_values: oscal-facet-cvss3-modified-cia-values
     description: Values from assessment-common set oscal-facet-cvss3-modified-cia-values.
     permissible_values:
       "not-defined":
@@ -668,6 +784,8 @@ enums:
       "high":
 
   OscalFacetCvss3ModifiedUserInteractionValuesEnum:
+    annotations:
+      oscal_allowed_values: oscal-facet-cvss3-modified-user-interaction-values
     description: Values from assessment-common set oscal-facet-cvss3-modified-user-interaction-values.
     permissible_values:
       "not-defined":
@@ -675,6 +793,8 @@ enums:
       "required":
 
   OscalFacetCvss3ModifiedScopeValuesEnum:
+    annotations:
+      oscal_allowed_values: oscal-facet-cvss3-modified-scope-values
     description: Values from assessment-common set oscal-facet-cvss3-modified-scope-values.
     permissible_values:
       "not-defined":
@@ -682,6 +802,8 @@ enums:
       "changed":
 
   OscalCvssV40VectorsEnum:
+    annotations:
+      oscal_allowed_values: oscal-cvss-v4.0-vectors
     description: Values from assessment-common set oscal-cvss-v4.0-vectors.
     permissible_values:
       "av":
@@ -718,6 +840,8 @@ enums:
       "e":
 
   OscalCvssV40AvValuesEnum:
+    annotations:
+      oscal_allowed_values: oscal-cvss-v4.0-av-values
     description: Values from assessment-common set oscal-cvss-v4.0-av-values.
     permissible_values:
       "n":
@@ -726,18 +850,24 @@ enums:
       "p":
 
   OscalCvssV40AcValuesEnum:
+    annotations:
+      oscal_allowed_values: oscal-cvss-v4.0-ac-values
     description: Values from assessment-common set oscal-cvss-v4.0-ac-values.
     permissible_values:
       "h":
       "l":
 
   OscalCvssV40AtValuesEnum:
+    annotations:
+      oscal_allowed_values: oscal-cvss-v4.0-at-values
     description: Values from assessment-common set oscal-cvss-v4.0-at-values.
     permissible_values:
       "n":
       "p":
 
   OscalCvssV40PrCiaValuesEnum:
+    annotations:
+      oscal_allowed_values: oscal-cvss-v4.0-pr-cia-values
     description: Values from assessment-common set oscal-cvss-v4.0-pr-cia-values.
     permissible_values:
       "n":
@@ -745,6 +875,8 @@ enums:
       "h":
 
   OscalCvssV40UiValuesEnum:
+    annotations:
+      oscal_allowed_values: oscal-cvss-v4.0-ui-values
     description: Values from assessment-common set oscal-cvss-v4.0-ui-values.
     permissible_values:
       "n":
@@ -752,6 +884,8 @@ enums:
       "a":
 
   OscalCvssV40SValuesEnum:
+    annotations:
+      oscal_allowed_values: oscal-cvss-v4.0-s-values
     description: Values from assessment-common set oscal-cvss-v4.0-s-values.
     permissible_values:
       "x":
@@ -759,6 +893,8 @@ enums:
       "p":
 
   OscalCvssV40AuValuesEnum:
+    annotations:
+      oscal_allowed_values: oscal-cvss-v4.0-au-values
     description: Values from assessment-common set oscal-cvss-v4.0-au-values.
     permissible_values:
       "x":
@@ -766,6 +902,8 @@ enums:
       "y":
 
   OscalCvssV40RValuesEnum:
+    annotations:
+      oscal_allowed_values: oscal-cvss-v4.0-r-values
     description: Values from assessment-common set oscal-cvss-v4.0-r-values.
     permissible_values:
       "x":
@@ -774,6 +912,8 @@ enums:
       "i":
 
   OscalCvssV40VValuesEnum:
+    annotations:
+      oscal_allowed_values: oscal-cvss-v4.0-v-values
     description: Values from assessment-common set oscal-cvss-v4.0-v-values.
     permissible_values:
       "x":
@@ -782,6 +922,8 @@ enums:
       "i":
 
   OscalCvssV40ReValuesEnum:
+    annotations:
+      oscal_allowed_values: oscal-cvss-v4.0-re-values
     description: Values from assessment-common set oscal-cvss-v4.0-re-values.
     permissible_values:
       "x":
@@ -790,6 +932,8 @@ enums:
       "h":
 
   OscalCvssV40UValuesEnum:
+    annotations:
+      oscal_allowed_values: oscal-cvss-v4.0-u-values
     description: Values from assessment-common set oscal-cvss-v4.0-u-values.
     permissible_values:
       "x":
@@ -799,6 +943,8 @@ enums:
       "red":
 
   OscalCvssV40MavValuesEnum:
+    annotations:
+      oscal_allowed_values: oscal-cvss-v4.0-mav-values
     description: Values from assessment-common set oscal-cvss-v4.0-mav-values.
     permissible_values:
       "x":
@@ -808,6 +954,8 @@ enums:
       "p":
 
   OscalCvssV40MacValuesEnum:
+    annotations:
+      oscal_allowed_values: oscal-cvss-v4.0-mac-values
     description: Values from assessment-common set oscal-cvss-v4.0-mac-values.
     permissible_values:
       "x":
@@ -815,6 +963,8 @@ enums:
       "l":
 
   OscalCvssV40MatValuesEnum:
+    annotations:
+      oscal_allowed_values: oscal-cvss-v4.0-mat-values
     description: Values from assessment-common set oscal-cvss-v4.0-mat-values.
     permissible_values:
       "x":
@@ -822,6 +972,8 @@ enums:
       "p":
 
   OscalCvssV40MprMvsCiaValuesEnum:
+    annotations:
+      oscal_allowed_values: oscal-cvss-v4.0-mpr-mvs-cia-values
     description: Values from assessment-common set oscal-cvss-v4.0-mpr-mvs-cia-values.
     permissible_values:
       "x":
@@ -830,6 +982,8 @@ enums:
       "h":
 
   OscalCvssV40MuiValuesEnum:
+    annotations:
+      oscal_allowed_values: oscal-cvss-v4.0-mui-values
     description: Values from assessment-common set oscal-cvss-v4.0-mui-values.
     permissible_values:
       "x":
@@ -838,6 +992,8 @@ enums:
       "a":
 
   OscalCvssV40MscValuesEnum:
+    annotations:
+      oscal_allowed_values: oscal-cvss-v4.0-msc-values
     description: Values from assessment-common set oscal-cvss-v4.0-msc-values.
     permissible_values:
       "x":
@@ -846,6 +1002,8 @@ enums:
       "h":
 
   OscalCvssV40MsiMsaCiaValuesEnum:
+    annotations:
+      oscal_allowed_values: oscal-cvss-v4.0-msi-msa-cia-values
     description: Values from assessment-common set oscal-cvss-v4.0-msi-msa-cia-values.
     permissible_values:
       "x":
@@ -855,6 +1013,8 @@ enums:
       "s":
 
   OscalCvssV40EnvCiaValuesEnum:
+    annotations:
+      oscal_allowed_values: oscal-cvss-v4.0-env-cia-values
     description: Values from assessment-common set oscal-cvss-v4.0-env-cia-values.
     permissible_values:
       "x":
@@ -863,6 +1023,8 @@ enums:
       "h":
 
   OscalCvssV40EValuesEnum:
+    annotations:
+      oscal_allowed_values: oscal-cvss-v4.0-e-values
     description: Values from assessment-common set oscal-cvss-v4.0-e-values.
     permissible_values:
       "x":
@@ -871,6 +1033,8 @@ enums:
       "u":
 
   OscalResponsePropTypeValueEnum:
+    annotations:
+      oscal_allowed_values: oscal-response-prop-type-value
     description: Values from assessment-common set oscal-response-prop-type-value.
     permissible_values:
       "avoid":
@@ -883,6 +1047,7 @@ enums:
 
   ResponseLifecycleEnum:
     annotations:
+      oscal_allowed_values: oscal-response-lifecycle-values
       allow_any: true
     description: >
       Curated response lifecycle values. Other values are permitted (OSCAL allow-other="yes").
@@ -1200,6 +1365,7 @@ slots:
   # AtFrequency
   period:
     range: PositiveIntegerType
+    minimum_value: 1
     description: The task must occur every period (in the given units).
 
   unit:
@@ -1967,7 +2133,7 @@ classes:
       - uuid
       - name
       - ns
-      - _class
+      - class_
       - title
       - prose
       - parts
@@ -2004,7 +2170,7 @@ classes:
       - id
       - name
       - ns
-      - _class
+      - class_
       - title
       - prose
       - parts
@@ -2108,8 +2274,10 @@ classes:
     slot_usage:
       start:
         range: NonNegativeIntegerType
+        minimum_value: 0
       end:
         range: NonNegativeIntegerType
+        minimum_value: 0
     in_subset:
       - implementation_common
 

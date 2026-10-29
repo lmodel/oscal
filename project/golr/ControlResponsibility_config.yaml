@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: ControlResponsibility
+# metamodel_version: 1.11.0# version: 1.2.3id: ControlResponsibility
 schema_generating: true
 description: Describes a control implementation responsibility imposed on a leveraging
   system.

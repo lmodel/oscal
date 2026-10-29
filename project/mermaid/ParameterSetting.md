@@ -8,7 +8,7 @@
       HasPropsAndLinks <|-- ParameterSetting
         click HasPropsAndLinks href "../HasPropsAndLinks"
       
-      ParameterSetting : _class
+      ParameterSetting : class_
         
       ParameterSetting : constraints
         

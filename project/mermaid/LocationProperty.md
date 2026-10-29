@@ -8,7 +8,7 @@
       Property <|-- LocationProperty
         click Property href "../Property"
       
-      LocationProperty : _class
+      LocationProperty : class_
         
       LocationProperty : group
         

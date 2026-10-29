@@ -50,7 +50,7 @@ class "TermsAndConditionsPart" [[{A terms-and-conditions scoped assessment part.
     {field} name : TermsAndConditionsPartNameEnum  
     {field} uuid(i) : UUIDType  
     {field} ns(i) : URIType  
-    {field} _class(i) : TokenType  
+    {field} class_(i) : TokenType  
     {field} title(i) : MarkupLineType  
     {field} prose(i) : MarkupMultilineType  
 }
@@ -63,7 +63,7 @@ class "AssessmentPart" [[{A partition of an assessment plan or results or a chil
     {field} uuid : UUIDType  
     {field} name : TokenType  
     {field} ns : URIType  
-    {field} _class : TokenType  
+    {field} class_ : TokenType  
     {field} title : MarkupLineType  
     {field} prose : MarkupMultilineType  
 }
@@ -142,7 +142,7 @@ class "ImplementationCommonProperty" [[{Implementation-common scoped OSCAL prope
     {field} value : string  
     {field} uuid(i) : UUIDType  
     {field} ns(i) : URIType  
-    {field} _class(i) : TokenType  
+    {field} class_(i) : TokenType  
     {field} remarks(i) : MarkupMultilineType  
     {field} group(i) : TokenType  
 }
@@ -233,7 +233,7 @@ class "SspSystemInformationProp" [[{SSP-scoped property used in system informati
     {field} value : PrivacyDesignationEnum  
     {field} uuid(i) : UUIDType  
     {field} ns(i) : URIType  
-    {field} _class(i) : TokenType  
+    {field} class_(i) : TokenType  
     {field} remarks(i) : MarkupMultilineType  
     {field} group(i) : TokenType  
 }
@@ -274,7 +274,7 @@ class "Property" [[{An attribute, characteristic, or quality of the containing o
     {field} uuid : UUIDType  
     {field} ns : URIType  
     {field} value : string  
-    {field} _class : TokenType  
+    {field} class_ : TokenType  
     {field} remarks : MarkupMultilineType  
     {field} group : TokenType  
 }
@@ -339,15 +339,6 @@ class "PoamLocalDefinitions" [[{Allows components and inventory items to be defi
 "OscalCommon" ^.. "SystemComponent"
 "HasResponsibleRoles" ^.. "SystemComponent"
 "SystemComponent" ^-- "SspSystemComponent"
-class "SspSystemCharacteristicsProp" [[{SSP-scoped property used in system characteristics.}]] {
-    {field} name : SystemCharacteristicsPropNameEnum  
-    {field} value : string  
-    {field} uuid(i) : UUIDType  
-    {field} ns(i) : URIType  
-    {field} _class(i) : TokenType  
-    {field} remarks(i) : MarkupMultilineType  
-    {field} group(i) : TokenType  
-}
 class "SspSystemCharacteristicsResponsibleParty" [[{SSP-scoped responsible party for system characteristics.}]] {
     {field} role_id : TokenType  
     {field} party_uuids(i) : UUIDType  [1..*]
@@ -370,12 +361,22 @@ class "SecurityImpactLevel" [[{The overall level of expected impact resulting fr
     {field} security_objective_integrity : string  
     {field} security_objective_availability : string  
 }
-"SystemCharacteristics" *--> "0..*" "SspSystemCharacteristicsProp" : "props"
+class "SspSystemCharacteristicsProp" [[{SSP-scoped property used in system characteristics.}]] {
+    {field} name : SystemCharacteristicsPropNameEnum  
+    {field} value : string  
+    {field} uuid(i) : UUIDType  
+    {field} ns(i) : URIType  
+    {field} class_(i) : TokenType  
+    {field} remarks(i) : MarkupMultilineType  
+    {field} group(i) : TokenType  
+}
 "SystemCharacteristics" *--> "0..*" "SspSystemCharacteristicsResponsibleParty" : "responsible-parties"
 "SystemCharacteristics" *--> "0..1" "DataFlow" : "data-flow"
 "SystemCharacteristics" *--> "0..1" "NetworkArchitecture" : "network-architecture"
 "SystemCharacteristics" *--> "1" "AuthorizationBoundary" : "authorization-boundary"
 "SystemCharacteristics" *--> "0..1" "SecurityImpactLevel" : "security-impact-level"
+"SystemCharacteristics" *--> "0..*" "Link" : "links"
+"SystemCharacteristics" *--> "0..*" "SspSystemCharacteristicsProp" : "props"
 "SystemSecurityPlan" *--> "0..1" "SystemCharacteristics" : "system-characteristics"(i)
 class "MitigatingFactor" [[{Describes an existing mitigating factor that may affect the overall determination of the risk.}]] {
     {field} uuid : UUIDType  
@@ -435,7 +436,7 @@ class "SspAllowsAuthenticatedScanProp" [[{SSP-scoped property used for component
     {field} value : AllowsAuthenticatedScanEnum  
     {field} uuid(i) : UUIDType  
     {field} ns(i) : URIType  
-    {field} _class(i) : TokenType  
+    {field} class_(i) : TokenType  
     {field} remarks(i) : MarkupMultilineType  
     {field} group(i) : TokenType  
 }
@@ -468,7 +469,7 @@ class "SspControlOriginationProp" [[{SSP-scoped property used in implemented req
     {field} value : ControlOriginationValueEnum  
     {field} uuid(i) : UUIDType  
     {field} ns(i) : URIType  
-    {field} _class(i) : TokenType  
+    {field} class_(i) : TokenType  
     {field} remarks(i) : MarkupMultilineType  
     {field} group(i) : TokenType  
 }
@@ -703,7 +704,7 @@ class "RevisionProperty" [[{Revision-scoped OSCAL property.}]] {
     {field} uuid(i) : UUIDType  
     {field} ns(i) : URIType  
     {field} value(i) : string  
-    {field} _class(i) : TokenType  
+    {field} class_(i) : TokenType  
     {field} remarks(i) : MarkupMultilineType  
     {field} group(i) : TokenType  
 }
@@ -802,7 +803,7 @@ class "ResourceProperty" [[{Back-matter resource-scoped OSCAL property.}]] {
     {field} value : string  
     {field} uuid(i) : UUIDType  
     {field} ns(i) : URIType  
-    {field} _class(i) : TokenType  
+    {field} class_(i) : TokenType  
     {field} remarks(i) : MarkupMultilineType  
     {field} group(i) : TokenType  
 }
@@ -920,7 +921,7 @@ class "ProfileAlterationProperty" [[{OSCAL property entries allowed in profile m
     {field} uuid(i) : UUIDType  
     {field} ns(i) : URIType  
     {field} value(i) : string  
-    {field} _class(i) : TokenType  
+    {field} class_(i) : TokenType  
     {field} remarks(i) : MarkupMultilineType  
     {field} group(i) : TokenType  
 }
@@ -929,7 +930,7 @@ class "PartyProperty" [[{Party-scoped OSCAL property.}]] {
     {field} uuid(i) : UUIDType  
     {field} ns(i) : URIType  
     {field} value(i) : string  
-    {field} _class(i) : TokenType  
+    {field} class_(i) : TokenType  
     {field} remarks(i) : MarkupMultilineType  
     {field} group(i) : TokenType  
 }
@@ -938,7 +939,7 @@ class "PartProperty" [[{Control-common part-scoped OSCAL property.}]] {
     {field} uuid(i) : UUIDType  
     {field} ns(i) : URIType  
     {field} value(i) : string  
-    {field} _class(i) : TokenType  
+    {field} class_(i) : TokenType  
     {field} remarks(i) : MarkupMultilineType  
     {field} group(i) : TokenType  
 }
@@ -947,7 +948,7 @@ class "ParameterProperty" [[{Control-common parameter-scoped OSCAL property.}]] 
     {field} uuid(i) : UUIDType  
     {field} ns(i) : URIType  
     {field} value(i) : string  
-    {field} _class(i) : TokenType  
+    {field} class_(i) : TokenType  
     {field} remarks(i) : MarkupMultilineType  
     {field} group(i) : TokenType  
 }
@@ -956,14 +957,14 @@ class "MetadataProperty" [[{Metadata-scoped OSCAL property.}]] {
     {field} uuid(i) : UUIDType  
     {field} ns(i) : URIType  
     {field} value(i) : string  
-    {field} _class(i) : TokenType  
+    {field} class_(i) : TokenType  
     {field} remarks(i) : MarkupMultilineType  
     {field} group(i) : TokenType  
 }
 class "LocationProperty" [[{Location-scoped OSCAL property.}]] {
     {field} name : LocationPropNameEnum  
     {field} value : string  
-    {field} _class : TokenType  
+    {field} class_ : TokenType  
     {field} uuid(i) : UUIDType  
     {field} ns(i) : URIType  
     {field} remarks(i) : MarkupMultilineType  
@@ -972,6 +973,7 @@ class "LocationProperty" [[{Location-scoped OSCAL property.}]] {
 "HasPropsAndLinks" *--> "0..*" "Property" : "props"
 "Resource" *--> "0..*" "Property" : "props"(i)
 "Addition" *--> "0..*" "Property" : "props"(i)
+"SystemCharacteristics" *--> "0..*" "Property" : "props"(i)
 "SystemInformation" *--> "0..*" "Property" : "props"(i)
 "InformationType" *--> "0..*" "Property" : "props"
 "ImpactLevel" *--> "0..*" "Property" : "props"
@@ -998,7 +1000,7 @@ class "ProfileModify" [[{Set parameters or amend controls in resolution.}]] {
 }
 class "ParameterSetting" [[{A parameter setting to be propagated to points of insertion in a resolved profile.}]] {
     {field} param_id : TokenType  
-    {field} _class : TokenType  
+    {field} class_ : TokenType  
     {field} depends_on : TokenType  
     {field} label : MarkupLineType  
     {field} usage : MarkupMultilineType  
@@ -1034,7 +1036,7 @@ class "IncludeAll" [[{Include all controls from the imported catalog or profile 
 "Profile" *--> "0..*" "ProfileImport" : "imports"(i)
 class "ProfileGroup" [[{A group of (selected) controls or of groups of controls within a profile custom merge structure.}]] {
     {field} id : TokenType  
-    {field} _class : TokenType  
+    {field} class_ : TokenType  
     {field} title : MarkupLineType  
     {field} remarks : MarkupMultilineType  
 }
@@ -1042,13 +1044,13 @@ class "Part" [[{An annotated, markup-based textual element of a control's or cat
     {field} id : TokenType  
     {field} name : TokenType  
     {field} ns : URIType  
-    {field} _class : TokenType  
+    {field} class_ : TokenType  
     {field} title : MarkupLineType  
     {field} prose : MarkupMultilineType  
 }
 class "Parameter" [[{Parameters provide a mechanism for the dynamic assignment of value(s) in a control.}]] {
     {field} id : TokenType  
-    {field} _class : TokenType  
+    {field} class_ : TokenType  
     {field} depends_on : TokenType  
     {field} label : MarkupLineType  
     {field} usage : MarkupMultilineType  
@@ -1151,12 +1153,12 @@ class "Catalog" [[{A structured, organized collection of control information.}]]
 }
 class "Group" [[{A group of controls, or of groups of controls.}]] {
     {field} id : TokenType  
-    {field} _class : TokenType  
+    {field} class_ : TokenType  
     {field} title : MarkupLineType  
 }
 class "Control" [[{A structured object representing a requirement or guideline, which when implemented will reduce an aspect of risk related to an information system and its information.}]] {
     {field} id : TokenType  
-    {field} _class : TokenType  
+    {field} class_ : TokenType  
     {field} title : MarkupLineType  
 }
 "Catalog" *--> "0..*" "Parameter" : "params"
@@ -1371,7 +1373,7 @@ class "ControlPart" [[{An annotated, markup-based textual element of a control's
     {field} id : TokenType  
     {field} name : TokenType  
     {field} ns : URIType  
-    {field} _class : TokenType  
+    {field} class_ : TokenType  
     {field} title : MarkupLineType  
     {field} prose : MarkupMultilineType  
 }

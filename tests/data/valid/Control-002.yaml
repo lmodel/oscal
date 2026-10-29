@@ -2,7 +2,7 @@
 # Control with enhanced (child) controls and a constraint
 id: ac-2
 title: Account Management
-_class: proactive
+class_: proactive
 params:
   - id: ac-2_prm_1
     label: organization-defined account types

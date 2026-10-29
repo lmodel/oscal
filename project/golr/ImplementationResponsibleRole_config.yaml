@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: ImplementationResponsibleRole
+# metamodel_version: 1.11.0# version: 1.2.3id: ImplementationResponsibleRole
 schema_generating: true
 description: Implementation-common scoped responsible role.
 display_name: ImplementationResponsibleRole

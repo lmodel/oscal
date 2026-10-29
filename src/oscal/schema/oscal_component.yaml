@@ -1,32 +1,30 @@
 ---
-id: https://w3id.org/lmodel/oscal_component
+id: https://w3id.org/lmodel/oscal/oscal_component
 name: oscal_component
-title: oscal_component
+title: OSCAL Component Definition Model
 description: |-
   OSCAL Component Definition Model: LinkML Schema
 license: Apache-2.0
-source: http://csrc.nist.gov/ns/oscal/1.2.1/oscal-component-definition-schema.json
-version: 1.2.1
+source: http://csrc.nist.gov/ns/oscal/1.2.3/oscal-component-definition-schema.json
+version: 1.2.3
 see_also:
   - https://pages.nist.gov/OSCAL/learn/concepts/layer/implementation/component-definition/
-  - https://pages.nist.gov/OSCAL-Reference/models/v1.2.1/component-definition/json-reference/
-  - https://pages.nist.gov/OSCAL-Reference/models/v1.2.1/component-definition/json-definitions/
+  - https://pages.nist.gov/OSCAL-Reference/models/v1.2.3/component-definition/json-reference/
+  - https://pages.nist.gov/OSCAL-Reference/models/v1.2.3/component-definition/json-definitions/
 annotations:
-  uuid: b9ad4bc1-3032-4fdc-9cf5-7b56487aa652
-  last-modified: "2026-03-27T10:00:00Z"
+  uuid: 21a62feb-c3b6-4d0f-9dec-4049da37686c
+  last-modified: "2026-10-29T01:02:04Z"
 notes:
-  - Every time the content of an OSCAL file changes, the following must also change:
+  - "Every time the content of an OSCAL file changes, the following must also change:"
   - A new UUID value must be generated and assigned to the root element's uuid.
   - The last-modified field in metadata must be assigned with the date and time at the moment the file is saved with the modified content.
   - These are two mechanisms by which tools can quickly know if a file has changed since it was last encountered. This document level UUID is the only UUID in OSCAL associated with version control.
   - When converting between formats, such as XML to JSON, these values should remain the same. This enables tools to know the content within the two formats is equivalent.
 
 prefixes:
-  oscal_component: https://w3id.org/lmodel/oscal_component/
-  oscal_assessment_plan: https://w3id.org/lmodel/oscal_assessment_plan/
-  oscal_catalog: https://w3id.org/lmodel/oscal_catalog/
+  oscal: https://w3id.org/lmodel/oscal/
   linkml: https://w3id.org/linkml/
-default_prefix: oscal_component
+default_prefix: oscal
 default_range: string
 
 imports:

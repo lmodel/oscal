@@ -27,6 +27,7 @@ during ``yaml_loader`` instantiation unless the alias key is injected
 manually afterwards.  :func:`_validate_schema` contains targeted workarounds
 for each affected class.
 """
+
 import json
 import os
 import glob
@@ -46,24 +47,33 @@ from linkml_runtime.loaders import yaml_loader
 DATA_DIR_VALID = Path(__file__).parent / "data" / "valid"
 DATA_DIR_INVALID = Path(__file__).parent / "data" / "invalid"
 DATA_DIR_CNCF_AI_BENCHMARKS = Path(__file__).parent / "data" / "cncf-ai-benchmarks"
-DATA_DIR_CNCF_AI_BENCHMARKS_INVALID = Path(__file__).parent / "data" / "invalid" / "cncf-ai-benchmarks"
+DATA_DIR_CNCF_AI_BENCHMARKS_INVALID = (
+    Path(__file__).parent / "data" / "invalid" / "cncf-ai-benchmarks"
+)
 SCHEMA_DIR = Path(__file__).parent.parent / "src" / "oscal" / "schema"
-JSONSCHEMA_PATH = Path(__file__).parent.parent / "project" / "jsonschema" / "oscal.schema.json"
+JSONSCHEMA_PATH = (
+    Path(__file__).parent.parent / "project" / "jsonschema" / "oscal.schema.json"
+)
 
 # ---------------------------------------------------------------------------
 # Parametrize inputs
 # ---------------------------------------------------------------------------
 
 # All *.yaml files collected at import time so pytest can parametrize them.
-VALID_EXAMPLE_FILES = glob.glob(os.path.join(DATA_DIR_VALID, '*.yaml'))
-INVALID_EXAMPLE_FILES = glob.glob(os.path.join(DATA_DIR_INVALID, '*.yaml'))
-CNCF_AI_BENCHMARKS_FILES = glob.glob(os.path.join(DATA_DIR_CNCF_AI_BENCHMARKS, '*.json'))
-CNCF_AI_BENCHMARKS_INVALID_FILES = glob.glob(os.path.join(DATA_DIR_CNCF_AI_BENCHMARKS_INVALID, '*.json'))
+VALID_EXAMPLE_FILES = glob.glob(os.path.join(DATA_DIR_VALID, "*.yaml"))
+INVALID_EXAMPLE_FILES = glob.glob(os.path.join(DATA_DIR_INVALID, "*.yaml"))
+CNCF_AI_BENCHMARKS_FILES = glob.glob(
+    os.path.join(DATA_DIR_CNCF_AI_BENCHMARKS, "*.json")
+)
+CNCF_AI_BENCHMARKS_INVALID_FILES = glob.glob(
+    os.path.join(DATA_DIR_CNCF_AI_BENCHMARKS_INVALID, "*.json")
+)
 
 
 def _fixture_id(filepath: str) -> str:
     """Readable test ID for a fixture: its filename instead of the full path."""
     return Path(filepath).name
+
 
 # Fixture filenames (basename only) that are expected to *pass* the Python
 # yaml_loader despite living in the invalid directory.  Add a fixture here
@@ -73,6 +83,9 @@ def _fixture_id(filepath: str) -> str:
 NON_FAILING_INVALID_FIXTURES: set[str] = {
     "AssessmentPlan-bad-last-modified.yaml",
     "CatalogDocument-bad-uuid-only.yaml",
+    # The dataclasses check no minimum; the generated JSON Schema does.
+    "AtFrequency-zero-period.yaml",
+    "PortRange-negative-start.yaml",
 }
 
 # Spot-check cases for the allow-other enum tests.
@@ -183,7 +196,9 @@ def _validate_schema(filepath: str, target_class_name: str):
 
                 converted_item = dict(item)
                 converted_item["rlinks"] = converted_rlinks
-                converted_resources.append(oscal.datamodel.oscal.Resource(**converted_item))
+                converted_resources.append(
+                    oscal.datamodel.oscal.Resource(**converted_item)
+                )
 
             converted_catalog = dict(catalog_data)
             converted_catalog["back_matter"] = oscal.datamodel.oscal.BackMatter(
@@ -250,7 +265,9 @@ def _normalize_keys(value):
     like ``fedramp-high``) are untouched.
     """
     if isinstance(value, dict):
-        return {key.replace("-", "_"): _normalize_keys(item) for key, item in value.items()}
+        return {
+            key.replace("-", "_"): _normalize_keys(item) for key, item in value.items()
+        }
     if isinstance(value, list):
         return [_normalize_keys(item) for item in value]
     return value
@@ -259,6 +276,7 @@ def _normalize_keys(value):
 # ---------------------------------------------------------------------------
 # Enum helpers
 # ---------------------------------------------------------------------------
+
 
 @lru_cache(maxsize=1)
 def _load_schema_enum_index():
@@ -315,6 +333,7 @@ def _allow_other_enum_names():
 # Parametrized fixture tests
 # ---------------------------------------------------------------------------
 
+
 @pytest.mark.parametrize("filepath", VALID_EXAMPLE_FILES, ids=_fixture_id)
 def test_valid_data_files(filepath):
     """
@@ -357,7 +376,9 @@ def test_invalid_data_files(filepath):
 
     if hasattr(oscal.datamodel.oscal, target_class_name):
         if Path(filepath).name in NON_FAILING_INVALID_FIXTURES:
-            pytest.skip("Fixture is not invalid under current permissive enum semantics")
+            pytest.skip(
+                "Fixture is not invalid under current permissive enum semantics"
+            )
 
         tgt_class = getattr(oscal.datamodel.oscal, target_class_name)
         with pytest.raises(Exception):
@@ -477,6 +498,7 @@ def test_implemented_requirement_alias_conversion(tmp_path):
 # Allow-other enum tests
 # ---------------------------------------------------------------------------
 
+
 @pytest.mark.parametrize("enum_name,_known_value", ALLOW_OTHER_ENUM_CASES)
 def test_allow_other_enum_annotation_present_in_schema(enum_name, _known_value):
     """
@@ -507,7 +529,9 @@ def test_allow_other_enum_accepts_known_values(enum_name, known_value):
     assert str(enum_value) == known_value
 
 
-@pytest.mark.xfail(reason="Generated EnumDefinitionImpl currently does not honor allow-other for unknown values")
+@pytest.mark.xfail(
+    reason="Generated EnumDefinitionImpl currently does not honor allow-other for unknown values"
+)
 @pytest.mark.parametrize("enum_name,_known_value", ALLOW_OTHER_ENUM_CASES)
 def test_allow_other_enum_accepts_unknown_values(enum_name, _known_value):
     """
@@ -555,6 +579,7 @@ def test_allow_other_all_discovered_enums_accept_unknown_values(enum_name):
 # Documented quirks / known-behaviour tests
 # ---------------------------------------------------------------------------
 
+
 def test_observation_bad_enum_fixture_loads_with_string_typed_methods():
     """
     The Python model accepts any string for ``Observation.methods``.
@@ -572,7 +597,9 @@ def test_observation_bad_enum_fixture_loads_with_string_typed_methods():
     than a correctly enforced schema constraint.  It will need to be updated
     once LinkML honours the allow-other annotation properly.
     """
-    filepath = DATA_DIR_INVALID.parent / "problem" / "invalid" / "Observation-bad-enum.yaml"
+    filepath = (
+        DATA_DIR_INVALID.parent / "problem" / "invalid" / "Observation-bad-enum.yaml"
+    )
 
     obj = _validate_schema(str(filepath), "Observation")
 

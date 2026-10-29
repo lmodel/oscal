@@ -1,0 +1,29 @@
+# A mapping collection that maps one control of a catalog to another's
+uuid: 24444444-4444-4444-8444-444444444444
+metadata:
+  title: Example control mapping
+  last_modified: "2026-10-28T00:00:00Z"
+  version: "1.0"
+  oscal_version: "1.2.3"
+provenance:
+  method: human
+  matching_rationale: semantic
+  status: draft
+  mapping_description: A person compared the two catalogs control by control.
+mappings:
+  - uuid: 25555555-5555-4555-8555-555555555555
+    source_resource:
+      type: catalog
+      href: https://example.org/catalogs/source.json
+    target_resource:
+      type: catalog
+      href: https://example.org/catalogs/target.json
+    maps:
+      - uuid: 26666666-6666-4666-8666-666666666666
+        relationship: equivalent-to
+        sources:
+          - type: control
+            id_ref: ac-1
+        targets:
+          - type: control
+            id_ref: pol-1

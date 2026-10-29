@@ -1,29 +1,44 @@
 {
   "name": "oscal",
   "annotations": {
+    "oscal_tag": {
+      "tag": "oscal_tag",
+      "value": "v1.2.3"
+    },
+    "oscal_commit": {
+      "tag": "oscal_commit",
+      "value": "e061961c7702afeabffdf5e59894d35e748dade1"
+    },
     "uuid": {
       "tag": "uuid",
-      "value": "e0b9845b-6de4-4f52-a96c-56255f507520"
+      "value": "5bda39c3-8ebf-4717-b21f-c96a20c27f18"
     },
     "last-modified": {
       "tag": "last-modified",
-      "value": "2026-03-27T10:00:00Z"
+      "value": "2026-10-28T23:30:00Z"
     }
   },
-  "description": "OSCAL: Open Security Controls Assessment Language: LinkML Schema",
-  "title": "oscal",
+  "description": "A LinkML model of NIST's Open Security Controls Assessment Language (OSCAL) 1.2.3: the catalog, profile, component definition, system security plan, assessment plan, assessment results, plan of action and milestones, and mapping collection models, each in a module of its own.",
+  "title": "Open Security Controls Assessment Language (OSCAL)",
   "notes": [
-    "{'Every time the content of an OSCAL file changes, the following must also change': None}",
+    "Every time the content of an OSCAL file changes, the following must also change:",
     "A new UUID value must be generated and assigned to the root element's uuid.",
     "The last-modified field in metadata must be assigned with the date and time at the moment the file is saved with the modified content.",
     "These are two mechanisms by which tools can quickly know if a file has changed since it was last encountered. This document level UUID is the only UUID in OSCAL associated with version control.",
     "When converting between formats, such as XML to JSON, these values should remain the same. This enables tools to know the content within the two formats is equivalent."
   ],
+  "comments": [
+    "The version is the OSCAL release the model renders. Its tag and commit are in the annotations, and src/oscal/schema/metaschema/ holds that commit's metaschema sources, where every allowed-values list an enum renders is defined; each enum's oscal_allowed_values annotation names its lists. scripts/check_upstream_release.py reads the same pins and reports when NIST tags a newer release or the copy drifts. The release tags are the schema's own versions."
+  ],
+  "source": "https://github.com/usnistgov/OSCAL/tree/e061961c7702afeabffdf5e59894d35e748dade1/src/metaschema",
   "see_also": [
-    "https://lmodel.github.io/oscal"
+    "https://lmodel.github.io/oscal",
+    "https://pages.nist.gov/OSCAL/",
+    "https://pages.nist.gov/OSCAL-Reference/models/v1.2.3/",
+    "https://github.com/usnistgov/OSCAL/releases/tag/v1.2.3"
   ],
   "id": "https://w3id.org/lmodel/oscal",
-  "version": "1.2.1",
+  "version": "1.2.3",
   "license": "Apache-2.0",
   "prefixes": {
     "oscal": {
@@ -45,38 +60,6 @@
     "schema": {
       "prefix_prefix": "schema",
       "prefix_reference": "http://schema.org/"
-    },
-    "oscal_catalog": {
-      "prefix_prefix": "oscal_catalog",
-      "prefix_reference": "https://w3id.org/lmodel/oscal_catalog/"
-    },
-    "oscal_profile": {
-      "prefix_prefix": "oscal_profile",
-      "prefix_reference": "https://w3id.org/lmodel/oscal_profile/"
-    },
-    "oscal_assessment_plan": {
-      "prefix_prefix": "oscal_assessment_plan",
-      "prefix_reference": "https://w3id.org/lmodel/oscal_assessment_plan/"
-    },
-    "oscal_ssp": {
-      "prefix_prefix": "oscal_ssp",
-      "prefix_reference": "https://w3id.org/lmodel/oscal_ssp/"
-    },
-    "oscal_assessment_results": {
-      "prefix_prefix": "oscal_assessment_results",
-      "prefix_reference": "https://w3id.org/lmodel/oscal_assessment_results/"
-    },
-    "oscal_component": {
-      "prefix_prefix": "oscal_component",
-      "prefix_reference": "https://w3id.org/lmodel/oscal_component/"
-    },
-    "oscal_mapping": {
-      "prefix_prefix": "oscal_mapping",
-      "prefix_reference": "https://w3id.org/lmodel/oscal_mapping/"
-    },
-    "oscal_poam": {
-      "prefix_prefix": "oscal_poam",
-      "prefix_reference": "https://w3id.org/lmodel/oscal_poam/"
     }
   },
   "default_prefix": "oscal",
@@ -468,22 +451,30 @@
     },
     "NonNegativeIntegerType": {
       "name": "NonNegativeIntegerType",
-      "description": "A non-negative integer value (>= 0), as used for port range boundaries.",
+      "description": "A non-negative integer value (>= 0), as used for port range boundaries. OSCAL 1.2.2 restored this minimum in its JSON datatype. Each slot with this range repeats it, because the generated Pydantic model reads a minimum from the slot and not from the type.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "base": "int",
-      "uri": "xsd:nonNegativeInteger"
+      "uri": "xsd:nonNegativeInteger",
+      "minimum_value": 0
     },
     "PositiveIntegerType": {
       "name": "PositiveIntegerType",
-      "description": "A positive integer value (>= 1), as used for task recurrence periods.",
+      "description": "A positive integer value (>= 1), as used for task recurrence periods. OSCAL 1.2.2 restored this minimum in its JSON datatype. Each slot with this range repeats it, because the generated Pydantic model reads a minimum from the slot and not from the type.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "base": "int",
-      "uri": "xsd:positiveInteger"
+      "uri": "xsd:positiveInteger",
+      "minimum_value": 1
     }
   },
   "enums": {
     "PartyTypeEnum": {
       "name": "PartyTypeEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-metadata-party-type-values"
+        }
+      },
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
         "person": {
@@ -497,6 +488,10 @@
     "HashAlgorithmEnum": {
       "name": "HashAlgorithmEnum",
       "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-back-matter-resource-hash-algorithm-values"
+        },
         "allow_any": {
           "tag": "allow_any",
           "value": true
@@ -534,6 +529,10 @@
     "PhoneTypeEnum": {
       "name": "PhoneTypeEnum",
       "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-metadata-telephone-number-type-values"
+        },
         "allow_any": {
           "tag": "allow_any",
           "value": true
@@ -556,6 +555,10 @@
     "AddressTypeEnum": {
       "name": "AddressTypeEnum",
       "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-metadata-address-location-type-values"
+        },
         "allow_any": {
           "tag": "allow_any",
           "value": true
@@ -575,6 +578,10 @@
     "MetadataLinkRelEnum": {
       "name": "MetadataLinkRelEnum",
       "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-metadata-revision-link-rel-types oscal-metadata-link-rel-values@metadata oscal-catalog-metadata-link-rel-type oscal-metadata-link-rel-values@rel"
+        },
         "allow_any": {
           "tag": "allow_any",
           "value": true
@@ -614,6 +621,12 @@
     },
     "LocationPropNameEnum": {
       "name": "LocationPropNameEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-metadata-location-prop-name-values"
+        }
+      },
       "description": "Allowed OSCAL property names for metadata locations.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -625,6 +638,10 @@
     "LocationPropTypeEnum": {
       "name": "LocationPropTypeEnum",
       "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-metadata-location-prop-type-values"
+        },
         "allow_any": {
           "tag": "allow_any",
           "value": true
@@ -635,12 +652,40 @@
       "permissible_values": {
         "data-center": {
           "text": "data-center"
+        },
+        "region": {
+          "text": "region"
+        },
+        "zone": {
+          "text": "zone"
+        },
+        "headquarters": {
+          "text": "headquarters"
+        },
+        "regional-office": {
+          "text": "regional-office"
+        },
+        "satellite-office": {
+          "text": "satellite-office"
+        },
+        "edge": {
+          "text": "edge"
+        },
+        "cdn": {
+          "text": "cdn"
+        },
+        "domain": {
+          "text": "domain"
         }
       }
     },
     "LocationDataCenterClassEnum": {
       "name": "LocationDataCenterClassEnum",
       "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-metadata-location-prop-type-data-center-values"
+        },
         "allow_any": {
           "tag": "allow_any",
           "value": true
@@ -654,12 +699,31 @@
         },
         "alternate": {
           "text": "alternate"
+        },
+        "peer": {
+          "text": "peer"
+        },
+        "availability": {
+          "text": "availability"
+        },
+        "sub": {
+          "text": "sub"
+        },
+        "fault": {
+          "text": "fault"
+        },
+        "failure": {
+          "text": "failure"
         }
       }
     },
     "PartyExternalIdSchemeEnum": {
       "name": "PartyExternalIdSchemeEnum",
       "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-metadata-party-external-id-values"
+        },
         "allow_any": {
           "tag": "allow_any",
           "value": true
@@ -675,6 +739,12 @@
     },
     "PartyPropNameEnum": {
       "name": "PartyPropNameEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-metadata-party-prop-name-values"
+        }
+      },
       "description": "Allowed OSCAL property names for metadata parties.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -692,6 +762,10 @@
     "MetadataResponsiblePartyRoleIdEnum": {
       "name": "MetadataResponsiblePartyRoleIdEnum",
       "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-metadata-responsible-party-role-ids"
+        },
         "allow_any": {
           "tag": "allow_any",
           "value": true
@@ -719,6 +793,12 @@
     },
     "MetadataPropNameEnum": {
       "name": "MetadataPropNameEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-catalog-metadata-prop-name oscal-metadata-prop-name-values@metadata"
+        }
+      },
       "description": "Allowed OSCAL property names for metadata.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -735,6 +815,12 @@
     },
     "RevisionPropNameEnum": {
       "name": "RevisionPropNameEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-metadata-prop-name-values@property"
+        }
+      },
       "description": "Allowed OSCAL property names for metadata revisions.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -745,6 +831,12 @@
     },
     "ResourcePropNameEnum": {
       "name": "ResourcePropNameEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-back-matter-resource-prop-name-values"
+        }
+      },
       "description": "Allowed OSCAL property names for back-matter resources.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -761,6 +853,12 @@
     },
     "ResourcePropTypeEnum": {
       "name": "ResourcePropTypeEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-back-matter-resource-prop-type-values"
+        }
+      },
       "description": "Allowed OSCAL back-matter resource type property values.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -841,6 +939,10 @@
     "ActionSystemEnum": {
       "name": "ActionSystemEnum",
       "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-metadata-action-system-values"
+        },
         "allow_any": {
           "tag": "allow_any",
           "value": true
@@ -856,6 +958,12 @@
     },
     "ActionTypeEnum": {
       "name": "ActionTypeEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-metadata-action-type-values"
+        }
+      },
       "description": "Allowed OSCAL action type values.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -870,6 +978,10 @@
     "DocumentIdSchemeEnum": {
       "name": "DocumentIdSchemeEnum",
       "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-metadata-document-id-scheme-values"
+        },
         "allow_any": {
           "tag": "allow_any",
           "value": true
@@ -885,6 +997,12 @@
     },
     "ParameterCardinalityEnum": {
       "name": "ParameterCardinalityEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-parameter-how-many-type"
+        }
+      },
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
         "one": {
@@ -897,6 +1015,12 @@
     },
     "PartPropNameEnum": {
       "name": "PartPropNameEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-part-prop-name"
+        }
+      },
       "description": "Allowed OSCAL property names for control-common parts.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -913,6 +1037,12 @@
     },
     "ParameterPropNameEnum": {
       "name": "ParameterPropNameEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-parameter-prop-name"
+        }
+      },
       "description": "Allowed OSCAL property names for control-common parameters.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -932,6 +1062,12 @@
     },
     "RmfParameterPropNameEnum": {
       "name": "RmfParameterPropNameEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-rmf-parameter-prop-name"
+        }
+      },
       "description": "Allowed OSCAL RMF parameter property names.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -942,6 +1078,12 @@
     },
     "GroupPartNameEnum": {
       "name": "GroupPartNameEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-group-part-name"
+        }
+      },
       "description": "Allowed OSCAL part names for catalog groups.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -955,6 +1097,12 @@
     },
     "ControlPropNameEnum": {
       "name": "ControlPropNameEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-control-prop-name"
+        }
+      },
       "description": "Allowed OSCAL property names for catalog controls.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -974,20 +1122,49 @@
     },
     "ControlPropStatusValueEnum": {
       "name": "ControlPropStatusValueEnum",
-      "description": "Allowed OSCAL status property values for catalog controls.",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-control-prop-status-value"
+        },
+        "allow_any": {
+          "tag": "allow_any",
+          "value": true
+        }
+      },
+      "description": "Curated OSCAL status property values for catalog controls. Other values are permitted (OSCAL allow-other=\"yes\").",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
         "withdrawn": {
           "text": "withdrawn"
         },
-        "Withdrawn": {
-          "text": "Withdrawn"
+        "reserved": {
+          "text": "reserved"
+        },
+        "deprecated": {
+          "text": "deprecated"
+        },
+        "conditional": {
+          "text": "conditional"
+        },
+        "superseded": {
+          "text": "superseded"
+        },
+        "modified": {
+          "text": "modified"
+        },
+        "experimental": {
+          "text": "experimental"
         }
       }
     },
     "ControlLinkRelEnum": {
       "name": "ControlLinkRelEnum",
       "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-control-link-rel-type"
+        },
         "allow_any": {
           "tag": "allow_any",
           "value": true
@@ -1015,6 +1192,12 @@
     },
     "ControlPartNameEnum": {
       "name": "ControlPartNameEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-control-part-name"
+        }
+      },
       "description": "Allowed top-level OSCAL part names for catalog controls.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -1040,6 +1223,12 @@
     },
     "ControlStatementPartSubpartNameEnum": {
       "name": "ControlStatementPartSubpartNameEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-control-statement-part-subpart-name"
+        }
+      },
       "description": "Allowed OSCAL subpart names for control statement parts.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -1050,6 +1239,12 @@
     },
     "ControlStatementPartNameEnum": {
       "name": "ControlStatementPartNameEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-control-statement-part-name"
+        }
+      },
       "description": "Allowed OSCAL part names for control statement parts.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -1063,6 +1258,12 @@
     },
     "ControlObjectivePartSubpartNameEnum": {
       "name": "ControlObjectivePartSubpartNameEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-control-objective-part-subpart-name"
+        }
+      },
       "description": "Allowed OSCAL subpart names for control objective parts.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -1076,6 +1277,12 @@
     },
     "ControlStatementPartPropNameEnum": {
       "name": "ControlStatementPartPropNameEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-control-statement-part-prop-name"
+        }
+      },
       "description": "Allowed OSCAL property names for control statement parts.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -1086,6 +1293,12 @@
     },
     "ControlStatementPartRmfPropNameEnum": {
       "name": "ControlStatementPartRmfPropNameEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-control-statement-part-rmf-prop-name"
+        }
+      },
       "description": "Allowed OSCAL RMF property names for control statement parts.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -1096,6 +1309,12 @@
     },
     "ControlObjectivePartMethodPropValueEnum": {
       "name": "ControlObjectivePartMethodPropValueEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-control-objective-part-method-prop-value"
+        }
+      },
       "description": "Allowed OSCAL method property values for control objectives.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -1112,6 +1331,12 @@
     },
     "WithChildControlsEnum": {
       "name": "WithChildControlsEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-with-child-controls-values"
+        }
+      },
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
         "yes": {
@@ -1124,6 +1349,12 @@
     },
     "InsertOrderEnum": {
       "name": "InsertOrderEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-profile-insert-controls-order-values"
+        }
+      },
       "description": "Ordering options for a selection of controls.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -1140,6 +1371,12 @@
     },
     "AdditionPositionEnum": {
       "name": "AdditionPositionEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-alter-position-values"
+        }
+      },
       "description": "Where new content is added relative to the targeted element.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -1159,6 +1396,12 @@
     },
     "ByItemNameEnum": {
       "name": "ByItemNameEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-profile-alter-by-item-name-values"
+        }
+      },
       "description": "Identifies content to remove by the item's object type name.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -1184,6 +1427,12 @@
     },
     "CombinationMethodEnum": {
       "name": "CombinationMethodEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-profile-merge-combine-method-values"
+        }
+      },
       "description": "Methods for resolving duplicate control instances during merge.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -1201,6 +1450,12 @@
     },
     "AlterationPropNameEnum": {
       "name": "AlterationPropNameEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-part-prop-name"
+        }
+      },
       "description": "Allowed OSCAL property names for profile modification additions.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -1218,6 +1473,10 @@
     "TaskTypeEnum": {
       "name": "TaskTypeEnum",
       "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-task-values"
+        },
         "allow_any": {
           "tag": "allow_any",
           "value": true
@@ -1236,6 +1495,12 @@
     },
     "TimingUnitEnum": {
       "name": "TimingUnitEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-timing-unit-values"
+        }
+      },
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
         "seconds": {
@@ -1261,6 +1526,10 @@
     "AssessmentSubjectTypeEnum": {
       "name": "AssessmentSubjectTypeEnum",
       "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-assessment-subject-values"
+        },
         "allow_any": {
           "tag": "allow_any",
           "value": true
@@ -1289,6 +1558,10 @@
     "SelectSubjectTypeEnum": {
       "name": "SelectSubjectTypeEnum",
       "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-assessment-subject-type-values"
+        },
         "allow_any": {
           "tag": "allow_any",
           "value": true
@@ -1319,6 +1592,12 @@
     },
     "OriginActorTypeEnum": {
       "name": "OriginActorTypeEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-origin-actor-type-values"
+        }
+      },
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
         "tool": {
@@ -1335,6 +1614,10 @@
     "ObservationMethodEnum": {
       "name": "ObservationMethodEnum",
       "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-observation-method-type-values"
+        },
         "allow_any": {
           "tag": "allow_any",
           "value": true
@@ -1360,6 +1643,10 @@
     "ObservationTypeEnum": {
       "name": "ObservationTypeEnum",
       "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-observation-values"
+        },
         "allow_any": {
           "tag": "allow_any",
           "value": true
@@ -1392,6 +1679,10 @@
     "RiskStatusEnum": {
       "name": "RiskStatusEnum",
       "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-risk-status-values"
+        },
         "allow_any": {
           "tag": "allow_any",
           "value": true
@@ -1422,6 +1713,12 @@
     },
     "FindingTargetTypeEnum": {
       "name": "FindingTargetTypeEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-finding-target-values"
+        }
+      },
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
         "statement-id": {
@@ -1434,6 +1731,12 @@
     },
     "ObjectiveStatusStateEnum": {
       "name": "ObjectiveStatusStateEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-finding-target-status-state-values"
+        }
+      },
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
         "satisfied": {
@@ -1447,6 +1750,10 @@
     "ObjectiveStatusReasonEnum": {
       "name": "ObjectiveStatusReasonEnum",
       "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-finding-target-reason-values"
+        },
         "allow_any": {
           "tag": "allow_any",
           "value": true
@@ -1469,6 +1776,10 @@
     "ImplementationStatusStateEnum": {
       "name": "ImplementationStatusStateEnum",
       "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-implementation-status-values"
+        },
         "allow_any": {
           "tag": "allow_any",
           "value": true
@@ -1497,6 +1808,10 @@
     "ComponentTypeEnum": {
       "name": "ComponentTypeEnum",
       "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-component-type-values"
+        },
         "allow_any": {
           "tag": "allow_any",
           "value": true
@@ -1546,11 +1861,26 @@
         },
         "network": {
           "text": "network"
+        },
+        "region": {
+          "text": "region"
+        },
+        "zone": {
+          "text": "zone"
+        },
+        "resource-container": {
+          "text": "resource-container"
         }
       }
     },
     "ComponentStateEnum": {
       "name": "ComponentStateEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-component-status-state-values"
+        }
+      },
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
         "under-development": {
@@ -1569,6 +1899,12 @@
     },
     "TransportEnum": {
       "name": "TransportEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-component-protocol-transport-values"
+        }
+      },
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
         "TCP": {
@@ -1581,6 +1917,12 @@
     },
     "ImplementationPropNameEnum": {
       "name": "ImplementationPropNameEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-component-prop-name-values oscal-inventory-item-prop-name-values oscal-component-interconnection-prop-name-values oscal-user-prop-name-values oscal-software-component-prop-name oscal-component-hardware-service-software-prop-name-values"
+        }
+      },
       "description": "Allowed OSCAL implementation-common property names.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -1721,6 +2063,10 @@
     "ImplementationLinkRelEnum": {
       "name": "ImplementationLinkRelEnum",
       "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-component-link-rel-values oscal-service-component-link-rel-type oscal-component-prop-validation-link-rel-values oscal-component-interconnection-link-rel-values"
+        },
         "allow_any": {
           "tag": "allow_any",
           "value": true
@@ -1770,6 +2116,10 @@
     "ImplementationAssetTypeEnum": {
       "name": "ImplementationAssetTypeEnum",
       "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-component-asset-type-value"
+        },
         "allow_any": {
           "tag": "allow_any",
           "value": true
@@ -1818,6 +2168,12 @@
     },
     "ImplementationPointEnum": {
       "name": "ImplementationPointEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-component-implementation-point-value"
+        }
+      },
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
         "internal": {
@@ -1830,6 +2186,12 @@
     },
     "ImplementationIpAddressClassEnum": {
       "name": "ImplementationIpAddressClassEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-component-prop-ipaddress-class-values"
+        }
+      },
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
         "local": {
@@ -1842,6 +2204,12 @@
     },
     "ImplementationDirectionEnum": {
       "name": "ImplementationDirectionEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-component-prop-direction-values"
+        }
+      },
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
         "incoming": {
@@ -1854,6 +2222,12 @@
     },
     "UserTypeEnum": {
       "name": "UserTypeEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-user-prop-type-values"
+        }
+      },
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
         "internal": {
@@ -1869,6 +2243,12 @@
     },
     "UserPrivilegeLevelEnum": {
       "name": "UserPrivilegeLevelEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-user-prop-privilege-level-values"
+        }
+      },
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
         "privileged": {
@@ -1885,6 +2265,10 @@
     "InterconnectionResponsibleRoleIdEnum": {
       "name": "InterconnectionResponsibleRoleIdEnum",
       "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-component-interconnection-responsible-role-id-values"
+        },
         "allow_any": {
           "tag": "allow_any",
           "value": true
@@ -1910,6 +2294,10 @@
     "ImplementationResponsibleRoleIdEnum": {
       "name": "ImplementationResponsibleRoleIdEnum",
       "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-component-responsible-role-id-values"
+        },
         "allow_any": {
           "tag": "allow_any",
           "value": true
@@ -1949,6 +2337,12 @@
     },
     "ImplementationYesNoEnum": {
       "name": "ImplementationYesNoEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-component-public-value"
+        }
+      },
       "description": "Implementation-common yes/no value set used by several properties.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -1963,6 +2357,10 @@
     "SystemIdentifierTypeEnum": {
       "name": "SystemIdentifierTypeEnum",
       "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-system-identifier-type-values"
+        },
         "allow_any": {
           "tag": "allow_any",
           "value": true
@@ -1991,6 +2389,10 @@
     "AssessmentPartNameEnum": {
       "name": "AssessmentPartNameEnum",
       "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-assessment-part-values"
+        },
         "allow_any": {
           "tag": "allow_any",
           "value": true
@@ -2012,6 +2414,12 @@
     },
     "TermsAndConditionsPartNameEnum": {
       "name": "TermsAndConditionsPartNameEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-terms-and-conditions-part-name"
+        }
+      },
       "description": "Allowed part names in assessment plan terms-and-conditions.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -2040,6 +2448,12 @@
     },
     "OscalAssessmentObjectiveTypesEnum": {
       "name": "OscalAssessmentObjectiveTypesEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-assessment-objective-types"
+        }
+      },
       "description": "Values from assessment-common set oscal-assessment-objective-types.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -2060,6 +2474,10 @@
     "OscalRiskPropTypeValuesEnum": {
       "name": "OscalRiskPropTypeValuesEnum",
       "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-risk-prop-type-values"
+        },
         "allow_any": {
           "tag": "allow_any",
           "value": true
@@ -2102,6 +2520,12 @@
     },
     "OscalRiskPropNameValuesEnum": {
       "name": "OscalRiskPropNameValuesEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-risk-prop-name-values@risk"
+        }
+      },
       "description": "Values from assessment-common set oscal-risk-prop-name-values.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -2122,6 +2546,10 @@
     "OscalCharacterizationFacetNameSystemValuesEnum": {
       "name": "OscalCharacterizationFacetNameSystemValuesEnum",
       "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-characterization-facet-name-system-values"
+        },
         "allow_any": {
           "tag": "allow_any",
           "value": true
@@ -2161,6 +2589,12 @@
     },
     "OscalFacetPropNameValuesEnum": {
       "name": "OscalFacetPropNameValuesEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-facet-prop-name-values"
+        }
+      },
       "description": "Values from assessment-common set oscal-facet-prop-name-values.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -2171,6 +2605,12 @@
     },
     "OscalFacetPropStateValuesEnum": {
       "name": "OscalFacetPropStateValuesEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-facet-prop-state-values"
+        }
+      },
       "description": "Values from assessment-common set oscal-facet-prop-state-values.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -2184,6 +2624,12 @@
     },
     "OscalFacetNameCoreValuesEnum": {
       "name": "OscalFacetNameCoreValuesEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-facet-name-core-values"
+        }
+      },
       "description": "Values from assessment-common set oscal-facet-name-core-values.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -2203,6 +2649,12 @@
     },
     "OscalFacetFedrampValuesEnum": {
       "name": "OscalFacetFedrampValuesEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-facet-fedramp-values"
+        }
+      },
       "description": "Values from assessment-common set oscal-facet-fedramp-values.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -2219,6 +2671,12 @@
     },
     "OscalFacetCveValuesEnum": {
       "name": "OscalFacetCveValuesEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-facet-cve-values"
+        }
+      },
       "description": "Values from assessment-common set oscal-facet-cve-values.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -2229,6 +2687,12 @@
     },
     "OscalFacetCvss2NameValuesEnum": {
       "name": "OscalFacetCvss2NameValuesEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-facet-cvss2-name-values"
+        }
+      },
       "description": "Values from assessment-common set oscal-facet-cvss2-name-values.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -2278,6 +2742,12 @@
     },
     "OscalFacetCvss2AccessVectorValuesEnum": {
       "name": "OscalFacetCvss2AccessVectorValuesEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-facet-cvss2-access-vector-values"
+        }
+      },
       "description": "Values from assessment-common set oscal-facet-cvss2-access-vector-values.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -2294,6 +2764,12 @@
     },
     "OscalFacetCvss2AccessComplexityValuesEnum": {
       "name": "OscalFacetCvss2AccessComplexityValuesEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-facet-cvss2-access-complexity-values"
+        }
+      },
       "description": "Values from assessment-common set oscal-facet-cvss2-access-complexity-values.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -2310,6 +2786,12 @@
     },
     "OscalFacetCvss2AuthenticationValuesEnum": {
       "name": "OscalFacetCvss2AuthenticationValuesEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-facet-cvss2-authentication-values"
+        }
+      },
       "description": "Values from assessment-common set oscal-facet-cvss2-authentication-values.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -2326,6 +2808,12 @@
     },
     "OscalFacetCvss2ConfidentialityImpactValuesEnum": {
       "name": "OscalFacetCvss2ConfidentialityImpactValuesEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-facet-cvss2-confidentiality-impact-values"
+        }
+      },
       "description": "Values from assessment-common set oscal-facet-cvss2-confidentiality-impact-values.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -2342,6 +2830,12 @@
     },
     "OscalFacetCvss2ExploitabilityValuesEnum": {
       "name": "OscalFacetCvss2ExploitabilityValuesEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-facet-cvss2-exploitability-values"
+        }
+      },
       "description": "Values from assessment-common set oscal-facet-cvss2-exploitability-values.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -2364,6 +2858,12 @@
     },
     "OscalFacetCvss2RemediationLevelValuesEnum": {
       "name": "OscalFacetCvss2RemediationLevelValuesEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-facet-cvss2-remediation-level-values"
+        }
+      },
       "description": "Values from assessment-common set oscal-facet-cvss2-remediation-level-values.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -2386,6 +2886,12 @@
     },
     "OscalFacetCvss2ReportConfidenceValuesEnum": {
       "name": "OscalFacetCvss2ReportConfidenceValuesEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-facet-cvss2-report-confidence-values"
+        }
+      },
       "description": "Values from assessment-common set oscal-facet-cvss2-report-confidence-values.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -2405,6 +2911,12 @@
     },
     "OscalFacetCvss2CollateralDamagePotentialValuesEnum": {
       "name": "OscalFacetCvss2CollateralDamagePotentialValuesEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-facet-cvss2-collateral-damage-potential-values"
+        }
+      },
       "description": "Values from assessment-common set oscal-facet-cvss2-collateral-damage-potential-values.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -2430,6 +2942,12 @@
     },
     "OscalFacetCvss2CiaRequirementValuesEnum": {
       "name": "OscalFacetCvss2CiaRequirementValuesEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-facet-cvss2-cia-requirement-values"
+        }
+      },
       "description": "Values from assessment-common set oscal-facet-cvss2-cia-requirement-values.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -2452,6 +2970,12 @@
     },
     "OscalFacetCvss3NameValuesEnum": {
       "name": "OscalFacetCvss3NameValuesEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-facet-cvss3-name-values"
+        }
+      },
       "description": "Values from assessment-common set oscal-facet-cvss3-name-values.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -2525,6 +3049,12 @@
     },
     "OscalFacetCvss3AccessVectorValuesEnum": {
       "name": "OscalFacetCvss3AccessVectorValuesEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-facet-cvss3-access-vector-values"
+        }
+      },
       "description": "Values from assessment-common set oscal-facet-cvss3-access-vector-values.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -2544,6 +3074,12 @@
     },
     "OscalFacetCvss3AccessComplexityValuesEnum": {
       "name": "OscalFacetCvss3AccessComplexityValuesEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-facet-cvss3-access-complexity-values"
+        }
+      },
       "description": "Values from assessment-common set oscal-facet-cvss3-access-complexity-values.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -2557,6 +3093,12 @@
     },
     "OscalFacetCvss3CiaImpactValuesEnum": {
       "name": "OscalFacetCvss3CiaImpactValuesEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-facet-cvss3-cia-impact-values"
+        }
+      },
       "description": "Values from assessment-common set oscal-facet-cvss3-cia-impact-values.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -2573,6 +3115,12 @@
     },
     "OscalFacetCvss3UserInteractionEnum": {
       "name": "OscalFacetCvss3UserInteractionEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-facet-cvss3-user-interaction"
+        }
+      },
       "description": "Values from assessment-common set oscal-facet-cvss3-user-interaction.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -2586,6 +3134,12 @@
     },
     "OscalFacetCvss3ScopeEnum": {
       "name": "OscalFacetCvss3ScopeEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-facet-cvss3-scope"
+        }
+      },
       "description": "Values from assessment-common set oscal-facet-cvss3-scope.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -2599,6 +3153,12 @@
     },
     "OscalFacetCvss3ExploitCodeMaturityValuesEnum": {
       "name": "OscalFacetCvss3ExploitCodeMaturityValuesEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-facet-cvss3-exploit-code-maturity-values"
+        }
+      },
       "description": "Values from assessment-common set oscal-facet-cvss3-exploit-code-maturity-values.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -2621,6 +3181,12 @@
     },
     "OscalFacetCvss3RemediationLevelEnum": {
       "name": "OscalFacetCvss3RemediationLevelEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-facet-cvss3-remediation-level"
+        }
+      },
       "description": "Values from assessment-common set oscal-facet-cvss3-remediation-level.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -2643,6 +3209,12 @@
     },
     "OscalFacetCvss3ReportConfidenceValuesEnum": {
       "name": "OscalFacetCvss3ReportConfidenceValuesEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-facet-cvss3-report-confidence-values"
+        }
+      },
       "description": "Values from assessment-common set oscal-facet-cvss3-report-confidence-values.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -2662,6 +3234,12 @@
     },
     "OscalFacetCvss3CiaRequirementValuesEnum": {
       "name": "OscalFacetCvss3CiaRequirementValuesEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-facet-cvss3-cia-requirement-values"
+        }
+      },
       "description": "Values from assessment-common set oscal-facet-cvss3-cia-requirement-values.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -2681,6 +3259,12 @@
     },
     "OscalFacetCvss3ModifiedAttackVectorValuesEnum": {
       "name": "OscalFacetCvss3ModifiedAttackVectorValuesEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-facet-cvss3-modified-attack-vector-values"
+        }
+      },
       "description": "Values from assessment-common set oscal-facet-cvss3-modified-attack-vector-values.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -2703,6 +3287,12 @@
     },
     "OscalFacetCvss3ModifiedAttackComplexityValuesEnum": {
       "name": "OscalFacetCvss3ModifiedAttackComplexityValuesEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-facet-cvss3-modified-attack-complexity-values"
+        }
+      },
       "description": "Values from assessment-common set oscal-facet-cvss3-modified-attack-complexity-values.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -2719,6 +3309,12 @@
     },
     "OscalFacetCvss3ModifiedCiaValuesEnum": {
       "name": "OscalFacetCvss3ModifiedCiaValuesEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-facet-cvss3-modified-cia-values"
+        }
+      },
       "description": "Values from assessment-common set oscal-facet-cvss3-modified-cia-values.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -2738,6 +3334,12 @@
     },
     "OscalFacetCvss3ModifiedUserInteractionValuesEnum": {
       "name": "OscalFacetCvss3ModifiedUserInteractionValuesEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-facet-cvss3-modified-user-interaction-values"
+        }
+      },
       "description": "Values from assessment-common set oscal-facet-cvss3-modified-user-interaction-values.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -2754,6 +3356,12 @@
     },
     "OscalFacetCvss3ModifiedScopeValuesEnum": {
       "name": "OscalFacetCvss3ModifiedScopeValuesEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-facet-cvss3-modified-scope-values"
+        }
+      },
       "description": "Values from assessment-common set oscal-facet-cvss3-modified-scope-values.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -2770,6 +3378,12 @@
     },
     "OscalCvssV40VectorsEnum": {
       "name": "OscalCvssV40VectorsEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-cvss-v4.0-vectors"
+        }
+      },
       "description": "Values from assessment-common set oscal-cvss-v4.0-vectors.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -2873,6 +3487,12 @@
     },
     "OscalCvssV40AvValuesEnum": {
       "name": "OscalCvssV40AvValuesEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-cvss-v4.0-av-values"
+        }
+      },
       "description": "Values from assessment-common set oscal-cvss-v4.0-av-values.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -2892,6 +3512,12 @@
     },
     "OscalCvssV40AcValuesEnum": {
       "name": "OscalCvssV40AcValuesEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-cvss-v4.0-ac-values"
+        }
+      },
       "description": "Values from assessment-common set oscal-cvss-v4.0-ac-values.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -2905,6 +3531,12 @@
     },
     "OscalCvssV40AtValuesEnum": {
       "name": "OscalCvssV40AtValuesEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-cvss-v4.0-at-values"
+        }
+      },
       "description": "Values from assessment-common set oscal-cvss-v4.0-at-values.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -2918,6 +3550,12 @@
     },
     "OscalCvssV40PrCiaValuesEnum": {
       "name": "OscalCvssV40PrCiaValuesEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-cvss-v4.0-pr-cia-values"
+        }
+      },
       "description": "Values from assessment-common set oscal-cvss-v4.0-pr-cia-values.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -2934,6 +3572,12 @@
     },
     "OscalCvssV40UiValuesEnum": {
       "name": "OscalCvssV40UiValuesEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-cvss-v4.0-ui-values"
+        }
+      },
       "description": "Values from assessment-common set oscal-cvss-v4.0-ui-values.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -2950,6 +3594,12 @@
     },
     "OscalCvssV40SValuesEnum": {
       "name": "OscalCvssV40SValuesEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-cvss-v4.0-s-values"
+        }
+      },
       "description": "Values from assessment-common set oscal-cvss-v4.0-s-values.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -2966,6 +3616,12 @@
     },
     "OscalCvssV40AuValuesEnum": {
       "name": "OscalCvssV40AuValuesEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-cvss-v4.0-au-values"
+        }
+      },
       "description": "Values from assessment-common set oscal-cvss-v4.0-au-values.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -2982,6 +3638,12 @@
     },
     "OscalCvssV40RValuesEnum": {
       "name": "OscalCvssV40RValuesEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-cvss-v4.0-r-values"
+        }
+      },
       "description": "Values from assessment-common set oscal-cvss-v4.0-r-values.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -3001,6 +3663,12 @@
     },
     "OscalCvssV40VValuesEnum": {
       "name": "OscalCvssV40VValuesEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-cvss-v4.0-v-values"
+        }
+      },
       "description": "Values from assessment-common set oscal-cvss-v4.0-v-values.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -3020,6 +3688,12 @@
     },
     "OscalCvssV40ReValuesEnum": {
       "name": "OscalCvssV40ReValuesEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-cvss-v4.0-re-values"
+        }
+      },
       "description": "Values from assessment-common set oscal-cvss-v4.0-re-values.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -3039,6 +3713,12 @@
     },
     "OscalCvssV40UValuesEnum": {
       "name": "OscalCvssV40UValuesEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-cvss-v4.0-u-values"
+        }
+      },
       "description": "Values from assessment-common set oscal-cvss-v4.0-u-values.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -3061,6 +3741,12 @@
     },
     "OscalCvssV40MavValuesEnum": {
       "name": "OscalCvssV40MavValuesEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-cvss-v4.0-mav-values"
+        }
+      },
       "description": "Values from assessment-common set oscal-cvss-v4.0-mav-values.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -3083,6 +3769,12 @@
     },
     "OscalCvssV40MacValuesEnum": {
       "name": "OscalCvssV40MacValuesEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-cvss-v4.0-mac-values"
+        }
+      },
       "description": "Values from assessment-common set oscal-cvss-v4.0-mac-values.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -3099,6 +3791,12 @@
     },
     "OscalCvssV40MatValuesEnum": {
       "name": "OscalCvssV40MatValuesEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-cvss-v4.0-mat-values"
+        }
+      },
       "description": "Values from assessment-common set oscal-cvss-v4.0-mat-values.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -3115,6 +3813,12 @@
     },
     "OscalCvssV40MprMvsCiaValuesEnum": {
       "name": "OscalCvssV40MprMvsCiaValuesEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-cvss-v4.0-mpr-mvs-cia-values"
+        }
+      },
       "description": "Values from assessment-common set oscal-cvss-v4.0-mpr-mvs-cia-values.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -3134,6 +3838,12 @@
     },
     "OscalCvssV40MuiValuesEnum": {
       "name": "OscalCvssV40MuiValuesEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-cvss-v4.0-mui-values"
+        }
+      },
       "description": "Values from assessment-common set oscal-cvss-v4.0-mui-values.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -3153,6 +3863,12 @@
     },
     "OscalCvssV40MscValuesEnum": {
       "name": "OscalCvssV40MscValuesEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-cvss-v4.0-msc-values"
+        }
+      },
       "description": "Values from assessment-common set oscal-cvss-v4.0-msc-values.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -3172,6 +3888,12 @@
     },
     "OscalCvssV40MsiMsaCiaValuesEnum": {
       "name": "OscalCvssV40MsiMsaCiaValuesEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-cvss-v4.0-msi-msa-cia-values"
+        }
+      },
       "description": "Values from assessment-common set oscal-cvss-v4.0-msi-msa-cia-values.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -3194,6 +3916,12 @@
     },
     "OscalCvssV40EnvCiaValuesEnum": {
       "name": "OscalCvssV40EnvCiaValuesEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-cvss-v4.0-env-cia-values"
+        }
+      },
       "description": "Values from assessment-common set oscal-cvss-v4.0-env-cia-values.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -3213,6 +3941,12 @@
     },
     "OscalCvssV40EValuesEnum": {
       "name": "OscalCvssV40EValuesEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-cvss-v4.0-e-values"
+        }
+      },
       "description": "Values from assessment-common set oscal-cvss-v4.0-e-values.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -3232,6 +3966,12 @@
     },
     "OscalResponsePropTypeValueEnum": {
       "name": "OscalResponsePropTypeValueEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-response-prop-type-value"
+        }
+      },
       "description": "Values from assessment-common set oscal-response-prop-type-value.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -3261,6 +4001,10 @@
     "ResponseLifecycleEnum": {
       "name": "ResponseLifecycleEnum",
       "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-response-lifecycle-values"
+        },
         "allow_any": {
           "tag": "allow_any",
           "value": true
@@ -3282,6 +4026,12 @@
     },
     "SystemOperatingStatusEnum": {
       "name": "SystemOperatingStatusEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-status-state-values"
+        }
+      },
       "description": "Allowable operational states for an OSCAL-described system.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -3309,6 +4059,12 @@
     },
     "SystemCharacteristicsPropNameEnum": {
       "name": "SystemCharacteristicsPropNameEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-system-characteristics-prop-name-values@system-characteristics"
+        }
+      },
       "description": "OSCAL-defined property names used within system characteristics.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -3331,6 +4087,12 @@
     },
     "AssuranceLevelValueEnum": {
       "name": "AssuranceLevelValueEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-system-characteristics-prop-sp-800-63-assurance-level-values"
+        }
+      },
       "description": "NIST SP 800-63 assurance level values.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -3347,6 +4109,12 @@
     },
     "CloudDeploymentModelEnum": {
       "name": "CloudDeploymentModelEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-system-characteristics-prop-cloud-deployment-model-values"
+        }
+      },
       "description": "Cloud deployment model values used by OSCAL SSP properties.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -3372,6 +4140,12 @@
     },
     "CloudServiceModelEnum": {
       "name": "CloudServiceModelEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-system-characteristics-prop-cloud-service-model-values"
+        }
+      },
       "description": "Cloud service model values used by OSCAL SSP properties.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -3392,6 +4166,10 @@
     "SystemCharacteristicsResponsibleRoleIdEnum": {
       "name": "SystemCharacteristicsResponsibleRoleIdEnum",
       "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-system-characteristics-responsible-party-role-id-values"
+        },
         "allow_any": {
           "tag": "allow_any",
           "value": true
@@ -3429,6 +4207,10 @@
     "InformationTypeCategorizationSystemEnum": {
       "name": "InformationTypeCategorizationSystemEnum",
       "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-information-type-categorization-system-values"
+        },
         "allow_any": {
           "tag": "allow_any",
           "value": true
@@ -3444,6 +4226,12 @@
     },
     "SystemInformationPropNameEnum": {
       "name": "SystemInformationPropNameEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-system-information-prop-name-values"
+        }
+      },
       "description": "OSCAL-defined property names used within system information.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -3454,6 +4242,12 @@
     },
     "PrivacyDesignationEnum": {
       "name": "PrivacyDesignationEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-system-information-prop-privacy-designation-values"
+        }
+      },
       "description": "Privacy designation property values.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -3468,6 +4262,10 @@
     "SystemInformationLinkRelEnum": {
       "name": "SystemInformationLinkRelEnum",
       "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-system-information-link-rel-values"
+        },
         "allow_any": {
           "tag": "allow_any",
           "value": true
@@ -3484,6 +4282,10 @@
     "Fips199ImpactLevelEnum": {
       "name": "Fips199ImpactLevelEnum",
       "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-fips-199-impact-levels"
+        },
         "allow_any": {
           "tag": "allow_any",
           "value": true
@@ -3506,6 +4308,10 @@
     "DiagramLinkRelEnum": {
       "name": "DiagramLinkRelEnum",
       "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-diagram-link-rel-values"
+        },
         "allow_any": {
           "tag": "allow_any",
           "value": true
@@ -3522,6 +4328,10 @@
     "LeveragedAuthorizationLinkRelEnum": {
       "name": "LeveragedAuthorizationLinkRelEnum",
       "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-leveraged-authorization-link-rel-values"
+        },
         "allow_any": {
           "tag": "allow_any",
           "value": true
@@ -3537,6 +4347,12 @@
     },
     "AllowsAuthenticatedScanEnum": {
       "name": "AllowsAuthenticatedScanEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-component-allows-authenticated-scan-value"
+        }
+      },
       "description": "Values for allows-authenticated-scan property in SSP component and inventory contexts.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -3550,6 +4366,12 @@
     },
     "ControlOriginationPropNameEnum": {
       "name": "ControlOriginationPropNameEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-implemented-requirement-statement-by-component-prop-name-values"
+        }
+      },
       "description": "OSCAL-defined property names used in implementation statements.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -3560,6 +4382,12 @@
     },
     "ControlOriginationValueEnum": {
       "name": "ControlOriginationValueEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-implemented-requirement-statement-by-component-prop-control-origination-values"
+        }
+      },
       "description": "Control origination values.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -3583,6 +4411,10 @@
     "ImplementedRequirementResponsibleRoleIdEnum": {
       "name": "ImplementedRequirementResponsibleRoleIdEnum",
       "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-implemented-requirement-responsible-role-id-values"
+        },
         "allow_any": {
           "tag": "allow_any",
           "value": true
@@ -3617,6 +4449,10 @@
     "ByComponentLinkRelEnum": {
       "name": "ByComponentLinkRelEnum",
       "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-by-component-link-rel-values"
+        },
         "allow_any": {
           "tag": "allow_any",
           "value": true
@@ -3636,6 +4472,10 @@
     "ByComponentResponsibleRoleIdEnum": {
       "name": "ByComponentResponsibleRoleIdEnum",
       "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-by-component-responsible-role-id-values"
+        },
         "allow_any": {
           "tag": "allow_any",
           "value": true
@@ -3675,6 +4515,12 @@
     },
     "MappingMethodEnum": {
       "name": "MappingMethodEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal_mapping-common_metaschema.xml#method#."
+        }
+      },
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
         "human": {
@@ -3690,6 +4536,12 @@
     },
     "MatchingRationaleEnum": {
       "name": "MatchingRationaleEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal_mapping-common_metaschema.xml#matching-rationale#."
+        }
+      },
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
         "syntactic": {
@@ -3705,6 +4557,12 @@
     },
     "MappingStatusEnum": {
       "name": "MappingStatusEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal_mapping-common_metaschema.xml#status#."
+        }
+      },
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
         "complete": {
@@ -3726,6 +4584,12 @@
     },
     "MappingSubjectTypeEnum": {
       "name": "MappingSubjectTypeEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal_mapping-common_metaschema.xml#mapping-item/type#."
+        }
+      },
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
         "control": {
@@ -3738,6 +4602,12 @@
     },
     "QualifierSubjectEnum": {
       "name": "QualifierSubjectEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal_mapping-common_metaschema.xml#qualifier-item/subject#."
+        }
+      },
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
         "source": {
@@ -3753,6 +4623,12 @@
     },
     "QualifierPredicateEnum": {
       "name": "QualifierPredicateEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal_mapping-common_metaschema.xml#qualifier-item/predicate#."
+        }
+      },
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
         "has-requirement": {
@@ -3765,6 +4641,12 @@
     },
     "QualifierCategoryEnum": {
       "name": "QualifierCategoryEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal_mapping-common_metaschema.xml#qualifier-item/category#."
+        }
+      },
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
         "restricted": {
@@ -3780,6 +4662,12 @@
     },
     "RelationshipEnum": {
       "name": "RelationshipEnum",
+      "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal_mapping-common_metaschema.xml#map/relationship#.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]"
+        }
+      },
       "description": "Relationship values used for mapping entries in the OSCAL namespace.",
       "from_schema": "https://w3id.org/lmodel/oscal",
       "permissible_values": {
@@ -3806,6 +4694,10 @@
     "MappingResourceTypeEnum": {
       "name": "MappingResourceTypeEnum",
       "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal_mapping-common_metaschema.xml#mapping-resource-reference/type#."
+        },
         "allow_any": {
           "tag": "allow_any",
           "value": true
@@ -3825,6 +4717,10 @@
     "ConfidenceCategoryEnum": {
       "name": "ConfidenceCategoryEnum",
       "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal_mapping-common_metaschema.xml#confidence-score/category#.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]"
+        },
         "allow_any": {
           "tag": "allow_any",
           "value": true
@@ -3850,6 +4746,10 @@
     "CoverageGenerationMethodEnum": {
       "name": "CoverageGenerationMethodEnum",
       "annotations": {
+        "oscal_allowed_values": {
+          "tag": "oscal_allowed_values",
+          "value": "oscal-mapping-coverage-generation-method-values"
+        },
         "allow_any": {
           "tag": "allow_any",
           "value": true
@@ -4120,6 +5020,7 @@
         "HasPropsAndLinks",
         "Resource",
         "Addition",
+        "SystemCharacteristics",
         "SystemInformation",
         "InformationType",
         "ImpactLevel",
@@ -4150,6 +5051,7 @@
       "domain_of": [
         "HasPropsAndLinks",
         "Addition",
+        "SystemCharacteristics",
         "SystemInformation",
         "InformationType",
         "ImpactLevel",
@@ -4223,9 +5125,12 @@
       ],
       "range": "TokenType"
     },
-    "_class": {
-      "name": "_class",
+    "class_": {
+      "name": "class_",
       "description": "A textual label that provides a sub-type or characterization.",
+      "comments": [
+        "OSCAL's key is `class`. A slot or alias named `class` makes the generated dataclasses invalid Python, and gen-doc names a page after the slot, so `_class` hid its page from the site. `class_` is the spelling the generated Pydantic model gives a slot named `class`."
+      ],
       "from_schema": "https://w3id.org/lmodel/oscal",
       "domain_of": [
         "Group",
@@ -5930,7 +6835,8 @@
       "domain_of": [
         "AtFrequency"
       ],
-      "range": "PositiveIntegerType"
+      "range": "PositiveIntegerType",
+      "minimum_value": 1
     },
     "unit": {
       "name": "unit",
@@ -7297,6 +8203,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -7328,6 +8235,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -7432,6 +8340,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -7463,6 +8372,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -7782,7 +8692,7 @@
       ],
       "slots": [
         "id",
-        "_class",
+        "class_",
         "title",
         "params",
         "parts",
@@ -7794,8 +8704,8 @@
           "name": "id",
           "description": "Identifies the group for the purpose of cross-linking within the defining instance or from other instances that reference the catalog."
         },
-        "_class": {
-          "name": "_class",
+        "class_": {
+          "name": "class_",
           "description": "A textual label that provides a sub-type or characterization of the group."
         },
         "title": {
@@ -7824,9 +8734,12 @@
           ],
           "range": "TokenType"
         },
-        "_class": {
-          "name": "_class",
+        "class_": {
+          "name": "class_",
           "description": "A textual label that provides a sub-type or characterization of the group.",
+          "comments": [
+            "OSCAL's key is `class`. A slot or alias named `class` makes the generated dataclasses invalid Python, and gen-doc names a page after the slot, so `_class` hid its page from the site. `class_` is the spelling the generated Pydantic model gives a slot named `class`."
+          ],
           "from_schema": "https://w3id.org/lmodel/oscal",
           "owner": "Group",
           "domain_of": [
@@ -7965,6 +8878,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -7996,6 +8910,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -8033,7 +8948,7 @@
       ],
       "slots": [
         "id",
-        "_class",
+        "class_",
         "title",
         "params",
         "parts",
@@ -8045,8 +8960,8 @@
           "description": "Identifies a control such that it can be referenced in the defining catalog and other OSCAL instances (e.g., profiles).",
           "required": true
         },
-        "_class": {
-          "name": "_class",
+        "class_": {
+          "name": "class_",
           "description": "A textual label that provides a sub-type or characterization of the control."
         },
         "title": {
@@ -8076,9 +8991,12 @@
           "range": "TokenType",
           "required": true
         },
-        "_class": {
-          "name": "_class",
+        "class_": {
+          "name": "class_",
           "description": "A textual label that provides a sub-type or characterization of the control.",
+          "comments": [
+            "OSCAL's key is `class`. A slot or alias named `class` makes the generated dataclasses invalid Python, and gen-doc names a page after the slot, so `_class` hid its page from the site. `class_` is the spelling the generated Pydantic model gives a slot named `class`."
+          ],
           "from_schema": "https://w3id.org/lmodel/oscal",
           "owner": "Control",
           "domain_of": [
@@ -8201,6 +9119,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -8232,6 +9151,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -8549,6 +9469,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -8580,6 +9501,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -8806,6 +9728,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -8837,6 +9760,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -9150,6 +10074,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -9181,6 +10106,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -9454,6 +10380,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -9485,6 +10412,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -9817,6 +10745,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -9848,6 +10777,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -10123,6 +11053,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -10154,6 +11085,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -10293,6 +11225,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -10324,6 +11257,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -10575,6 +11509,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -10606,6 +11541,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -10909,7 +11845,7 @@
         "uuid",
         "ns",
         "value",
-        "_class",
+        "class_",
         "remarks",
         "group"
       ],
@@ -10932,8 +11868,8 @@
           "description": "Indicates the value of the attribute, characteristic, or quality.",
           "required": true
         },
-        "_class": {
-          "name": "_class",
+        "class_": {
+          "name": "class_",
           "description": "A textual label that provides a sub-type or characterization of the property's name."
         }
       },
@@ -11046,9 +11982,12 @@
           "range": "string",
           "required": true
         },
-        "_class": {
-          "name": "_class",
+        "class_": {
+          "name": "class_",
           "description": "A textual label that provides a sub-type or characterization of the property's name.",
+          "comments": [
+            "OSCAL's key is `class`. A slot or alias named `class` makes the generated dataclasses invalid Python, and gen-doc names a page after the slot, so `_class` hid its page from the site. `class_` is the spelling the generated Pydantic model gives a slot named `class`."
+          ],
           "from_schema": "https://w3id.org/lmodel/oscal",
           "owner": "Property",
           "domain_of": [
@@ -11254,9 +12193,12 @@
           "range": "string",
           "required": true
         },
-        "_class": {
-          "name": "_class",
+        "class_": {
+          "name": "class_",
           "description": "A textual label that provides a sub-type or characterization of the property's name.",
+          "comments": [
+            "OSCAL's key is `class`. A slot or alias named `class` makes the generated dataclasses invalid Python, and gen-doc names a page after the slot, so `_class` hid its page from the site. `class_` is the spelling the generated Pydantic model gives a slot named `class`."
+          ],
           "from_schema": "https://w3id.org/lmodel/oscal",
           "owner": "MetadataProperty",
           "domain_of": [
@@ -11462,9 +12404,12 @@
           "range": "string",
           "required": true
         },
-        "_class": {
-          "name": "_class",
+        "class_": {
+          "name": "class_",
           "description": "A textual label that provides a sub-type or characterization of the property's name.",
+          "comments": [
+            "OSCAL's key is `class`. A slot or alias named `class` makes the generated dataclasses invalid Python, and gen-doc names a page after the slot, so `_class` hid its page from the site. `class_` is the spelling the generated Pydantic model gives a slot named `class`."
+          ],
           "from_schema": "https://w3id.org/lmodel/oscal",
           "owner": "RevisionProperty",
           "domain_of": [
@@ -11571,8 +12516,8 @@
             }
           ]
         },
-        "_class": {
-          "name": "_class",
+        "class_": {
+          "name": "class_",
           "any_of": [
             {
               "range": "LocationDataCenterClassEnum"
@@ -11700,9 +12645,12 @@
             }
           ]
         },
-        "_class": {
-          "name": "_class",
+        "class_": {
+          "name": "class_",
           "description": "A textual label that provides a sub-type or characterization of the property's name.",
+          "comments": [
+            "OSCAL's key is `class`. A slot or alias named `class` makes the generated dataclasses invalid Python, and gen-doc names a page after the slot, so `_class` hid its page from the site. `class_` is the spelling the generated Pydantic model gives a slot named `class`."
+          ],
           "from_schema": "https://w3id.org/lmodel/oscal",
           "owner": "LocationProperty",
           "domain_of": [
@@ -11916,9 +12864,12 @@
           "range": "string",
           "required": true
         },
-        "_class": {
-          "name": "_class",
+        "class_": {
+          "name": "class_",
           "description": "A textual label that provides a sub-type or characterization of the property's name.",
+          "comments": [
+            "OSCAL's key is `class`. A slot or alias named `class` makes the generated dataclasses invalid Python, and gen-doc names a page after the slot, so `_class` hid its page from the site. `class_` is the spelling the generated Pydantic model gives a slot named `class`."
+          ],
           "from_schema": "https://w3id.org/lmodel/oscal",
           "owner": "PartyProperty",
           "domain_of": [
@@ -12143,9 +13094,12 @@
             }
           ]
         },
-        "_class": {
-          "name": "_class",
+        "class_": {
+          "name": "class_",
           "description": "A textual label that provides a sub-type or characterization of the property's name.",
+          "comments": [
+            "OSCAL's key is `class`. A slot or alias named `class` makes the generated dataclasses invalid Python, and gen-doc names a page after the slot, so `_class` hid its page from the site. `class_` is the spelling the generated Pydantic model gives a slot named `class`."
+          ],
           "from_schema": "https://w3id.org/lmodel/oscal",
           "owner": "ResourceProperty",
           "domain_of": [
@@ -12351,9 +13305,12 @@
           "range": "string",
           "required": true
         },
-        "_class": {
-          "name": "_class",
+        "class_": {
+          "name": "class_",
           "description": "A textual label that provides a sub-type or characterization of the property's name.",
+          "comments": [
+            "OSCAL's key is `class`. A slot or alias named `class` makes the generated dataclasses invalid Python, and gen-doc names a page after the slot, so `_class` hid its page from the site. `class_` is the spelling the generated Pydantic model gives a slot named `class`."
+          ],
           "from_schema": "https://w3id.org/lmodel/oscal",
           "owner": "PartProperty",
           "domain_of": [
@@ -12574,9 +13531,12 @@
           "range": "string",
           "required": true
         },
-        "_class": {
-          "name": "_class",
+        "class_": {
+          "name": "class_",
           "description": "A textual label that provides a sub-type or characterization of the property's name.",
+          "comments": [
+            "OSCAL's key is `class`. A slot or alias named `class` makes the generated dataclasses invalid Python, and gen-doc names a page after the slot, so `_class` hid its page from the site. `class_` is the spelling the generated Pydantic model gives a slot named `class`."
+          ],
           "from_schema": "https://w3id.org/lmodel/oscal",
           "owner": "ParameterProperty",
           "domain_of": [
@@ -13058,6 +14018,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -13234,6 +14195,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -13265,6 +14227,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -13431,7 +14394,7 @@
         "id",
         "name",
         "ns",
-        "_class",
+        "class_",
         "title",
         "prose",
         "parts"
@@ -13450,8 +14413,8 @@
           "name": "ns",
           "description": "An optional namespace qualifying the part's name. This allows different organizations to associate distinct semantics with the same name."
         },
-        "_class": {
-          "name": "_class",
+        "class_": {
+          "name": "class_",
           "description": "An optional textual providing a sub-type or characterization of the part's name, or a category to which the part belongs."
         },
         "title": {
@@ -13520,9 +14483,12 @@
           ],
           "range": "URIType"
         },
-        "_class": {
-          "name": "_class",
+        "class_": {
+          "name": "class_",
           "description": "An optional textual providing a sub-type or characterization of the part's name, or a category to which the part belongs.",
+          "comments": [
+            "OSCAL's key is `class`. A slot or alias named `class` makes the generated dataclasses invalid Python, and gen-doc names a page after the slot, so `_class` hid its page from the site. `class_` is the spelling the generated Pydantic model gives a slot named `class`."
+          ],
           "from_schema": "https://w3id.org/lmodel/oscal",
           "owner": "Part",
           "domain_of": [
@@ -13625,6 +14591,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -13656,6 +14623,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -13693,7 +14661,7 @@
       ],
       "slots": [
         "id",
-        "_class",
+        "class_",
         "depends-on",
         "label",
         "usage",
@@ -13708,8 +14676,8 @@
           "description": "A unique identifier for the parameter.",
           "required": true
         },
-        "_class": {
-          "name": "_class",
+        "class_": {
+          "name": "class_",
           "description": "A textual label that provides a characterization of the type, purpose, use or scope of the parameter."
         },
         "props": {
@@ -13738,9 +14706,12 @@
           "range": "TokenType",
           "required": true
         },
-        "_class": {
-          "name": "_class",
+        "class_": {
+          "name": "class_",
           "description": "A textual label that provides a characterization of the type, purpose, use or scope of the parameter.",
+          "comments": [
+            "OSCAL's key is `class`. A slot or alias named `class` makes the generated dataclasses invalid Python, and gen-doc names a page after the slot, so `_class` hid its page from the site. `class_` is the spelling the generated Pydantic model gives a slot named `class`."
+          ],
           "from_schema": "https://w3id.org/lmodel/oscal",
           "owner": "Parameter",
           "domain_of": [
@@ -13907,6 +14878,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -13938,6 +14910,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -14852,7 +15825,7 @@
       ],
       "slots": [
         "id",
-        "_class",
+        "class_",
         "title",
         "params",
         "parts",
@@ -14889,9 +15862,12 @@
           ],
           "range": "TokenType"
         },
-        "_class": {
-          "name": "_class",
+        "class_": {
+          "name": "class_",
           "description": "A textual label that provides a sub-type or characterization.",
+          "comments": [
+            "OSCAL's key is `class`. A slot or alias named `class` makes the generated dataclasses invalid Python, and gen-doc names a page after the slot, so `_class` hid its page from the site. `class_` is the spelling the generated Pydantic model gives a slot named `class`."
+          ],
           "from_schema": "https://w3id.org/lmodel/oscal",
           "owner": "ProfileGroup",
           "domain_of": [
@@ -15085,6 +16061,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -15116,6 +16093,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -15206,7 +16184,7 @@
       ],
       "slots": [
         "param-id",
-        "_class",
+        "class_",
         "depends-on",
         "label",
         "usage",
@@ -15235,9 +16213,12 @@
           "range": "TokenType",
           "required": true
         },
-        "_class": {
-          "name": "_class",
+        "class_": {
+          "name": "class_",
           "description": "A textual label that provides a sub-type or characterization.",
+          "comments": [
+            "OSCAL's key is `class`. A slot or alias named `class` makes the generated dataclasses invalid Python, and gen-doc names a page after the slot, so `_class` hid its page from the site. `class_` is the spelling the generated Pydantic model gives a slot named `class`."
+          ],
           "from_schema": "https://w3id.org/lmodel/oscal",
           "owner": "ParameterSetting",
           "domain_of": [
@@ -15349,6 +16330,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -15380,6 +16362,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -15711,6 +16694,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -15742,6 +16726,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -15912,9 +16897,12 @@
           "range": "string",
           "required": true
         },
-        "_class": {
-          "name": "_class",
+        "class_": {
+          "name": "class_",
           "description": "A textual label that provides a sub-type or characterization of the property's name.",
+          "comments": [
+            "OSCAL's key is `class`. A slot or alias named `class` makes the generated dataclasses invalid Python, and gen-doc names a page after the slot, so `_class` hid its page from the site. `class_` is the spelling the generated Pydantic model gives a slot named `class`."
+          ],
           "from_schema": "https://w3id.org/lmodel/oscal",
           "owner": "ProfileAlterationProperty",
           "domain_of": [
@@ -16816,6 +17804,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -16847,6 +17836,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -17069,6 +18059,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -17100,6 +18091,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -17308,6 +18300,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -17339,6 +18332,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -17729,6 +18723,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -17760,6 +18755,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -17927,6 +18923,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -17958,6 +18955,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -18169,6 +19167,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -18200,6 +19199,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -18451,6 +19451,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -18482,6 +19483,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -18854,6 +19856,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -18885,6 +19888,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -19010,6 +20014,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -19041,6 +20046,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -19269,6 +20275,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -19300,6 +20307,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -19547,6 +20555,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -19578,6 +20587,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -19885,6 +20895,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -19916,6 +20927,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -20232,6 +21244,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -20263,6 +21276,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -20691,6 +21705,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -20722,6 +21737,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -21048,7 +22064,8 @@
             "AtFrequency"
           ],
           "range": "PositiveIntegerType",
-          "required": true
+          "required": true,
+          "minimum_value": 1
         },
         "unit": {
           "name": "unit",
@@ -21330,6 +22347,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -21361,6 +22379,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -21421,7 +22440,7 @@
         "uuid",
         "name",
         "ns",
-        "_class",
+        "class_",
         "title",
         "prose",
         "parts"
@@ -21547,9 +22566,12 @@
           ],
           "range": "URIType"
         },
-        "_class": {
-          "name": "_class",
+        "class_": {
+          "name": "class_",
           "description": "A textual label that provides a sub-type or characterization.",
+          "comments": [
+            "OSCAL's key is `class`. A slot or alias named `class` makes the generated dataclasses invalid Python, and gen-doc names a page after the slot, so `_class` hid its page from the site. `class_` is the spelling the generated Pydantic model gives a slot named `class`."
+          ],
           "from_schema": "https://w3id.org/lmodel/oscal",
           "owner": "AssessmentPart",
           "domain_of": [
@@ -21652,6 +22674,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -21683,6 +22706,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -21830,9 +22854,12 @@
           ],
           "range": "URIType"
         },
-        "_class": {
-          "name": "_class",
+        "class_": {
+          "name": "class_",
           "description": "A textual label that provides a sub-type or characterization.",
+          "comments": [
+            "OSCAL's key is `class`. A slot or alias named `class` makes the generated dataclasses invalid Python, and gen-doc names a page after the slot, so `_class` hid its page from the site. `class_` is the spelling the generated Pydantic model gives a slot named `class`."
+          ],
           "from_schema": "https://w3id.org/lmodel/oscal",
           "owner": "TermsAndConditionsPart",
           "domain_of": [
@@ -21935,6 +22962,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -21966,6 +22994,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -22005,7 +23034,7 @@
         "id",
         "name",
         "ns",
-        "_class",
+        "class_",
         "title",
         "prose",
         "parts"
@@ -22073,9 +23102,12 @@
           ],
           "range": "URIType"
         },
-        "_class": {
-          "name": "_class",
+        "class_": {
+          "name": "class_",
           "description": "A textual label that provides a sub-type or characterization.",
+          "comments": [
+            "OSCAL's key is `class`. A slot or alias named `class` makes the generated dataclasses invalid Python, and gen-doc names a page after the slot, so `_class` hid its page from the site. `class_` is the spelling the generated Pydantic model gives a slot named `class`."
+          ],
           "from_schema": "https://w3id.org/lmodel/oscal",
           "owner": "ControlPart",
           "domain_of": [
@@ -22178,6 +23210,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -22209,6 +23242,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -22708,6 +23742,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -22739,6 +23774,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -23050,11 +24086,13 @@
       "slot_usage": {
         "start": {
           "name": "start",
-          "range": "NonNegativeIntegerType"
+          "range": "NonNegativeIntegerType",
+          "minimum_value": 0
         },
         "end": {
           "name": "end",
-          "range": "NonNegativeIntegerType"
+          "range": "NonNegativeIntegerType",
+          "minimum_value": 0
         }
       },
       "attributes": {
@@ -23070,7 +24108,8 @@
             "Result",
             "AssessmentLogEntry"
           ],
-          "range": "NonNegativeIntegerType"
+          "range": "NonNegativeIntegerType",
+          "minimum_value": 0
         },
         "end": {
           "name": "end",
@@ -23084,7 +24123,8 @@
             "Result",
             "AssessmentLogEntry"
           ],
-          "range": "NonNegativeIntegerType"
+          "range": "NonNegativeIntegerType",
+          "minimum_value": 0
         },
         "transport": {
           "name": "transport",
@@ -23559,6 +24599,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -23590,6 +24631,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -23993,6 +25035,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -24024,6 +25067,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -24176,6 +25220,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -24207,6 +25252,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -24496,9 +25542,12 @@
             }
           ]
         },
-        "_class": {
-          "name": "_class",
+        "class_": {
+          "name": "class_",
           "description": "A textual label that provides a sub-type or characterization of the property's name.",
+          "comments": [
+            "OSCAL's key is `class`. A slot or alias named `class` makes the generated dataclasses invalid Python, and gen-doc names a page after the slot, so `_class` hid its page from the site. `class_` is the spelling the generated Pydantic model gives a slot named `class`."
+          ],
           "from_schema": "https://w3id.org/lmodel/oscal",
           "owner": "ImplementationCommonProperty",
           "domain_of": [
@@ -24800,6 +25849,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -24831,6 +25881,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -24979,6 +26030,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -25010,6 +26062,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -25171,6 +26224,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -25202,6 +26256,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -25363,6 +26418,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -25394,6 +26450,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -25874,6 +26931,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -25905,6 +26963,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -26093,6 +27152,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -26124,6 +27184,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -26488,6 +27549,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -26519,6 +27581,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -26810,6 +27873,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -26841,6 +27905,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -27524,6 +28589,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -27555,6 +28621,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -27720,6 +28787,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -27751,6 +28819,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -27917,6 +28986,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -27948,6 +29018,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -28164,6 +29235,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -28195,6 +29267,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -28553,6 +29626,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -28584,6 +29658,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -28887,6 +29962,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -28918,6 +29994,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -29312,6 +30389,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -29343,6 +30421,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -29584,6 +30663,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -29615,6 +30695,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -29977,6 +31058,8 @@
         "system-name",
         "system-name-short",
         "description",
+        "props",
+        "links",
         "date-authorized",
         "security-sensitivity-level",
         "system-information",
@@ -30119,6 +31202,71 @@
           ],
           "range": "MarkupMultilineType",
           "required": true
+        },
+        "props": {
+          "name": "props",
+          "description": "A list of properties.",
+          "from_schema": "https://w3id.org/lmodel/oscal",
+          "owner": "SystemCharacteristics",
+          "domain_of": [
+            "HasPropsAndLinks",
+            "Resource",
+            "Addition",
+            "SystemCharacteristics",
+            "SystemInformation",
+            "InformationType",
+            "ImpactLevel",
+            "AuthorizationBoundary",
+            "Diagram",
+            "NetworkArchitecture",
+            "DataFlow",
+            "SystemImplementation",
+            "LeveragedAuthorization",
+            "SspImplementedRequirement",
+            "SspStatement",
+            "ByComponent",
+            "Export",
+            "ProvidedControlImplementation",
+            "ControlResponsibility",
+            "InheritedControlImplementation",
+            "SatisfiedControlImplementation"
+          ],
+          "range": "SspSystemCharacteristicsProp",
+          "multivalued": true,
+          "inlined": true,
+          "inlined_as_list": true
+        },
+        "links": {
+          "name": "links",
+          "description": "A list of links.",
+          "from_schema": "https://w3id.org/lmodel/oscal",
+          "owner": "SystemCharacteristics",
+          "domain_of": [
+            "HasPropsAndLinks",
+            "Addition",
+            "SystemCharacteristics",
+            "SystemInformation",
+            "InformationType",
+            "ImpactLevel",
+            "AuthorizationBoundary",
+            "Diagram",
+            "NetworkArchitecture",
+            "DataFlow",
+            "SystemImplementation",
+            "LeveragedAuthorization",
+            "SspImplementedRequirement",
+            "SspStatement",
+            "ByComponent",
+            "Export",
+            "ProvidedControlImplementation",
+            "ControlResponsibility",
+            "InheritedControlImplementation",
+            "SatisfiedControlImplementation"
+          ],
+          "range": "Link",
+          "multivalued": true,
+          "inlined": true,
+          "inlined_as_list": true
         },
         "date-authorized": {
           "name": "date-authorized",
@@ -30326,6 +31474,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -30357,6 +31506,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -30612,6 +31762,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -30643,6 +31794,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -30715,7 +31867,7 @@
         "system": {
           "name": "system",
           "description": "Specifies the information type identification system used. Recommended values are in InformationTypeCategorizationSystemEnum; other values are permitted (OSCAL allow-other=\"yes\").",
-          "from_schema": "https://w3id.org/lmodel/oscal_ssp",
+          "from_schema": "https://w3id.org/lmodel/oscal/oscal_ssp",
           "owner": "InformationTypeCategorization",
           "domain_of": [
             "Action",
@@ -30737,7 +31889,7 @@
         "information-type-ids": {
           "name": "information-type-ids",
           "description": "An identifier qualified by the given identification system used, such as NIST SP 800-60.",
-          "from_schema": "https://w3id.org/lmodel/oscal_ssp",
+          "from_schema": "https://w3id.org/lmodel/oscal/oscal_ssp",
           "alias": "information_type_ids",
           "owner": "InformationTypeCategorization",
           "domain_of": [
@@ -30797,6 +31949,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -30828,6 +31981,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -30980,7 +32134,7 @@
         "state": {
           "name": "state",
           "description": "The current operating status of the system.",
-          "from_schema": "https://w3id.org/lmodel/oscal_ssp",
+          "from_schema": "https://w3id.org/lmodel/oscal/oscal_ssp",
           "owner": "SystemStatus",
           "domain_of": [
             "Address",
@@ -31138,6 +32292,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -31169,6 +32324,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -31419,6 +32575,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -31450,6 +32607,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -31629,6 +32787,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -31660,6 +32819,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -31844,6 +33004,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -31875,6 +33036,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -32007,6 +33169,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -32038,6 +33201,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -32337,6 +33501,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -32368,6 +33533,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -32732,6 +33898,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -32763,6 +33930,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -33031,6 +34199,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -33062,6 +34231,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -33376,6 +34546,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -33407,6 +34578,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -33659,6 +34831,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -33690,6 +34863,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -33901,6 +35075,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -33932,6 +35107,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -34206,6 +35382,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -34237,6 +35414,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -34511,6 +35689,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -34542,6 +35721,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -34815,6 +35995,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -34846,6 +36027,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -35101,9 +36283,12 @@
             }
           ]
         },
-        "_class": {
-          "name": "_class",
+        "class_": {
+          "name": "class_",
           "description": "A textual label that provides a sub-type or characterization of the property's name.",
+          "comments": [
+            "OSCAL's key is `class`. A slot or alias named `class` makes the generated dataclasses invalid Python, and gen-doc names a page after the slot, so `_class` hid its page from the site. `class_` is the spelling the generated Pydantic model gives a slot named `class`."
+          ],
           "from_schema": "https://w3id.org/lmodel/oscal",
           "owner": "SspSystemCharacteristicsProp",
           "domain_of": [
@@ -35313,9 +36498,12 @@
           "range": "PrivacyDesignationEnum",
           "required": true
         },
-        "_class": {
-          "name": "_class",
+        "class_": {
+          "name": "class_",
           "description": "A textual label that provides a sub-type or characterization of the property's name.",
+          "comments": [
+            "OSCAL's key is `class`. A slot or alias named `class` makes the generated dataclasses invalid Python, and gen-doc names a page after the slot, so `_class` hid its page from the site. `class_` is the spelling the generated Pydantic model gives a slot named `class`."
+          ],
           "from_schema": "https://w3id.org/lmodel/oscal",
           "owner": "SspSystemInformationProp",
           "domain_of": [
@@ -35525,9 +36713,12 @@
           "range": "ControlOriginationValueEnum",
           "required": true
         },
-        "_class": {
-          "name": "_class",
+        "class_": {
+          "name": "class_",
           "description": "A textual label that provides a sub-type or characterization of the property's name.",
+          "comments": [
+            "OSCAL's key is `class`. A slot or alias named `class` makes the generated dataclasses invalid Python, and gen-doc names a page after the slot, so `_class` hid its page from the site. `class_` is the spelling the generated Pydantic model gives a slot named `class`."
+          ],
           "from_schema": "https://w3id.org/lmodel/oscal",
           "owner": "SspControlOriginationProp",
           "domain_of": [
@@ -35737,9 +36928,12 @@
           "range": "AllowsAuthenticatedScanEnum",
           "required": true
         },
-        "_class": {
-          "name": "_class",
+        "class_": {
+          "name": "class_",
           "description": "A textual label that provides a sub-type or characterization of the property's name.",
+          "comments": [
+            "OSCAL's key is `class`. A slot or alias named `class` makes the generated dataclasses invalid Python, and gen-doc names a page after the slot, so `_class` hid its page from the site. `class_` is the spelling the generated Pydantic model gives a slot named `class`."
+          ],
           "from_schema": "https://w3id.org/lmodel/oscal",
           "owner": "SspAllowsAuthenticatedScanProp",
           "domain_of": [
@@ -36333,6 +37527,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -36364,6 +37559,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -36511,6 +37707,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -36542,6 +37739,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -36689,6 +37887,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -36720,6 +37919,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -37062,6 +38262,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -37093,6 +38294,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -37353,6 +38555,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -37384,6 +38587,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -38246,6 +39450,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -38277,6 +39482,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -38812,6 +40018,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -38843,6 +40050,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -39506,6 +40714,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -39537,6 +40746,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -39848,6 +41058,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -39879,6 +41090,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -40220,6 +41432,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -40251,6 +41464,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -40553,6 +41767,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -40584,6 +41799,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -40860,6 +42076,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -40891,6 +42108,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -41317,6 +42535,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -41348,6 +42567,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -41707,6 +42927,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -41738,6 +42959,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -42046,6 +43268,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -42077,6 +43300,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -42228,6 +43452,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -42259,6 +43484,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -42450,6 +43676,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -42481,6 +43708,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -43613,6 +44841,7 @@
             "HasPropsAndLinks",
             "Resource",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",
@@ -43644,6 +44873,7 @@
           "domain_of": [
             "HasPropsAndLinks",
             "Addition",
+            "SystemCharacteristics",
             "SystemInformation",
             "InformationType",
             "ImpactLevel",

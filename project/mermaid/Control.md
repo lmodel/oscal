@@ -8,7 +8,7 @@
       HasPropsAndLinks <|-- Control
         click HasPropsAndLinks href "../HasPropsAndLinks"
       
-      Control : _class
+      Control : class_
         
       Control : controls
         

@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: Role
+# metamodel_version: 1.11.0# version: 1.2.3id: Role
 schema_generating: true
 description: Defines a function, which might be assigned to a party in a specific
   situation.

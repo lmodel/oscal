@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: NetworkArchitecture
+# metamodel_version: 1.11.0# version: 1.2.3id: NetworkArchitecture
 schema_generating: true
 description: A description of the system's network architecture, optionally supplemented
   with diagrams that illustrate the network architecture.

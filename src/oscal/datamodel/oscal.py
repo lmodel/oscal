@@ -1,9 +1,9 @@
 # Auto generated from oscal.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-08-05T13:45:23
+# Generation date: 2026-10-29T00:13:03
 # Schema: oscal
 #
 # id: https://w3id.org/lmodel/oscal
-# description: OSCAL: Open Security Controls Assessment Language: LinkML Schema
+# description: A LinkML model of NIST's Open Security Controls Assessment Language (OSCAL) 1.2.3: the catalog, profile, component definition, system security plan, assessment plan, assessment results, plan of action and milestones, and mapping collection models, each in a module of its own.
 # license: Apache-2.0
 
 import dataclasses
@@ -60,19 +60,11 @@ from linkml_runtime.linkml_model.types import Boolean, Float, String
 from linkml_runtime.utils.metamodelcore import Bool
 
 metamodel_version = "1.11.0"
-version = "1.2.1"
+version = "1.2.3"
 
 # Namespaces
 LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
 OSCAL = CurieNamespace('oscal', 'https://w3id.org/lmodel/oscal/')
-OSCAL_ASSESSMENT_PLAN = CurieNamespace('oscal_assessment_plan', 'https://w3id.org/lmodel/oscal_assessment_plan/')
-OSCAL_ASSESSMENT_RESULTS = CurieNamespace('oscal_assessment_results', 'https://w3id.org/lmodel/oscal_assessment_results/')
-OSCAL_CATALOG = CurieNamespace('oscal_catalog', 'https://w3id.org/lmodel/oscal_catalog/')
-OSCAL_COMPONENT = CurieNamespace('oscal_component', 'https://w3id.org/lmodel/oscal_component/')
-OSCAL_MAPPING = CurieNamespace('oscal_mapping', 'https://w3id.org/lmodel/oscal_mapping/')
-OSCAL_POAM = CurieNamespace('oscal_poam', 'https://w3id.org/lmodel/oscal_poam/')
-OSCAL_PROFILE = CurieNamespace('oscal_profile', 'https://w3id.org/lmodel/oscal_profile/')
-OSCAL_SSP = CurieNamespace('oscal_ssp', 'https://w3id.org/lmodel/oscal_ssp/')
 XSD = CurieNamespace('xsd', 'http://www.w3.org/2001/XMLSchema#')
 DEFAULT_ = OSCAL
 
@@ -151,7 +143,7 @@ class EmailAddressType(str):
 
 
 class NonNegativeIntegerType(int):
-    """ A non-negative integer value (>= 0), as used for port range boundaries. """
+    """ A non-negative integer value (>= 0), as used for port range boundaries. OSCAL 1.2.2 restored this minimum in its JSON datatype. Each slot with this range repeats it, because the generated Pydantic model reads a minimum from the slot and not from the type. """
     type_class_uri = XSD["nonNegativeInteger"]
     type_class_curie = "xsd:nonNegativeInteger"
     type_name = "NonNegativeIntegerType"
@@ -159,7 +151,7 @@ class NonNegativeIntegerType(int):
 
 
 class PositiveIntegerType(int):
-    """ A positive integer value (>= 1), as used for task recurrence periods. """
+    """ A positive integer value (>= 1), as used for task recurrence periods. OSCAL 1.2.2 restored this minimum in its JSON datatype. Each slot with this range repeats it, because the generated Pydantic model reads a minimum from the slot and not from the type. """
     type_class_uri = XSD["positiveInteger"]
     type_class_curie = "xsd:positiveInteger"
     type_name = "PositiveIntegerType"
@@ -177,8 +169,8 @@ class HasPropsAndLinks(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_CATALOG["HasPropsAndLinks"]
-    class_class_curie: ClassVar[str] = "oscal_catalog:HasPropsAndLinks"
+    class_class_uri: ClassVar[URIRef] = OSCAL["HasPropsAndLinks"]
+    class_class_curie: ClassVar[str] = "oscal:HasPropsAndLinks"
     class_name: ClassVar[str] = "HasPropsAndLinks"
     class_model_uri: ClassVar[URIRef] = OSCAL.HasPropsAndLinks
 
@@ -200,8 +192,8 @@ class OscalCommon(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_CATALOG["OscalCommon"]
-    class_class_curie: ClassVar[str] = "oscal_catalog:OscalCommon"
+    class_class_uri: ClassVar[URIRef] = OSCAL["OscalCommon"]
+    class_class_curie: ClassVar[str] = "oscal:OscalCommon"
     class_name: ClassVar[str] = "OscalCommon"
     class_model_uri: ClassVar[URIRef] = OSCAL.OscalCommon
 
@@ -227,8 +219,8 @@ class HasResponsibleRoles(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_CATALOG["HasResponsibleRoles"]
-    class_class_curie: ClassVar[str] = "oscal_catalog:HasResponsibleRoles"
+    class_class_uri: ClassVar[URIRef] = OSCAL["HasResponsibleRoles"]
+    class_class_curie: ClassVar[str] = "oscal:HasResponsibleRoles"
     class_name: ClassVar[str] = "HasResponsibleRoles"
     class_model_uri: ClassVar[URIRef] = OSCAL.HasResponsibleRoles
 
@@ -247,8 +239,8 @@ class HasResponsibleParties(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_CATALOG["HasResponsibleParties"]
-    class_class_curie: ClassVar[str] = "oscal_catalog:HasResponsibleParties"
+    class_class_uri: ClassVar[URIRef] = OSCAL["HasResponsibleParties"]
+    class_class_curie: ClassVar[str] = "oscal:HasResponsibleParties"
     class_name: ClassVar[str] = "HasResponsibleParties"
     class_model_uri: ClassVar[URIRef] = OSCAL.HasResponsibleParties
 
@@ -267,8 +259,8 @@ class OscalDocument(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_CATALOG["OscalDocument"]
-    class_class_curie: ClassVar[str] = "oscal_catalog:OscalDocument"
+    class_class_uri: ClassVar[URIRef] = OSCAL["OscalDocument"]
+    class_class_curie: ClassVar[str] = "oscal:OscalDocument"
     class_name: ClassVar[str] = "OscalDocument"
     class_model_uri: ClassVar[URIRef] = OSCAL.OscalDocument
 
@@ -280,8 +272,8 @@ class CatalogDocument(OscalDocument):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_CATALOG["CatalogDocument"]
-    class_class_curie: ClassVar[str] = "oscal_catalog:CatalogDocument"
+    class_class_uri: ClassVar[URIRef] = OSCAL["CatalogDocument"]
+    class_class_curie: ClassVar[str] = "oscal:CatalogDocument"
     class_name: ClassVar[str] = "CatalogDocument"
     class_model_uri: ClassVar[URIRef] = OSCAL.CatalogDocument
 
@@ -303,8 +295,8 @@ class Catalog(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_CATALOG["Catalog"]
-    class_class_curie: ClassVar[str] = "oscal_catalog:Catalog"
+    class_class_uri: ClassVar[URIRef] = OSCAL["Catalog"]
+    class_class_curie: ClassVar[str] = "oscal:Catalog"
     class_name: ClassVar[str] = "Catalog"
     class_model_uri: ClassVar[URIRef] = OSCAL.Catalog
 
@@ -345,14 +337,14 @@ class Group(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_CATALOG["Group"]
-    class_class_curie: ClassVar[str] = "oscal_catalog:Group"
+    class_class_uri: ClassVar[URIRef] = OSCAL["Group"]
+    class_class_curie: ClassVar[str] = "oscal:Group"
     class_name: ClassVar[str] = "Group"
     class_model_uri: ClassVar[URIRef] = OSCAL.Group
 
     title: str = None
     id: Optional[str] = None
-    _class: Optional[str] = None
+    class_: Optional[str] = None
     params: Optional[Union[Union[dict, "Parameter"], list[Union[dict, "Parameter"]]]] = empty_list()
     parts: Optional[Union[Union[dict, "Part"], list[Union[dict, "Part"]]]] = empty_list()
     groups: Optional[Union[Union[dict, "Group"], list[Union[dict, "Group"]]]] = empty_list()
@@ -369,8 +361,8 @@ class Group(YAMLRoot):
         if self.id is not None and not isinstance(self.id, str):
             self.id = str(self.id)
 
-        if self._class is not None and not isinstance(self._class, str):
-            self._class = str(self._class)
+        if self.class_ is not None and not isinstance(self.class_, str):
+            self.class_ = str(self.class_)
 
         self._normalize_inlined_as_list(slot_name="params", slot_type=Parameter, key_name="id", keyed=False)
 
@@ -395,14 +387,14 @@ class Control(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_CATALOG["Control"]
-    class_class_curie: ClassVar[str] = "oscal_catalog:Control"
+    class_class_uri: ClassVar[URIRef] = OSCAL["Control"]
+    class_class_curie: ClassVar[str] = "oscal:Control"
     class_name: ClassVar[str] = "Control"
     class_model_uri: ClassVar[URIRef] = OSCAL.Control
 
     id: str = None
     title: str = None
-    _class: Optional[str] = None
+    class_: Optional[str] = None
     params: Optional[Union[Union[dict, "Parameter"], list[Union[dict, "Parameter"]]]] = empty_list()
     parts: Optional[Union[Union[dict, "Part"], list[Union[dict, "Part"]]]] = empty_list()
     controls: Optional[Union[Union[dict, "Control"], list[Union[dict, "Control"]]]] = empty_list()
@@ -420,8 +412,8 @@ class Control(YAMLRoot):
         if not isinstance(self.title, str):
             self.title = str(self.title)
 
-        if self._class is not None and not isinstance(self._class, str):
-            self._class = str(self._class)
+        if self.class_ is not None and not isinstance(self.class_, str):
+            self.class_ = str(self.class_)
 
         self._normalize_inlined_as_list(slot_name="params", slot_type=Parameter, key_name="id", keyed=False)
 
@@ -443,8 +435,8 @@ class Metadata(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_CATALOG["Metadata"]
-    class_class_curie: ClassVar[str] = "oscal_catalog:Metadata"
+    class_class_uri: ClassVar[URIRef] = OSCAL["Metadata"]
+    class_class_curie: ClassVar[str] = "oscal:Metadata"
     class_name: ClassVar[str] = "Metadata"
     class_model_uri: ClassVar[URIRef] = OSCAL.Metadata
 
@@ -519,8 +511,8 @@ class Revision(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_CATALOG["Revision"]
-    class_class_curie: ClassVar[str] = "oscal_catalog:Revision"
+    class_class_uri: ClassVar[URIRef] = OSCAL["Revision"]
+    class_class_curie: ClassVar[str] = "oscal:Revision"
     class_name: ClassVar[str] = "Revision"
     class_model_uri: ClassVar[URIRef] = OSCAL.Revision
 
@@ -568,8 +560,8 @@ class DocumentId(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_CATALOG["DocumentId"]
-    class_class_curie: ClassVar[str] = "oscal_catalog:DocumentId"
+    class_class_uri: ClassVar[URIRef] = OSCAL["DocumentId"]
+    class_class_curie: ClassVar[str] = "oscal:DocumentId"
     class_name: ClassVar[str] = "DocumentId"
     class_model_uri: ClassVar[URIRef] = OSCAL.DocumentId
 
@@ -595,8 +587,8 @@ class Role(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_CATALOG["Role"]
-    class_class_curie: ClassVar[str] = "oscal_catalog:Role"
+    class_class_uri: ClassVar[URIRef] = OSCAL["Role"]
+    class_class_curie: ClassVar[str] = "oscal:Role"
     class_name: ClassVar[str] = "Role"
     class_model_uri: ClassVar[URIRef] = OSCAL.Role
 
@@ -637,8 +629,8 @@ class Location(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_CATALOG["Location"]
-    class_class_curie: ClassVar[str] = "oscal_catalog:Location"
+    class_class_uri: ClassVar[URIRef] = OSCAL["Location"]
+    class_class_curie: ClassVar[str] = "oscal:Location"
     class_name: ClassVar[str] = "Location"
     class_model_uri: ClassVar[URIRef] = OSCAL.Location
 
@@ -689,8 +681,8 @@ class Party(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_CATALOG["Party"]
-    class_class_curie: ClassVar[str] = "oscal_catalog:Party"
+    class_class_uri: ClassVar[URIRef] = OSCAL["Party"]
+    class_class_curie: ClassVar[str] = "oscal:Party"
     class_name: ClassVar[str] = "Party"
     class_model_uri: ClassVar[URIRef] = OSCAL.Party
 
@@ -760,8 +752,8 @@ class PartyExternalId(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_CATALOG["PartyExternalId"]
-    class_class_curie: ClassVar[str] = "oscal_catalog:PartyExternalId"
+    class_class_uri: ClassVar[URIRef] = OSCAL["PartyExternalId"]
+    class_class_curie: ClassVar[str] = "oscal:PartyExternalId"
     class_name: ClassVar[str] = "PartyExternalId"
     class_model_uri: ClassVar[URIRef] = OSCAL.PartyExternalId
 
@@ -790,8 +782,8 @@ class ResponsibleParty(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_CATALOG["ResponsibleParty"]
-    class_class_curie: ClassVar[str] = "oscal_catalog:ResponsibleParty"
+    class_class_uri: ClassVar[URIRef] = OSCAL["ResponsibleParty"]
+    class_class_curie: ClassVar[str] = "oscal:ResponsibleParty"
     class_name: ClassVar[str] = "ResponsibleParty"
     class_model_uri: ClassVar[URIRef] = OSCAL.ResponsibleParty
 
@@ -825,8 +817,8 @@ class ResponsibleRole(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_CATALOG["ResponsibleRole"]
-    class_class_curie: ClassVar[str] = "oscal_catalog:ResponsibleRole"
+    class_class_uri: ClassVar[URIRef] = OSCAL["ResponsibleRole"]
+    class_class_curie: ClassVar[str] = "oscal:ResponsibleRole"
     class_name: ClassVar[str] = "ResponsibleRole"
     class_model_uri: ClassVar[URIRef] = OSCAL.ResponsibleRole
 
@@ -857,8 +849,8 @@ class Action(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_CATALOG["Action"]
-    class_class_curie: ClassVar[str] = "oscal_catalog:Action"
+    class_class_uri: ClassVar[URIRef] = OSCAL["Action"]
+    class_class_curie: ClassVar[str] = "oscal:Action"
     class_name: ClassVar[str] = "Action"
     class_model_uri: ClassVar[URIRef] = OSCAL.Action
 
@@ -903,8 +895,8 @@ class TelephoneNumber(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_CATALOG["TelephoneNumber"]
-    class_class_curie: ClassVar[str] = "oscal_catalog:TelephoneNumber"
+    class_class_uri: ClassVar[URIRef] = OSCAL["TelephoneNumber"]
+    class_class_curie: ClassVar[str] = "oscal:TelephoneNumber"
     class_name: ClassVar[str] = "TelephoneNumber"
     class_model_uri: ClassVar[URIRef] = OSCAL.TelephoneNumber
 
@@ -930,8 +922,8 @@ class Address(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_CATALOG["Address"]
-    class_class_curie: ClassVar[str] = "oscal_catalog:Address"
+    class_class_uri: ClassVar[URIRef] = OSCAL["Address"]
+    class_class_curie: ClassVar[str] = "oscal:Address"
     class_name: ClassVar[str] = "Address"
     class_model_uri: ClassVar[URIRef] = OSCAL.Address
 
@@ -972,8 +964,8 @@ class Hash(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_CATALOG["Hash"]
-    class_class_curie: ClassVar[str] = "oscal_catalog:Hash"
+    class_class_uri: ClassVar[URIRef] = OSCAL["Hash"]
+    class_class_curie: ClassVar[str] = "oscal:Hash"
     class_name: ClassVar[str] = "Hash"
     class_model_uri: ClassVar[URIRef] = OSCAL.Hash
 
@@ -1002,8 +994,8 @@ class Property(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_CATALOG["Property"]
-    class_class_curie: ClassVar[str] = "oscal_catalog:Property"
+    class_class_uri: ClassVar[URIRef] = OSCAL["Property"]
+    class_class_curie: ClassVar[str] = "oscal:Property"
     class_name: ClassVar[str] = "Property"
     class_model_uri: ClassVar[URIRef] = OSCAL.Property
 
@@ -1011,7 +1003,7 @@ class Property(YAMLRoot):
     value: str = None
     uuid: Optional[str] = None
     ns: Optional[str] = None
-    _class: Optional[str] = None
+    class_: Optional[str] = None
     remarks: Optional[str] = None
     group: Optional[str] = None
 
@@ -1032,8 +1024,8 @@ class Property(YAMLRoot):
         if self.ns is not None and not isinstance(self.ns, str):
             self.ns = str(self.ns)
 
-        if self._class is not None and not isinstance(self._class, str):
-            self._class = str(self._class)
+        if self.class_ is not None and not isinstance(self.class_, str):
+            self.class_ = str(self.class_)
 
         if self.remarks is not None and not isinstance(self.remarks, str):
             self.remarks = str(self.remarks)
@@ -1051,8 +1043,8 @@ class MetadataProperty(Property):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_CATALOG["MetadataProperty"]
-    class_class_curie: ClassVar[str] = "oscal_catalog:MetadataProperty"
+    class_class_uri: ClassVar[URIRef] = OSCAL["MetadataProperty"]
+    class_class_curie: ClassVar[str] = "oscal:MetadataProperty"
     class_name: ClassVar[str] = "MetadataProperty"
     class_model_uri: ClassVar[URIRef] = OSCAL.MetadataProperty
 
@@ -1075,8 +1067,8 @@ class RevisionProperty(Property):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_CATALOG["RevisionProperty"]
-    class_class_curie: ClassVar[str] = "oscal_catalog:RevisionProperty"
+    class_class_uri: ClassVar[URIRef] = OSCAL["RevisionProperty"]
+    class_class_curie: ClassVar[str] = "oscal:RevisionProperty"
     class_name: ClassVar[str] = "RevisionProperty"
     class_model_uri: ClassVar[URIRef] = OSCAL.RevisionProperty
 
@@ -1099,14 +1091,14 @@ class LocationProperty(Property):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_CATALOG["LocationProperty"]
-    class_class_curie: ClassVar[str] = "oscal_catalog:LocationProperty"
+    class_class_uri: ClassVar[URIRef] = OSCAL["LocationProperty"]
+    class_class_curie: ClassVar[str] = "oscal:LocationProperty"
     class_name: ClassVar[str] = "LocationProperty"
     class_model_uri: ClassVar[URIRef] = OSCAL.LocationProperty
 
     name: Union[str, "LocationPropNameEnum"] = None
     value: str = None
-    _class: Optional[str] = None
+    class_: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.name):
@@ -1119,8 +1111,8 @@ class LocationProperty(Property):
         if not isinstance(self.value, str):
             self.value = str(self.value)
 
-        if self._class is not None and not isinstance(self._class, str):
-            self._class = str(self._class)
+        if self.class_ is not None and not isinstance(self.class_, str):
+            self.class_ = str(self.class_)
 
         super().__post_init__(**kwargs)
 
@@ -1132,8 +1124,8 @@ class PartyProperty(Property):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_CATALOG["PartyProperty"]
-    class_class_curie: ClassVar[str] = "oscal_catalog:PartyProperty"
+    class_class_uri: ClassVar[URIRef] = OSCAL["PartyProperty"]
+    class_class_curie: ClassVar[str] = "oscal:PartyProperty"
     class_name: ClassVar[str] = "PartyProperty"
     class_model_uri: ClassVar[URIRef] = OSCAL.PartyProperty
 
@@ -1156,8 +1148,8 @@ class ResourceProperty(Property):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_CATALOG["ResourceProperty"]
-    class_class_curie: ClassVar[str] = "oscal_catalog:ResourceProperty"
+    class_class_uri: ClassVar[URIRef] = OSCAL["ResourceProperty"]
+    class_class_curie: ClassVar[str] = "oscal:ResourceProperty"
     class_name: ClassVar[str] = "ResourceProperty"
     class_model_uri: ClassVar[URIRef] = OSCAL.ResourceProperty
 
@@ -1185,8 +1177,8 @@ class PartProperty(Property):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_CATALOG["PartProperty"]
-    class_class_curie: ClassVar[str] = "oscal_catalog:PartProperty"
+    class_class_uri: ClassVar[URIRef] = OSCAL["PartProperty"]
+    class_class_curie: ClassVar[str] = "oscal:PartProperty"
     class_name: ClassVar[str] = "PartProperty"
     class_model_uri: ClassVar[URIRef] = OSCAL.PartProperty
 
@@ -1209,8 +1201,8 @@ class ParameterProperty(Property):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_CATALOG["ParameterProperty"]
-    class_class_curie: ClassVar[str] = "oscal_catalog:ParameterProperty"
+    class_class_uri: ClassVar[URIRef] = OSCAL["ParameterProperty"]
+    class_class_curie: ClassVar[str] = "oscal:ParameterProperty"
     class_name: ClassVar[str] = "ParameterProperty"
     class_model_uri: ClassVar[URIRef] = OSCAL.ParameterProperty
 
@@ -1233,8 +1225,8 @@ class MetadataPartyExternalId(PartyExternalId):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_CATALOG["MetadataPartyExternalId"]
-    class_class_curie: ClassVar[str] = "oscal_catalog:MetadataPartyExternalId"
+    class_class_uri: ClassVar[URIRef] = OSCAL["MetadataPartyExternalId"]
+    class_class_curie: ClassVar[str] = "oscal:MetadataPartyExternalId"
     class_name: ClassVar[str] = "MetadataPartyExternalId"
     class_model_uri: ClassVar[URIRef] = OSCAL.MetadataPartyExternalId
 
@@ -1248,8 +1240,8 @@ class Link(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_CATALOG["Link"]
-    class_class_curie: ClassVar[str] = "oscal_catalog:Link"
+    class_class_uri: ClassVar[URIRef] = OSCAL["Link"]
+    class_class_curie: ClassVar[str] = "oscal:Link"
     class_name: ClassVar[str] = "Link"
     class_model_uri: ClassVar[URIRef] = OSCAL.Link
 
@@ -1287,8 +1279,8 @@ class BackMatter(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_CATALOG["BackMatter"]
-    class_class_curie: ClassVar[str] = "oscal_catalog:BackMatter"
+    class_class_uri: ClassVar[URIRef] = OSCAL["BackMatter"]
+    class_class_curie: ClassVar[str] = "oscal:BackMatter"
     class_name: ClassVar[str] = "BackMatter"
     class_model_uri: ClassVar[URIRef] = OSCAL.BackMatter
 
@@ -1308,8 +1300,8 @@ class Resource(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_CATALOG["Resource"]
-    class_class_curie: ClassVar[str] = "oscal_catalog:Resource"
+    class_class_uri: ClassVar[URIRef] = OSCAL["Resource"]
+    class_class_curie: ClassVar[str] = "oscal:Resource"
     class_name: ClassVar[str] = "Resource"
     class_model_uri: ClassVar[URIRef] = OSCAL.Resource
 
@@ -1360,8 +1352,8 @@ class Citation(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_CATALOG["Citation"]
-    class_class_curie: ClassVar[str] = "oscal_catalog:Citation"
+    class_class_uri: ClassVar[URIRef] = OSCAL["Citation"]
+    class_class_curie: ClassVar[str] = "oscal:Citation"
     class_name: ClassVar[str] = "Citation"
     class_model_uri: ClassVar[URIRef] = OSCAL.Citation
 
@@ -1389,8 +1381,8 @@ class ResourceLink(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_CATALOG["ResourceLink"]
-    class_class_curie: ClassVar[str] = "oscal_catalog:ResourceLink"
+    class_class_uri: ClassVar[URIRef] = OSCAL["ResourceLink"]
+    class_class_curie: ClassVar[str] = "oscal:ResourceLink"
     class_name: ClassVar[str] = "ResourceLink"
     class_model_uri: ClassVar[URIRef] = OSCAL.ResourceLink
 
@@ -1419,8 +1411,8 @@ class Base64Resource(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_CATALOG["Base64Resource"]
-    class_class_curie: ClassVar[str] = "oscal_catalog:Base64Resource"
+    class_class_uri: ClassVar[URIRef] = OSCAL["Base64Resource"]
+    class_class_curie: ClassVar[str] = "oscal:Base64Resource"
     class_name: ClassVar[str] = "Base64Resource"
     class_model_uri: ClassVar[URIRef] = OSCAL.Base64Resource
 
@@ -1451,15 +1443,15 @@ class Part(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_CATALOG["Part"]
-    class_class_curie: ClassVar[str] = "oscal_catalog:Part"
+    class_class_uri: ClassVar[URIRef] = OSCAL["Part"]
+    class_class_curie: ClassVar[str] = "oscal:Part"
     class_name: ClassVar[str] = "Part"
     class_model_uri: ClassVar[URIRef] = OSCAL.Part
 
     name: str = None
     id: Optional[str] = None
     ns: Optional[str] = None
-    _class: Optional[str] = None
+    class_: Optional[str] = None
     title: Optional[str] = None
     prose: Optional[str] = None
     parts: Optional[Union[Union[dict, "Part"], list[Union[dict, "Part"]]]] = empty_list()
@@ -1478,8 +1470,8 @@ class Part(YAMLRoot):
         if self.ns is not None and not isinstance(self.ns, str):
             self.ns = str(self.ns)
 
-        if self._class is not None and not isinstance(self._class, str):
-            self._class = str(self._class)
+        if self.class_ is not None and not isinstance(self.class_, str):
+            self.class_ = str(self.class_)
 
         if self.title is not None and not isinstance(self.title, str):
             self.title = str(self.title)
@@ -1503,13 +1495,13 @@ class Parameter(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_CATALOG["Parameter"]
-    class_class_curie: ClassVar[str] = "oscal_catalog:Parameter"
+    class_class_uri: ClassVar[URIRef] = OSCAL["Parameter"]
+    class_class_curie: ClassVar[str] = "oscal:Parameter"
     class_name: ClassVar[str] = "Parameter"
     class_model_uri: ClassVar[URIRef] = OSCAL.Parameter
 
     id: str = None
-    _class: Optional[str] = None
+    class_: Optional[str] = None
     depends_on: Optional[str] = None
     label: Optional[str] = None
     usage: Optional[str] = None
@@ -1526,8 +1518,8 @@ class Parameter(YAMLRoot):
         if not isinstance(self.id, str):
             self.id = str(self.id)
 
-        if self._class is not None and not isinstance(self._class, str):
-            self._class = str(self._class)
+        if self.class_ is not None and not isinstance(self.class_, str):
+            self.class_ = str(self.class_)
 
         if self.depends_on is not None and not isinstance(self.depends_on, str):
             self.depends_on = str(self.depends_on)
@@ -1566,8 +1558,8 @@ class ParameterConstraint(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_CATALOG["ParameterConstraint"]
-    class_class_curie: ClassVar[str] = "oscal_catalog:ParameterConstraint"
+    class_class_uri: ClassVar[URIRef] = OSCAL["ParameterConstraint"]
+    class_class_curie: ClassVar[str] = "oscal:ParameterConstraint"
     class_name: ClassVar[str] = "ParameterConstraint"
     class_model_uri: ClassVar[URIRef] = OSCAL.ParameterConstraint
 
@@ -1590,8 +1582,8 @@ class ConstraintTest(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_CATALOG["ConstraintTest"]
-    class_class_curie: ClassVar[str] = "oscal_catalog:ConstraintTest"
+    class_class_uri: ClassVar[URIRef] = OSCAL["ConstraintTest"]
+    class_class_curie: ClassVar[str] = "oscal:ConstraintTest"
     class_name: ClassVar[str] = "ConstraintTest"
     class_model_uri: ClassVar[URIRef] = OSCAL.ConstraintTest
 
@@ -1617,8 +1609,8 @@ class ParameterGuideline(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_CATALOG["ParameterGuideline"]
-    class_class_curie: ClassVar[str] = "oscal_catalog:ParameterGuideline"
+    class_class_uri: ClassVar[URIRef] = OSCAL["ParameterGuideline"]
+    class_class_curie: ClassVar[str] = "oscal:ParameterGuideline"
     class_name: ClassVar[str] = "ParameterGuideline"
     class_model_uri: ClassVar[URIRef] = OSCAL.ParameterGuideline
 
@@ -1640,8 +1632,8 @@ class ParameterSelection(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_CATALOG["ParameterSelection"]
-    class_class_curie: ClassVar[str] = "oscal_catalog:ParameterSelection"
+    class_class_uri: ClassVar[URIRef] = OSCAL["ParameterSelection"]
+    class_class_curie: ClassVar[str] = "oscal:ParameterSelection"
     class_name: ClassVar[str] = "ParameterSelection"
     class_model_uri: ClassVar[URIRef] = OSCAL.ParameterSelection
 
@@ -1665,8 +1657,8 @@ class IncludeAll(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_CATALOG["IncludeAll"]
-    class_class_curie: ClassVar[str] = "oscal_catalog:IncludeAll"
+    class_class_uri: ClassVar[URIRef] = OSCAL["IncludeAll"]
+    class_class_curie: ClassVar[str] = "oscal:IncludeAll"
     class_name: ClassVar[str] = "IncludeAll"
     class_model_uri: ClassVar[URIRef] = OSCAL.IncludeAll
 
@@ -1678,8 +1670,8 @@ class ControlMatching(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_CATALOG["ControlMatching"]
-    class_class_curie: ClassVar[str] = "oscal_catalog:ControlMatching"
+    class_class_uri: ClassVar[URIRef] = OSCAL["ControlMatching"]
+    class_class_curie: ClassVar[str] = "oscal:ControlMatching"
     class_name: ClassVar[str] = "ControlMatching"
     class_model_uri: ClassVar[URIRef] = OSCAL.ControlMatching
 
@@ -1703,8 +1695,8 @@ class SelectControlById(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_CATALOG["SelectControlById"]
-    class_class_curie: ClassVar[str] = "oscal_catalog:SelectControlById"
+    class_class_uri: ClassVar[URIRef] = OSCAL["SelectControlById"]
+    class_class_curie: ClassVar[str] = "oscal:SelectControlById"
     class_name: ClassVar[str] = "SelectControlById"
     class_model_uri: ClassVar[URIRef] = OSCAL.SelectControlById
 
@@ -1734,8 +1726,8 @@ class ProfileDocument(OscalDocument):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_PROFILE["ProfileDocument"]
-    class_class_curie: ClassVar[str] = "oscal_profile:ProfileDocument"
+    class_class_uri: ClassVar[URIRef] = OSCAL["ProfileDocument"]
+    class_class_curie: ClassVar[str] = "oscal:ProfileDocument"
     class_name: ClassVar[str] = "ProfileDocument"
     class_model_uri: ClassVar[URIRef] = OSCAL.ProfileDocument
 
@@ -1758,8 +1750,8 @@ class Profile(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_PROFILE["Profile"]
-    class_class_curie: ClassVar[str] = "oscal_profile:Profile"
+    class_class_uri: ClassVar[URIRef] = OSCAL["Profile"]
+    class_class_curie: ClassVar[str] = "oscal:Profile"
     class_name: ClassVar[str] = "Profile"
     class_model_uri: ClassVar[URIRef] = OSCAL.Profile
 
@@ -1805,8 +1797,8 @@ class ProfileImport(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_PROFILE["ProfileImport"]
-    class_class_curie: ClassVar[str] = "oscal_profile:ProfileImport"
+    class_class_uri: ClassVar[URIRef] = OSCAL["ProfileImport"]
+    class_class_curie: ClassVar[str] = "oscal:ProfileImport"
     class_name: ClassVar[str] = "ProfileImport"
     class_model_uri: ClassVar[URIRef] = OSCAL.ProfileImport
 
@@ -1842,8 +1834,8 @@ class ProfileMerge(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_PROFILE["ProfileMerge"]
-    class_class_curie: ClassVar[str] = "oscal_profile:ProfileMerge"
+    class_class_uri: ClassVar[URIRef] = OSCAL["ProfileMerge"]
+    class_class_curie: ClassVar[str] = "oscal:ProfileMerge"
     class_name: ClassVar[str] = "ProfileMerge"
     class_model_uri: ClassVar[URIRef] = OSCAL.ProfileMerge
 
@@ -1876,8 +1868,8 @@ class CombinationRule(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_PROFILE["CombinationRule"]
-    class_class_curie: ClassVar[str] = "oscal_profile:CombinationRule"
+    class_class_uri: ClassVar[URIRef] = OSCAL["CombinationRule"]
+    class_class_curie: ClassVar[str] = "oscal:CombinationRule"
     class_name: ClassVar[str] = "CombinationRule"
     class_model_uri: ClassVar[URIRef] = OSCAL.CombinationRule
 
@@ -1896,8 +1888,8 @@ class MergeFlat(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_PROFILE["MergeFlat"]
-    class_class_curie: ClassVar[str] = "oscal_profile:MergeFlat"
+    class_class_uri: ClassVar[URIRef] = OSCAL["MergeFlat"]
+    class_class_curie: ClassVar[str] = "oscal:MergeFlat"
     class_name: ClassVar[str] = "MergeFlat"
     class_model_uri: ClassVar[URIRef] = OSCAL.MergeFlat
 
@@ -1909,8 +1901,8 @@ class MergeCustom(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_PROFILE["MergeCustom"]
-    class_class_curie: ClassVar[str] = "oscal_profile:MergeCustom"
+    class_class_uri: ClassVar[URIRef] = OSCAL["MergeCustom"]
+    class_class_curie: ClassVar[str] = "oscal:MergeCustom"
     class_name: ClassVar[str] = "MergeCustom"
     class_model_uri: ClassVar[URIRef] = OSCAL.MergeCustom
 
@@ -1934,14 +1926,14 @@ class ProfileGroup(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_PROFILE["ProfileGroup"]
-    class_class_curie: ClassVar[str] = "oscal_profile:ProfileGroup"
+    class_class_uri: ClassVar[URIRef] = OSCAL["ProfileGroup"]
+    class_class_curie: ClassVar[str] = "oscal:ProfileGroup"
     class_name: ClassVar[str] = "ProfileGroup"
     class_model_uri: ClassVar[URIRef] = OSCAL.ProfileGroup
 
     title: str = None
     id: Optional[str] = None
-    _class: Optional[str] = None
+    class_: Optional[str] = None
     params: Optional[Union[Union[dict, Parameter], list[Union[dict, Parameter]]]] = empty_list()
     parts: Optional[Union[Union[dict, Part], list[Union[dict, Part]]]] = empty_list()
     groups: Optional[Union[Union[dict, "ProfileGroup"], list[Union[dict, "ProfileGroup"]]]] = empty_list()
@@ -1957,8 +1949,8 @@ class ProfileGroup(YAMLRoot):
         if self.id is not None and not isinstance(self.id, str):
             self.id = str(self.id)
 
-        if self._class is not None and not isinstance(self._class, str):
-            self._class = str(self._class)
+        if self.class_ is not None and not isinstance(self.class_, str):
+            self.class_ = str(self.class_)
 
         self._normalize_inlined_as_list(slot_name="params", slot_type=Parameter, key_name="id", keyed=False)
 
@@ -1983,8 +1975,8 @@ class ProfileModify(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_PROFILE["ProfileModify"]
-    class_class_curie: ClassVar[str] = "oscal_profile:ProfileModify"
+    class_class_uri: ClassVar[URIRef] = OSCAL["ProfileModify"]
+    class_class_curie: ClassVar[str] = "oscal:ProfileModify"
     class_name: ClassVar[str] = "ProfileModify"
     class_model_uri: ClassVar[URIRef] = OSCAL.ProfileModify
 
@@ -2006,13 +1998,13 @@ class ParameterSetting(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_PROFILE["ParameterSetting"]
-    class_class_curie: ClassVar[str] = "oscal_profile:ParameterSetting"
+    class_class_uri: ClassVar[URIRef] = OSCAL["ParameterSetting"]
+    class_class_curie: ClassVar[str] = "oscal:ParameterSetting"
     class_name: ClassVar[str] = "ParameterSetting"
     class_model_uri: ClassVar[URIRef] = OSCAL.ParameterSetting
 
     param_id: str = None
-    _class: Optional[str] = None
+    class_: Optional[str] = None
     depends_on: Optional[str] = None
     label: Optional[str] = None
     usage: Optional[str] = None
@@ -2029,8 +2021,8 @@ class ParameterSetting(YAMLRoot):
         if not isinstance(self.param_id, str):
             self.param_id = str(self.param_id)
 
-        if self._class is not None and not isinstance(self._class, str):
-            self._class = str(self._class)
+        if self.class_ is not None and not isinstance(self.class_, str):
+            self.class_ = str(self.class_)
 
         if self.depends_on is not None and not isinstance(self.depends_on, str):
             self.depends_on = str(self.depends_on)
@@ -2068,8 +2060,8 @@ class Alteration(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_PROFILE["Alteration"]
-    class_class_curie: ClassVar[str] = "oscal_profile:Alteration"
+    class_class_uri: ClassVar[URIRef] = OSCAL["Alteration"]
+    class_class_curie: ClassVar[str] = "oscal:Alteration"
     class_name: ClassVar[str] = "Alteration"
     class_model_uri: ClassVar[URIRef] = OSCAL.Alteration
 
@@ -2101,8 +2093,8 @@ class Removal(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_PROFILE["Removal"]
-    class_class_curie: ClassVar[str] = "oscal_profile:Removal"
+    class_class_uri: ClassVar[URIRef] = OSCAL["Removal"]
+    class_class_curie: ClassVar[str] = "oscal:Removal"
     class_name: ClassVar[str] = "Removal"
     class_model_uri: ClassVar[URIRef] = OSCAL.Removal
 
@@ -2142,8 +2134,8 @@ class Addition(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_PROFILE["Addition"]
-    class_class_curie: ClassVar[str] = "oscal_profile:Addition"
+    class_class_uri: ClassVar[URIRef] = OSCAL["Addition"]
+    class_class_curie: ClassVar[str] = "oscal:Addition"
     class_name: ClassVar[str] = "Addition"
     class_model_uri: ClassVar[URIRef] = OSCAL.Addition
 
@@ -2183,8 +2175,8 @@ class ProfileAlterationProperty(Property):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_PROFILE["ProfileAlterationProperty"]
-    class_class_curie: ClassVar[str] = "oscal_profile:ProfileAlterationProperty"
+    class_class_uri: ClassVar[URIRef] = OSCAL["ProfileAlterationProperty"]
+    class_class_curie: ClassVar[str] = "oscal:ProfileAlterationProperty"
     class_name: ClassVar[str] = "ProfileAlterationProperty"
     class_model_uri: ClassVar[URIRef] = OSCAL.ProfileAlterationProperty
 
@@ -2207,8 +2199,8 @@ class InsertControls(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_PROFILE["InsertControls"]
-    class_class_curie: ClassVar[str] = "oscal_profile:InsertControls"
+    class_class_uri: ClassVar[URIRef] = OSCAL["InsertControls"]
+    class_class_curie: ClassVar[str] = "oscal:InsertControls"
     class_name: ClassVar[str] = "InsertControls"
     class_model_uri: ClassVar[URIRef] = OSCAL.InsertControls
 
@@ -2242,8 +2234,8 @@ class SspDocument(OscalDocument):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_SSP["SspDocument"]
-    class_class_curie: ClassVar[str] = "oscal_ssp:SspDocument"
+    class_class_uri: ClassVar[URIRef] = OSCAL["SspDocument"]
+    class_class_curie: ClassVar[str] = "oscal:SspDocument"
     class_name: ClassVar[str] = "SspDocument"
     class_model_uri: ClassVar[URIRef] = OSCAL.SspDocument
 
@@ -2265,8 +2257,8 @@ class SystemSecurityPlan(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_SSP["SystemSecurityPlan"]
-    class_class_curie: ClassVar[str] = "oscal_ssp:SystemSecurityPlan"
+    class_class_uri: ClassVar[URIRef] = OSCAL["SystemSecurityPlan"]
+    class_class_curie: ClassVar[str] = "oscal:SystemSecurityPlan"
     class_name: ClassVar[str] = "SystemSecurityPlan"
     class_model_uri: ClassVar[URIRef] = OSCAL.SystemSecurityPlan
 
@@ -2322,8 +2314,8 @@ class ImportProfile(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_SSP["ImportProfile"]
-    class_class_curie: ClassVar[str] = "oscal_ssp:ImportProfile"
+    class_class_uri: ClassVar[URIRef] = OSCAL["ImportProfile"]
+    class_class_curie: ClassVar[str] = "oscal:ImportProfile"
     class_name: ClassVar[str] = "ImportProfile"
     class_model_uri: ClassVar[URIRef] = OSCAL.ImportProfile
 
@@ -2349,8 +2341,8 @@ class SystemCharacteristics(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_SSP["SystemCharacteristics"]
-    class_class_curie: ClassVar[str] = "oscal_ssp:SystemCharacteristics"
+    class_class_uri: ClassVar[URIRef] = OSCAL["SystemCharacteristics"]
+    class_class_curie: ClassVar[str] = "oscal:SystemCharacteristics"
     class_name: ClassVar[str] = "SystemCharacteristics"
     class_model_uri: ClassVar[URIRef] = OSCAL.SystemCharacteristics
 
@@ -2361,6 +2353,8 @@ class SystemCharacteristics(YAMLRoot):
     system_status: Union[dict, "SystemStatus"] = None
     authorization_boundary: Union[dict, "AuthorizationBoundary"] = None
     system_name_short: Optional[str] = None
+    props: Optional[Union[Union[dict, "SspSystemCharacteristicsProp"], list[Union[dict, "SspSystemCharacteristicsProp"]]]] = empty_list()
+    links: Optional[Union[Union[dict, Link], list[Union[dict, Link]]]] = empty_list()
     date_authorized: Optional[str] = None
     security_sensitivity_level: Optional[str] = None
     security_impact_level: Optional[Union[dict, "SecurityImpactLevel"]] = None
@@ -2368,7 +2362,6 @@ class SystemCharacteristics(YAMLRoot):
     data_flow: Optional[Union[dict, "DataFlow"]] = None
     responsible_parties: Optional[Union[Union[dict, "SspSystemCharacteristicsResponsibleParty"], list[Union[dict, "SspSystemCharacteristicsResponsibleParty"]]]] = empty_list()
     remarks: Optional[str] = None
-    props: Optional[Union[Union[dict, "SspSystemCharacteristicsProp"], list[Union[dict, "SspSystemCharacteristicsProp"]]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.system_ids):
@@ -2403,6 +2396,10 @@ class SystemCharacteristics(YAMLRoot):
         if self.system_name_short is not None and not isinstance(self.system_name_short, str):
             self.system_name_short = str(self.system_name_short)
 
+        self._normalize_inlined_as_list(slot_name="props", slot_type=SspSystemCharacteristicsProp, key_name="name", keyed=False)
+
+        self._normalize_inlined_as_list(slot_name="links", slot_type=Link, key_name="href", keyed=False)
+
         if self.date_authorized is not None and not isinstance(self.date_authorized, str):
             self.date_authorized = str(self.date_authorized)
 
@@ -2423,8 +2420,6 @@ class SystemCharacteristics(YAMLRoot):
         if self.remarks is not None and not isinstance(self.remarks, str):
             self.remarks = str(self.remarks)
 
-        self._normalize_inlined_as_list(slot_name="props", slot_type=SspSystemCharacteristicsProp, key_name="name", keyed=False)
-
         super().__post_init__(**kwargs)
 
 
@@ -2436,8 +2431,8 @@ class SystemInformation(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_SSP["SystemInformation"]
-    class_class_curie: ClassVar[str] = "oscal_ssp:SystemInformation"
+    class_class_uri: ClassVar[URIRef] = OSCAL["SystemInformation"]
+    class_class_curie: ClassVar[str] = "oscal:SystemInformation"
     class_name: ClassVar[str] = "SystemInformation"
     class_model_uri: ClassVar[URIRef] = OSCAL.SystemInformation
 
@@ -2465,8 +2460,8 @@ class InformationType(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_SSP["InformationType"]
-    class_class_curie: ClassVar[str] = "oscal_ssp:InformationType"
+    class_class_uri: ClassVar[URIRef] = OSCAL["InformationType"]
+    class_class_curie: ClassVar[str] = "oscal:InformationType"
     class_name: ClassVar[str] = "InformationType"
     class_model_uri: ClassVar[URIRef] = OSCAL.InformationType
 
@@ -2519,8 +2514,8 @@ class InformationTypeCategorization(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_SSP["InformationTypeCategorization"]
-    class_class_curie: ClassVar[str] = "oscal_ssp:InformationTypeCategorization"
+    class_class_uri: ClassVar[URIRef] = OSCAL["InformationTypeCategorization"]
+    class_class_curie: ClassVar[str] = "oscal:InformationTypeCategorization"
     class_name: ClassVar[str] = "InformationTypeCategorization"
     class_model_uri: ClassVar[URIRef] = OSCAL.InformationTypeCategorization
 
@@ -2548,8 +2543,8 @@ class ImpactLevel(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_SSP["ImpactLevel"]
-    class_class_curie: ClassVar[str] = "oscal_ssp:ImpactLevel"
+    class_class_uri: ClassVar[URIRef] = OSCAL["ImpactLevel"]
+    class_class_curie: ClassVar[str] = "oscal:ImpactLevel"
     class_name: ClassVar[str] = "ImpactLevel"
     class_model_uri: ClassVar[URIRef] = OSCAL.ImpactLevel
 
@@ -2586,8 +2581,8 @@ class SecurityImpactLevel(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_SSP["SecurityImpactLevel"]
-    class_class_curie: ClassVar[str] = "oscal_ssp:SecurityImpactLevel"
+    class_class_uri: ClassVar[URIRef] = OSCAL["SecurityImpactLevel"]
+    class_class_curie: ClassVar[str] = "oscal:SecurityImpactLevel"
     class_name: ClassVar[str] = "SecurityImpactLevel"
     class_model_uri: ClassVar[URIRef] = OSCAL.SecurityImpactLevel
 
@@ -2621,8 +2616,8 @@ class SystemStatus(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_SSP["SystemStatus"]
-    class_class_curie: ClassVar[str] = "oscal_ssp:SystemStatus"
+    class_class_uri: ClassVar[URIRef] = OSCAL["SystemStatus"]
+    class_class_curie: ClassVar[str] = "oscal:SystemStatus"
     class_name: ClassVar[str] = "SystemStatus"
     class_model_uri: ClassVar[URIRef] = OSCAL.SystemStatus
 
@@ -2649,8 +2644,8 @@ class AuthorizationBoundary(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_SSP["AuthorizationBoundary"]
-    class_class_curie: ClassVar[str] = "oscal_ssp:AuthorizationBoundary"
+    class_class_uri: ClassVar[URIRef] = OSCAL["AuthorizationBoundary"]
+    class_class_curie: ClassVar[str] = "oscal:AuthorizationBoundary"
     class_name: ClassVar[str] = "AuthorizationBoundary"
     class_model_uri: ClassVar[URIRef] = OSCAL.AuthorizationBoundary
 
@@ -2685,8 +2680,8 @@ class Diagram(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_SSP["Diagram"]
-    class_class_curie: ClassVar[str] = "oscal_ssp:Diagram"
+    class_class_uri: ClassVar[URIRef] = OSCAL["Diagram"]
+    class_class_curie: ClassVar[str] = "oscal:Diagram"
     class_name: ClassVar[str] = "Diagram"
     class_model_uri: ClassVar[URIRef] = OSCAL.Diagram
 
@@ -2727,8 +2722,8 @@ class NetworkArchitecture(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_SSP["NetworkArchitecture"]
-    class_class_curie: ClassVar[str] = "oscal_ssp:NetworkArchitecture"
+    class_class_uri: ClassVar[URIRef] = OSCAL["NetworkArchitecture"]
+    class_class_curie: ClassVar[str] = "oscal:NetworkArchitecture"
     class_name: ClassVar[str] = "NetworkArchitecture"
     class_model_uri: ClassVar[URIRef] = OSCAL.NetworkArchitecture
 
@@ -2764,8 +2759,8 @@ class DataFlow(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_SSP["DataFlow"]
-    class_class_curie: ClassVar[str] = "oscal_ssp:DataFlow"
+    class_class_uri: ClassVar[URIRef] = OSCAL["DataFlow"]
+    class_class_curie: ClassVar[str] = "oscal:DataFlow"
     class_name: ClassVar[str] = "DataFlow"
     class_model_uri: ClassVar[URIRef] = OSCAL.DataFlow
 
@@ -2800,8 +2795,8 @@ class SystemImplementation(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_SSP["SystemImplementation"]
-    class_class_curie: ClassVar[str] = "oscal_ssp:SystemImplementation"
+    class_class_uri: ClassVar[URIRef] = OSCAL["SystemImplementation"]
+    class_class_curie: ClassVar[str] = "oscal:SystemImplementation"
     class_name: ClassVar[str] = "SystemImplementation"
     class_model_uri: ClassVar[URIRef] = OSCAL.SystemImplementation
 
@@ -2842,8 +2837,8 @@ class LeveragedAuthorization(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_SSP["LeveragedAuthorization"]
-    class_class_curie: ClassVar[str] = "oscal_ssp:LeveragedAuthorization"
+    class_class_uri: ClassVar[URIRef] = OSCAL["LeveragedAuthorization"]
+    class_class_curie: ClassVar[str] = "oscal:LeveragedAuthorization"
     class_name: ClassVar[str] = "LeveragedAuthorization"
     class_model_uri: ClassVar[URIRef] = OSCAL.LeveragedAuthorization
 
@@ -2893,8 +2888,8 @@ class SspControlImplementation(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_SSP["SspControlImplementation"]
-    class_class_curie: ClassVar[str] = "oscal_ssp:SspControlImplementation"
+    class_class_uri: ClassVar[URIRef] = OSCAL["SspControlImplementation"]
+    class_class_curie: ClassVar[str] = "oscal:SspControlImplementation"
     class_name: ClassVar[str] = "SspControlImplementation"
     class_model_uri: ClassVar[URIRef] = OSCAL.SspControlImplementation
 
@@ -2924,8 +2919,8 @@ class SspImplementedRequirement(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_SSP["SspImplementedRequirement"]
-    class_class_curie: ClassVar[str] = "oscal_ssp:SspImplementedRequirement"
+    class_class_uri: ClassVar[URIRef] = OSCAL["SspImplementedRequirement"]
+    class_class_curie: ClassVar[str] = "oscal:SspImplementedRequirement"
     class_name: ClassVar[str] = "SspImplementedRequirement"
     class_model_uri: ClassVar[URIRef] = OSCAL.SspImplementedRequirement
 
@@ -2975,8 +2970,8 @@ class SspStatement(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_SSP["SspStatement"]
-    class_class_curie: ClassVar[str] = "oscal_ssp:SspStatement"
+    class_class_uri: ClassVar[URIRef] = OSCAL["SspStatement"]
+    class_class_curie: ClassVar[str] = "oscal:SspStatement"
     class_name: ClassVar[str] = "SspStatement"
     class_model_uri: ClassVar[URIRef] = OSCAL.SspStatement
 
@@ -3020,8 +3015,8 @@ class ByComponent(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_SSP["ByComponent"]
-    class_class_curie: ClassVar[str] = "oscal_ssp:ByComponent"
+    class_class_uri: ClassVar[URIRef] = OSCAL["ByComponent"]
+    class_class_curie: ClassVar[str] = "oscal:ByComponent"
     class_name: ClassVar[str] = "ByComponent"
     class_model_uri: ClassVar[URIRef] = OSCAL.ByComponent
 
@@ -3086,8 +3081,8 @@ class Export(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_SSP["Export"]
-    class_class_curie: ClassVar[str] = "oscal_ssp:Export"
+    class_class_uri: ClassVar[URIRef] = OSCAL["Export"]
+    class_class_curie: ClassVar[str] = "oscal:Export"
     class_name: ClassVar[str] = "Export"
     class_model_uri: ClassVar[URIRef] = OSCAL.Export
 
@@ -3119,8 +3114,8 @@ class ProvidedControlImplementation(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_SSP["ProvidedControlImplementation"]
-    class_class_curie: ClassVar[str] = "oscal_ssp:ProvidedControlImplementation"
+    class_class_uri: ClassVar[URIRef] = OSCAL["ProvidedControlImplementation"]
+    class_class_curie: ClassVar[str] = "oscal:ProvidedControlImplementation"
     class_name: ClassVar[str] = "ProvidedControlImplementation"
     class_model_uri: ClassVar[URIRef] = OSCAL.ProvidedControlImplementation
 
@@ -3161,8 +3156,8 @@ class ControlResponsibility(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_SSP["ControlResponsibility"]
-    class_class_curie: ClassVar[str] = "oscal_ssp:ControlResponsibility"
+    class_class_uri: ClassVar[URIRef] = OSCAL["ControlResponsibility"]
+    class_class_curie: ClassVar[str] = "oscal:ControlResponsibility"
     class_name: ClassVar[str] = "ControlResponsibility"
     class_model_uri: ClassVar[URIRef] = OSCAL.ControlResponsibility
 
@@ -3207,8 +3202,8 @@ class InheritedControlImplementation(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_SSP["InheritedControlImplementation"]
-    class_class_curie: ClassVar[str] = "oscal_ssp:InheritedControlImplementation"
+    class_class_uri: ClassVar[URIRef] = OSCAL["InheritedControlImplementation"]
+    class_class_curie: ClassVar[str] = "oscal:InheritedControlImplementation"
     class_name: ClassVar[str] = "InheritedControlImplementation"
     class_model_uri: ClassVar[URIRef] = OSCAL.InheritedControlImplementation
 
@@ -3253,8 +3248,8 @@ class SatisfiedControlImplementation(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_SSP["SatisfiedControlImplementation"]
-    class_class_curie: ClassVar[str] = "oscal_ssp:SatisfiedControlImplementation"
+    class_class_uri: ClassVar[URIRef] = OSCAL["SatisfiedControlImplementation"]
+    class_class_curie: ClassVar[str] = "oscal:SatisfiedControlImplementation"
     class_name: ClassVar[str] = "SatisfiedControlImplementation"
     class_model_uri: ClassVar[URIRef] = OSCAL.SatisfiedControlImplementation
 
@@ -3299,8 +3294,8 @@ class SspSystemCharacteristicsProp(Property):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_SSP["SspSystemCharacteristicsProp"]
-    class_class_curie: ClassVar[str] = "oscal_ssp:SspSystemCharacteristicsProp"
+    class_class_uri: ClassVar[URIRef] = OSCAL["SspSystemCharacteristicsProp"]
+    class_class_curie: ClassVar[str] = "oscal:SspSystemCharacteristicsProp"
     class_name: ClassVar[str] = "SspSystemCharacteristicsProp"
     class_model_uri: ClassVar[URIRef] = OSCAL.SspSystemCharacteristicsProp
 
@@ -3328,8 +3323,8 @@ class SspSystemInformationProp(Property):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_SSP["SspSystemInformationProp"]
-    class_class_curie: ClassVar[str] = "oscal_ssp:SspSystemInformationProp"
+    class_class_uri: ClassVar[URIRef] = OSCAL["SspSystemInformationProp"]
+    class_class_curie: ClassVar[str] = "oscal:SspSystemInformationProp"
     class_name: ClassVar[str] = "SspSystemInformationProp"
     class_model_uri: ClassVar[URIRef] = OSCAL.SspSystemInformationProp
 
@@ -3357,8 +3352,8 @@ class SspControlOriginationProp(Property):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_SSP["SspControlOriginationProp"]
-    class_class_curie: ClassVar[str] = "oscal_ssp:SspControlOriginationProp"
+    class_class_uri: ClassVar[URIRef] = OSCAL["SspControlOriginationProp"]
+    class_class_curie: ClassVar[str] = "oscal:SspControlOriginationProp"
     class_name: ClassVar[str] = "SspControlOriginationProp"
     class_model_uri: ClassVar[URIRef] = OSCAL.SspControlOriginationProp
 
@@ -3386,8 +3381,8 @@ class SspAllowsAuthenticatedScanProp(Property):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_SSP["SspAllowsAuthenticatedScanProp"]
-    class_class_curie: ClassVar[str] = "oscal_ssp:SspAllowsAuthenticatedScanProp"
+    class_class_uri: ClassVar[URIRef] = OSCAL["SspAllowsAuthenticatedScanProp"]
+    class_class_curie: ClassVar[str] = "oscal:SspAllowsAuthenticatedScanProp"
     class_name: ClassVar[str] = "SspAllowsAuthenticatedScanProp"
     class_model_uri: ClassVar[URIRef] = OSCAL.SspAllowsAuthenticatedScanProp
 
@@ -3415,8 +3410,8 @@ class SspSystemInformationLink(Link):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_SSP["SspSystemInformationLink"]
-    class_class_curie: ClassVar[str] = "oscal_ssp:SspSystemInformationLink"
+    class_class_uri: ClassVar[URIRef] = OSCAL["SspSystemInformationLink"]
+    class_class_curie: ClassVar[str] = "oscal:SspSystemInformationLink"
     class_name: ClassVar[str] = "SspSystemInformationLink"
     class_model_uri: ClassVar[URIRef] = OSCAL.SspSystemInformationLink
 
@@ -3437,8 +3432,8 @@ class SspDiagramLink(Link):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_SSP["SspDiagramLink"]
-    class_class_curie: ClassVar[str] = "oscal_ssp:SspDiagramLink"
+    class_class_uri: ClassVar[URIRef] = OSCAL["SspDiagramLink"]
+    class_class_curie: ClassVar[str] = "oscal:SspDiagramLink"
     class_name: ClassVar[str] = "SspDiagramLink"
     class_model_uri: ClassVar[URIRef] = OSCAL.SspDiagramLink
 
@@ -3459,8 +3454,8 @@ class SspLeveragedAuthorizationLink(Link):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_SSP["SspLeveragedAuthorizationLink"]
-    class_class_curie: ClassVar[str] = "oscal_ssp:SspLeveragedAuthorizationLink"
+    class_class_uri: ClassVar[URIRef] = OSCAL["SspLeveragedAuthorizationLink"]
+    class_class_curie: ClassVar[str] = "oscal:SspLeveragedAuthorizationLink"
     class_name: ClassVar[str] = "SspLeveragedAuthorizationLink"
     class_model_uri: ClassVar[URIRef] = OSCAL.SspLeveragedAuthorizationLink
 
@@ -3481,8 +3476,8 @@ class SspByComponentLink(Link):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_SSP["SspByComponentLink"]
-    class_class_curie: ClassVar[str] = "oscal_ssp:SspByComponentLink"
+    class_class_uri: ClassVar[URIRef] = OSCAL["SspByComponentLink"]
+    class_class_curie: ClassVar[str] = "oscal:SspByComponentLink"
     class_name: ClassVar[str] = "SspByComponentLink"
     class_model_uri: ClassVar[URIRef] = OSCAL.SspByComponentLink
 
@@ -3503,8 +3498,8 @@ class SspSystemCharacteristicsResponsibleParty(ResponsibleParty):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_SSP["SspSystemCharacteristicsResponsibleParty"]
-    class_class_curie: ClassVar[str] = "oscal_ssp:SspSystemCharacteristicsResponsibleParty"
+    class_class_uri: ClassVar[URIRef] = OSCAL["SspSystemCharacteristicsResponsibleParty"]
+    class_class_curie: ClassVar[str] = "oscal:SspSystemCharacteristicsResponsibleParty"
     class_name: ClassVar[str] = "SspSystemCharacteristicsResponsibleParty"
     class_model_uri: ClassVar[URIRef] = OSCAL.SspSystemCharacteristicsResponsibleParty
 
@@ -3527,8 +3522,8 @@ class SspImplementedRequirementResponsibleRole(ResponsibleRole):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_SSP["SspImplementedRequirementResponsibleRole"]
-    class_class_curie: ClassVar[str] = "oscal_ssp:SspImplementedRequirementResponsibleRole"
+    class_class_uri: ClassVar[URIRef] = OSCAL["SspImplementedRequirementResponsibleRole"]
+    class_class_curie: ClassVar[str] = "oscal:SspImplementedRequirementResponsibleRole"
     class_name: ClassVar[str] = "SspImplementedRequirementResponsibleRole"
     class_model_uri: ClassVar[URIRef] = OSCAL.SspImplementedRequirementResponsibleRole
 
@@ -3550,8 +3545,8 @@ class SspByComponentResponsibleRole(ResponsibleRole):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_SSP["SspByComponentResponsibleRole"]
-    class_class_curie: ClassVar[str] = "oscal_ssp:SspByComponentResponsibleRole"
+    class_class_uri: ClassVar[URIRef] = OSCAL["SspByComponentResponsibleRole"]
+    class_class_curie: ClassVar[str] = "oscal:SspByComponentResponsibleRole"
     class_name: ClassVar[str] = "SspByComponentResponsibleRole"
     class_model_uri: ClassVar[URIRef] = OSCAL.SspByComponentResponsibleRole
 
@@ -3573,8 +3568,8 @@ class AssessmentPlanDocument(OscalDocument):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_PLAN["AssessmentPlanDocument"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_plan:AssessmentPlanDocument"
+    class_class_uri: ClassVar[URIRef] = OSCAL["AssessmentPlanDocument"]
+    class_class_curie: ClassVar[str] = "oscal:AssessmentPlanDocument"
     class_name: ClassVar[str] = "AssessmentPlanDocument"
     class_model_uri: ClassVar[URIRef] = OSCAL.AssessmentPlanDocument
 
@@ -3596,8 +3591,8 @@ class AssessmentPlan(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_PLAN["AssessmentPlan"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_plan:AssessmentPlan"
+    class_class_uri: ClassVar[URIRef] = OSCAL["AssessmentPlan"]
+    class_class_curie: ClassVar[str] = "oscal:AssessmentPlan"
     class_name: ClassVar[str] = "AssessmentPlan"
     class_model_uri: ClassVar[URIRef] = OSCAL.AssessmentPlan
 
@@ -3659,8 +3654,8 @@ class ImportSSP(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_PLAN["ImportSSP"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_plan:ImportSSP"
+    class_class_uri: ClassVar[URIRef] = OSCAL["ImportSSP"]
+    class_class_curie: ClassVar[str] = "oscal:ImportSSP"
     class_name: ClassVar[str] = "ImportSSP"
     class_model_uri: ClassVar[URIRef] = OSCAL.ImportSSP
 
@@ -3686,8 +3681,8 @@ class LocalDefinitions(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_PLAN["LocalDefinitions"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_plan:LocalDefinitions"
+    class_class_uri: ClassVar[URIRef] = OSCAL["LocalDefinitions"]
+    class_class_curie: ClassVar[str] = "oscal:LocalDefinitions"
     class_name: ClassVar[str] = "LocalDefinitions"
     class_model_uri: ClassVar[URIRef] = OSCAL.LocalDefinitions
 
@@ -3722,8 +3717,8 @@ class TermsAndConditions(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_PLAN["TermsAndConditions"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_plan:TermsAndConditions"
+    class_class_uri: ClassVar[URIRef] = OSCAL["TermsAndConditions"]
+    class_class_curie: ClassVar[str] = "oscal:TermsAndConditions"
     class_name: ClassVar[str] = "TermsAndConditions"
     class_model_uri: ClassVar[URIRef] = OSCAL.TermsAndConditions
 
@@ -3742,8 +3737,8 @@ class ReviewedControls(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_PLAN["ReviewedControls"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_plan:ReviewedControls"
+    class_class_uri: ClassVar[URIRef] = OSCAL["ReviewedControls"]
+    class_class_curie: ClassVar[str] = "oscal:ReviewedControls"
     class_name: ClassVar[str] = "ReviewedControls"
     class_model_uri: ClassVar[URIRef] = OSCAL.ReviewedControls
 
@@ -3779,8 +3774,8 @@ class ControlSelection(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_PLAN["ControlSelection"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_plan:ControlSelection"
+    class_class_uri: ClassVar[URIRef] = OSCAL["ControlSelection"]
+    class_class_curie: ClassVar[str] = "oscal:ControlSelection"
     class_name: ClassVar[str] = "ControlSelection"
     class_model_uri: ClassVar[URIRef] = OSCAL.ControlSelection
 
@@ -3814,8 +3809,8 @@ class ControlObjectiveSelection(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_PLAN["ControlObjectiveSelection"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_plan:ControlObjectiveSelection"
+    class_class_uri: ClassVar[URIRef] = OSCAL["ControlObjectiveSelection"]
+    class_class_curie: ClassVar[str] = "oscal:ControlObjectiveSelection"
     class_name: ClassVar[str] = "ControlObjectiveSelection"
     class_model_uri: ClassVar[URIRef] = OSCAL.ControlObjectiveSelection
 
@@ -3850,8 +3845,8 @@ class AssessmentSelectControlById(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_PLAN["AssessmentSelectControlById"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_plan:AssessmentSelectControlById"
+    class_class_uri: ClassVar[URIRef] = OSCAL["AssessmentSelectControlById"]
+    class_class_curie: ClassVar[str] = "oscal:AssessmentSelectControlById"
     class_name: ClassVar[str] = "AssessmentSelectControlById"
     class_model_uri: ClassVar[URIRef] = OSCAL.AssessmentSelectControlById
 
@@ -3878,8 +3873,8 @@ class SelectObjectiveById(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_PLAN["SelectObjectiveById"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_plan:SelectObjectiveById"
+    class_class_uri: ClassVar[URIRef] = OSCAL["SelectObjectiveById"]
+    class_class_curie: ClassVar[str] = "oscal:SelectObjectiveById"
     class_name: ClassVar[str] = "SelectObjectiveById"
     class_model_uri: ClassVar[URIRef] = OSCAL.SelectObjectiveById
 
@@ -3905,8 +3900,8 @@ class AssessmentSubject(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_PLAN["AssessmentSubject"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_plan:AssessmentSubject"
+    class_class_uri: ClassVar[URIRef] = OSCAL["AssessmentSubject"]
+    class_class_curie: ClassVar[str] = "oscal:AssessmentSubject"
     class_name: ClassVar[str] = "AssessmentSubject"
     class_model_uri: ClassVar[URIRef] = OSCAL.AssessmentSubject
 
@@ -3946,8 +3941,8 @@ class SelectSubjectById(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_PLAN["SelectSubjectById"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_plan:SelectSubjectById"
+    class_class_uri: ClassVar[URIRef] = OSCAL["SelectSubjectById"]
+    class_class_curie: ClassVar[str] = "oscal:SelectSubjectById"
     class_name: ClassVar[str] = "SelectSubjectById"
     class_model_uri: ClassVar[URIRef] = OSCAL.SelectSubjectById
 
@@ -3980,8 +3975,8 @@ class SubjectReference(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_PLAN["SubjectReference"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_plan:SubjectReference"
+    class_class_uri: ClassVar[URIRef] = OSCAL["SubjectReference"]
+    class_class_curie: ClassVar[str] = "oscal:SubjectReference"
     class_name: ClassVar[str] = "SubjectReference"
     class_model_uri: ClassVar[URIRef] = OSCAL.SubjectReference
 
@@ -4017,8 +4012,8 @@ class AssessmentSubjectPlaceholder(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_PLAN["AssessmentSubjectPlaceholder"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_plan:AssessmentSubjectPlaceholder"
+    class_class_uri: ClassVar[URIRef] = OSCAL["AssessmentSubjectPlaceholder"]
+    class_class_curie: ClassVar[str] = "oscal:AssessmentSubjectPlaceholder"
     class_name: ClassVar[str] = "AssessmentSubjectPlaceholder"
     class_model_uri: ClassVar[URIRef] = OSCAL.AssessmentSubjectPlaceholder
 
@@ -4053,8 +4048,8 @@ class AssessmentSubjectSource(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_PLAN["AssessmentSubjectSource"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_plan:AssessmentSubjectSource"
+    class_class_uri: ClassVar[URIRef] = OSCAL["AssessmentSubjectSource"]
+    class_class_curie: ClassVar[str] = "oscal:AssessmentSubjectSource"
     class_name: ClassVar[str] = "AssessmentSubjectSource"
     class_model_uri: ClassVar[URIRef] = OSCAL.AssessmentSubjectSource
 
@@ -4080,8 +4075,8 @@ class AssessmentAssets(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_PLAN["AssessmentAssets"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_plan:AssessmentAssets"
+    class_class_uri: ClassVar[URIRef] = OSCAL["AssessmentAssets"]
+    class_class_curie: ClassVar[str] = "oscal:AssessmentAssets"
     class_name: ClassVar[str] = "AssessmentAssets"
     class_model_uri: ClassVar[URIRef] = OSCAL.AssessmentAssets
 
@@ -4105,8 +4100,8 @@ class AssessmentPlatform(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_PLAN["AssessmentPlatform"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_plan:AssessmentPlatform"
+    class_class_uri: ClassVar[URIRef] = OSCAL["AssessmentPlatform"]
+    class_class_curie: ClassVar[str] = "oscal:AssessmentPlatform"
     class_name: ClassVar[str] = "AssessmentPlatform"
     class_model_uri: ClassVar[URIRef] = OSCAL.AssessmentPlatform
 
@@ -4139,8 +4134,8 @@ class UsesComponent(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_PLAN["UsesComponent"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_plan:UsesComponent"
+    class_class_uri: ClassVar[URIRef] = OSCAL["UsesComponent"]
+    class_class_curie: ClassVar[str] = "oscal:UsesComponent"
     class_name: ClassVar[str] = "UsesComponent"
     class_model_uri: ClassVar[URIRef] = OSCAL.UsesComponent
 
@@ -4170,8 +4165,8 @@ class LocalObjective(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_PLAN["LocalObjective"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_plan:LocalObjective"
+    class_class_uri: ClassVar[URIRef] = OSCAL["LocalObjective"]
+    class_class_curie: ClassVar[str] = "oscal:LocalObjective"
     class_name: ClassVar[str] = "LocalObjective"
     class_model_uri: ClassVar[URIRef] = OSCAL.LocalObjective
 
@@ -4206,8 +4201,8 @@ class AssessmentMethod(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_PLAN["AssessmentMethod"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_plan:AssessmentMethod"
+    class_class_uri: ClassVar[URIRef] = OSCAL["AssessmentMethod"]
+    class_class_curie: ClassVar[str] = "oscal:AssessmentMethod"
     class_name: ClassVar[str] = "AssessmentMethod"
     class_model_uri: ClassVar[URIRef] = OSCAL.AssessmentMethod
 
@@ -4244,8 +4239,8 @@ class Activity(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_PLAN["Activity"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_plan:Activity"
+    class_class_uri: ClassVar[URIRef] = OSCAL["Activity"]
+    class_class_curie: ClassVar[str] = "oscal:Activity"
     class_name: ClassVar[str] = "Activity"
     class_model_uri: ClassVar[URIRef] = OSCAL.Activity
 
@@ -4292,8 +4287,8 @@ class Step(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_PLAN["Step"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_plan:Step"
+    class_class_uri: ClassVar[URIRef] = OSCAL["Step"]
+    class_class_curie: ClassVar[str] = "oscal:Step"
     class_name: ClassVar[str] = "Step"
     class_model_uri: ClassVar[URIRef] = OSCAL.Step
 
@@ -4336,8 +4331,8 @@ class Task(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_PLAN["Task"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_plan:Task"
+    class_class_uri: ClassVar[URIRef] = OSCAL["Task"]
+    class_class_curie: ClassVar[str] = "oscal:Task"
     class_name: ClassVar[str] = "Task"
     class_model_uri: ClassVar[URIRef] = OSCAL.Task
 
@@ -4398,8 +4393,8 @@ class EventTiming(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_PLAN["EventTiming"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_plan:EventTiming"
+    class_class_uri: ClassVar[URIRef] = OSCAL["EventTiming"]
+    class_class_curie: ClassVar[str] = "oscal:EventTiming"
     class_name: ClassVar[str] = "EventTiming"
     class_model_uri: ClassVar[URIRef] = OSCAL.EventTiming
 
@@ -4427,8 +4422,8 @@ class OnDateCondition(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_PLAN["OnDateCondition"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_plan:OnDateCondition"
+    class_class_uri: ClassVar[URIRef] = OSCAL["OnDateCondition"]
+    class_class_curie: ClassVar[str] = "oscal:OnDateCondition"
     class_name: ClassVar[str] = "OnDateCondition"
     class_model_uri: ClassVar[URIRef] = OSCAL.OnDateCondition
 
@@ -4454,8 +4449,8 @@ class WithinDateRange(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_PLAN["WithinDateRange"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_plan:WithinDateRange"
+    class_class_uri: ClassVar[URIRef] = OSCAL["WithinDateRange"]
+    class_class_curie: ClassVar[str] = "oscal:WithinDateRange"
     class_name: ClassVar[str] = "WithinDateRange"
     class_model_uri: ClassVar[URIRef] = OSCAL.WithinDateRange
 
@@ -4487,8 +4482,8 @@ class AtFrequency(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_PLAN["AtFrequency"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_plan:AtFrequency"
+    class_class_uri: ClassVar[URIRef] = OSCAL["AtFrequency"]
+    class_class_curie: ClassVar[str] = "oscal:AtFrequency"
     class_name: ClassVar[str] = "AtFrequency"
     class_model_uri: ClassVar[URIRef] = OSCAL.AtFrequency
 
@@ -4520,8 +4515,8 @@ class TaskDependency(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_PLAN["TaskDependency"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_plan:TaskDependency"
+    class_class_uri: ClassVar[URIRef] = OSCAL["TaskDependency"]
+    class_class_curie: ClassVar[str] = "oscal:TaskDependency"
     class_name: ClassVar[str] = "TaskDependency"
     class_model_uri: ClassVar[URIRef] = OSCAL.TaskDependency
 
@@ -4547,8 +4542,8 @@ class AssociatedActivity(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_PLAN["AssociatedActivity"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_plan:AssociatedActivity"
+    class_class_uri: ClassVar[URIRef] = OSCAL["AssociatedActivity"]
+    class_class_curie: ClassVar[str] = "oscal:AssociatedActivity"
     class_name: ClassVar[str] = "AssociatedActivity"
     class_model_uri: ClassVar[URIRef] = OSCAL.AssociatedActivity
 
@@ -4582,15 +4577,15 @@ class AssessmentPart(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_PLAN["AssessmentPart"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_plan:AssessmentPart"
+    class_class_uri: ClassVar[URIRef] = OSCAL["AssessmentPart"]
+    class_class_curie: ClassVar[str] = "oscal:AssessmentPart"
     class_name: ClassVar[str] = "AssessmentPart"
     class_model_uri: ClassVar[URIRef] = OSCAL.AssessmentPart
 
     name: str = None
     uuid: Optional[str] = None
     ns: Optional[str] = None
-    _class: Optional[str] = None
+    class_: Optional[str] = None
     title: Optional[str] = None
     prose: Optional[str] = None
     parts: Optional[Union[Union[dict, "AssessmentPart"], list[Union[dict, "AssessmentPart"]]]] = empty_list()
@@ -4609,8 +4604,8 @@ class AssessmentPart(YAMLRoot):
         if self.ns is not None and not isinstance(self.ns, str):
             self.ns = str(self.ns)
 
-        if self._class is not None and not isinstance(self._class, str):
-            self._class = str(self._class)
+        if self.class_ is not None and not isinstance(self.class_, str):
+            self.class_ = str(self.class_)
 
         if self.title is not None and not isinstance(self.title, str):
             self.title = str(self.title)
@@ -4634,8 +4629,8 @@ class TermsAndConditionsPart(AssessmentPart):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_PLAN["TermsAndConditionsPart"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_plan:TermsAndConditionsPart"
+    class_class_uri: ClassVar[URIRef] = OSCAL["TermsAndConditionsPart"]
+    class_class_curie: ClassVar[str] = "oscal:TermsAndConditionsPart"
     class_name: ClassVar[str] = "TermsAndConditionsPart"
     class_model_uri: ClassVar[URIRef] = OSCAL.TermsAndConditionsPart
 
@@ -4661,15 +4656,15 @@ class ControlPart(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_PLAN["ControlPart"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_plan:ControlPart"
+    class_class_uri: ClassVar[URIRef] = OSCAL["ControlPart"]
+    class_class_curie: ClassVar[str] = "oscal:ControlPart"
     class_name: ClassVar[str] = "ControlPart"
     class_model_uri: ClassVar[URIRef] = OSCAL.ControlPart
 
     name: str = None
     id: Optional[str] = None
     ns: Optional[str] = None
-    _class: Optional[str] = None
+    class_: Optional[str] = None
     title: Optional[str] = None
     prose: Optional[str] = None
     parts: Optional[Union[Union[dict, "ControlPart"], list[Union[dict, "ControlPart"]]]] = empty_list()
@@ -4688,8 +4683,8 @@ class ControlPart(YAMLRoot):
         if self.ns is not None and not isinstance(self.ns, str):
             self.ns = str(self.ns)
 
-        if self._class is not None and not isinstance(self._class, str):
-            self._class = str(self._class)
+        if self.class_ is not None and not isinstance(self.class_, str):
+            self.class_ = str(self.class_)
 
         if self.title is not None and not isinstance(self.title, str):
             self.title = str(self.title)
@@ -4713,8 +4708,8 @@ class SetParameter(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_PLAN["SetParameter"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_plan:SetParameter"
+    class_class_uri: ClassVar[URIRef] = OSCAL["SetParameter"]
+    class_class_curie: ClassVar[str] = "oscal:SetParameter"
     class_name: ClassVar[str] = "SetParameter"
     class_model_uri: ClassVar[URIRef] = OSCAL.SetParameter
 
@@ -4747,8 +4742,8 @@ class SystemComponent(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_PLAN["SystemComponent"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_plan:SystemComponent"
+    class_class_uri: ClassVar[URIRef] = OSCAL["SystemComponent"]
+    class_class_curie: ClassVar[str] = "oscal:SystemComponent"
     class_name: ClassVar[str] = "SystemComponent"
     class_model_uri: ClassVar[URIRef] = OSCAL.SystemComponent
 
@@ -4816,8 +4811,8 @@ class SspSystemComponent(SystemComponent):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_SSP["SspSystemComponent"]
-    class_class_curie: ClassVar[str] = "oscal_ssp:SspSystemComponent"
+    class_class_uri: ClassVar[URIRef] = OSCAL["SspSystemComponent"]
+    class_class_curie: ClassVar[str] = "oscal:SspSystemComponent"
     class_name: ClassVar[str] = "SspSystemComponent"
     class_model_uri: ClassVar[URIRef] = OSCAL.SspSystemComponent
 
@@ -4841,8 +4836,8 @@ class ComponentStatus(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_PLAN["ComponentStatus"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_plan:ComponentStatus"
+    class_class_uri: ClassVar[URIRef] = OSCAL["ComponentStatus"]
+    class_class_curie: ClassVar[str] = "oscal:ComponentStatus"
     class_name: ClassVar[str] = "ComponentStatus"
     class_model_uri: ClassVar[URIRef] = OSCAL.ComponentStatus
 
@@ -4868,8 +4863,8 @@ class Protocol(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_PLAN["Protocol"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_plan:Protocol"
+    class_class_uri: ClassVar[URIRef] = OSCAL["Protocol"]
+    class_class_curie: ClassVar[str] = "oscal:Protocol"
     class_name: ClassVar[str] = "Protocol"
     class_model_uri: ClassVar[URIRef] = OSCAL.Protocol
 
@@ -4902,8 +4897,8 @@ class PortRange(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_PLAN["PortRange"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_plan:PortRange"
+    class_class_uri: ClassVar[URIRef] = OSCAL["PortRange"]
+    class_class_curie: ClassVar[str] = "oscal:PortRange"
     class_name: ClassVar[str] = "PortRange"
     class_model_uri: ClassVar[URIRef] = OSCAL.PortRange
 
@@ -4935,8 +4930,8 @@ class ImplementationStatus(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_PLAN["ImplementationStatus"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_plan:ImplementationStatus"
+    class_class_uri: ClassVar[URIRef] = OSCAL["ImplementationStatus"]
+    class_class_curie: ClassVar[str] = "oscal:ImplementationStatus"
     class_name: ClassVar[str] = "ImplementationStatus"
     class_model_uri: ClassVar[URIRef] = OSCAL.ImplementationStatus
 
@@ -4962,8 +4957,8 @@ class SystemUser(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_PLAN["SystemUser"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_plan:SystemUser"
+    class_class_uri: ClassVar[URIRef] = OSCAL["SystemUser"]
+    class_class_curie: ClassVar[str] = "oscal:SystemUser"
     class_name: ClassVar[str] = "SystemUser"
     class_model_uri: ClassVar[URIRef] = OSCAL.SystemUser
 
@@ -5016,8 +5011,8 @@ class AuthorizedPrivilege(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_PLAN["AuthorizedPrivilege"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_plan:AuthorizedPrivilege"
+    class_class_uri: ClassVar[URIRef] = OSCAL["AuthorizedPrivilege"]
+    class_class_curie: ClassVar[str] = "oscal:AuthorizedPrivilege"
     class_name: ClassVar[str] = "AuthorizedPrivilege"
     class_model_uri: ClassVar[URIRef] = OSCAL.AuthorizedPrivilege
 
@@ -5050,8 +5045,8 @@ class InventoryItem(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_PLAN["InventoryItem"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_plan:InventoryItem"
+    class_class_uri: ClassVar[URIRef] = OSCAL["InventoryItem"]
+    class_class_curie: ClassVar[str] = "oscal:InventoryItem"
     class_name: ClassVar[str] = "InventoryItem"
     class_model_uri: ClassVar[URIRef] = OSCAL.InventoryItem
 
@@ -5095,8 +5090,8 @@ class SspInventoryItem(InventoryItem):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_SSP["SspInventoryItem"]
-    class_class_curie: ClassVar[str] = "oscal_ssp:SspInventoryItem"
+    class_class_uri: ClassVar[URIRef] = OSCAL["SspInventoryItem"]
+    class_class_curie: ClassVar[str] = "oscal:SspInventoryItem"
     class_name: ClassVar[str] = "SspInventoryItem"
     class_model_uri: ClassVar[URIRef] = OSCAL.SspInventoryItem
 
@@ -5117,8 +5112,8 @@ class ImplementedComponent(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_PLAN["ImplementedComponent"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_plan:ImplementedComponent"
+    class_class_uri: ClassVar[URIRef] = OSCAL["ImplementedComponent"]
+    class_class_curie: ClassVar[str] = "oscal:ImplementedComponent"
     class_name: ClassVar[str] = "ImplementedComponent"
     class_model_uri: ClassVar[URIRef] = OSCAL.ImplementedComponent
 
@@ -5153,8 +5148,8 @@ class SystemId(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_PLAN["SystemId"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_plan:SystemId"
+    class_class_uri: ClassVar[URIRef] = OSCAL["SystemId"]
+    class_class_curie: ClassVar[str] = "oscal:SystemId"
     class_name: ClassVar[str] = "SystemId"
     class_model_uri: ClassVar[URIRef] = OSCAL.SystemId
 
@@ -5180,8 +5175,8 @@ class ImplementationCommonProperty(Property):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_PLAN["ImplementationCommonProperty"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_plan:ImplementationCommonProperty"
+    class_class_uri: ClassVar[URIRef] = OSCAL["ImplementationCommonProperty"]
+    class_class_curie: ClassVar[str] = "oscal:ImplementationCommonProperty"
     class_name: ClassVar[str] = "ImplementationCommonProperty"
     class_model_uri: ClassVar[URIRef] = OSCAL.ImplementationCommonProperty
 
@@ -5209,8 +5204,8 @@ class ImplementationCommonLink(Link):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_PLAN["ImplementationCommonLink"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_plan:ImplementationCommonLink"
+    class_class_uri: ClassVar[URIRef] = OSCAL["ImplementationCommonLink"]
+    class_class_curie: ClassVar[str] = "oscal:ImplementationCommonLink"
     class_name: ClassVar[str] = "ImplementationCommonLink"
     class_model_uri: ClassVar[URIRef] = OSCAL.ImplementationCommonLink
 
@@ -5231,8 +5226,8 @@ class ImplementationResponsibleRole(ResponsibleRole):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_PLAN["ImplementationResponsibleRole"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_plan:ImplementationResponsibleRole"
+    class_class_uri: ClassVar[URIRef] = OSCAL["ImplementationResponsibleRole"]
+    class_class_curie: ClassVar[str] = "oscal:ImplementationResponsibleRole"
     class_name: ClassVar[str] = "ImplementationResponsibleRole"
     class_model_uri: ClassVar[URIRef] = OSCAL.ImplementationResponsibleRole
 
@@ -5254,8 +5249,8 @@ class ImplementationResponsibleParty(ResponsibleParty):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_PLAN["ImplementationResponsibleParty"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_plan:ImplementationResponsibleParty"
+    class_class_uri: ClassVar[URIRef] = OSCAL["ImplementationResponsibleParty"]
+    class_class_curie: ClassVar[str] = "oscal:ImplementationResponsibleParty"
     class_name: ClassVar[str] = "ImplementationResponsibleParty"
     class_model_uri: ClassVar[URIRef] = OSCAL.ImplementationResponsibleParty
 
@@ -5278,8 +5273,8 @@ class Origin(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_PLAN["Origin"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_plan:Origin"
+    class_class_uri: ClassVar[URIRef] = OSCAL["Origin"]
+    class_class_curie: ClassVar[str] = "oscal:Origin"
     class_name: ClassVar[str] = "Origin"
     class_model_uri: ClassVar[URIRef] = OSCAL.Origin
 
@@ -5303,8 +5298,8 @@ class OriginActor(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_PLAN["OriginActor"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_plan:OriginActor"
+    class_class_uri: ClassVar[URIRef] = OSCAL["OriginActor"]
+    class_class_curie: ClassVar[str] = "oscal:OriginActor"
     class_name: ClassVar[str] = "OriginActor"
     class_model_uri: ClassVar[URIRef] = OSCAL.OriginActor
 
@@ -5342,8 +5337,8 @@ class RelatedTask(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_PLAN["RelatedTask"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_plan:RelatedTask"
+    class_class_uri: ClassVar[URIRef] = OSCAL["RelatedTask"]
+    class_class_curie: ClassVar[str] = "oscal:RelatedTask"
     class_name: ClassVar[str] = "RelatedTask"
     class_model_uri: ClassVar[URIRef] = OSCAL.RelatedTask
 
@@ -5379,8 +5374,8 @@ class IdentifiedSubject(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_PLAN["IdentifiedSubject"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_plan:IdentifiedSubject"
+    class_class_uri: ClassVar[URIRef] = OSCAL["IdentifiedSubject"]
+    class_class_curie: ClassVar[str] = "oscal:IdentifiedSubject"
     class_name: ClassVar[str] = "IdentifiedSubject"
     class_model_uri: ClassVar[URIRef] = OSCAL.IdentifiedSubject
 
@@ -5407,8 +5402,8 @@ class Observation(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_PLAN["Observation"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_plan:Observation"
+    class_class_uri: ClassVar[URIRef] = OSCAL["Observation"]
+    class_class_curie: ClassVar[str] = "oscal:Observation"
     class_name: ClassVar[str] = "Observation"
     class_model_uri: ClassVar[URIRef] = OSCAL.Observation
 
@@ -5477,8 +5472,8 @@ class RelevantEvidence(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_PLAN["RelevantEvidence"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_plan:RelevantEvidence"
+    class_class_uri: ClassVar[URIRef] = OSCAL["RelevantEvidence"]
+    class_class_curie: ClassVar[str] = "oscal:RelevantEvidence"
     class_name: ClassVar[str] = "RelevantEvidence"
     class_model_uri: ClassVar[URIRef] = OSCAL.RelevantEvidence
 
@@ -5508,8 +5503,8 @@ class Finding(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_PLAN["Finding"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_plan:Finding"
+    class_class_uri: ClassVar[URIRef] = OSCAL["Finding"]
+    class_class_curie: ClassVar[str] = "oscal:Finding"
     class_name: ClassVar[str] = "Finding"
     class_model_uri: ClassVar[URIRef] = OSCAL.Finding
 
@@ -5568,8 +5563,8 @@ class FindingTarget(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_PLAN["FindingTarget"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_plan:FindingTarget"
+    class_class_uri: ClassVar[URIRef] = OSCAL["FindingTarget"]
+    class_class_curie: ClassVar[str] = "oscal:FindingTarget"
     class_name: ClassVar[str] = "FindingTarget"
     class_model_uri: ClassVar[URIRef] = OSCAL.FindingTarget
 
@@ -5619,8 +5614,8 @@ class ObjectiveStatus(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_PLAN["ObjectiveStatus"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_plan:ObjectiveStatus"
+    class_class_uri: ClassVar[URIRef] = OSCAL["ObjectiveStatus"]
+    class_class_curie: ClassVar[str] = "oscal:ObjectiveStatus"
     class_name: ClassVar[str] = "ObjectiveStatus"
     class_model_uri: ClassVar[URIRef] = OSCAL.ObjectiveStatus
 
@@ -5650,8 +5645,8 @@ class RelatedObservation(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_PLAN["RelatedObservation"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_plan:RelatedObservation"
+    class_class_uri: ClassVar[URIRef] = OSCAL["RelatedObservation"]
+    class_class_curie: ClassVar[str] = "oscal:RelatedObservation"
     class_name: ClassVar[str] = "RelatedObservation"
     class_model_uri: ClassVar[URIRef] = OSCAL.RelatedObservation
 
@@ -5677,8 +5672,8 @@ class AssociatedRisk(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_PLAN["AssociatedRisk"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_plan:AssociatedRisk"
+    class_class_uri: ClassVar[URIRef] = OSCAL["AssociatedRisk"]
+    class_class_curie: ClassVar[str] = "oscal:AssociatedRisk"
     class_name: ClassVar[str] = "AssociatedRisk"
     class_model_uri: ClassVar[URIRef] = OSCAL.AssociatedRisk
 
@@ -5704,8 +5699,8 @@ class Risk(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_PLAN["Risk"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_plan:Risk"
+    class_class_uri: ClassVar[URIRef] = OSCAL["Risk"]
+    class_class_curie: ClassVar[str] = "oscal:Risk"
     class_name: ClassVar[str] = "Risk"
     class_model_uri: ClassVar[URIRef] = OSCAL.Risk
 
@@ -5787,8 +5782,8 @@ class ThreatId(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_PLAN["ThreatId"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_plan:ThreatId"
+    class_class_uri: ClassVar[URIRef] = OSCAL["ThreatId"]
+    class_class_curie: ClassVar[str] = "oscal:ThreatId"
     class_name: ClassVar[str] = "ThreatId"
     class_model_uri: ClassVar[URIRef] = OSCAL.ThreatId
 
@@ -5820,8 +5815,8 @@ class Characterization(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_PLAN["Characterization"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_plan:Characterization"
+    class_class_uri: ClassVar[URIRef] = OSCAL["Characterization"]
+    class_class_curie: ClassVar[str] = "oscal:Characterization"
     class_name: ClassVar[str] = "Characterization"
     class_model_uri: ClassVar[URIRef] = OSCAL.Characterization
 
@@ -5854,8 +5849,8 @@ class Facet(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_PLAN["Facet"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_plan:Facet"
+    class_class_uri: ClassVar[URIRef] = OSCAL["Facet"]
+    class_class_curie: ClassVar[str] = "oscal:Facet"
     class_name: ClassVar[str] = "Facet"
     class_model_uri: ClassVar[URIRef] = OSCAL.Facet
 
@@ -5893,8 +5888,8 @@ class MitigatingFactor(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_PLAN["MitigatingFactor"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_plan:MitigatingFactor"
+    class_class_uri: ClassVar[URIRef] = OSCAL["MitigatingFactor"]
+    class_class_curie: ClassVar[str] = "oscal:MitigatingFactor"
     class_name: ClassVar[str] = "MitigatingFactor"
     class_model_uri: ClassVar[URIRef] = OSCAL.MitigatingFactor
 
@@ -5935,8 +5930,8 @@ class Response(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_PLAN["Response"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_plan:Response"
+    class_class_uri: ClassVar[URIRef] = OSCAL["Response"]
+    class_class_curie: ClassVar[str] = "oscal:Response"
     class_name: ClassVar[str] = "Response"
     class_model_uri: ClassVar[URIRef] = OSCAL.Response
 
@@ -5991,8 +5986,8 @@ class RequiredAsset(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_PLAN["RequiredAsset"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_plan:RequiredAsset"
+    class_class_uri: ClassVar[URIRef] = OSCAL["RequiredAsset"]
+    class_class_curie: ClassVar[str] = "oscal:RequiredAsset"
     class_name: ClassVar[str] = "RequiredAsset"
     class_model_uri: ClassVar[URIRef] = OSCAL.RequiredAsset
 
@@ -6031,8 +6026,8 @@ class RiskLog(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_PLAN["RiskLog"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_plan:RiskLog"
+    class_class_uri: ClassVar[URIRef] = OSCAL["RiskLog"]
+    class_class_curie: ClassVar[str] = "oscal:RiskLog"
     class_name: ClassVar[str] = "RiskLog"
     class_model_uri: ClassVar[URIRef] = OSCAL.RiskLog
 
@@ -6053,8 +6048,8 @@ class RiskLogEntry(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_PLAN["RiskLogEntry"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_plan:RiskLogEntry"
+    class_class_uri: ClassVar[URIRef] = OSCAL["RiskLogEntry"]
+    class_class_curie: ClassVar[str] = "oscal:RiskLogEntry"
     class_name: ClassVar[str] = "RiskLogEntry"
     class_model_uri: ClassVar[URIRef] = OSCAL.RiskLogEntry
 
@@ -6108,8 +6103,8 @@ class LoggedBy(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_PLAN["LoggedBy"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_plan:LoggedBy"
+    class_class_uri: ClassVar[URIRef] = OSCAL["LoggedBy"]
+    class_class_curie: ClassVar[str] = "oscal:LoggedBy"
     class_name: ClassVar[str] = "LoggedBy"
     class_model_uri: ClassVar[URIRef] = OSCAL.LoggedBy
 
@@ -6139,8 +6134,8 @@ class RiskResponseReference(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_PLAN["RiskResponseReference"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_plan:RiskResponseReference"
+    class_class_uri: ClassVar[URIRef] = OSCAL["RiskResponseReference"]
+    class_class_curie: ClassVar[str] = "oscal:RiskResponseReference"
     class_name: ClassVar[str] = "RiskResponseReference"
     class_model_uri: ClassVar[URIRef] = OSCAL.RiskResponseReference
 
@@ -6169,8 +6164,8 @@ class AssessmentResultsDocument(OscalDocument):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_RESULTS["AssessmentResultsDocument"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_results:AssessmentResultsDocument"
+    class_class_uri: ClassVar[URIRef] = OSCAL["AssessmentResultsDocument"]
+    class_class_curie: ClassVar[str] = "oscal:AssessmentResultsDocument"
     class_name: ClassVar[str] = "AssessmentResultsDocument"
     class_model_uri: ClassVar[URIRef] = OSCAL.AssessmentResultsDocument
 
@@ -6192,8 +6187,8 @@ class AssessmentResults(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_RESULTS["AssessmentResults"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_results:AssessmentResults"
+    class_class_uri: ClassVar[URIRef] = OSCAL["AssessmentResults"]
+    class_class_curie: ClassVar[str] = "oscal:AssessmentResults"
     class_name: ClassVar[str] = "AssessmentResults"
     class_model_uri: ClassVar[URIRef] = OSCAL.AssessmentResults
 
@@ -6240,8 +6235,8 @@ class ImportAssessmentPlan(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_RESULTS["ImportAssessmentPlan"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_results:ImportAssessmentPlan"
+    class_class_uri: ClassVar[URIRef] = OSCAL["ImportAssessmentPlan"]
+    class_class_curie: ClassVar[str] = "oscal:ImportAssessmentPlan"
     class_name: ClassVar[str] = "ImportAssessmentPlan"
     class_model_uri: ClassVar[URIRef] = OSCAL.ImportAssessmentPlan
 
@@ -6268,8 +6263,8 @@ class AssessmentResultsLocalDefinitions(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_RESULTS["AssessmentResultsLocalDefinitions"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_results:AssessmentResultsLocalDefinitions"
+    class_class_uri: ClassVar[URIRef] = OSCAL["AssessmentResultsLocalDefinitions"]
+    class_class_curie: ClassVar[str] = "oscal:AssessmentResultsLocalDefinitions"
     class_name: ClassVar[str] = "AssessmentResultsLocalDefinitions"
     class_model_uri: ClassVar[URIRef] = OSCAL.AssessmentResultsLocalDefinitions
 
@@ -6296,8 +6291,8 @@ class Result(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_RESULTS["Result"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_results:Result"
+    class_class_uri: ClassVar[URIRef] = OSCAL["Result"]
+    class_class_curie: ClassVar[str] = "oscal:Result"
     class_name: ClassVar[str] = "Result"
     class_model_uri: ClassVar[URIRef] = OSCAL.Result
 
@@ -6374,8 +6369,8 @@ class ResultLocalDefinitions(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_RESULTS["ResultLocalDefinitions"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_results:ResultLocalDefinitions"
+    class_class_uri: ClassVar[URIRef] = OSCAL["ResultLocalDefinitions"]
+    class_class_curie: ClassVar[str] = "oscal:ResultLocalDefinitions"
     class_name: ClassVar[str] = "ResultLocalDefinitions"
     class_model_uri: ClassVar[URIRef] = OSCAL.ResultLocalDefinitions
 
@@ -6407,8 +6402,8 @@ class Attestation(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_RESULTS["Attestation"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_results:Attestation"
+    class_class_uri: ClassVar[URIRef] = OSCAL["Attestation"]
+    class_class_curie: ClassVar[str] = "oscal:Attestation"
     class_name: ClassVar[str] = "Attestation"
     class_model_uri: ClassVar[URIRef] = OSCAL.Attestation
 
@@ -6432,8 +6427,8 @@ class AssessmentLog(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_RESULTS["AssessmentLog"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_results:AssessmentLog"
+    class_class_uri: ClassVar[URIRef] = OSCAL["AssessmentLog"]
+    class_class_curie: ClassVar[str] = "oscal:AssessmentLog"
     class_name: ClassVar[str] = "AssessmentLog"
     class_model_uri: ClassVar[URIRef] = OSCAL.AssessmentLog
 
@@ -6455,8 +6450,8 @@ class AssessmentLogEntry(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_ASSESSMENT_RESULTS["AssessmentLogEntry"]
-    class_class_curie: ClassVar[str] = "oscal_assessment_results:AssessmentLogEntry"
+    class_class_uri: ClassVar[URIRef] = OSCAL["AssessmentLogEntry"]
+    class_class_curie: ClassVar[str] = "oscal:AssessmentLogEntry"
     class_name: ClassVar[str] = "AssessmentLogEntry"
     class_model_uri: ClassVar[URIRef] = OSCAL.AssessmentLogEntry
 
@@ -6506,8 +6501,8 @@ class ComponentDefinitionDocument(OscalDocument):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_COMPONENT["ComponentDefinitionDocument"]
-    class_class_curie: ClassVar[str] = "oscal_component:ComponentDefinitionDocument"
+    class_class_uri: ClassVar[URIRef] = OSCAL["ComponentDefinitionDocument"]
+    class_class_curie: ClassVar[str] = "oscal:ComponentDefinitionDocument"
     class_name: ClassVar[str] = "ComponentDefinitionDocument"
     class_model_uri: ClassVar[URIRef] = OSCAL.ComponentDefinitionDocument
 
@@ -6529,8 +6524,8 @@ class ComponentDefinition(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_COMPONENT["ComponentDefinition"]
-    class_class_curie: ClassVar[str] = "oscal_component:ComponentDefinition"
+    class_class_uri: ClassVar[URIRef] = OSCAL["ComponentDefinition"]
+    class_class_curie: ClassVar[str] = "oscal:ComponentDefinition"
     class_name: ClassVar[str] = "ComponentDefinition"
     class_model_uri: ClassVar[URIRef] = OSCAL.ComponentDefinition
 
@@ -6571,8 +6566,8 @@ class ImportComponentDefinition(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_COMPONENT["ImportComponentDefinition"]
-    class_class_curie: ClassVar[str] = "oscal_component:ImportComponentDefinition"
+    class_class_uri: ClassVar[URIRef] = OSCAL["ImportComponentDefinition"]
+    class_class_curie: ClassVar[str] = "oscal:ImportComponentDefinition"
     class_name: ClassVar[str] = "ImportComponentDefinition"
     class_model_uri: ClassVar[URIRef] = OSCAL.ImportComponentDefinition
 
@@ -6598,8 +6593,8 @@ class DefinedComponent(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_COMPONENT["DefinedComponent"]
-    class_class_curie: ClassVar[str] = "oscal_component:DefinedComponent"
+    class_class_uri: ClassVar[URIRef] = OSCAL["DefinedComponent"]
+    class_class_curie: ClassVar[str] = "oscal:DefinedComponent"
     class_name: ClassVar[str] = "DefinedComponent"
     class_model_uri: ClassVar[URIRef] = OSCAL.DefinedComponent
 
@@ -6658,8 +6653,8 @@ class Capability(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_COMPONENT["Capability"]
-    class_class_curie: ClassVar[str] = "oscal_component:Capability"
+    class_class_uri: ClassVar[URIRef] = OSCAL["Capability"]
+    class_class_curie: ClassVar[str] = "oscal:Capability"
     class_name: ClassVar[str] = "Capability"
     class_model_uri: ClassVar[URIRef] = OSCAL.Capability
 
@@ -6703,8 +6698,8 @@ class IncorporatesComponent(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_COMPONENT["IncorporatesComponent"]
-    class_class_curie: ClassVar[str] = "oscal_component:IncorporatesComponent"
+    class_class_uri: ClassVar[URIRef] = OSCAL["IncorporatesComponent"]
+    class_class_curie: ClassVar[str] = "oscal:IncorporatesComponent"
     class_name: ClassVar[str] = "IncorporatesComponent"
     class_model_uri: ClassVar[URIRef] = OSCAL.IncorporatesComponent
 
@@ -6732,8 +6727,8 @@ class ControlImplementationSet(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_COMPONENT["ControlImplementationSet"]
-    class_class_curie: ClassVar[str] = "oscal_component:ControlImplementationSet"
+    class_class_uri: ClassVar[URIRef] = OSCAL["ControlImplementationSet"]
+    class_class_curie: ClassVar[str] = "oscal:ControlImplementationSet"
     class_name: ClassVar[str] = "ControlImplementationSet"
     class_model_uri: ClassVar[URIRef] = OSCAL.ControlImplementationSet
 
@@ -6781,8 +6776,8 @@ class ImplementedRequirement(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_COMPONENT["ImplementedRequirement"]
-    class_class_curie: ClassVar[str] = "oscal_component:ImplementedRequirement"
+    class_class_uri: ClassVar[URIRef] = OSCAL["ImplementedRequirement"]
+    class_class_curie: ClassVar[str] = "oscal:ImplementedRequirement"
     class_name: ClassVar[str] = "ImplementedRequirement"
     class_model_uri: ClassVar[URIRef] = OSCAL.ImplementedRequirement
 
@@ -6835,8 +6830,8 @@ class ImplementedControlStatement(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_COMPONENT["ImplementedControlStatement"]
-    class_class_curie: ClassVar[str] = "oscal_component:ImplementedControlStatement"
+    class_class_uri: ClassVar[URIRef] = OSCAL["ImplementedControlStatement"]
+    class_class_curie: ClassVar[str] = "oscal:ImplementedControlStatement"
     class_name: ClassVar[str] = "ImplementedControlStatement"
     class_model_uri: ClassVar[URIRef] = OSCAL.ImplementedControlStatement
 
@@ -6883,8 +6878,8 @@ class MappingCollectionDocument(OscalDocument):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_MAPPING["MappingCollectionDocument"]
-    class_class_curie: ClassVar[str] = "oscal_mapping:MappingCollectionDocument"
+    class_class_uri: ClassVar[URIRef] = OSCAL["MappingCollectionDocument"]
+    class_class_curie: ClassVar[str] = "oscal:MappingCollectionDocument"
     class_name: ClassVar[str] = "MappingCollectionDocument"
     class_model_uri: ClassVar[URIRef] = OSCAL.MappingCollectionDocument
 
@@ -6906,8 +6901,8 @@ class MappingCollection(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_MAPPING["MappingCollection"]
-    class_class_curie: ClassVar[str] = "oscal_mapping:MappingCollection"
+    class_class_uri: ClassVar[URIRef] = OSCAL["MappingCollection"]
+    class_class_curie: ClassVar[str] = "oscal:MappingCollection"
     class_name: ClassVar[str] = "MappingCollection"
     class_model_uri: ClassVar[URIRef] = OSCAL.MappingCollection
 
@@ -6950,8 +6945,8 @@ class MappingProvenance(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_MAPPING["MappingProvenance"]
-    class_class_curie: ClassVar[str] = "oscal_mapping:MappingProvenance"
+    class_class_uri: ClassVar[URIRef] = OSCAL["MappingProvenance"]
+    class_class_curie: ClassVar[str] = "oscal:MappingProvenance"
     class_name: ClassVar[str] = "MappingProvenance"
     class_model_uri: ClassVar[URIRef] = OSCAL.MappingProvenance
 
@@ -7006,8 +7001,8 @@ class Mapping(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_MAPPING["Mapping"]
-    class_class_curie: ClassVar[str] = "oscal_mapping:Mapping"
+    class_class_uri: ClassVar[URIRef] = OSCAL["Mapping"]
+    class_class_curie: ClassVar[str] = "oscal:Mapping"
     class_name: ClassVar[str] = "Mapping"
     class_model_uri: ClassVar[URIRef] = OSCAL.Mapping
 
@@ -7082,8 +7077,8 @@ class Map(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_MAPPING["Map"]
-    class_class_curie: ClassVar[str] = "oscal_mapping:Map"
+    class_class_uri: ClassVar[URIRef] = OSCAL["Map"]
+    class_class_curie: ClassVar[str] = "oscal:Map"
     class_name: ClassVar[str] = "Map"
     class_model_uri: ClassVar[URIRef] = OSCAL.Map
 
@@ -7144,8 +7139,8 @@ class MappingItem(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_MAPPING["MappingItem"]
-    class_class_curie: ClassVar[str] = "oscal_mapping:MappingItem"
+    class_class_uri: ClassVar[URIRef] = OSCAL["MappingItem"]
+    class_class_curie: ClassVar[str] = "oscal:MappingItem"
     class_name: ClassVar[str] = "MappingItem"
     class_model_uri: ClassVar[URIRef] = OSCAL.MappingItem
 
@@ -7177,8 +7172,8 @@ class MappingResourceReference(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_MAPPING["MappingResourceReference"]
-    class_class_curie: ClassVar[str] = "oscal_mapping:MappingResourceReference"
+    class_class_uri: ClassVar[URIRef] = OSCAL["MappingResourceReference"]
+    class_class_curie: ClassVar[str] = "oscal:MappingResourceReference"
     class_name: ClassVar[str] = "MappingResourceReference"
     class_model_uri: ClassVar[URIRef] = OSCAL.MappingResourceReference
 
@@ -7214,8 +7209,8 @@ class QualifierItem(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_MAPPING["QualifierItem"]
-    class_class_curie: ClassVar[str] = "oscal_mapping:QualifierItem"
+    class_class_uri: ClassVar[URIRef] = OSCAL["QualifierItem"]
+    class_class_curie: ClassVar[str] = "oscal:QualifierItem"
     class_name: ClassVar[str] = "QualifierItem"
     class_model_uri: ClassVar[URIRef] = OSCAL.QualifierItem
 
@@ -7259,8 +7254,8 @@ class GapSummary(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_MAPPING["GapSummary"]
-    class_class_curie: ClassVar[str] = "oscal_mapping:GapSummary"
+    class_class_uri: ClassVar[URIRef] = OSCAL["GapSummary"]
+    class_class_curie: ClassVar[str] = "oscal:GapSummary"
     class_name: ClassVar[str] = "GapSummary"
     class_model_uri: ClassVar[URIRef] = OSCAL.GapSummary
 
@@ -7289,8 +7284,8 @@ class ConfidenceScore(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_MAPPING["ConfidenceScore"]
-    class_class_curie: ClassVar[str] = "oscal_mapping:ConfidenceScore"
+    class_class_uri: ClassVar[URIRef] = OSCAL["ConfidenceScore"]
+    class_class_curie: ClassVar[str] = "oscal:ConfidenceScore"
     class_name: ClassVar[str] = "ConfidenceScore"
     class_model_uri: ClassVar[URIRef] = OSCAL.ConfidenceScore
 
@@ -7314,8 +7309,8 @@ class Coverage(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_MAPPING["Coverage"]
-    class_class_curie: ClassVar[str] = "oscal_mapping:Coverage"
+    class_class_uri: ClassVar[URIRef] = OSCAL["Coverage"]
+    class_class_curie: ClassVar[str] = "oscal:Coverage"
     class_name: ClassVar[str] = "Coverage"
     class_model_uri: ClassVar[URIRef] = OSCAL.Coverage
 
@@ -7341,8 +7336,8 @@ class PoamDocument(OscalDocument):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_POAM["PoamDocument"]
-    class_class_curie: ClassVar[str] = "oscal_poam:PoamDocument"
+    class_class_uri: ClassVar[URIRef] = OSCAL["PoamDocument"]
+    class_class_curie: ClassVar[str] = "oscal:PoamDocument"
     class_name: ClassVar[str] = "PoamDocument"
     class_model_uri: ClassVar[URIRef] = OSCAL.PoamDocument
 
@@ -7364,8 +7359,8 @@ class PlanOfActionAndMilestones(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_POAM["PlanOfActionAndMilestones"]
-    class_class_curie: ClassVar[str] = "oscal_poam:PlanOfActionAndMilestones"
+    class_class_uri: ClassVar[URIRef] = OSCAL["PlanOfActionAndMilestones"]
+    class_class_curie: ClassVar[str] = "oscal:PlanOfActionAndMilestones"
     class_name: ClassVar[str] = "PlanOfActionAndMilestones"
     class_model_uri: ClassVar[URIRef] = OSCAL.PlanOfActionAndMilestones
 
@@ -7424,8 +7419,8 @@ class PoamLocalDefinitions(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_POAM["PoamLocalDefinitions"]
-    class_class_curie: ClassVar[str] = "oscal_poam:PoamLocalDefinitions"
+    class_class_uri: ClassVar[URIRef] = OSCAL["PoamLocalDefinitions"]
+    class_class_curie: ClassVar[str] = "oscal:PoamLocalDefinitions"
     class_name: ClassVar[str] = "PoamLocalDefinitions"
     class_model_uri: ClassVar[URIRef] = OSCAL.PoamLocalDefinitions
 
@@ -7455,8 +7450,8 @@ class PoamItem(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_POAM["PoamItem"]
-    class_class_curie: ClassVar[str] = "oscal_poam:PoamItem"
+    class_class_uri: ClassVar[URIRef] = OSCAL["PoamItem"]
+    class_class_curie: ClassVar[str] = "oscal:PoamItem"
     class_name: ClassVar[str] = "PoamItem"
     class_model_uri: ClassVar[URIRef] = OSCAL.PoamItem
 
@@ -7506,8 +7501,8 @@ class RelatedFinding(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = OSCAL_POAM["RelatedFinding"]
-    class_class_curie: ClassVar[str] = "oscal_poam:RelatedFinding"
+    class_class_uri: ClassVar[URIRef] = OSCAL["RelatedFinding"]
+    class_class_curie: ClassVar[str] = "oscal:RelatedFinding"
     class_name: ClassVar[str] = "RelatedFinding"
     class_model_uri: ClassVar[URIRef] = OSCAL.RelatedFinding
 
@@ -7632,6 +7627,13 @@ class LocationPropTypeEnum(EnumDefinitionImpl):
     """
     Curated OSCAL location type property values. Other values are permitted (OSCAL allow-other="yes").
     """
+    region = PermissibleValue(text="region")
+    zone = PermissibleValue(text="zone")
+    headquarters = PermissibleValue(text="headquarters")
+    edge = PermissibleValue(text="edge")
+    cdn = PermissibleValue(text="cdn")
+    domain = PermissibleValue(text="domain")
+
     _defn = EnumDefinition(
         name="LocationPropTypeEnum",
         description="""Curated OSCAL location type property values. Other values are permitted (OSCAL allow-other=\"yes\").""",
@@ -7641,6 +7643,10 @@ class LocationPropTypeEnum(EnumDefinitionImpl):
     def _addvals(cls):
         setattr(cls, "data-center",
             PermissibleValue(text="data-center"))
+        setattr(cls, "regional-office",
+            PermissibleValue(text="regional-office"))
+        setattr(cls, "satellite-office",
+            PermissibleValue(text="satellite-office"))
 
 class LocationDataCenterClassEnum(EnumDefinitionImpl):
     """
@@ -7648,6 +7654,11 @@ class LocationDataCenterClassEnum(EnumDefinitionImpl):
     """
     primary = PermissibleValue(text="primary")
     alternate = PermissibleValue(text="alternate")
+    peer = PermissibleValue(text="peer")
+    availability = PermissibleValue(text="availability")
+    sub = PermissibleValue(text="sub")
+    fault = PermissibleValue(text="fault")
+    failure = PermissibleValue(text="failure")
 
     _defn = EnumDefinition(
         name="LocationDataCenterClassEnum",
@@ -7935,14 +7946,19 @@ class ControlPropNameEnum(EnumDefinitionImpl):
 
 class ControlPropStatusValueEnum(EnumDefinitionImpl):
     """
-    Allowed OSCAL status property values for catalog controls.
+    Curated OSCAL status property values for catalog controls. Other values are permitted (OSCAL allow-other="yes").
     """
     withdrawn = PermissibleValue(text="withdrawn")
-    Withdrawn = PermissibleValue(text="Withdrawn")
+    reserved = PermissibleValue(text="reserved")
+    deprecated = PermissibleValue(text="deprecated")
+    conditional = PermissibleValue(text="conditional")
+    superseded = PermissibleValue(text="superseded")
+    modified = PermissibleValue(text="modified")
+    experimental = PermissibleValue(text="experimental")
 
     _defn = EnumDefinition(
         name="ControlPropStatusValueEnum",
-        description="Allowed OSCAL status property values for catalog controls.",
+        description="""Curated OSCAL status property values for catalog controls. Other values are permitted (OSCAL allow-other=\"yes\").""",
     )
 
 class ControlLinkRelEnum(EnumDefinitionImpl):
@@ -8716,6 +8732,8 @@ class ComponentTypeEnum(EnumDefinitionImpl):
     standard = PermissibleValue(text="standard")
     validation = PermissibleValue(text="validation")
     network = PermissibleValue(text="network")
+    region = PermissibleValue(text="region")
+    zone = PermissibleValue(text="zone")
 
     _defn = EnumDefinition(
         name="ComponentTypeEnum",
@@ -8728,6 +8746,8 @@ class ComponentTypeEnum(EnumDefinitionImpl):
             PermissibleValue(text="this-system"))
         setattr(cls, "process-procedure",
             PermissibleValue(text="process-procedure"))
+        setattr(cls, "resource-container",
+            PermissibleValue(text="resource-container"))
 
 class ComponentStateEnum(EnumDefinitionImpl):
 
@@ -10217,2069 +10237,2069 @@ class CoverageGenerationMethodEnum(EnumDefinitionImpl):
 class slots:
     pass
 
-slots.uuid = Slot(uri=OSCAL_CATALOG.uuid, name="uuid", curie=OSCAL_CATALOG.curie('uuid'),
+slots.uuid = Slot(uri=OSCAL.uuid, name="uuid", curie=OSCAL.curie('uuid'),
                    model_uri=OSCAL.uuid, domain=None, range=Optional[str])
 
-slots.title = Slot(uri=OSCAL_CATALOG.title, name="title", curie=OSCAL_CATALOG.curie('title'),
+slots.title = Slot(uri=OSCAL.title, name="title", curie=OSCAL.curie('title'),
                    model_uri=OSCAL.title, domain=None, range=Optional[str])
 
-slots.description = Slot(uri=OSCAL_CATALOG.description, name="description", curie=OSCAL_CATALOG.curie('description'),
+slots.description = Slot(uri=OSCAL.description, name="description", curie=OSCAL.curie('description'),
                    model_uri=OSCAL.description, domain=None, range=Optional[str])
 
-slots.set_parameters = Slot(uri=OSCAL_CATALOG.set_parameters, name="set-parameters", curie=OSCAL_CATALOG.curie('set_parameters'),
+slots.set_parameters = Slot(uri=OSCAL.set_parameters, name="set-parameters", curie=OSCAL.curie('set_parameters'),
                    model_uri=OSCAL.set_parameters, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.remarks = Slot(uri=OSCAL_CATALOG.remarks, name="remarks", curie=OSCAL_CATALOG.curie('remarks'),
+slots.remarks = Slot(uri=OSCAL.remarks, name="remarks", curie=OSCAL.curie('remarks'),
                    model_uri=OSCAL.remarks, domain=None, range=Optional[str])
 
-slots.href = Slot(uri=OSCAL_CATALOG.href, name="href", curie=OSCAL_CATALOG.curie('href'),
+slots.href = Slot(uri=OSCAL.href, name="href", curie=OSCAL.curie('href'),
                    model_uri=OSCAL.href, domain=None, range=Optional[str])
 
-slots.props = Slot(uri=OSCAL_CATALOG.props, name="props", curie=OSCAL_CATALOG.curie('props'),
+slots.props = Slot(uri=OSCAL.props, name="props", curie=OSCAL.curie('props'),
                    model_uri=OSCAL.props, domain=None, range=Optional[Union[Union[dict, Property], list[Union[dict, Property]]]])
 
-slots.links = Slot(uri=OSCAL_CATALOG.links, name="links", curie=OSCAL_CATALOG.curie('links'),
+slots.links = Slot(uri=OSCAL.links, name="links", curie=OSCAL.curie('links'),
                    model_uri=OSCAL.links, domain=None, range=Optional[Union[Union[dict, Link], list[Union[dict, Link]]]])
 
-slots.responsible_roles = Slot(uri=OSCAL_CATALOG.responsible_roles, name="responsible-roles", curie=OSCAL_CATALOG.curie('responsible_roles'),
+slots.responsible_roles = Slot(uri=OSCAL.responsible_roles, name="responsible-roles", curie=OSCAL.curie('responsible_roles'),
                    model_uri=OSCAL.responsible_roles, domain=None, range=Optional[Union[Union[dict, ResponsibleRole], list[Union[dict, ResponsibleRole]]]])
 
-slots.responsible_parties = Slot(uri=OSCAL_CATALOG.responsible_parties, name="responsible-parties", curie=OSCAL_CATALOG.curie('responsible_parties'),
+slots.responsible_parties = Slot(uri=OSCAL.responsible_parties, name="responsible-parties", curie=OSCAL.curie('responsible_parties'),
                    model_uri=OSCAL.responsible_parties, domain=None, range=Optional[Union[Union[dict, ResponsibleParty], list[Union[dict, ResponsibleParty]]]])
 
-slots.id = Slot(uri=OSCAL_CATALOG.id, name="id", curie=OSCAL_CATALOG.curie('id'),
+slots.id = Slot(uri=OSCAL.id, name="id", curie=OSCAL.curie('id'),
                    model_uri=OSCAL.id, domain=None, range=Optional[str])
 
-slots._class = Slot(uri=OSCAL_CATALOG._class, name="_class", curie=OSCAL_CATALOG.curie('_class'),
-                   model_uri=OSCAL._class, domain=None, range=Optional[str])
+slots.class_ = Slot(uri=OSCAL.class_, name="class_", curie=OSCAL.curie('class_'),
+                   model_uri=OSCAL.class_, domain=None, range=Optional[str])
 
-slots.name = Slot(uri=OSCAL_CATALOG.name, name="name", curie=OSCAL_CATALOG.curie('name'),
+slots.name = Slot(uri=OSCAL.name, name="name", curie=OSCAL.curie('name'),
                    model_uri=OSCAL.name, domain=None, range=Optional[str])
 
-slots.ns = Slot(uri=OSCAL_CATALOG.ns, name="ns", curie=OSCAL_CATALOG.curie('ns'),
+slots.ns = Slot(uri=OSCAL.ns, name="ns", curie=OSCAL.curie('ns'),
                    model_uri=OSCAL.ns, domain=None, range=Optional[str])
 
-slots.type = Slot(uri=OSCAL_CATALOG.type, name="type", curie=OSCAL_CATALOG.curie('type'),
+slots.type = Slot(uri=OSCAL.type, name="type", curie=OSCAL.curie('type'),
                    model_uri=OSCAL.type, domain=None, range=Optional[str])
 
-slots.value = Slot(uri=OSCAL_CATALOG.value, name="value", curie=OSCAL_CATALOG.curie('value'),
+slots.value = Slot(uri=OSCAL.value, name="value", curie=OSCAL.curie('value'),
                    model_uri=OSCAL.value, domain=None, range=Optional[str])
 
-slots.scheme = Slot(uri=OSCAL_CATALOG.scheme, name="scheme", curie=OSCAL_CATALOG.curie('scheme'),
+slots.scheme = Slot(uri=OSCAL.scheme, name="scheme", curie=OSCAL.curie('scheme'),
                    model_uri=OSCAL.scheme, domain=None, range=Optional[str])
 
-slots.role_id = Slot(uri=OSCAL_CATALOG.role_id, name="role-id", curie=OSCAL_CATALOG.curie('role_id'),
+slots.role_id = Slot(uri=OSCAL.role_id, name="role-id", curie=OSCAL.curie('role_id'),
                    model_uri=OSCAL.role_id, domain=None, range=Optional[str])
 
-slots.control_id = Slot(uri=OSCAL_CATALOG.control_id, name="control-id", curie=OSCAL_CATALOG.curie('control_id'),
+slots.control_id = Slot(uri=OSCAL.control_id, name="control-id", curie=OSCAL.curie('control_id'),
                    model_uri=OSCAL.control_id, domain=None, range=Optional[str])
 
-slots.include_all = Slot(uri=OSCAL_CATALOG.include_all, name="include-all", curie=OSCAL_CATALOG.curie('include_all'),
+slots.include_all = Slot(uri=OSCAL.include_all, name="include-all", curie=OSCAL.curie('include_all'),
                    model_uri=OSCAL.include_all, domain=None, range=Optional[Union[dict, IncludeAll]])
 
-slots.include_controls = Slot(uri=OSCAL_CATALOG.include_controls, name="include-controls", curie=OSCAL_CATALOG.curie('include_controls'),
+slots.include_controls = Slot(uri=OSCAL.include_controls, name="include-controls", curie=OSCAL.curie('include_controls'),
                    model_uri=OSCAL.include_controls, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.exclude_controls = Slot(uri=OSCAL_CATALOG.exclude_controls, name="exclude-controls", curie=OSCAL_CATALOG.curie('exclude_controls'),
+slots.exclude_controls = Slot(uri=OSCAL.exclude_controls, name="exclude-controls", curie=OSCAL.curie('exclude_controls'),
                    model_uri=OSCAL.exclude_controls, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.param_id = Slot(uri=OSCAL_CATALOG.param_id, name="param-id", curie=OSCAL_CATALOG.curie('param_id'),
+slots.param_id = Slot(uri=OSCAL.param_id, name="param-id", curie=OSCAL.curie('param_id'),
                    model_uri=OSCAL.param_id, domain=None, range=Optional[str])
 
-slots.statement_id = Slot(uri=OSCAL_CATALOG.statement_id, name="statement-id", curie=OSCAL_CATALOG.curie('statement_id'),
+slots.statement_id = Slot(uri=OSCAL.statement_id, name="statement-id", curie=OSCAL.curie('statement_id'),
                    model_uri=OSCAL.statement_id, domain=None, range=Optional[str])
 
-slots.implemented_requirements = Slot(uri=OSCAL_CATALOG.implemented_requirements, name="implemented-requirements", curie=OSCAL_CATALOG.curie('implemented_requirements'),
+slots.implemented_requirements = Slot(uri=OSCAL.implemented_requirements, name="implemented-requirements", curie=OSCAL.curie('implemented_requirements'),
                    model_uri=OSCAL.implemented_requirements, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.statements = Slot(uri=OSCAL_CATALOG.statements, name="statements", curie=OSCAL_CATALOG.curie('statements'),
+slots.statements = Slot(uri=OSCAL.statements, name="statements", curie=OSCAL.curie('statements'),
                    model_uri=OSCAL.statements, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.method = Slot(uri=OSCAL_CATALOG.method, name="method", curie=OSCAL_CATALOG.curie('method'),
+slots.method = Slot(uri=OSCAL.method, name="method", curie=OSCAL.curie('method'),
                    model_uri=OSCAL.method, domain=None, range=Optional[str])
 
-slots.status = Slot(uri=OSCAL_CATALOG.status, name="status", curie=OSCAL_CATALOG.curie('status'),
+slots.status = Slot(uri=OSCAL.status, name="status", curie=OSCAL.curie('status'),
                    model_uri=OSCAL.status, domain=None, range=Optional[str])
 
-slots.sources = Slot(uri=OSCAL_CATALOG.sources, name="sources", curie=OSCAL_CATALOG.curie('sources'),
+slots.sources = Slot(uri=OSCAL.sources, name="sources", curie=OSCAL.curie('sources'),
                    model_uri=OSCAL.sources, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.party_uuids = Slot(uri=OSCAL_CATALOG.party_uuids, name="party-uuids", curie=OSCAL_CATALOG.curie('party_uuids'),
+slots.party_uuids = Slot(uri=OSCAL.party_uuids, name="party-uuids", curie=OSCAL.curie('party_uuids'),
                    model_uri=OSCAL.party_uuids, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.email_addresses = Slot(uri=OSCAL_CATALOG.email_addresses, name="email-addresses", curie=OSCAL_CATALOG.curie('email_addresses'),
+slots.email_addresses = Slot(uri=OSCAL.email_addresses, name="email-addresses", curie=OSCAL.curie('email_addresses'),
                    model_uri=OSCAL.email_addresses, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.telephone_numbers = Slot(uri=OSCAL_CATALOG.telephone_numbers, name="telephone-numbers", curie=OSCAL_CATALOG.curie('telephone_numbers'),
+slots.telephone_numbers = Slot(uri=OSCAL.telephone_numbers, name="telephone-numbers", curie=OSCAL.curie('telephone_numbers'),
                    model_uri=OSCAL.telephone_numbers, domain=None, range=Optional[Union[Union[dict, TelephoneNumber], list[Union[dict, TelephoneNumber]]]])
 
-slots.short_name = Slot(uri=OSCAL_CATALOG.short_name, name="short-name", curie=OSCAL_CATALOG.curie('short_name'),
+slots.short_name = Slot(uri=OSCAL.short_name, name="short-name", curie=OSCAL.curie('short_name'),
                    model_uri=OSCAL.short_name, domain=None, range=Optional[str])
 
-slots.published = Slot(uri=OSCAL_CATALOG.published, name="published", curie=OSCAL_CATALOG.curie('published'),
+slots.published = Slot(uri=OSCAL.published, name="published", curie=OSCAL.curie('published'),
                    model_uri=OSCAL.published, domain=None, range=Optional[str])
 
-slots.last_modified = Slot(uri=OSCAL_CATALOG.last_modified, name="last-modified", curie=OSCAL_CATALOG.curie('last_modified'),
+slots.last_modified = Slot(uri=OSCAL.last_modified, name="last-modified", curie=OSCAL.curie('last_modified'),
                    model_uri=OSCAL.last_modified, domain=None, range=Optional[str])
 
-slots.version = Slot(uri=OSCAL_CATALOG.version, name="version", curie=OSCAL_CATALOG.curie('version'),
+slots.version = Slot(uri=OSCAL.version, name="version", curie=OSCAL.curie('version'),
                    model_uri=OSCAL.version, domain=None, range=Optional[str])
 
-slots.oscal_version = Slot(uri=OSCAL_CATALOG.oscal_version, name="oscal-version", curie=OSCAL_CATALOG.curie('oscal_version'),
+slots.oscal_version = Slot(uri=OSCAL.oscal_version, name="oscal-version", curie=OSCAL.curie('oscal_version'),
                    model_uri=OSCAL.oscal_version, domain=None, range=Optional[str])
 
-slots.document_ids = Slot(uri=OSCAL_CATALOG.document_ids, name="document-ids", curie=OSCAL_CATALOG.curie('document_ids'),
+slots.document_ids = Slot(uri=OSCAL.document_ids, name="document-ids", curie=OSCAL.curie('document_ids'),
                    model_uri=OSCAL.document_ids, domain=None, range=Optional[Union[Union[dict, DocumentId], list[Union[dict, DocumentId]]]])
 
-slots.prose = Slot(uri=OSCAL_CATALOG.prose, name="prose", curie=OSCAL_CATALOG.curie('prose'),
+slots.prose = Slot(uri=OSCAL.prose, name="prose", curie=OSCAL.curie('prose'),
                    model_uri=OSCAL.prose, domain=None, range=Optional[str])
 
-slots.params = Slot(uri=OSCAL_CATALOG.params, name="params", curie=OSCAL_CATALOG.curie('params'),
+slots.params = Slot(uri=OSCAL.params, name="params", curie=OSCAL.curie('params'),
                    model_uri=OSCAL.params, domain=None, range=Optional[Union[Union[dict, Parameter], list[Union[dict, Parameter]]]])
 
-slots.controls = Slot(uri=OSCAL_CATALOG.controls, name="controls", curie=OSCAL_CATALOG.curie('controls'),
+slots.controls = Slot(uri=OSCAL.controls, name="controls", curie=OSCAL.curie('controls'),
                    model_uri=OSCAL.controls, domain=None, range=Optional[Union[Union[dict, Control], list[Union[dict, Control]]]])
 
-slots.groups = Slot(uri=OSCAL_CATALOG.groups, name="groups", curie=OSCAL_CATALOG.curie('groups'),
+slots.groups = Slot(uri=OSCAL.groups, name="groups", curie=OSCAL.curie('groups'),
                    model_uri=OSCAL.groups, domain=None, range=Optional[Union[Union[dict, Group], list[Union[dict, Group]]]])
 
-slots.parts = Slot(uri=OSCAL_CATALOG.parts, name="parts", curie=OSCAL_CATALOG.curie('parts'),
+slots.parts = Slot(uri=OSCAL.parts, name="parts", curie=OSCAL.curie('parts'),
                    model_uri=OSCAL.parts, domain=None, range=Optional[Union[Union[dict, Part], list[Union[dict, Part]]]])
 
-slots.media_type = Slot(uri=OSCAL_CATALOG.media_type, name="media-type", curie=OSCAL_CATALOG.curie('media_type'),
+slots.media_type = Slot(uri=OSCAL.media_type, name="media-type", curie=OSCAL.curie('media_type'),
                    model_uri=OSCAL.media_type, domain=None, range=Optional[str])
 
-slots.text = Slot(uri=OSCAL_CATALOG.text, name="text", curie=OSCAL_CATALOG.curie('text'),
+slots.text = Slot(uri=OSCAL.text, name="text", curie=OSCAL.curie('text'),
                    model_uri=OSCAL.text, domain=None, range=Optional[str])
 
-slots.how_many = Slot(uri=OSCAL_CATALOG.how_many, name="how-many", curie=OSCAL_CATALOG.curie('how_many'),
+slots.how_many = Slot(uri=OSCAL.how_many, name="how-many", curie=OSCAL.curie('how_many'),
                    model_uri=OSCAL.how_many, domain=None, range=Optional[Union[str, "ParameterCardinalityEnum"]])
 
-slots.choice = Slot(uri=OSCAL_CATALOG.choice, name="choice", curie=OSCAL_CATALOG.curie('choice'),
+slots.choice = Slot(uri=OSCAL.choice, name="choice", curie=OSCAL.curie('choice'),
                    model_uri=OSCAL.choice, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.catalog = Slot(uri=OSCAL_CATALOG.catalog, name="catalog", curie=OSCAL_CATALOG.curie('catalog'),
+slots.catalog = Slot(uri=OSCAL.catalog, name="catalog", curie=OSCAL.curie('catalog'),
                    model_uri=OSCAL.catalog, domain=None, range=Optional[Union[dict, Catalog]])
 
-slots.metadata = Slot(uri=OSCAL_CATALOG.metadata, name="metadata", curie=OSCAL_CATALOG.curie('metadata'),
+slots.metadata = Slot(uri=OSCAL.metadata, name="metadata", curie=OSCAL.curie('metadata'),
                    model_uri=OSCAL.metadata, domain=None, range=Optional[Union[dict, Metadata]])
 
-slots.back_matter = Slot(uri=OSCAL_CATALOG.back_matter, name="back-matter", curie=OSCAL_CATALOG.curie('back_matter'),
+slots.back_matter = Slot(uri=OSCAL.back_matter, name="back-matter", curie=OSCAL.curie('back_matter'),
                    model_uri=OSCAL.back_matter, domain=None, range=Optional[Union[dict, BackMatter]])
 
-slots.revisions = Slot(uri=OSCAL_CATALOG.revisions, name="revisions", curie=OSCAL_CATALOG.curie('revisions'),
+slots.revisions = Slot(uri=OSCAL.revisions, name="revisions", curie=OSCAL.curie('revisions'),
                    model_uri=OSCAL.revisions, domain=None, range=Optional[Union[Union[dict, Revision], list[Union[dict, Revision]]]])
 
-slots.roles = Slot(uri=OSCAL_CATALOG.roles, name="roles", curie=OSCAL_CATALOG.curie('roles'),
+slots.roles = Slot(uri=OSCAL.roles, name="roles", curie=OSCAL.curie('roles'),
                    model_uri=OSCAL.roles, domain=None, range=Optional[Union[Union[dict, Role], list[Union[dict, Role]]]])
 
-slots.locations = Slot(uri=OSCAL_CATALOG.locations, name="locations", curie=OSCAL_CATALOG.curie('locations'),
+slots.locations = Slot(uri=OSCAL.locations, name="locations", curie=OSCAL.curie('locations'),
                    model_uri=OSCAL.locations, domain=None, range=Optional[Union[Union[dict, Location], list[Union[dict, Location]]]])
 
-slots.parties = Slot(uri=OSCAL_CATALOG.parties, name="parties", curie=OSCAL_CATALOG.curie('parties'),
+slots.parties = Slot(uri=OSCAL.parties, name="parties", curie=OSCAL.curie('parties'),
                    model_uri=OSCAL.parties, domain=None, range=Optional[Union[Union[dict, Party], list[Union[dict, Party]]]])
 
-slots.actions = Slot(uri=OSCAL_CATALOG.actions, name="actions", curie=OSCAL_CATALOG.curie('actions'),
+slots.actions = Slot(uri=OSCAL.actions, name="actions", curie=OSCAL.curie('actions'),
                    model_uri=OSCAL.actions, domain=None, range=Optional[Union[Union[dict, Action], list[Union[dict, Action]]]])
 
-slots.identifier = Slot(uri=OSCAL_CATALOG.identifier, name="identifier", curie=OSCAL_CATALOG.curie('identifier'),
+slots.identifier = Slot(uri=OSCAL.identifier, name="identifier", curie=OSCAL.curie('identifier'),
                    model_uri=OSCAL.identifier, domain=None, range=Optional[str])
 
-slots.address = Slot(uri=OSCAL_CATALOG.address, name="address", curie=OSCAL_CATALOG.curie('address'),
+slots.address = Slot(uri=OSCAL.address, name="address", curie=OSCAL.curie('address'),
                    model_uri=OSCAL.address, domain=None, range=Optional[Union[dict, Address]])
 
-slots.urls = Slot(uri=OSCAL_CATALOG.urls, name="urls", curie=OSCAL_CATALOG.curie('urls'),
+slots.urls = Slot(uri=OSCAL.urls, name="urls", curie=OSCAL.curie('urls'),
                    model_uri=OSCAL.urls, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.external_ids = Slot(uri=OSCAL_CATALOG.external_ids, name="external-ids", curie=OSCAL_CATALOG.curie('external_ids'),
+slots.external_ids = Slot(uri=OSCAL.external_ids, name="external-ids", curie=OSCAL.curie('external_ids'),
                    model_uri=OSCAL.external_ids, domain=None, range=Optional[Union[Union[dict, PartyExternalId], list[Union[dict, PartyExternalId]]]])
 
-slots.addresses = Slot(uri=OSCAL_CATALOG.addresses, name="addresses", curie=OSCAL_CATALOG.curie('addresses'),
+slots.addresses = Slot(uri=OSCAL.addresses, name="addresses", curie=OSCAL.curie('addresses'),
                    model_uri=OSCAL.addresses, domain=None, range=Optional[Union[Union[dict, Address], list[Union[dict, Address]]]])
 
-slots.location_uuids = Slot(uri=OSCAL_CATALOG.location_uuids, name="location-uuids", curie=OSCAL_CATALOG.curie('location_uuids'),
+slots.location_uuids = Slot(uri=OSCAL.location_uuids, name="location-uuids", curie=OSCAL.curie('location_uuids'),
                    model_uri=OSCAL.location_uuids, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.member_of_organizations = Slot(uri=OSCAL_CATALOG.member_of_organizations, name="member-of-organizations", curie=OSCAL_CATALOG.curie('member_of_organizations'),
+slots.member_of_organizations = Slot(uri=OSCAL.member_of_organizations, name="member-of-organizations", curie=OSCAL.curie('member_of_organizations'),
                    model_uri=OSCAL.member_of_organizations, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.date = Slot(uri=OSCAL_CATALOG.date, name="date", curie=OSCAL_CATALOG.curie('date'),
+slots.date = Slot(uri=OSCAL.date, name="date", curie=OSCAL.curie('date'),
                    model_uri=OSCAL.date, domain=None, range=Optional[str])
 
-slots.system = Slot(uri=OSCAL_CATALOG.system, name="system", curie=OSCAL_CATALOG.curie('system'),
+slots.system = Slot(uri=OSCAL.system, name="system", curie=OSCAL.curie('system'),
                    model_uri=OSCAL.system, domain=None, range=Optional[str])
 
-slots.number = Slot(uri=OSCAL_CATALOG.number, name="number", curie=OSCAL_CATALOG.curie('number'),
+slots.number = Slot(uri=OSCAL.number, name="number", curie=OSCAL.curie('number'),
                    model_uri=OSCAL.number, domain=None, range=Optional[str])
 
-slots.addr_lines = Slot(uri=OSCAL_CATALOG.addr_lines, name="addr-lines", curie=OSCAL_CATALOG.curie('addr_lines'),
+slots.addr_lines = Slot(uri=OSCAL.addr_lines, name="addr-lines", curie=OSCAL.curie('addr_lines'),
                    model_uri=OSCAL.addr_lines, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.city = Slot(uri=OSCAL_CATALOG.city, name="city", curie=OSCAL_CATALOG.curie('city'),
+slots.city = Slot(uri=OSCAL.city, name="city", curie=OSCAL.curie('city'),
                    model_uri=OSCAL.city, domain=None, range=Optional[str])
 
-slots.state = Slot(uri=OSCAL_CATALOG.state, name="state", curie=OSCAL_CATALOG.curie('state'),
+slots.state = Slot(uri=OSCAL.state, name="state", curie=OSCAL.curie('state'),
                    model_uri=OSCAL.state, domain=None, range=Optional[str])
 
-slots.postal_code = Slot(uri=OSCAL_CATALOG.postal_code, name="postal-code", curie=OSCAL_CATALOG.curie('postal_code'),
+slots.postal_code = Slot(uri=OSCAL.postal_code, name="postal-code", curie=OSCAL.curie('postal_code'),
                    model_uri=OSCAL.postal_code, domain=None, range=Optional[str])
 
-slots.country = Slot(uri=OSCAL_CATALOG.country, name="country", curie=OSCAL_CATALOG.curie('country'),
+slots.country = Slot(uri=OSCAL.country, name="country", curie=OSCAL.curie('country'),
                    model_uri=OSCAL.country, domain=None, range=Optional[str])
 
-slots.algorithm = Slot(uri=OSCAL_CATALOG.algorithm, name="algorithm", curie=OSCAL_CATALOG.curie('algorithm'),
+slots.algorithm = Slot(uri=OSCAL.algorithm, name="algorithm", curie=OSCAL.curie('algorithm'),
                    model_uri=OSCAL.algorithm, domain=None, range=Optional[str])
 
-slots.group = Slot(uri=OSCAL_CATALOG.group, name="group", curie=OSCAL_CATALOG.curie('group'),
+slots.group = Slot(uri=OSCAL.group, name="group", curie=OSCAL.curie('group'),
                    model_uri=OSCAL.group, domain=None, range=Optional[str])
 
-slots.rel = Slot(uri=OSCAL_CATALOG.rel, name="rel", curie=OSCAL_CATALOG.curie('rel'),
+slots.rel = Slot(uri=OSCAL.rel, name="rel", curie=OSCAL.curie('rel'),
                    model_uri=OSCAL.rel, domain=None, range=Optional[str])
 
-slots.resource_fragment = Slot(uri=OSCAL_CATALOG.resource_fragment, name="resource-fragment", curie=OSCAL_CATALOG.curie('resource_fragment'),
+slots.resource_fragment = Slot(uri=OSCAL.resource_fragment, name="resource-fragment", curie=OSCAL.curie('resource_fragment'),
                    model_uri=OSCAL.resource_fragment, domain=None, range=Optional[str])
 
-slots.resources = Slot(uri=OSCAL_CATALOG.resources, name="resources", curie=OSCAL_CATALOG.curie('resources'),
+slots.resources = Slot(uri=OSCAL.resources, name="resources", curie=OSCAL.curie('resources'),
                    model_uri=OSCAL.resources, domain=None, range=Optional[Union[Union[dict, Resource], list[Union[dict, Resource]]]])
 
-slots.citation = Slot(uri=OSCAL_CATALOG.citation, name="citation", curie=OSCAL_CATALOG.curie('citation'),
+slots.citation = Slot(uri=OSCAL.citation, name="citation", curie=OSCAL.curie('citation'),
                    model_uri=OSCAL.citation, domain=None, range=Optional[Union[dict, Citation]])
 
-slots.rlinks = Slot(uri=OSCAL_CATALOG.rlinks, name="rlinks", curie=OSCAL_CATALOG.curie('rlinks'),
+slots.rlinks = Slot(uri=OSCAL.rlinks, name="rlinks", curie=OSCAL.curie('rlinks'),
                    model_uri=OSCAL.rlinks, domain=None, range=Optional[Union[Union[dict, ResourceLink], list[Union[dict, ResourceLink]]]])
 
-slots.base64 = Slot(uri=OSCAL_CATALOG.base64, name="base64", curie=OSCAL_CATALOG.curie('base64'),
+slots.base64 = Slot(uri=OSCAL.base64, name="base64", curie=OSCAL.curie('base64'),
                    model_uri=OSCAL.base64, domain=None, range=Optional[Union[dict, Base64Resource]])
 
-slots.hashes = Slot(uri=OSCAL_CATALOG.hashes, name="hashes", curie=OSCAL_CATALOG.curie('hashes'),
+slots.hashes = Slot(uri=OSCAL.hashes, name="hashes", curie=OSCAL.curie('hashes'),
                    model_uri=OSCAL.hashes, domain=None, range=Optional[Union[Union[dict, Hash], list[Union[dict, Hash]]]])
 
-slots.filename = Slot(uri=OSCAL_CATALOG.filename, name="filename", curie=OSCAL_CATALOG.curie('filename'),
+slots.filename = Slot(uri=OSCAL.filename, name="filename", curie=OSCAL.curie('filename'),
                    model_uri=OSCAL.filename, domain=None, range=Optional[str])
 
-slots.depends_on = Slot(uri=OSCAL_CATALOG.depends_on, name="depends-on", curie=OSCAL_CATALOG.curie('depends_on'),
+slots.depends_on = Slot(uri=OSCAL.depends_on, name="depends-on", curie=OSCAL.curie('depends_on'),
                    model_uri=OSCAL.depends_on, domain=None, range=Optional[str])
 
-slots.label = Slot(uri=OSCAL_CATALOG.label, name="label", curie=OSCAL_CATALOG.curie('label'),
+slots.label = Slot(uri=OSCAL.label, name="label", curie=OSCAL.curie('label'),
                    model_uri=OSCAL.label, domain=None, range=Optional[str])
 
-slots.usage = Slot(uri=OSCAL_CATALOG.usage, name="usage", curie=OSCAL_CATALOG.curie('usage'),
+slots.usage = Slot(uri=OSCAL.usage, name="usage", curie=OSCAL.curie('usage'),
                    model_uri=OSCAL.usage, domain=None, range=Optional[str])
 
-slots.constraints = Slot(uri=OSCAL_CATALOG.constraints, name="constraints", curie=OSCAL_CATALOG.curie('constraints'),
+slots.constraints = Slot(uri=OSCAL.constraints, name="constraints", curie=OSCAL.curie('constraints'),
                    model_uri=OSCAL.constraints, domain=None, range=Optional[Union[Union[dict, ParameterConstraint], list[Union[dict, ParameterConstraint]]]])
 
-slots.guidelines = Slot(uri=OSCAL_CATALOG.guidelines, name="guidelines", curie=OSCAL_CATALOG.curie('guidelines'),
+slots.guidelines = Slot(uri=OSCAL.guidelines, name="guidelines", curie=OSCAL.curie('guidelines'),
                    model_uri=OSCAL.guidelines, domain=None, range=Optional[Union[Union[dict, ParameterGuideline], list[Union[dict, ParameterGuideline]]]])
 
-slots.values = Slot(uri=OSCAL_CATALOG.values, name="values", curie=OSCAL_CATALOG.curie('values'),
+slots.values = Slot(uri=OSCAL.values, name="values", curie=OSCAL.curie('values'),
                    model_uri=OSCAL.values, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.select = Slot(uri=OSCAL_CATALOG.select, name="select", curie=OSCAL_CATALOG.curie('select'),
+slots.select = Slot(uri=OSCAL.select, name="select", curie=OSCAL.curie('select'),
                    model_uri=OSCAL.select, domain=None, range=Optional[Union[dict, ParameterSelection]])
 
-slots.tests = Slot(uri=OSCAL_CATALOG.tests, name="tests", curie=OSCAL_CATALOG.curie('tests'),
+slots.tests = Slot(uri=OSCAL.tests, name="tests", curie=OSCAL.curie('tests'),
                    model_uri=OSCAL.tests, domain=None, range=Optional[Union[Union[dict, ConstraintTest], list[Union[dict, ConstraintTest]]]])
 
-slots.expression = Slot(uri=OSCAL_CATALOG.expression, name="expression", curie=OSCAL_CATALOG.curie('expression'),
+slots.expression = Slot(uri=OSCAL.expression, name="expression", curie=OSCAL.curie('expression'),
                    model_uri=OSCAL.expression, domain=None, range=Optional[str])
 
-slots.with_child_controls = Slot(uri=OSCAL_CATALOG.with_child_controls, name="with-child-controls", curie=OSCAL_CATALOG.curie('with_child_controls'),
+slots.with_child_controls = Slot(uri=OSCAL.with_child_controls, name="with-child-controls", curie=OSCAL.curie('with_child_controls'),
                    model_uri=OSCAL.with_child_controls, domain=None, range=Optional[Union[str, "WithChildControlsEnum"]])
 
-slots.with_ids = Slot(uri=OSCAL_CATALOG.with_ids, name="with-ids", curie=OSCAL_CATALOG.curie('with_ids'),
+slots.with_ids = Slot(uri=OSCAL.with_ids, name="with-ids", curie=OSCAL.curie('with_ids'),
                    model_uri=OSCAL.with_ids, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.matching = Slot(uri=OSCAL_CATALOG.matching, name="matching", curie=OSCAL_CATALOG.curie('matching'),
+slots.matching = Slot(uri=OSCAL.matching, name="matching", curie=OSCAL.curie('matching'),
                    model_uri=OSCAL.matching, domain=None, range=Optional[Union[Union[dict, ControlMatching], list[Union[dict, ControlMatching]]]])
 
-slots.pattern = Slot(uri=OSCAL_CATALOG.pattern, name="pattern", curie=OSCAL_CATALOG.curie('pattern'),
+slots.pattern = Slot(uri=OSCAL.pattern, name="pattern", curie=OSCAL.curie('pattern'),
                    model_uri=OSCAL.pattern, domain=None, range=Optional[str])
 
-slots.profile = Slot(uri=OSCAL_PROFILE.profile, name="profile", curie=OSCAL_PROFILE.curie('profile'),
+slots.profile = Slot(uri=OSCAL.profile, name="profile", curie=OSCAL.curie('profile'),
                    model_uri=OSCAL.profile, domain=None, range=Optional[Union[dict, Profile]])
 
-slots.imports = Slot(uri=OSCAL_PROFILE.imports, name="imports", curie=OSCAL_PROFILE.curie('imports'),
+slots.imports = Slot(uri=OSCAL.imports, name="imports", curie=OSCAL.curie('imports'),
                    model_uri=OSCAL.imports, domain=None, range=Optional[Union[Union[dict, ProfileImport], list[Union[dict, ProfileImport]]]])
 
-slots.merge = Slot(uri=OSCAL_PROFILE.merge, name="merge", curie=OSCAL_PROFILE.curie('merge'),
+slots.merge = Slot(uri=OSCAL.merge, name="merge", curie=OSCAL.curie('merge'),
                    model_uri=OSCAL.merge, domain=None, range=Optional[Union[dict, ProfileMerge]])
 
-slots.modify = Slot(uri=OSCAL_PROFILE.modify, name="modify", curie=OSCAL_PROFILE.curie('modify'),
+slots.modify = Slot(uri=OSCAL.modify, name="modify", curie=OSCAL.curie('modify'),
                    model_uri=OSCAL.modify, domain=None, range=Optional[Union[dict, ProfileModify]])
 
-slots.insert_controls = Slot(uri=OSCAL_PROFILE.insert_controls, name="insert-controls", curie=OSCAL_PROFILE.curie('insert_controls'),
+slots.insert_controls = Slot(uri=OSCAL.insert_controls, name="insert-controls", curie=OSCAL.curie('insert_controls'),
                    model_uri=OSCAL.insert_controls, domain=None, range=Optional[Union[Union[dict, InsertControls], list[Union[dict, InsertControls]]]])
 
-slots.order = Slot(uri=OSCAL_PROFILE.order, name="order", curie=OSCAL_PROFILE.curie('order'),
+slots.order = Slot(uri=OSCAL.order, name="order", curie=OSCAL.curie('order'),
                    model_uri=OSCAL.order, domain=None, range=Optional[Union[str, "InsertOrderEnum"]])
 
-slots.combine = Slot(uri=OSCAL_PROFILE.combine, name="combine", curie=OSCAL_PROFILE.curie('combine'),
+slots.combine = Slot(uri=OSCAL.combine, name="combine", curie=OSCAL.curie('combine'),
                    model_uri=OSCAL.combine, domain=None, range=Optional[Union[dict, CombinationRule]])
 
-slots.flat = Slot(uri=OSCAL_PROFILE.flat, name="flat", curie=OSCAL_PROFILE.curie('flat'),
+slots.flat = Slot(uri=OSCAL.flat, name="flat", curie=OSCAL.curie('flat'),
                    model_uri=OSCAL.flat, domain=None, range=Optional[Union[dict, MergeFlat]])
 
-slots.as_is = Slot(uri=OSCAL_PROFILE.as_is, name="as-is", curie=OSCAL_PROFILE.curie('as_is'),
+slots.as_is = Slot(uri=OSCAL.as_is, name="as-is", curie=OSCAL.curie('as_is'),
                    model_uri=OSCAL.as_is, domain=None, range=Optional[Union[bool, Bool]])
 
-slots.custom = Slot(uri=OSCAL_PROFILE.custom, name="custom", curie=OSCAL_PROFILE.curie('custom'),
+slots.custom = Slot(uri=OSCAL.custom, name="custom", curie=OSCAL.curie('custom'),
                    model_uri=OSCAL.custom, domain=None, range=Optional[Union[dict, MergeCustom]])
 
-slots.alters = Slot(uri=OSCAL_PROFILE.alters, name="alters", curie=OSCAL_PROFILE.curie('alters'),
+slots.alters = Slot(uri=OSCAL.alters, name="alters", curie=OSCAL.curie('alters'),
                    model_uri=OSCAL.alters, domain=None, range=Optional[Union[Union[dict, Alteration], list[Union[dict, Alteration]]]])
 
-slots.removes = Slot(uri=OSCAL_PROFILE.removes, name="removes", curie=OSCAL_PROFILE.curie('removes'),
+slots.removes = Slot(uri=OSCAL.removes, name="removes", curie=OSCAL.curie('removes'),
                    model_uri=OSCAL.removes, domain=None, range=Optional[Union[Union[dict, Removal], list[Union[dict, Removal]]]])
 
-slots.adds = Slot(uri=OSCAL_PROFILE.adds, name="adds", curie=OSCAL_PROFILE.curie('adds'),
+slots.adds = Slot(uri=OSCAL.adds, name="adds", curie=OSCAL.curie('adds'),
                    model_uri=OSCAL.adds, domain=None, range=Optional[Union[Union[dict, Addition], list[Union[dict, Addition]]]])
 
-slots.by_name = Slot(uri=OSCAL_PROFILE.by_name, name="by-name", curie=OSCAL_PROFILE.curie('by_name'),
+slots.by_name = Slot(uri=OSCAL.by_name, name="by-name", curie=OSCAL.curie('by_name'),
                    model_uri=OSCAL.by_name, domain=None, range=Optional[str])
 
-slots.by_class = Slot(uri=OSCAL_PROFILE.by_class, name="by-class", curie=OSCAL_PROFILE.curie('by_class'),
+slots.by_class = Slot(uri=OSCAL.by_class, name="by-class", curie=OSCAL.curie('by_class'),
                    model_uri=OSCAL.by_class, domain=None, range=Optional[str])
 
-slots.by_id = Slot(uri=OSCAL_PROFILE.by_id, name="by-id", curie=OSCAL_PROFILE.curie('by_id'),
+slots.by_id = Slot(uri=OSCAL.by_id, name="by-id", curie=OSCAL.curie('by_id'),
                    model_uri=OSCAL.by_id, domain=None, range=Optional[str])
 
-slots.by_item_name = Slot(uri=OSCAL_PROFILE.by_item_name, name="by-item-name", curie=OSCAL_PROFILE.curie('by_item_name'),
+slots.by_item_name = Slot(uri=OSCAL.by_item_name, name="by-item-name", curie=OSCAL.curie('by_item_name'),
                    model_uri=OSCAL.by_item_name, domain=None, range=Optional[Union[str, "ByItemNameEnum"]])
 
-slots.by_ns = Slot(uri=OSCAL_PROFILE.by_ns, name="by-ns", curie=OSCAL_PROFILE.curie('by_ns'),
+slots.by_ns = Slot(uri=OSCAL.by_ns, name="by-ns", curie=OSCAL.curie('by_ns'),
                    model_uri=OSCAL.by_ns, domain=None, range=Optional[str])
 
-slots.position = Slot(uri=OSCAL_PROFILE.position, name="position", curie=OSCAL_PROFILE.curie('position'),
+slots.position = Slot(uri=OSCAL.position, name="position", curie=OSCAL.curie('position'),
                    model_uri=OSCAL.position, domain=None, range=Optional[Union[str, "AdditionPositionEnum"]])
 
-slots.system_security_plan = Slot(uri=OSCAL_SSP.system_security_plan, name="system-security-plan", curie=OSCAL_SSP.curie('system_security_plan'),
+slots.system_security_plan = Slot(uri=OSCAL.system_security_plan, name="system-security-plan", curie=OSCAL.curie('system_security_plan'),
                    model_uri=OSCAL.system_security_plan, domain=None, range=Optional[Union[dict, SystemSecurityPlan]])
 
-slots.import_profile = Slot(uri=OSCAL_SSP.import_profile, name="import-profile", curie=OSCAL_SSP.curie('import_profile'),
+slots.import_profile = Slot(uri=OSCAL.import_profile, name="import-profile", curie=OSCAL.curie('import_profile'),
                    model_uri=OSCAL.import_profile, domain=None, range=Optional[Union[dict, ImportProfile]])
 
-slots.system_characteristics = Slot(uri=OSCAL_SSP.system_characteristics, name="system-characteristics", curie=OSCAL_SSP.curie('system_characteristics'),
+slots.system_characteristics = Slot(uri=OSCAL.system_characteristics, name="system-characteristics", curie=OSCAL.curie('system_characteristics'),
                    model_uri=OSCAL.system_characteristics, domain=None, range=Optional[Union[dict, SystemCharacteristics]])
 
-slots.system_implementation = Slot(uri=OSCAL_SSP.system_implementation, name="system-implementation", curie=OSCAL_SSP.curie('system_implementation'),
+slots.system_implementation = Slot(uri=OSCAL.system_implementation, name="system-implementation", curie=OSCAL.curie('system_implementation'),
                    model_uri=OSCAL.system_implementation, domain=None, range=Optional[Union[dict, SystemImplementation]])
 
-slots.control_implementation = Slot(uri=OSCAL_SSP.control_implementation, name="control-implementation", curie=OSCAL_SSP.curie('control_implementation'),
+slots.control_implementation = Slot(uri=OSCAL.control_implementation, name="control-implementation", curie=OSCAL.curie('control_implementation'),
                    model_uri=OSCAL.control_implementation, domain=None, range=Optional[Union[dict, SspControlImplementation]])
 
-slots.system_ids = Slot(uri=OSCAL_SSP.system_ids, name="system-ids", curie=OSCAL_SSP.curie('system_ids'),
+slots.system_ids = Slot(uri=OSCAL.system_ids, name="system-ids", curie=OSCAL.curie('system_ids'),
                    model_uri=OSCAL.system_ids, domain=None, range=Optional[Union[Union[dict, SystemId], list[Union[dict, SystemId]]]])
 
-slots.system_name = Slot(uri=OSCAL_SSP.system_name, name="system-name", curie=OSCAL_SSP.curie('system_name'),
+slots.system_name = Slot(uri=OSCAL.system_name, name="system-name", curie=OSCAL.curie('system_name'),
                    model_uri=OSCAL.system_name, domain=None, range=Optional[str])
 
-slots.system_name_short = Slot(uri=OSCAL_SSP.system_name_short, name="system-name-short", curie=OSCAL_SSP.curie('system_name_short'),
+slots.system_name_short = Slot(uri=OSCAL.system_name_short, name="system-name-short", curie=OSCAL.curie('system_name_short'),
                    model_uri=OSCAL.system_name_short, domain=None, range=Optional[str])
 
-slots.date_authorized = Slot(uri=OSCAL_SSP.date_authorized, name="date-authorized", curie=OSCAL_SSP.curie('date_authorized'),
+slots.date_authorized = Slot(uri=OSCAL.date_authorized, name="date-authorized", curie=OSCAL.curie('date_authorized'),
                    model_uri=OSCAL.date_authorized, domain=None, range=Optional[str])
 
-slots.security_sensitivity_level = Slot(uri=OSCAL_SSP.security_sensitivity_level, name="security-sensitivity-level", curie=OSCAL_SSP.curie('security_sensitivity_level'),
+slots.security_sensitivity_level = Slot(uri=OSCAL.security_sensitivity_level, name="security-sensitivity-level", curie=OSCAL.curie('security_sensitivity_level'),
                    model_uri=OSCAL.security_sensitivity_level, domain=None, range=Optional[str])
 
-slots.system_information = Slot(uri=OSCAL_SSP.system_information, name="system-information", curie=OSCAL_SSP.curie('system_information'),
+slots.system_information = Slot(uri=OSCAL.system_information, name="system-information", curie=OSCAL.curie('system_information'),
                    model_uri=OSCAL.system_information, domain=None, range=Optional[Union[dict, SystemInformation]])
 
-slots.security_impact_level = Slot(uri=OSCAL_SSP.security_impact_level, name="security-impact-level", curie=OSCAL_SSP.curie('security_impact_level'),
+slots.security_impact_level = Slot(uri=OSCAL.security_impact_level, name="security-impact-level", curie=OSCAL.curie('security_impact_level'),
                    model_uri=OSCAL.security_impact_level, domain=None, range=Optional[Union[dict, SecurityImpactLevel]])
 
-slots.system_status = Slot(uri=OSCAL_SSP.system_status, name="system-status", curie=OSCAL_SSP.curie('system_status'),
+slots.system_status = Slot(uri=OSCAL.system_status, name="system-status", curie=OSCAL.curie('system_status'),
                    model_uri=OSCAL.system_status, domain=None, range=Optional[Union[dict, SystemStatus]])
 
-slots.authorization_boundary = Slot(uri=OSCAL_SSP.authorization_boundary, name="authorization-boundary", curie=OSCAL_SSP.curie('authorization_boundary'),
+slots.authorization_boundary = Slot(uri=OSCAL.authorization_boundary, name="authorization-boundary", curie=OSCAL.curie('authorization_boundary'),
                    model_uri=OSCAL.authorization_boundary, domain=None, range=Optional[Union[dict, AuthorizationBoundary]])
 
-slots.network_architecture = Slot(uri=OSCAL_SSP.network_architecture, name="network-architecture", curie=OSCAL_SSP.curie('network_architecture'),
+slots.network_architecture = Slot(uri=OSCAL.network_architecture, name="network-architecture", curie=OSCAL.curie('network_architecture'),
                    model_uri=OSCAL.network_architecture, domain=None, range=Optional[Union[dict, NetworkArchitecture]])
 
-slots.data_flow = Slot(uri=OSCAL_SSP.data_flow, name="data-flow", curie=OSCAL_SSP.curie('data_flow'),
+slots.data_flow = Slot(uri=OSCAL.data_flow, name="data-flow", curie=OSCAL.curie('data_flow'),
                    model_uri=OSCAL.data_flow, domain=None, range=Optional[Union[dict, DataFlow]])
 
-slots.information_types = Slot(uri=OSCAL_SSP.information_types, name="information-types", curie=OSCAL_SSP.curie('information_types'),
+slots.information_types = Slot(uri=OSCAL.information_types, name="information-types", curie=OSCAL.curie('information_types'),
                    model_uri=OSCAL.information_types, domain=None, range=Optional[Union[Union[dict, InformationType], list[Union[dict, InformationType]]]])
 
-slots.categorizations = Slot(uri=OSCAL_SSP.categorizations, name="categorizations", curie=OSCAL_SSP.curie('categorizations'),
+slots.categorizations = Slot(uri=OSCAL.categorizations, name="categorizations", curie=OSCAL.curie('categorizations'),
                    model_uri=OSCAL.categorizations, domain=None, range=Optional[Union[Union[dict, InformationTypeCategorization], list[Union[dict, InformationTypeCategorization]]]])
 
-slots.information_type_ids = Slot(uri=OSCAL_SSP.information_type_ids, name="information-type-ids", curie=OSCAL_SSP.curie('information_type_ids'),
+slots.information_type_ids = Slot(uri=OSCAL.information_type_ids, name="information-type-ids", curie=OSCAL.curie('information_type_ids'),
                    model_uri=OSCAL.information_type_ids, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.confidentiality_impact = Slot(uri=OSCAL_SSP.confidentiality_impact, name="confidentiality-impact", curie=OSCAL_SSP.curie('confidentiality_impact'),
+slots.confidentiality_impact = Slot(uri=OSCAL.confidentiality_impact, name="confidentiality-impact", curie=OSCAL.curie('confidentiality_impact'),
                    model_uri=OSCAL.confidentiality_impact, domain=None, range=Optional[Union[dict, ImpactLevel]])
 
-slots.integrity_impact = Slot(uri=OSCAL_SSP.integrity_impact, name="integrity-impact", curie=OSCAL_SSP.curie('integrity_impact'),
+slots.integrity_impact = Slot(uri=OSCAL.integrity_impact, name="integrity-impact", curie=OSCAL.curie('integrity_impact'),
                    model_uri=OSCAL.integrity_impact, domain=None, range=Optional[Union[dict, ImpactLevel]])
 
-slots.availability_impact = Slot(uri=OSCAL_SSP.availability_impact, name="availability-impact", curie=OSCAL_SSP.curie('availability_impact'),
+slots.availability_impact = Slot(uri=OSCAL.availability_impact, name="availability-impact", curie=OSCAL.curie('availability_impact'),
                    model_uri=OSCAL.availability_impact, domain=None, range=Optional[Union[dict, ImpactLevel]])
 
-slots.base = Slot(uri=OSCAL_SSP.base, name="base", curie=OSCAL_SSP.curie('base'),
+slots.base = Slot(uri=OSCAL.base, name="base", curie=OSCAL.curie('base'),
                    model_uri=OSCAL.base, domain=None, range=Optional[str])
 
-slots.selected = Slot(uri=OSCAL_SSP.selected, name="selected", curie=OSCAL_SSP.curie('selected'),
+slots.selected = Slot(uri=OSCAL.selected, name="selected", curie=OSCAL.curie('selected'),
                    model_uri=OSCAL.selected, domain=None, range=Optional[str])
 
-slots.adjustment_justification = Slot(uri=OSCAL_SSP.adjustment_justification, name="adjustment-justification", curie=OSCAL_SSP.curie('adjustment_justification'),
+slots.adjustment_justification = Slot(uri=OSCAL.adjustment_justification, name="adjustment-justification", curie=OSCAL.curie('adjustment_justification'),
                    model_uri=OSCAL.adjustment_justification, domain=None, range=Optional[str])
 
-slots.security_objective_confidentiality = Slot(uri=OSCAL_SSP.security_objective_confidentiality, name="security-objective-confidentiality", curie=OSCAL_SSP.curie('security_objective_confidentiality'),
+slots.security_objective_confidentiality = Slot(uri=OSCAL.security_objective_confidentiality, name="security-objective-confidentiality", curie=OSCAL.curie('security_objective_confidentiality'),
                    model_uri=OSCAL.security_objective_confidentiality, domain=None, range=Optional[str])
 
-slots.security_objective_integrity = Slot(uri=OSCAL_SSP.security_objective_integrity, name="security-objective-integrity", curie=OSCAL_SSP.curie('security_objective_integrity'),
+slots.security_objective_integrity = Slot(uri=OSCAL.security_objective_integrity, name="security-objective-integrity", curie=OSCAL.curie('security_objective_integrity'),
                    model_uri=OSCAL.security_objective_integrity, domain=None, range=Optional[str])
 
-slots.security_objective_availability = Slot(uri=OSCAL_SSP.security_objective_availability, name="security-objective-availability", curie=OSCAL_SSP.curie('security_objective_availability'),
+slots.security_objective_availability = Slot(uri=OSCAL.security_objective_availability, name="security-objective-availability", curie=OSCAL.curie('security_objective_availability'),
                    model_uri=OSCAL.security_objective_availability, domain=None, range=Optional[str])
 
-slots.diagrams = Slot(uri=OSCAL_SSP.diagrams, name="diagrams", curie=OSCAL_SSP.curie('diagrams'),
+slots.diagrams = Slot(uri=OSCAL.diagrams, name="diagrams", curie=OSCAL.curie('diagrams'),
                    model_uri=OSCAL.diagrams, domain=None, range=Optional[Union[Union[dict, Diagram], list[Union[dict, Diagram]]]])
 
-slots.caption = Slot(uri=OSCAL_SSP.caption, name="caption", curie=OSCAL_SSP.curie('caption'),
+slots.caption = Slot(uri=OSCAL.caption, name="caption", curie=OSCAL.curie('caption'),
                    model_uri=OSCAL.caption, domain=None, range=Optional[str])
 
-slots.leveraged_authorizations = Slot(uri=OSCAL_SSP.leveraged_authorizations, name="leveraged-authorizations", curie=OSCAL_SSP.curie('leveraged_authorizations'),
+slots.leveraged_authorizations = Slot(uri=OSCAL.leveraged_authorizations, name="leveraged-authorizations", curie=OSCAL.curie('leveraged_authorizations'),
                    model_uri=OSCAL.leveraged_authorizations, domain=None, range=Optional[Union[Union[dict, LeveragedAuthorization], list[Union[dict, LeveragedAuthorization]]]])
 
-slots.by_components = Slot(uri=OSCAL_SSP.by_components, name="by-components", curie=OSCAL_SSP.curie('by_components'),
+slots.by_components = Slot(uri=OSCAL.by_components, name="by-components", curie=OSCAL.curie('by_components'),
                    model_uri=OSCAL.by_components, domain=None, range=Optional[Union[Union[dict, ByComponent], list[Union[dict, ByComponent]]]])
 
-slots.export = Slot(uri=OSCAL_SSP.export, name="export", curie=OSCAL_SSP.curie('export'),
+slots.export = Slot(uri=OSCAL.export, name="export", curie=OSCAL.curie('export'),
                    model_uri=OSCAL.export, domain=None, range=Optional[Union[dict, Export]])
 
-slots.provided = Slot(uri=OSCAL_SSP.provided, name="provided", curie=OSCAL_SSP.curie('provided'),
+slots.provided = Slot(uri=OSCAL.provided, name="provided", curie=OSCAL.curie('provided'),
                    model_uri=OSCAL.provided, domain=None, range=Optional[Union[Union[dict, ProvidedControlImplementation], list[Union[dict, ProvidedControlImplementation]]]])
 
-slots.responsibilities = Slot(uri=OSCAL_SSP.responsibilities, name="responsibilities", curie=OSCAL_SSP.curie('responsibilities'),
+slots.responsibilities = Slot(uri=OSCAL.responsibilities, name="responsibilities", curie=OSCAL.curie('responsibilities'),
                    model_uri=OSCAL.responsibilities, domain=None, range=Optional[Union[Union[dict, ControlResponsibility], list[Union[dict, ControlResponsibility]]]])
 
-slots.inherited = Slot(uri=OSCAL_SSP.inherited, name="inherited", curie=OSCAL_SSP.curie('inherited'),
+slots.inherited = Slot(uri=OSCAL.inherited, name="inherited", curie=OSCAL.curie('inherited'),
                    model_uri=OSCAL.inherited, domain=None, range=Optional[Union[Union[dict, InheritedControlImplementation], list[Union[dict, InheritedControlImplementation]]]])
 
-slots.satisfied = Slot(uri=OSCAL_SSP.satisfied, name="satisfied", curie=OSCAL_SSP.curie('satisfied'),
+slots.satisfied = Slot(uri=OSCAL.satisfied, name="satisfied", curie=OSCAL.curie('satisfied'),
                    model_uri=OSCAL.satisfied, domain=None, range=Optional[Union[Union[dict, SatisfiedControlImplementation], list[Union[dict, SatisfiedControlImplementation]]]])
 
-slots.provided_uuid = Slot(uri=OSCAL_SSP.provided_uuid, name="provided-uuid", curie=OSCAL_SSP.curie('provided_uuid'),
+slots.provided_uuid = Slot(uri=OSCAL.provided_uuid, name="provided-uuid", curie=OSCAL.curie('provided_uuid'),
                    model_uri=OSCAL.provided_uuid, domain=None, range=Optional[str])
 
-slots.responsibility_uuid = Slot(uri=OSCAL_SSP.responsibility_uuid, name="responsibility-uuid", curie=OSCAL_SSP.curie('responsibility_uuid'),
+slots.responsibility_uuid = Slot(uri=OSCAL.responsibility_uuid, name="responsibility-uuid", curie=OSCAL.curie('responsibility_uuid'),
                    model_uri=OSCAL.responsibility_uuid, domain=None, range=Optional[str])
 
-slots.subject_uuid = Slot(uri=OSCAL_ASSESSMENT_PLAN.subject_uuid, name="subject-uuid", curie=OSCAL_ASSESSMENT_PLAN.curie('subject_uuid'),
+slots.subject_uuid = Slot(uri=OSCAL.subject_uuid, name="subject-uuid", curie=OSCAL.curie('subject_uuid'),
                    model_uri=OSCAL.subject_uuid, domain=None, range=Optional[str])
 
-slots.task_uuid = Slot(uri=OSCAL_ASSESSMENT_PLAN.task_uuid, name="task-uuid", curie=OSCAL_ASSESSMENT_PLAN.curie('task_uuid'),
+slots.task_uuid = Slot(uri=OSCAL.task_uuid, name="task-uuid", curie=OSCAL.curie('task_uuid'),
                    model_uri=OSCAL.task_uuid, domain=None, range=Optional[str])
 
-slots.activity_uuid = Slot(uri=OSCAL_ASSESSMENT_PLAN.activity_uuid, name="activity-uuid", curie=OSCAL_ASSESSMENT_PLAN.curie('activity_uuid'),
+slots.activity_uuid = Slot(uri=OSCAL.activity_uuid, name="activity-uuid", curie=OSCAL.curie('activity_uuid'),
                    model_uri=OSCAL.activity_uuid, domain=None, range=Optional[str])
 
-slots.component_uuid = Slot(uri=OSCAL_ASSESSMENT_PLAN.component_uuid, name="component-uuid", curie=OSCAL_ASSESSMENT_PLAN.curie('component_uuid'),
+slots.component_uuid = Slot(uri=OSCAL.component_uuid, name="component-uuid", curie=OSCAL.curie('component_uuid'),
                    model_uri=OSCAL.component_uuid, domain=None, range=Optional[str])
 
-slots.subjects = Slot(uri=OSCAL_ASSESSMENT_PLAN.subjects, name="subjects", curie=OSCAL_ASSESSMENT_PLAN.curie('subjects'),
+slots.subjects = Slot(uri=OSCAL.subjects, name="subjects", curie=OSCAL.curie('subjects'),
                    model_uri=OSCAL.subjects, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.origins = Slot(uri=OSCAL_ASSESSMENT_PLAN.origins, name="origins", curie=OSCAL_ASSESSMENT_PLAN.curie('origins'),
+slots.origins = Slot(uri=OSCAL.origins, name="origins", curie=OSCAL.curie('origins'),
                    model_uri=OSCAL.origins, domain=None, range=Optional[Union[Union[dict, Origin], list[Union[dict, Origin]]]])
 
-slots.reviewed_controls = Slot(uri=OSCAL_ASSESSMENT_PLAN.reviewed_controls, name="reviewed-controls", curie=OSCAL_ASSESSMENT_PLAN.curie('reviewed_controls'),
+slots.reviewed_controls = Slot(uri=OSCAL.reviewed_controls, name="reviewed-controls", curie=OSCAL.curie('reviewed_controls'),
                    model_uri=OSCAL.reviewed_controls, domain=None, range=Optional[Union[dict, ReviewedControls]])
 
-slots.tasks = Slot(uri=OSCAL_ASSESSMENT_PLAN.tasks, name="tasks", curie=OSCAL_ASSESSMENT_PLAN.curie('tasks'),
+slots.tasks = Slot(uri=OSCAL.tasks, name="tasks", curie=OSCAL.curie('tasks'),
                    model_uri=OSCAL.tasks, domain=None, range=Optional[Union[Union[dict, Task], list[Union[dict, Task]]]])
 
-slots.components = Slot(uri=OSCAL_ASSESSMENT_PLAN.components, name="components", curie=OSCAL_ASSESSMENT_PLAN.curie('components'),
+slots.components = Slot(uri=OSCAL.components, name="components", curie=OSCAL.curie('components'),
                    model_uri=OSCAL.components, domain=None, range=Optional[Union[Union[dict, SystemComponent], list[Union[dict, SystemComponent]]]])
 
-slots.related_observations = Slot(uri=OSCAL_ASSESSMENT_PLAN.related_observations, name="related-observations", curie=OSCAL_ASSESSMENT_PLAN.curie('related_observations'),
+slots.related_observations = Slot(uri=OSCAL.related_observations, name="related-observations", curie=OSCAL.curie('related_observations'),
                    model_uri=OSCAL.related_observations, domain=None, range=Optional[Union[Union[dict, RelatedObservation], list[Union[dict, RelatedObservation]]]])
 
-slots.related_tasks = Slot(uri=OSCAL_ASSESSMENT_PLAN.related_tasks, name="related-tasks", curie=OSCAL_ASSESSMENT_PLAN.curie('related_tasks'),
+slots.related_tasks = Slot(uri=OSCAL.related_tasks, name="related-tasks", curie=OSCAL.curie('related_tasks'),
                    model_uri=OSCAL.related_tasks, domain=None, range=Optional[Union[Union[dict, RelatedTask], list[Union[dict, RelatedTask]]]])
 
-slots.start = Slot(uri=OSCAL_ASSESSMENT_PLAN.start, name="start", curie=OSCAL_ASSESSMENT_PLAN.curie('start'),
+slots.start = Slot(uri=OSCAL.start, name="start", curie=OSCAL.curie('start'),
                    model_uri=OSCAL.start, domain=None, range=Optional[str])
 
-slots.end = Slot(uri=OSCAL_ASSESSMENT_PLAN.end, name="end", curie=OSCAL_ASSESSMENT_PLAN.curie('end'),
+slots.end = Slot(uri=OSCAL.end, name="end", curie=OSCAL.curie('end'),
                    model_uri=OSCAL.end, domain=None, range=Optional[str])
 
-slots.assessment_plan = Slot(uri=OSCAL_ASSESSMENT_PLAN.assessment_plan, name="assessment-plan", curie=OSCAL_ASSESSMENT_PLAN.curie('assessment_plan'),
+slots.assessment_plan = Slot(uri=OSCAL.assessment_plan, name="assessment-plan", curie=OSCAL.curie('assessment_plan'),
                    model_uri=OSCAL.assessment_plan, domain=None, range=Optional[Union[dict, AssessmentPlan]])
 
-slots.import_ssp = Slot(uri=OSCAL_ASSESSMENT_PLAN.import_ssp, name="import-ssp", curie=OSCAL_ASSESSMENT_PLAN.curie('import_ssp'),
+slots.import_ssp = Slot(uri=OSCAL.import_ssp, name="import-ssp", curie=OSCAL.curie('import_ssp'),
                    model_uri=OSCAL.import_ssp, domain=None, range=Optional[Union[dict, ImportSSP]])
 
-slots.local_definitions = Slot(uri=OSCAL_ASSESSMENT_PLAN.local_definitions, name="local-definitions", curie=OSCAL_ASSESSMENT_PLAN.curie('local_definitions'),
+slots.local_definitions = Slot(uri=OSCAL.local_definitions, name="local-definitions", curie=OSCAL.curie('local_definitions'),
                    model_uri=OSCAL.local_definitions, domain=None, range=Optional[Union[dict, LocalDefinitions]])
 
-slots.terms_and_conditions = Slot(uri=OSCAL_ASSESSMENT_PLAN.terms_and_conditions, name="terms-and-conditions", curie=OSCAL_ASSESSMENT_PLAN.curie('terms_and_conditions'),
+slots.terms_and_conditions = Slot(uri=OSCAL.terms_and_conditions, name="terms-and-conditions", curie=OSCAL.curie('terms_and_conditions'),
                    model_uri=OSCAL.terms_and_conditions, domain=None, range=Optional[Union[dict, TermsAndConditions]])
 
-slots.assessment_subjects = Slot(uri=OSCAL_ASSESSMENT_PLAN.assessment_subjects, name="assessment-subjects", curie=OSCAL_ASSESSMENT_PLAN.curie('assessment_subjects'),
+slots.assessment_subjects = Slot(uri=OSCAL.assessment_subjects, name="assessment-subjects", curie=OSCAL.curie('assessment_subjects'),
                    model_uri=OSCAL.assessment_subjects, domain=None, range=Optional[Union[Union[dict, AssessmentSubject], list[Union[dict, AssessmentSubject]]]])
 
-slots.assessment_assets = Slot(uri=OSCAL_ASSESSMENT_PLAN.assessment_assets, name="assessment-assets", curie=OSCAL_ASSESSMENT_PLAN.curie('assessment_assets'),
+slots.assessment_assets = Slot(uri=OSCAL.assessment_assets, name="assessment-assets", curie=OSCAL.curie('assessment_assets'),
                    model_uri=OSCAL.assessment_assets, domain=None, range=Optional[Union[dict, AssessmentAssets]])
 
-slots.inventory_items = Slot(uri=OSCAL_ASSESSMENT_PLAN.inventory_items, name="inventory-items", curie=OSCAL_ASSESSMENT_PLAN.curie('inventory_items'),
+slots.inventory_items = Slot(uri=OSCAL.inventory_items, name="inventory-items", curie=OSCAL.curie('inventory_items'),
                    model_uri=OSCAL.inventory_items, domain=None, range=Optional[Union[Union[dict, InventoryItem], list[Union[dict, InventoryItem]]]])
 
-slots.users = Slot(uri=OSCAL_ASSESSMENT_PLAN.users, name="users", curie=OSCAL_ASSESSMENT_PLAN.curie('users'),
+slots.users = Slot(uri=OSCAL.users, name="users", curie=OSCAL.curie('users'),
                    model_uri=OSCAL.users, domain=None, range=Optional[Union[Union[dict, SystemUser], list[Union[dict, SystemUser]]]])
 
-slots.objectives_and_methods = Slot(uri=OSCAL_ASSESSMENT_PLAN.objectives_and_methods, name="objectives-and-methods", curie=OSCAL_ASSESSMENT_PLAN.curie('objectives_and_methods'),
+slots.objectives_and_methods = Slot(uri=OSCAL.objectives_and_methods, name="objectives-and-methods", curie=OSCAL.curie('objectives_and_methods'),
                    model_uri=OSCAL.objectives_and_methods, domain=None, range=Optional[Union[Union[dict, LocalObjective], list[Union[dict, LocalObjective]]]])
 
-slots.activities = Slot(uri=OSCAL_ASSESSMENT_PLAN.activities, name="activities", curie=OSCAL_ASSESSMENT_PLAN.curie('activities'),
+slots.activities = Slot(uri=OSCAL.activities, name="activities", curie=OSCAL.curie('activities'),
                    model_uri=OSCAL.activities, domain=None, range=Optional[Union[Union[dict, Activity], list[Union[dict, Activity]]]])
 
-slots.control_selections = Slot(uri=OSCAL_ASSESSMENT_PLAN.control_selections, name="control-selections", curie=OSCAL_ASSESSMENT_PLAN.curie('control_selections'),
+slots.control_selections = Slot(uri=OSCAL.control_selections, name="control-selections", curie=OSCAL.curie('control_selections'),
                    model_uri=OSCAL.control_selections, domain=None, range=Optional[Union[Union[dict, ControlSelection], list[Union[dict, ControlSelection]]]])
 
-slots.control_objective_selections = Slot(uri=OSCAL_ASSESSMENT_PLAN.control_objective_selections, name="control-objective-selections", curie=OSCAL_ASSESSMENT_PLAN.curie('control_objective_selections'),
+slots.control_objective_selections = Slot(uri=OSCAL.control_objective_selections, name="control-objective-selections", curie=OSCAL.curie('control_objective_selections'),
                    model_uri=OSCAL.control_objective_selections, domain=None, range=Optional[Union[Union[dict, ControlObjectiveSelection], list[Union[dict, ControlObjectiveSelection]]]])
 
-slots.include_objectives = Slot(uri=OSCAL_ASSESSMENT_PLAN.include_objectives, name="include-objectives", curie=OSCAL_ASSESSMENT_PLAN.curie('include_objectives'),
+slots.include_objectives = Slot(uri=OSCAL.include_objectives, name="include-objectives", curie=OSCAL.curie('include_objectives'),
                    model_uri=OSCAL.include_objectives, domain=None, range=Optional[Union[Union[dict, SelectObjectiveById], list[Union[dict, SelectObjectiveById]]]])
 
-slots.exclude_objectives = Slot(uri=OSCAL_ASSESSMENT_PLAN.exclude_objectives, name="exclude-objectives", curie=OSCAL_ASSESSMENT_PLAN.curie('exclude_objectives'),
+slots.exclude_objectives = Slot(uri=OSCAL.exclude_objectives, name="exclude-objectives", curie=OSCAL.curie('exclude_objectives'),
                    model_uri=OSCAL.exclude_objectives, domain=None, range=Optional[Union[Union[dict, SelectObjectiveById], list[Union[dict, SelectObjectiveById]]]])
 
-slots.statement_ids = Slot(uri=OSCAL_ASSESSMENT_PLAN.statement_ids, name="statement-ids", curie=OSCAL_ASSESSMENT_PLAN.curie('statement_ids'),
+slots.statement_ids = Slot(uri=OSCAL.statement_ids, name="statement-ids", curie=OSCAL.curie('statement_ids'),
                    model_uri=OSCAL.statement_ids, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.objective_id = Slot(uri=OSCAL_ASSESSMENT_PLAN.objective_id, name="objective-id", curie=OSCAL_ASSESSMENT_PLAN.curie('objective_id'),
+slots.objective_id = Slot(uri=OSCAL.objective_id, name="objective-id", curie=OSCAL.curie('objective_id'),
                    model_uri=OSCAL.objective_id, domain=None, range=Optional[str])
 
-slots.include_subjects = Slot(uri=OSCAL_ASSESSMENT_PLAN.include_subjects, name="include-subjects", curie=OSCAL_ASSESSMENT_PLAN.curie('include_subjects'),
+slots.include_subjects = Slot(uri=OSCAL.include_subjects, name="include-subjects", curie=OSCAL.curie('include_subjects'),
                    model_uri=OSCAL.include_subjects, domain=None, range=Optional[Union[Union[dict, SelectSubjectById], list[Union[dict, SelectSubjectById]]]])
 
-slots.exclude_subjects = Slot(uri=OSCAL_ASSESSMENT_PLAN.exclude_subjects, name="exclude-subjects", curie=OSCAL_ASSESSMENT_PLAN.curie('exclude_subjects'),
+slots.exclude_subjects = Slot(uri=OSCAL.exclude_subjects, name="exclude-subjects", curie=OSCAL.curie('exclude_subjects'),
                    model_uri=OSCAL.exclude_subjects, domain=None, range=Optional[Union[Union[dict, SelectSubjectById], list[Union[dict, SelectSubjectById]]]])
 
-slots.observations = Slot(uri=OSCAL_ASSESSMENT_PLAN.observations, name="observations", curie=OSCAL_ASSESSMENT_PLAN.curie('observations'),
+slots.observations = Slot(uri=OSCAL.observations, name="observations", curie=OSCAL.curie('observations'),
                    model_uri=OSCAL.observations, domain=None, range=Optional[Union[Union[dict, Observation], list[Union[dict, Observation]]]])
 
-slots.risks = Slot(uri=OSCAL_ASSESSMENT_PLAN.risks, name="risks", curie=OSCAL_ASSESSMENT_PLAN.curie('risks'),
+slots.risks = Slot(uri=OSCAL.risks, name="risks", curie=OSCAL.curie('risks'),
                    model_uri=OSCAL.risks, domain=None, range=Optional[Union[Union[dict, Risk], list[Union[dict, Risk]]]])
 
-slots.findings = Slot(uri=OSCAL_ASSESSMENT_PLAN.findings, name="findings", curie=OSCAL_ASSESSMENT_PLAN.curie('findings'),
+slots.findings = Slot(uri=OSCAL.findings, name="findings", curie=OSCAL.curie('findings'),
                    model_uri=OSCAL.findings, domain=None, range=Optional[Union[Union[dict, Finding], list[Union[dict, Finding]]]])
 
-slots.assessment_platforms = Slot(uri=OSCAL_ASSESSMENT_PLAN.assessment_platforms, name="assessment-platforms", curie=OSCAL_ASSESSMENT_PLAN.curie('assessment_platforms'),
+slots.assessment_platforms = Slot(uri=OSCAL.assessment_platforms, name="assessment-platforms", curie=OSCAL.curie('assessment_platforms'),
                    model_uri=OSCAL.assessment_platforms, domain=None, range=Optional[Union[Union[dict, AssessmentPlatform], list[Union[dict, AssessmentPlatform]]]])
 
-slots.uses_components = Slot(uri=OSCAL_ASSESSMENT_PLAN.uses_components, name="uses-components", curie=OSCAL_ASSESSMENT_PLAN.curie('uses_components'),
+slots.uses_components = Slot(uri=OSCAL.uses_components, name="uses-components", curie=OSCAL.curie('uses_components'),
                    model_uri=OSCAL.uses_components, domain=None, range=Optional[Union[Union[dict, UsesComponent], list[Union[dict, UsesComponent]]]])
 
-slots.part = Slot(uri=OSCAL_ASSESSMENT_PLAN.part, name="part", curie=OSCAL_ASSESSMENT_PLAN.curie('part'),
+slots.part = Slot(uri=OSCAL.part, name="part", curie=OSCAL.curie('part'),
                    model_uri=OSCAL.part, domain=None, range=Optional[Union[dict, AssessmentPart]])
 
-slots.steps = Slot(uri=OSCAL_ASSESSMENT_PLAN.steps, name="steps", curie=OSCAL_ASSESSMENT_PLAN.curie('steps'),
+slots.steps = Slot(uri=OSCAL.steps, name="steps", curie=OSCAL.curie('steps'),
                    model_uri=OSCAL.steps, domain=None, range=Optional[Union[Union[dict, Step], list[Union[dict, Step]]]])
 
-slots.related_controls = Slot(uri=OSCAL_ASSESSMENT_PLAN.related_controls, name="related-controls", curie=OSCAL_ASSESSMENT_PLAN.curie('related_controls'),
+slots.related_controls = Slot(uri=OSCAL.related_controls, name="related-controls", curie=OSCAL.curie('related_controls'),
                    model_uri=OSCAL.related_controls, domain=None, range=Optional[Union[dict, ReviewedControls]])
 
-slots.timing = Slot(uri=OSCAL_ASSESSMENT_PLAN.timing, name="timing", curie=OSCAL_ASSESSMENT_PLAN.curie('timing'),
+slots.timing = Slot(uri=OSCAL.timing, name="timing", curie=OSCAL.curie('timing'),
                    model_uri=OSCAL.timing, domain=None, range=Optional[Union[dict, EventTiming]])
 
-slots.dependencies = Slot(uri=OSCAL_ASSESSMENT_PLAN.dependencies, name="dependencies", curie=OSCAL_ASSESSMENT_PLAN.curie('dependencies'),
+slots.dependencies = Slot(uri=OSCAL.dependencies, name="dependencies", curie=OSCAL.curie('dependencies'),
                    model_uri=OSCAL.dependencies, domain=None, range=Optional[Union[Union[dict, TaskDependency], list[Union[dict, TaskDependency]]]])
 
-slots.associated_activities = Slot(uri=OSCAL_ASSESSMENT_PLAN.associated_activities, name="associated-activities", curie=OSCAL_ASSESSMENT_PLAN.curie('associated_activities'),
+slots.associated_activities = Slot(uri=OSCAL.associated_activities, name="associated-activities", curie=OSCAL.curie('associated_activities'),
                    model_uri=OSCAL.associated_activities, domain=None, range=Optional[Union[Union[dict, AssociatedActivity], list[Union[dict, AssociatedActivity]]]])
 
-slots.on_date = Slot(uri=OSCAL_ASSESSMENT_PLAN.on_date, name="on-date", curie=OSCAL_ASSESSMENT_PLAN.curie('on_date'),
+slots.on_date = Slot(uri=OSCAL.on_date, name="on-date", curie=OSCAL.curie('on_date'),
                    model_uri=OSCAL.on_date, domain=None, range=Optional[Union[dict, OnDateCondition]])
 
-slots.within_date_range = Slot(uri=OSCAL_ASSESSMENT_PLAN.within_date_range, name="within-date-range", curie=OSCAL_ASSESSMENT_PLAN.curie('within_date_range'),
+slots.within_date_range = Slot(uri=OSCAL.within_date_range, name="within-date-range", curie=OSCAL.curie('within_date_range'),
                    model_uri=OSCAL.within_date_range, domain=None, range=Optional[Union[dict, WithinDateRange]])
 
-slots.at_frequency = Slot(uri=OSCAL_ASSESSMENT_PLAN.at_frequency, name="at-frequency", curie=OSCAL_ASSESSMENT_PLAN.curie('at_frequency'),
+slots.at_frequency = Slot(uri=OSCAL.at_frequency, name="at-frequency", curie=OSCAL.curie('at_frequency'),
                    model_uri=OSCAL.at_frequency, domain=None, range=Optional[Union[dict, AtFrequency]])
 
-slots.period = Slot(uri=OSCAL_ASSESSMENT_PLAN.period, name="period", curie=OSCAL_ASSESSMENT_PLAN.curie('period'),
+slots.period = Slot(uri=OSCAL.period, name="period", curie=OSCAL.curie('period'),
                    model_uri=OSCAL.period, domain=None, range=Optional[int])
 
-slots.unit = Slot(uri=OSCAL_ASSESSMENT_PLAN.unit, name="unit", curie=OSCAL_ASSESSMENT_PLAN.curie('unit'),
+slots.unit = Slot(uri=OSCAL.unit, name="unit", curie=OSCAL.curie('unit'),
                    model_uri=OSCAL.unit, domain=None, range=Optional[Union[str, "TimingUnitEnum"]])
 
-slots.purpose = Slot(uri=OSCAL_ASSESSMENT_PLAN.purpose, name="purpose", curie=OSCAL_ASSESSMENT_PLAN.curie('purpose'),
+slots.purpose = Slot(uri=OSCAL.purpose, name="purpose", curie=OSCAL.curie('purpose'),
                    model_uri=OSCAL.purpose, domain=None, range=Optional[str])
 
-slots.protocols = Slot(uri=OSCAL_ASSESSMENT_PLAN.protocols, name="protocols", curie=OSCAL_ASSESSMENT_PLAN.curie('protocols'),
+slots.protocols = Slot(uri=OSCAL.protocols, name="protocols", curie=OSCAL.curie('protocols'),
                    model_uri=OSCAL.protocols, domain=None, range=Optional[Union[Union[dict, Protocol], list[Union[dict, Protocol]]]])
 
-slots.port_ranges = Slot(uri=OSCAL_ASSESSMENT_PLAN.port_ranges, name="port-ranges", curie=OSCAL_ASSESSMENT_PLAN.curie('port_ranges'),
+slots.port_ranges = Slot(uri=OSCAL.port_ranges, name="port-ranges", curie=OSCAL.curie('port_ranges'),
                    model_uri=OSCAL.port_ranges, domain=None, range=Optional[Union[Union[dict, PortRange], list[Union[dict, PortRange]]]])
 
-slots.transport = Slot(uri=OSCAL_ASSESSMENT_PLAN.transport, name="transport", curie=OSCAL_ASSESSMENT_PLAN.curie('transport'),
+slots.transport = Slot(uri=OSCAL.transport, name="transport", curie=OSCAL.curie('transport'),
                    model_uri=OSCAL.transport, domain=None, range=Optional[Union[str, "TransportEnum"]])
 
-slots.role_ids = Slot(uri=OSCAL_ASSESSMENT_PLAN.role_ids, name="role-ids", curie=OSCAL_ASSESSMENT_PLAN.curie('role_ids'),
+slots.role_ids = Slot(uri=OSCAL.role_ids, name="role-ids", curie=OSCAL.curie('role_ids'),
                    model_uri=OSCAL.role_ids, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.authorized_privileges = Slot(uri=OSCAL_ASSESSMENT_PLAN.authorized_privileges, name="authorized-privileges", curie=OSCAL_ASSESSMENT_PLAN.curie('authorized_privileges'),
+slots.authorized_privileges = Slot(uri=OSCAL.authorized_privileges, name="authorized-privileges", curie=OSCAL.curie('authorized_privileges'),
                    model_uri=OSCAL.authorized_privileges, domain=None, range=Optional[Union[Union[dict, AuthorizedPrivilege], list[Union[dict, AuthorizedPrivilege]]]])
 
-slots.functions_performed = Slot(uri=OSCAL_ASSESSMENT_PLAN.functions_performed, name="functions-performed", curie=OSCAL_ASSESSMENT_PLAN.curie('functions_performed'),
+slots.functions_performed = Slot(uri=OSCAL.functions_performed, name="functions-performed", curie=OSCAL.curie('functions_performed'),
                    model_uri=OSCAL.functions_performed, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.implemented_components = Slot(uri=OSCAL_ASSESSMENT_PLAN.implemented_components, name="implemented-components", curie=OSCAL_ASSESSMENT_PLAN.curie('implemented_components'),
+slots.implemented_components = Slot(uri=OSCAL.implemented_components, name="implemented-components", curie=OSCAL.curie('implemented_components'),
                    model_uri=OSCAL.implemented_components, domain=None, range=Optional[Union[Union[dict, ImplementedComponent], list[Union[dict, ImplementedComponent]]]])
 
-slots.identifier_type = Slot(uri=OSCAL_ASSESSMENT_PLAN.identifier_type, name="identifier-type", curie=OSCAL_ASSESSMENT_PLAN.curie('identifier_type'),
+slots.identifier_type = Slot(uri=OSCAL.identifier_type, name="identifier-type", curie=OSCAL.curie('identifier_type'),
                    model_uri=OSCAL.identifier_type, domain=None, range=Optional[str])
 
-slots.actors = Slot(uri=OSCAL_ASSESSMENT_PLAN.actors, name="actors", curie=OSCAL_ASSESSMENT_PLAN.curie('actors'),
+slots.actors = Slot(uri=OSCAL.actors, name="actors", curie=OSCAL.curie('actors'),
                    model_uri=OSCAL.actors, domain=None, range=Optional[Union[Union[dict, OriginActor], list[Union[dict, OriginActor]]]])
 
-slots.actor_uuid = Slot(uri=OSCAL_ASSESSMENT_PLAN.actor_uuid, name="actor-uuid", curie=OSCAL_ASSESSMENT_PLAN.curie('actor_uuid'),
+slots.actor_uuid = Slot(uri=OSCAL.actor_uuid, name="actor-uuid", curie=OSCAL.curie('actor_uuid'),
                    model_uri=OSCAL.actor_uuid, domain=None, range=Optional[str])
 
-slots.identified_subject = Slot(uri=OSCAL_ASSESSMENT_PLAN.identified_subject, name="identified-subject", curie=OSCAL_ASSESSMENT_PLAN.curie('identified_subject'),
+slots.identified_subject = Slot(uri=OSCAL.identified_subject, name="identified-subject", curie=OSCAL.curie('identified_subject'),
                    model_uri=OSCAL.identified_subject, domain=None, range=Optional[Union[dict, IdentifiedSubject]])
 
-slots.subject_placeholder_uuid = Slot(uri=OSCAL_ASSESSMENT_PLAN.subject_placeholder_uuid, name="subject-placeholder-uuid", curie=OSCAL_ASSESSMENT_PLAN.curie('subject_placeholder_uuid'),
+slots.subject_placeholder_uuid = Slot(uri=OSCAL.subject_placeholder_uuid, name="subject-placeholder-uuid", curie=OSCAL.curie('subject_placeholder_uuid'),
                    model_uri=OSCAL.subject_placeholder_uuid, domain=None, range=Optional[str])
 
-slots.methods = Slot(uri=OSCAL_ASSESSMENT_PLAN.methods, name="methods", curie=OSCAL_ASSESSMENT_PLAN.curie('methods'),
+slots.methods = Slot(uri=OSCAL.methods, name="methods", curie=OSCAL.curie('methods'),
                    model_uri=OSCAL.methods, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.types = Slot(uri=OSCAL_ASSESSMENT_PLAN.types, name="types", curie=OSCAL_ASSESSMENT_PLAN.curie('types'),
+slots.types = Slot(uri=OSCAL.types, name="types", curie=OSCAL.curie('types'),
                    model_uri=OSCAL.types, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.relevant_evidence = Slot(uri=OSCAL_ASSESSMENT_PLAN.relevant_evidence, name="relevant-evidence", curie=OSCAL_ASSESSMENT_PLAN.curie('relevant_evidence'),
+slots.relevant_evidence = Slot(uri=OSCAL.relevant_evidence, name="relevant-evidence", curie=OSCAL.curie('relevant_evidence'),
                    model_uri=OSCAL.relevant_evidence, domain=None, range=Optional[Union[Union[dict, RelevantEvidence], list[Union[dict, RelevantEvidence]]]])
 
-slots.collected = Slot(uri=OSCAL_ASSESSMENT_PLAN.collected, name="collected", curie=OSCAL_ASSESSMENT_PLAN.curie('collected'),
+slots.collected = Slot(uri=OSCAL.collected, name="collected", curie=OSCAL.curie('collected'),
                    model_uri=OSCAL.collected, domain=None, range=Optional[str])
 
-slots.expires = Slot(uri=OSCAL_ASSESSMENT_PLAN.expires, name="expires", curie=OSCAL_ASSESSMENT_PLAN.curie('expires'),
+slots.expires = Slot(uri=OSCAL.expires, name="expires", curie=OSCAL.curie('expires'),
                    model_uri=OSCAL.expires, domain=None, range=Optional[str])
 
-slots.target = Slot(uri=OSCAL_ASSESSMENT_PLAN.target, name="target", curie=OSCAL_ASSESSMENT_PLAN.curie('target'),
+slots.target = Slot(uri=OSCAL.target, name="target", curie=OSCAL.curie('target'),
                    model_uri=OSCAL.target, domain=None, range=Optional[Union[dict, FindingTarget]])
 
-slots.implementation_statement_uuid = Slot(uri=OSCAL_ASSESSMENT_PLAN.implementation_statement_uuid, name="implementation-statement-uuid", curie=OSCAL_ASSESSMENT_PLAN.curie('implementation_statement_uuid'),
+slots.implementation_statement_uuid = Slot(uri=OSCAL.implementation_statement_uuid, name="implementation-statement-uuid", curie=OSCAL.curie('implementation_statement_uuid'),
                    model_uri=OSCAL.implementation_statement_uuid, domain=None, range=Optional[str])
 
-slots.related_risks = Slot(uri=OSCAL_ASSESSMENT_PLAN.related_risks, name="related-risks", curie=OSCAL_ASSESSMENT_PLAN.curie('related_risks'),
+slots.related_risks = Slot(uri=OSCAL.related_risks, name="related-risks", curie=OSCAL.curie('related_risks'),
                    model_uri=OSCAL.related_risks, domain=None, range=Optional[Union[Union[dict, AssociatedRisk], list[Union[dict, AssociatedRisk]]]])
 
-slots.target_id = Slot(uri=OSCAL_ASSESSMENT_PLAN.target_id, name="target-id", curie=OSCAL_ASSESSMENT_PLAN.curie('target_id'),
+slots.target_id = Slot(uri=OSCAL.target_id, name="target-id", curie=OSCAL.curie('target_id'),
                    model_uri=OSCAL.target_id, domain=None, range=Optional[str])
 
-slots.implementation_status = Slot(uri=OSCAL_ASSESSMENT_PLAN.implementation_status, name="implementation-status", curie=OSCAL_ASSESSMENT_PLAN.curie('implementation_status'),
+slots.implementation_status = Slot(uri=OSCAL.implementation_status, name="implementation-status", curie=OSCAL.curie('implementation_status'),
                    model_uri=OSCAL.implementation_status, domain=None, range=Optional[Union[dict, ImplementationStatus]])
 
-slots.reason = Slot(uri=OSCAL_ASSESSMENT_PLAN.reason, name="reason", curie=OSCAL_ASSESSMENT_PLAN.curie('reason'),
+slots.reason = Slot(uri=OSCAL.reason, name="reason", curie=OSCAL.curie('reason'),
                    model_uri=OSCAL.reason, domain=None, range=Optional[str])
 
-slots.observation_uuid = Slot(uri=OSCAL_ASSESSMENT_PLAN.observation_uuid, name="observation-uuid", curie=OSCAL_ASSESSMENT_PLAN.curie('observation_uuid'),
+slots.observation_uuid = Slot(uri=OSCAL.observation_uuid, name="observation-uuid", curie=OSCAL.curie('observation_uuid'),
                    model_uri=OSCAL.observation_uuid, domain=None, range=Optional[str])
 
-slots.risk_uuid = Slot(uri=OSCAL_ASSESSMENT_PLAN.risk_uuid, name="risk-uuid", curie=OSCAL_ASSESSMENT_PLAN.curie('risk_uuid'),
+slots.risk_uuid = Slot(uri=OSCAL.risk_uuid, name="risk-uuid", curie=OSCAL.curie('risk_uuid'),
                    model_uri=OSCAL.risk_uuid, domain=None, range=Optional[str])
 
-slots.statement = Slot(uri=OSCAL_ASSESSMENT_PLAN.statement, name="statement", curie=OSCAL_ASSESSMENT_PLAN.curie('statement'),
+slots.statement = Slot(uri=OSCAL.statement, name="statement", curie=OSCAL.curie('statement'),
                    model_uri=OSCAL.statement, domain=None, range=Optional[str])
 
-slots.threat_ids = Slot(uri=OSCAL_ASSESSMENT_PLAN.threat_ids, name="threat-ids", curie=OSCAL_ASSESSMENT_PLAN.curie('threat_ids'),
+slots.threat_ids = Slot(uri=OSCAL.threat_ids, name="threat-ids", curie=OSCAL.curie('threat_ids'),
                    model_uri=OSCAL.threat_ids, domain=None, range=Optional[Union[Union[dict, ThreatId], list[Union[dict, ThreatId]]]])
 
-slots.characterizations = Slot(uri=OSCAL_ASSESSMENT_PLAN.characterizations, name="characterizations", curie=OSCAL_ASSESSMENT_PLAN.curie('characterizations'),
+slots.characterizations = Slot(uri=OSCAL.characterizations, name="characterizations", curie=OSCAL.curie('characterizations'),
                    model_uri=OSCAL.characterizations, domain=None, range=Optional[Union[Union[dict, Characterization], list[Union[dict, Characterization]]]])
 
-slots.mitigating_factors = Slot(uri=OSCAL_ASSESSMENT_PLAN.mitigating_factors, name="mitigating-factors", curie=OSCAL_ASSESSMENT_PLAN.curie('mitigating_factors'),
+slots.mitigating_factors = Slot(uri=OSCAL.mitigating_factors, name="mitigating-factors", curie=OSCAL.curie('mitigating_factors'),
                    model_uri=OSCAL.mitigating_factors, domain=None, range=Optional[Union[Union[dict, MitigatingFactor], list[Union[dict, MitigatingFactor]]]])
 
-slots.deadline = Slot(uri=OSCAL_ASSESSMENT_PLAN.deadline, name="deadline", curie=OSCAL_ASSESSMENT_PLAN.curie('deadline'),
+slots.deadline = Slot(uri=OSCAL.deadline, name="deadline", curie=OSCAL.curie('deadline'),
                    model_uri=OSCAL.deadline, domain=None, range=Optional[str])
 
-slots.remediations = Slot(uri=OSCAL_ASSESSMENT_PLAN.remediations, name="remediations", curie=OSCAL_ASSESSMENT_PLAN.curie('remediations'),
+slots.remediations = Slot(uri=OSCAL.remediations, name="remediations", curie=OSCAL.curie('remediations'),
                    model_uri=OSCAL.remediations, domain=None, range=Optional[Union[Union[dict, Response], list[Union[dict, Response]]]])
 
-slots.risk_log = Slot(uri=OSCAL_ASSESSMENT_PLAN.risk_log, name="risk-log", curie=OSCAL_ASSESSMENT_PLAN.curie('risk_log'),
+slots.risk_log = Slot(uri=OSCAL.risk_log, name="risk-log", curie=OSCAL.curie('risk_log'),
                    model_uri=OSCAL.risk_log, domain=None, range=Optional[Union[dict, RiskLog]])
 
-slots.origin = Slot(uri=OSCAL_ASSESSMENT_PLAN.origin, name="origin", curie=OSCAL_ASSESSMENT_PLAN.curie('origin'),
+slots.origin = Slot(uri=OSCAL.origin, name="origin", curie=OSCAL.curie('origin'),
                    model_uri=OSCAL.origin, domain=None, range=Optional[Union[dict, Origin]])
 
-slots.facets = Slot(uri=OSCAL_ASSESSMENT_PLAN.facets, name="facets", curie=OSCAL_ASSESSMENT_PLAN.curie('facets'),
+slots.facets = Slot(uri=OSCAL.facets, name="facets", curie=OSCAL.curie('facets'),
                    model_uri=OSCAL.facets, domain=None, range=Optional[Union[Union[dict, Facet], list[Union[dict, Facet]]]])
 
-slots.implementation_uuid = Slot(uri=OSCAL_ASSESSMENT_PLAN.implementation_uuid, name="implementation-uuid", curie=OSCAL_ASSESSMENT_PLAN.curie('implementation_uuid'),
+slots.implementation_uuid = Slot(uri=OSCAL.implementation_uuid, name="implementation-uuid", curie=OSCAL.curie('implementation_uuid'),
                    model_uri=OSCAL.implementation_uuid, domain=None, range=Optional[str])
 
-slots.lifecycle = Slot(uri=OSCAL_ASSESSMENT_PLAN.lifecycle, name="lifecycle", curie=OSCAL_ASSESSMENT_PLAN.curie('lifecycle'),
+slots.lifecycle = Slot(uri=OSCAL.lifecycle, name="lifecycle", curie=OSCAL.curie('lifecycle'),
                    model_uri=OSCAL.lifecycle, domain=None, range=Optional[str])
 
-slots.required_assets = Slot(uri=OSCAL_ASSESSMENT_PLAN.required_assets, name="required-assets", curie=OSCAL_ASSESSMENT_PLAN.curie('required_assets'),
+slots.required_assets = Slot(uri=OSCAL.required_assets, name="required-assets", curie=OSCAL.curie('required_assets'),
                    model_uri=OSCAL.required_assets, domain=None, range=Optional[Union[Union[dict, RequiredAsset], list[Union[dict, RequiredAsset]]]])
 
-slots.entries = Slot(uri=OSCAL_ASSESSMENT_PLAN.entries, name="entries", curie=OSCAL_ASSESSMENT_PLAN.curie('entries'),
+slots.entries = Slot(uri=OSCAL.entries, name="entries", curie=OSCAL.curie('entries'),
                    model_uri=OSCAL.entries, domain=None, range=Optional[Union[Union[dict, RiskLogEntry], list[Union[dict, RiskLogEntry]]]])
 
-slots.logged_by = Slot(uri=OSCAL_ASSESSMENT_PLAN.logged_by, name="logged-by", curie=OSCAL_ASSESSMENT_PLAN.curie('logged_by'),
+slots.logged_by = Slot(uri=OSCAL.logged_by, name="logged-by", curie=OSCAL.curie('logged_by'),
                    model_uri=OSCAL.logged_by, domain=None, range=Optional[Union[Union[dict, LoggedBy], list[Union[dict, LoggedBy]]]])
 
-slots.status_change = Slot(uri=OSCAL_ASSESSMENT_PLAN.status_change, name="status-change", curie=OSCAL_ASSESSMENT_PLAN.curie('status_change'),
+slots.status_change = Slot(uri=OSCAL.status_change, name="status-change", curie=OSCAL.curie('status_change'),
                    model_uri=OSCAL.status_change, domain=None, range=Optional[str])
 
-slots.related_responses = Slot(uri=OSCAL_ASSESSMENT_PLAN.related_responses, name="related-responses", curie=OSCAL_ASSESSMENT_PLAN.curie('related_responses'),
+slots.related_responses = Slot(uri=OSCAL.related_responses, name="related-responses", curie=OSCAL.curie('related_responses'),
                    model_uri=OSCAL.related_responses, domain=None, range=Optional[Union[Union[dict, RiskResponseReference], list[Union[dict, RiskResponseReference]]]])
 
-slots.party_uuid = Slot(uri=OSCAL_ASSESSMENT_PLAN.party_uuid, name="party-uuid", curie=OSCAL_ASSESSMENT_PLAN.curie('party_uuid'),
+slots.party_uuid = Slot(uri=OSCAL.party_uuid, name="party-uuid", curie=OSCAL.curie('party_uuid'),
                    model_uri=OSCAL.party_uuid, domain=None, range=Optional[str])
 
-slots.response_uuid = Slot(uri=OSCAL_ASSESSMENT_PLAN.response_uuid, name="response-uuid", curie=OSCAL_ASSESSMENT_PLAN.curie('response_uuid'),
+slots.response_uuid = Slot(uri=OSCAL.response_uuid, name="response-uuid", curie=OSCAL.curie('response_uuid'),
                    model_uri=OSCAL.response_uuid, domain=None, range=Optional[str])
 
-slots.assessment_results = Slot(uri=OSCAL_ASSESSMENT_RESULTS.assessment_results, name="assessment-results", curie=OSCAL_ASSESSMENT_RESULTS.curie('assessment_results'),
+slots.assessment_results = Slot(uri=OSCAL.assessment_results, name="assessment-results", curie=OSCAL.curie('assessment_results'),
                    model_uri=OSCAL.assessment_results, domain=None, range=Optional[Union[dict, AssessmentResults]])
 
-slots.import_ap = Slot(uri=OSCAL_ASSESSMENT_RESULTS.import_ap, name="import-ap", curie=OSCAL_ASSESSMENT_RESULTS.curie('import_ap'),
+slots.import_ap = Slot(uri=OSCAL.import_ap, name="import-ap", curie=OSCAL.curie('import_ap'),
                    model_uri=OSCAL.import_ap, domain=None, range=Optional[Union[dict, ImportAssessmentPlan]])
 
-slots.results = Slot(uri=OSCAL_ASSESSMENT_RESULTS.results, name="results", curie=OSCAL_ASSESSMENT_RESULTS.curie('results'),
+slots.results = Slot(uri=OSCAL.results, name="results", curie=OSCAL.curie('results'),
                    model_uri=OSCAL.results, domain=None, range=Optional[Union[Union[dict, Result], list[Union[dict, Result]]]])
 
-slots.attestations = Slot(uri=OSCAL_ASSESSMENT_RESULTS.attestations, name="attestations", curie=OSCAL_ASSESSMENT_RESULTS.curie('attestations'),
+slots.attestations = Slot(uri=OSCAL.attestations, name="attestations", curie=OSCAL.curie('attestations'),
                    model_uri=OSCAL.attestations, domain=None, range=Optional[Union[Union[dict, Attestation], list[Union[dict, Attestation]]]])
 
-slots.assessment_log = Slot(uri=OSCAL_ASSESSMENT_RESULTS.assessment_log, name="assessment-log", curie=OSCAL_ASSESSMENT_RESULTS.curie('assessment_log'),
+slots.assessment_log = Slot(uri=OSCAL.assessment_log, name="assessment-log", curie=OSCAL.curie('assessment_log'),
                    model_uri=OSCAL.assessment_log, domain=None, range=Optional[Union[dict, AssessmentLog]])
 
-slots.component_definition = Slot(uri=OSCAL_COMPONENT.component_definition, name="component-definition", curie=OSCAL_COMPONENT.curie('component_definition'),
+slots.component_definition = Slot(uri=OSCAL.component_definition, name="component-definition", curie=OSCAL.curie('component_definition'),
                    model_uri=OSCAL.component_definition, domain=None, range=Optional[Union[dict, ComponentDefinition]])
 
-slots.import_component_definitions = Slot(uri=OSCAL_COMPONENT.import_component_definitions, name="import-component-definitions", curie=OSCAL_COMPONENT.curie('import_component_definitions'),
+slots.import_component_definitions = Slot(uri=OSCAL.import_component_definitions, name="import-component-definitions", curie=OSCAL.curie('import_component_definitions'),
                    model_uri=OSCAL.import_component_definitions, domain=None, range=Optional[Union[Union[dict, ImportComponentDefinition], list[Union[dict, ImportComponentDefinition]]]])
 
-slots.capabilities = Slot(uri=OSCAL_COMPONENT.capabilities, name="capabilities", curie=OSCAL_COMPONENT.curie('capabilities'),
+slots.capabilities = Slot(uri=OSCAL.capabilities, name="capabilities", curie=OSCAL.curie('capabilities'),
                    model_uri=OSCAL.capabilities, domain=None, range=Optional[Union[Union[dict, Capability], list[Union[dict, Capability]]]])
 
-slots.source = Slot(uri=OSCAL_COMPONENT.source, name="source", curie=OSCAL_COMPONENT.curie('source'),
+slots.source = Slot(uri=OSCAL.source, name="source", curie=OSCAL.curie('source'),
                    model_uri=OSCAL.source, domain=None, range=Optional[str])
 
-slots.control_implementations = Slot(uri=OSCAL_COMPONENT.control_implementations, name="control-implementations", curie=OSCAL_COMPONENT.curie('control_implementations'),
+slots.control_implementations = Slot(uri=OSCAL.control_implementations, name="control-implementations", curie=OSCAL.curie('control_implementations'),
                    model_uri=OSCAL.control_implementations, domain=None, range=Optional[Union[Union[dict, ControlImplementationSet], list[Union[dict, ControlImplementationSet]]]])
 
-slots.incorporates_components = Slot(uri=OSCAL_COMPONENT.incorporates_components, name="incorporates-components", curie=OSCAL_COMPONENT.curie('incorporates_components'),
+slots.incorporates_components = Slot(uri=OSCAL.incorporates_components, name="incorporates-components", curie=OSCAL.curie('incorporates_components'),
                    model_uri=OSCAL.incorporates_components, domain=None, range=Optional[Union[Union[dict, IncorporatesComponent], list[Union[dict, IncorporatesComponent]]]])
 
-slots.mapping_collection = Slot(uri=OSCAL_MAPPING.mapping_collection, name="mapping-collection", curie=OSCAL_MAPPING.curie('mapping_collection'),
+slots.mapping_collection = Slot(uri=OSCAL.mapping_collection, name="mapping-collection", curie=OSCAL.curie('mapping_collection'),
                    model_uri=OSCAL.mapping_collection, domain=None, range=Optional[Union[dict, MappingCollection]])
 
-slots.provenance = Slot(uri=OSCAL_MAPPING.provenance, name="provenance", curie=OSCAL_MAPPING.curie('provenance'),
+slots.provenance = Slot(uri=OSCAL.provenance, name="provenance", curie=OSCAL.curie('provenance'),
                    model_uri=OSCAL.provenance, domain=None, range=Optional[Union[dict, MappingProvenance]])
 
-slots.mappings = Slot(uri=OSCAL_MAPPING.mappings, name="mappings", curie=OSCAL_MAPPING.curie('mappings'),
+slots.mappings = Slot(uri=OSCAL.mappings, name="mappings", curie=OSCAL.curie('mappings'),
                    model_uri=OSCAL.mappings, domain=None, range=Optional[Union[Union[dict, Mapping], list[Union[dict, Mapping]]]])
 
-slots.matching_rationale = Slot(uri=OSCAL_MAPPING.matching_rationale, name="matching-rationale", curie=OSCAL_MAPPING.curie('matching_rationale'),
+slots.matching_rationale = Slot(uri=OSCAL.matching_rationale, name="matching-rationale", curie=OSCAL.curie('matching_rationale'),
                    model_uri=OSCAL.matching_rationale, domain=None, range=Optional[Union[str, "MatchingRationaleEnum"]])
 
-slots.source_resource = Slot(uri=OSCAL_MAPPING.source_resource, name="source-resource", curie=OSCAL_MAPPING.curie('source_resource'),
+slots.source_resource = Slot(uri=OSCAL.source_resource, name="source-resource", curie=OSCAL.curie('source_resource'),
                    model_uri=OSCAL.source_resource, domain=None, range=Optional[Union[dict, MappingResourceReference]])
 
-slots.target_resource = Slot(uri=OSCAL_MAPPING.target_resource, name="target-resource", curie=OSCAL_MAPPING.curie('target_resource'),
+slots.target_resource = Slot(uri=OSCAL.target_resource, name="target-resource", curie=OSCAL.curie('target_resource'),
                    model_uri=OSCAL.target_resource, domain=None, range=Optional[Union[dict, MappingResourceReference]])
 
-slots.maps = Slot(uri=OSCAL_MAPPING.maps, name="maps", curie=OSCAL_MAPPING.curie('maps'),
+slots.maps = Slot(uri=OSCAL.maps, name="maps", curie=OSCAL.curie('maps'),
                    model_uri=OSCAL.maps, domain=None, range=Optional[Union[Union[dict, Map], list[Union[dict, Map]]]])
 
-slots.mapping_description = Slot(uri=OSCAL_MAPPING.mapping_description, name="mapping-description", curie=OSCAL_MAPPING.curie('mapping_description'),
+slots.mapping_description = Slot(uri=OSCAL.mapping_description, name="mapping-description", curie=OSCAL.curie('mapping_description'),
                    model_uri=OSCAL.mapping_description, domain=None, range=Optional[str])
 
-slots.source_gap_summary = Slot(uri=OSCAL_MAPPING.source_gap_summary, name="source-gap-summary", curie=OSCAL_MAPPING.curie('source_gap_summary'),
+slots.source_gap_summary = Slot(uri=OSCAL.source_gap_summary, name="source-gap-summary", curie=OSCAL.curie('source_gap_summary'),
                    model_uri=OSCAL.source_gap_summary, domain=None, range=Optional[Union[dict, GapSummary]])
 
-slots.target_gap_summary = Slot(uri=OSCAL_MAPPING.target_gap_summary, name="target-gap-summary", curie=OSCAL_MAPPING.curie('target_gap_summary'),
+slots.target_gap_summary = Slot(uri=OSCAL.target_gap_summary, name="target-gap-summary", curie=OSCAL.curie('target_gap_summary'),
                    model_uri=OSCAL.target_gap_summary, domain=None, range=Optional[Union[dict, GapSummary]])
 
-slots.confidence_score = Slot(uri=OSCAL_MAPPING.confidence_score, name="confidence-score", curie=OSCAL_MAPPING.curie('confidence_score'),
+slots.confidence_score = Slot(uri=OSCAL.confidence_score, name="confidence-score", curie=OSCAL.curie('confidence_score'),
                    model_uri=OSCAL.confidence_score, domain=None, range=Optional[Union[dict, ConfidenceScore]])
 
-slots.coverage = Slot(uri=OSCAL_MAPPING.coverage, name="coverage", curie=OSCAL_MAPPING.curie('coverage'),
+slots.coverage = Slot(uri=OSCAL.coverage, name="coverage", curie=OSCAL.curie('coverage'),
                    model_uri=OSCAL.coverage, domain=None, range=Optional[Union[dict, Coverage]])
 
-slots.relationship = Slot(uri=OSCAL_MAPPING.relationship, name="relationship", curie=OSCAL_MAPPING.curie('relationship'),
+slots.relationship = Slot(uri=OSCAL.relationship, name="relationship", curie=OSCAL.curie('relationship'),
                    model_uri=OSCAL.relationship, domain=None, range=Optional[str])
 
-slots.targets = Slot(uri=OSCAL_MAPPING.targets, name="targets", curie=OSCAL_MAPPING.curie('targets'),
+slots.targets = Slot(uri=OSCAL.targets, name="targets", curie=OSCAL.curie('targets'),
                    model_uri=OSCAL.targets, domain=None, range=Optional[Union[Union[dict, MappingItem], list[Union[dict, MappingItem]]]])
 
-slots.qualifiers = Slot(uri=OSCAL_MAPPING.qualifiers, name="qualifiers", curie=OSCAL_MAPPING.curie('qualifiers'),
+slots.qualifiers = Slot(uri=OSCAL.qualifiers, name="qualifiers", curie=OSCAL.curie('qualifiers'),
                    model_uri=OSCAL.qualifiers, domain=None, range=Optional[Union[Union[dict, QualifierItem], list[Union[dict, QualifierItem]]]])
 
-slots.id_ref = Slot(uri=OSCAL_MAPPING.id_ref, name="id-ref", curie=OSCAL_MAPPING.curie('id_ref'),
+slots.id_ref = Slot(uri=OSCAL.id_ref, name="id-ref", curie=OSCAL.curie('id_ref'),
                    model_uri=OSCAL.id_ref, domain=None, range=Optional[str])
 
-slots.subject = Slot(uri=OSCAL_MAPPING.subject, name="subject", curie=OSCAL_MAPPING.curie('subject'),
+slots.subject = Slot(uri=OSCAL.subject, name="subject", curie=OSCAL.curie('subject'),
                    model_uri=OSCAL.subject, domain=None, range=Optional[Union[str, "QualifierSubjectEnum"]])
 
-slots.predicate = Slot(uri=OSCAL_MAPPING.predicate, name="predicate", curie=OSCAL_MAPPING.curie('predicate'),
+slots.predicate = Slot(uri=OSCAL.predicate, name="predicate", curie=OSCAL.curie('predicate'),
                    model_uri=OSCAL.predicate, domain=None, range=Optional[Union[str, "QualifierPredicateEnum"]])
 
-slots.category = Slot(uri=OSCAL_MAPPING.category, name="category", curie=OSCAL_MAPPING.curie('category'),
+slots.category = Slot(uri=OSCAL.category, name="category", curie=OSCAL.curie('category'),
                    model_uri=OSCAL.category, domain=None, range=Optional[str])
 
-slots.unmapped_controls = Slot(uri=OSCAL_MAPPING.unmapped_controls, name="unmapped-controls", curie=OSCAL_MAPPING.curie('unmapped_controls'),
+slots.unmapped_controls = Slot(uri=OSCAL.unmapped_controls, name="unmapped-controls", curie=OSCAL.curie('unmapped_controls'),
                    model_uri=OSCAL.unmapped_controls, domain=None, range=Optional[Union[Union[dict, SelectControlById], list[Union[dict, SelectControlById]]]])
 
-slots.percentage = Slot(uri=OSCAL_MAPPING.percentage, name="percentage", curie=OSCAL_MAPPING.curie('percentage'),
+slots.percentage = Slot(uri=OSCAL.percentage, name="percentage", curie=OSCAL.curie('percentage'),
                    model_uri=OSCAL.percentage, domain=None, range=Optional[float])
 
-slots.generation_method = Slot(uri=OSCAL_MAPPING.generation_method, name="generation-method", curie=OSCAL_MAPPING.curie('generation_method'),
+slots.generation_method = Slot(uri=OSCAL.generation_method, name="generation-method", curie=OSCAL.curie('generation_method'),
                    model_uri=OSCAL.generation_method, domain=None, range=Optional[str])
 
-slots.target_coverage = Slot(uri=OSCAL_MAPPING.target_coverage, name="target-coverage", curie=OSCAL_MAPPING.curie('target_coverage'),
+slots.target_coverage = Slot(uri=OSCAL.target_coverage, name="target-coverage", curie=OSCAL.curie('target_coverage'),
                    model_uri=OSCAL.target_coverage, domain=None, range=Optional[float])
 
-slots.plan_of_action_and_milestones = Slot(uri=OSCAL_POAM.plan_of_action_and_milestones, name="plan-of-action-and-milestones", curie=OSCAL_POAM.curie('plan_of_action_and_milestones'),
+slots.plan_of_action_and_milestones = Slot(uri=OSCAL.plan_of_action_and_milestones, name="plan-of-action-and-milestones", curie=OSCAL.curie('plan_of_action_and_milestones'),
                    model_uri=OSCAL.plan_of_action_and_milestones, domain=None, range=Optional[Union[dict, PlanOfActionAndMilestones]])
 
-slots.system_id = Slot(uri=OSCAL_POAM.system_id, name="system-id", curie=OSCAL_POAM.curie('system_id'),
+slots.system_id = Slot(uri=OSCAL.system_id, name="system-id", curie=OSCAL.curie('system_id'),
                    model_uri=OSCAL.system_id, domain=None, range=Optional[Union[dict, SystemId]])
 
-slots.poam_items = Slot(uri=OSCAL_POAM.poam_items, name="poam-items", curie=OSCAL_POAM.curie('poam_items'),
+slots.poam_items = Slot(uri=OSCAL.poam_items, name="poam-items", curie=OSCAL.curie('poam_items'),
                    model_uri=OSCAL.poam_items, domain=None, range=Optional[Union[Union[dict, PoamItem], list[Union[dict, PoamItem]]]])
 
-slots.related_findings = Slot(uri=OSCAL_POAM.related_findings, name="related-findings", curie=OSCAL_POAM.curie('related_findings'),
+slots.related_findings = Slot(uri=OSCAL.related_findings, name="related-findings", curie=OSCAL.curie('related_findings'),
                    model_uri=OSCAL.related_findings, domain=None, range=Optional[Union[Union[dict, RelatedFinding], list[Union[dict, RelatedFinding]]]])
 
-slots.finding_uuid = Slot(uri=OSCAL_POAM.finding_uuid, name="finding-uuid", curie=OSCAL_POAM.curie('finding_uuid'),
+slots.finding_uuid = Slot(uri=OSCAL.finding_uuid, name="finding-uuid", curie=OSCAL.curie('finding_uuid'),
                    model_uri=OSCAL.finding_uuid, domain=None, range=Optional[str])
 
-slots.informationTypeCategorization__system = Slot(uri=OSCAL_SSP.system, name="informationTypeCategorization__system", curie=OSCAL_SSP.curie('system'),
+slots.informationTypeCategorization__system = Slot(uri=OSCAL.system, name="informationTypeCategorization__system", curie=OSCAL.curie('system'),
                    model_uri=OSCAL.informationTypeCategorization__system, domain=None, range=str)
 
-slots.informationTypeCategorization__information_type_ids = Slot(uri=OSCAL_SSP.information_type_ids, name="informationTypeCategorization__information_type_ids", curie=OSCAL_SSP.curie('information_type_ids'),
+slots.informationTypeCategorization__information_type_ids = Slot(uri=OSCAL.information_type_ids, name="informationTypeCategorization__information_type_ids", curie=OSCAL.curie('information_type_ids'),
                    model_uri=OSCAL.informationTypeCategorization__information_type_ids, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.systemStatus__state = Slot(uri=OSCAL_SSP.state, name="systemStatus__state", curie=OSCAL_SSP.curie('state'),
+slots.systemStatus__state = Slot(uri=OSCAL.state, name="systemStatus__state", curie=OSCAL.curie('state'),
                    model_uri=OSCAL.systemStatus__state, domain=None, range=Union[str, "SystemOperatingStatusEnum"])
 
-slots.CatalogDocument_catalog = Slot(uri=OSCAL_CATALOG.catalog, name="CatalogDocument_catalog", curie=OSCAL_CATALOG.curie('catalog'),
+slots.CatalogDocument_catalog = Slot(uri=OSCAL.catalog, name="CatalogDocument_catalog", curie=OSCAL.curie('catalog'),
                    model_uri=OSCAL.CatalogDocument_catalog, domain=CatalogDocument, range=Union[dict, "Catalog"])
 
-slots.Catalog_uuid = Slot(uri=OSCAL_CATALOG.uuid, name="Catalog_uuid", curie=OSCAL_CATALOG.curie('uuid'),
+slots.Catalog_uuid = Slot(uri=OSCAL.uuid, name="Catalog_uuid", curie=OSCAL.curie('uuid'),
                    model_uri=OSCAL.Catalog_uuid, domain=Catalog, range=str)
 
-slots.Catalog_metadata = Slot(uri=OSCAL_CATALOG.metadata, name="Catalog_metadata", curie=OSCAL_CATALOG.curie('metadata'),
+slots.Catalog_metadata = Slot(uri=OSCAL.metadata, name="Catalog_metadata", curie=OSCAL.curie('metadata'),
                    model_uri=OSCAL.Catalog_metadata, domain=Catalog, range=Union[dict, "Metadata"])
 
-slots.Group_id = Slot(uri=OSCAL_CATALOG.id, name="Group_id", curie=OSCAL_CATALOG.curie('id'),
+slots.Group_id = Slot(uri=OSCAL.id, name="Group_id", curie=OSCAL.curie('id'),
                    model_uri=OSCAL.Group_id, domain=Group, range=Optional[str])
 
-slots.Group__class = Slot(uri=OSCAL_CATALOG._class, name="Group__class", curie=OSCAL_CATALOG.curie('_class'),
-                   model_uri=OSCAL.Group__class, domain=Group, range=Optional[str])
+slots.Group_class_ = Slot(uri=OSCAL.class_, name="Group_class_", curie=OSCAL.curie('class_'),
+                   model_uri=OSCAL.Group_class_, domain=Group, range=Optional[str])
 
-slots.Group_title = Slot(uri=OSCAL_CATALOG.title, name="Group_title", curie=OSCAL_CATALOG.curie('title'),
+slots.Group_title = Slot(uri=OSCAL.title, name="Group_title", curie=OSCAL.curie('title'),
                    model_uri=OSCAL.Group_title, domain=Group, range=str)
 
-slots.Control_id = Slot(uri=OSCAL_CATALOG.id, name="Control_id", curie=OSCAL_CATALOG.curie('id'),
+slots.Control_id = Slot(uri=OSCAL.id, name="Control_id", curie=OSCAL.curie('id'),
                    model_uri=OSCAL.Control_id, domain=Control, range=str)
 
-slots.Control__class = Slot(uri=OSCAL_CATALOG._class, name="Control__class", curie=OSCAL_CATALOG.curie('_class'),
-                   model_uri=OSCAL.Control__class, domain=Control, range=Optional[str])
+slots.Control_class_ = Slot(uri=OSCAL.class_, name="Control_class_", curie=OSCAL.curie('class_'),
+                   model_uri=OSCAL.Control_class_, domain=Control, range=Optional[str])
 
-slots.Control_title = Slot(uri=OSCAL_CATALOG.title, name="Control_title", curie=OSCAL_CATALOG.curie('title'),
+slots.Control_title = Slot(uri=OSCAL.title, name="Control_title", curie=OSCAL.curie('title'),
                    model_uri=OSCAL.Control_title, domain=Control, range=str)
 
-slots.Metadata_title = Slot(uri=OSCAL_CATALOG.title, name="Metadata_title", curie=OSCAL_CATALOG.curie('title'),
+slots.Metadata_title = Slot(uri=OSCAL.title, name="Metadata_title", curie=OSCAL.curie('title'),
                    model_uri=OSCAL.Metadata_title, domain=Metadata, range=str)
 
-slots.Metadata_last_modified = Slot(uri=OSCAL_CATALOG.last_modified, name="Metadata_last-modified", curie=OSCAL_CATALOG.curie('last_modified'),
+slots.Metadata_last_modified = Slot(uri=OSCAL.last_modified, name="Metadata_last-modified", curie=OSCAL.curie('last_modified'),
                    model_uri=OSCAL.Metadata_last_modified, domain=Metadata, range=str)
 
-slots.Metadata_version = Slot(uri=OSCAL_CATALOG.version, name="Metadata_version", curie=OSCAL_CATALOG.curie('version'),
+slots.Metadata_version = Slot(uri=OSCAL.version, name="Metadata_version", curie=OSCAL.curie('version'),
                    model_uri=OSCAL.Metadata_version, domain=Metadata, range=str)
 
-slots.Metadata_oscal_version = Slot(uri=OSCAL_CATALOG.oscal_version, name="Metadata_oscal-version", curie=OSCAL_CATALOG.curie('oscal_version'),
+slots.Metadata_oscal_version = Slot(uri=OSCAL.oscal_version, name="Metadata_oscal-version", curie=OSCAL.curie('oscal_version'),
                    model_uri=OSCAL.Metadata_oscal_version, domain=Metadata, range=str)
 
-slots.Metadata_props = Slot(uri=OSCAL_CATALOG.props, name="Metadata_props", curie=OSCAL_CATALOG.curie('props'),
+slots.Metadata_props = Slot(uri=OSCAL.props, name="Metadata_props", curie=OSCAL.curie('props'),
                    model_uri=OSCAL.Metadata_props, domain=Metadata, range=Optional[Union[Union[dict, "MetadataProperty"], list[Union[dict, "MetadataProperty"]]]])
 
-slots.Metadata_links = Slot(uri=OSCAL_CATALOG.links, name="Metadata_links", curie=OSCAL_CATALOG.curie('links'),
+slots.Metadata_links = Slot(uri=OSCAL.links, name="Metadata_links", curie=OSCAL.curie('links'),
                    model_uri=OSCAL.Metadata_links, domain=Metadata, range=Optional[Union[Union[dict, "Link"], list[Union[dict, "Link"]]]])
 
-slots.Revision_version = Slot(uri=OSCAL_CATALOG.version, name="Revision_version", curie=OSCAL_CATALOG.curie('version'),
+slots.Revision_version = Slot(uri=OSCAL.version, name="Revision_version", curie=OSCAL.curie('version'),
                    model_uri=OSCAL.Revision_version, domain=Revision, range=str)
 
-slots.Revision_props = Slot(uri=OSCAL_CATALOG.props, name="Revision_props", curie=OSCAL_CATALOG.curie('props'),
+slots.Revision_props = Slot(uri=OSCAL.props, name="Revision_props", curie=OSCAL.curie('props'),
                    model_uri=OSCAL.Revision_props, domain=Revision, range=Optional[Union[Union[dict, "RevisionProperty"], list[Union[dict, "RevisionProperty"]]]])
 
-slots.Revision_links = Slot(uri=OSCAL_CATALOG.links, name="Revision_links", curie=OSCAL_CATALOG.curie('links'),
+slots.Revision_links = Slot(uri=OSCAL.links, name="Revision_links", curie=OSCAL.curie('links'),
                    model_uri=OSCAL.Revision_links, domain=Revision, range=Optional[Union[Union[dict, "Link"], list[Union[dict, "Link"]]]])
 
-slots.DocumentId_scheme = Slot(uri=OSCAL_CATALOG.scheme, name="DocumentId_scheme", curie=OSCAL_CATALOG.curie('scheme'),
+slots.DocumentId_scheme = Slot(uri=OSCAL.scheme, name="DocumentId_scheme", curie=OSCAL.curie('scheme'),
                    model_uri=OSCAL.DocumentId_scheme, domain=DocumentId, range=Optional[str])
 
-slots.DocumentId_identifier = Slot(uri=OSCAL_CATALOG.identifier, name="DocumentId_identifier", curie=OSCAL_CATALOG.curie('identifier'),
+slots.DocumentId_identifier = Slot(uri=OSCAL.identifier, name="DocumentId_identifier", curie=OSCAL.curie('identifier'),
                    model_uri=OSCAL.DocumentId_identifier, domain=DocumentId, range=str)
 
-slots.Role_id = Slot(uri=OSCAL_CATALOG.id, name="Role_id", curie=OSCAL_CATALOG.curie('id'),
+slots.Role_id = Slot(uri=OSCAL.id, name="Role_id", curie=OSCAL.curie('id'),
                    model_uri=OSCAL.Role_id, domain=Role, range=str)
 
-slots.Role_title = Slot(uri=OSCAL_CATALOG.title, name="Role_title", curie=OSCAL_CATALOG.curie('title'),
+slots.Role_title = Slot(uri=OSCAL.title, name="Role_title", curie=OSCAL.curie('title'),
                    model_uri=OSCAL.Role_title, domain=Role, range=str)
 
-slots.Location_uuid = Slot(uri=OSCAL_CATALOG.uuid, name="Location_uuid", curie=OSCAL_CATALOG.curie('uuid'),
+slots.Location_uuid = Slot(uri=OSCAL.uuid, name="Location_uuid", curie=OSCAL.curie('uuid'),
                    model_uri=OSCAL.Location_uuid, domain=Location, range=str)
 
-slots.Location_props = Slot(uri=OSCAL_CATALOG.props, name="Location_props", curie=OSCAL_CATALOG.curie('props'),
+slots.Location_props = Slot(uri=OSCAL.props, name="Location_props", curie=OSCAL.curie('props'),
                    model_uri=OSCAL.Location_props, domain=Location, range=Optional[Union[Union[dict, "LocationProperty"], list[Union[dict, "LocationProperty"]]]])
 
-slots.Party_uuid = Slot(uri=OSCAL_CATALOG.uuid, name="Party_uuid", curie=OSCAL_CATALOG.curie('uuid'),
+slots.Party_uuid = Slot(uri=OSCAL.uuid, name="Party_uuid", curie=OSCAL.curie('uuid'),
                    model_uri=OSCAL.Party_uuid, domain=Party, range=str)
 
-slots.Party_type = Slot(uri=OSCAL_CATALOG.type, name="Party_type", curie=OSCAL_CATALOG.curie('type'),
+slots.Party_type = Slot(uri=OSCAL.type, name="Party_type", curie=OSCAL.curie('type'),
                    model_uri=OSCAL.Party_type, domain=Party, range=Union[str, "PartyTypeEnum"])
 
-slots.Party_name = Slot(uri=OSCAL_CATALOG.name, name="Party_name", curie=OSCAL_CATALOG.curie('name'),
+slots.Party_name = Slot(uri=OSCAL.name, name="Party_name", curie=OSCAL.curie('name'),
                    model_uri=OSCAL.Party_name, domain=Party, range=Optional[str])
 
-slots.Party_props = Slot(uri=OSCAL_CATALOG.props, name="Party_props", curie=OSCAL_CATALOG.curie('props'),
+slots.Party_props = Slot(uri=OSCAL.props, name="Party_props", curie=OSCAL.curie('props'),
                    model_uri=OSCAL.Party_props, domain=Party, range=Optional[Union[Union[dict, "PartyProperty"], list[Union[dict, "PartyProperty"]]]])
 
-slots.Party_external_ids = Slot(uri=OSCAL_CATALOG.external_ids, name="Party_external-ids", curie=OSCAL_CATALOG.curie('external_ids'),
+slots.Party_external_ids = Slot(uri=OSCAL.external_ids, name="Party_external-ids", curie=OSCAL.curie('external_ids'),
                    model_uri=OSCAL.Party_external_ids, domain=Party, range=Optional[Union[Union[dict, "MetadataPartyExternalId"], list[Union[dict, "MetadataPartyExternalId"]]]])
 
-slots.PartyExternalId_scheme = Slot(uri=OSCAL_CATALOG.scheme, name="PartyExternalId_scheme", curie=OSCAL_CATALOG.curie('scheme'),
+slots.PartyExternalId_scheme = Slot(uri=OSCAL.scheme, name="PartyExternalId_scheme", curie=OSCAL.curie('scheme'),
                    model_uri=OSCAL.PartyExternalId_scheme, domain=PartyExternalId, range=str)
 
-slots.PartyExternalId_id = Slot(uri=OSCAL_CATALOG.id, name="PartyExternalId_id", curie=OSCAL_CATALOG.curie('id'),
+slots.PartyExternalId_id = Slot(uri=OSCAL.id, name="PartyExternalId_id", curie=OSCAL.curie('id'),
                    model_uri=OSCAL.PartyExternalId_id, domain=PartyExternalId, range=str)
 
-slots.ResponsibleParty_role_id = Slot(uri=OSCAL_CATALOG.role_id, name="ResponsibleParty_role-id", curie=OSCAL_CATALOG.curie('role_id'),
+slots.ResponsibleParty_role_id = Slot(uri=OSCAL.role_id, name="ResponsibleParty_role-id", curie=OSCAL.curie('role_id'),
                    model_uri=OSCAL.ResponsibleParty_role_id, domain=ResponsibleParty, range=str)
 
-slots.ResponsibleParty_party_uuids = Slot(uri=OSCAL_CATALOG.party_uuids, name="ResponsibleParty_party-uuids", curie=OSCAL_CATALOG.curie('party_uuids'),
+slots.ResponsibleParty_party_uuids = Slot(uri=OSCAL.party_uuids, name="ResponsibleParty_party-uuids", curie=OSCAL.curie('party_uuids'),
                    model_uri=OSCAL.ResponsibleParty_party_uuids, domain=ResponsibleParty, range=Union[str, list[str]])
 
-slots.ResponsibleRole_role_id = Slot(uri=OSCAL_CATALOG.role_id, name="ResponsibleRole_role-id", curie=OSCAL_CATALOG.curie('role_id'),
+slots.ResponsibleRole_role_id = Slot(uri=OSCAL.role_id, name="ResponsibleRole_role-id", curie=OSCAL.curie('role_id'),
                    model_uri=OSCAL.ResponsibleRole_role_id, domain=ResponsibleRole, range=str)
 
-slots.Action_uuid = Slot(uri=OSCAL_CATALOG.uuid, name="Action_uuid", curie=OSCAL_CATALOG.curie('uuid'),
+slots.Action_uuid = Slot(uri=OSCAL.uuid, name="Action_uuid", curie=OSCAL.curie('uuid'),
                    model_uri=OSCAL.Action_uuid, domain=Action, range=str)
 
-slots.Action_type = Slot(uri=OSCAL_CATALOG.type, name="Action_type", curie=OSCAL_CATALOG.curie('type'),
+slots.Action_type = Slot(uri=OSCAL.type, name="Action_type", curie=OSCAL.curie('type'),
                    model_uri=OSCAL.Action_type, domain=Action, range=Union[str, "ActionTypeEnum"])
 
-slots.Action_system = Slot(uri=OSCAL_CATALOG.system, name="Action_system", curie=OSCAL_CATALOG.curie('system'),
+slots.Action_system = Slot(uri=OSCAL.system, name="Action_system", curie=OSCAL.curie('system'),
                    model_uri=OSCAL.Action_system, domain=Action, range=str)
 
-slots.TelephoneNumber_type = Slot(uri=OSCAL_CATALOG.type, name="TelephoneNumber_type", curie=OSCAL_CATALOG.curie('type'),
+slots.TelephoneNumber_type = Slot(uri=OSCAL.type, name="TelephoneNumber_type", curie=OSCAL.curie('type'),
                    model_uri=OSCAL.TelephoneNumber_type, domain=TelephoneNumber, range=Optional[str])
 
-slots.TelephoneNumber_number = Slot(uri=OSCAL_CATALOG.number, name="TelephoneNumber_number", curie=OSCAL_CATALOG.curie('number'),
+slots.TelephoneNumber_number = Slot(uri=OSCAL.number, name="TelephoneNumber_number", curie=OSCAL.curie('number'),
                    model_uri=OSCAL.TelephoneNumber_number, domain=TelephoneNumber, range=str)
 
-slots.Address_type = Slot(uri=OSCAL_CATALOG.type, name="Address_type", curie=OSCAL_CATALOG.curie('type'),
+slots.Address_type = Slot(uri=OSCAL.type, name="Address_type", curie=OSCAL.curie('type'),
                    model_uri=OSCAL.Address_type, domain=Address, range=Optional[str])
 
-slots.Hash_value = Slot(uri=OSCAL_CATALOG.value, name="Hash_value", curie=OSCAL_CATALOG.curie('value'),
+slots.Hash_value = Slot(uri=OSCAL.value, name="Hash_value", curie=OSCAL.curie('value'),
                    model_uri=OSCAL.Hash_value, domain=Hash, range=str)
 
-slots.Hash_algorithm = Slot(uri=OSCAL_CATALOG.algorithm, name="Hash_algorithm", curie=OSCAL_CATALOG.curie('algorithm'),
+slots.Hash_algorithm = Slot(uri=OSCAL.algorithm, name="Hash_algorithm", curie=OSCAL.curie('algorithm'),
                    model_uri=OSCAL.Hash_algorithm, domain=Hash, range=str)
 
-slots.Property_name = Slot(uri=OSCAL_CATALOG.name, name="Property_name", curie=OSCAL_CATALOG.curie('name'),
+slots.Property_name = Slot(uri=OSCAL.name, name="Property_name", curie=OSCAL.curie('name'),
                    model_uri=OSCAL.Property_name, domain=Property, range=str)
 
-slots.Property_uuid = Slot(uri=OSCAL_CATALOG.uuid, name="Property_uuid", curie=OSCAL_CATALOG.curie('uuid'),
+slots.Property_uuid = Slot(uri=OSCAL.uuid, name="Property_uuid", curie=OSCAL.curie('uuid'),
                    model_uri=OSCAL.Property_uuid, domain=Property, range=Optional[str])
 
-slots.Property_ns = Slot(uri=OSCAL_CATALOG.ns, name="Property_ns", curie=OSCAL_CATALOG.curie('ns'),
+slots.Property_ns = Slot(uri=OSCAL.ns, name="Property_ns", curie=OSCAL.curie('ns'),
                    model_uri=OSCAL.Property_ns, domain=Property, range=Optional[str])
 
-slots.Property_value = Slot(uri=OSCAL_CATALOG.value, name="Property_value", curie=OSCAL_CATALOG.curie('value'),
+slots.Property_value = Slot(uri=OSCAL.value, name="Property_value", curie=OSCAL.curie('value'),
                    model_uri=OSCAL.Property_value, domain=Property, range=str)
 
-slots.Property__class = Slot(uri=OSCAL_CATALOG._class, name="Property__class", curie=OSCAL_CATALOG.curie('_class'),
-                   model_uri=OSCAL.Property__class, domain=Property, range=Optional[str])
+slots.Property_class_ = Slot(uri=OSCAL.class_, name="Property_class_", curie=OSCAL.curie('class_'),
+                   model_uri=OSCAL.Property_class_, domain=Property, range=Optional[str])
 
-slots.MetadataProperty_name = Slot(uri=OSCAL_CATALOG.name, name="MetadataProperty_name", curie=OSCAL_CATALOG.curie('name'),
+slots.MetadataProperty_name = Slot(uri=OSCAL.name, name="MetadataProperty_name", curie=OSCAL.curie('name'),
                    model_uri=OSCAL.MetadataProperty_name, domain=MetadataProperty, range=Union[str, "MetadataPropNameEnum"])
 
-slots.RevisionProperty_name = Slot(uri=OSCAL_CATALOG.name, name="RevisionProperty_name", curie=OSCAL_CATALOG.curie('name'),
+slots.RevisionProperty_name = Slot(uri=OSCAL.name, name="RevisionProperty_name", curie=OSCAL.curie('name'),
                    model_uri=OSCAL.RevisionProperty_name, domain=RevisionProperty, range=Union[str, "RevisionPropNameEnum"])
 
-slots.LocationProperty_name = Slot(uri=OSCAL_CATALOG.name, name="LocationProperty_name", curie=OSCAL_CATALOG.curie('name'),
+slots.LocationProperty_name = Slot(uri=OSCAL.name, name="LocationProperty_name", curie=OSCAL.curie('name'),
                    model_uri=OSCAL.LocationProperty_name, domain=LocationProperty, range=Union[str, "LocationPropNameEnum"])
 
-slots.LocationProperty_value = Slot(uri=OSCAL_CATALOG.value, name="LocationProperty_value", curie=OSCAL_CATALOG.curie('value'),
+slots.LocationProperty_value = Slot(uri=OSCAL.value, name="LocationProperty_value", curie=OSCAL.curie('value'),
                    model_uri=OSCAL.LocationProperty_value, domain=LocationProperty, range=str)
 
-slots.LocationProperty__class = Slot(uri=OSCAL_CATALOG._class, name="LocationProperty__class", curie=OSCAL_CATALOG.curie('_class'),
-                   model_uri=OSCAL.LocationProperty__class, domain=LocationProperty, range=Optional[str])
+slots.LocationProperty_class_ = Slot(uri=OSCAL.class_, name="LocationProperty_class_", curie=OSCAL.curie('class_'),
+                   model_uri=OSCAL.LocationProperty_class_, domain=LocationProperty, range=Optional[str])
 
-slots.PartyProperty_name = Slot(uri=OSCAL_CATALOG.name, name="PartyProperty_name", curie=OSCAL_CATALOG.curie('name'),
+slots.PartyProperty_name = Slot(uri=OSCAL.name, name="PartyProperty_name", curie=OSCAL.curie('name'),
                    model_uri=OSCAL.PartyProperty_name, domain=PartyProperty, range=Union[str, "PartyPropNameEnum"])
 
-slots.ResourceProperty_name = Slot(uri=OSCAL_CATALOG.name, name="ResourceProperty_name", curie=OSCAL_CATALOG.curie('name'),
+slots.ResourceProperty_name = Slot(uri=OSCAL.name, name="ResourceProperty_name", curie=OSCAL.curie('name'),
                    model_uri=OSCAL.ResourceProperty_name, domain=ResourceProperty, range=Union[str, "ResourcePropNameEnum"])
 
-slots.ResourceProperty_value = Slot(uri=OSCAL_CATALOG.value, name="ResourceProperty_value", curie=OSCAL_CATALOG.curie('value'),
+slots.ResourceProperty_value = Slot(uri=OSCAL.value, name="ResourceProperty_value", curie=OSCAL.curie('value'),
                    model_uri=OSCAL.ResourceProperty_value, domain=ResourceProperty, range=str)
 
-slots.PartProperty_name = Slot(uri=OSCAL_CATALOG.name, name="PartProperty_name", curie=OSCAL_CATALOG.curie('name'),
+slots.PartProperty_name = Slot(uri=OSCAL.name, name="PartProperty_name", curie=OSCAL.curie('name'),
                    model_uri=OSCAL.PartProperty_name, domain=PartProperty, range=Union[str, "PartPropNameEnum"])
 
-slots.ParameterProperty_name = Slot(uri=OSCAL_CATALOG.name, name="ParameterProperty_name", curie=OSCAL_CATALOG.curie('name'),
+slots.ParameterProperty_name = Slot(uri=OSCAL.name, name="ParameterProperty_name", curie=OSCAL.curie('name'),
                    model_uri=OSCAL.ParameterProperty_name, domain=ParameterProperty, range=str)
 
-slots.Link_href = Slot(uri=OSCAL_CATALOG.href, name="Link_href", curie=OSCAL_CATALOG.curie('href'),
+slots.Link_href = Slot(uri=OSCAL.href, name="Link_href", curie=OSCAL.curie('href'),
                    model_uri=OSCAL.Link_href, domain=Link, range=str)
 
-slots.Link_rel = Slot(uri=OSCAL_CATALOG.rel, name="Link_rel", curie=OSCAL_CATALOG.curie('rel'),
+slots.Link_rel = Slot(uri=OSCAL.rel, name="Link_rel", curie=OSCAL.curie('rel'),
                    model_uri=OSCAL.Link_rel, domain=Link, range=Optional[str])
 
-slots.Resource_uuid = Slot(uri=OSCAL_CATALOG.uuid, name="Resource_uuid", curie=OSCAL_CATALOG.curie('uuid'),
+slots.Resource_uuid = Slot(uri=OSCAL.uuid, name="Resource_uuid", curie=OSCAL.curie('uuid'),
                    model_uri=OSCAL.Resource_uuid, domain=Resource, range=str)
 
-slots.Resource_title = Slot(uri=OSCAL_CATALOG.title, name="Resource_title", curie=OSCAL_CATALOG.curie('title'),
+slots.Resource_title = Slot(uri=OSCAL.title, name="Resource_title", curie=OSCAL.curie('title'),
                    model_uri=OSCAL.Resource_title, domain=Resource, range=Optional[str])
 
-slots.Resource_description = Slot(uri=OSCAL_CATALOG.description, name="Resource_description", curie=OSCAL_CATALOG.curie('description'),
+slots.Resource_description = Slot(uri=OSCAL.description, name="Resource_description", curie=OSCAL.curie('description'),
                    model_uri=OSCAL.Resource_description, domain=Resource, range=Optional[str])
 
-slots.Resource_props = Slot(uri=OSCAL_CATALOG.props, name="Resource_props", curie=OSCAL_CATALOG.curie('props'),
+slots.Resource_props = Slot(uri=OSCAL.props, name="Resource_props", curie=OSCAL.curie('props'),
                    model_uri=OSCAL.Resource_props, domain=Resource, range=Optional[Union[Union[dict, ResourceProperty], list[Union[dict, ResourceProperty]]]])
 
-slots.Resource_document_ids = Slot(uri=OSCAL_CATALOG.document_ids, name="Resource_document-ids", curie=OSCAL_CATALOG.curie('document_ids'),
+slots.Resource_document_ids = Slot(uri=OSCAL.document_ids, name="Resource_document-ids", curie=OSCAL.curie('document_ids'),
                    model_uri=OSCAL.Resource_document_ids, domain=Resource, range=Optional[Union[Union[dict, DocumentId], list[Union[dict, DocumentId]]]])
 
-slots.Citation_text = Slot(uri=OSCAL_CATALOG.text, name="Citation_text", curie=OSCAL_CATALOG.curie('text'),
+slots.Citation_text = Slot(uri=OSCAL.text, name="Citation_text", curie=OSCAL.curie('text'),
                    model_uri=OSCAL.Citation_text, domain=Citation, range=str)
 
-slots.Citation_links = Slot(uri=OSCAL_CATALOG.links, name="Citation_links", curie=OSCAL_CATALOG.curie('links'),
+slots.Citation_links = Slot(uri=OSCAL.links, name="Citation_links", curie=OSCAL.curie('links'),
                    model_uri=OSCAL.Citation_links, domain=Citation, range=Optional[Union[Union[dict, Link], list[Union[dict, Link]]]])
 
-slots.ResourceLink_href = Slot(uri=OSCAL_CATALOG.href, name="ResourceLink_href", curie=OSCAL_CATALOG.curie('href'),
+slots.ResourceLink_href = Slot(uri=OSCAL.href, name="ResourceLink_href", curie=OSCAL.curie('href'),
                    model_uri=OSCAL.ResourceLink_href, domain=ResourceLink, range=str)
 
-slots.Base64Resource_value = Slot(uri=OSCAL_CATALOG.value, name="Base64Resource_value", curie=OSCAL_CATALOG.curie('value'),
+slots.Base64Resource_value = Slot(uri=OSCAL.value, name="Base64Resource_value", curie=OSCAL.curie('value'),
                    model_uri=OSCAL.Base64Resource_value, domain=Base64Resource, range=str)
 
-slots.Part_id = Slot(uri=OSCAL_CATALOG.id, name="Part_id", curie=OSCAL_CATALOG.curie('id'),
+slots.Part_id = Slot(uri=OSCAL.id, name="Part_id", curie=OSCAL.curie('id'),
                    model_uri=OSCAL.Part_id, domain=Part, range=Optional[str])
 
-slots.Part_name = Slot(uri=OSCAL_CATALOG.name, name="Part_name", curie=OSCAL_CATALOG.curie('name'),
+slots.Part_name = Slot(uri=OSCAL.name, name="Part_name", curie=OSCAL.curie('name'),
                    model_uri=OSCAL.Part_name, domain=Part, range=str)
 
-slots.Part_ns = Slot(uri=OSCAL_CATALOG.ns, name="Part_ns", curie=OSCAL_CATALOG.curie('ns'),
+slots.Part_ns = Slot(uri=OSCAL.ns, name="Part_ns", curie=OSCAL.curie('ns'),
                    model_uri=OSCAL.Part_ns, domain=Part, range=Optional[str])
 
-slots.Part__class = Slot(uri=OSCAL_CATALOG._class, name="Part__class", curie=OSCAL_CATALOG.curie('_class'),
-                   model_uri=OSCAL.Part__class, domain=Part, range=Optional[str])
+slots.Part_class_ = Slot(uri=OSCAL.class_, name="Part_class_", curie=OSCAL.curie('class_'),
+                   model_uri=OSCAL.Part_class_, domain=Part, range=Optional[str])
 
-slots.Part_title = Slot(uri=OSCAL_CATALOG.title, name="Part_title", curie=OSCAL_CATALOG.curie('title'),
+slots.Part_title = Slot(uri=OSCAL.title, name="Part_title", curie=OSCAL.curie('title'),
                    model_uri=OSCAL.Part_title, domain=Part, range=Optional[str])
 
-slots.Part_prose = Slot(uri=OSCAL_CATALOG.prose, name="Part_prose", curie=OSCAL_CATALOG.curie('prose'),
+slots.Part_prose = Slot(uri=OSCAL.prose, name="Part_prose", curie=OSCAL.curie('prose'),
                    model_uri=OSCAL.Part_prose, domain=Part, range=Optional[str])
 
-slots.Part_props = Slot(uri=OSCAL_CATALOG.props, name="Part_props", curie=OSCAL_CATALOG.curie('props'),
+slots.Part_props = Slot(uri=OSCAL.props, name="Part_props", curie=OSCAL.curie('props'),
                    model_uri=OSCAL.Part_props, domain=Part, range=Optional[Union[Union[dict, PartProperty], list[Union[dict, PartProperty]]]])
 
-slots.Parameter_id = Slot(uri=OSCAL_CATALOG.id, name="Parameter_id", curie=OSCAL_CATALOG.curie('id'),
+slots.Parameter_id = Slot(uri=OSCAL.id, name="Parameter_id", curie=OSCAL.curie('id'),
                    model_uri=OSCAL.Parameter_id, domain=Parameter, range=str)
 
-slots.Parameter__class = Slot(uri=OSCAL_CATALOG._class, name="Parameter__class", curie=OSCAL_CATALOG.curie('_class'),
-                   model_uri=OSCAL.Parameter__class, domain=Parameter, range=Optional[str])
+slots.Parameter_class_ = Slot(uri=OSCAL.class_, name="Parameter_class_", curie=OSCAL.curie('class_'),
+                   model_uri=OSCAL.Parameter_class_, domain=Parameter, range=Optional[str])
 
-slots.Parameter_props = Slot(uri=OSCAL_CATALOG.props, name="Parameter_props", curie=OSCAL_CATALOG.curie('props'),
+slots.Parameter_props = Slot(uri=OSCAL.props, name="Parameter_props", curie=OSCAL.curie('props'),
                    model_uri=OSCAL.Parameter_props, domain=Parameter, range=Optional[Union[Union[dict, ParameterProperty], list[Union[dict, ParameterProperty]]]])
 
-slots.ParameterConstraint_description = Slot(uri=OSCAL_CATALOG.description, name="ParameterConstraint_description", curie=OSCAL_CATALOG.curie('description'),
+slots.ParameterConstraint_description = Slot(uri=OSCAL.description, name="ParameterConstraint_description", curie=OSCAL.curie('description'),
                    model_uri=OSCAL.ParameterConstraint_description, domain=ParameterConstraint, range=Optional[str])
 
-slots.ConstraintTest_expression = Slot(uri=OSCAL_CATALOG.expression, name="ConstraintTest_expression", curie=OSCAL_CATALOG.curie('expression'),
+slots.ConstraintTest_expression = Slot(uri=OSCAL.expression, name="ConstraintTest_expression", curie=OSCAL.curie('expression'),
                    model_uri=OSCAL.ConstraintTest_expression, domain=ConstraintTest, range=str)
 
-slots.ParameterGuideline_prose = Slot(uri=OSCAL_CATALOG.prose, name="ParameterGuideline_prose", curie=OSCAL_CATALOG.curie('prose'),
+slots.ParameterGuideline_prose = Slot(uri=OSCAL.prose, name="ParameterGuideline_prose", curie=OSCAL.curie('prose'),
                    model_uri=OSCAL.ParameterGuideline_prose, domain=ParameterGuideline, range=str)
 
-slots.ProfileDocument_profile = Slot(uri=OSCAL_PROFILE.profile, name="ProfileDocument_profile", curie=OSCAL_PROFILE.curie('profile'),
+slots.ProfileDocument_profile = Slot(uri=OSCAL.profile, name="ProfileDocument_profile", curie=OSCAL.curie('profile'),
                    model_uri=OSCAL.ProfileDocument_profile, domain=ProfileDocument, range=Union[dict, "Profile"])
 
-slots.Profile_uuid = Slot(uri=OSCAL_CATALOG.uuid, name="Profile_uuid", curie=OSCAL_CATALOG.curie('uuid'),
+slots.Profile_uuid = Slot(uri=OSCAL.uuid, name="Profile_uuid", curie=OSCAL.curie('uuid'),
                    model_uri=OSCAL.Profile_uuid, domain=Profile, range=str)
 
-slots.Profile_metadata = Slot(uri=OSCAL_CATALOG.metadata, name="Profile_metadata", curie=OSCAL_CATALOG.curie('metadata'),
+slots.Profile_metadata = Slot(uri=OSCAL.metadata, name="Profile_metadata", curie=OSCAL.curie('metadata'),
                    model_uri=OSCAL.Profile_metadata, domain=Profile, range=Union[dict, Metadata])
 
-slots.Profile_imports = Slot(uri=OSCAL_PROFILE.imports, name="Profile_imports", curie=OSCAL_PROFILE.curie('imports'),
+slots.Profile_imports = Slot(uri=OSCAL.imports, name="Profile_imports", curie=OSCAL.curie('imports'),
                    model_uri=OSCAL.Profile_imports, domain=Profile, range=Union[Union[dict, "ProfileImport"], list[Union[dict, "ProfileImport"]]])
 
-slots.ProfileImport_href = Slot(uri=OSCAL_CATALOG.href, name="ProfileImport_href", curie=OSCAL_CATALOG.curie('href'),
+slots.ProfileImport_href = Slot(uri=OSCAL.href, name="ProfileImport_href", curie=OSCAL.curie('href'),
                    model_uri=OSCAL.ProfileImport_href, domain=ProfileImport, range=str)
 
-slots.ProfileImport_include_controls = Slot(uri=OSCAL_CATALOG.include_controls, name="ProfileImport_include-controls", curie=OSCAL_CATALOG.curie('include_controls'),
+slots.ProfileImport_include_controls = Slot(uri=OSCAL.include_controls, name="ProfileImport_include-controls", curie=OSCAL.curie('include_controls'),
                    model_uri=OSCAL.ProfileImport_include_controls, domain=ProfileImport, range=Optional[Union[Union[dict, SelectControlById], list[Union[dict, SelectControlById]]]])
 
-slots.ProfileImport_exclude_controls = Slot(uri=OSCAL_CATALOG.exclude_controls, name="ProfileImport_exclude-controls", curie=OSCAL_CATALOG.curie('exclude_controls'),
+slots.ProfileImport_exclude_controls = Slot(uri=OSCAL.exclude_controls, name="ProfileImport_exclude-controls", curie=OSCAL.curie('exclude_controls'),
                    model_uri=OSCAL.ProfileImport_exclude_controls, domain=ProfileImport, range=Optional[Union[Union[dict, SelectControlById], list[Union[dict, SelectControlById]]]])
 
-slots.CombinationRule_method = Slot(uri=OSCAL_CATALOG.method, name="CombinationRule_method", curie=OSCAL_CATALOG.curie('method'),
+slots.CombinationRule_method = Slot(uri=OSCAL.method, name="CombinationRule_method", curie=OSCAL.curie('method'),
                    model_uri=OSCAL.CombinationRule_method, domain=CombinationRule, range=Optional[Union[str, "CombinationMethodEnum"]])
 
-slots.MergeCustom_groups = Slot(uri=OSCAL_CATALOG.groups, name="MergeCustom_groups", curie=OSCAL_CATALOG.curie('groups'),
+slots.MergeCustom_groups = Slot(uri=OSCAL.groups, name="MergeCustom_groups", curie=OSCAL.curie('groups'),
                    model_uri=OSCAL.MergeCustom_groups, domain=MergeCustom, range=Optional[Union[Union[dict, "ProfileGroup"], list[Union[dict, "ProfileGroup"]]]])
 
-slots.ProfileGroup_title = Slot(uri=OSCAL_CATALOG.title, name="ProfileGroup_title", curie=OSCAL_CATALOG.curie('title'),
+slots.ProfileGroup_title = Slot(uri=OSCAL.title, name="ProfileGroup_title", curie=OSCAL.curie('title'),
                    model_uri=OSCAL.ProfileGroup_title, domain=ProfileGroup, range=str)
 
-slots.ProfileGroup_groups = Slot(uri=OSCAL_CATALOG.groups, name="ProfileGroup_groups", curie=OSCAL_CATALOG.curie('groups'),
+slots.ProfileGroup_groups = Slot(uri=OSCAL.groups, name="ProfileGroup_groups", curie=OSCAL.curie('groups'),
                    model_uri=OSCAL.ProfileGroup_groups, domain=ProfileGroup, range=Optional[Union[Union[dict, "ProfileGroup"], list[Union[dict, "ProfileGroup"]]]])
 
-slots.ProfileModify_set_parameters = Slot(uri=OSCAL_CATALOG.set_parameters, name="ProfileModify_set-parameters", curie=OSCAL_CATALOG.curie('set_parameters'),
+slots.ProfileModify_set_parameters = Slot(uri=OSCAL.set_parameters, name="ProfileModify_set-parameters", curie=OSCAL.curie('set_parameters'),
                    model_uri=OSCAL.ProfileModify_set_parameters, domain=ProfileModify, range=Optional[Union[Union[dict, "ParameterSetting"], list[Union[dict, "ParameterSetting"]]]])
 
-slots.ParameterSetting_param_id = Slot(uri=OSCAL_CATALOG.param_id, name="ParameterSetting_param-id", curie=OSCAL_CATALOG.curie('param_id'),
+slots.ParameterSetting_param_id = Slot(uri=OSCAL.param_id, name="ParameterSetting_param-id", curie=OSCAL.curie('param_id'),
                    model_uri=OSCAL.ParameterSetting_param_id, domain=ParameterSetting, range=str)
 
-slots.Alteration_control_id = Slot(uri=OSCAL_CATALOG.control_id, name="Alteration_control-id", curie=OSCAL_CATALOG.curie('control_id'),
+slots.Alteration_control_id = Slot(uri=OSCAL.control_id, name="Alteration_control-id", curie=OSCAL.curie('control_id'),
                    model_uri=OSCAL.Alteration_control_id, domain=Alteration, range=str)
 
-slots.Addition_props = Slot(uri=OSCAL_CATALOG.props, name="Addition_props", curie=OSCAL_CATALOG.curie('props'),
+slots.Addition_props = Slot(uri=OSCAL.props, name="Addition_props", curie=OSCAL.curie('props'),
                    model_uri=OSCAL.Addition_props, domain=Addition, range=Optional[Union[Union[dict, "ProfileAlterationProperty"], list[Union[dict, "ProfileAlterationProperty"]]]])
 
-slots.ProfileAlterationProperty_name = Slot(uri=OSCAL_CATALOG.name, name="ProfileAlterationProperty_name", curie=OSCAL_CATALOG.curie('name'),
+slots.ProfileAlterationProperty_name = Slot(uri=OSCAL.name, name="ProfileAlterationProperty_name", curie=OSCAL.curie('name'),
                    model_uri=OSCAL.ProfileAlterationProperty_name, domain=ProfileAlterationProperty, range=Union[str, "AlterationPropNameEnum"])
 
-slots.InsertControls_include_controls = Slot(uri=OSCAL_CATALOG.include_controls, name="InsertControls_include-controls", curie=OSCAL_CATALOG.curie('include_controls'),
+slots.InsertControls_include_controls = Slot(uri=OSCAL.include_controls, name="InsertControls_include-controls", curie=OSCAL.curie('include_controls'),
                    model_uri=OSCAL.InsertControls_include_controls, domain=InsertControls, range=Optional[Union[Union[dict, SelectControlById], list[Union[dict, SelectControlById]]]])
 
-slots.InsertControls_exclude_controls = Slot(uri=OSCAL_CATALOG.exclude_controls, name="InsertControls_exclude-controls", curie=OSCAL_CATALOG.curie('exclude_controls'),
+slots.InsertControls_exclude_controls = Slot(uri=OSCAL.exclude_controls, name="InsertControls_exclude-controls", curie=OSCAL.curie('exclude_controls'),
                    model_uri=OSCAL.InsertControls_exclude_controls, domain=InsertControls, range=Optional[Union[Union[dict, SelectControlById], list[Union[dict, SelectControlById]]]])
 
-slots.SspDocument_system_security_plan = Slot(uri=OSCAL_SSP.system_security_plan, name="SspDocument_system-security-plan", curie=OSCAL_SSP.curie('system_security_plan'),
+slots.SspDocument_system_security_plan = Slot(uri=OSCAL.system_security_plan, name="SspDocument_system-security-plan", curie=OSCAL.curie('system_security_plan'),
                    model_uri=OSCAL.SspDocument_system_security_plan, domain=SspDocument, range=Union[dict, "SystemSecurityPlan"])
 
-slots.SystemSecurityPlan_uuid = Slot(uri=OSCAL_CATALOG.uuid, name="SystemSecurityPlan_uuid", curie=OSCAL_CATALOG.curie('uuid'),
+slots.SystemSecurityPlan_uuid = Slot(uri=OSCAL.uuid, name="SystemSecurityPlan_uuid", curie=OSCAL.curie('uuid'),
                    model_uri=OSCAL.SystemSecurityPlan_uuid, domain=SystemSecurityPlan, range=str)
 
-slots.SystemSecurityPlan_metadata = Slot(uri=OSCAL_CATALOG.metadata, name="SystemSecurityPlan_metadata", curie=OSCAL_CATALOG.curie('metadata'),
+slots.SystemSecurityPlan_metadata = Slot(uri=OSCAL.metadata, name="SystemSecurityPlan_metadata", curie=OSCAL.curie('metadata'),
                    model_uri=OSCAL.SystemSecurityPlan_metadata, domain=SystemSecurityPlan, range=Union[dict, Metadata])
 
-slots.SystemSecurityPlan_import_profile = Slot(uri=OSCAL_SSP.import_profile, name="SystemSecurityPlan_import-profile", curie=OSCAL_SSP.curie('import_profile'),
+slots.SystemSecurityPlan_import_profile = Slot(uri=OSCAL.import_profile, name="SystemSecurityPlan_import-profile", curie=OSCAL.curie('import_profile'),
                    model_uri=OSCAL.SystemSecurityPlan_import_profile, domain=SystemSecurityPlan, range=Union[dict, "ImportProfile"])
 
-slots.SystemSecurityPlan_system_characteristics = Slot(uri=OSCAL_SSP.system_characteristics, name="SystemSecurityPlan_system-characteristics", curie=OSCAL_SSP.curie('system_characteristics'),
+slots.SystemSecurityPlan_system_characteristics = Slot(uri=OSCAL.system_characteristics, name="SystemSecurityPlan_system-characteristics", curie=OSCAL.curie('system_characteristics'),
                    model_uri=OSCAL.SystemSecurityPlan_system_characteristics, domain=SystemSecurityPlan, range=Union[dict, "SystemCharacteristics"])
 
-slots.SystemSecurityPlan_system_implementation = Slot(uri=OSCAL_SSP.system_implementation, name="SystemSecurityPlan_system-implementation", curie=OSCAL_SSP.curie('system_implementation'),
+slots.SystemSecurityPlan_system_implementation = Slot(uri=OSCAL.system_implementation, name="SystemSecurityPlan_system-implementation", curie=OSCAL.curie('system_implementation'),
                    model_uri=OSCAL.SystemSecurityPlan_system_implementation, domain=SystemSecurityPlan, range=Union[dict, "SystemImplementation"])
 
-slots.SystemSecurityPlan_control_implementation = Slot(uri=OSCAL_SSP.control_implementation, name="SystemSecurityPlan_control-implementation", curie=OSCAL_SSP.curie('control_implementation'),
+slots.SystemSecurityPlan_control_implementation = Slot(uri=OSCAL.control_implementation, name="SystemSecurityPlan_control-implementation", curie=OSCAL.curie('control_implementation'),
                    model_uri=OSCAL.SystemSecurityPlan_control_implementation, domain=SystemSecurityPlan, range=Union[dict, "SspControlImplementation"])
 
-slots.ImportProfile_href = Slot(uri=OSCAL_CATALOG.href, name="ImportProfile_href", curie=OSCAL_CATALOG.curie('href'),
+slots.ImportProfile_href = Slot(uri=OSCAL.href, name="ImportProfile_href", curie=OSCAL.curie('href'),
                    model_uri=OSCAL.ImportProfile_href, domain=ImportProfile, range=str)
 
-slots.SystemCharacteristics_system_ids = Slot(uri=OSCAL_SSP.system_ids, name="SystemCharacteristics_system-ids", curie=OSCAL_SSP.curie('system_ids'),
+slots.SystemCharacteristics_system_ids = Slot(uri=OSCAL.system_ids, name="SystemCharacteristics_system-ids", curie=OSCAL.curie('system_ids'),
                    model_uri=OSCAL.SystemCharacteristics_system_ids, domain=SystemCharacteristics, range=Union[Union[dict, "SystemId"], list[Union[dict, "SystemId"]]])
 
-slots.SystemCharacteristics_system_name = Slot(uri=OSCAL_SSP.system_name, name="SystemCharacteristics_system-name", curie=OSCAL_SSP.curie('system_name'),
+slots.SystemCharacteristics_system_name = Slot(uri=OSCAL.system_name, name="SystemCharacteristics_system-name", curie=OSCAL.curie('system_name'),
                    model_uri=OSCAL.SystemCharacteristics_system_name, domain=SystemCharacteristics, range=str)
 
-slots.SystemCharacteristics_description = Slot(uri=OSCAL_CATALOG.description, name="SystemCharacteristics_description", curie=OSCAL_CATALOG.curie('description'),
+slots.SystemCharacteristics_description = Slot(uri=OSCAL.description, name="SystemCharacteristics_description", curie=OSCAL.curie('description'),
                    model_uri=OSCAL.SystemCharacteristics_description, domain=SystemCharacteristics, range=str)
 
-slots.SystemCharacteristics_system_information = Slot(uri=OSCAL_SSP.system_information, name="SystemCharacteristics_system-information", curie=OSCAL_SSP.curie('system_information'),
+slots.SystemCharacteristics_system_information = Slot(uri=OSCAL.system_information, name="SystemCharacteristics_system-information", curie=OSCAL.curie('system_information'),
                    model_uri=OSCAL.SystemCharacteristics_system_information, domain=SystemCharacteristics, range=Union[dict, "SystemInformation"])
 
-slots.SystemCharacteristics_system_status = Slot(uri=OSCAL_SSP.system_status, name="SystemCharacteristics_system-status", curie=OSCAL_SSP.curie('system_status'),
+slots.SystemCharacteristics_system_status = Slot(uri=OSCAL.system_status, name="SystemCharacteristics_system-status", curie=OSCAL.curie('system_status'),
                    model_uri=OSCAL.SystemCharacteristics_system_status, domain=SystemCharacteristics, range=Union[dict, "SystemStatus"])
 
-slots.SystemCharacteristics_authorization_boundary = Slot(uri=OSCAL_SSP.authorization_boundary, name="SystemCharacteristics_authorization-boundary", curie=OSCAL_SSP.curie('authorization_boundary'),
+slots.SystemCharacteristics_authorization_boundary = Slot(uri=OSCAL.authorization_boundary, name="SystemCharacteristics_authorization-boundary", curie=OSCAL.curie('authorization_boundary'),
                    model_uri=OSCAL.SystemCharacteristics_authorization_boundary, domain=SystemCharacteristics, range=Union[dict, "AuthorizationBoundary"])
 
-slots.SystemCharacteristics_props = Slot(uri=OSCAL_CATALOG.props, name="SystemCharacteristics_props", curie=OSCAL_CATALOG.curie('props'),
+slots.SystemCharacteristics_props = Slot(uri=OSCAL.props, name="SystemCharacteristics_props", curie=OSCAL.curie('props'),
                    model_uri=OSCAL.SystemCharacteristics_props, domain=SystemCharacteristics, range=Optional[Union[Union[dict, "SspSystemCharacteristicsProp"], list[Union[dict, "SspSystemCharacteristicsProp"]]]])
 
-slots.SystemCharacteristics_responsible_parties = Slot(uri=OSCAL_CATALOG.responsible_parties, name="SystemCharacteristics_responsible-parties", curie=OSCAL_CATALOG.curie('responsible_parties'),
+slots.SystemCharacteristics_responsible_parties = Slot(uri=OSCAL.responsible_parties, name="SystemCharacteristics_responsible-parties", curie=OSCAL.curie('responsible_parties'),
                    model_uri=OSCAL.SystemCharacteristics_responsible_parties, domain=SystemCharacteristics, range=Optional[Union[Union[dict, "SspSystemCharacteristicsResponsibleParty"], list[Union[dict, "SspSystemCharacteristicsResponsibleParty"]]]])
 
-slots.SystemInformation_information_types = Slot(uri=OSCAL_SSP.information_types, name="SystemInformation_information-types", curie=OSCAL_SSP.curie('information_types'),
+slots.SystemInformation_information_types = Slot(uri=OSCAL.information_types, name="SystemInformation_information-types", curie=OSCAL.curie('information_types'),
                    model_uri=OSCAL.SystemInformation_information_types, domain=SystemInformation, range=Union[Union[dict, "InformationType"], list[Union[dict, "InformationType"]]])
 
-slots.SystemInformation_props = Slot(uri=OSCAL_CATALOG.props, name="SystemInformation_props", curie=OSCAL_CATALOG.curie('props'),
+slots.SystemInformation_props = Slot(uri=OSCAL.props, name="SystemInformation_props", curie=OSCAL.curie('props'),
                    model_uri=OSCAL.SystemInformation_props, domain=SystemInformation, range=Optional[Union[Union[dict, "SspSystemInformationProp"], list[Union[dict, "SspSystemInformationProp"]]]])
 
-slots.SystemInformation_links = Slot(uri=OSCAL_CATALOG.links, name="SystemInformation_links", curie=OSCAL_CATALOG.curie('links'),
+slots.SystemInformation_links = Slot(uri=OSCAL.links, name="SystemInformation_links", curie=OSCAL.curie('links'),
                    model_uri=OSCAL.SystemInformation_links, domain=SystemInformation, range=Optional[Union[Union[dict, "SspSystemInformationLink"], list[Union[dict, "SspSystemInformationLink"]]]])
 
-slots.InformationType_title = Slot(uri=OSCAL_CATALOG.title, name="InformationType_title", curie=OSCAL_CATALOG.curie('title'),
+slots.InformationType_title = Slot(uri=OSCAL.title, name="InformationType_title", curie=OSCAL.curie('title'),
                    model_uri=OSCAL.InformationType_title, domain=InformationType, range=str)
 
-slots.InformationType_description = Slot(uri=OSCAL_CATALOG.description, name="InformationType_description", curie=OSCAL_CATALOG.curie('description'),
+slots.InformationType_description = Slot(uri=OSCAL.description, name="InformationType_description", curie=OSCAL.curie('description'),
                    model_uri=OSCAL.InformationType_description, domain=InformationType, range=str)
 
-slots.ImpactLevel_base = Slot(uri=OSCAL_SSP.base, name="ImpactLevel_base", curie=OSCAL_SSP.curie('base'),
+slots.ImpactLevel_base = Slot(uri=OSCAL.base, name="ImpactLevel_base", curie=OSCAL.curie('base'),
                    model_uri=OSCAL.ImpactLevel_base, domain=ImpactLevel, range=str)
 
-slots.ImpactLevel_selected = Slot(uri=OSCAL_SSP.selected, name="ImpactLevel_selected", curie=OSCAL_SSP.curie('selected'),
+slots.ImpactLevel_selected = Slot(uri=OSCAL.selected, name="ImpactLevel_selected", curie=OSCAL.curie('selected'),
                    model_uri=OSCAL.ImpactLevel_selected, domain=ImpactLevel, range=Optional[str])
 
-slots.SecurityImpactLevel_security_objective_confidentiality = Slot(uri=OSCAL_SSP.security_objective_confidentiality, name="SecurityImpactLevel_security-objective-confidentiality", curie=OSCAL_SSP.curie('security_objective_confidentiality'),
+slots.SecurityImpactLevel_security_objective_confidentiality = Slot(uri=OSCAL.security_objective_confidentiality, name="SecurityImpactLevel_security-objective-confidentiality", curie=OSCAL.curie('security_objective_confidentiality'),
                    model_uri=OSCAL.SecurityImpactLevel_security_objective_confidentiality, domain=SecurityImpactLevel, range=str)
 
-slots.SecurityImpactLevel_security_objective_integrity = Slot(uri=OSCAL_SSP.security_objective_integrity, name="SecurityImpactLevel_security-objective-integrity", curie=OSCAL_SSP.curie('security_objective_integrity'),
+slots.SecurityImpactLevel_security_objective_integrity = Slot(uri=OSCAL.security_objective_integrity, name="SecurityImpactLevel_security-objective-integrity", curie=OSCAL.curie('security_objective_integrity'),
                    model_uri=OSCAL.SecurityImpactLevel_security_objective_integrity, domain=SecurityImpactLevel, range=str)
 
-slots.SecurityImpactLevel_security_objective_availability = Slot(uri=OSCAL_SSP.security_objective_availability, name="SecurityImpactLevel_security-objective-availability", curie=OSCAL_SSP.curie('security_objective_availability'),
+slots.SecurityImpactLevel_security_objective_availability = Slot(uri=OSCAL.security_objective_availability, name="SecurityImpactLevel_security-objective-availability", curie=OSCAL.curie('security_objective_availability'),
                    model_uri=OSCAL.SecurityImpactLevel_security_objective_availability, domain=SecurityImpactLevel, range=str)
 
-slots.AuthorizationBoundary_description = Slot(uri=OSCAL_CATALOG.description, name="AuthorizationBoundary_description", curie=OSCAL_CATALOG.curie('description'),
+slots.AuthorizationBoundary_description = Slot(uri=OSCAL.description, name="AuthorizationBoundary_description", curie=OSCAL.curie('description'),
                    model_uri=OSCAL.AuthorizationBoundary_description, domain=AuthorizationBoundary, range=str)
 
-slots.Diagram_uuid = Slot(uri=OSCAL_CATALOG.uuid, name="Diagram_uuid", curie=OSCAL_CATALOG.curie('uuid'),
+slots.Diagram_uuid = Slot(uri=OSCAL.uuid, name="Diagram_uuid", curie=OSCAL.curie('uuid'),
                    model_uri=OSCAL.Diagram_uuid, domain=Diagram, range=str)
 
-slots.Diagram_links = Slot(uri=OSCAL_CATALOG.links, name="Diagram_links", curie=OSCAL_CATALOG.curie('links'),
+slots.Diagram_links = Slot(uri=OSCAL.links, name="Diagram_links", curie=OSCAL.curie('links'),
                    model_uri=OSCAL.Diagram_links, domain=Diagram, range=Optional[Union[Union[dict, "SspDiagramLink"], list[Union[dict, "SspDiagramLink"]]]])
 
-slots.NetworkArchitecture_description = Slot(uri=OSCAL_CATALOG.description, name="NetworkArchitecture_description", curie=OSCAL_CATALOG.curie('description'),
+slots.NetworkArchitecture_description = Slot(uri=OSCAL.description, name="NetworkArchitecture_description", curie=OSCAL.curie('description'),
                    model_uri=OSCAL.NetworkArchitecture_description, domain=NetworkArchitecture, range=str)
 
-slots.DataFlow_description = Slot(uri=OSCAL_CATALOG.description, name="DataFlow_description", curie=OSCAL_CATALOG.curie('description'),
+slots.DataFlow_description = Slot(uri=OSCAL.description, name="DataFlow_description", curie=OSCAL.curie('description'),
                    model_uri=OSCAL.DataFlow_description, domain=DataFlow, range=str)
 
-slots.SystemImplementation_components = Slot(uri=OSCAL_ASSESSMENT_PLAN.components, name="SystemImplementation_components", curie=OSCAL_ASSESSMENT_PLAN.curie('components'),
+slots.SystemImplementation_components = Slot(uri=OSCAL.components, name="SystemImplementation_components", curie=OSCAL.curie('components'),
                    model_uri=OSCAL.SystemImplementation_components, domain=SystemImplementation, range=Union[Union[dict, "SspSystemComponent"], list[Union[dict, "SspSystemComponent"]]])
 
-slots.SystemImplementation_inventory_items = Slot(uri=OSCAL_ASSESSMENT_PLAN.inventory_items, name="SystemImplementation_inventory-items", curie=OSCAL_ASSESSMENT_PLAN.curie('inventory_items'),
+slots.SystemImplementation_inventory_items = Slot(uri=OSCAL.inventory_items, name="SystemImplementation_inventory-items", curie=OSCAL.curie('inventory_items'),
                    model_uri=OSCAL.SystemImplementation_inventory_items, domain=SystemImplementation, range=Optional[Union[Union[dict, "SspInventoryItem"], list[Union[dict, "SspInventoryItem"]]]])
 
-slots.LeveragedAuthorization_uuid = Slot(uri=OSCAL_CATALOG.uuid, name="LeveragedAuthorization_uuid", curie=OSCAL_CATALOG.curie('uuid'),
+slots.LeveragedAuthorization_uuid = Slot(uri=OSCAL.uuid, name="LeveragedAuthorization_uuid", curie=OSCAL.curie('uuid'),
                    model_uri=OSCAL.LeveragedAuthorization_uuid, domain=LeveragedAuthorization, range=str)
 
-slots.LeveragedAuthorization_title = Slot(uri=OSCAL_CATALOG.title, name="LeveragedAuthorization_title", curie=OSCAL_CATALOG.curie('title'),
+slots.LeveragedAuthorization_title = Slot(uri=OSCAL.title, name="LeveragedAuthorization_title", curie=OSCAL.curie('title'),
                    model_uri=OSCAL.LeveragedAuthorization_title, domain=LeveragedAuthorization, range=str)
 
-slots.LeveragedAuthorization_party_uuid = Slot(uri=OSCAL_ASSESSMENT_PLAN.party_uuid, name="LeveragedAuthorization_party-uuid", curie=OSCAL_ASSESSMENT_PLAN.curie('party_uuid'),
+slots.LeveragedAuthorization_party_uuid = Slot(uri=OSCAL.party_uuid, name="LeveragedAuthorization_party-uuid", curie=OSCAL.curie('party_uuid'),
                    model_uri=OSCAL.LeveragedAuthorization_party_uuid, domain=LeveragedAuthorization, range=str)
 
-slots.LeveragedAuthorization_date_authorized = Slot(uri=OSCAL_SSP.date_authorized, name="LeveragedAuthorization_date-authorized", curie=OSCAL_SSP.curie('date_authorized'),
+slots.LeveragedAuthorization_date_authorized = Slot(uri=OSCAL.date_authorized, name="LeveragedAuthorization_date-authorized", curie=OSCAL.curie('date_authorized'),
                    model_uri=OSCAL.LeveragedAuthorization_date_authorized, domain=LeveragedAuthorization, range=str)
 
-slots.LeveragedAuthorization_links = Slot(uri=OSCAL_CATALOG.links, name="LeveragedAuthorization_links", curie=OSCAL_CATALOG.curie('links'),
+slots.LeveragedAuthorization_links = Slot(uri=OSCAL.links, name="LeveragedAuthorization_links", curie=OSCAL.curie('links'),
                    model_uri=OSCAL.LeveragedAuthorization_links, domain=LeveragedAuthorization, range=Optional[Union[Union[dict, "SspLeveragedAuthorizationLink"], list[Union[dict, "SspLeveragedAuthorizationLink"]]]])
 
-slots.SspControlImplementation_set_parameters = Slot(uri=OSCAL_CATALOG.set_parameters, name="SspControlImplementation_set-parameters", curie=OSCAL_CATALOG.curie('set_parameters'),
+slots.SspControlImplementation_set_parameters = Slot(uri=OSCAL.set_parameters, name="SspControlImplementation_set-parameters", curie=OSCAL.curie('set_parameters'),
                    model_uri=OSCAL.SspControlImplementation_set_parameters, domain=SspControlImplementation, range=Optional[Union[Union[dict, "SetParameter"], list[Union[dict, "SetParameter"]]]])
 
-slots.SspControlImplementation_implemented_requirements = Slot(uri=OSCAL_CATALOG.implemented_requirements, name="SspControlImplementation_implemented-requirements", curie=OSCAL_CATALOG.curie('implemented_requirements'),
+slots.SspControlImplementation_implemented_requirements = Slot(uri=OSCAL.implemented_requirements, name="SspControlImplementation_implemented-requirements", curie=OSCAL.curie('implemented_requirements'),
                    model_uri=OSCAL.SspControlImplementation_implemented_requirements, domain=SspControlImplementation, range=Union[Union[dict, "SspImplementedRequirement"], list[Union[dict, "SspImplementedRequirement"]]])
 
-slots.SspControlImplementation_description = Slot(uri=OSCAL_CATALOG.description, name="SspControlImplementation_description", curie=OSCAL_CATALOG.curie('description'),
+slots.SspControlImplementation_description = Slot(uri=OSCAL.description, name="SspControlImplementation_description", curie=OSCAL.curie('description'),
                    model_uri=OSCAL.SspControlImplementation_description, domain=SspControlImplementation, range=str)
 
-slots.SspImplementedRequirement_set_parameters = Slot(uri=OSCAL_CATALOG.set_parameters, name="SspImplementedRequirement_set-parameters", curie=OSCAL_CATALOG.curie('set_parameters'),
+slots.SspImplementedRequirement_set_parameters = Slot(uri=OSCAL.set_parameters, name="SspImplementedRequirement_set-parameters", curie=OSCAL.curie('set_parameters'),
                    model_uri=OSCAL.SspImplementedRequirement_set_parameters, domain=SspImplementedRequirement, range=Optional[Union[Union[dict, "SetParameter"], list[Union[dict, "SetParameter"]]]])
 
-slots.SspImplementedRequirement_statements = Slot(uri=OSCAL_CATALOG.statements, name="SspImplementedRequirement_statements", curie=OSCAL_CATALOG.curie('statements'),
+slots.SspImplementedRequirement_statements = Slot(uri=OSCAL.statements, name="SspImplementedRequirement_statements", curie=OSCAL.curie('statements'),
                    model_uri=OSCAL.SspImplementedRequirement_statements, domain=SspImplementedRequirement, range=Optional[Union[Union[dict, "SspStatement"], list[Union[dict, "SspStatement"]]]])
 
-slots.SspImplementedRequirement_uuid = Slot(uri=OSCAL_CATALOG.uuid, name="SspImplementedRequirement_uuid", curie=OSCAL_CATALOG.curie('uuid'),
+slots.SspImplementedRequirement_uuid = Slot(uri=OSCAL.uuid, name="SspImplementedRequirement_uuid", curie=OSCAL.curie('uuid'),
                    model_uri=OSCAL.SspImplementedRequirement_uuid, domain=SspImplementedRequirement, range=str)
 
-slots.SspImplementedRequirement_control_id = Slot(uri=OSCAL_CATALOG.control_id, name="SspImplementedRequirement_control-id", curie=OSCAL_CATALOG.curie('control_id'),
+slots.SspImplementedRequirement_control_id = Slot(uri=OSCAL.control_id, name="SspImplementedRequirement_control-id", curie=OSCAL.curie('control_id'),
                    model_uri=OSCAL.SspImplementedRequirement_control_id, domain=SspImplementedRequirement, range=str)
 
-slots.SspImplementedRequirement_props = Slot(uri=OSCAL_CATALOG.props, name="SspImplementedRequirement_props", curie=OSCAL_CATALOG.curie('props'),
+slots.SspImplementedRequirement_props = Slot(uri=OSCAL.props, name="SspImplementedRequirement_props", curie=OSCAL.curie('props'),
                    model_uri=OSCAL.SspImplementedRequirement_props, domain=SspImplementedRequirement, range=Optional[Union[Union[dict, "SspControlOriginationProp"], list[Union[dict, "SspControlOriginationProp"]]]])
 
-slots.SspImplementedRequirement_responsible_roles = Slot(uri=OSCAL_CATALOG.responsible_roles, name="SspImplementedRequirement_responsible-roles", curie=OSCAL_CATALOG.curie('responsible_roles'),
+slots.SspImplementedRequirement_responsible_roles = Slot(uri=OSCAL.responsible_roles, name="SspImplementedRequirement_responsible-roles", curie=OSCAL.curie('responsible_roles'),
                    model_uri=OSCAL.SspImplementedRequirement_responsible_roles, domain=SspImplementedRequirement, range=Optional[Union[Union[dict, "SspImplementedRequirementResponsibleRole"], list[Union[dict, "SspImplementedRequirementResponsibleRole"]]]])
 
-slots.SspStatement_statement_id = Slot(uri=OSCAL_CATALOG.statement_id, name="SspStatement_statement-id", curie=OSCAL_CATALOG.curie('statement_id'),
+slots.SspStatement_statement_id = Slot(uri=OSCAL.statement_id, name="SspStatement_statement-id", curie=OSCAL.curie('statement_id'),
                    model_uri=OSCAL.SspStatement_statement_id, domain=SspStatement, range=str)
 
-slots.SspStatement_uuid = Slot(uri=OSCAL_CATALOG.uuid, name="SspStatement_uuid", curie=OSCAL_CATALOG.curie('uuid'),
+slots.SspStatement_uuid = Slot(uri=OSCAL.uuid, name="SspStatement_uuid", curie=OSCAL.curie('uuid'),
                    model_uri=OSCAL.SspStatement_uuid, domain=SspStatement, range=str)
 
-slots.SspStatement_props = Slot(uri=OSCAL_CATALOG.props, name="SspStatement_props", curie=OSCAL_CATALOG.curie('props'),
+slots.SspStatement_props = Slot(uri=OSCAL.props, name="SspStatement_props", curie=OSCAL.curie('props'),
                    model_uri=OSCAL.SspStatement_props, domain=SspStatement, range=Optional[Union[Union[dict, "SspControlOriginationProp"], list[Union[dict, "SspControlOriginationProp"]]]])
 
-slots.SspStatement_responsible_roles = Slot(uri=OSCAL_CATALOG.responsible_roles, name="SspStatement_responsible-roles", curie=OSCAL_CATALOG.curie('responsible_roles'),
+slots.SspStatement_responsible_roles = Slot(uri=OSCAL.responsible_roles, name="SspStatement_responsible-roles", curie=OSCAL.curie('responsible_roles'),
                    model_uri=OSCAL.SspStatement_responsible_roles, domain=SspStatement, range=Optional[Union[Union[dict, "SspImplementedRequirementResponsibleRole"], list[Union[dict, "SspImplementedRequirementResponsibleRole"]]]])
 
-slots.ByComponent_set_parameters = Slot(uri=OSCAL_CATALOG.set_parameters, name="ByComponent_set-parameters", curie=OSCAL_CATALOG.curie('set_parameters'),
+slots.ByComponent_set_parameters = Slot(uri=OSCAL.set_parameters, name="ByComponent_set-parameters", curie=OSCAL.curie('set_parameters'),
                    model_uri=OSCAL.ByComponent_set_parameters, domain=ByComponent, range=Optional[Union[Union[dict, "SetParameter"], list[Union[dict, "SetParameter"]]]])
 
-slots.ByComponent_component_uuid = Slot(uri=OSCAL_ASSESSMENT_PLAN.component_uuid, name="ByComponent_component-uuid", curie=OSCAL_ASSESSMENT_PLAN.curie('component_uuid'),
+slots.ByComponent_component_uuid = Slot(uri=OSCAL.component_uuid, name="ByComponent_component-uuid", curie=OSCAL.curie('component_uuid'),
                    model_uri=OSCAL.ByComponent_component_uuid, domain=ByComponent, range=str)
 
-slots.ByComponent_uuid = Slot(uri=OSCAL_CATALOG.uuid, name="ByComponent_uuid", curie=OSCAL_CATALOG.curie('uuid'),
+slots.ByComponent_uuid = Slot(uri=OSCAL.uuid, name="ByComponent_uuid", curie=OSCAL.curie('uuid'),
                    model_uri=OSCAL.ByComponent_uuid, domain=ByComponent, range=str)
 
-slots.ByComponent_description = Slot(uri=OSCAL_CATALOG.description, name="ByComponent_description", curie=OSCAL_CATALOG.curie('description'),
+slots.ByComponent_description = Slot(uri=OSCAL.description, name="ByComponent_description", curie=OSCAL.curie('description'),
                    model_uri=OSCAL.ByComponent_description, domain=ByComponent, range=str)
 
-slots.ByComponent_props = Slot(uri=OSCAL_CATALOG.props, name="ByComponent_props", curie=OSCAL_CATALOG.curie('props'),
+slots.ByComponent_props = Slot(uri=OSCAL.props, name="ByComponent_props", curie=OSCAL.curie('props'),
                    model_uri=OSCAL.ByComponent_props, domain=ByComponent, range=Optional[Union[Union[dict, "SspControlOriginationProp"], list[Union[dict, "SspControlOriginationProp"]]]])
 
-slots.ByComponent_links = Slot(uri=OSCAL_CATALOG.links, name="ByComponent_links", curie=OSCAL_CATALOG.curie('links'),
+slots.ByComponent_links = Slot(uri=OSCAL.links, name="ByComponent_links", curie=OSCAL.curie('links'),
                    model_uri=OSCAL.ByComponent_links, domain=ByComponent, range=Optional[Union[Union[dict, "SspByComponentLink"], list[Union[dict, "SspByComponentLink"]]]])
 
-slots.ByComponent_responsible_roles = Slot(uri=OSCAL_CATALOG.responsible_roles, name="ByComponent_responsible-roles", curie=OSCAL_CATALOG.curie('responsible_roles'),
+slots.ByComponent_responsible_roles = Slot(uri=OSCAL.responsible_roles, name="ByComponent_responsible-roles", curie=OSCAL.curie('responsible_roles'),
                    model_uri=OSCAL.ByComponent_responsible_roles, domain=ByComponent, range=Optional[Union[Union[dict, "SspByComponentResponsibleRole"], list[Union[dict, "SspByComponentResponsibleRole"]]]])
 
-slots.ProvidedControlImplementation_uuid = Slot(uri=OSCAL_CATALOG.uuid, name="ProvidedControlImplementation_uuid", curie=OSCAL_CATALOG.curie('uuid'),
+slots.ProvidedControlImplementation_uuid = Slot(uri=OSCAL.uuid, name="ProvidedControlImplementation_uuid", curie=OSCAL.curie('uuid'),
                    model_uri=OSCAL.ProvidedControlImplementation_uuid, domain=ProvidedControlImplementation, range=str)
 
-slots.ProvidedControlImplementation_description = Slot(uri=OSCAL_CATALOG.description, name="ProvidedControlImplementation_description", curie=OSCAL_CATALOG.curie('description'),
+slots.ProvidedControlImplementation_description = Slot(uri=OSCAL.description, name="ProvidedControlImplementation_description", curie=OSCAL.curie('description'),
                    model_uri=OSCAL.ProvidedControlImplementation_description, domain=ProvidedControlImplementation, range=str)
 
-slots.ProvidedControlImplementation_responsible_roles = Slot(uri=OSCAL_CATALOG.responsible_roles, name="ProvidedControlImplementation_responsible-roles", curie=OSCAL_CATALOG.curie('responsible_roles'),
+slots.ProvidedControlImplementation_responsible_roles = Slot(uri=OSCAL.responsible_roles, name="ProvidedControlImplementation_responsible-roles", curie=OSCAL.curie('responsible_roles'),
                    model_uri=OSCAL.ProvidedControlImplementation_responsible_roles, domain=ProvidedControlImplementation, range=Optional[Union[Union[dict, "SspByComponentResponsibleRole"], list[Union[dict, "SspByComponentResponsibleRole"]]]])
 
-slots.ControlResponsibility_uuid = Slot(uri=OSCAL_CATALOG.uuid, name="ControlResponsibility_uuid", curie=OSCAL_CATALOG.curie('uuid'),
+slots.ControlResponsibility_uuid = Slot(uri=OSCAL.uuid, name="ControlResponsibility_uuid", curie=OSCAL.curie('uuid'),
                    model_uri=OSCAL.ControlResponsibility_uuid, domain=ControlResponsibility, range=str)
 
-slots.ControlResponsibility_description = Slot(uri=OSCAL_CATALOG.description, name="ControlResponsibility_description", curie=OSCAL_CATALOG.curie('description'),
+slots.ControlResponsibility_description = Slot(uri=OSCAL.description, name="ControlResponsibility_description", curie=OSCAL.curie('description'),
                    model_uri=OSCAL.ControlResponsibility_description, domain=ControlResponsibility, range=str)
 
-slots.ControlResponsibility_responsible_roles = Slot(uri=OSCAL_CATALOG.responsible_roles, name="ControlResponsibility_responsible-roles", curie=OSCAL_CATALOG.curie('responsible_roles'),
+slots.ControlResponsibility_responsible_roles = Slot(uri=OSCAL.responsible_roles, name="ControlResponsibility_responsible-roles", curie=OSCAL.curie('responsible_roles'),
                    model_uri=OSCAL.ControlResponsibility_responsible_roles, domain=ControlResponsibility, range=Optional[Union[Union[dict, "SspByComponentResponsibleRole"], list[Union[dict, "SspByComponentResponsibleRole"]]]])
 
-slots.InheritedControlImplementation_uuid = Slot(uri=OSCAL_CATALOG.uuid, name="InheritedControlImplementation_uuid", curie=OSCAL_CATALOG.curie('uuid'),
+slots.InheritedControlImplementation_uuid = Slot(uri=OSCAL.uuid, name="InheritedControlImplementation_uuid", curie=OSCAL.curie('uuid'),
                    model_uri=OSCAL.InheritedControlImplementation_uuid, domain=InheritedControlImplementation, range=str)
 
-slots.InheritedControlImplementation_description = Slot(uri=OSCAL_CATALOG.description, name="InheritedControlImplementation_description", curie=OSCAL_CATALOG.curie('description'),
+slots.InheritedControlImplementation_description = Slot(uri=OSCAL.description, name="InheritedControlImplementation_description", curie=OSCAL.curie('description'),
                    model_uri=OSCAL.InheritedControlImplementation_description, domain=InheritedControlImplementation, range=str)
 
-slots.InheritedControlImplementation_responsible_roles = Slot(uri=OSCAL_CATALOG.responsible_roles, name="InheritedControlImplementation_responsible-roles", curie=OSCAL_CATALOG.curie('responsible_roles'),
+slots.InheritedControlImplementation_responsible_roles = Slot(uri=OSCAL.responsible_roles, name="InheritedControlImplementation_responsible-roles", curie=OSCAL.curie('responsible_roles'),
                    model_uri=OSCAL.InheritedControlImplementation_responsible_roles, domain=InheritedControlImplementation, range=Optional[Union[Union[dict, "SspByComponentResponsibleRole"], list[Union[dict, "SspByComponentResponsibleRole"]]]])
 
-slots.SatisfiedControlImplementation_uuid = Slot(uri=OSCAL_CATALOG.uuid, name="SatisfiedControlImplementation_uuid", curie=OSCAL_CATALOG.curie('uuid'),
+slots.SatisfiedControlImplementation_uuid = Slot(uri=OSCAL.uuid, name="SatisfiedControlImplementation_uuid", curie=OSCAL.curie('uuid'),
                    model_uri=OSCAL.SatisfiedControlImplementation_uuid, domain=SatisfiedControlImplementation, range=str)
 
-slots.SatisfiedControlImplementation_description = Slot(uri=OSCAL_CATALOG.description, name="SatisfiedControlImplementation_description", curie=OSCAL_CATALOG.curie('description'),
+slots.SatisfiedControlImplementation_description = Slot(uri=OSCAL.description, name="SatisfiedControlImplementation_description", curie=OSCAL.curie('description'),
                    model_uri=OSCAL.SatisfiedControlImplementation_description, domain=SatisfiedControlImplementation, range=str)
 
-slots.SatisfiedControlImplementation_responsible_roles = Slot(uri=OSCAL_CATALOG.responsible_roles, name="SatisfiedControlImplementation_responsible-roles", curie=OSCAL_CATALOG.curie('responsible_roles'),
+slots.SatisfiedControlImplementation_responsible_roles = Slot(uri=OSCAL.responsible_roles, name="SatisfiedControlImplementation_responsible-roles", curie=OSCAL.curie('responsible_roles'),
                    model_uri=OSCAL.SatisfiedControlImplementation_responsible_roles, domain=SatisfiedControlImplementation, range=Optional[Union[Union[dict, "SspByComponentResponsibleRole"], list[Union[dict, "SspByComponentResponsibleRole"]]]])
 
-slots.SspSystemCharacteristicsProp_name = Slot(uri=OSCAL_CATALOG.name, name="SspSystemCharacteristicsProp_name", curie=OSCAL_CATALOG.curie('name'),
+slots.SspSystemCharacteristicsProp_name = Slot(uri=OSCAL.name, name="SspSystemCharacteristicsProp_name", curie=OSCAL.curie('name'),
                    model_uri=OSCAL.SspSystemCharacteristicsProp_name, domain=SspSystemCharacteristicsProp, range=Union[str, "SystemCharacteristicsPropNameEnum"])
 
-slots.SspSystemCharacteristicsProp_value = Slot(uri=OSCAL_CATALOG.value, name="SspSystemCharacteristicsProp_value", curie=OSCAL_CATALOG.curie('value'),
+slots.SspSystemCharacteristicsProp_value = Slot(uri=OSCAL.value, name="SspSystemCharacteristicsProp_value", curie=OSCAL.curie('value'),
                    model_uri=OSCAL.SspSystemCharacteristicsProp_value, domain=SspSystemCharacteristicsProp, range=str)
 
-slots.SspSystemInformationProp_name = Slot(uri=OSCAL_CATALOG.name, name="SspSystemInformationProp_name", curie=OSCAL_CATALOG.curie('name'),
+slots.SspSystemInformationProp_name = Slot(uri=OSCAL.name, name="SspSystemInformationProp_name", curie=OSCAL.curie('name'),
                    model_uri=OSCAL.SspSystemInformationProp_name, domain=SspSystemInformationProp, range=Union[str, "SystemInformationPropNameEnum"])
 
-slots.SspSystemInformationProp_value = Slot(uri=OSCAL_CATALOG.value, name="SspSystemInformationProp_value", curie=OSCAL_CATALOG.curie('value'),
+slots.SspSystemInformationProp_value = Slot(uri=OSCAL.value, name="SspSystemInformationProp_value", curie=OSCAL.curie('value'),
                    model_uri=OSCAL.SspSystemInformationProp_value, domain=SspSystemInformationProp, range=Union[str, "PrivacyDesignationEnum"])
 
-slots.SspControlOriginationProp_name = Slot(uri=OSCAL_CATALOG.name, name="SspControlOriginationProp_name", curie=OSCAL_CATALOG.curie('name'),
+slots.SspControlOriginationProp_name = Slot(uri=OSCAL.name, name="SspControlOriginationProp_name", curie=OSCAL.curie('name'),
                    model_uri=OSCAL.SspControlOriginationProp_name, domain=SspControlOriginationProp, range=Union[str, "ControlOriginationPropNameEnum"])
 
-slots.SspControlOriginationProp_value = Slot(uri=OSCAL_CATALOG.value, name="SspControlOriginationProp_value", curie=OSCAL_CATALOG.curie('value'),
+slots.SspControlOriginationProp_value = Slot(uri=OSCAL.value, name="SspControlOriginationProp_value", curie=OSCAL.curie('value'),
                    model_uri=OSCAL.SspControlOriginationProp_value, domain=SspControlOriginationProp, range=Union[str, "ControlOriginationValueEnum"])
 
-slots.SspAllowsAuthenticatedScanProp_name = Slot(uri=OSCAL_CATALOG.name, name="SspAllowsAuthenticatedScanProp_name", curie=OSCAL_CATALOG.curie('name'),
+slots.SspAllowsAuthenticatedScanProp_name = Slot(uri=OSCAL.name, name="SspAllowsAuthenticatedScanProp_name", curie=OSCAL.curie('name'),
                    model_uri=OSCAL.SspAllowsAuthenticatedScanProp_name, domain=SspAllowsAuthenticatedScanProp, range=str)
 
-slots.SspAllowsAuthenticatedScanProp_value = Slot(uri=OSCAL_CATALOG.value, name="SspAllowsAuthenticatedScanProp_value", curie=OSCAL_CATALOG.curie('value'),
+slots.SspAllowsAuthenticatedScanProp_value = Slot(uri=OSCAL.value, name="SspAllowsAuthenticatedScanProp_value", curie=OSCAL.curie('value'),
                    model_uri=OSCAL.SspAllowsAuthenticatedScanProp_value, domain=SspAllowsAuthenticatedScanProp, range=Union[str, "AllowsAuthenticatedScanEnum"])
 
-slots.SspSystemInformationLink_rel = Slot(uri=OSCAL_CATALOG.rel, name="SspSystemInformationLink_rel", curie=OSCAL_CATALOG.curie('rel'),
+slots.SspSystemInformationLink_rel = Slot(uri=OSCAL.rel, name="SspSystemInformationLink_rel", curie=OSCAL.curie('rel'),
                    model_uri=OSCAL.SspSystemInformationLink_rel, domain=SspSystemInformationLink, range=Optional[str])
 
-slots.SspDiagramLink_rel = Slot(uri=OSCAL_CATALOG.rel, name="SspDiagramLink_rel", curie=OSCAL_CATALOG.curie('rel'),
+slots.SspDiagramLink_rel = Slot(uri=OSCAL.rel, name="SspDiagramLink_rel", curie=OSCAL.curie('rel'),
                    model_uri=OSCAL.SspDiagramLink_rel, domain=SspDiagramLink, range=Optional[str])
 
-slots.SspLeveragedAuthorizationLink_rel = Slot(uri=OSCAL_CATALOG.rel, name="SspLeveragedAuthorizationLink_rel", curie=OSCAL_CATALOG.curie('rel'),
+slots.SspLeveragedAuthorizationLink_rel = Slot(uri=OSCAL.rel, name="SspLeveragedAuthorizationLink_rel", curie=OSCAL.curie('rel'),
                    model_uri=OSCAL.SspLeveragedAuthorizationLink_rel, domain=SspLeveragedAuthorizationLink, range=Optional[str])
 
-slots.SspByComponentLink_rel = Slot(uri=OSCAL_CATALOG.rel, name="SspByComponentLink_rel", curie=OSCAL_CATALOG.curie('rel'),
+slots.SspByComponentLink_rel = Slot(uri=OSCAL.rel, name="SspByComponentLink_rel", curie=OSCAL.curie('rel'),
                    model_uri=OSCAL.SspByComponentLink_rel, domain=SspByComponentLink, range=Optional[str])
 
-slots.SspSystemCharacteristicsResponsibleParty_role_id = Slot(uri=OSCAL_CATALOG.role_id, name="SspSystemCharacteristicsResponsibleParty_role-id", curie=OSCAL_CATALOG.curie('role_id'),
+slots.SspSystemCharacteristicsResponsibleParty_role_id = Slot(uri=OSCAL.role_id, name="SspSystemCharacteristicsResponsibleParty_role-id", curie=OSCAL.curie('role_id'),
                    model_uri=OSCAL.SspSystemCharacteristicsResponsibleParty_role_id, domain=SspSystemCharacteristicsResponsibleParty, range=str)
 
-slots.SspImplementedRequirementResponsibleRole_role_id = Slot(uri=OSCAL_CATALOG.role_id, name="SspImplementedRequirementResponsibleRole_role-id", curie=OSCAL_CATALOG.curie('role_id'),
+slots.SspImplementedRequirementResponsibleRole_role_id = Slot(uri=OSCAL.role_id, name="SspImplementedRequirementResponsibleRole_role-id", curie=OSCAL.curie('role_id'),
                    model_uri=OSCAL.SspImplementedRequirementResponsibleRole_role_id, domain=SspImplementedRequirementResponsibleRole, range=str)
 
-slots.SspByComponentResponsibleRole_role_id = Slot(uri=OSCAL_CATALOG.role_id, name="SspByComponentResponsibleRole_role-id", curie=OSCAL_CATALOG.curie('role_id'),
+slots.SspByComponentResponsibleRole_role_id = Slot(uri=OSCAL.role_id, name="SspByComponentResponsibleRole_role-id", curie=OSCAL.curie('role_id'),
                    model_uri=OSCAL.SspByComponentResponsibleRole_role_id, domain=SspByComponentResponsibleRole, range=str)
 
-slots.SspSystemComponent_props = Slot(uri=OSCAL_CATALOG.props, name="SspSystemComponent_props", curie=OSCAL_CATALOG.curie('props'),
+slots.SspSystemComponent_props = Slot(uri=OSCAL.props, name="SspSystemComponent_props", curie=OSCAL.curie('props'),
                    model_uri=OSCAL.SspSystemComponent_props, domain=SspSystemComponent, range=Optional[Union[Union[dict, SspAllowsAuthenticatedScanProp], list[Union[dict, SspAllowsAuthenticatedScanProp]]]])
 
-slots.SspInventoryItem_props = Slot(uri=OSCAL_CATALOG.props, name="SspInventoryItem_props", curie=OSCAL_CATALOG.curie('props'),
+slots.SspInventoryItem_props = Slot(uri=OSCAL.props, name="SspInventoryItem_props", curie=OSCAL.curie('props'),
                    model_uri=OSCAL.SspInventoryItem_props, domain=SspInventoryItem, range=Optional[Union[Union[dict, SspAllowsAuthenticatedScanProp], list[Union[dict, SspAllowsAuthenticatedScanProp]]]])
 
-slots.AssessmentPlanDocument_assessment_plan = Slot(uri=OSCAL_ASSESSMENT_PLAN.assessment_plan, name="AssessmentPlanDocument_assessment-plan", curie=OSCAL_ASSESSMENT_PLAN.curie('assessment_plan'),
+slots.AssessmentPlanDocument_assessment_plan = Slot(uri=OSCAL.assessment_plan, name="AssessmentPlanDocument_assessment-plan", curie=OSCAL.curie('assessment_plan'),
                    model_uri=OSCAL.AssessmentPlanDocument_assessment_plan, domain=AssessmentPlanDocument, range=Union[dict, "AssessmentPlan"])
 
-slots.AssessmentPlan_uuid = Slot(uri=OSCAL_CATALOG.uuid, name="AssessmentPlan_uuid", curie=OSCAL_CATALOG.curie('uuid'),
+slots.AssessmentPlan_uuid = Slot(uri=OSCAL.uuid, name="AssessmentPlan_uuid", curie=OSCAL.curie('uuid'),
                    model_uri=OSCAL.AssessmentPlan_uuid, domain=AssessmentPlan, range=str)
 
-slots.AssessmentPlan_metadata = Slot(uri=OSCAL_CATALOG.metadata, name="AssessmentPlan_metadata", curie=OSCAL_CATALOG.curie('metadata'),
+slots.AssessmentPlan_metadata = Slot(uri=OSCAL.metadata, name="AssessmentPlan_metadata", curie=OSCAL.curie('metadata'),
                    model_uri=OSCAL.AssessmentPlan_metadata, domain=AssessmentPlan, range=Union[dict, Metadata])
 
-slots.AssessmentPlan_import_ssp = Slot(uri=OSCAL_ASSESSMENT_PLAN.import_ssp, name="AssessmentPlan_import-ssp", curie=OSCAL_ASSESSMENT_PLAN.curie('import_ssp'),
+slots.AssessmentPlan_import_ssp = Slot(uri=OSCAL.import_ssp, name="AssessmentPlan_import-ssp", curie=OSCAL.curie('import_ssp'),
                    model_uri=OSCAL.AssessmentPlan_import_ssp, domain=AssessmentPlan, range=Union[dict, "ImportSSP"])
 
-slots.AssessmentPlan_reviewed_controls = Slot(uri=OSCAL_ASSESSMENT_PLAN.reviewed_controls, name="AssessmentPlan_reviewed-controls", curie=OSCAL_ASSESSMENT_PLAN.curie('reviewed_controls'),
+slots.AssessmentPlan_reviewed_controls = Slot(uri=OSCAL.reviewed_controls, name="AssessmentPlan_reviewed-controls", curie=OSCAL.curie('reviewed_controls'),
                    model_uri=OSCAL.AssessmentPlan_reviewed_controls, domain=AssessmentPlan, range=Union[dict, "ReviewedControls"])
 
-slots.ImportSSP_href = Slot(uri=OSCAL_CATALOG.href, name="ImportSSP_href", curie=OSCAL_CATALOG.curie('href'),
+slots.ImportSSP_href = Slot(uri=OSCAL.href, name="ImportSSP_href", curie=OSCAL.curie('href'),
                    model_uri=OSCAL.ImportSSP_href, domain=ImportSSP, range=str)
 
-slots.TermsAndConditions_parts = Slot(uri=OSCAL_CATALOG.parts, name="TermsAndConditions_parts", curie=OSCAL_CATALOG.curie('parts'),
+slots.TermsAndConditions_parts = Slot(uri=OSCAL.parts, name="TermsAndConditions_parts", curie=OSCAL.curie('parts'),
                    model_uri=OSCAL.TermsAndConditions_parts, domain=TermsAndConditions, range=Optional[Union[Union[dict, "TermsAndConditionsPart"], list[Union[dict, "TermsAndConditionsPart"]]]])
 
-slots.ReviewedControls_control_selections = Slot(uri=OSCAL_ASSESSMENT_PLAN.control_selections, name="ReviewedControls_control-selections", curie=OSCAL_ASSESSMENT_PLAN.curie('control_selections'),
+slots.ReviewedControls_control_selections = Slot(uri=OSCAL.control_selections, name="ReviewedControls_control-selections", curie=OSCAL.curie('control_selections'),
                    model_uri=OSCAL.ReviewedControls_control_selections, domain=ReviewedControls, range=Union[Union[dict, "ControlSelection"], list[Union[dict, "ControlSelection"]]])
 
-slots.ControlSelection_include_controls = Slot(uri=OSCAL_CATALOG.include_controls, name="ControlSelection_include-controls", curie=OSCAL_CATALOG.curie('include_controls'),
+slots.ControlSelection_include_controls = Slot(uri=OSCAL.include_controls, name="ControlSelection_include-controls", curie=OSCAL.curie('include_controls'),
                    model_uri=OSCAL.ControlSelection_include_controls, domain=ControlSelection, range=Optional[Union[Union[dict, "AssessmentSelectControlById"], list[Union[dict, "AssessmentSelectControlById"]]]])
 
-slots.ControlSelection_exclude_controls = Slot(uri=OSCAL_CATALOG.exclude_controls, name="ControlSelection_exclude-controls", curie=OSCAL_CATALOG.curie('exclude_controls'),
+slots.ControlSelection_exclude_controls = Slot(uri=OSCAL.exclude_controls, name="ControlSelection_exclude-controls", curie=OSCAL.curie('exclude_controls'),
                    model_uri=OSCAL.ControlSelection_exclude_controls, domain=ControlSelection, range=Optional[Union[Union[dict, "AssessmentSelectControlById"], list[Union[dict, "AssessmentSelectControlById"]]]])
 
-slots.AssessmentSelectControlById_control_id = Slot(uri=OSCAL_CATALOG.control_id, name="AssessmentSelectControlById_control-id", curie=OSCAL_CATALOG.curie('control_id'),
+slots.AssessmentSelectControlById_control_id = Slot(uri=OSCAL.control_id, name="AssessmentSelectControlById_control-id", curie=OSCAL.curie('control_id'),
                    model_uri=OSCAL.AssessmentSelectControlById_control_id, domain=AssessmentSelectControlById, range=str)
 
-slots.SelectObjectiveById_objective_id = Slot(uri=OSCAL_ASSESSMENT_PLAN.objective_id, name="SelectObjectiveById_objective-id", curie=OSCAL_ASSESSMENT_PLAN.curie('objective_id'),
+slots.SelectObjectiveById_objective_id = Slot(uri=OSCAL.objective_id, name="SelectObjectiveById_objective-id", curie=OSCAL.curie('objective_id'),
                    model_uri=OSCAL.SelectObjectiveById_objective_id, domain=SelectObjectiveById, range=str)
 
-slots.AssessmentSubject_type = Slot(uri=OSCAL_CATALOG.type, name="AssessmentSubject_type", curie=OSCAL_CATALOG.curie('type'),
+slots.AssessmentSubject_type = Slot(uri=OSCAL.type, name="AssessmentSubject_type", curie=OSCAL.curie('type'),
                    model_uri=OSCAL.AssessmentSubject_type, domain=AssessmentSubject, range=str)
 
-slots.SelectSubjectById_subject_uuid = Slot(uri=OSCAL_ASSESSMENT_PLAN.subject_uuid, name="SelectSubjectById_subject-uuid", curie=OSCAL_ASSESSMENT_PLAN.curie('subject_uuid'),
+slots.SelectSubjectById_subject_uuid = Slot(uri=OSCAL.subject_uuid, name="SelectSubjectById_subject-uuid", curie=OSCAL.curie('subject_uuid'),
                    model_uri=OSCAL.SelectSubjectById_subject_uuid, domain=SelectSubjectById, range=str)
 
-slots.SelectSubjectById_type = Slot(uri=OSCAL_CATALOG.type, name="SelectSubjectById_type", curie=OSCAL_CATALOG.curie('type'),
+slots.SelectSubjectById_type = Slot(uri=OSCAL.type, name="SelectSubjectById_type", curie=OSCAL.curie('type'),
                    model_uri=OSCAL.SelectSubjectById_type, domain=SelectSubjectById, range=str)
 
-slots.SubjectReference_subject_uuid = Slot(uri=OSCAL_ASSESSMENT_PLAN.subject_uuid, name="SubjectReference_subject-uuid", curie=OSCAL_ASSESSMENT_PLAN.curie('subject_uuid'),
+slots.SubjectReference_subject_uuid = Slot(uri=OSCAL.subject_uuid, name="SubjectReference_subject-uuid", curie=OSCAL.curie('subject_uuid'),
                    model_uri=OSCAL.SubjectReference_subject_uuid, domain=SubjectReference, range=str)
 
-slots.SubjectReference_type = Slot(uri=OSCAL_CATALOG.type, name="SubjectReference_type", curie=OSCAL_CATALOG.curie('type'),
+slots.SubjectReference_type = Slot(uri=OSCAL.type, name="SubjectReference_type", curie=OSCAL.curie('type'),
                    model_uri=OSCAL.SubjectReference_type, domain=SubjectReference, range=str)
 
-slots.AssessmentSubjectPlaceholder_uuid = Slot(uri=OSCAL_CATALOG.uuid, name="AssessmentSubjectPlaceholder_uuid", curie=OSCAL_CATALOG.curie('uuid'),
+slots.AssessmentSubjectPlaceholder_uuid = Slot(uri=OSCAL.uuid, name="AssessmentSubjectPlaceholder_uuid", curie=OSCAL.curie('uuid'),
                    model_uri=OSCAL.AssessmentSubjectPlaceholder_uuid, domain=AssessmentSubjectPlaceholder, range=str)
 
-slots.AssessmentSubjectPlaceholder_sources = Slot(uri=OSCAL_CATALOG.sources, name="AssessmentSubjectPlaceholder_sources", curie=OSCAL_CATALOG.curie('sources'),
+slots.AssessmentSubjectPlaceholder_sources = Slot(uri=OSCAL.sources, name="AssessmentSubjectPlaceholder_sources", curie=OSCAL.curie('sources'),
                    model_uri=OSCAL.AssessmentSubjectPlaceholder_sources, domain=AssessmentSubjectPlaceholder, range=Union[Union[dict, "AssessmentSubjectSource"], list[Union[dict, "AssessmentSubjectSource"]]])
 
-slots.AssessmentSubjectSource_task_uuid = Slot(uri=OSCAL_ASSESSMENT_PLAN.task_uuid, name="AssessmentSubjectSource_task-uuid", curie=OSCAL_ASSESSMENT_PLAN.curie('task_uuid'),
+slots.AssessmentSubjectSource_task_uuid = Slot(uri=OSCAL.task_uuid, name="AssessmentSubjectSource_task-uuid", curie=OSCAL.curie('task_uuid'),
                    model_uri=OSCAL.AssessmentSubjectSource_task_uuid, domain=AssessmentSubjectSource, range=str)
 
-slots.AssessmentAssets_assessment_platforms = Slot(uri=OSCAL_ASSESSMENT_PLAN.assessment_platforms, name="AssessmentAssets_assessment-platforms", curie=OSCAL_ASSESSMENT_PLAN.curie('assessment_platforms'),
+slots.AssessmentAssets_assessment_platforms = Slot(uri=OSCAL.assessment_platforms, name="AssessmentAssets_assessment-platforms", curie=OSCAL.curie('assessment_platforms'),
                    model_uri=OSCAL.AssessmentAssets_assessment_platforms, domain=AssessmentAssets, range=Union[Union[dict, "AssessmentPlatform"], list[Union[dict, "AssessmentPlatform"]]])
 
-slots.AssessmentPlatform_uuid = Slot(uri=OSCAL_CATALOG.uuid, name="AssessmentPlatform_uuid", curie=OSCAL_CATALOG.curie('uuid'),
+slots.AssessmentPlatform_uuid = Slot(uri=OSCAL.uuid, name="AssessmentPlatform_uuid", curie=OSCAL.curie('uuid'),
                    model_uri=OSCAL.AssessmentPlatform_uuid, domain=AssessmentPlatform, range=str)
 
-slots.UsesComponent_component_uuid = Slot(uri=OSCAL_ASSESSMENT_PLAN.component_uuid, name="UsesComponent_component-uuid", curie=OSCAL_ASSESSMENT_PLAN.curie('component_uuid'),
+slots.UsesComponent_component_uuid = Slot(uri=OSCAL.component_uuid, name="UsesComponent_component-uuid", curie=OSCAL.curie('component_uuid'),
                    model_uri=OSCAL.UsesComponent_component_uuid, domain=UsesComponent, range=str)
 
-slots.LocalObjective_control_id = Slot(uri=OSCAL_CATALOG.control_id, name="LocalObjective_control-id", curie=OSCAL_CATALOG.curie('control_id'),
+slots.LocalObjective_control_id = Slot(uri=OSCAL.control_id, name="LocalObjective_control-id", curie=OSCAL.curie('control_id'),
                    model_uri=OSCAL.LocalObjective_control_id, domain=LocalObjective, range=str)
 
-slots.LocalObjective_parts = Slot(uri=OSCAL_CATALOG.parts, name="LocalObjective_parts", curie=OSCAL_CATALOG.curie('parts'),
+slots.LocalObjective_parts = Slot(uri=OSCAL.parts, name="LocalObjective_parts", curie=OSCAL.curie('parts'),
                    model_uri=OSCAL.LocalObjective_parts, domain=LocalObjective, range=Union[Union[dict, "ControlPart"], list[Union[dict, "ControlPart"]]])
 
-slots.AssessmentMethod_uuid = Slot(uri=OSCAL_CATALOG.uuid, name="AssessmentMethod_uuid", curie=OSCAL_CATALOG.curie('uuid'),
+slots.AssessmentMethod_uuid = Slot(uri=OSCAL.uuid, name="AssessmentMethod_uuid", curie=OSCAL.curie('uuid'),
                    model_uri=OSCAL.AssessmentMethod_uuid, domain=AssessmentMethod, range=str)
 
-slots.AssessmentMethod_part = Slot(uri=OSCAL_ASSESSMENT_PLAN.part, name="AssessmentMethod_part", curie=OSCAL_ASSESSMENT_PLAN.curie('part'),
+slots.AssessmentMethod_part = Slot(uri=OSCAL.part, name="AssessmentMethod_part", curie=OSCAL.curie('part'),
                    model_uri=OSCAL.AssessmentMethod_part, domain=AssessmentMethod, range=Union[dict, "AssessmentPart"])
 
-slots.Activity_uuid = Slot(uri=OSCAL_CATALOG.uuid, name="Activity_uuid", curie=OSCAL_CATALOG.curie('uuid'),
+slots.Activity_uuid = Slot(uri=OSCAL.uuid, name="Activity_uuid", curie=OSCAL.curie('uuid'),
                    model_uri=OSCAL.Activity_uuid, domain=Activity, range=str)
 
-slots.Activity_description = Slot(uri=OSCAL_CATALOG.description, name="Activity_description", curie=OSCAL_CATALOG.curie('description'),
+slots.Activity_description = Slot(uri=OSCAL.description, name="Activity_description", curie=OSCAL.curie('description'),
                    model_uri=OSCAL.Activity_description, domain=Activity, range=str)
 
-slots.Step_uuid = Slot(uri=OSCAL_CATALOG.uuid, name="Step_uuid", curie=OSCAL_CATALOG.curie('uuid'),
+slots.Step_uuid = Slot(uri=OSCAL.uuid, name="Step_uuid", curie=OSCAL.curie('uuid'),
                    model_uri=OSCAL.Step_uuid, domain=Step, range=str)
 
-slots.Step_description = Slot(uri=OSCAL_CATALOG.description, name="Step_description", curie=OSCAL_CATALOG.curie('description'),
+slots.Step_description = Slot(uri=OSCAL.description, name="Step_description", curie=OSCAL.curie('description'),
                    model_uri=OSCAL.Step_description, domain=Step, range=str)
 
-slots.Task_uuid = Slot(uri=OSCAL_CATALOG.uuid, name="Task_uuid", curie=OSCAL_CATALOG.curie('uuid'),
+slots.Task_uuid = Slot(uri=OSCAL.uuid, name="Task_uuid", curie=OSCAL.curie('uuid'),
                    model_uri=OSCAL.Task_uuid, domain=Task, range=str)
 
-slots.Task_type = Slot(uri=OSCAL_CATALOG.type, name="Task_type", curie=OSCAL_CATALOG.curie('type'),
+slots.Task_type = Slot(uri=OSCAL.type, name="Task_type", curie=OSCAL.curie('type'),
                    model_uri=OSCAL.Task_type, domain=Task, range=str)
 
-slots.Task_title = Slot(uri=OSCAL_CATALOG.title, name="Task_title", curie=OSCAL_CATALOG.curie('title'),
+slots.Task_title = Slot(uri=OSCAL.title, name="Task_title", curie=OSCAL.curie('title'),
                    model_uri=OSCAL.Task_title, domain=Task, range=str)
 
-slots.Task_subjects = Slot(uri=OSCAL_ASSESSMENT_PLAN.subjects, name="Task_subjects", curie=OSCAL_ASSESSMENT_PLAN.curie('subjects'),
+slots.Task_subjects = Slot(uri=OSCAL.subjects, name="Task_subjects", curie=OSCAL.curie('subjects'),
                    model_uri=OSCAL.Task_subjects, domain=Task, range=Optional[Union[Union[dict, AssessmentSubject], list[Union[dict, AssessmentSubject]]]])
 
-slots.OnDateCondition_date = Slot(uri=OSCAL_CATALOG.date, name="OnDateCondition_date", curie=OSCAL_CATALOG.curie('date'),
+slots.OnDateCondition_date = Slot(uri=OSCAL.date, name="OnDateCondition_date", curie=OSCAL.curie('date'),
                    model_uri=OSCAL.OnDateCondition_date, domain=OnDateCondition, range=str)
 
-slots.WithinDateRange_start = Slot(uri=OSCAL_ASSESSMENT_PLAN.start, name="WithinDateRange_start", curie=OSCAL_ASSESSMENT_PLAN.curie('start'),
+slots.WithinDateRange_start = Slot(uri=OSCAL.start, name="WithinDateRange_start", curie=OSCAL.curie('start'),
                    model_uri=OSCAL.WithinDateRange_start, domain=WithinDateRange, range=str)
 
-slots.WithinDateRange_end = Slot(uri=OSCAL_ASSESSMENT_PLAN.end, name="WithinDateRange_end", curie=OSCAL_ASSESSMENT_PLAN.curie('end'),
+slots.WithinDateRange_end = Slot(uri=OSCAL.end, name="WithinDateRange_end", curie=OSCAL.curie('end'),
                    model_uri=OSCAL.WithinDateRange_end, domain=WithinDateRange, range=str)
 
-slots.AtFrequency_period = Slot(uri=OSCAL_ASSESSMENT_PLAN.period, name="AtFrequency_period", curie=OSCAL_ASSESSMENT_PLAN.curie('period'),
+slots.AtFrequency_period = Slot(uri=OSCAL.period, name="AtFrequency_period", curie=OSCAL.curie('period'),
                    model_uri=OSCAL.AtFrequency_period, domain=AtFrequency, range=int)
 
-slots.AtFrequency_unit = Slot(uri=OSCAL_ASSESSMENT_PLAN.unit, name="AtFrequency_unit", curie=OSCAL_ASSESSMENT_PLAN.curie('unit'),
+slots.AtFrequency_unit = Slot(uri=OSCAL.unit, name="AtFrequency_unit", curie=OSCAL.curie('unit'),
                    model_uri=OSCAL.AtFrequency_unit, domain=AtFrequency, range=Union[str, "TimingUnitEnum"])
 
-slots.TaskDependency_task_uuid = Slot(uri=OSCAL_ASSESSMENT_PLAN.task_uuid, name="TaskDependency_task-uuid", curie=OSCAL_ASSESSMENT_PLAN.curie('task_uuid'),
+slots.TaskDependency_task_uuid = Slot(uri=OSCAL.task_uuid, name="TaskDependency_task-uuid", curie=OSCAL.curie('task_uuid'),
                    model_uri=OSCAL.TaskDependency_task_uuid, domain=TaskDependency, range=str)
 
-slots.AssociatedActivity_activity_uuid = Slot(uri=OSCAL_ASSESSMENT_PLAN.activity_uuid, name="AssociatedActivity_activity-uuid", curie=OSCAL_ASSESSMENT_PLAN.curie('activity_uuid'),
+slots.AssociatedActivity_activity_uuid = Slot(uri=OSCAL.activity_uuid, name="AssociatedActivity_activity-uuid", curie=OSCAL.curie('activity_uuid'),
                    model_uri=OSCAL.AssociatedActivity_activity_uuid, domain=AssociatedActivity, range=str)
 
-slots.AssociatedActivity_subjects = Slot(uri=OSCAL_ASSESSMENT_PLAN.subjects, name="AssociatedActivity_subjects", curie=OSCAL_ASSESSMENT_PLAN.curie('subjects'),
+slots.AssociatedActivity_subjects = Slot(uri=OSCAL.subjects, name="AssociatedActivity_subjects", curie=OSCAL.curie('subjects'),
                    model_uri=OSCAL.AssociatedActivity_subjects, domain=AssociatedActivity, range=Union[Union[dict, AssessmentSubject], list[Union[dict, AssessmentSubject]]])
 
-slots.AssessmentPart_name = Slot(uri=OSCAL_CATALOG.name, name="AssessmentPart_name", curie=OSCAL_CATALOG.curie('name'),
+slots.AssessmentPart_name = Slot(uri=OSCAL.name, name="AssessmentPart_name", curie=OSCAL.curie('name'),
                    model_uri=OSCAL.AssessmentPart_name, domain=AssessmentPart, range=str)
 
-slots.AssessmentPart_parts = Slot(uri=OSCAL_CATALOG.parts, name="AssessmentPart_parts", curie=OSCAL_CATALOG.curie('parts'),
+slots.AssessmentPart_parts = Slot(uri=OSCAL.parts, name="AssessmentPart_parts", curie=OSCAL.curie('parts'),
                    model_uri=OSCAL.AssessmentPart_parts, domain=AssessmentPart, range=Optional[Union[Union[dict, "AssessmentPart"], list[Union[dict, "AssessmentPart"]]]])
 
-slots.TermsAndConditionsPart_name = Slot(uri=OSCAL_CATALOG.name, name="TermsAndConditionsPart_name", curie=OSCAL_CATALOG.curie('name'),
+slots.TermsAndConditionsPart_name = Slot(uri=OSCAL.name, name="TermsAndConditionsPart_name", curie=OSCAL.curie('name'),
                    model_uri=OSCAL.TermsAndConditionsPart_name, domain=TermsAndConditionsPart, range=Union[str, "TermsAndConditionsPartNameEnum"])
 
-slots.TermsAndConditionsPart_parts = Slot(uri=OSCAL_CATALOG.parts, name="TermsAndConditionsPart_parts", curie=OSCAL_CATALOG.curie('parts'),
+slots.TermsAndConditionsPart_parts = Slot(uri=OSCAL.parts, name="TermsAndConditionsPart_parts", curie=OSCAL.curie('parts'),
                    model_uri=OSCAL.TermsAndConditionsPart_parts, domain=TermsAndConditionsPart, range=Optional[Union[Union[dict, "TermsAndConditionsPart"], list[Union[dict, "TermsAndConditionsPart"]]]])
 
-slots.ControlPart_name = Slot(uri=OSCAL_CATALOG.name, name="ControlPart_name", curie=OSCAL_CATALOG.curie('name'),
+slots.ControlPart_name = Slot(uri=OSCAL.name, name="ControlPart_name", curie=OSCAL.curie('name'),
                    model_uri=OSCAL.ControlPart_name, domain=ControlPart, range=str)
 
-slots.ControlPart_parts = Slot(uri=OSCAL_CATALOG.parts, name="ControlPart_parts", curie=OSCAL_CATALOG.curie('parts'),
+slots.ControlPart_parts = Slot(uri=OSCAL.parts, name="ControlPart_parts", curie=OSCAL.curie('parts'),
                    model_uri=OSCAL.ControlPart_parts, domain=ControlPart, range=Optional[Union[Union[dict, "ControlPart"], list[Union[dict, "ControlPart"]]]])
 
-slots.SetParameter_param_id = Slot(uri=OSCAL_CATALOG.param_id, name="SetParameter_param-id", curie=OSCAL_CATALOG.curie('param_id'),
+slots.SetParameter_param_id = Slot(uri=OSCAL.param_id, name="SetParameter_param-id", curie=OSCAL.curie('param_id'),
                    model_uri=OSCAL.SetParameter_param_id, domain=SetParameter, range=str)
 
-slots.SetParameter_values = Slot(uri=OSCAL_CATALOG.values, name="SetParameter_values", curie=OSCAL_CATALOG.curie('values'),
+slots.SetParameter_values = Slot(uri=OSCAL.values, name="SetParameter_values", curie=OSCAL.curie('values'),
                    model_uri=OSCAL.SetParameter_values, domain=SetParameter, range=Union[str, list[str]])
 
-slots.SystemComponent_uuid = Slot(uri=OSCAL_CATALOG.uuid, name="SystemComponent_uuid", curie=OSCAL_CATALOG.curie('uuid'),
+slots.SystemComponent_uuid = Slot(uri=OSCAL.uuid, name="SystemComponent_uuid", curie=OSCAL.curie('uuid'),
                    model_uri=OSCAL.SystemComponent_uuid, domain=SystemComponent, range=str)
 
-slots.SystemComponent_type = Slot(uri=OSCAL_CATALOG.type, name="SystemComponent_type", curie=OSCAL_CATALOG.curie('type'),
+slots.SystemComponent_type = Slot(uri=OSCAL.type, name="SystemComponent_type", curie=OSCAL.curie('type'),
                    model_uri=OSCAL.SystemComponent_type, domain=SystemComponent, range=str)
 
-slots.SystemComponent_title = Slot(uri=OSCAL_CATALOG.title, name="SystemComponent_title", curie=OSCAL_CATALOG.curie('title'),
+slots.SystemComponent_title = Slot(uri=OSCAL.title, name="SystemComponent_title", curie=OSCAL.curie('title'),
                    model_uri=OSCAL.SystemComponent_title, domain=SystemComponent, range=str)
 
-slots.SystemComponent_description = Slot(uri=OSCAL_CATALOG.description, name="SystemComponent_description", curie=OSCAL_CATALOG.curie('description'),
+slots.SystemComponent_description = Slot(uri=OSCAL.description, name="SystemComponent_description", curie=OSCAL.curie('description'),
                    model_uri=OSCAL.SystemComponent_description, domain=SystemComponent, range=str)
 
-slots.SystemComponent_status = Slot(uri=OSCAL_CATALOG.status, name="SystemComponent_status", curie=OSCAL_CATALOG.curie('status'),
+slots.SystemComponent_status = Slot(uri=OSCAL.status, name="SystemComponent_status", curie=OSCAL.curie('status'),
                    model_uri=OSCAL.SystemComponent_status, domain=SystemComponent, range=Union[dict, "ComponentStatus"])
 
-slots.SystemComponent_props = Slot(uri=OSCAL_CATALOG.props, name="SystemComponent_props", curie=OSCAL_CATALOG.curie('props'),
+slots.SystemComponent_props = Slot(uri=OSCAL.props, name="SystemComponent_props", curie=OSCAL.curie('props'),
                    model_uri=OSCAL.SystemComponent_props, domain=SystemComponent, range=Optional[Union[Union[dict, "ImplementationCommonProperty"], list[Union[dict, "ImplementationCommonProperty"]]]])
 
-slots.SystemComponent_links = Slot(uri=OSCAL_CATALOG.links, name="SystemComponent_links", curie=OSCAL_CATALOG.curie('links'),
+slots.SystemComponent_links = Slot(uri=OSCAL.links, name="SystemComponent_links", curie=OSCAL.curie('links'),
                    model_uri=OSCAL.SystemComponent_links, domain=SystemComponent, range=Optional[Union[Union[dict, "ImplementationCommonLink"], list[Union[dict, "ImplementationCommonLink"]]]])
 
-slots.SystemComponent_responsible_roles = Slot(uri=OSCAL_CATALOG.responsible_roles, name="SystemComponent_responsible-roles", curie=OSCAL_CATALOG.curie('responsible_roles'),
+slots.SystemComponent_responsible_roles = Slot(uri=OSCAL.responsible_roles, name="SystemComponent_responsible-roles", curie=OSCAL.curie('responsible_roles'),
                    model_uri=OSCAL.SystemComponent_responsible_roles, domain=SystemComponent, range=Optional[Union[Union[dict, "ImplementationResponsibleRole"], list[Union[dict, "ImplementationResponsibleRole"]]]])
 
-slots.ComponentStatus_state = Slot(uri=OSCAL_CATALOG.state, name="ComponentStatus_state", curie=OSCAL_CATALOG.curie('state'),
+slots.ComponentStatus_state = Slot(uri=OSCAL.state, name="ComponentStatus_state", curie=OSCAL.curie('state'),
                    model_uri=OSCAL.ComponentStatus_state, domain=ComponentStatus, range=Union[str, "ComponentStateEnum"])
 
-slots.Protocol_name = Slot(uri=OSCAL_CATALOG.name, name="Protocol_name", curie=OSCAL_CATALOG.curie('name'),
+slots.Protocol_name = Slot(uri=OSCAL.name, name="Protocol_name", curie=OSCAL.curie('name'),
                    model_uri=OSCAL.Protocol_name, domain=Protocol, range=Optional[str])
 
-slots.PortRange_start = Slot(uri=OSCAL_ASSESSMENT_PLAN.start, name="PortRange_start", curie=OSCAL_ASSESSMENT_PLAN.curie('start'),
+slots.PortRange_start = Slot(uri=OSCAL.start, name="PortRange_start", curie=OSCAL.curie('start'),
                    model_uri=OSCAL.PortRange_start, domain=PortRange, range=Optional[int])
 
-slots.PortRange_end = Slot(uri=OSCAL_ASSESSMENT_PLAN.end, name="PortRange_end", curie=OSCAL_ASSESSMENT_PLAN.curie('end'),
+slots.PortRange_end = Slot(uri=OSCAL.end, name="PortRange_end", curie=OSCAL.curie('end'),
                    model_uri=OSCAL.PortRange_end, domain=PortRange, range=Optional[int])
 
-slots.ImplementationStatus_state = Slot(uri=OSCAL_CATALOG.state, name="ImplementationStatus_state", curie=OSCAL_CATALOG.curie('state'),
+slots.ImplementationStatus_state = Slot(uri=OSCAL.state, name="ImplementationStatus_state", curie=OSCAL.curie('state'),
                    model_uri=OSCAL.ImplementationStatus_state, domain=ImplementationStatus, range=str)
 
-slots.SystemUser_uuid = Slot(uri=OSCAL_CATALOG.uuid, name="SystemUser_uuid", curie=OSCAL_CATALOG.curie('uuid'),
+slots.SystemUser_uuid = Slot(uri=OSCAL.uuid, name="SystemUser_uuid", curie=OSCAL.curie('uuid'),
                    model_uri=OSCAL.SystemUser_uuid, domain=SystemUser, range=str)
 
-slots.SystemUser_props = Slot(uri=OSCAL_CATALOG.props, name="SystemUser_props", curie=OSCAL_CATALOG.curie('props'),
+slots.SystemUser_props = Slot(uri=OSCAL.props, name="SystemUser_props", curie=OSCAL.curie('props'),
                    model_uri=OSCAL.SystemUser_props, domain=SystemUser, range=Optional[Union[Union[dict, "ImplementationCommonProperty"], list[Union[dict, "ImplementationCommonProperty"]]]])
 
-slots.SystemUser_links = Slot(uri=OSCAL_CATALOG.links, name="SystemUser_links", curie=OSCAL_CATALOG.curie('links'),
+slots.SystemUser_links = Slot(uri=OSCAL.links, name="SystemUser_links", curie=OSCAL.curie('links'),
                    model_uri=OSCAL.SystemUser_links, domain=SystemUser, range=Optional[Union[Union[dict, "ImplementationCommonLink"], list[Union[dict, "ImplementationCommonLink"]]]])
 
-slots.AuthorizedPrivilege_title = Slot(uri=OSCAL_CATALOG.title, name="AuthorizedPrivilege_title", curie=OSCAL_CATALOG.curie('title'),
+slots.AuthorizedPrivilege_title = Slot(uri=OSCAL.title, name="AuthorizedPrivilege_title", curie=OSCAL.curie('title'),
                    model_uri=OSCAL.AuthorizedPrivilege_title, domain=AuthorizedPrivilege, range=str)
 
-slots.AuthorizedPrivilege_functions_performed = Slot(uri=OSCAL_ASSESSMENT_PLAN.functions_performed, name="AuthorizedPrivilege_functions-performed", curie=OSCAL_ASSESSMENT_PLAN.curie('functions_performed'),
+slots.AuthorizedPrivilege_functions_performed = Slot(uri=OSCAL.functions_performed, name="AuthorizedPrivilege_functions-performed", curie=OSCAL.curie('functions_performed'),
                    model_uri=OSCAL.AuthorizedPrivilege_functions_performed, domain=AuthorizedPrivilege, range=Union[str, list[str]])
 
-slots.InventoryItem_uuid = Slot(uri=OSCAL_CATALOG.uuid, name="InventoryItem_uuid", curie=OSCAL_CATALOG.curie('uuid'),
+slots.InventoryItem_uuid = Slot(uri=OSCAL.uuid, name="InventoryItem_uuid", curie=OSCAL.curie('uuid'),
                    model_uri=OSCAL.InventoryItem_uuid, domain=InventoryItem, range=str)
 
-slots.InventoryItem_description = Slot(uri=OSCAL_CATALOG.description, name="InventoryItem_description", curie=OSCAL_CATALOG.curie('description'),
+slots.InventoryItem_description = Slot(uri=OSCAL.description, name="InventoryItem_description", curie=OSCAL.curie('description'),
                    model_uri=OSCAL.InventoryItem_description, domain=InventoryItem, range=str)
 
-slots.InventoryItem_props = Slot(uri=OSCAL_CATALOG.props, name="InventoryItem_props", curie=OSCAL_CATALOG.curie('props'),
+slots.InventoryItem_props = Slot(uri=OSCAL.props, name="InventoryItem_props", curie=OSCAL.curie('props'),
                    model_uri=OSCAL.InventoryItem_props, domain=InventoryItem, range=Optional[Union[Union[dict, "ImplementationCommonProperty"], list[Union[dict, "ImplementationCommonProperty"]]]])
 
-slots.InventoryItem_links = Slot(uri=OSCAL_CATALOG.links, name="InventoryItem_links", curie=OSCAL_CATALOG.curie('links'),
+slots.InventoryItem_links = Slot(uri=OSCAL.links, name="InventoryItem_links", curie=OSCAL.curie('links'),
                    model_uri=OSCAL.InventoryItem_links, domain=InventoryItem, range=Optional[Union[Union[dict, "ImplementationCommonLink"], list[Union[dict, "ImplementationCommonLink"]]]])
 
-slots.InventoryItem_responsible_parties = Slot(uri=OSCAL_CATALOG.responsible_parties, name="InventoryItem_responsible-parties", curie=OSCAL_CATALOG.curie('responsible_parties'),
+slots.InventoryItem_responsible_parties = Slot(uri=OSCAL.responsible_parties, name="InventoryItem_responsible-parties", curie=OSCAL.curie('responsible_parties'),
                    model_uri=OSCAL.InventoryItem_responsible_parties, domain=InventoryItem, range=Optional[Union[Union[dict, "ImplementationResponsibleParty"], list[Union[dict, "ImplementationResponsibleParty"]]]])
 
-slots.ImplementedComponent_component_uuid = Slot(uri=OSCAL_ASSESSMENT_PLAN.component_uuid, name="ImplementedComponent_component-uuid", curie=OSCAL_ASSESSMENT_PLAN.curie('component_uuid'),
+slots.ImplementedComponent_component_uuid = Slot(uri=OSCAL.component_uuid, name="ImplementedComponent_component-uuid", curie=OSCAL.curie('component_uuid'),
                    model_uri=OSCAL.ImplementedComponent_component_uuid, domain=ImplementedComponent, range=str)
 
-slots.ImplementedComponent_props = Slot(uri=OSCAL_CATALOG.props, name="ImplementedComponent_props", curie=OSCAL_CATALOG.curie('props'),
+slots.ImplementedComponent_props = Slot(uri=OSCAL.props, name="ImplementedComponent_props", curie=OSCAL.curie('props'),
                    model_uri=OSCAL.ImplementedComponent_props, domain=ImplementedComponent, range=Optional[Union[Union[dict, "ImplementationCommonProperty"], list[Union[dict, "ImplementationCommonProperty"]]]])
 
-slots.ImplementedComponent_links = Slot(uri=OSCAL_CATALOG.links, name="ImplementedComponent_links", curie=OSCAL_CATALOG.curie('links'),
+slots.ImplementedComponent_links = Slot(uri=OSCAL.links, name="ImplementedComponent_links", curie=OSCAL.curie('links'),
                    model_uri=OSCAL.ImplementedComponent_links, domain=ImplementedComponent, range=Optional[Union[Union[dict, "ImplementationCommonLink"], list[Union[dict, "ImplementationCommonLink"]]]])
 
-slots.ImplementedComponent_responsible_parties = Slot(uri=OSCAL_CATALOG.responsible_parties, name="ImplementedComponent_responsible-parties", curie=OSCAL_CATALOG.curie('responsible_parties'),
+slots.ImplementedComponent_responsible_parties = Slot(uri=OSCAL.responsible_parties, name="ImplementedComponent_responsible-parties", curie=OSCAL.curie('responsible_parties'),
                    model_uri=OSCAL.ImplementedComponent_responsible_parties, domain=ImplementedComponent, range=Optional[Union[Union[dict, "ImplementationResponsibleParty"], list[Union[dict, "ImplementationResponsibleParty"]]]])
 
-slots.SystemId_id = Slot(uri=OSCAL_CATALOG.id, name="SystemId_id", curie=OSCAL_CATALOG.curie('id'),
+slots.SystemId_id = Slot(uri=OSCAL.id, name="SystemId_id", curie=OSCAL.curie('id'),
                    model_uri=OSCAL.SystemId_id, domain=SystemId, range=str)
 
-slots.SystemId_identifier_type = Slot(uri=OSCAL_ASSESSMENT_PLAN.identifier_type, name="SystemId_identifier-type", curie=OSCAL_ASSESSMENT_PLAN.curie('identifier_type'),
+slots.SystemId_identifier_type = Slot(uri=OSCAL.identifier_type, name="SystemId_identifier-type", curie=OSCAL.curie('identifier_type'),
                    model_uri=OSCAL.SystemId_identifier_type, domain=SystemId, range=Optional[str])
 
-slots.ImplementationCommonProperty_name = Slot(uri=OSCAL_CATALOG.name, name="ImplementationCommonProperty_name", curie=OSCAL_CATALOG.curie('name'),
+slots.ImplementationCommonProperty_name = Slot(uri=OSCAL.name, name="ImplementationCommonProperty_name", curie=OSCAL.curie('name'),
                    model_uri=OSCAL.ImplementationCommonProperty_name, domain=ImplementationCommonProperty, range=Union[str, "ImplementationPropNameEnum"])
 
-slots.ImplementationCommonProperty_value = Slot(uri=OSCAL_CATALOG.value, name="ImplementationCommonProperty_value", curie=OSCAL_CATALOG.curie('value'),
+slots.ImplementationCommonProperty_value = Slot(uri=OSCAL.value, name="ImplementationCommonProperty_value", curie=OSCAL.curie('value'),
                    model_uri=OSCAL.ImplementationCommonProperty_value, domain=ImplementationCommonProperty, range=str)
 
-slots.ImplementationCommonLink_rel = Slot(uri=OSCAL_CATALOG.rel, name="ImplementationCommonLink_rel", curie=OSCAL_CATALOG.curie('rel'),
+slots.ImplementationCommonLink_rel = Slot(uri=OSCAL.rel, name="ImplementationCommonLink_rel", curie=OSCAL.curie('rel'),
                    model_uri=OSCAL.ImplementationCommonLink_rel, domain=ImplementationCommonLink, range=Optional[str])
 
-slots.ImplementationResponsibleRole_role_id = Slot(uri=OSCAL_CATALOG.role_id, name="ImplementationResponsibleRole_role-id", curie=OSCAL_CATALOG.curie('role_id'),
+slots.ImplementationResponsibleRole_role_id = Slot(uri=OSCAL.role_id, name="ImplementationResponsibleRole_role-id", curie=OSCAL.curie('role_id'),
                    model_uri=OSCAL.ImplementationResponsibleRole_role_id, domain=ImplementationResponsibleRole, range=str)
 
-slots.ImplementationResponsibleParty_role_id = Slot(uri=OSCAL_CATALOG.role_id, name="ImplementationResponsibleParty_role-id", curie=OSCAL_CATALOG.curie('role_id'),
+slots.ImplementationResponsibleParty_role_id = Slot(uri=OSCAL.role_id, name="ImplementationResponsibleParty_role-id", curie=OSCAL.curie('role_id'),
                    model_uri=OSCAL.ImplementationResponsibleParty_role_id, domain=ImplementationResponsibleParty, range=str)
 
-slots.Origin_actors = Slot(uri=OSCAL_ASSESSMENT_PLAN.actors, name="Origin_actors", curie=OSCAL_ASSESSMENT_PLAN.curie('actors'),
+slots.Origin_actors = Slot(uri=OSCAL.actors, name="Origin_actors", curie=OSCAL.curie('actors'),
                    model_uri=OSCAL.Origin_actors, domain=Origin, range=Union[Union[dict, "OriginActor"], list[Union[dict, "OriginActor"]]])
 
-slots.OriginActor_type = Slot(uri=OSCAL_CATALOG.type, name="OriginActor_type", curie=OSCAL_CATALOG.curie('type'),
+slots.OriginActor_type = Slot(uri=OSCAL.type, name="OriginActor_type", curie=OSCAL.curie('type'),
                    model_uri=OSCAL.OriginActor_type, domain=OriginActor, range=Union[str, "OriginActorTypeEnum"])
 
-slots.OriginActor_actor_uuid = Slot(uri=OSCAL_ASSESSMENT_PLAN.actor_uuid, name="OriginActor_actor-uuid", curie=OSCAL_ASSESSMENT_PLAN.curie('actor_uuid'),
+slots.OriginActor_actor_uuid = Slot(uri=OSCAL.actor_uuid, name="OriginActor_actor-uuid", curie=OSCAL.curie('actor_uuid'),
                    model_uri=OSCAL.OriginActor_actor_uuid, domain=OriginActor, range=str)
 
-slots.RelatedTask_task_uuid = Slot(uri=OSCAL_ASSESSMENT_PLAN.task_uuid, name="RelatedTask_task-uuid", curie=OSCAL_ASSESSMENT_PLAN.curie('task_uuid'),
+slots.RelatedTask_task_uuid = Slot(uri=OSCAL.task_uuid, name="RelatedTask_task-uuid", curie=OSCAL.curie('task_uuid'),
                    model_uri=OSCAL.RelatedTask_task_uuid, domain=RelatedTask, range=str)
 
-slots.RelatedTask_subjects = Slot(uri=OSCAL_ASSESSMENT_PLAN.subjects, name="RelatedTask_subjects", curie=OSCAL_ASSESSMENT_PLAN.curie('subjects'),
+slots.RelatedTask_subjects = Slot(uri=OSCAL.subjects, name="RelatedTask_subjects", curie=OSCAL.curie('subjects'),
                    model_uri=OSCAL.RelatedTask_subjects, domain=RelatedTask, range=Optional[Union[Union[dict, AssessmentSubject], list[Union[dict, AssessmentSubject]]]])
 
-slots.IdentifiedSubject_subject_placeholder_uuid = Slot(uri=OSCAL_ASSESSMENT_PLAN.subject_placeholder_uuid, name="IdentifiedSubject_subject-placeholder-uuid", curie=OSCAL_ASSESSMENT_PLAN.curie('subject_placeholder_uuid'),
+slots.IdentifiedSubject_subject_placeholder_uuid = Slot(uri=OSCAL.subject_placeholder_uuid, name="IdentifiedSubject_subject-placeholder-uuid", curie=OSCAL.curie('subject_placeholder_uuid'),
                    model_uri=OSCAL.IdentifiedSubject_subject_placeholder_uuid, domain=IdentifiedSubject, range=str)
 
-slots.IdentifiedSubject_subjects = Slot(uri=OSCAL_ASSESSMENT_PLAN.subjects, name="IdentifiedSubject_subjects", curie=OSCAL_ASSESSMENT_PLAN.curie('subjects'),
+slots.IdentifiedSubject_subjects = Slot(uri=OSCAL.subjects, name="IdentifiedSubject_subjects", curie=OSCAL.curie('subjects'),
                    model_uri=OSCAL.IdentifiedSubject_subjects, domain=IdentifiedSubject, range=Union[Union[dict, AssessmentSubject], list[Union[dict, AssessmentSubject]]])
 
-slots.Observation_uuid = Slot(uri=OSCAL_CATALOG.uuid, name="Observation_uuid", curie=OSCAL_CATALOG.curie('uuid'),
+slots.Observation_uuid = Slot(uri=OSCAL.uuid, name="Observation_uuid", curie=OSCAL.curie('uuid'),
                    model_uri=OSCAL.Observation_uuid, domain=Observation, range=str)
 
-slots.Observation_description = Slot(uri=OSCAL_CATALOG.description, name="Observation_description", curie=OSCAL_CATALOG.curie('description'),
+slots.Observation_description = Slot(uri=OSCAL.description, name="Observation_description", curie=OSCAL.curie('description'),
                    model_uri=OSCAL.Observation_description, domain=Observation, range=str)
 
-slots.Observation_subjects = Slot(uri=OSCAL_ASSESSMENT_PLAN.subjects, name="Observation_subjects", curie=OSCAL_ASSESSMENT_PLAN.curie('subjects'),
+slots.Observation_subjects = Slot(uri=OSCAL.subjects, name="Observation_subjects", curie=OSCAL.curie('subjects'),
                    model_uri=OSCAL.Observation_subjects, domain=Observation, range=Optional[Union[Union[dict, SubjectReference], list[Union[dict, SubjectReference]]]])
 
-slots.Observation_methods = Slot(uri=OSCAL_ASSESSMENT_PLAN.methods, name="Observation_methods", curie=OSCAL_ASSESSMENT_PLAN.curie('methods'),
+slots.Observation_methods = Slot(uri=OSCAL.methods, name="Observation_methods", curie=OSCAL.curie('methods'),
                    model_uri=OSCAL.Observation_methods, domain=Observation, range=Union[str, list[str]])
 
-slots.Observation_collected = Slot(uri=OSCAL_ASSESSMENT_PLAN.collected, name="Observation_collected", curie=OSCAL_ASSESSMENT_PLAN.curie('collected'),
+slots.Observation_collected = Slot(uri=OSCAL.collected, name="Observation_collected", curie=OSCAL.curie('collected'),
                    model_uri=OSCAL.Observation_collected, domain=Observation, range=str)
 
-slots.RelevantEvidence_description = Slot(uri=OSCAL_CATALOG.description, name="RelevantEvidence_description", curie=OSCAL_CATALOG.curie('description'),
+slots.RelevantEvidence_description = Slot(uri=OSCAL.description, name="RelevantEvidence_description", curie=OSCAL.curie('description'),
                    model_uri=OSCAL.RelevantEvidence_description, domain=RelevantEvidence, range=str)
 
-slots.Finding_uuid = Slot(uri=OSCAL_CATALOG.uuid, name="Finding_uuid", curie=OSCAL_CATALOG.curie('uuid'),
+slots.Finding_uuid = Slot(uri=OSCAL.uuid, name="Finding_uuid", curie=OSCAL.curie('uuid'),
                    model_uri=OSCAL.Finding_uuid, domain=Finding, range=str)
 
-slots.Finding_title = Slot(uri=OSCAL_CATALOG.title, name="Finding_title", curie=OSCAL_CATALOG.curie('title'),
+slots.Finding_title = Slot(uri=OSCAL.title, name="Finding_title", curie=OSCAL.curie('title'),
                    model_uri=OSCAL.Finding_title, domain=Finding, range=str)
 
-slots.Finding_description = Slot(uri=OSCAL_CATALOG.description, name="Finding_description", curie=OSCAL_CATALOG.curie('description'),
+slots.Finding_description = Slot(uri=OSCAL.description, name="Finding_description", curie=OSCAL.curie('description'),
                    model_uri=OSCAL.Finding_description, domain=Finding, range=str)
 
-slots.Finding_target = Slot(uri=OSCAL_ASSESSMENT_PLAN.target, name="Finding_target", curie=OSCAL_ASSESSMENT_PLAN.curie('target'),
+slots.Finding_target = Slot(uri=OSCAL.target, name="Finding_target", curie=OSCAL.curie('target'),
                    model_uri=OSCAL.Finding_target, domain=Finding, range=Union[dict, "FindingTarget"])
 
-slots.FindingTarget_type = Slot(uri=OSCAL_CATALOG.type, name="FindingTarget_type", curie=OSCAL_CATALOG.curie('type'),
+slots.FindingTarget_type = Slot(uri=OSCAL.type, name="FindingTarget_type", curie=OSCAL.curie('type'),
                    model_uri=OSCAL.FindingTarget_type, domain=FindingTarget, range=Union[str, "FindingTargetTypeEnum"])
 
-slots.FindingTarget_target_id = Slot(uri=OSCAL_ASSESSMENT_PLAN.target_id, name="FindingTarget_target-id", curie=OSCAL_ASSESSMENT_PLAN.curie('target_id'),
+slots.FindingTarget_target_id = Slot(uri=OSCAL.target_id, name="FindingTarget_target-id", curie=OSCAL.curie('target_id'),
                    model_uri=OSCAL.FindingTarget_target_id, domain=FindingTarget, range=str)
 
-slots.FindingTarget_status = Slot(uri=OSCAL_CATALOG.status, name="FindingTarget_status", curie=OSCAL_CATALOG.curie('status'),
+slots.FindingTarget_status = Slot(uri=OSCAL.status, name="FindingTarget_status", curie=OSCAL.curie('status'),
                    model_uri=OSCAL.FindingTarget_status, domain=FindingTarget, range=Union[dict, "ObjectiveStatus"])
 
-slots.ObjectiveStatus_state = Slot(uri=OSCAL_CATALOG.state, name="ObjectiveStatus_state", curie=OSCAL_CATALOG.curie('state'),
+slots.ObjectiveStatus_state = Slot(uri=OSCAL.state, name="ObjectiveStatus_state", curie=OSCAL.curie('state'),
                    model_uri=OSCAL.ObjectiveStatus_state, domain=ObjectiveStatus, range=Union[str, "ObjectiveStatusStateEnum"])
 
-slots.RelatedObservation_observation_uuid = Slot(uri=OSCAL_ASSESSMENT_PLAN.observation_uuid, name="RelatedObservation_observation-uuid", curie=OSCAL_ASSESSMENT_PLAN.curie('observation_uuid'),
+slots.RelatedObservation_observation_uuid = Slot(uri=OSCAL.observation_uuid, name="RelatedObservation_observation-uuid", curie=OSCAL.curie('observation_uuid'),
                    model_uri=OSCAL.RelatedObservation_observation_uuid, domain=RelatedObservation, range=str)
 
-slots.AssociatedRisk_risk_uuid = Slot(uri=OSCAL_ASSESSMENT_PLAN.risk_uuid, name="AssociatedRisk_risk-uuid", curie=OSCAL_ASSESSMENT_PLAN.curie('risk_uuid'),
+slots.AssociatedRisk_risk_uuid = Slot(uri=OSCAL.risk_uuid, name="AssociatedRisk_risk-uuid", curie=OSCAL.curie('risk_uuid'),
                    model_uri=OSCAL.AssociatedRisk_risk_uuid, domain=AssociatedRisk, range=str)
 
-slots.Risk_uuid = Slot(uri=OSCAL_CATALOG.uuid, name="Risk_uuid", curie=OSCAL_CATALOG.curie('uuid'),
+slots.Risk_uuid = Slot(uri=OSCAL.uuid, name="Risk_uuid", curie=OSCAL.curie('uuid'),
                    model_uri=OSCAL.Risk_uuid, domain=Risk, range=str)
 
-slots.Risk_title = Slot(uri=OSCAL_CATALOG.title, name="Risk_title", curie=OSCAL_CATALOG.curie('title'),
+slots.Risk_title = Slot(uri=OSCAL.title, name="Risk_title", curie=OSCAL.curie('title'),
                    model_uri=OSCAL.Risk_title, domain=Risk, range=str)
 
-slots.Risk_description = Slot(uri=OSCAL_CATALOG.description, name="Risk_description", curie=OSCAL_CATALOG.curie('description'),
+slots.Risk_description = Slot(uri=OSCAL.description, name="Risk_description", curie=OSCAL.curie('description'),
                    model_uri=OSCAL.Risk_description, domain=Risk, range=str)
 
-slots.Risk_statement = Slot(uri=OSCAL_ASSESSMENT_PLAN.statement, name="Risk_statement", curie=OSCAL_ASSESSMENT_PLAN.curie('statement'),
+slots.Risk_statement = Slot(uri=OSCAL.statement, name="Risk_statement", curie=OSCAL.curie('statement'),
                    model_uri=OSCAL.Risk_statement, domain=Risk, range=str)
 
-slots.Risk_status = Slot(uri=OSCAL_CATALOG.status, name="Risk_status", curie=OSCAL_CATALOG.curie('status'),
+slots.Risk_status = Slot(uri=OSCAL.status, name="Risk_status", curie=OSCAL.curie('status'),
                    model_uri=OSCAL.Risk_status, domain=Risk, range=str)
 
-slots.ThreatId_system = Slot(uri=OSCAL_CATALOG.system, name="ThreatId_system", curie=OSCAL_CATALOG.curie('system'),
+slots.ThreatId_system = Slot(uri=OSCAL.system, name="ThreatId_system", curie=OSCAL.curie('system'),
                    model_uri=OSCAL.ThreatId_system, domain=ThreatId, range=str)
 
-slots.ThreatId_id = Slot(uri=OSCAL_CATALOG.id, name="ThreatId_id", curie=OSCAL_CATALOG.curie('id'),
+slots.ThreatId_id = Slot(uri=OSCAL.id, name="ThreatId_id", curie=OSCAL.curie('id'),
                    model_uri=OSCAL.ThreatId_id, domain=ThreatId, range=str)
 
-slots.Characterization_origin = Slot(uri=OSCAL_ASSESSMENT_PLAN.origin, name="Characterization_origin", curie=OSCAL_ASSESSMENT_PLAN.curie('origin'),
+slots.Characterization_origin = Slot(uri=OSCAL.origin, name="Characterization_origin", curie=OSCAL.curie('origin'),
                    model_uri=OSCAL.Characterization_origin, domain=Characterization, range=Union[dict, Origin])
 
-slots.Characterization_facets = Slot(uri=OSCAL_ASSESSMENT_PLAN.facets, name="Characterization_facets", curie=OSCAL_ASSESSMENT_PLAN.curie('facets'),
+slots.Characterization_facets = Slot(uri=OSCAL.facets, name="Characterization_facets", curie=OSCAL.curie('facets'),
                    model_uri=OSCAL.Characterization_facets, domain=Characterization, range=Union[Union[dict, "Facet"], list[Union[dict, "Facet"]]])
 
-slots.Facet_name = Slot(uri=OSCAL_CATALOG.name, name="Facet_name", curie=OSCAL_CATALOG.curie('name'),
+slots.Facet_name = Slot(uri=OSCAL.name, name="Facet_name", curie=OSCAL.curie('name'),
                    model_uri=OSCAL.Facet_name, domain=Facet, range=str)
 
-slots.Facet_value = Slot(uri=OSCAL_CATALOG.value, name="Facet_value", curie=OSCAL_CATALOG.curie('value'),
+slots.Facet_value = Slot(uri=OSCAL.value, name="Facet_value", curie=OSCAL.curie('value'),
                    model_uri=OSCAL.Facet_value, domain=Facet, range=str)
 
-slots.Facet_system = Slot(uri=OSCAL_CATALOG.system, name="Facet_system", curie=OSCAL_CATALOG.curie('system'),
+slots.Facet_system = Slot(uri=OSCAL.system, name="Facet_system", curie=OSCAL.curie('system'),
                    model_uri=OSCAL.Facet_system, domain=Facet, range=str)
 
-slots.MitigatingFactor_uuid = Slot(uri=OSCAL_CATALOG.uuid, name="MitigatingFactor_uuid", curie=OSCAL_CATALOG.curie('uuid'),
+slots.MitigatingFactor_uuid = Slot(uri=OSCAL.uuid, name="MitigatingFactor_uuid", curie=OSCAL.curie('uuid'),
                    model_uri=OSCAL.MitigatingFactor_uuid, domain=MitigatingFactor, range=str)
 
-slots.MitigatingFactor_description = Slot(uri=OSCAL_CATALOG.description, name="MitigatingFactor_description", curie=OSCAL_CATALOG.curie('description'),
+slots.MitigatingFactor_description = Slot(uri=OSCAL.description, name="MitigatingFactor_description", curie=OSCAL.curie('description'),
                    model_uri=OSCAL.MitigatingFactor_description, domain=MitigatingFactor, range=str)
 
-slots.MitigatingFactor_subjects = Slot(uri=OSCAL_ASSESSMENT_PLAN.subjects, name="MitigatingFactor_subjects", curie=OSCAL_ASSESSMENT_PLAN.curie('subjects'),
+slots.MitigatingFactor_subjects = Slot(uri=OSCAL.subjects, name="MitigatingFactor_subjects", curie=OSCAL.curie('subjects'),
                    model_uri=OSCAL.MitigatingFactor_subjects, domain=MitigatingFactor, range=Optional[Union[Union[dict, SubjectReference], list[Union[dict, SubjectReference]]]])
 
-slots.Response_uuid = Slot(uri=OSCAL_CATALOG.uuid, name="Response_uuid", curie=OSCAL_CATALOG.curie('uuid'),
+slots.Response_uuid = Slot(uri=OSCAL.uuid, name="Response_uuid", curie=OSCAL.curie('uuid'),
                    model_uri=OSCAL.Response_uuid, domain=Response, range=str)
 
-slots.Response_title = Slot(uri=OSCAL_CATALOG.title, name="Response_title", curie=OSCAL_CATALOG.curie('title'),
+slots.Response_title = Slot(uri=OSCAL.title, name="Response_title", curie=OSCAL.curie('title'),
                    model_uri=OSCAL.Response_title, domain=Response, range=str)
 
-slots.Response_description = Slot(uri=OSCAL_CATALOG.description, name="Response_description", curie=OSCAL_CATALOG.curie('description'),
+slots.Response_description = Slot(uri=OSCAL.description, name="Response_description", curie=OSCAL.curie('description'),
                    model_uri=OSCAL.Response_description, domain=Response, range=str)
 
-slots.Response_lifecycle = Slot(uri=OSCAL_ASSESSMENT_PLAN.lifecycle, name="Response_lifecycle", curie=OSCAL_ASSESSMENT_PLAN.curie('lifecycle'),
+slots.Response_lifecycle = Slot(uri=OSCAL.lifecycle, name="Response_lifecycle", curie=OSCAL.curie('lifecycle'),
                    model_uri=OSCAL.Response_lifecycle, domain=Response, range=str)
 
-slots.RequiredAsset_uuid = Slot(uri=OSCAL_CATALOG.uuid, name="RequiredAsset_uuid", curie=OSCAL_CATALOG.curie('uuid'),
+slots.RequiredAsset_uuid = Slot(uri=OSCAL.uuid, name="RequiredAsset_uuid", curie=OSCAL.curie('uuid'),
                    model_uri=OSCAL.RequiredAsset_uuid, domain=RequiredAsset, range=str)
 
-slots.RequiredAsset_description = Slot(uri=OSCAL_CATALOG.description, name="RequiredAsset_description", curie=OSCAL_CATALOG.curie('description'),
+slots.RequiredAsset_description = Slot(uri=OSCAL.description, name="RequiredAsset_description", curie=OSCAL.curie('description'),
                    model_uri=OSCAL.RequiredAsset_description, domain=RequiredAsset, range=str)
 
-slots.RequiredAsset_subjects = Slot(uri=OSCAL_ASSESSMENT_PLAN.subjects, name="RequiredAsset_subjects", curie=OSCAL_ASSESSMENT_PLAN.curie('subjects'),
+slots.RequiredAsset_subjects = Slot(uri=OSCAL.subjects, name="RequiredAsset_subjects", curie=OSCAL.curie('subjects'),
                    model_uri=OSCAL.RequiredAsset_subjects, domain=RequiredAsset, range=Optional[Union[Union[dict, SubjectReference], list[Union[dict, SubjectReference]]]])
 
-slots.RiskLog_entries = Slot(uri=OSCAL_ASSESSMENT_PLAN.entries, name="RiskLog_entries", curie=OSCAL_ASSESSMENT_PLAN.curie('entries'),
+slots.RiskLog_entries = Slot(uri=OSCAL.entries, name="RiskLog_entries", curie=OSCAL.curie('entries'),
                    model_uri=OSCAL.RiskLog_entries, domain=RiskLog, range=Union[Union[dict, "RiskLogEntry"], list[Union[dict, "RiskLogEntry"]]])
 
-slots.RiskLogEntry_uuid = Slot(uri=OSCAL_CATALOG.uuid, name="RiskLogEntry_uuid", curie=OSCAL_CATALOG.curie('uuid'),
+slots.RiskLogEntry_uuid = Slot(uri=OSCAL.uuid, name="RiskLogEntry_uuid", curie=OSCAL.curie('uuid'),
                    model_uri=OSCAL.RiskLogEntry_uuid, domain=RiskLogEntry, range=str)
 
-slots.RiskLogEntry_start = Slot(uri=OSCAL_ASSESSMENT_PLAN.start, name="RiskLogEntry_start", curie=OSCAL_ASSESSMENT_PLAN.curie('start'),
+slots.RiskLogEntry_start = Slot(uri=OSCAL.start, name="RiskLogEntry_start", curie=OSCAL.curie('start'),
                    model_uri=OSCAL.RiskLogEntry_start, domain=RiskLogEntry, range=str)
 
-slots.LoggedBy_party_uuid = Slot(uri=OSCAL_ASSESSMENT_PLAN.party_uuid, name="LoggedBy_party-uuid", curie=OSCAL_ASSESSMENT_PLAN.curie('party_uuid'),
+slots.LoggedBy_party_uuid = Slot(uri=OSCAL.party_uuid, name="LoggedBy_party-uuid", curie=OSCAL.curie('party_uuid'),
                    model_uri=OSCAL.LoggedBy_party_uuid, domain=LoggedBy, range=str)
 
-slots.RiskResponseReference_response_uuid = Slot(uri=OSCAL_ASSESSMENT_PLAN.response_uuid, name="RiskResponseReference_response-uuid", curie=OSCAL_ASSESSMENT_PLAN.curie('response_uuid'),
+slots.RiskResponseReference_response_uuid = Slot(uri=OSCAL.response_uuid, name="RiskResponseReference_response-uuid", curie=OSCAL.curie('response_uuid'),
                    model_uri=OSCAL.RiskResponseReference_response_uuid, domain=RiskResponseReference, range=str)
 
-slots.AssessmentResultsDocument_assessment_results = Slot(uri=OSCAL_ASSESSMENT_RESULTS.assessment_results, name="AssessmentResultsDocument_assessment-results", curie=OSCAL_ASSESSMENT_RESULTS.curie('assessment_results'),
+slots.AssessmentResultsDocument_assessment_results = Slot(uri=OSCAL.assessment_results, name="AssessmentResultsDocument_assessment-results", curie=OSCAL.curie('assessment_results'),
                    model_uri=OSCAL.AssessmentResultsDocument_assessment_results, domain=AssessmentResultsDocument, range=Union[dict, "AssessmentResults"])
 
-slots.AssessmentResults_uuid = Slot(uri=OSCAL_CATALOG.uuid, name="AssessmentResults_uuid", curie=OSCAL_CATALOG.curie('uuid'),
+slots.AssessmentResults_uuid = Slot(uri=OSCAL.uuid, name="AssessmentResults_uuid", curie=OSCAL.curie('uuid'),
                    model_uri=OSCAL.AssessmentResults_uuid, domain=AssessmentResults, range=str)
 
-slots.AssessmentResults_metadata = Slot(uri=OSCAL_CATALOG.metadata, name="AssessmentResults_metadata", curie=OSCAL_CATALOG.curie('metadata'),
+slots.AssessmentResults_metadata = Slot(uri=OSCAL.metadata, name="AssessmentResults_metadata", curie=OSCAL.curie('metadata'),
                    model_uri=OSCAL.AssessmentResults_metadata, domain=AssessmentResults, range=Union[dict, Metadata])
 
-slots.AssessmentResults_import_ap = Slot(uri=OSCAL_ASSESSMENT_RESULTS.import_ap, name="AssessmentResults_import-ap", curie=OSCAL_ASSESSMENT_RESULTS.curie('import_ap'),
+slots.AssessmentResults_import_ap = Slot(uri=OSCAL.import_ap, name="AssessmentResults_import-ap", curie=OSCAL.curie('import_ap'),
                    model_uri=OSCAL.AssessmentResults_import_ap, domain=AssessmentResults, range=Union[dict, "ImportAssessmentPlan"])
 
-slots.AssessmentResults_local_definitions = Slot(uri=OSCAL_ASSESSMENT_PLAN.local_definitions, name="AssessmentResults_local-definitions", curie=OSCAL_ASSESSMENT_PLAN.curie('local_definitions'),
+slots.AssessmentResults_local_definitions = Slot(uri=OSCAL.local_definitions, name="AssessmentResults_local-definitions", curie=OSCAL.curie('local_definitions'),
                    model_uri=OSCAL.AssessmentResults_local_definitions, domain=AssessmentResults, range=Optional[Union[dict, "AssessmentResultsLocalDefinitions"]])
 
-slots.AssessmentResults_results = Slot(uri=OSCAL_ASSESSMENT_RESULTS.results, name="AssessmentResults_results", curie=OSCAL_ASSESSMENT_RESULTS.curie('results'),
+slots.AssessmentResults_results = Slot(uri=OSCAL.results, name="AssessmentResults_results", curie=OSCAL.curie('results'),
                    model_uri=OSCAL.AssessmentResults_results, domain=AssessmentResults, range=Union[Union[dict, "Result"], list[Union[dict, "Result"]]])
 
-slots.ImportAssessmentPlan_href = Slot(uri=OSCAL_CATALOG.href, name="ImportAssessmentPlan_href", curie=OSCAL_CATALOG.curie('href'),
+slots.ImportAssessmentPlan_href = Slot(uri=OSCAL.href, name="ImportAssessmentPlan_href", curie=OSCAL.curie('href'),
                    model_uri=OSCAL.ImportAssessmentPlan_href, domain=ImportAssessmentPlan, range=str)
 
-slots.Result_uuid = Slot(uri=OSCAL_CATALOG.uuid, name="Result_uuid", curie=OSCAL_CATALOG.curie('uuid'),
+slots.Result_uuid = Slot(uri=OSCAL.uuid, name="Result_uuid", curie=OSCAL.curie('uuid'),
                    model_uri=OSCAL.Result_uuid, domain=Result, range=str)
 
-slots.Result_title = Slot(uri=OSCAL_CATALOG.title, name="Result_title", curie=OSCAL_CATALOG.curie('title'),
+slots.Result_title = Slot(uri=OSCAL.title, name="Result_title", curie=OSCAL.curie('title'),
                    model_uri=OSCAL.Result_title, domain=Result, range=str)
 
-slots.Result_description = Slot(uri=OSCAL_CATALOG.description, name="Result_description", curie=OSCAL_CATALOG.curie('description'),
+slots.Result_description = Slot(uri=OSCAL.description, name="Result_description", curie=OSCAL.curie('description'),
                    model_uri=OSCAL.Result_description, domain=Result, range=str)
 
-slots.Result_start = Slot(uri=OSCAL_ASSESSMENT_PLAN.start, name="Result_start", curie=OSCAL_ASSESSMENT_PLAN.curie('start'),
+slots.Result_start = Slot(uri=OSCAL.start, name="Result_start", curie=OSCAL.curie('start'),
                    model_uri=OSCAL.Result_start, domain=Result, range=str)
 
-slots.Result_local_definitions = Slot(uri=OSCAL_ASSESSMENT_PLAN.local_definitions, name="Result_local-definitions", curie=OSCAL_ASSESSMENT_PLAN.curie('local_definitions'),
+slots.Result_local_definitions = Slot(uri=OSCAL.local_definitions, name="Result_local-definitions", curie=OSCAL.curie('local_definitions'),
                    model_uri=OSCAL.Result_local_definitions, domain=Result, range=Optional[Union[dict, "ResultLocalDefinitions"]])
 
-slots.Result_reviewed_controls = Slot(uri=OSCAL_ASSESSMENT_PLAN.reviewed_controls, name="Result_reviewed-controls", curie=OSCAL_ASSESSMENT_PLAN.curie('reviewed_controls'),
+slots.Result_reviewed_controls = Slot(uri=OSCAL.reviewed_controls, name="Result_reviewed-controls", curie=OSCAL.curie('reviewed_controls'),
                    model_uri=OSCAL.Result_reviewed_controls, domain=Result, range=Union[dict, ReviewedControls])
 
-slots.Result_assessment_log = Slot(uri=OSCAL_ASSESSMENT_RESULTS.assessment_log, name="Result_assessment-log", curie=OSCAL_ASSESSMENT_RESULTS.curie('assessment_log'),
+slots.Result_assessment_log = Slot(uri=OSCAL.assessment_log, name="Result_assessment-log", curie=OSCAL.curie('assessment_log'),
                    model_uri=OSCAL.Result_assessment_log, domain=Result, range=Optional[Union[dict, "AssessmentLog"]])
 
-slots.Attestation_parts = Slot(uri=OSCAL_CATALOG.parts, name="Attestation_parts", curie=OSCAL_CATALOG.curie('parts'),
+slots.Attestation_parts = Slot(uri=OSCAL.parts, name="Attestation_parts", curie=OSCAL.curie('parts'),
                    model_uri=OSCAL.Attestation_parts, domain=Attestation, range=Union[Union[dict, AssessmentPart], list[Union[dict, AssessmentPart]]])
 
-slots.AssessmentLog_entries = Slot(uri=OSCAL_ASSESSMENT_PLAN.entries, name="AssessmentLog_entries", curie=OSCAL_ASSESSMENT_PLAN.curie('entries'),
+slots.AssessmentLog_entries = Slot(uri=OSCAL.entries, name="AssessmentLog_entries", curie=OSCAL.curie('entries'),
                    model_uri=OSCAL.AssessmentLog_entries, domain=AssessmentLog, range=Union[Union[dict, "AssessmentLogEntry"], list[Union[dict, "AssessmentLogEntry"]]])
 
-slots.AssessmentLogEntry_uuid = Slot(uri=OSCAL_CATALOG.uuid, name="AssessmentLogEntry_uuid", curie=OSCAL_CATALOG.curie('uuid'),
+slots.AssessmentLogEntry_uuid = Slot(uri=OSCAL.uuid, name="AssessmentLogEntry_uuid", curie=OSCAL.curie('uuid'),
                    model_uri=OSCAL.AssessmentLogEntry_uuid, domain=AssessmentLogEntry, range=str)
 
-slots.AssessmentLogEntry_start = Slot(uri=OSCAL_ASSESSMENT_PLAN.start, name="AssessmentLogEntry_start", curie=OSCAL_ASSESSMENT_PLAN.curie('start'),
+slots.AssessmentLogEntry_start = Slot(uri=OSCAL.start, name="AssessmentLogEntry_start", curie=OSCAL.curie('start'),
                    model_uri=OSCAL.AssessmentLogEntry_start, domain=AssessmentLogEntry, range=str)
 
-slots.ComponentDefinitionDocument_component_definition = Slot(uri=OSCAL_COMPONENT.component_definition, name="ComponentDefinitionDocument_component-definition", curie=OSCAL_COMPONENT.curie('component_definition'),
+slots.ComponentDefinitionDocument_component_definition = Slot(uri=OSCAL.component_definition, name="ComponentDefinitionDocument_component-definition", curie=OSCAL.curie('component_definition'),
                    model_uri=OSCAL.ComponentDefinitionDocument_component_definition, domain=ComponentDefinitionDocument, range=Union[dict, "ComponentDefinition"])
 
-slots.ComponentDefinition_uuid = Slot(uri=OSCAL_CATALOG.uuid, name="ComponentDefinition_uuid", curie=OSCAL_CATALOG.curie('uuid'),
+slots.ComponentDefinition_uuid = Slot(uri=OSCAL.uuid, name="ComponentDefinition_uuid", curie=OSCAL.curie('uuid'),
                    model_uri=OSCAL.ComponentDefinition_uuid, domain=ComponentDefinition, range=str)
 
-slots.ComponentDefinition_metadata = Slot(uri=OSCAL_CATALOG.metadata, name="ComponentDefinition_metadata", curie=OSCAL_CATALOG.curie('metadata'),
+slots.ComponentDefinition_metadata = Slot(uri=OSCAL.metadata, name="ComponentDefinition_metadata", curie=OSCAL.curie('metadata'),
                    model_uri=OSCAL.ComponentDefinition_metadata, domain=ComponentDefinition, range=Union[dict, Metadata])
 
-slots.ComponentDefinition_components = Slot(uri=OSCAL_ASSESSMENT_PLAN.components, name="ComponentDefinition_components", curie=OSCAL_ASSESSMENT_PLAN.curie('components'),
+slots.ComponentDefinition_components = Slot(uri=OSCAL.components, name="ComponentDefinition_components", curie=OSCAL.curie('components'),
                    model_uri=OSCAL.ComponentDefinition_components, domain=ComponentDefinition, range=Optional[Union[Union[dict, "DefinedComponent"], list[Union[dict, "DefinedComponent"]]]])
 
-slots.ImportComponentDefinition_href = Slot(uri=OSCAL_CATALOG.href, name="ImportComponentDefinition_href", curie=OSCAL_CATALOG.curie('href'),
+slots.ImportComponentDefinition_href = Slot(uri=OSCAL.href, name="ImportComponentDefinition_href", curie=OSCAL.curie('href'),
                    model_uri=OSCAL.ImportComponentDefinition_href, domain=ImportComponentDefinition, range=str)
 
-slots.DefinedComponent_uuid = Slot(uri=OSCAL_CATALOG.uuid, name="DefinedComponent_uuid", curie=OSCAL_CATALOG.curie('uuid'),
+slots.DefinedComponent_uuid = Slot(uri=OSCAL.uuid, name="DefinedComponent_uuid", curie=OSCAL.curie('uuid'),
                    model_uri=OSCAL.DefinedComponent_uuid, domain=DefinedComponent, range=str)
 
-slots.DefinedComponent_type = Slot(uri=OSCAL_CATALOG.type, name="DefinedComponent_type", curie=OSCAL_CATALOG.curie('type'),
+slots.DefinedComponent_type = Slot(uri=OSCAL.type, name="DefinedComponent_type", curie=OSCAL.curie('type'),
                    model_uri=OSCAL.DefinedComponent_type, domain=DefinedComponent, range=str)
 
-slots.DefinedComponent_title = Slot(uri=OSCAL_CATALOG.title, name="DefinedComponent_title", curie=OSCAL_CATALOG.curie('title'),
+slots.DefinedComponent_title = Slot(uri=OSCAL.title, name="DefinedComponent_title", curie=OSCAL.curie('title'),
                    model_uri=OSCAL.DefinedComponent_title, domain=DefinedComponent, range=str)
 
-slots.DefinedComponent_description = Slot(uri=OSCAL_CATALOG.description, name="DefinedComponent_description", curie=OSCAL_CATALOG.curie('description'),
+slots.DefinedComponent_description = Slot(uri=OSCAL.description, name="DefinedComponent_description", curie=OSCAL.curie('description'),
                    model_uri=OSCAL.DefinedComponent_description, domain=DefinedComponent, range=str)
 
-slots.Capability_uuid = Slot(uri=OSCAL_CATALOG.uuid, name="Capability_uuid", curie=OSCAL_CATALOG.curie('uuid'),
+slots.Capability_uuid = Slot(uri=OSCAL.uuid, name="Capability_uuid", curie=OSCAL.curie('uuid'),
                    model_uri=OSCAL.Capability_uuid, domain=Capability, range=str)
 
-slots.Capability_name = Slot(uri=OSCAL_CATALOG.name, name="Capability_name", curie=OSCAL_CATALOG.curie('name'),
+slots.Capability_name = Slot(uri=OSCAL.name, name="Capability_name", curie=OSCAL.curie('name'),
                    model_uri=OSCAL.Capability_name, domain=Capability, range=str)
 
-slots.Capability_description = Slot(uri=OSCAL_CATALOG.description, name="Capability_description", curie=OSCAL_CATALOG.curie('description'),
+slots.Capability_description = Slot(uri=OSCAL.description, name="Capability_description", curie=OSCAL.curie('description'),
                    model_uri=OSCAL.Capability_description, domain=Capability, range=str)
 
-slots.IncorporatesComponent_component_uuid = Slot(uri=OSCAL_ASSESSMENT_PLAN.component_uuid, name="IncorporatesComponent_component-uuid", curie=OSCAL_ASSESSMENT_PLAN.curie('component_uuid'),
+slots.IncorporatesComponent_component_uuid = Slot(uri=OSCAL.component_uuid, name="IncorporatesComponent_component-uuid", curie=OSCAL.curie('component_uuid'),
                    model_uri=OSCAL.IncorporatesComponent_component_uuid, domain=IncorporatesComponent, range=str)
 
-slots.IncorporatesComponent_description = Slot(uri=OSCAL_CATALOG.description, name="IncorporatesComponent_description", curie=OSCAL_CATALOG.curie('description'),
+slots.IncorporatesComponent_description = Slot(uri=OSCAL.description, name="IncorporatesComponent_description", curie=OSCAL.curie('description'),
                    model_uri=OSCAL.IncorporatesComponent_description, domain=IncorporatesComponent, range=str)
 
-slots.ControlImplementationSet_set_parameters = Slot(uri=OSCAL_CATALOG.set_parameters, name="ControlImplementationSet_set-parameters", curie=OSCAL_CATALOG.curie('set_parameters'),
+slots.ControlImplementationSet_set_parameters = Slot(uri=OSCAL.set_parameters, name="ControlImplementationSet_set-parameters", curie=OSCAL.curie('set_parameters'),
                    model_uri=OSCAL.ControlImplementationSet_set_parameters, domain=ControlImplementationSet, range=Optional[Union[Union[dict, SetParameter], list[Union[dict, SetParameter]]]])
 
-slots.ControlImplementationSet_implemented_requirements = Slot(uri=OSCAL_CATALOG.implemented_requirements, name="ControlImplementationSet_implemented-requirements", curie=OSCAL_CATALOG.curie('implemented_requirements'),
+slots.ControlImplementationSet_implemented_requirements = Slot(uri=OSCAL.implemented_requirements, name="ControlImplementationSet_implemented-requirements", curie=OSCAL.curie('implemented_requirements'),
                    model_uri=OSCAL.ControlImplementationSet_implemented_requirements, domain=ControlImplementationSet, range=Union[Union[dict, "ImplementedRequirement"], list[Union[dict, "ImplementedRequirement"]]])
 
-slots.ControlImplementationSet_uuid = Slot(uri=OSCAL_CATALOG.uuid, name="ControlImplementationSet_uuid", curie=OSCAL_CATALOG.curie('uuid'),
+slots.ControlImplementationSet_uuid = Slot(uri=OSCAL.uuid, name="ControlImplementationSet_uuid", curie=OSCAL.curie('uuid'),
                    model_uri=OSCAL.ControlImplementationSet_uuid, domain=ControlImplementationSet, range=str)
 
-slots.ControlImplementationSet_source = Slot(uri=OSCAL_COMPONENT.source, name="ControlImplementationSet_source", curie=OSCAL_COMPONENT.curie('source'),
+slots.ControlImplementationSet_source = Slot(uri=OSCAL.source, name="ControlImplementationSet_source", curie=OSCAL.curie('source'),
                    model_uri=OSCAL.ControlImplementationSet_source, domain=ControlImplementationSet, range=str)
 
-slots.ControlImplementationSet_description = Slot(uri=OSCAL_CATALOG.description, name="ControlImplementationSet_description", curie=OSCAL_CATALOG.curie('description'),
+slots.ControlImplementationSet_description = Slot(uri=OSCAL.description, name="ControlImplementationSet_description", curie=OSCAL.curie('description'),
                    model_uri=OSCAL.ControlImplementationSet_description, domain=ControlImplementationSet, range=str)
 
-slots.ImplementedRequirement_set_parameters = Slot(uri=OSCAL_CATALOG.set_parameters, name="ImplementedRequirement_set-parameters", curie=OSCAL_CATALOG.curie('set_parameters'),
+slots.ImplementedRequirement_set_parameters = Slot(uri=OSCAL.set_parameters, name="ImplementedRequirement_set-parameters", curie=OSCAL.curie('set_parameters'),
                    model_uri=OSCAL.ImplementedRequirement_set_parameters, domain=ImplementedRequirement, range=Optional[Union[Union[dict, SetParameter], list[Union[dict, SetParameter]]]])
 
-slots.ImplementedRequirement_statements = Slot(uri=OSCAL_CATALOG.statements, name="ImplementedRequirement_statements", curie=OSCAL_CATALOG.curie('statements'),
+slots.ImplementedRequirement_statements = Slot(uri=OSCAL.statements, name="ImplementedRequirement_statements", curie=OSCAL.curie('statements'),
                    model_uri=OSCAL.ImplementedRequirement_statements, domain=ImplementedRequirement, range=Optional[Union[Union[dict, "ImplementedControlStatement"], list[Union[dict, "ImplementedControlStatement"]]]])
 
-slots.ImplementedRequirement_uuid = Slot(uri=OSCAL_CATALOG.uuid, name="ImplementedRequirement_uuid", curie=OSCAL_CATALOG.curie('uuid'),
+slots.ImplementedRequirement_uuid = Slot(uri=OSCAL.uuid, name="ImplementedRequirement_uuid", curie=OSCAL.curie('uuid'),
                    model_uri=OSCAL.ImplementedRequirement_uuid, domain=ImplementedRequirement, range=str)
 
-slots.ImplementedRequirement_control_id = Slot(uri=OSCAL_CATALOG.control_id, name="ImplementedRequirement_control-id", curie=OSCAL_CATALOG.curie('control_id'),
+slots.ImplementedRequirement_control_id = Slot(uri=OSCAL.control_id, name="ImplementedRequirement_control-id", curie=OSCAL.curie('control_id'),
                    model_uri=OSCAL.ImplementedRequirement_control_id, domain=ImplementedRequirement, range=str)
 
-slots.ImplementedRequirement_description = Slot(uri=OSCAL_CATALOG.description, name="ImplementedRequirement_description", curie=OSCAL_CATALOG.curie('description'),
+slots.ImplementedRequirement_description = Slot(uri=OSCAL.description, name="ImplementedRequirement_description", curie=OSCAL.curie('description'),
                    model_uri=OSCAL.ImplementedRequirement_description, domain=ImplementedRequirement, range=str)
 
-slots.ImplementedControlStatement_statement_id = Slot(uri=OSCAL_CATALOG.statement_id, name="ImplementedControlStatement_statement-id", curie=OSCAL_CATALOG.curie('statement_id'),
+slots.ImplementedControlStatement_statement_id = Slot(uri=OSCAL.statement_id, name="ImplementedControlStatement_statement-id", curie=OSCAL.curie('statement_id'),
                    model_uri=OSCAL.ImplementedControlStatement_statement_id, domain=ImplementedControlStatement, range=str)
 
-slots.ImplementedControlStatement_uuid = Slot(uri=OSCAL_CATALOG.uuid, name="ImplementedControlStatement_uuid", curie=OSCAL_CATALOG.curie('uuid'),
+slots.ImplementedControlStatement_uuid = Slot(uri=OSCAL.uuid, name="ImplementedControlStatement_uuid", curie=OSCAL.curie('uuid'),
                    model_uri=OSCAL.ImplementedControlStatement_uuid, domain=ImplementedControlStatement, range=str)
 
-slots.ImplementedControlStatement_description = Slot(uri=OSCAL_CATALOG.description, name="ImplementedControlStatement_description", curie=OSCAL_CATALOG.curie('description'),
+slots.ImplementedControlStatement_description = Slot(uri=OSCAL.description, name="ImplementedControlStatement_description", curie=OSCAL.curie('description'),
                    model_uri=OSCAL.ImplementedControlStatement_description, domain=ImplementedControlStatement, range=str)
 
-slots.MappingCollectionDocument_mapping_collection = Slot(uri=OSCAL_MAPPING.mapping_collection, name="MappingCollectionDocument_mapping-collection", curie=OSCAL_MAPPING.curie('mapping_collection'),
+slots.MappingCollectionDocument_mapping_collection = Slot(uri=OSCAL.mapping_collection, name="MappingCollectionDocument_mapping-collection", curie=OSCAL.curie('mapping_collection'),
                    model_uri=OSCAL.MappingCollectionDocument_mapping_collection, domain=MappingCollectionDocument, range=Union[dict, "MappingCollection"])
 
-slots.MappingCollection_uuid = Slot(uri=OSCAL_CATALOG.uuid, name="MappingCollection_uuid", curie=OSCAL_CATALOG.curie('uuid'),
+slots.MappingCollection_uuid = Slot(uri=OSCAL.uuid, name="MappingCollection_uuid", curie=OSCAL.curie('uuid'),
                    model_uri=OSCAL.MappingCollection_uuid, domain=MappingCollection, range=str)
 
-slots.MappingCollection_metadata = Slot(uri=OSCAL_CATALOG.metadata, name="MappingCollection_metadata", curie=OSCAL_CATALOG.curie('metadata'),
+slots.MappingCollection_metadata = Slot(uri=OSCAL.metadata, name="MappingCollection_metadata", curie=OSCAL.curie('metadata'),
                    model_uri=OSCAL.MappingCollection_metadata, domain=MappingCollection, range=Union[dict, Metadata])
 
-slots.MappingCollection_provenance = Slot(uri=OSCAL_MAPPING.provenance, name="MappingCollection_provenance", curie=OSCAL_MAPPING.curie('provenance'),
+slots.MappingCollection_provenance = Slot(uri=OSCAL.provenance, name="MappingCollection_provenance", curie=OSCAL.curie('provenance'),
                    model_uri=OSCAL.MappingCollection_provenance, domain=MappingCollection, range=Union[dict, "MappingProvenance"])
 
-slots.MappingCollection_mappings = Slot(uri=OSCAL_MAPPING.mappings, name="MappingCollection_mappings", curie=OSCAL_MAPPING.curie('mappings'),
+slots.MappingCollection_mappings = Slot(uri=OSCAL.mappings, name="MappingCollection_mappings", curie=OSCAL.curie('mappings'),
                    model_uri=OSCAL.MappingCollection_mappings, domain=MappingCollection, range=Union[Union[dict, "Mapping"], list[Union[dict, "Mapping"]]])
 
-slots.MappingProvenance_method = Slot(uri=OSCAL_CATALOG.method, name="MappingProvenance_method", curie=OSCAL_CATALOG.curie('method'),
+slots.MappingProvenance_method = Slot(uri=OSCAL.method, name="MappingProvenance_method", curie=OSCAL.curie('method'),
                    model_uri=OSCAL.MappingProvenance_method, domain=MappingProvenance, range=Union[str, "MappingMethodEnum"])
 
-slots.MappingProvenance_matching_rationale = Slot(uri=OSCAL_MAPPING.matching_rationale, name="MappingProvenance_matching-rationale", curie=OSCAL_MAPPING.curie('matching_rationale'),
+slots.MappingProvenance_matching_rationale = Slot(uri=OSCAL.matching_rationale, name="MappingProvenance_matching-rationale", curie=OSCAL.curie('matching_rationale'),
                    model_uri=OSCAL.MappingProvenance_matching_rationale, domain=MappingProvenance, range=Union[str, "MatchingRationaleEnum"])
 
-slots.MappingProvenance_status = Slot(uri=OSCAL_CATALOG.status, name="MappingProvenance_status", curie=OSCAL_CATALOG.curie('status'),
+slots.MappingProvenance_status = Slot(uri=OSCAL.status, name="MappingProvenance_status", curie=OSCAL.curie('status'),
                    model_uri=OSCAL.MappingProvenance_status, domain=MappingProvenance, range=Union[str, "MappingStatusEnum"])
 
-slots.MappingProvenance_mapping_description = Slot(uri=OSCAL_MAPPING.mapping_description, name="MappingProvenance_mapping-description", curie=OSCAL_MAPPING.curie('mapping_description'),
+slots.MappingProvenance_mapping_description = Slot(uri=OSCAL.mapping_description, name="MappingProvenance_mapping-description", curie=OSCAL.curie('mapping_description'),
                    model_uri=OSCAL.MappingProvenance_mapping_description, domain=MappingProvenance, range=str)
 
-slots.Mapping_uuid = Slot(uri=OSCAL_CATALOG.uuid, name="Mapping_uuid", curie=OSCAL_CATALOG.curie('uuid'),
+slots.Mapping_uuid = Slot(uri=OSCAL.uuid, name="Mapping_uuid", curie=OSCAL.curie('uuid'),
                    model_uri=OSCAL.Mapping_uuid, domain=Mapping, range=str)
 
-slots.Mapping_method = Slot(uri=OSCAL_CATALOG.method, name="Mapping_method", curie=OSCAL_CATALOG.curie('method'),
+slots.Mapping_method = Slot(uri=OSCAL.method, name="Mapping_method", curie=OSCAL.curie('method'),
                    model_uri=OSCAL.Mapping_method, domain=Mapping, range=Optional[Union[str, "MappingMethodEnum"]])
 
-slots.Mapping_status = Slot(uri=OSCAL_CATALOG.status, name="Mapping_status", curie=OSCAL_CATALOG.curie('status'),
+slots.Mapping_status = Slot(uri=OSCAL.status, name="Mapping_status", curie=OSCAL.curie('status'),
                    model_uri=OSCAL.Mapping_status, domain=Mapping, range=Optional[Union[str, "MappingStatusEnum"]])
 
-slots.Mapping_source_resource = Slot(uri=OSCAL_MAPPING.source_resource, name="Mapping_source-resource", curie=OSCAL_MAPPING.curie('source_resource'),
+slots.Mapping_source_resource = Slot(uri=OSCAL.source_resource, name="Mapping_source-resource", curie=OSCAL.curie('source_resource'),
                    model_uri=OSCAL.Mapping_source_resource, domain=Mapping, range=Union[dict, "MappingResourceReference"])
 
-slots.Mapping_target_resource = Slot(uri=OSCAL_MAPPING.target_resource, name="Mapping_target-resource", curie=OSCAL_MAPPING.curie('target_resource'),
+slots.Mapping_target_resource = Slot(uri=OSCAL.target_resource, name="Mapping_target-resource", curie=OSCAL.curie('target_resource'),
                    model_uri=OSCAL.Mapping_target_resource, domain=Mapping, range=Union[dict, "MappingResourceReference"])
 
-slots.Mapping_maps = Slot(uri=OSCAL_MAPPING.maps, name="Mapping_maps", curie=OSCAL_MAPPING.curie('maps'),
+slots.Mapping_maps = Slot(uri=OSCAL.maps, name="Mapping_maps", curie=OSCAL.curie('maps'),
                    model_uri=OSCAL.Mapping_maps, domain=Mapping, range=Union[Union[dict, "Map"], list[Union[dict, "Map"]]])
 
-slots.Map_uuid = Slot(uri=OSCAL_CATALOG.uuid, name="Map_uuid", curie=OSCAL_CATALOG.curie('uuid'),
+slots.Map_uuid = Slot(uri=OSCAL.uuid, name="Map_uuid", curie=OSCAL.curie('uuid'),
                    model_uri=OSCAL.Map_uuid, domain=Map, range=str)
 
-slots.Map_relationship = Slot(uri=OSCAL_MAPPING.relationship, name="Map_relationship", curie=OSCAL_MAPPING.curie('relationship'),
+slots.Map_relationship = Slot(uri=OSCAL.relationship, name="Map_relationship", curie=OSCAL.curie('relationship'),
                    model_uri=OSCAL.Map_relationship, domain=Map, range=str)
 
-slots.Map_sources = Slot(uri=OSCAL_CATALOG.sources, name="Map_sources", curie=OSCAL_CATALOG.curie('sources'),
+slots.Map_sources = Slot(uri=OSCAL.sources, name="Map_sources", curie=OSCAL.curie('sources'),
                    model_uri=OSCAL.Map_sources, domain=Map, range=Union[Union[dict, "MappingItem"], list[Union[dict, "MappingItem"]]])
 
-slots.Map_targets = Slot(uri=OSCAL_MAPPING.targets, name="Map_targets", curie=OSCAL_MAPPING.curie('targets'),
+slots.Map_targets = Slot(uri=OSCAL.targets, name="Map_targets", curie=OSCAL.curie('targets'),
                    model_uri=OSCAL.Map_targets, domain=Map, range=Union[Union[dict, "MappingItem"], list[Union[dict, "MappingItem"]]])
 
-slots.MappingItem_type = Slot(uri=OSCAL_CATALOG.type, name="MappingItem_type", curie=OSCAL_CATALOG.curie('type'),
+slots.MappingItem_type = Slot(uri=OSCAL.type, name="MappingItem_type", curie=OSCAL.curie('type'),
                    model_uri=OSCAL.MappingItem_type, domain=MappingItem, range=Union[str, "MappingSubjectTypeEnum"])
 
-slots.MappingItem_id_ref = Slot(uri=OSCAL_MAPPING.id_ref, name="MappingItem_id-ref", curie=OSCAL_MAPPING.curie('id_ref'),
+slots.MappingItem_id_ref = Slot(uri=OSCAL.id_ref, name="MappingItem_id-ref", curie=OSCAL.curie('id_ref'),
                    model_uri=OSCAL.MappingItem_id_ref, domain=MappingItem, range=str)
 
-slots.MappingResourceReference_type = Slot(uri=OSCAL_CATALOG.type, name="MappingResourceReference_type", curie=OSCAL_CATALOG.curie('type'),
+slots.MappingResourceReference_type = Slot(uri=OSCAL.type, name="MappingResourceReference_type", curie=OSCAL.curie('type'),
                    model_uri=OSCAL.MappingResourceReference_type, domain=MappingResourceReference, range=str)
 
-slots.MappingResourceReference_href = Slot(uri=OSCAL_CATALOG.href, name="MappingResourceReference_href", curie=OSCAL_CATALOG.curie('href'),
+slots.MappingResourceReference_href = Slot(uri=OSCAL.href, name="MappingResourceReference_href", curie=OSCAL.curie('href'),
                    model_uri=OSCAL.MappingResourceReference_href, domain=MappingResourceReference, range=str)
 
-slots.QualifierItem_category = Slot(uri=OSCAL_MAPPING.category, name="QualifierItem_category", curie=OSCAL_MAPPING.curie('category'),
+slots.QualifierItem_category = Slot(uri=OSCAL.category, name="QualifierItem_category", curie=OSCAL.curie('category'),
                    model_uri=OSCAL.QualifierItem_category, domain=QualifierItem, range=Union[str, "QualifierCategoryEnum"])
 
-slots.QualifierItem_description = Slot(uri=OSCAL_CATALOG.description, name="QualifierItem_description", curie=OSCAL_CATALOG.curie('description'),
+slots.QualifierItem_description = Slot(uri=OSCAL.description, name="QualifierItem_description", curie=OSCAL.curie('description'),
                    model_uri=OSCAL.QualifierItem_description, domain=QualifierItem, range=str)
 
-slots.QualifierItem_predicate = Slot(uri=OSCAL_MAPPING.predicate, name="QualifierItem_predicate", curie=OSCAL_MAPPING.curie('predicate'),
+slots.QualifierItem_predicate = Slot(uri=OSCAL.predicate, name="QualifierItem_predicate", curie=OSCAL.curie('predicate'),
                    model_uri=OSCAL.QualifierItem_predicate, domain=QualifierItem, range=Union[str, "QualifierPredicateEnum"])
 
-slots.QualifierItem_subject = Slot(uri=OSCAL_MAPPING.subject, name="QualifierItem_subject", curie=OSCAL_MAPPING.curie('subject'),
+slots.QualifierItem_subject = Slot(uri=OSCAL.subject, name="QualifierItem_subject", curie=OSCAL.curie('subject'),
                    model_uri=OSCAL.QualifierItem_subject, domain=QualifierItem, range=Union[str, "QualifierSubjectEnum"])
 
-slots.GapSummary_uuid = Slot(uri=OSCAL_CATALOG.uuid, name="GapSummary_uuid", curie=OSCAL_CATALOG.curie('uuid'),
+slots.GapSummary_uuid = Slot(uri=OSCAL.uuid, name="GapSummary_uuid", curie=OSCAL.curie('uuid'),
                    model_uri=OSCAL.GapSummary_uuid, domain=GapSummary, range=str)
 
-slots.GapSummary_unmapped_controls = Slot(uri=OSCAL_MAPPING.unmapped_controls, name="GapSummary_unmapped-controls", curie=OSCAL_MAPPING.curie('unmapped_controls'),
+slots.GapSummary_unmapped_controls = Slot(uri=OSCAL.unmapped_controls, name="GapSummary_unmapped-controls", curie=OSCAL.curie('unmapped_controls'),
                    model_uri=OSCAL.GapSummary_unmapped_controls, domain=GapSummary, range=Union[Union[dict, SelectControlById], list[Union[dict, SelectControlById]]])
 
-slots.ConfidenceScore_category = Slot(uri=OSCAL_MAPPING.category, name="ConfidenceScore_category", curie=OSCAL_MAPPING.curie('category'),
+slots.ConfidenceScore_category = Slot(uri=OSCAL.category, name="ConfidenceScore_category", curie=OSCAL.curie('category'),
                    model_uri=OSCAL.ConfidenceScore_category, domain=ConfidenceScore, range=Optional[str])
 
-slots.Coverage_target_coverage = Slot(uri=OSCAL_MAPPING.target_coverage, name="Coverage_target-coverage", curie=OSCAL_MAPPING.curie('target_coverage'),
+slots.Coverage_target_coverage = Slot(uri=OSCAL.target_coverage, name="Coverage_target-coverage", curie=OSCAL.curie('target_coverage'),
                    model_uri=OSCAL.Coverage_target_coverage, domain=Coverage, range=float)
 
-slots.PoamDocument_plan_of_action_and_milestones = Slot(uri=OSCAL_POAM.plan_of_action_and_milestones, name="PoamDocument_plan-of-action-and-milestones", curie=OSCAL_POAM.curie('plan_of_action_and_milestones'),
+slots.PoamDocument_plan_of_action_and_milestones = Slot(uri=OSCAL.plan_of_action_and_milestones, name="PoamDocument_plan-of-action-and-milestones", curie=OSCAL.curie('plan_of_action_and_milestones'),
                    model_uri=OSCAL.PoamDocument_plan_of_action_and_milestones, domain=PoamDocument, range=Union[dict, "PlanOfActionAndMilestones"])
 
-slots.PlanOfActionAndMilestones_uuid = Slot(uri=OSCAL_CATALOG.uuid, name="PlanOfActionAndMilestones_uuid", curie=OSCAL_CATALOG.curie('uuid'),
+slots.PlanOfActionAndMilestones_uuid = Slot(uri=OSCAL.uuid, name="PlanOfActionAndMilestones_uuid", curie=OSCAL.curie('uuid'),
                    model_uri=OSCAL.PlanOfActionAndMilestones_uuid, domain=PlanOfActionAndMilestones, range=str)
 
-slots.PlanOfActionAndMilestones_metadata = Slot(uri=OSCAL_CATALOG.metadata, name="PlanOfActionAndMilestones_metadata", curie=OSCAL_CATALOG.curie('metadata'),
+slots.PlanOfActionAndMilestones_metadata = Slot(uri=OSCAL.metadata, name="PlanOfActionAndMilestones_metadata", curie=OSCAL.curie('metadata'),
                    model_uri=OSCAL.PlanOfActionAndMilestones_metadata, domain=PlanOfActionAndMilestones, range=Union[dict, Metadata])
 
-slots.PlanOfActionAndMilestones_local_definitions = Slot(uri=OSCAL_ASSESSMENT_PLAN.local_definitions, name="PlanOfActionAndMilestones_local-definitions", curie=OSCAL_ASSESSMENT_PLAN.curie('local_definitions'),
+slots.PlanOfActionAndMilestones_local_definitions = Slot(uri=OSCAL.local_definitions, name="PlanOfActionAndMilestones_local-definitions", curie=OSCAL.curie('local_definitions'),
                    model_uri=OSCAL.PlanOfActionAndMilestones_local_definitions, domain=PlanOfActionAndMilestones, range=Optional[Union[dict, "PoamLocalDefinitions"]])
 
-slots.PlanOfActionAndMilestones_poam_items = Slot(uri=OSCAL_POAM.poam_items, name="PlanOfActionAndMilestones_poam-items", curie=OSCAL_POAM.curie('poam_items'),
+slots.PlanOfActionAndMilestones_poam_items = Slot(uri=OSCAL.poam_items, name="PlanOfActionAndMilestones_poam-items", curie=OSCAL.curie('poam_items'),
                    model_uri=OSCAL.PlanOfActionAndMilestones_poam_items, domain=PlanOfActionAndMilestones, range=Union[Union[dict, "PoamItem"], list[Union[dict, "PoamItem"]]])
 
-slots.PoamItem_title = Slot(uri=OSCAL_CATALOG.title, name="PoamItem_title", curie=OSCAL_CATALOG.curie('title'),
+slots.PoamItem_title = Slot(uri=OSCAL.title, name="PoamItem_title", curie=OSCAL.curie('title'),
                    model_uri=OSCAL.PoamItem_title, domain=PoamItem, range=str)
 
-slots.PoamItem_description = Slot(uri=OSCAL_CATALOG.description, name="PoamItem_description", curie=OSCAL_CATALOG.curie('description'),
+slots.PoamItem_description = Slot(uri=OSCAL.description, name="PoamItem_description", curie=OSCAL.curie('description'),
                    model_uri=OSCAL.PoamItem_description, domain=PoamItem, range=str)
 
-slots.RelatedFinding_finding_uuid = Slot(uri=OSCAL_POAM.finding_uuid, name="RelatedFinding_finding-uuid", curie=OSCAL_POAM.curie('finding_uuid'),
+slots.RelatedFinding_finding_uuid = Slot(uri=OSCAL.finding_uuid, name="RelatedFinding_finding-uuid", curie=OSCAL.curie('finding_uuid'),
                    model_uri=OSCAL.RelatedFinding_finding_uuid, domain=RelatedFinding, range=str)

@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: SystemCharacteristics
+# metamodel_version: 1.11.0# version: 1.2.3id: SystemCharacteristics
 schema_generating: true
 description: Contains the characteristics of the system, such as its name, purpose,
   and security impact level.
@@ -20,6 +20,14 @@ fields:
 - id: description
   description: A human-readable description.
   display_name: SystemCharacteristics_description
+- id: props
+  description: A list of properties.
+  display_name: SystemCharacteristics_props
+  cardinality: multi
+- id: links
+  description: A list of links.
+  display_name: links
+  cardinality: multi
 - id: date_authorized
   description: The date the system received its authorization.
   display_name: date-authorized
@@ -57,7 +65,3 @@ fields:
 - id: remarks
   description: Additional commentary about the containing object.
   display_name: remarks
-- id: props
-  description: A list of properties.
-  display_name: SystemCharacteristics_props
-  cardinality: multi

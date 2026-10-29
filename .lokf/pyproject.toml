@@ -1,4 +1,4 @@
-# LOKF sidecar for OSCAL.
+# LOKF sidecar for oscal.
 #
 # A small Python "sidecar" that lets this repo validate and project its
 # knowledge/ bundle with the `lokf` toolkit. It does not affect the app build.
@@ -8,19 +8,15 @@
 [project]
 name = "oscal-knowledge"
 version = "0.1.0"
-description = "LOKF knowledge-bundle tooling for OSCAL."
-requires-python = ">=3.11"
+description = "LOKF knowledge-bundle tooling for oscal."
+# Keep in sync with the `lokf` toolkit's own requires-python floor.
+requires-python = ">=3.10"
 dependencies = [
-    "linkml>=1.11.1",
-    "lokf[build]>=0.3.0",
-    "rust-just==1.47.0",
+    "lokf[build]>=0.9.0",
+    # The recipe runner the workflows use, pinned here so uv.lock checks it
+    # by hash; keep the version in step with the workflows' uvx fallback.
+    "rust-just==1.59.0",
 ]
 
 [tool.uv]
 package = false
-
-# `lokf validate` is a recent toolkit addition; if your `lokf` is not on a public
-# package index yet, pin it here instead of the plain `lokf` dependency above -
-# a git ref is the most portable option:
-#   [tool.uv.sources]
-#   lokf = { git = "https://github.com/nicholsn/lokf.git", rev = "<tag-or-sha>" }

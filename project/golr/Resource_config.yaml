@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: Resource
+# metamodel_version: 1.11.0# version: 1.2.3id: Resource
 schema_generating: true
 description: A resource associated with content in the containing document instance.
   A resource may be directly included in the document using base64 encoding or may

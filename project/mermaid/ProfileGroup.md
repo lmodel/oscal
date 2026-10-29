@@ -8,7 +8,7 @@
       OscalCommon <|-- ProfileGroup
         click OscalCommon href "../OscalCommon"
       
-      ProfileGroup : _class
+      ProfileGroup : class_
         
       ProfileGroup : groups
         

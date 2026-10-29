@@ -182,13 +182,29 @@ inline bool from_string(const char* str, LocationPropNameEnum& out) {
 
 /// Curated OSCAL location type property values. Other values are permitted (OSCAL allow-other="yes").
 enum class LocationPropTypeEnum {
-    DATA-CENTER
+    DATA-CENTER,
+    REGION,
+    ZONE,
+    HEADQUARTERS,
+    REGIONAL-OFFICE,
+    SATELLITE-OFFICE,
+    EDGE,
+    CDN,
+    DOMAIN
 };
 
 /// Convert LocationPropTypeEnum to its string representation.
 inline const char* to_string(LocationPropTypeEnum value) {
     switch (value) {
         case LocationPropTypeEnum::DATA-CENTER: return "data-center";
+        case LocationPropTypeEnum::REGION: return "region";
+        case LocationPropTypeEnum::ZONE: return "zone";
+        case LocationPropTypeEnum::HEADQUARTERS: return "headquarters";
+        case LocationPropTypeEnum::REGIONAL-OFFICE: return "regional-office";
+        case LocationPropTypeEnum::SATELLITE-OFFICE: return "satellite-office";
+        case LocationPropTypeEnum::EDGE: return "edge";
+        case LocationPropTypeEnum::CDN: return "cdn";
+        case LocationPropTypeEnum::DOMAIN: return "domain";
     }
     return "unknown";
 }
@@ -196,13 +212,26 @@ inline const char* to_string(LocationPropTypeEnum value) {
 /// Parse a string into LocationPropTypeEnum. Returns false if the string is not a valid value.
 inline bool from_string(const char* str, LocationPropTypeEnum& out) {
     if (std::strcmp(str, "data-center") == 0) { out = LocationPropTypeEnum::DATA-CENTER; return true; }
+    if (std::strcmp(str, "region") == 0) { out = LocationPropTypeEnum::REGION; return true; }
+    if (std::strcmp(str, "zone") == 0) { out = LocationPropTypeEnum::ZONE; return true; }
+    if (std::strcmp(str, "headquarters") == 0) { out = LocationPropTypeEnum::HEADQUARTERS; return true; }
+    if (std::strcmp(str, "regional-office") == 0) { out = LocationPropTypeEnum::REGIONAL-OFFICE; return true; }
+    if (std::strcmp(str, "satellite-office") == 0) { out = LocationPropTypeEnum::SATELLITE-OFFICE; return true; }
+    if (std::strcmp(str, "edge") == 0) { out = LocationPropTypeEnum::EDGE; return true; }
+    if (std::strcmp(str, "cdn") == 0) { out = LocationPropTypeEnum::CDN; return true; }
+    if (std::strcmp(str, "domain") == 0) { out = LocationPropTypeEnum::DOMAIN; return true; }
     return false;
 }
 
 /// Curated OSCAL location class values for data-center type. Other values are permitted (OSCAL allow-other="yes").
 enum class LocationDataCenterClassEnum {
     PRIMARY,
-    ALTERNATE
+    ALTERNATE,
+    PEER,
+    AVAILABILITY,
+    SUB,
+    FAULT,
+    FAILURE
 };
 
 /// Convert LocationDataCenterClassEnum to its string representation.
@@ -210,6 +239,11 @@ inline const char* to_string(LocationDataCenterClassEnum value) {
     switch (value) {
         case LocationDataCenterClassEnum::PRIMARY: return "primary";
         case LocationDataCenterClassEnum::ALTERNATE: return "alternate";
+        case LocationDataCenterClassEnum::PEER: return "peer";
+        case LocationDataCenterClassEnum::AVAILABILITY: return "availability";
+        case LocationDataCenterClassEnum::SUB: return "sub";
+        case LocationDataCenterClassEnum::FAULT: return "fault";
+        case LocationDataCenterClassEnum::FAILURE: return "failure";
     }
     return "unknown";
 }
@@ -218,6 +252,11 @@ inline const char* to_string(LocationDataCenterClassEnum value) {
 inline bool from_string(const char* str, LocationDataCenterClassEnum& out) {
     if (std::strcmp(str, "primary") == 0) { out = LocationDataCenterClassEnum::PRIMARY; return true; }
     if (std::strcmp(str, "alternate") == 0) { out = LocationDataCenterClassEnum::ALTERNATE; return true; }
+    if (std::strcmp(str, "peer") == 0) { out = LocationDataCenterClassEnum::PEER; return true; }
+    if (std::strcmp(str, "availability") == 0) { out = LocationDataCenterClassEnum::AVAILABILITY; return true; }
+    if (std::strcmp(str, "sub") == 0) { out = LocationDataCenterClassEnum::SUB; return true; }
+    if (std::strcmp(str, "fault") == 0) { out = LocationDataCenterClassEnum::FAULT; return true; }
+    if (std::strcmp(str, "failure") == 0) { out = LocationDataCenterClassEnum::FAILURE; return true; }
     return false;
 }
 
@@ -656,17 +695,27 @@ inline bool from_string(const char* str, ControlPropNameEnum& out) {
     return false;
 }
 
-/// Allowed OSCAL status property values for catalog controls.
+/// Curated OSCAL status property values for catalog controls. Other values are permitted (OSCAL allow-other="yes").
 enum class ControlPropStatusValueEnum {
     WITHDRAWN,
-    WITHDRAWN
+    RESERVED,
+    DEPRECATED,
+    CONDITIONAL,
+    SUPERSEDED,
+    MODIFIED,
+    EXPERIMENTAL
 };
 
 /// Convert ControlPropStatusValueEnum to its string representation.
 inline const char* to_string(ControlPropStatusValueEnum value) {
     switch (value) {
         case ControlPropStatusValueEnum::WITHDRAWN: return "withdrawn";
-        case ControlPropStatusValueEnum::WITHDRAWN: return "Withdrawn";
+        case ControlPropStatusValueEnum::RESERVED: return "reserved";
+        case ControlPropStatusValueEnum::DEPRECATED: return "deprecated";
+        case ControlPropStatusValueEnum::CONDITIONAL: return "conditional";
+        case ControlPropStatusValueEnum::SUPERSEDED: return "superseded";
+        case ControlPropStatusValueEnum::MODIFIED: return "modified";
+        case ControlPropStatusValueEnum::EXPERIMENTAL: return "experimental";
     }
     return "unknown";
 }
@@ -674,7 +723,12 @@ inline const char* to_string(ControlPropStatusValueEnum value) {
 /// Parse a string into ControlPropStatusValueEnum. Returns false if the string is not a valid value.
 inline bool from_string(const char* str, ControlPropStatusValueEnum& out) {
     if (std::strcmp(str, "withdrawn") == 0) { out = ControlPropStatusValueEnum::WITHDRAWN; return true; }
-    if (std::strcmp(str, "Withdrawn") == 0) { out = ControlPropStatusValueEnum::WITHDRAWN; return true; }
+    if (std::strcmp(str, "reserved") == 0) { out = ControlPropStatusValueEnum::RESERVED; return true; }
+    if (std::strcmp(str, "deprecated") == 0) { out = ControlPropStatusValueEnum::DEPRECATED; return true; }
+    if (std::strcmp(str, "conditional") == 0) { out = ControlPropStatusValueEnum::CONDITIONAL; return true; }
+    if (std::strcmp(str, "superseded") == 0) { out = ControlPropStatusValueEnum::SUPERSEDED; return true; }
+    if (std::strcmp(str, "modified") == 0) { out = ControlPropStatusValueEnum::MODIFIED; return true; }
+    if (std::strcmp(str, "experimental") == 0) { out = ControlPropStatusValueEnum::EXPERIMENTAL; return true; }
     return false;
 }
 
@@ -1380,7 +1434,10 @@ enum class ComponentTypeEnum {
     GUIDANCE,
     STANDARD,
     VALIDATION,
-    NETWORK
+    NETWORK,
+    REGION,
+    ZONE,
+    RESOURCE-CONTAINER
 };
 
 /// Convert ComponentTypeEnum to its string representation.
@@ -1400,6 +1457,9 @@ inline const char* to_string(ComponentTypeEnum value) {
         case ComponentTypeEnum::STANDARD: return "standard";
         case ComponentTypeEnum::VALIDATION: return "validation";
         case ComponentTypeEnum::NETWORK: return "network";
+        case ComponentTypeEnum::REGION: return "region";
+        case ComponentTypeEnum::ZONE: return "zone";
+        case ComponentTypeEnum::RESOURCE-CONTAINER: return "resource-container";
     }
     return "unknown";
 }
@@ -1420,6 +1480,9 @@ inline bool from_string(const char* str, ComponentTypeEnum& out) {
     if (std::strcmp(str, "standard") == 0) { out = ComponentTypeEnum::STANDARD; return true; }
     if (std::strcmp(str, "validation") == 0) { out = ComponentTypeEnum::VALIDATION; return true; }
     if (std::strcmp(str, "network") == 0) { out = ComponentTypeEnum::NETWORK; return true; }
+    if (std::strcmp(str, "region") == 0) { out = ComponentTypeEnum::REGION; return true; }
+    if (std::strcmp(str, "zone") == 0) { out = ComponentTypeEnum::ZONE; return true; }
+    if (std::strcmp(str, "resource-container") == 0) { out = ComponentTypeEnum::RESOURCE-CONTAINER; return true; }
     return false;
 }
 
@@ -4602,7 +4665,7 @@ struct Group : public HasPropsAndLinks {
     /// Identifies the group for the purpose of cross-linking within the defining instance or from other instances that reference the catalog.
     std::optional<std::string> id = std::nullopt;
     /// A textual label that provides a sub-type or characterization of the group.
-    std::optional<std::string> _class = std::nullopt;
+    std::optional<std::string> class_ = std::nullopt;
     /// A name given to the group, which may be used by a tool for display and navigation.
     std::string title;
     /// Parameters providing a mechanism for the dynamic assignment of value(s) in a control.
@@ -4621,7 +4684,7 @@ struct Control : public HasPropsAndLinks {
     /// Identifies a control such that it can be referenced in the defining catalog and other OSCAL instances (e.g., profiles).
     std::string id;
     /// A textual label that provides a sub-type or characterization of the control.
-    std::optional<std::string> _class = std::nullopt;
+    std::optional<std::string> class_ = std::nullopt;
     /// A name given to the control, which may be used by a tool for display and navigation.
     std::string title;
     /// Parameters providing a mechanism for the dynamic assignment of value(s) in a control.
@@ -4825,7 +4888,7 @@ struct Property {
     /// Indicates the value of the attribute, characteristic, or quality.
     std::string value;
     /// A textual label that provides a sub-type or characterization of the property's name.
-    std::optional<std::string> _class = std::nullopt;
+    std::optional<std::string> class_ = std::nullopt;
     /// Additional commentary about the containing object.
     std::optional<std::string> remarks = std::nullopt;
     /// An identifier for relating distinct sets of properties.
@@ -4956,7 +5019,7 @@ struct Part : public HasPropsAndLinks {
     /// An optional namespace qualifying the part's name. This allows different organizations to associate distinct semantics with the same name.
     std::optional<std::string> ns = std::nullopt;
     /// An optional textual providing a sub-type or characterization of the part's name, or a category to which the part belongs.
-    std::optional<std::string> _class = std::nullopt;
+    std::optional<std::string> class_ = std::nullopt;
     /// An optional name given to the part, which may be used by a tool for display and navigation.
     std::optional<std::string> title = std::nullopt;
     /// Permits multiple paragraphs, lists, tables etc.
@@ -4971,7 +5034,7 @@ struct Parameter : public OscalCommon {
     /// A unique identifier for the parameter.
     std::string id;
     /// A textual label that provides a characterization of the type, purpose, use or scope of the parameter.
-    std::optional<std::string> _class = std::nullopt;
+    std::optional<std::string> class_ = std::nullopt;
     /// (deprecated) Another parameter invoking this one. This construct has been deprecated and should not be used.
     std::optional<std::string> depends_on = std::nullopt;
     /// A short, placeholder name for the parameter, which can be used as a substitute for a value if no value is assigned.
@@ -5124,7 +5187,7 @@ struct ProfileGroup : public OscalCommon {
     /// A unique human-oriented identifier within a particular context.
     std::optional<std::string> id = std::nullopt;
     /// A textual label that provides a sub-type or characterization.
-    std::optional<std::string> _class = std::nullopt;
+    std::optional<std::string> class_ = std::nullopt;
     /// A human-readable name or title.
     std::string title;
     /// Parameters providing a mechanism for the dynamic assignment of value(s) in a control.
@@ -5152,7 +5215,7 @@ struct ParameterSetting : public HasPropsAndLinks {
     /// The identifier for the parameter being set or referenced.
     std::string param_id;
     /// A textual label that provides a sub-type or characterization.
-    std::optional<std::string> _class = std::nullopt;
+    std::optional<std::string> class_ = std::nullopt;
     /// (deprecated) Another parameter invoking this one. This construct has been deprecated and should not be used.
     std::optional<std::string> depends_on = std::nullopt;
     /// A short, placeholder name for the parameter, which can be used as a substitute for a value if no value is assigned.
@@ -5579,7 +5642,7 @@ struct AssessmentPart : public HasPropsAndLinks {
     /// An optional namespace qualifying a name. Allows different organizations to associate distinct semantics with the same name.
     std::optional<std::string> ns = std::nullopt;
     /// A textual label that provides a sub-type or characterization.
-    std::optional<std::string> _class = std::nullopt;
+    std::optional<std::string> class_ = std::nullopt;
     /// A human-readable name or title.
     std::optional<std::string> title = std::nullopt;
     /// Permits multiple paragraphs, lists, tables etc.
@@ -5603,7 +5666,7 @@ struct ControlPart : public HasPropsAndLinks {
     /// An optional namespace qualifying a name. Allows different organizations to associate distinct semantics with the same name.
     std::optional<std::string> ns = std::nullopt;
     /// A textual label that provides a sub-type or characterization.
-    std::optional<std::string> _class = std::nullopt;
+    std::optional<std::string> class_ = std::nullopt;
     /// A human-readable name or title.
     std::optional<std::string> title = std::nullopt;
     /// Permits multiple paragraphs, lists, tables etc.
@@ -6103,6 +6166,10 @@ struct SystemCharacteristics {
     std::optional<std::string> system_name_short = std::nullopt;
     /// A human-readable description.
     std::string description;
+    /// A list of properties.
+    std::vector<SspSystemCharacteristicsProp> props = {};
+    /// A list of links.
+    std::vector<Link> links = {};
     /// The date the system received its authorization.
     std::optional<std::string> date_authorized = std::nullopt;
     /// The overall information system sensitivity categorization, such as defined by FIPS-199.

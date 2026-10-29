@@ -1,4 +1,4 @@
 # References
 
-* [NIST OSCAL](nist-oscal.md) - Upstream NIST OSCAL standard (the authoritative source this repository derives from).
-* [LinkML](linkml.md) - The Linked Data Modeling Language used to author all OSCAL schemas.
+* [NIST OSCAL](nist-oscal.md) - NIST's Open Security Controls Assessment Language (OSCAL), the upstream standard this repository renders: release 1.2.3 (tag v1.2.3, commit e061961 of usnistgov/OSCAL), whose metaschema defines the catalog, profile, component definition, system security plan, assessment plan, assessment results, POA&M and mapping collection models, documented at pages.nist.gov/OSCAL.
+* [LinkML](linkml.md) - LinkML, the Linked Data Modeling Language the OSCAL schema is written in: the repository was built from linkml-project-copier v0.5.0, uv.lock pins linkml and linkml-runtime 1.11.1, and its recipes run LinkML's generators (gen-project, gen-pydantic, gen-doc, gen-java, gen-owl), linkml-lint, linkml-validate and linkml-run-examples; the tests record where the generated code falls short.

@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: SspLeveragedAuthorizationLink
+# metamodel_version: 1.11.0# version: 1.2.3id: SspLeveragedAuthorizationLink
 schema_generating: true
 description: SSP-scoped link used in leveraged authorization objects.
 display_name: SspLeveragedAuthorizationLink

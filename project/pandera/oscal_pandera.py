@@ -156,6 +156,7 @@ ID_TYPES = {
     "Risk": "str",
     "ImportProfile": "str",
     "SystemId": "str",
+    "SspSystemCharacteristicsProp": "str",
     "SspSystemInformationProp": "str",
     "SspSystemInformationLink": "str",
     "InformationTypeCategorization": "str",
@@ -227,11 +228,10 @@ ID_TYPES = {
     "PoamItem": "str",
     "PlanOfActionAndMilestones": "str",
     "PoamDocument": "str",
-    "SspSystemCharacteristicsProp": "str",
 }
 
 # metamodel_version: 1.11.0
-# version: 1.2.1class Property(pla.DataFrameModel, _LinkmlPanderaValidator):
+# version: 1.2.3class Property(pla.DataFrameModel, _LinkmlPanderaValidator):
     """
     An attribute, characteristic, or quality of the containing object expressed as a namespace qualified name/value pair.
     """
@@ -257,7 +257,7 @@ ID_TYPES = {
     Indicates the value of the attribute, characteristic, or quality.
     """
     
-    _class: Optional[str] = pla.Field(nullable=True, )
+    class_: Optional[str] = pla.Field(nullable=True, )
     """
     A textual label that provides a sub-type or characterization of the property's name.
     """
@@ -1329,7 +1329,7 @@ class Parameter(pla.DataFrameModel, _LinkmlPanderaValidator):
     A unique identifier for the parameter.
     """
     
-    _class: Optional[str] = pla.Field(nullable=True, )
+    class_: Optional[str] = pla.Field(nullable=True, )
     """
     A textual label that provides a characterization of the type, purpose, use or scope of the parameter.
     """
@@ -1436,7 +1436,7 @@ class Part(pla.DataFrameModel, _LinkmlPanderaValidator):
     An optional namespace qualifying the part's name. This allows different organizations to associate distinct semantics with the same name.
     """
     
-    _class: Optional[str] = pla.Field(nullable=True, )
+    class_: Optional[str] = pla.Field(nullable=True, )
     """
     An optional textual providing a sub-type or characterization of the part's name, or a category to which the part belongs.
     """
@@ -1490,7 +1490,7 @@ class Control(pla.DataFrameModel, _LinkmlPanderaValidator):
     Identifies a control such that it can be referenced in the defining catalog and other OSCAL instances (e.g., profiles).
     """
     
-    _class: Optional[str] = pla.Field(nullable=True, )
+    class_: Optional[str] = pla.Field(nullable=True, )
     """
     A textual label that provides a sub-type or characterization of the control.
     """
@@ -1557,7 +1557,7 @@ class Group(pla.DataFrameModel, _LinkmlPanderaValidator):
     Identifies the group for the purpose of cross-linking within the defining instance or from other instances that reference the catalog.
     """
     
-    _class: Optional[str] = pla.Field(nullable=True, )
+    class_: Optional[str] = pla.Field(nullable=True, )
     """
     A textual label that provides a sub-type or characterization of the group.
     """
@@ -1871,7 +1871,7 @@ class ProfileGroup(pla.DataFrameModel, _LinkmlPanderaValidator):
     A unique human-oriented identifier within a particular context.
     """
     
-    _class: Optional[str] = pla.Field(nullable=True, )
+    class_: Optional[str] = pla.Field(nullable=True, )
     """
     A textual label that provides a sub-type or characterization.
     """
@@ -2019,7 +2019,7 @@ class ParameterSetting(pla.DataFrameModel, _LinkmlPanderaValidator):
     The identifier for the parameter being set or referenced.
     """
     
-    _class: Optional[str] = pla.Field(nullable=True, )
+    class_: Optional[str] = pla.Field(nullable=True, )
     """
     A textual label that provides a sub-type or characterization.
     """
@@ -2351,12 +2351,12 @@ class PortRange(pla.DataFrameModel, _LinkmlPanderaValidator):
     """
 
     _id_name : str = None
-    start: Optional[int] = pla.Field(nullable=True, )
+    start: Optional[int] = pla.Field(ge=0, nullable=True, )
     """
     The start date/time.
     """
     
-    end: Optional[int] = pla.Field(nullable=True, )
+    end: Optional[int] = pla.Field(ge=0, nullable=True, )
     """
     The end date/time.
     """
@@ -2748,7 +2748,7 @@ class ControlPart(pla.DataFrameModel, _LinkmlPanderaValidator):
     An optional namespace qualifying a name. Allows different organizations to associate distinct semantics with the same name.
     """
     
-    _class: Optional[str] = pla.Field(nullable=True, )
+    class_: Optional[str] = pla.Field(nullable=True, )
     """
     A textual label that provides a sub-type or characterization.
     """
@@ -3268,7 +3268,7 @@ class AssessmentPart(pla.DataFrameModel, _LinkmlPanderaValidator):
     An optional namespace qualifying a name. Allows different organizations to associate distinct semantics with the same name.
     """
     
-    _class: Optional[str] = pla.Field(nullable=True, )
+    class_: Optional[str] = pla.Field(nullable=True, )
     """
     A textual label that provides a sub-type or characterization.
     """
@@ -3607,7 +3607,7 @@ class AtFrequency(pla.DataFrameModel, _LinkmlPanderaValidator):
     """
 
     _id_name : str = None
-    period: int = pla.Field()
+    period: int = pla.Field(ge=1, )
     """
     The task must occur every period (in the given units).
     """
@@ -5228,6 +5228,15 @@ class SystemId(pla.DataFrameModel, _LinkmlPanderaValidator):
     """
     
     
+class SspSystemCharacteristicsProp(Property):
+    """
+    SSP-scoped property used in system characteristics.
+    """
+
+    _id_name : str = None
+    pass
+    
+    
 class SspSystemInformationProp(Property):
     """
     SSP-scoped property used in system information.
@@ -5676,6 +5685,16 @@ class SystemCharacteristics(pla.DataFrameModel, _LinkmlPanderaValidator):
     A human-readable description.
     """
     
+    props: Optional[List] = pla.Field(nullable=True, )
+    """
+    A list of properties.
+    """
+    
+    links: Optional[List] = pla.Field(nullable=True, )
+    """
+    A list of links.
+    """
+    
     date_authorized: Optional[str] = pla.Field(nullable=True, )
     """
     The date the system received its authorization.
@@ -5730,6 +5749,14 @@ class SystemCharacteristics(pla.DataFrameModel, _LinkmlPanderaValidator):
     @pla.check("system_ids")
     def check_nested_struct_system_ids(cls, data: PolarsData):
         return cls._check_nested_list_struct(data, SystemId, pa_pl.SystemIdDict)
+        
+    @pla.check("props")
+    def check_nested_struct_props(cls, data: PolarsData):
+        return cls._check_nested_list_struct(data, SspSystemCharacteristicsProp, pa_pl.SspSystemCharacteristicsPropDict)
+        
+    @pla.check("links")
+    def check_nested_struct_links(cls, data: PolarsData):
+        return cls._check_nested_list_struct(data, Link, pa_pl.LinkDict)
         
     @pla.check("system_information")
     def check_nested_struct_system_information(cls, data: PolarsData):
@@ -8233,13 +8260,4 @@ class PoamDocument(OscalDocument):
         
         return cls._check_nested_struct(data, PlanOfActionAndMilestones, pa_pl.PlanOfActionAndMilestones)
         
-class SspSystemCharacteristicsProp(Property):
-    """
-    SSP-scoped property used in system characteristics.
-    """
-
-    _id_name : str = None
-    pass
-    
-    
 

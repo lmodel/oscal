@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: Attestation
+# metamodel_version: 1.11.0# version: 1.2.3id: Attestation
 schema_generating: true
 description: A set of textual attestation statements, typically written by the assessor.
 display_name: Attestation

@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: LocationProperty
+# metamodel_version: 1.11.0# version: 1.2.3id: LocationProperty
 schema_generating: true
 description: Location-scoped OSCAL property.
 display_name: LocationProperty
@@ -24,6 +24,6 @@ fields:
 - id: value
   description: The value associated with the containing object.
   display_name: LocationProperty_value
-- id: _class
+- id: class_
   description: A textual label that provides a sub-type or characterization.
-  display_name: LocationProperty__class
+  display_name: LocationProperty_class_

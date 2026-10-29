@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: SubjectReference
+# metamodel_version: 1.11.0# version: 1.2.3id: SubjectReference
 schema_generating: true
 description: A human-oriented identifier reference to a resource. Use type to indicate
   whether the identified resource is a component, inventory item, location, user,

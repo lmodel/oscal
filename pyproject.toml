@@ -11,7 +11,7 @@ authors = [
 license = "Apache-2.0"
 license-files = ["LICENSE"]
 readme = "README.md"
-requires-python = ">=3.9,<4.0"
+requires-python = ">=3.10"
 dynamic = ["version"]
 
 dependencies = [
@@ -22,11 +22,6 @@ dependencies = [
 dev = [
   "jsonschema>=4.23.0",
     "linkml>=1.9.3",
-    "mkdocs-material>=8.2.8",
-    "mkdocs-mermaid2-plugin>=1.1.1",
-    "mkdocs-pymdownx-material-extras>=2.5.6",
-    "jupyter>=1.0.0",
-    "mknotebooks>= 0.8.0",
 ]
 
 # See https://hatch.pypa.io/latest/config/build/#file-selection for how to
@@ -45,6 +40,14 @@ fallback-version = "0.0.0"
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 
+# https://docs.astral.sh/ruff/configuration/
+[tool.ruff]
+exclude = [
+    "src/oscal/_version.py",
+]
+# Set oldest supported Python version
+target-version = "py310"
+
 # Ref.: https://github.com/codespell-project/codespell
 [tool.codespell]
 skip = [
@@ -54,6 +57,16 @@ skip = [
   "project/*",
   "src/oscal/datamodel/oscal_pydantic.py",
   "src/oscal/datamodel/oscal.py",
+  # OSCAL's metaschema, the third-party fixtures and the neighbours' adapt
+  # copies, copied as published, and files copied in by the KTL sidecar sync
+  # or written by npm, not by hand.
+  "src/oscal/schema/metaschema/*",
+  "tests/data/cncf-ai-benchmarks/*",
+  "tests/data/invalid/cncf-ai-benchmarks/*",
+  "tests/data/luigi_carpio/*",
+  "tests/neighbours/*",
+  ".lokf/scripts/*",
+  "website/package-lock.json",
 ]
 
 # Reminder: words have to be lowercased for the ignore-words-list
@@ -63,6 +76,7 @@ quiet-level = 3
 # Ref.: https://github.com/crate-ci/typos (spell checker)
 [tool.typos.default.extend-words]
 linke = "linke"
+
 [tool.typos.files]
 extend-exclude = [
   "LICENSE",
@@ -71,4 +85,14 @@ extend-exclude = [
   "project/*",
   "src/oscal/datamodel/oscal_pydantic.py",
   "src/oscal/datamodel/oscal.py",
+  # OSCAL's metaschema, the third-party fixtures and the neighbours' adapt
+  # copies, copied as published, and files copied in by the KTL sidecar sync
+  # or written by npm, not by hand.
+  "src/oscal/schema/metaschema/*",
+  "tests/data/cncf-ai-benchmarks/*",
+  "tests/data/invalid/cncf-ai-benchmarks/*",
+  "tests/data/luigi_carpio/*",
+  "tests/neighbours/*",
+  ".lokf/scripts/*",
+  "website/package-lock.json",
 ]

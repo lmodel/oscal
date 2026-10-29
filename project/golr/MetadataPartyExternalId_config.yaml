@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: MetadataPartyExternalId
+# metamodel_version: 1.11.0# version: 1.2.3id: MetadataPartyExternalId
 schema_generating: true
 description: Metadata-scoped external identifier.
 display_name: MetadataPartyExternalId

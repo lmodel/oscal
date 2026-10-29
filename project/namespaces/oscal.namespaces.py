@@ -1,9 +1,11 @@
 # Auto generated from oscal.yaml by namespacegen.py version: 0.0.1
-# Generation date: 2026-08-05T13:05:41
+# Generation date: 2026-10-29T01:03:34
 # Schema: oscal
 #
 # id: https://w3id.org/lmodel/oscal
-# description: OSCAL: Open Security Controls Assessment Language: LinkML Schema
+# description: A LinkML model of NIST's Open Security Controls Assessment Language (OSCAL) 1.2.3: the catalog,
+#              profile, component definition, system security plan, assessment plan, assessment results, plan of
+#              action and milestones, and mapping collection models, each in a module of its own.
 # license: Apache-2.0
 
 from collections import defaultdict
@@ -30,14 +32,6 @@ class BiolinkNameSpace:
     _namespaces = [
         CurieNamespace('linkml', 'https://w3id.org/linkml/'),
         CurieNamespace('oscal', 'https://w3id.org/lmodel/oscal/'),
-        CurieNamespace('oscal_assessment_plan', 'https://w3id.org/lmodel/oscal_assessment_plan/'),
-        CurieNamespace('oscal_assessment_results', 'https://w3id.org/lmodel/oscal_assessment_results/'),
-        CurieNamespace('oscal_catalog', 'https://w3id.org/lmodel/oscal_catalog/'),
-        CurieNamespace('oscal_component', 'https://w3id.org/lmodel/oscal_component/'),
-        CurieNamespace('oscal_mapping', 'https://w3id.org/lmodel/oscal_mapping/'),
-        CurieNamespace('oscal_poam', 'https://w3id.org/lmodel/oscal_poam/'),
-        CurieNamespace('oscal_profile', 'https://w3id.org/lmodel/oscal_profile/'),
-        CurieNamespace('oscal_ssp', 'https://w3id.org/lmodel/oscal_ssp/'),
         CurieNamespace('xsd', 'http://www.w3.org/2001/XMLSchema#'),
     ]
 

@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: Group
+# metamodel_version: 1.11.0# version: 1.2.3id: Group
 schema_generating: true
 description: A group of controls, or of groups of controls.
 display_name: Group
@@ -9,10 +9,10 @@ fields:
   description: Identifies the group for the purpose of cross-linking within the defining
     instance or from other instances that reference the catalog.
   display_name: Group_id
-- id: _class
+- id: class_
   description: A textual label that provides a sub-type or characterization of the
     group.
-  display_name: Group__class
+  display_name: Group_class_
 - id: title
   description: A name given to the group, which may be used by a tool for display
     and navigation.

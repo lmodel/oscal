@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: AssessmentLogEntry
+# metamodel_version: 1.11.0# version: 1.2.3id: AssessmentLogEntry
 schema_generating: true
 description: Identifies the result of an action and/or task that occurred as part
   of executing an assessment plan or assessment event.

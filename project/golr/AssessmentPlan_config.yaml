@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: AssessmentPlan
+# metamodel_version: 1.11.0# version: 1.2.3id: AssessmentPlan
 schema_generating: true
 description: An assessment plan, such as those provided by a FedRAMP assessor.
 display_name: AssessmentPlan

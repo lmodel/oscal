@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: PartProperty
+# metamodel_version: 1.11.0# version: 1.2.3id: PartProperty
 schema_generating: true
 description: Control-common part-scoped OSCAL property.
 display_name: PartProperty
@@ -15,10 +15,10 @@ fields:
 - id: value
   description: Indicates the value of the attribute, characteristic, or quality.
   display_name: Property_value
-- id: _class
+- id: class_
   description: A textual label that provides a sub-type or characterization of the
     property's name.
-  display_name: Property__class
+  display_name: Property_class_
 - id: remarks
   description: Additional commentary about the containing object.
   display_name: remarks

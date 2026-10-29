@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: ImportAssessmentPlan
+# metamodel_version: 1.11.0# version: 1.2.3id: ImportAssessmentPlan
 schema_generating: true
 description: Used by assessment-results to import information about the original plan
   for assessing the system.

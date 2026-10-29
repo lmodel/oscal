@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: ImportComponentDefinition
+# metamodel_version: 1.11.0# version: 1.2.3id: ImportComponentDefinition
 schema_generating: true
 description: Loads a component definition from another resource.
 display_name: ImportComponentDefinition

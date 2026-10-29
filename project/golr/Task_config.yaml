@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: Task
+# metamodel_version: 1.11.0# version: 1.2.3id: Task
 schema_generating: true
 description: Represents a scheduled event or milestone, which may be associated with
   a series of assessment actions.

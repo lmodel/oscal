@@ -2,8 +2,8 @@
   {
     "@type": "@context",
     "@documentation": {
-      "@title": "oscal",
-      "@description": "OSCAL: Open Security Controls Assessment Language: LinkML Schema"
+      "@title": "Open Security Controls Assessment Language (OSCAL)",
+      "@description": "A LinkML model of NIST's Open Security Controls Assessment Language (OSCAL) 1.2.3: the catalog, profile, component definition, system security plan, assessment plan, assessment results, plan of action and milestones, and mapping collection models, each in a module of its own."
     },
     "@schema": "https://w3id.org/lmodel/oscal#",
     "@base": "https://w3id.org/lmodel/data/"
@@ -328,7 +328,7 @@
         "uuid": "A machine-oriented, globally unique identifier with a cross-instance scope.",
         "name": "A textual label that uniquely identifies an attribute or semantic type.",
         "ns": "An optional namespace qualifying a name. Allows different organizations to associate distinct semantics with the same name.",
-        "_class": "A textual label that provides a sub-type or characterization.",
+        "class_": "A textual label that provides a sub-type or characterization.",
         "title": "A human-readable name or title.",
         "prose": "Permits multiple paragraphs, lists, tables etc.",
         "parts": "A collection of parts.",
@@ -345,7 +345,7 @@
       "@type": "Optional",
       "@class": "xsd:anyURI"
     },
-    "_class": {
+    "class_": {
       "@type": "Optional",
       "@class": "xsd:string"
     },
@@ -1138,7 +1138,7 @@
       "@comment": "A structured object representing a requirement or guideline, which when implemented will reduce an aspect of risk related to an information system and its information.",
       "@properties": {
         "id": "Identifies a control such that it can be referenced in the defining catalog and other OSCAL instances (e.g., profiles).",
-        "_class": "A textual label that provides a sub-type or characterization of the control.",
+        "class_": "A textual label that provides a sub-type or characterization of the control.",
         "title": "A name given to the control, which may be used by a tool for display and navigation.",
         "params": "Parameters providing a mechanism for the dynamic assignment of value(s) in a control.",
         "parts": "A collection of parts.",
@@ -1148,7 +1148,7 @@
       }
     },
     "id": "xsd:string",
-    "_class": {
+    "class_": {
       "@type": "Optional",
       "@class": "xsd:string"
     },
@@ -1281,7 +1281,7 @@
         "id": "A unique human-oriented identifier within a particular context.",
         "name": "A textual label that uniquely identifies an attribute or semantic type.",
         "ns": "An optional namespace qualifying a name. Allows different organizations to associate distinct semantics with the same name.",
-        "_class": "A textual label that provides a sub-type or characterization.",
+        "class_": "A textual label that provides a sub-type or characterization.",
         "title": "A human-readable name or title.",
         "prose": "Permits multiple paragraphs, lists, tables etc.",
         "parts": "A collection of parts.",
@@ -1298,7 +1298,7 @@
       "@type": "Optional",
       "@class": "xsd:anyURI"
     },
-    "_class": {
+    "class_": {
       "@type": "Optional",
       "@class": "xsd:string"
     },
@@ -1764,7 +1764,7 @@
       "@comment": "A group of controls, or of groups of controls.",
       "@properties": {
         "id": "Identifies the group for the purpose of cross-linking within the defining instance or from other instances that reference the catalog.",
-        "_class": "A textual label that provides a sub-type or characterization of the group.",
+        "class_": "A textual label that provides a sub-type or characterization of the group.",
         "title": "A name given to the group, which may be used by a tool for display and navigation.",
         "params": "Parameters providing a mechanism for the dynamic assignment of value(s) in a control.",
         "parts": "A collection of parts.",
@@ -1778,7 +1778,7 @@
       "@type": "Optional",
       "@class": "xsd:string"
     },
-    "_class": {
+    "class_": {
       "@type": "Optional",
       "@class": "xsd:string"
     },
@@ -1957,7 +1957,7 @@
       "@properties": {
         "uuid": "A unique identifier for a property.",
         "ns": "A namespace qualifying the property's name. This allows different organizations to associate distinct semantics with the same name.",
-        "_class": "A textual label that provides a sub-type or characterization of the property's name.",
+        "class_": "A textual label that provides a sub-type or characterization of the property's name.",
         "remarks": "Additional commentary about the containing object.",
         "group": "An identifier for relating distinct sets of properties.",
         "name": "A textual label that uniquely identifies an attribute or semantic type.",
@@ -1975,7 +1975,7 @@
       "@type": "Optional",
       "@class": "xsd:anyURI"
     },
-    "_class": {
+    "class_": {
       "@type": "Optional",
       "@class": "xsd:string"
     },
@@ -2640,7 +2640,7 @@
         "group": "An identifier for relating distinct sets of properties.",
         "name": "A textual label that uniquely identifies an attribute or semantic type.",
         "value": "The value associated with the containing object.",
-        "_class": "A textual label that provides a sub-type or characterization."
+        "class_": "A textual label that provides a sub-type or characterization."
       }
     },
     "@inherits": [
@@ -2664,7 +2664,7 @@
     },
     "name": "LocationPropNameEnum",
     "value": "xsd:string",
-    "_class": {
+    "class_": {
       "@type": "Optional",
       "@class": "xsd:string"
     }
@@ -3099,7 +3099,7 @@
         "uuid": "A unique identifier for a property.",
         "ns": "A namespace qualifying the property's name. This allows different organizations to associate distinct semantics with the same name.",
         "value": "Indicates the value of the attribute, characteristic, or quality.",
-        "_class": "A textual label that provides a sub-type or characterization of the property's name.",
+        "class_": "A textual label that provides a sub-type or characterization of the property's name.",
         "remarks": "Additional commentary about the containing object.",
         "group": "An identifier for relating distinct sets of properties.",
         "name": "A textual label that uniquely identifies an attribute or semantic type."
@@ -3117,7 +3117,7 @@
       "@class": "xsd:anyURI"
     },
     "value": "xsd:string",
-    "_class": {
+    "class_": {
       "@type": "Optional",
       "@class": "xsd:string"
     },
@@ -3383,7 +3383,7 @@
       "@comment": "Parameters provide a mechanism for the dynamic assignment of value(s) in a control.",
       "@properties": {
         "id": "A unique identifier for the parameter.",
-        "_class": "A textual label that provides a characterization of the type, purpose, use or scope of the parameter.",
+        "class_": "A textual label that provides a characterization of the type, purpose, use or scope of the parameter.",
         "depends_on": "(deprecated) Another parameter invoking this one. This construct has been deprecated and should not be used.",
         "label": "A short, placeholder name for the parameter, which can be used as a substitute for a value if no value is assigned.",
         "usage": "Describes the purpose and use of a parameter.",
@@ -3397,7 +3397,7 @@
       }
     },
     "id": "xsd:string",
-    "_class": {
+    "class_": {
       "@type": "Optional",
       "@class": "xsd:string"
     },
@@ -3481,7 +3481,7 @@
         "uuid": "A unique identifier for a property.",
         "ns": "A namespace qualifying the property's name. This allows different organizations to associate distinct semantics with the same name.",
         "value": "Indicates the value of the attribute, characteristic, or quality.",
-        "_class": "A textual label that provides a sub-type or characterization of the property's name.",
+        "class_": "A textual label that provides a sub-type or characterization of the property's name.",
         "remarks": "Additional commentary about the containing object.",
         "group": "An identifier for relating distinct sets of properties.",
         "name": "A textual label that uniquely identifies an attribute or semantic type."
@@ -3499,7 +3499,7 @@
       "@class": "xsd:anyURI"
     },
     "value": "xsd:string",
-    "_class": {
+    "class_": {
       "@type": "Optional",
       "@class": "xsd:string"
     },
@@ -3539,7 +3539,7 @@
       "@comment": "A parameter setting to be propagated to points of insertion in a resolved profile.",
       "@properties": {
         "param_id": "The identifier for the parameter being set or referenced.",
-        "_class": "A textual label that provides a sub-type or characterization.",
+        "class_": "A textual label that provides a sub-type or characterization.",
         "depends_on": "(deprecated) Another parameter invoking this one. This construct has been deprecated and should not be used.",
         "label": "A short, placeholder name for the parameter, which can be used as a substitute for a value if no value is assigned.",
         "usage": "Describes the purpose and use of a parameter.",
@@ -3552,7 +3552,7 @@
       }
     },
     "param_id": "xsd:string",
-    "_class": {
+    "class_": {
       "@type": "Optional",
       "@class": "xsd:string"
     },
@@ -3602,7 +3602,7 @@
         "id": "A unique identifier for the part.",
         "name": "A textual label that uniquely identifies the part's semantic type, which exists in a value space qualified by the ns.",
         "ns": "An optional namespace qualifying the part's name. This allows different organizations to associate distinct semantics with the same name.",
-        "_class": "An optional textual providing a sub-type or characterization of the part's name, or a category to which the part belongs.",
+        "class_": "An optional textual providing a sub-type or characterization of the part's name, or a category to which the part belongs.",
         "title": "An optional name given to the part, which may be used by a tool for display and navigation.",
         "prose": "Permits multiple paragraphs, lists, tables etc.",
         "parts": "A collection of parts.",
@@ -3619,7 +3619,7 @@
       "@type": "Optional",
       "@class": "xsd:anyURI"
     },
-    "_class": {
+    "class_": {
       "@type": "Optional",
       "@class": "xsd:string"
     },
@@ -3653,7 +3653,7 @@
         "uuid": "A unique identifier for a property.",
         "ns": "A namespace qualifying the property's name. This allows different organizations to associate distinct semantics with the same name.",
         "value": "Indicates the value of the attribute, characteristic, or quality.",
-        "_class": "A textual label that provides a sub-type or characterization of the property's name.",
+        "class_": "A textual label that provides a sub-type or characterization of the property's name.",
         "remarks": "Additional commentary about the containing object.",
         "group": "An identifier for relating distinct sets of properties.",
         "name": "A textual label that uniquely identifies an attribute or semantic type."
@@ -3671,7 +3671,7 @@
       "@class": "xsd:anyURI"
     },
     "value": "xsd:string",
-    "_class": {
+    "class_": {
       "@type": "Optional",
       "@class": "xsd:string"
     },
@@ -3775,7 +3775,7 @@
         "uuid": "A unique identifier for a property.",
         "ns": "A namespace qualifying the property's name. This allows different organizations to associate distinct semantics with the same name.",
         "value": "Indicates the value of the attribute, characteristic, or quality.",
-        "_class": "A textual label that provides a sub-type or characterization of the property's name.",
+        "class_": "A textual label that provides a sub-type or characterization of the property's name.",
         "remarks": "Additional commentary about the containing object.",
         "group": "An identifier for relating distinct sets of properties.",
         "name": "A textual label that uniquely identifies an attribute or semantic type."
@@ -3793,7 +3793,7 @@
       "@class": "xsd:anyURI"
     },
     "value": "xsd:string",
-    "_class": {
+    "class_": {
       "@type": "Optional",
       "@class": "xsd:string"
     },
@@ -4027,7 +4027,7 @@
         "uuid": "A unique identifier for a property.",
         "ns": "A namespace qualifying the property's name. This allows different organizations to associate distinct semantics with the same name.",
         "value": "Indicates the value of the attribute, characteristic, or quality.",
-        "_class": "A textual label that provides a sub-type or characterization of the property's name.",
+        "class_": "A textual label that provides a sub-type or characterization of the property's name.",
         "remarks": "Additional commentary about the containing object.",
         "group": "An identifier for relating distinct sets of properties.",
         "name": "A textual label that uniquely identifies an attribute or semantic type."
@@ -4045,7 +4045,7 @@
       "@class": "xsd:anyURI"
     },
     "value": "xsd:string",
-    "_class": {
+    "class_": {
       "@type": "Optional",
       "@class": "xsd:string"
     },
@@ -4080,7 +4080,7 @@
       "@comment": "A group of (selected) controls or of groups of controls within a profile custom merge structure.",
       "@properties": {
         "id": "A unique human-oriented identifier within a particular context.",
-        "_class": "A textual label that provides a sub-type or characterization.",
+        "class_": "A textual label that provides a sub-type or characterization.",
         "title": "A human-readable name or title.",
         "params": "Parameters providing a mechanism for the dynamic assignment of value(s) in a control.",
         "parts": "A collection of parts.",
@@ -4095,7 +4095,7 @@
       "@type": "Optional",
       "@class": "xsd:string"
     },
-    "_class": {
+    "class_": {
       "@type": "Optional",
       "@class": "xsd:string"
     },
@@ -4213,7 +4213,7 @@
         "uuid": "A unique identifier for a property.",
         "ns": "A namespace qualifying the property's name. This allows different organizations to associate distinct semantics with the same name.",
         "value": "Indicates the value of the attribute, characteristic, or quality.",
-        "_class": "A textual label that provides a sub-type or characterization of the property's name.",
+        "class_": "A textual label that provides a sub-type or characterization of the property's name.",
         "remarks": "Additional commentary about the containing object.",
         "group": "An identifier for relating distinct sets of properties."
       }
@@ -4228,7 +4228,7 @@
       "@class": "xsd:anyURI"
     },
     "value": "xsd:string",
-    "_class": {
+    "class_": {
       "@type": "Optional",
       "@class": "xsd:string"
     },
@@ -4586,7 +4586,7 @@
       "@properties": {
         "uuid": "A unique identifier for a property.",
         "ns": "A namespace qualifying the property's name. This allows different organizations to associate distinct semantics with the same name.",
-        "_class": "A textual label that provides a sub-type or characterization of the property's name.",
+        "class_": "A textual label that provides a sub-type or characterization of the property's name.",
         "remarks": "Additional commentary about the containing object.",
         "group": "An identifier for relating distinct sets of properties.",
         "name": "A textual label that uniquely identifies an attribute or semantic type.",
@@ -4604,7 +4604,7 @@
       "@type": "Optional",
       "@class": "xsd:anyURI"
     },
-    "_class": {
+    "class_": {
       "@type": "Optional",
       "@class": "xsd:string"
     },
@@ -4925,7 +4925,7 @@
         "uuid": "A unique identifier for a property.",
         "ns": "A namespace qualifying the property's name. This allows different organizations to associate distinct semantics with the same name.",
         "value": "Indicates the value of the attribute, characteristic, or quality.",
-        "_class": "A textual label that provides a sub-type or characterization of the property's name.",
+        "class_": "A textual label that provides a sub-type or characterization of the property's name.",
         "remarks": "Additional commentary about the containing object.",
         "group": "An identifier for relating distinct sets of properties.",
         "name": "A textual label that uniquely identifies an attribute or semantic type."
@@ -4943,7 +4943,7 @@
       "@class": "xsd:anyURI"
     },
     "value": "xsd:string",
-    "_class": {
+    "class_": {
       "@type": "Optional",
       "@class": "xsd:string"
     },
@@ -5317,7 +5317,7 @@
       "@properties": {
         "uuid": "A unique identifier for a property.",
         "ns": "A namespace qualifying the property's name. This allows different organizations to associate distinct semantics with the same name.",
-        "_class": "A textual label that provides a sub-type or characterization of the property's name.",
+        "class_": "A textual label that provides a sub-type or characterization of the property's name.",
         "remarks": "Additional commentary about the containing object.",
         "group": "An identifier for relating distinct sets of properties.",
         "name": "A textual label that uniquely identifies an attribute or semantic type.",
@@ -5335,7 +5335,7 @@
       "@type": "Optional",
       "@class": "xsd:anyURI"
     },
-    "_class": {
+    "class_": {
       "@type": "Optional",
       "@class": "xsd:string"
     },
@@ -5447,7 +5447,7 @@
       "@properties": {
         "uuid": "A unique identifier for a property.",
         "ns": "A namespace qualifying the property's name. This allows different organizations to associate distinct semantics with the same name.",
-        "_class": "A textual label that provides a sub-type or characterization of the property's name.",
+        "class_": "A textual label that provides a sub-type or characterization of the property's name.",
         "remarks": "Additional commentary about the containing object.",
         "group": "An identifier for relating distinct sets of properties.",
         "name": "A textual label that uniquely identifies an attribute or semantic type.",
@@ -5465,7 +5465,7 @@
       "@type": "Optional",
       "@class": "xsd:anyURI"
     },
-    "_class": {
+    "class_": {
       "@type": "Optional",
       "@class": "xsd:string"
     },
@@ -5731,7 +5731,7 @@
       "@properties": {
         "uuid": "A unique identifier for a property.",
         "ns": "A namespace qualifying the property's name. This allows different organizations to associate distinct semantics with the same name.",
-        "_class": "A textual label that provides a sub-type or characterization of the property's name.",
+        "class_": "A textual label that provides a sub-type or characterization of the property's name.",
         "remarks": "Additional commentary about the containing object.",
         "group": "An identifier for relating distinct sets of properties.",
         "name": "A textual label that uniquely identifies an attribute or semantic type.",
@@ -5749,7 +5749,7 @@
       "@type": "Optional",
       "@class": "xsd:anyURI"
     },
-    "_class": {
+    "class_": {
       "@type": "Optional",
       "@class": "xsd:string"
     },
@@ -5892,7 +5892,7 @@
       "@properties": {
         "uuid": "A unique identifier for a property.",
         "ns": "A namespace qualifying the property's name. This allows different organizations to associate distinct semantics with the same name.",
-        "_class": "A textual label that provides a sub-type or characterization of the property's name.",
+        "class_": "A textual label that provides a sub-type or characterization of the property's name.",
         "remarks": "Additional commentary about the containing object.",
         "group": "An identifier for relating distinct sets of properties.",
         "name": "A textual label that uniquely identifies an attribute or semantic type.",
@@ -5910,7 +5910,7 @@
       "@type": "Optional",
       "@class": "xsd:anyURI"
     },
-    "_class": {
+    "class_": {
       "@type": "Optional",
       "@class": "xsd:string"
     },
@@ -6011,6 +6011,8 @@
         "system_name": "The full name of the system.",
         "system_name_short": "A short name for the system, such as an acronym, that is suitable for display in a data table or summary list.",
         "description": "A human-readable description.",
+        "props": "A list of properties.",
+        "links": "A list of links.",
         "date_authorized": "The date the system received its authorization.",
         "security_sensitivity_level": "The overall information system sensitivity categorization, such as defined by FIPS-199.",
         "system_information": "Contains details about all information types that are stored, processed, or transmitted by the system.",
@@ -6020,8 +6022,7 @@
         "network_architecture": "A description of the system's network architecture, optionally supplemented with diagrams that illustrate the network architecture.",
         "data_flow": "A description of the logical flow of information within the system and across its boundaries, optionally supplemented with diagrams.",
         "responsible_parties": "Responsible party assignments.",
-        "remarks": "Additional commentary about the containing object.",
-        "props": "A list of properties."
+        "remarks": "Additional commentary about the containing object."
       }
     },
     "system_ids": {
@@ -6034,6 +6035,14 @@
       "@class": "xsd:string"
     },
     "description": "xsd:string",
+    "props": {
+      "@type": "List",
+      "@class": "SspSystemCharacteristicsProp"
+    },
+    "links": {
+      "@type": "List",
+      "@class": "Link"
+    },
     "date_authorized": {
       "@type": "Optional",
       "@class": "xsd:string"
@@ -6064,10 +6073,6 @@
     "remarks": {
       "@type": "Optional",
       "@class": "xsd:string"
-    },
-    "props": {
-      "@type": "List",
-      "@class": "SspSystemCharacteristicsProp"
     }
   },
   {
@@ -6415,7 +6420,7 @@
       "@properties": {
         "uuid": "A machine-oriented, globally unique identifier with a cross-instance scope.",
         "ns": "An optional namespace qualifying a name. Allows different organizations to associate distinct semantics with the same name.",
-        "_class": "A textual label that provides a sub-type or characterization.",
+        "class_": "A textual label that provides a sub-type or characterization.",
         "title": "A human-readable name or title.",
         "prose": "Permits multiple paragraphs, lists, tables etc.",
         "props": "A list of properties.",
@@ -6435,7 +6440,7 @@
       "@type": "Optional",
       "@class": "xsd:anyURI"
     },
-    "_class": {
+    "class_": {
       "@type": "Optional",
       "@class": "xsd:string"
     },
@@ -6593,7 +6598,15 @@
     "@type": "Enum",
     "@id": "LocationPropTypeEnum",
     "@value": [
-      "data-center"
+      "data-center",
+      "region",
+      "zone",
+      "headquarters",
+      "regional-office",
+      "satellite-office",
+      "edge",
+      "cdn",
+      "domain"
     ]
   },
   {
@@ -6601,7 +6614,12 @@
     "@id": "LocationDataCenterClassEnum",
     "@value": [
       "primary",
-      "alternate"
+      "alternate",
+      "peer",
+      "availability",
+      "sub",
+      "fault",
+      "failure"
     ]
   },
   {
@@ -6765,7 +6783,12 @@
     "@id": "ControlPropStatusValueEnum",
     "@value": [
       "withdrawn",
-      "Withdrawn"
+      "reserved",
+      "deprecated",
+      "conditional",
+      "superseded",
+      "modified",
+      "experimental"
     ]
   },
   {
@@ -7214,7 +7237,10 @@
       "guidance",
       "standard",
       "validation",
-      "network"
+      "network",
+      "region",
+      "zone",
+      "resource-container"
     ]
   },
   {

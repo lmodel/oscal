@@ -1,30 +1,28 @@
 ---
-id: https://w3id.org/lmodel/oscal_poam
+id: https://w3id.org/lmodel/oscal/oscal_poam
 name: oscal_poam
-title: oscal_poam
+title: OSCAL Plan of Action and Milestones (POA&M) Model
 description: |-
   OSCAL Plan of Action and Milestones (POA&M) Model: LinkML Schema
 license: Apache-2.0
 see_also:
   - https://pages.nist.gov/OSCAL/learn/concepts/layer/assessment/poam/
-source: http://csrc.nist.gov/ns/oscal/1.2.1/oscal-poam-schema.json
-version: 1.2.1
+source: http://csrc.nist.gov/ns/oscal/1.2.3/oscal-poam-schema.json
+version: 1.2.3
 annotations:
-  uuid: cd71a122-9aa3-407d-a8a7-0cdb3c7b6d65
-  last-modified: "2026-03-27T10:00:00Z"
+  uuid: 6a358e40-c04c-4b64-8536-e3c1332d5a1c
+  last-modified: "2026-10-29T01:02:04Z"
 notes:
-  - Every time the content of an OSCAL file changes, the following must also change:
+  - "Every time the content of an OSCAL file changes, the following must also change:"
   - A new UUID value must be generated and assigned to the root element's uuid.
   - The last-modified field in metadata must be assigned with the date and time at the moment the file is saved with the modified content.
   - These are two mechanisms by which tools can quickly know if a file has changed since it was last encountered. This document level UUID is the only UUID in OSCAL associated with version control.
   - When converting between formats, such as XML to JSON, these values should remain the same. This enables tools to know the content within the two formats is equivalent.
 
 prefixes:
-  oscal_poam: https://w3id.org/lmodel/oscal_poam/
-  oscal_assessment_plan: https://w3id.org/lmodel/oscal_assessment_plan/
-  oscal_catalog: https://w3id.org/lmodel/oscal_catalog/
+  oscal: https://w3id.org/lmodel/oscal/
   linkml: https://w3id.org/linkml/
-default_prefix: oscal_poam
+default_prefix: oscal
 default_range: string
 
 imports:

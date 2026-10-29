@@ -8,7 +8,7 @@
       Property <|-- ProfileAlterationProperty
         click Property href "../Property"
       
-      ProfileAlterationProperty : _class
+      ProfileAlterationProperty : class_
         
       ProfileAlterationProperty : group
         

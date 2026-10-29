@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: MitigatingFactor
+# metamodel_version: 1.11.0# version: 1.2.3id: MitigatingFactor
 schema_generating: true
 description: Describes an existing mitigating factor that may affect the overall determination
   of the risk.

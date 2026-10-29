@@ -1,0 +1,10 @@
+# A profile that imports every control of one catalog
+uuid: 22222222-2222-4222-8222-222222222222
+metadata:
+  title: Example baseline
+  last_modified: "2026-10-28T00:00:00Z"
+  version: "1.0"
+  oscal_version: "1.2.3"
+imports:
+  - href: https://example.org/catalogs/example-catalog.json
+    include_all: {}

@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: SystemStatus
+# metamodel_version: 1.11.0# version: 1.2.3id: SystemStatus
 schema_generating: true
 description: Describes the operational status of the system.
 display_name: SystemStatus

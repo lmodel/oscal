@@ -1,30 +1,29 @@
 ---
-id: https://w3id.org/lmodel/oscal_mapping
+id: https://w3id.org/lmodel/oscal/oscal_mapping
 name: oscal_mapping
-title: oscal_mapping
+title: OSCAL Mapping Collection Model
 description: |-
   OSCAL Mapping Collection Model: LinkML Schema
 license: Apache-2.0
 see_also:
   - https://pages.nist.gov/OSCAL/
-  - https://pages.nist.gov/OSCAL/learn/concepts/layer/mapping/
-source: http://csrc.nist.gov/ns/oscal/1.2.1/oscal-mapping-schema.json
-version: 1.2.1
+  - https://pages.nist.gov/OSCAL/learn/concepts/layer/control/mapping/
+source: http://csrc.nist.gov/ns/oscal/1.2.3/oscal-mapping-schema.json
+version: 1.2.3
 annotations:
-  uuid: fb0aef69-f6c8-4dfa-abb8-e8be0700d426
-  last-modified: "2026-03-27T10:00:00Z"
+  uuid: 6d5fe060-be0c-4f39-b37f-a3a2cbd63815
+  last-modified: "2026-10-29T01:17:25Z"
 notes:
-  - Every time the content of an OSCAL file changes, the following must also change:
+  - "Every time the content of an OSCAL file changes, the following must also change:"
   - A new UUID value must be generated and assigned to the root element's uuid.
   - The last-modified field in metadata must be assigned with the date and time at the moment the file is saved with the modified content.
   - These are two mechanisms by which tools can quickly know if a file has changed since it was last encountered. This document level UUID is the only UUID in OSCAL associated with version control.
   - When converting between formats, such as XML to JSON, these values should remain the same. This enables tools to know the content within the two formats is equivalent.
 
 prefixes:
-  oscal_mapping: https://w3id.org/lmodel/oscal_mapping/
-  oscal_catalog: https://w3id.org/lmodel/oscal_catalog/
+  oscal: https://w3id.org/lmodel/oscal/
   linkml: https://w3id.org/linkml/
-default_prefix: oscal_mapping
+default_prefix: oscal
 default_range: string
 
 imports:
@@ -39,18 +38,24 @@ subsets:
 
 enums:
   MappingMethodEnum:
+    annotations:
+      oscal_allowed_values: oscal_mapping-common_metaschema.xml#method#.
     permissible_values:
       human:
       automation:
       hybrid:
 
   MatchingRationaleEnum:
+    annotations:
+      oscal_allowed_values: oscal_mapping-common_metaschema.xml#matching-rationale#.
     permissible_values:
       syntactic:
       semantic:
       functional:
 
   MappingStatusEnum:
+    annotations:
+      oscal_allowed_values: oscal_mapping-common_metaschema.xml#status#.
     permissible_values:
       complete:
       not-complete:
@@ -59,28 +64,38 @@ enums:
       superseded:
 
   MappingSubjectTypeEnum:
+    annotations:
+      oscal_allowed_values: oscal_mapping-common_metaschema.xml#mapping-item/type#.
     permissible_values:
       control:
       statement:
 
   QualifierSubjectEnum:
+    annotations:
+      oscal_allowed_values: oscal_mapping-common_metaschema.xml#qualifier-item/subject#.
     permissible_values:
       source:
       target:
       both:
 
   QualifierPredicateEnum:
+    annotations:
+      oscal_allowed_values: oscal_mapping-common_metaschema.xml#qualifier-item/predicate#.
     permissible_values:
       has-requirement:
       has-incompatibility:
 
   QualifierCategoryEnum:
+    annotations:
+      oscal_allowed_values: oscal_mapping-common_metaschema.xml#qualifier-item/category#.
     permissible_values:
       restricted:
       addressable:
       blocked:
 
   RelationshipEnum:
+    annotations:
+      oscal_allowed_values: oscal_mapping-common_metaschema.xml#map/relationship#.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]
     description: Relationship values used for mapping entries in the OSCAL namespace.
     permissible_values:
       equivalent-to:
@@ -92,6 +107,7 @@ enums:
 
   MappingResourceTypeEnum:
     annotations:
+      oscal_allowed_values: oscal_mapping-common_metaschema.xml#mapping-resource-reference/type#.
       allow_any: true
     description: >-
       Curated mapped resource type values. Other values are permitted
@@ -102,6 +118,7 @@ enums:
 
   ConfidenceCategoryEnum:
     annotations:
+      oscal_allowed_values: oscal_mapping-common_metaschema.xml#confidence-score/category#.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]
       allow_any: true
     description: >-
       Curated confidence category values for OSCAL mappings. Other values are
@@ -114,6 +131,7 @@ enums:
 
   CoverageGenerationMethodEnum:
     annotations:
+      oscal_allowed_values: oscal-mapping-coverage-generation-method-values
       allow_any: true
     description: >-
       Curated coverage generation method values. Other values are permitted

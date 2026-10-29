@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: ControlImplementationSet
+# metamodel_version: 1.11.0# version: 1.2.3id: ControlImplementationSet
 schema_generating: true
 description: Defines how the component or capability supports a set of controls.
 display_name: ControlImplementationSet

@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: SelectObjectiveById
+# metamodel_version: 1.11.0# version: 1.2.3id: SelectObjectiveById
 schema_generating: true
 description: Used to select a control objective for inclusion/exclusion.
 display_name: SelectObjectiveById

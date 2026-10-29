@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: QualifierItem
+# metamodel_version: 1.11.0# version: 1.2.3id: QualifierItem
 schema_generating: true
 description: A qualifier describing requirements or incompatibilities.
 display_name: QualifierItem

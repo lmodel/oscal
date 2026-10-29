@@ -8,7 +8,7 @@
       Property <|-- ResourceProperty
         click Property href "../Property"
       
-      ResourceProperty : _class
+      ResourceProperty : class_
         
       ResourceProperty : group
         

@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: Metadata
+# metamodel_version: 1.11.0# version: 1.2.3id: Metadata
 schema_generating: true
 description: Provides information about the containing document, and defines concepts
   shared across the document.

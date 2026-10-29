@@ -8,7 +8,7 @@
       OscalCommon <|-- Parameter
         click OscalCommon href "../OscalCommon"
       
-      Parameter : _class
+      Parameter : class_
         
       Parameter : constraints
         

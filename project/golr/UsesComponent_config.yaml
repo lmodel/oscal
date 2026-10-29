@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: UsesComponent
+# metamodel_version: 1.11.0# version: 1.2.3id: UsesComponent
 schema_generating: true
 description: The set of components that are used by the assessment platform.
 display_name: UsesComponent

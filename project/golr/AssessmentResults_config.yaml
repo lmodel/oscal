@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: AssessmentResults
+# metamodel_version: 1.11.0# version: 1.2.3id: AssessmentResults
 schema_generating: true
 description: Security assessment results, such as those provided by a FedRAMP assessor
   in a security assessment report.

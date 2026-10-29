@@ -8,7 +8,7 @@
       Property <|-- SspSystemCharacteristicsProp
         click Property href "../Property"
       
-      SspSystemCharacteristicsProp : _class
+      SspSystemCharacteristicsProp : class_
         
       SspSystemCharacteristicsProp : group
         

@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: TelephoneNumber
+# metamodel_version: 1.11.0# version: 1.2.3id: TelephoneNumber
 schema_generating: true
 description: A telephone service number as defined by ITU-T E.164.
 display_name: TelephoneNumber

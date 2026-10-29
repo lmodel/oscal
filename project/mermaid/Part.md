@@ -8,7 +8,7 @@
       HasPropsAndLinks <|-- Part
         click HasPropsAndLinks href "../HasPropsAndLinks"
       
-      Part : _class
+      Part : class_
         
       Part : id
         

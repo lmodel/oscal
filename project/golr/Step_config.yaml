@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: Step
+# metamodel_version: 1.11.0# version: 1.2.3id: Step
 schema_generating: true
 description: Identifies an individual step in a series of steps related to an activity,
   such as an assessment test or examination procedure.

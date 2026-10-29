@@ -1,0 +1,11 @@
+# linkml-lint reads this file from the directory `just lint` runs in.
+# The recommended rules apply, with one change: standard_naming reports at
+# warning level, which `just lint` (errors only) does not fail on. Slots keep
+# OSCAL's own hyphenated keys (`last-modified`, `finding-uuid`), so the schema
+# reads as the metaschema does. The generators write those keys with
+# underscores, so an OSCAL JSON document has its keys rewritten before it
+# validates, as `_test-linkml-validate` and tests/test_data.py do.
+extends: recommended
+rules:
+  standard_naming:
+    level: warning

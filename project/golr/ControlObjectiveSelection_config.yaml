@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: ControlObjectiveSelection
+# metamodel_version: 1.11.0# version: 1.2.3id: ControlObjectiveSelection
 schema_generating: true
 description: Identifies the control objectives of the assessment.
 display_name: ControlObjectiveSelection

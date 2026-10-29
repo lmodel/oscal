@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: ResponsibleParty
+# metamodel_version: 1.11.0# version: 1.2.3id: ResponsibleParty
 schema_generating: true
 description: A reference to a set of persons and/or organizations that have responsibility
   for performing the referenced role in the context of the containing object.

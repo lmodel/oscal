@@ -1,0 +1,38 @@
+# A system security plan whose system characteristics carry a property
+uuid: 27777777-7777-4777-8777-777777777777
+metadata:
+  title: Example system security plan
+  last_modified: "2026-10-28T00:00:00Z"
+  version: "1.0"
+  oscal_version: "1.2.3"
+import_profile:
+  href: https://example.org/profiles/example-baseline.json
+system_characteristics:
+  system_ids:
+    - id: example-system
+  system_name: Example system
+  description: A system that serves example data.
+  props:
+    - name: cloud-service-model
+      value: saas
+  system_information:
+    information_types:
+      - title: Example records
+        description: Records the system stores.
+  system_status:
+    state: operational
+  authorization_boundary:
+    description: The system's hosted services.
+system_implementation:
+  components:
+    - uuid: 28888888-8888-4888-8888-888888888888
+      type: this-system
+      title: Example system
+      description: The system as a whole.
+      status:
+        state: operational
+control_implementation:
+  description: How the system implements the baseline.
+  implemented_requirements:
+    - uuid: 29999999-9999-4999-8999-999999999999
+      control_id: ac-1

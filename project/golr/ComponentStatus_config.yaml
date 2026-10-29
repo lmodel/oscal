@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: ComponentStatus
+# metamodel_version: 1.11.0# version: 1.2.3id: ComponentStatus
 schema_generating: true
 description: Describes the operational status of the system component.
 display_name: ComponentStatus

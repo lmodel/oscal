@@ -1,6 +1,6 @@
 [project]
 name = "oscal"
-version = "1.2.1"
+version = "1.2.3"
 
 [build-system]
 requires = ["maturin>=1.0,<2.0"]

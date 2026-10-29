@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: AssessmentSubject
+# metamodel_version: 1.11.0# version: 1.2.3id: AssessmentSubject
 schema_generating: true
 description: Identifies system elements being assessed, such as components, inventory
   items, and locations.

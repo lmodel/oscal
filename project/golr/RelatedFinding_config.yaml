@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: RelatedFinding
+# metamodel_version: 1.11.0# version: 1.2.3id: RelatedFinding
 schema_generating: true
 description: Relates a POA&M item to a referenced finding.
 display_name: RelatedFinding

@@ -579,7 +579,7 @@
             "additionalProperties": false,
             "description": "A partition of an assessment plan or results or a child of another part.",
             "properties": {
-                "_class": {
+                "class_": {
                     "description": "A textual label that provides a sub-type or characterization.",
                     "type": [
                         "string",
@@ -1256,6 +1256,7 @@
             "properties": {
                 "period": {
                     "description": "The task must occur every period (in the given units).",
+                    "minimum": 1,
                     "type": "integer"
                 },
                 "remarks": {
@@ -1988,7 +1989,10 @@
                 "guidance",
                 "standard",
                 "validation",
-                "network"
+                "network",
+                "region",
+                "zone",
+                "resource-container"
             ],
             "title": "ComponentTypeEnum",
             "type": "string"
@@ -2062,7 +2066,7 @@
             "additionalProperties": false,
             "description": "A structured object representing a requirement or guideline, which when implemented will reduce an aspect of risk related to an information system and its information.",
             "properties": {
-                "_class": {
+                "class_": {
                     "description": "A textual label that provides a sub-type or characterization of the control.",
                     "type": [
                         "string",
@@ -2349,7 +2353,7 @@
             "additionalProperties": false,
             "description": "An annotated, markup-based textual element of a control's or catalog group's definition, or a child of another part.",
             "properties": {
-                "_class": {
+                "class_": {
                     "description": "A textual label that provides a sub-type or characterization.",
                     "type": [
                         "string",
@@ -2450,10 +2454,15 @@
             "type": "string"
         },
         "ControlPropStatusValueEnum": {
-            "description": "Allowed OSCAL status property values for catalog controls.",
+            "description": "Curated OSCAL status property values for catalog controls. Other values are permitted (OSCAL allow-other=\"yes\").",
             "enum": [
                 "withdrawn",
-                "Withdrawn"
+                "reserved",
+                "deprecated",
+                "conditional",
+                "superseded",
+                "modified",
+                "experimental"
             ],
             "title": "ControlPropStatusValueEnum",
             "type": "string"
@@ -3288,7 +3297,7 @@
             "additionalProperties": false,
             "description": "A group of controls, or of groups of controls.",
             "properties": {
-                "_class": {
+                "class_": {
                     "description": "A textual label that provides a sub-type or characterization of the group.",
                     "type": [
                         "string",
@@ -3652,7 +3661,7 @@
             "additionalProperties": false,
             "description": "Implementation-common scoped OSCAL property.",
             "properties": {
-                "_class": {
+                "class_": {
                     "description": "A textual label that provides a sub-type or characterization of the property's name.",
                     "type": [
                         "string",
@@ -5008,7 +5017,12 @@
             "description": "Curated OSCAL location class values for data-center type. Other values are permitted (OSCAL allow-other=\"yes\").",
             "enum": [
                 "primary",
-                "alternate"
+                "alternate",
+                "peer",
+                "availability",
+                "sub",
+                "fault",
+                "failure"
             ],
             "title": "LocationDataCenterClassEnum",
             "type": "string"
@@ -5024,7 +5038,15 @@
         "LocationPropTypeEnum": {
             "description": "Curated OSCAL location type property values. Other values are permitted (OSCAL allow-other=\"yes\").",
             "enum": [
-                "data-center"
+                "data-center",
+                "region",
+                "zone",
+                "headquarters",
+                "regional-office",
+                "satellite-office",
+                "edge",
+                "cdn",
+                "domain"
             ],
             "title": "LocationPropTypeEnum",
             "type": "string"
@@ -5033,7 +5055,7 @@
             "additionalProperties": false,
             "description": "Location-scoped OSCAL property.",
             "properties": {
-                "_class": {
+                "class_": {
                     "anyOf": [
                         {
                             "$ref": "#/$defs/LocationDataCenterClassEnum"
@@ -5906,7 +5928,7 @@
             "additionalProperties": false,
             "description": "Metadata-scoped OSCAL property.",
             "properties": {
-                "_class": {
+                "class_": {
                     "description": "A textual label that provides a sub-type or characterization of the property's name.",
                     "type": [
                         "string",
@@ -7160,7 +7182,7 @@
             ],
             "description": "Parameters provide a mechanism for the dynamic assignment of value(s) in a control.",
             "properties": {
-                "_class": {
+                "class_": {
                     "description": "A textual label that provides a characterization of the type, purpose, use or scope of the parameter.",
                     "type": [
                         "string",
@@ -7331,7 +7353,7 @@
             "additionalProperties": false,
             "description": "Control-common parameter-scoped OSCAL property.",
             "properties": {
-                "_class": {
+                "class_": {
                     "description": "A textual label that provides a sub-type or characterization of the property's name.",
                     "type": [
                         "string",
@@ -7417,7 +7439,7 @@
             "additionalProperties": false,
             "description": "A parameter setting to be propagated to points of insertion in a resolved profile.",
             "properties": {
-                "_class": {
+                "class_": {
                     "description": "A textual label that provides a sub-type or characterization.",
                     "type": [
                         "string",
@@ -7521,7 +7543,7 @@
             "additionalProperties": false,
             "description": "An annotated, markup-based textual element of a control's or catalog group's definition, or a child of another part.",
             "properties": {
-                "_class": {
+                "class_": {
                     "description": "An optional textual providing a sub-type or characterization of the part's name, or a category to which the part belongs.",
                     "type": [
                         "string",
@@ -7611,7 +7633,7 @@
             "additionalProperties": false,
             "description": "Control-common part-scoped OSCAL property.",
             "properties": {
-                "_class": {
+                "class_": {
                     "description": "A textual label that provides a sub-type or characterization of the property's name.",
                     "type": [
                         "string",
@@ -7892,7 +7914,7 @@
             "additionalProperties": false,
             "description": "Party-scoped OSCAL property.",
             "properties": {
-                "_class": {
+                "class_": {
                     "description": "A textual label that provides a sub-type or characterization of the property's name.",
                     "type": [
                         "string",
@@ -8228,6 +8250,7 @@
             "properties": {
                 "end": {
                     "description": "The end date/time.",
+                    "minimum": 0,
                     "type": [
                         "integer",
                         "null"
@@ -8242,6 +8265,7 @@
                 },
                 "start": {
                     "description": "The start date/time.",
+                    "minimum": 0,
                     "type": [
                         "integer",
                         "null"
@@ -8330,7 +8354,7 @@
             "additionalProperties": false,
             "description": "OSCAL property entries allowed in profile modify additions.",
             "properties": {
-                "_class": {
+                "class_": {
                     "description": "A textual label that provides a sub-type or characterization of the property's name.",
                     "type": [
                         "string",
@@ -8401,7 +8425,7 @@
             "additionalProperties": false,
             "description": "A group of (selected) controls or of groups of controls within a profile custom merge structure.",
             "properties": {
-                "_class": {
+                "class_": {
                     "description": "A textual label that provides a sub-type or characterization.",
                     "type": [
                         "string",
@@ -8619,7 +8643,7 @@
             "additionalProperties": false,
             "description": "An attribute, characteristic, or quality of the containing object expressed as a namespace qualified name/value pair.",
             "properties": {
-                "_class": {
+                "class_": {
                     "description": "A textual label that provides a sub-type or characterization of the property's name.",
                     "type": [
                         "string",
@@ -9295,7 +9319,7 @@
             "additionalProperties": false,
             "description": "Back-matter resource-scoped OSCAL property.",
             "properties": {
-                "_class": {
+                "class_": {
                     "description": "A textual label that provides a sub-type or characterization of the property's name.",
                     "type": [
                         "string",
@@ -9912,7 +9936,7 @@
             "additionalProperties": false,
             "description": "Revision-scoped OSCAL property.",
             "properties": {
-                "_class": {
+                "class_": {
                     "description": "A textual label that provides a sub-type or characterization of the property's name.",
                     "type": [
                         "string",
@@ -10614,7 +10638,7 @@
             "additionalProperties": false,
             "description": "SSP-scoped property used for component and inventory allows-authenticated-scan.",
             "properties": {
-                "_class": {
+                "class_": {
                     "description": "A textual label that provides a sub-type or characterization of the property's name.",
                     "type": [
                         "string",
@@ -10815,7 +10839,7 @@
             "additionalProperties": false,
             "description": "SSP-scoped property used in implemented requirement and by-component contexts.",
             "properties": {
-                "_class": {
+                "class_": {
                     "description": "A textual label that provides a sub-type or characterization of the property's name.",
                     "type": [
                         "string",
@@ -11273,7 +11297,7 @@
             "additionalProperties": false,
             "description": "SSP-scoped property used in system characteristics.",
             "properties": {
-                "_class": {
+                "class_": {
                     "description": "A textual label that provides a sub-type or characterization of the property's name.",
                     "type": [
                         "string",
@@ -11551,7 +11575,7 @@
             "additionalProperties": false,
             "description": "SSP-scoped property used in system information.",
             "properties": {
-                "_class": {
+                "class_": {
                     "description": "A textual label that provides a sub-type or characterization of the property's name.",
                     "type": [
                         "string",
@@ -11772,6 +11796,16 @@
                     "description": "A human-readable description.",
                     "type": "string"
                 },
+                "links": {
+                    "description": "A list of links.",
+                    "items": {
+                        "$ref": "#/$defs/Link"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "network_architecture": {
                     "anyOf": [
                         {
@@ -11782,6 +11816,16 @@
                         }
                     ],
                     "description": "A description of the system's network architecture, optionally supplemented with diagrams that illustrate the network architecture."
+                },
+                "props": {
+                    "description": "A list of properties.",
+                    "items": {
+                        "$ref": "#/$defs/SspSystemCharacteristicsProp"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
                 },
                 "remarks": {
                     "description": "Additional commentary about the containing object.",
@@ -12535,7 +12579,7 @@
             "additionalProperties": false,
             "description": "A terms-and-conditions scoped assessment part.",
             "properties": {
-                "_class": {
+                "class_": {
                     "description": "A textual label that provides a sub-type or characterization.",
                     "type": [
                         "string",
@@ -12802,5 +12846,5 @@
     "metamodel_version": "1.11.0",
     "title": "oscal",
     "type": "object",
-    "version": "1.2.1"
+    "version": "1.2.3"
 }

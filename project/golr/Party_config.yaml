@@ -1,4 +1,4 @@
-# metamodel_version: 1.11.0# version: 1.2.1id: Party
+# metamodel_version: 1.11.0# version: 1.2.3id: Party
 schema_generating: true
 description: An organization or person, which may be associated with roles or other
   concepts within the current or linked OSCAL document.
