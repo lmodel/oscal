@@ -5,9 +5,6 @@
       "oscal": "https://w3id.org/lmodel/oscal/",
       "skos": "http://www.w3.org/2004/02/skos/core#",
       "@vocab": "https://w3id.org/lmodel/oscal/",
-      "_class": {
-         "@id": "_class"
-      },
       "actions": {
          "@type": "@id",
          "@id": "actions"
@@ -170,6 +167,9 @@
       },
       "city": {
          "@id": "city"
+      },
+      "class_": {
+         "@id": "class_"
       },
       "collected": {
          "@type": "xsd:dateTime",

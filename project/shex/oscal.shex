@@ -194,7 +194,7 @@ linkml:Sparqlpath xsd:string
              <uuid> @<UUIDType> ? ;
              <name> @<TokenType> ;
              <ns> @<URIType> ? ;
-             <_class> @<TokenType> ? ;
+             <class_> @<TokenType> ? ;
              <title> @<MarkupLineType> ? ;
              <prose> @<MarkupMultilineType> ? ;
              <parts> @<AssessmentPart> * ;
@@ -539,7 +539,7 @@ linkml:Sparqlpath xsd:string
     (  $<Control_tes> (  &<HasPropsAndLinks_tes> ;
           rdf:type [ <HasPropsAndLinks> ] ? ;
           <id> @<TokenType> ;
-          <_class> @<TokenType> ? ;
+          <class_> @<TokenType> ? ;
           <title> @<MarkupLineType> ;
           <params> @<Parameter> * ;
           <parts> @<Part> * ;
@@ -595,7 +595,7 @@ linkml:Sparqlpath xsd:string
           <id> @<TokenType> ? ;
           <name> @<TokenType> ;
           <ns> @<URIType> ? ;
-          <_class> @<TokenType> ? ;
+          <class_> @<TokenType> ? ;
           <title> @<MarkupLineType> ? ;
           <prose> @<MarkupMultilineType> ? ;
           <parts> @<ControlPart> * ;
@@ -777,7 +777,7 @@ linkml:Sparqlpath xsd:string
     (  $<Group_tes> (  &<HasPropsAndLinks_tes> ;
           rdf:type [ <HasPropsAndLinks> ] ? ;
           <id> @<TokenType> ? ;
-          <_class> @<TokenType> ? ;
+          <class_> @<TokenType> ? ;
           <title> @<MarkupLineType> ;
           <params> @<Parameter> * ;
           <parts> @<Part> * ;
@@ -1164,7 +1164,7 @@ linkml:Sparqlpath xsd:string
           rdf:type [ <Property> ] ? ;
           <name> [ <https://w3id.org/lmodel/oscal/LocationPropNameEnum#type> ] ;
           <value> @linkml:String ;
-          <_class> @<TokenType> ?
+          <class_> @<TokenType> ?
        ) ;
        rdf:type [ <LocationProperty> ] ?
     )
@@ -1475,7 +1475,7 @@ linkml:Sparqlpath xsd:string
     (  $<Parameter_tes> (  &<OscalCommon_tes> ;
           rdf:type [ <OscalCommon> ] ? ;
           <id> @<TokenType> ;
-          <_class> @<TokenType> ? ;
+          <class_> @<TokenType> ? ;
           <depends_on> @<TokenType> ? ;
           <label> @<MarkupLineType> ? ;
           <usage> @<MarkupMultilineType> ? ;
@@ -1527,7 +1527,7 @@ linkml:Sparqlpath xsd:string
     (  $<ParameterSetting_tes> (  &<HasPropsAndLinks_tes> ;
           rdf:type [ <HasPropsAndLinks> ] ? ;
           <param_id> @<TokenType> ;
-          <_class> @<TokenType> ? ;
+          <class_> @<TokenType> ? ;
           <depends_on> @<TokenType> ? ;
           <label> @<MarkupLineType> ? ;
           <usage> @<MarkupMultilineType> ? ;
@@ -1548,7 +1548,7 @@ linkml:Sparqlpath xsd:string
           <id> @<TokenType> ? ;
           <name> @<TokenType> ;
           <ns> @<URIType> ? ;
-          <_class> @<TokenType> ? ;
+          <class_> @<TokenType> ? ;
           <title> @<MarkupLineType> ? ;
           <prose> @<MarkupMultilineType> ? ;
           <parts> @<Part> * ;
@@ -1710,7 +1710,7 @@ linkml:Sparqlpath xsd:string
     (  $<ProfileGroup_tes> (  &<OscalCommon_tes> ;
           rdf:type [ <OscalCommon> ] ? ;
           <id> @<TokenType> ? ;
-          <_class> @<TokenType> ? ;
+          <class_> @<TokenType> ? ;
           <title> @<MarkupLineType> ;
           <params> @<Parameter> * ;
           <parts> @<Part> * ;
@@ -1758,7 +1758,7 @@ linkml:Sparqlpath xsd:string
              <uuid> @<UUIDType> ? ;
              <ns> @<URIType> ? ;
              <value> @linkml:String ;
-             <_class> @<TokenType> ? ;
+             <class_> @<TokenType> ? ;
              <remarks> @<MarkupMultilineType> ? ;
              <group> @<TokenType> ?
           ) ;

@@ -122,7 +122,7 @@ classes:
     - HasPropsAndLinks
     slots:
     - oscal_id
-    - _class
+    - class_
     - oscal_title
     - params
     - parts
@@ -132,7 +132,7 @@ classes:
       oscal_id:
         description: Identifies the group for the purpose of cross-linking within the defining instance
           or from other instances that reference the catalog.
-      _class:
+      class_:
         description: A textual label that provides a sub-type or characterization of the group.
       oscal_title:
         required: true
@@ -146,7 +146,7 @@ classes:
     - HasPropsAndLinks
     slots:
     - oscal_id
-    - _class
+    - class_
     - oscal_title
     - params
     - parts
@@ -156,7 +156,7 @@ classes:
         required: true
         description: Identifies a control such that it can be referenced in the defining catalog and other
           OSCAL instances (e.g., profiles).
-      _class:
+      class_:
         description: A textual label that provides a sub-type or characterization of the control.
       oscal_title:
         required: true
@@ -460,7 +460,7 @@ classes:
     - uuid
     - ns
     - value
-    - _class
+    - class_
     - remarks
     - group
     slot_usage:
@@ -476,7 +476,7 @@ classes:
       value:
         required: true
         description: Indicates the value of the attribute, characteristic, or quality.
-      _class:
+      class_:
         description: A textual label that provides a sub-type or characterization of the property's name.
     in_subset:
     - oscal_metadata
@@ -506,7 +506,7 @@ classes:
         any_of:
         - range: LocationPropTypeEnum
         - range: string
-      _class:
+      class_:
         any_of:
         - range: LocationDataCenterClassEnum
         - range: string
@@ -660,7 +660,7 @@ classes:
     - oscal_id
     - oscal_name
     - ns
-    - _class
+    - class_
     - oscal_title
     - prose
     - parts
@@ -674,7 +674,7 @@ classes:
       ns:
         description: An optional namespace qualifying the part's name. This allows different organizations
           to associate distinct semantics with the same name.
-      _class:
+      class_:
         description: An optional textual providing a sub-type or characterization of the part's name,
           or a category to which the part belongs.
       oscal_title:
@@ -691,7 +691,7 @@ classes:
     - OscalCommon
     slots:
     - oscal_id
-    - _class
+    - class_
     - depends_on
     - label
     - usage
@@ -703,7 +703,7 @@ classes:
       oscal_id:
         required: true
         description: A unique identifier for the parameter.
-      _class:
+      class_:
         description: A textual label that provides a characterization of the type, purpose, use or scope
           of the parameter.
       props:
@@ -880,7 +880,7 @@ classes:
     - OscalCommon
     slots:
     - oscal_id
-    - _class
+    - class_
     - oscal_title
     - params
     - parts
@@ -910,7 +910,7 @@ classes:
     - HasPropsAndLinks
     slots:
     - param_id
-    - _class
+    - class_
     - depends_on
     - label
     - usage
@@ -1405,7 +1405,7 @@ classes:
     - uuid
     - oscal_name
     - ns
-    - _class
+    - class_
     - oscal_title
     - prose
     - parts
@@ -1439,7 +1439,7 @@ classes:
     - oscal_id
     - oscal_name
     - ns
-    - _class
+    - class_
     - oscal_title
     - prose
     - parts
@@ -3309,9 +3309,13 @@ slots:
     slot_uri: oscal:id
     aliases:
     - id
-  _class:
+  class_:
     range: TokenType
     description: A textual label that provides a sub-type or characterization.
+    comments:
+    - OSCAL's key is `class`. A slot or alias named `class` makes the generated dataclasses invalid Python,
+      and gen-doc names a page after the slot, so `_class` hid its page from the site. `class_` is the
+      spelling the generated Pydantic model gives a slot named `class`.
     notes: null
   oscal_name:
     range: TokenType

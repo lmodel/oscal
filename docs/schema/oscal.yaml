@@ -4040,12 +4040,17 @@ slots:
     - SystemId
     - ThreatId
     range: TokenType
-  _class:
-    name: _class
-    definition_uri: https://w3id.org/lmodel/oscal/_class
+  class_:
+    name: class_
+    definition_uri: https://w3id.org/lmodel/oscal/class_
     description: A textual label that provides a sub-type or characterization.
+    comments:
+    - OSCAL's key is `class`. A slot or alias named `class` makes the generated dataclasses
+      invalid Python, and gen-doc names a page after the slot, so `_class` hid its
+      page from the site. `class_` is the spelling the generated Pydantic model gives
+      a slot named `class`.
     from_schema: https://w3id.org/lmodel/oscal/oscal_catalog
-    slot_uri: oscal:_class
+    slot_uri: oscal:class_
     owner: ControlPart
     domain_of:
     - Group
@@ -7591,21 +7596,26 @@ slots:
     is_usage_slot: true
     usage_slot_name: id
     range: TokenType
-  Group__class:
-    name: Group__class
-    definition_uri: https://w3id.org/lmodel/oscal/_class
+  Group_class_:
+    name: Group_class_
+    definition_uri: https://w3id.org/lmodel/oscal/class_
     description: A textual label that provides a sub-type or characterization of the
       group.
+    comments:
+    - OSCAL's key is `class`. A slot or alias named `class` makes the generated dataclasses
+      invalid Python, and gen-doc names a page after the slot, so `_class` hid its
+      page from the site. `class_` is the spelling the generated Pydantic model gives
+      a slot named `class`.
     from_schema: https://w3id.org/lmodel/oscal/oscal_catalog
-    is_a: _class
+    is_a: class_
     domain: Group
-    slot_uri: oscal:_class
-    alias: _class
+    slot_uri: oscal:class_
+    alias: class_
     owner: Group
     domain_of:
     - Group
     is_usage_slot: true
-    usage_slot_name: _class
+    usage_slot_name: class_
     range: TokenType
   Group_title:
     name: Group_title
@@ -7641,21 +7651,26 @@ slots:
     usage_slot_name: id
     range: TokenType
     required: true
-  Control__class:
-    name: Control__class
-    definition_uri: https://w3id.org/lmodel/oscal/_class
+  Control_class_:
+    name: Control_class_
+    definition_uri: https://w3id.org/lmodel/oscal/class_
     description: A textual label that provides a sub-type or characterization of the
       control.
+    comments:
+    - OSCAL's key is `class`. A slot or alias named `class` makes the generated dataclasses
+      invalid Python, and gen-doc names a page after the slot, so `_class` hid its
+      page from the site. `class_` is the spelling the generated Pydantic model gives
+      a slot named `class`.
     from_schema: https://w3id.org/lmodel/oscal/oscal_catalog
-    is_a: _class
+    is_a: class_
     domain: Control
-    slot_uri: oscal:_class
-    alias: _class
+    slot_uri: oscal:class_
+    alias: class_
     owner: Control
     domain_of:
     - Control
     is_usage_slot: true
-    usage_slot_name: _class
+    usage_slot_name: class_
     range: TokenType
   Control_title:
     name: Control_title
@@ -8306,21 +8321,26 @@ slots:
     usage_slot_name: value
     range: string
     required: true
-  Property__class:
-    name: Property__class
-    definition_uri: https://w3id.org/lmodel/oscal/_class
+  Property_class_:
+    name: Property_class_
+    definition_uri: https://w3id.org/lmodel/oscal/class_
     description: A textual label that provides a sub-type or characterization of the
       property's name.
+    comments:
+    - OSCAL's key is `class`. A slot or alias named `class` makes the generated dataclasses
+      invalid Python, and gen-doc names a page after the slot, so `_class` hid its
+      page from the site. `class_` is the spelling the generated Pydantic model gives
+      a slot named `class`.
     from_schema: https://w3id.org/lmodel/oscal/oscal_catalog
-    is_a: _class
+    is_a: class_
     domain: Property
-    slot_uri: oscal:_class
-    alias: _class
+    slot_uri: oscal:class_
+    alias: class_
     owner: Property
     domain_of:
     - Property
     is_usage_slot: true
-    usage_slot_name: _class
+    usage_slot_name: class_
     range: TokenType
   MetadataProperty_name:
     name: MetadataProperty_name
@@ -8392,20 +8412,25 @@ slots:
     any_of:
     - range: LocationPropTypeEnum
     - range: string
-  LocationProperty__class:
-    name: LocationProperty__class
-    definition_uri: https://w3id.org/lmodel/oscal/_class
+  LocationProperty_class_:
+    name: LocationProperty_class_
+    definition_uri: https://w3id.org/lmodel/oscal/class_
     description: A textual label that provides a sub-type or characterization.
+    comments:
+    - OSCAL's key is `class`. A slot or alias named `class` makes the generated dataclasses
+      invalid Python, and gen-doc names a page after the slot, so `_class` hid its
+      page from the site. `class_` is the spelling the generated Pydantic model gives
+      a slot named `class`.
     from_schema: https://w3id.org/lmodel/oscal/oscal_catalog
-    is_a: Property__class
+    is_a: Property_class_
     domain: LocationProperty
-    slot_uri: oscal:_class
-    alias: _class
+    slot_uri: oscal:class_
+    alias: class_
     owner: LocationProperty
     domain_of:
     - LocationProperty
     is_usage_slot: true
-    usage_slot_name: _class
+    usage_slot_name: class_
     range: TokenType
     any_of:
     - range: LocationDataCenterClassEnum
@@ -8733,21 +8758,26 @@ slots:
     is_usage_slot: true
     usage_slot_name: ns
     range: URIType
-  Part__class:
-    name: Part__class
-    definition_uri: https://w3id.org/lmodel/oscal/_class
+  Part_class_:
+    name: Part_class_
+    definition_uri: https://w3id.org/lmodel/oscal/class_
     description: An optional textual providing a sub-type or characterization of the
       part's name, or a category to which the part belongs.
+    comments:
+    - OSCAL's key is `class`. A slot or alias named `class` makes the generated dataclasses
+      invalid Python, and gen-doc names a page after the slot, so `_class` hid its
+      page from the site. `class_` is the spelling the generated Pydantic model gives
+      a slot named `class`.
     from_schema: https://w3id.org/lmodel/oscal/oscal_catalog
-    is_a: _class
+    is_a: class_
     domain: Part
-    slot_uri: oscal:_class
-    alias: _class
+    slot_uri: oscal:class_
+    alias: class_
     owner: Part
     domain_of:
     - Part
     is_usage_slot: true
-    usage_slot_name: _class
+    usage_slot_name: class_
     range: TokenType
   Part_title:
     name: Part_title
@@ -8814,21 +8844,26 @@ slots:
     usage_slot_name: id
     range: TokenType
     required: true
-  Parameter__class:
-    name: Parameter__class
-    definition_uri: https://w3id.org/lmodel/oscal/_class
+  Parameter_class_:
+    name: Parameter_class_
+    definition_uri: https://w3id.org/lmodel/oscal/class_
     description: A textual label that provides a characterization of the type, purpose,
       use or scope of the parameter.
+    comments:
+    - OSCAL's key is `class`. A slot or alias named `class` makes the generated dataclasses
+      invalid Python, and gen-doc names a page after the slot, so `_class` hid its
+      page from the site. `class_` is the spelling the generated Pydantic model gives
+      a slot named `class`.
     from_schema: https://w3id.org/lmodel/oscal/oscal_catalog
-    is_a: _class
+    is_a: class_
     domain: Parameter
-    slot_uri: oscal:_class
-    alias: _class
+    slot_uri: oscal:class_
+    alias: class_
     owner: Parameter
     domain_of:
     - Parameter
     is_usage_slot: true
-    usage_slot_name: _class
+    usage_slot_name: class_
     range: TokenType
   Parameter_props:
     name: Parameter_props
@@ -14652,7 +14687,7 @@ classes:
     - HasPropsAndLinks
     slots:
     - Group_id
-    - Group__class
+    - Group_class_
     - Group_title
     - params
     - parts
@@ -14665,8 +14700,8 @@ classes:
         name: id
         description: Identifies the group for the purpose of cross-linking within
           the defining instance or from other instances that reference the catalog.
-      _class:
-        name: _class
+      class_:
+        name: class_
         description: A textual label that provides a sub-type or characterization
           of the group.
       title:
@@ -14688,7 +14723,7 @@ classes:
     - HasPropsAndLinks
     slots:
     - Control_id
-    - Control__class
+    - Control_class_
     - Control_title
     - params
     - parts
@@ -14701,8 +14736,8 @@ classes:
         description: Identifies a control such that it can be referenced in the defining
           catalog and other OSCAL instances (e.g., profiles).
         required: true
-      _class:
-        name: _class
+      class_:
+        name: class_
         description: A textual label that provides a sub-type or characterization
           of the control.
       title:
@@ -15124,7 +15159,7 @@ classes:
     - Property_uuid
     - Property_ns
     - Property_value
-    - Property__class
+    - Property_class_
     - remarks
     - group
     slot_usage:
@@ -15144,8 +15179,8 @@ classes:
         name: value
         description: Indicates the value of the attribute, characteristic, or quality.
         required: true
-      _class:
-        name: _class
+      class_:
+        name: class_
         description: A textual label that provides a sub-type or characterization
           of the property's name.
     class_uri: oscal:Property
@@ -15161,7 +15196,7 @@ classes:
     - Property_uuid
     - Property_ns
     - Property_value
-    - Property__class
+    - Property_class_
     - remarks
     - group
     - MetadataProperty_name
@@ -15182,7 +15217,7 @@ classes:
     - Property_uuid
     - Property_ns
     - Property_value
-    - Property__class
+    - Property_class_
     - remarks
     - group
     - RevisionProperty_name
@@ -15206,7 +15241,7 @@ classes:
     - group
     - LocationProperty_name
     - LocationProperty_value
-    - LocationProperty__class
+    - LocationProperty_class_
     slot_usage:
       name:
         name: name
@@ -15216,8 +15251,8 @@ classes:
         any_of:
         - range: LocationPropTypeEnum
         - range: string
-      _class:
-        name: _class
+      class_:
+        name: class_
         any_of:
         - range: LocationDataCenterClassEnum
         - range: string
@@ -15234,7 +15269,7 @@ classes:
     - Property_uuid
     - Property_ns
     - Property_value
-    - Property__class
+    - Property_class_
     - remarks
     - group
     - PartyProperty_name
@@ -15254,7 +15289,7 @@ classes:
     slots:
     - Property_uuid
     - Property_ns
-    - Property__class
+    - Property_class_
     - remarks
     - group
     - ResourceProperty_name
@@ -15281,7 +15316,7 @@ classes:
     - Property_uuid
     - Property_ns
     - Property_value
-    - Property__class
+    - Property_class_
     - remarks
     - group
     - PartProperty_name
@@ -15302,7 +15337,7 @@ classes:
     - Property_uuid
     - Property_ns
     - Property_value
-    - Property__class
+    - Property_class_
     - remarks
     - group
     - ParameterProperty_name
@@ -15472,7 +15507,7 @@ classes:
     - Part_id
     - Part_name
     - Part_ns
-    - Part__class
+    - Part_class_
     - Part_title
     - Part_prose
     - parts
@@ -15491,8 +15526,8 @@ classes:
         name: ns
         description: An optional namespace qualifying the part's name. This allows
           different organizations to associate distinct semantics with the same name.
-      _class:
-        name: _class
+      class_:
+        name: class_
         description: An optional textual providing a sub-type or characterization
           of the part's name, or a category to which the part belongs.
       title:
@@ -15518,7 +15553,7 @@ classes:
     - OscalCommon
     slots:
     - Parameter_id
-    - Parameter__class
+    - Parameter_class_
     - depends-on
     - label
     - usage
@@ -15534,8 +15569,8 @@ classes:
         name: id
         description: A unique identifier for the parameter.
         required: true
-      _class:
-        name: _class
+      class_:
+        name: class_
         description: A textual label that provides a characterization of the type,
           purpose, use or scope of the parameter.
       props:
@@ -15788,7 +15823,7 @@ classes:
     - OscalCommon
     slots:
     - id
-    - _class
+    - class_
     - ProfileGroup_title
     - params
     - parts
@@ -15833,7 +15868,7 @@ classes:
     - HasPropsAndLinks
     slots:
     - ParameterSetting_param-id
-    - _class
+    - class_
     - depends-on
     - label
     - usage
@@ -15913,7 +15948,7 @@ classes:
     - Property_uuid
     - Property_ns
     - Property_value
-    - Property__class
+    - Property_class_
     - remarks
     - group
     - ProfileAlterationProperty_name
@@ -16608,7 +16643,7 @@ classes:
     slots:
     - Property_uuid
     - Property_ns
-    - Property__class
+    - Property_class_
     - remarks
     - group
     - SspSystemCharacteristicsProp_name
@@ -16636,7 +16671,7 @@ classes:
     slots:
     - Property_uuid
     - Property_ns
-    - Property__class
+    - Property_class_
     - remarks
     - group
     - SspSystemInformationProp_name
@@ -16661,7 +16696,7 @@ classes:
     slots:
     - Property_uuid
     - Property_ns
-    - Property__class
+    - Property_class_
     - remarks
     - group
     - SspControlOriginationProp_name
@@ -16685,7 +16720,7 @@ classes:
     slots:
     - Property_uuid
     - Property_ns
-    - Property__class
+    - Property_class_
     - remarks
     - group
     - SspAllowsAuthenticatedScanProp_name
@@ -17534,7 +17569,7 @@ classes:
     - uuid
     - AssessmentPart_name
     - ns
-    - _class
+    - class_
     - title
     - prose
     - AssessmentPart_parts
@@ -17562,7 +17597,7 @@ classes:
     slots:
     - uuid
     - ns
-    - _class
+    - class_
     - title
     - prose
     - props
@@ -17592,7 +17627,7 @@ classes:
     - id
     - ControlPart_name
     - ns
-    - _class
+    - class_
     - title
     - prose
     - ControlPart_parts
@@ -17904,7 +17939,7 @@ classes:
     slots:
     - Property_uuid
     - Property_ns
-    - Property__class
+    - Property_class_
     - remarks
     - group
     - ImplementationCommonProperty_name
@@ -19395,5 +19430,5 @@ metamodel_version: 1.11.0
 source_file: oscal.yaml
 source_file_date: '2026-10-28T23:09:03'
 source_file_size: 2432
-generation_date: '2026-10-28T23:59:28'
+generation_date: '2026-10-29T00:12:25'
 

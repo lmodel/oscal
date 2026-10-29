@@ -2030,10 +2030,10 @@ class Group(HasPropsAndLinks):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_catalog',
          'in_subset': ['oscal_catalog'],
          'mixins': ['HasPropsAndLinks'],
-         'slot_usage': {'_class': {'description': 'A textual label that provides a '
+         'slot_usage': {'class_': {'description': 'A textual label that provides a '
                                                   'sub-type or characterization of the '
                                                   'group.',
-                                   'name': '_class'},
+                                   'name': 'class_'},
                         'id': {'description': 'Identifies the group for the purpose of '
                                               'cross-linking within the defining '
                                               'instance or from other instances that '
@@ -2055,7 +2055,12 @@ class Group(HasPropsAndLinks):
                        'ControlPart',
                        'SystemId',
                        'ThreatId']} })
-    class_: Optional[str] = Field(default=None, alias="_class", description="""A textual label that provides a sub-type or characterization of the group.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Group',
+    class_: Optional[str] = Field(default=None, description="""A textual label that provides a sub-type or characterization of the group.""", json_schema_extra = { "linkml_meta": {'comments': ["OSCAL's key is `class`. A slot or alias named `class` makes the "
+                      'generated dataclasses invalid Python, and gen-doc names a page '
+                      'after the slot, so `_class` hid its page from the site. '
+                      '`class_` is the spelling the generated Pydantic model gives a '
+                      'slot named `class`.'],
+         'domain_of': ['Group',
                        'Control',
                        'Property',
                        'Part',
@@ -2161,10 +2166,10 @@ class Control(HasPropsAndLinks):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_catalog',
          'in_subset': ['oscal_catalog'],
          'mixins': ['HasPropsAndLinks'],
-         'slot_usage': {'_class': {'description': 'A textual label that provides a '
+         'slot_usage': {'class_': {'description': 'A textual label that provides a '
                                                   'sub-type or characterization of the '
                                                   'control.',
-                                   'name': '_class'},
+                                   'name': 'class_'},
                         'id': {'description': 'Identifies a control such that it can '
                                               'be referenced in the defining catalog '
                                               'and other OSCAL instances (e.g., '
@@ -2187,7 +2192,12 @@ class Control(HasPropsAndLinks):
                        'ControlPart',
                        'SystemId',
                        'ThreatId']} })
-    class_: Optional[str] = Field(default=None, alias="_class", description="""A textual label that provides a sub-type or characterization of the control.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Group',
+    class_: Optional[str] = Field(default=None, description="""A textual label that provides a sub-type or characterization of the control.""", json_schema_extra = { "linkml_meta": {'comments': ["OSCAL's key is `class`. A slot or alias named `class` makes the "
+                      'generated dataclasses invalid Python, and gen-doc names a page '
+                      'after the slot, so `_class` hid its page from the site. '
+                      '`class_` is the spelling the generated Pydantic model gives a '
+                      'slot named `class`.'],
+         'domain_of': ['Group',
                        'Control',
                        'Property',
                        'Part',
@@ -3706,10 +3716,10 @@ class Property(ConfiguredBaseModel):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_catalog',
          'in_subset': ['oscal_metadata'],
-         'slot_usage': {'_class': {'description': 'A textual label that provides a '
+         'slot_usage': {'class_': {'description': 'A textual label that provides a '
                                                   'sub-type or characterization of the '
                                                   "property's name.",
-                                   'name': '_class'},
+                                   'name': 'class_'},
                         'name': {'description': 'A textual label, within a namespace, '
                                                 'that identifies a specific attribute, '
                                                 'characteristic, or quality of the '
@@ -3796,7 +3806,12 @@ class Property(ConfiguredBaseModel):
                        'Map',
                        'MappingResourceReference']} })
     value: str = Field(default=..., description="""Indicates the value of the attribute, characteristic, or quality.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Hash', 'Property', 'Base64Resource', 'Facet']} })
-    class_: Optional[str] = Field(default=None, alias="_class", description="""A textual label that provides a sub-type or characterization of the property's name.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Group',
+    class_: Optional[str] = Field(default=None, description="""A textual label that provides a sub-type or characterization of the property's name.""", json_schema_extra = { "linkml_meta": {'comments': ["OSCAL's key is `class`. A slot or alias named `class` makes the "
+                      'generated dataclasses invalid Python, and gen-doc names a page '
+                      'after the slot, so `_class` hid its page from the site. '
+                      '`class_` is the spelling the generated Pydantic model gives a '
+                      'slot named `class`.'],
+         'domain_of': ['Group',
                        'Control',
                        'Property',
                        'Part',
@@ -3929,7 +3944,12 @@ class MetadataProperty(Property):
                        'Map',
                        'MappingResourceReference']} })
     value: str = Field(default=..., description="""Indicates the value of the attribute, characteristic, or quality.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Hash', 'Property', 'Base64Resource', 'Facet']} })
-    class_: Optional[str] = Field(default=None, alias="_class", description="""A textual label that provides a sub-type or characterization of the property's name.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Group',
+    class_: Optional[str] = Field(default=None, description="""A textual label that provides a sub-type or characterization of the property's name.""", json_schema_extra = { "linkml_meta": {'comments': ["OSCAL's key is `class`. A slot or alias named `class` makes the "
+                      'generated dataclasses invalid Python, and gen-doc names a page '
+                      'after the slot, so `_class` hid its page from the site. '
+                      '`class_` is the spelling the generated Pydantic model gives a '
+                      'slot named `class`.'],
+         'domain_of': ['Group',
                        'Control',
                        'Property',
                        'Part',
@@ -4062,7 +4082,12 @@ class RevisionProperty(Property):
                        'Map',
                        'MappingResourceReference']} })
     value: str = Field(default=..., description="""Indicates the value of the attribute, characteristic, or quality.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Hash', 'Property', 'Base64Resource', 'Facet']} })
-    class_: Optional[str] = Field(default=None, alias="_class", description="""A textual label that provides a sub-type or characterization of the property's name.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Group',
+    class_: Optional[str] = Field(default=None, description="""A textual label that provides a sub-type or characterization of the property's name.""", json_schema_extra = { "linkml_meta": {'comments': ["OSCAL's key is `class`. A slot or alias named `class` makes the "
+                      'generated dataclasses invalid Python, and gen-doc names a page '
+                      'after the slot, so `_class` hid its page from the site. '
+                      '`class_` is the spelling the generated Pydantic model gives a '
+                      'slot named `class`.'],
+         'domain_of': ['Group',
                        'Control',
                        'Property',
                        'Part',
@@ -4126,9 +4151,9 @@ class LocationProperty(Property):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_catalog',
          'in_subset': ['oscal_metadata'],
-         'slot_usage': {'_class': {'any_of': [{'range': 'LocationDataCenterClassEnum'},
+         'slot_usage': {'class_': {'any_of': [{'range': 'LocationDataCenterClassEnum'},
                                               {'range': 'string'}],
-                                   'name': '_class'},
+                                   'name': 'class_'},
                         'name': {'name': 'name', 'range': 'LocationPropNameEnum'},
                         'value': {'any_of': [{'range': 'LocationPropTypeEnum'},
                                              {'range': 'string'}],
@@ -4202,7 +4227,12 @@ class LocationProperty(Property):
                        'MappingResourceReference']} })
     value: Union[LocationPropTypeEnum, str] = Field(default=..., description="""Indicates the value of the attribute, characteristic, or quality.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'LocationPropTypeEnum'}, {'range': 'string'}],
          'domain_of': ['Hash', 'Property', 'Base64Resource', 'Facet']} })
-    class_: Optional[Union[LocationDataCenterClassEnum, str]] = Field(default=None, alias="_class", description="""A textual label that provides a sub-type or characterization of the property's name.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'LocationDataCenterClassEnum'}, {'range': 'string'}],
+    class_: Optional[Union[LocationDataCenterClassEnum, str]] = Field(default=None, description="""A textual label that provides a sub-type or characterization of the property's name.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'LocationDataCenterClassEnum'}, {'range': 'string'}],
+         'comments': ["OSCAL's key is `class`. A slot or alias named `class` makes the "
+                      'generated dataclasses invalid Python, and gen-doc names a page '
+                      'after the slot, so `_class` hid its page from the site. '
+                      '`class_` is the spelling the generated Pydantic model gives a '
+                      'slot named `class`.'],
          'domain_of': ['Group',
                        'Control',
                        'Property',
@@ -4336,7 +4366,12 @@ class PartyProperty(Property):
                        'Map',
                        'MappingResourceReference']} })
     value: str = Field(default=..., description="""Indicates the value of the attribute, characteristic, or quality.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Hash', 'Property', 'Base64Resource', 'Facet']} })
-    class_: Optional[str] = Field(default=None, alias="_class", description="""A textual label that provides a sub-type or characterization of the property's name.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Group',
+    class_: Optional[str] = Field(default=None, description="""A textual label that provides a sub-type or characterization of the property's name.""", json_schema_extra = { "linkml_meta": {'comments': ["OSCAL's key is `class`. A slot or alias named `class` makes the "
+                      'generated dataclasses invalid Python, and gen-doc names a page '
+                      'after the slot, so `_class` hid its page from the site. '
+                      '`class_` is the spelling the generated Pydantic model gives a '
+                      'slot named `class`.'],
+         'domain_of': ['Group',
                        'Control',
                        'Property',
                        'Part',
@@ -4473,7 +4508,12 @@ class ResourceProperty(Property):
                        'MappingResourceReference']} })
     value: Union[ResourcePropTypeEnum, str] = Field(default=..., description="""Indicates the value of the attribute, characteristic, or quality.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'ResourcePropTypeEnum'}, {'range': 'string'}],
          'domain_of': ['Hash', 'Property', 'Base64Resource', 'Facet']} })
-    class_: Optional[str] = Field(default=None, alias="_class", description="""A textual label that provides a sub-type or characterization of the property's name.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Group',
+    class_: Optional[str] = Field(default=None, description="""A textual label that provides a sub-type or characterization of the property's name.""", json_schema_extra = { "linkml_meta": {'comments': ["OSCAL's key is `class`. A slot or alias named `class` makes the "
+                      'generated dataclasses invalid Python, and gen-doc names a page '
+                      'after the slot, so `_class` hid its page from the site. '
+                      '`class_` is the spelling the generated Pydantic model gives a '
+                      'slot named `class`.'],
+         'domain_of': ['Group',
                        'Control',
                        'Property',
                        'Part',
@@ -4606,7 +4646,12 @@ class PartProperty(Property):
                        'Map',
                        'MappingResourceReference']} })
     value: str = Field(default=..., description="""Indicates the value of the attribute, characteristic, or quality.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Hash', 'Property', 'Base64Resource', 'Facet']} })
-    class_: Optional[str] = Field(default=None, alias="_class", description="""A textual label that provides a sub-type or characterization of the property's name.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Group',
+    class_: Optional[str] = Field(default=None, description="""A textual label that provides a sub-type or characterization of the property's name.""", json_schema_extra = { "linkml_meta": {'comments': ["OSCAL's key is `class`. A slot or alias named `class` makes the "
+                      'generated dataclasses invalid Python, and gen-doc names a page '
+                      'after the slot, so `_class` hid its page from the site. '
+                      '`class_` is the spelling the generated Pydantic model gives a '
+                      'slot named `class`.'],
+         'domain_of': ['Group',
                        'Control',
                        'Property',
                        'Part',
@@ -4743,7 +4788,12 @@ class ParameterProperty(Property):
                        'Map',
                        'MappingResourceReference']} })
     value: str = Field(default=..., description="""Indicates the value of the attribute, characteristic, or quality.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Hash', 'Property', 'Base64Resource', 'Facet']} })
-    class_: Optional[str] = Field(default=None, alias="_class", description="""A textual label that provides a sub-type or characterization of the property's name.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Group',
+    class_: Optional[str] = Field(default=None, description="""A textual label that provides a sub-type or characterization of the property's name.""", json_schema_extra = { "linkml_meta": {'comments': ["OSCAL's key is `class`. A slot or alias named `class` makes the "
+                      'generated dataclasses invalid Python, and gen-doc names a page '
+                      'after the slot, so `_class` hid its page from the site. '
+                      '`class_` is the spelling the generated Pydantic model gives a '
+                      'slot named `class`.'],
+         'domain_of': ['Group',
                        'Control',
                        'Property',
                        'Part',
@@ -5194,11 +5244,11 @@ class Part(HasPropsAndLinks):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/oscal/oscal_catalog',
          'in_subset': ['oscal_control_common'],
          'mixins': ['HasPropsAndLinks'],
-         'slot_usage': {'_class': {'description': 'An optional textual providing a '
+         'slot_usage': {'class_': {'description': 'An optional textual providing a '
                                                   'sub-type or characterization of the '
                                                   "part's name, or a category to which "
                                                   'the part belongs.',
-                                   'name': '_class'},
+                                   'name': 'class_'},
                         'id': {'description': 'A unique identifier for the part.',
                                'name': 'id'},
                         'name': {'description': 'A textual label that uniquely '
@@ -5245,7 +5295,12 @@ class Part(HasPropsAndLinks):
                        'ControlPart',
                        'Map',
                        'MappingResourceReference']} })
-    class_: Optional[str] = Field(default=None, alias="_class", description="""An optional textual providing a sub-type or characterization of the part's name, or a category to which the part belongs.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Group',
+    class_: Optional[str] = Field(default=None, description="""An optional textual providing a sub-type or characterization of the part's name, or a category to which the part belongs.""", json_schema_extra = { "linkml_meta": {'comments': ["OSCAL's key is `class`. A slot or alias named `class` makes the "
+                      'generated dataclasses invalid Python, and gen-doc names a page '
+                      'after the slot, so `_class` hid its page from the site. '
+                      '`class_` is the spelling the generated Pydantic model gives a '
+                      'slot named `class`.'],
+         'domain_of': ['Group',
                        'Control',
                        'Property',
                        'Part',
@@ -5362,11 +5417,11 @@ class Parameter(OscalCommon):
                     'preconditions': {'slot_conditions': {'select': {'name': 'select',
                                                                      'value_presence': 'PRESENT'}}},
                     'title': 'select-xor-values'}],
-         'slot_usage': {'_class': {'description': 'A textual label that provides a '
+         'slot_usage': {'class_': {'description': 'A textual label that provides a '
                                                   'characterization of the type, '
                                                   'purpose, use or scope of the '
                                                   'parameter.',
-                                   'name': '_class'},
+                                   'name': 'class_'},
                         'id': {'description': 'A unique identifier for the parameter.',
                                'name': 'id',
                                'required': True},
@@ -5382,7 +5437,12 @@ class Parameter(OscalCommon):
                        'ControlPart',
                        'SystemId',
                        'ThreatId']} })
-    class_: Optional[str] = Field(default=None, alias="_class", description="""A textual label that provides a characterization of the type, purpose, use or scope of the parameter.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Group',
+    class_: Optional[str] = Field(default=None, description="""A textual label that provides a characterization of the type, purpose, use or scope of the parameter.""", json_schema_extra = { "linkml_meta": {'comments': ["OSCAL's key is `class`. A slot or alias named `class` makes the "
+                      'generated dataclasses invalid Python, and gen-doc names a page '
+                      'after the slot, so `_class` hid its page from the site. '
+                      '`class_` is the spelling the generated Pydantic model gives a '
+                      'slot named `class`.'],
+         'domain_of': ['Group',
                        'Control',
                        'Property',
                        'Part',
@@ -5900,7 +5960,12 @@ class ProfileGroup(OscalCommon):
                        'ControlPart',
                        'SystemId',
                        'ThreatId']} })
-    class_: Optional[str] = Field(default=None, alias="_class", description="""A textual label that provides a sub-type or characterization.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Group',
+    class_: Optional[str] = Field(default=None, description="""A textual label that provides a sub-type or characterization.""", json_schema_extra = { "linkml_meta": {'comments': ["OSCAL's key is `class`. A slot or alias named `class` makes the "
+                      'generated dataclasses invalid Python, and gen-doc names a page '
+                      'after the slot, so `_class` hid its page from the site. '
+                      '`class_` is the spelling the generated Pydantic model gives a '
+                      'slot named `class`.'],
+         'domain_of': ['Group',
                        'Control',
                        'Property',
                        'Part',
@@ -6076,7 +6141,12 @@ class ParameterSetting(HasPropsAndLinks):
          'slot_usage': {'param-id': {'name': 'param-id', 'required': True}}})
 
     param_id: str = Field(default=..., description="""The identifier for the parameter being set or referenced.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ParameterSetting', 'SetParameter']} })
-    class_: Optional[str] = Field(default=None, alias="_class", description="""A textual label that provides a sub-type or characterization.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Group',
+    class_: Optional[str] = Field(default=None, description="""A textual label that provides a sub-type or characterization.""", json_schema_extra = { "linkml_meta": {'comments': ["OSCAL's key is `class`. A slot or alias named `class` makes the "
+                      'generated dataclasses invalid Python, and gen-doc names a page '
+                      'after the slot, so `_class` hid its page from the site. '
+                      '`class_` is the spelling the generated Pydantic model gives a '
+                      'slot named `class`.'],
+         'domain_of': ['Group',
                        'Control',
                        'Property',
                        'Part',
@@ -6386,7 +6456,12 @@ class ProfileAlterationProperty(Property):
                        'Map',
                        'MappingResourceReference']} })
     value: str = Field(default=..., description="""Indicates the value of the attribute, characteristic, or quality.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Hash', 'Property', 'Base64Resource', 'Facet']} })
-    class_: Optional[str] = Field(default=None, alias="_class", description="""A textual label that provides a sub-type or characterization of the property's name.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Group',
+    class_: Optional[str] = Field(default=None, description="""A textual label that provides a sub-type or characterization of the property's name.""", json_schema_extra = { "linkml_meta": {'comments': ["OSCAL's key is `class`. A slot or alias named `class` makes the "
+                      'generated dataclasses invalid Python, and gen-doc names a page '
+                      'after the slot, so `_class` hid its page from the site. '
+                      '`class_` is the spelling the generated Pydantic model gives a '
+                      'slot named `class`.'],
+         'domain_of': ['Group',
                        'Control',
                        'Property',
                        'Part',
@@ -9846,7 +9921,12 @@ class AssessmentPart(HasPropsAndLinks):
                        'ControlPart',
                        'Map',
                        'MappingResourceReference']} })
-    class_: Optional[str] = Field(default=None, alias="_class", description="""A textual label that provides a sub-type or characterization.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Group',
+    class_: Optional[str] = Field(default=None, description="""A textual label that provides a sub-type or characterization.""", json_schema_extra = { "linkml_meta": {'comments': ["OSCAL's key is `class`. A slot or alias named `class` makes the "
+                      'generated dataclasses invalid Python, and gen-doc names a page '
+                      'after the slot, so `_class` hid its page from the site. '
+                      '`class_` is the spelling the generated Pydantic model gives a '
+                      'slot named `class`.'],
+         'domain_of': ['Group',
                        'Control',
                        'Property',
                        'Part',
@@ -10021,7 +10101,12 @@ class TermsAndConditionsPart(AssessmentPart):
                        'ControlPart',
                        'Map',
                        'MappingResourceReference']} })
-    class_: Optional[str] = Field(default=None, alias="_class", description="""A textual label that provides a sub-type or characterization.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Group',
+    class_: Optional[str] = Field(default=None, description="""A textual label that provides a sub-type or characterization.""", json_schema_extra = { "linkml_meta": {'comments': ["OSCAL's key is `class`. A slot or alias named `class` makes the "
+                      'generated dataclasses invalid Python, and gen-doc names a page '
+                      'after the slot, so `_class` hid its page from the site. '
+                      '`class_` is the spelling the generated Pydantic model gives a '
+                      'slot named `class`.'],
+         'domain_of': ['Group',
                        'Control',
                        'Property',
                        'Part',
@@ -10152,7 +10237,12 @@ class ControlPart(HasPropsAndLinks):
                        'ControlPart',
                        'Map',
                        'MappingResourceReference']} })
-    class_: Optional[str] = Field(default=None, alias="_class", description="""A textual label that provides a sub-type or characterization.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Group',
+    class_: Optional[str] = Field(default=None, description="""A textual label that provides a sub-type or characterization.""", json_schema_extra = { "linkml_meta": {'comments': ["OSCAL's key is `class`. A slot or alias named `class` makes the "
+                      'generated dataclasses invalid Python, and gen-doc names a page '
+                      'after the slot, so `_class` hid its page from the site. '
+                      '`class_` is the spelling the generated Pydantic model gives a '
+                      'slot named `class`.'],
+         'domain_of': ['Group',
                        'Control',
                        'Property',
                        'Part',
@@ -11665,7 +11755,12 @@ class ImplementationCommonProperty(Property):
                     {'range': 'UserPrivilegeLevelEnum'},
                     {'range': 'string'}],
          'domain_of': ['Hash', 'Property', 'Base64Resource', 'Facet']} })
-    class_: Optional[str] = Field(default=None, alias="_class", description="""A textual label that provides a sub-type or characterization of the property's name.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Group',
+    class_: Optional[str] = Field(default=None, description="""A textual label that provides a sub-type or characterization of the property's name.""", json_schema_extra = { "linkml_meta": {'comments': ["OSCAL's key is `class`. A slot or alias named `class` makes the "
+                      'generated dataclasses invalid Python, and gen-doc names a page '
+                      'after the slot, so `_class` hid its page from the site. '
+                      '`class_` is the spelling the generated Pydantic model gives a '
+                      'slot named `class`.'],
+         'domain_of': ['Group',
                        'Control',
                        'Property',
                        'Part',
@@ -18055,7 +18150,12 @@ class SspSystemCharacteristicsProp(Property):
                     {'range': 'CloudServiceModelEnum'},
                     {'range': 'string'}],
          'domain_of': ['Hash', 'Property', 'Base64Resource', 'Facet']} })
-    class_: Optional[str] = Field(default=None, alias="_class", description="""A textual label that provides a sub-type or characterization of the property's name.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Group',
+    class_: Optional[str] = Field(default=None, description="""A textual label that provides a sub-type or characterization of the property's name.""", json_schema_extra = { "linkml_meta": {'comments': ["OSCAL's key is `class`. A slot or alias named `class` makes the "
+                      'generated dataclasses invalid Python, and gen-doc names a page '
+                      'after the slot, so `_class` hid its page from the site. '
+                      '`class_` is the spelling the generated Pydantic model gives a '
+                      'slot named `class`.'],
+         'domain_of': ['Group',
                        'Control',
                        'Property',
                        'Part',
@@ -18190,7 +18290,12 @@ class SspSystemInformationProp(Property):
                        'Map',
                        'MappingResourceReference']} })
     value: PrivacyDesignationEnum = Field(default=..., description="""Indicates the value of the attribute, characteristic, or quality.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Hash', 'Property', 'Base64Resource', 'Facet']} })
-    class_: Optional[str] = Field(default=None, alias="_class", description="""A textual label that provides a sub-type or characterization of the property's name.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Group',
+    class_: Optional[str] = Field(default=None, description="""A textual label that provides a sub-type or characterization of the property's name.""", json_schema_extra = { "linkml_meta": {'comments': ["OSCAL's key is `class`. A slot or alias named `class` makes the "
+                      'generated dataclasses invalid Python, and gen-doc names a page '
+                      'after the slot, so `_class` hid its page from the site. '
+                      '`class_` is the spelling the generated Pydantic model gives a '
+                      'slot named `class`.'],
+         'domain_of': ['Group',
                        'Control',
                        'Property',
                        'Part',
@@ -18326,7 +18431,12 @@ class SspControlOriginationProp(Property):
                        'Map',
                        'MappingResourceReference']} })
     value: ControlOriginationValueEnum = Field(default=..., description="""Indicates the value of the attribute, characteristic, or quality.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Hash', 'Property', 'Base64Resource', 'Facet']} })
-    class_: Optional[str] = Field(default=None, alias="_class", description="""A textual label that provides a sub-type or characterization of the property's name.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Group',
+    class_: Optional[str] = Field(default=None, description="""A textual label that provides a sub-type or characterization of the property's name.""", json_schema_extra = { "linkml_meta": {'comments': ["OSCAL's key is `class`. A slot or alias named `class` makes the "
+                      'generated dataclasses invalid Python, and gen-doc names a page '
+                      'after the slot, so `_class` hid its page from the site. '
+                      '`class_` is the spelling the generated Pydantic model gives a '
+                      'slot named `class`.'],
+         'domain_of': ['Group',
                        'Control',
                        'Property',
                        'Part',
@@ -18461,7 +18571,12 @@ class SspAllowsAuthenticatedScanProp(Property):
                        'Map',
                        'MappingResourceReference']} })
     value: AllowsAuthenticatedScanEnum = Field(default=..., description="""Indicates the value of the attribute, characteristic, or quality.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Hash', 'Property', 'Base64Resource', 'Facet']} })
-    class_: Optional[str] = Field(default=None, alias="_class", description="""A textual label that provides a sub-type or characterization of the property's name.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Group',
+    class_: Optional[str] = Field(default=None, description="""A textual label that provides a sub-type or characterization of the property's name.""", json_schema_extra = { "linkml_meta": {'comments': ["OSCAL's key is `class`. A slot or alias named `class` makes the "
+                      'generated dataclasses invalid Python, and gen-doc names a page '
+                      'after the slot, so `_class` hid its page from the site. '
+                      '`class_` is the spelling the generated Pydantic model gives a '
+                      'slot named `class`.'],
+         'domain_of': ['Group',
                        'Control',
                        'Property',
                        'Part',

@@ -1,5 +1,5 @@
 # Auto generated from oscal.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-10-28T23:59:57
+# Generation date: 2026-10-29T00:13:03
 # Schema: oscal
 #
 # id: https://w3id.org/lmodel/oscal
@@ -344,7 +344,7 @@ class Group(YAMLRoot):
 
     title: str = None
     id: Optional[str] = None
-    _class: Optional[str] = None
+    class_: Optional[str] = None
     params: Optional[Union[Union[dict, "Parameter"], list[Union[dict, "Parameter"]]]] = empty_list()
     parts: Optional[Union[Union[dict, "Part"], list[Union[dict, "Part"]]]] = empty_list()
     groups: Optional[Union[Union[dict, "Group"], list[Union[dict, "Group"]]]] = empty_list()
@@ -361,8 +361,8 @@ class Group(YAMLRoot):
         if self.id is not None and not isinstance(self.id, str):
             self.id = str(self.id)
 
-        if self._class is not None and not isinstance(self._class, str):
-            self._class = str(self._class)
+        if self.class_ is not None and not isinstance(self.class_, str):
+            self.class_ = str(self.class_)
 
         self._normalize_inlined_as_list(slot_name="params", slot_type=Parameter, key_name="id", keyed=False)
 
@@ -394,7 +394,7 @@ class Control(YAMLRoot):
 
     id: str = None
     title: str = None
-    _class: Optional[str] = None
+    class_: Optional[str] = None
     params: Optional[Union[Union[dict, "Parameter"], list[Union[dict, "Parameter"]]]] = empty_list()
     parts: Optional[Union[Union[dict, "Part"], list[Union[dict, "Part"]]]] = empty_list()
     controls: Optional[Union[Union[dict, "Control"], list[Union[dict, "Control"]]]] = empty_list()
@@ -412,8 +412,8 @@ class Control(YAMLRoot):
         if not isinstance(self.title, str):
             self.title = str(self.title)
 
-        if self._class is not None and not isinstance(self._class, str):
-            self._class = str(self._class)
+        if self.class_ is not None and not isinstance(self.class_, str):
+            self.class_ = str(self.class_)
 
         self._normalize_inlined_as_list(slot_name="params", slot_type=Parameter, key_name="id", keyed=False)
 
@@ -1003,7 +1003,7 @@ class Property(YAMLRoot):
     value: str = None
     uuid: Optional[str] = None
     ns: Optional[str] = None
-    _class: Optional[str] = None
+    class_: Optional[str] = None
     remarks: Optional[str] = None
     group: Optional[str] = None
 
@@ -1024,8 +1024,8 @@ class Property(YAMLRoot):
         if self.ns is not None and not isinstance(self.ns, str):
             self.ns = str(self.ns)
 
-        if self._class is not None and not isinstance(self._class, str):
-            self._class = str(self._class)
+        if self.class_ is not None and not isinstance(self.class_, str):
+            self.class_ = str(self.class_)
 
         if self.remarks is not None and not isinstance(self.remarks, str):
             self.remarks = str(self.remarks)
@@ -1098,7 +1098,7 @@ class LocationProperty(Property):
 
     name: Union[str, "LocationPropNameEnum"] = None
     value: str = None
-    _class: Optional[str] = None
+    class_: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.name):
@@ -1111,8 +1111,8 @@ class LocationProperty(Property):
         if not isinstance(self.value, str):
             self.value = str(self.value)
 
-        if self._class is not None and not isinstance(self._class, str):
-            self._class = str(self._class)
+        if self.class_ is not None and not isinstance(self.class_, str):
+            self.class_ = str(self.class_)
 
         super().__post_init__(**kwargs)
 
@@ -1451,7 +1451,7 @@ class Part(YAMLRoot):
     name: str = None
     id: Optional[str] = None
     ns: Optional[str] = None
-    _class: Optional[str] = None
+    class_: Optional[str] = None
     title: Optional[str] = None
     prose: Optional[str] = None
     parts: Optional[Union[Union[dict, "Part"], list[Union[dict, "Part"]]]] = empty_list()
@@ -1470,8 +1470,8 @@ class Part(YAMLRoot):
         if self.ns is not None and not isinstance(self.ns, str):
             self.ns = str(self.ns)
 
-        if self._class is not None and not isinstance(self._class, str):
-            self._class = str(self._class)
+        if self.class_ is not None and not isinstance(self.class_, str):
+            self.class_ = str(self.class_)
 
         if self.title is not None and not isinstance(self.title, str):
             self.title = str(self.title)
@@ -1501,7 +1501,7 @@ class Parameter(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = OSCAL.Parameter
 
     id: str = None
-    _class: Optional[str] = None
+    class_: Optional[str] = None
     depends_on: Optional[str] = None
     label: Optional[str] = None
     usage: Optional[str] = None
@@ -1518,8 +1518,8 @@ class Parameter(YAMLRoot):
         if not isinstance(self.id, str):
             self.id = str(self.id)
 
-        if self._class is not None and not isinstance(self._class, str):
-            self._class = str(self._class)
+        if self.class_ is not None and not isinstance(self.class_, str):
+            self.class_ = str(self.class_)
 
         if self.depends_on is not None and not isinstance(self.depends_on, str):
             self.depends_on = str(self.depends_on)
@@ -1933,7 +1933,7 @@ class ProfileGroup(YAMLRoot):
 
     title: str = None
     id: Optional[str] = None
-    _class: Optional[str] = None
+    class_: Optional[str] = None
     params: Optional[Union[Union[dict, Parameter], list[Union[dict, Parameter]]]] = empty_list()
     parts: Optional[Union[Union[dict, Part], list[Union[dict, Part]]]] = empty_list()
     groups: Optional[Union[Union[dict, "ProfileGroup"], list[Union[dict, "ProfileGroup"]]]] = empty_list()
@@ -1949,8 +1949,8 @@ class ProfileGroup(YAMLRoot):
         if self.id is not None and not isinstance(self.id, str):
             self.id = str(self.id)
 
-        if self._class is not None and not isinstance(self._class, str):
-            self._class = str(self._class)
+        if self.class_ is not None and not isinstance(self.class_, str):
+            self.class_ = str(self.class_)
 
         self._normalize_inlined_as_list(slot_name="params", slot_type=Parameter, key_name="id", keyed=False)
 
@@ -2004,7 +2004,7 @@ class ParameterSetting(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = OSCAL.ParameterSetting
 
     param_id: str = None
-    _class: Optional[str] = None
+    class_: Optional[str] = None
     depends_on: Optional[str] = None
     label: Optional[str] = None
     usage: Optional[str] = None
@@ -2021,8 +2021,8 @@ class ParameterSetting(YAMLRoot):
         if not isinstance(self.param_id, str):
             self.param_id = str(self.param_id)
 
-        if self._class is not None and not isinstance(self._class, str):
-            self._class = str(self._class)
+        if self.class_ is not None and not isinstance(self.class_, str):
+            self.class_ = str(self.class_)
 
         if self.depends_on is not None and not isinstance(self.depends_on, str):
             self.depends_on = str(self.depends_on)
@@ -4585,7 +4585,7 @@ class AssessmentPart(YAMLRoot):
     name: str = None
     uuid: Optional[str] = None
     ns: Optional[str] = None
-    _class: Optional[str] = None
+    class_: Optional[str] = None
     title: Optional[str] = None
     prose: Optional[str] = None
     parts: Optional[Union[Union[dict, "AssessmentPart"], list[Union[dict, "AssessmentPart"]]]] = empty_list()
@@ -4604,8 +4604,8 @@ class AssessmentPart(YAMLRoot):
         if self.ns is not None and not isinstance(self.ns, str):
             self.ns = str(self.ns)
 
-        if self._class is not None and not isinstance(self._class, str):
-            self._class = str(self._class)
+        if self.class_ is not None and not isinstance(self.class_, str):
+            self.class_ = str(self.class_)
 
         if self.title is not None and not isinstance(self.title, str):
             self.title = str(self.title)
@@ -4664,7 +4664,7 @@ class ControlPart(YAMLRoot):
     name: str = None
     id: Optional[str] = None
     ns: Optional[str] = None
-    _class: Optional[str] = None
+    class_: Optional[str] = None
     title: Optional[str] = None
     prose: Optional[str] = None
     parts: Optional[Union[Union[dict, "ControlPart"], list[Union[dict, "ControlPart"]]]] = empty_list()
@@ -4683,8 +4683,8 @@ class ControlPart(YAMLRoot):
         if self.ns is not None and not isinstance(self.ns, str):
             self.ns = str(self.ns)
 
-        if self._class is not None and not isinstance(self._class, str):
-            self._class = str(self._class)
+        if self.class_ is not None and not isinstance(self.class_, str):
+            self.class_ = str(self.class_)
 
         if self.title is not None and not isinstance(self.title, str):
             self.title = str(self.title)
@@ -10270,8 +10270,8 @@ slots.responsible_parties = Slot(uri=OSCAL.responsible_parties, name="responsibl
 slots.id = Slot(uri=OSCAL.id, name="id", curie=OSCAL.curie('id'),
                    model_uri=OSCAL.id, domain=None, range=Optional[str])
 
-slots._class = Slot(uri=OSCAL._class, name="_class", curie=OSCAL.curie('_class'),
-                   model_uri=OSCAL._class, domain=None, range=Optional[str])
+slots.class_ = Slot(uri=OSCAL.class_, name="class_", curie=OSCAL.curie('class_'),
+                   model_uri=OSCAL.class_, domain=None, range=Optional[str])
 
 slots.name = Slot(uri=OSCAL.name, name="name", curie=OSCAL.curie('name'),
                    model_uri=OSCAL.name, domain=None, range=Optional[str])
@@ -11101,8 +11101,8 @@ slots.Catalog_metadata = Slot(uri=OSCAL.metadata, name="Catalog_metadata", curie
 slots.Group_id = Slot(uri=OSCAL.id, name="Group_id", curie=OSCAL.curie('id'),
                    model_uri=OSCAL.Group_id, domain=Group, range=Optional[str])
 
-slots.Group__class = Slot(uri=OSCAL._class, name="Group__class", curie=OSCAL.curie('_class'),
-                   model_uri=OSCAL.Group__class, domain=Group, range=Optional[str])
+slots.Group_class_ = Slot(uri=OSCAL.class_, name="Group_class_", curie=OSCAL.curie('class_'),
+                   model_uri=OSCAL.Group_class_, domain=Group, range=Optional[str])
 
 slots.Group_title = Slot(uri=OSCAL.title, name="Group_title", curie=OSCAL.curie('title'),
                    model_uri=OSCAL.Group_title, domain=Group, range=str)
@@ -11110,8 +11110,8 @@ slots.Group_title = Slot(uri=OSCAL.title, name="Group_title", curie=OSCAL.curie(
 slots.Control_id = Slot(uri=OSCAL.id, name="Control_id", curie=OSCAL.curie('id'),
                    model_uri=OSCAL.Control_id, domain=Control, range=str)
 
-slots.Control__class = Slot(uri=OSCAL._class, name="Control__class", curie=OSCAL.curie('_class'),
-                   model_uri=OSCAL.Control__class, domain=Control, range=Optional[str])
+slots.Control_class_ = Slot(uri=OSCAL.class_, name="Control_class_", curie=OSCAL.curie('class_'),
+                   model_uri=OSCAL.Control_class_, domain=Control, range=Optional[str])
 
 slots.Control_title = Slot(uri=OSCAL.title, name="Control_title", curie=OSCAL.curie('title'),
                    model_uri=OSCAL.Control_title, domain=Control, range=str)
@@ -11227,8 +11227,8 @@ slots.Property_ns = Slot(uri=OSCAL.ns, name="Property_ns", curie=OSCAL.curie('ns
 slots.Property_value = Slot(uri=OSCAL.value, name="Property_value", curie=OSCAL.curie('value'),
                    model_uri=OSCAL.Property_value, domain=Property, range=str)
 
-slots.Property__class = Slot(uri=OSCAL._class, name="Property__class", curie=OSCAL.curie('_class'),
-                   model_uri=OSCAL.Property__class, domain=Property, range=Optional[str])
+slots.Property_class_ = Slot(uri=OSCAL.class_, name="Property_class_", curie=OSCAL.curie('class_'),
+                   model_uri=OSCAL.Property_class_, domain=Property, range=Optional[str])
 
 slots.MetadataProperty_name = Slot(uri=OSCAL.name, name="MetadataProperty_name", curie=OSCAL.curie('name'),
                    model_uri=OSCAL.MetadataProperty_name, domain=MetadataProperty, range=Union[str, "MetadataPropNameEnum"])
@@ -11242,8 +11242,8 @@ slots.LocationProperty_name = Slot(uri=OSCAL.name, name="LocationProperty_name",
 slots.LocationProperty_value = Slot(uri=OSCAL.value, name="LocationProperty_value", curie=OSCAL.curie('value'),
                    model_uri=OSCAL.LocationProperty_value, domain=LocationProperty, range=str)
 
-slots.LocationProperty__class = Slot(uri=OSCAL._class, name="LocationProperty__class", curie=OSCAL.curie('_class'),
-                   model_uri=OSCAL.LocationProperty__class, domain=LocationProperty, range=Optional[str])
+slots.LocationProperty_class_ = Slot(uri=OSCAL.class_, name="LocationProperty_class_", curie=OSCAL.curie('class_'),
+                   model_uri=OSCAL.LocationProperty_class_, domain=LocationProperty, range=Optional[str])
 
 slots.PartyProperty_name = Slot(uri=OSCAL.name, name="PartyProperty_name", curie=OSCAL.curie('name'),
                    model_uri=OSCAL.PartyProperty_name, domain=PartyProperty, range=Union[str, "PartyPropNameEnum"])
@@ -11302,8 +11302,8 @@ slots.Part_name = Slot(uri=OSCAL.name, name="Part_name", curie=OSCAL.curie('name
 slots.Part_ns = Slot(uri=OSCAL.ns, name="Part_ns", curie=OSCAL.curie('ns'),
                    model_uri=OSCAL.Part_ns, domain=Part, range=Optional[str])
 
-slots.Part__class = Slot(uri=OSCAL._class, name="Part__class", curie=OSCAL.curie('_class'),
-                   model_uri=OSCAL.Part__class, domain=Part, range=Optional[str])
+slots.Part_class_ = Slot(uri=OSCAL.class_, name="Part_class_", curie=OSCAL.curie('class_'),
+                   model_uri=OSCAL.Part_class_, domain=Part, range=Optional[str])
 
 slots.Part_title = Slot(uri=OSCAL.title, name="Part_title", curie=OSCAL.curie('title'),
                    model_uri=OSCAL.Part_title, domain=Part, range=Optional[str])
@@ -11317,8 +11317,8 @@ slots.Part_props = Slot(uri=OSCAL.props, name="Part_props", curie=OSCAL.curie('p
 slots.Parameter_id = Slot(uri=OSCAL.id, name="Parameter_id", curie=OSCAL.curie('id'),
                    model_uri=OSCAL.Parameter_id, domain=Parameter, range=str)
 
-slots.Parameter__class = Slot(uri=OSCAL._class, name="Parameter__class", curie=OSCAL.curie('_class'),
-                   model_uri=OSCAL.Parameter__class, domain=Parameter, range=Optional[str])
+slots.Parameter_class_ = Slot(uri=OSCAL.class_, name="Parameter_class_", curie=OSCAL.curie('class_'),
+                   model_uri=OSCAL.Parameter_class_, domain=Parameter, range=Optional[str])
 
 slots.Parameter_props = Slot(uri=OSCAL.props, name="Parameter_props", curie=OSCAL.curie('props'),
                    model_uri=OSCAL.Parameter_props, domain=Parameter, range=Optional[Union[Union[dict, ParameterProperty], list[Union[dict, ParameterProperty]]]])

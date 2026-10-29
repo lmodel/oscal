@@ -5430,11 +5430,14 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "_class",
-      "definition_uri": "https://w3id.org/lmodel/oscal/_class",
+      "name": "class_",
+      "definition_uri": "https://w3id.org/lmodel/oscal/class_",
       "description": "A textual label that provides a sub-type or characterization.",
+      "comments": [
+        "OSCAL's key is `class`. A slot or alias named `class` makes the generated dataclasses invalid Python, and gen-doc names a page after the slot, so `_class` hid its page from the site. `class_` is the spelling the generated Pydantic model gives a slot named `class`."
+      ],
       "from_schema": "https://w3id.org/lmodel/oscal/oscal_catalog",
-      "slot_uri": "https://w3id.org/lmodel/oscal/_class",
+      "slot_uri": "https://w3id.org/lmodel/oscal/class_",
       "owner": "ControlPart",
       "domain_of": [
         "Group",
@@ -9784,20 +9787,23 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "Group__class",
-      "definition_uri": "https://w3id.org/lmodel/oscal/_class",
+      "name": "Group_class_",
+      "definition_uri": "https://w3id.org/lmodel/oscal/class_",
       "description": "A textual label that provides a sub-type or characterization of the group.",
+      "comments": [
+        "OSCAL's key is `class`. A slot or alias named `class` makes the generated dataclasses invalid Python, and gen-doc names a page after the slot, so `_class` hid its page from the site. `class_` is the spelling the generated Pydantic model gives a slot named `class`."
+      ],
       "from_schema": "https://w3id.org/lmodel/oscal/oscal_catalog",
-      "is_a": "_class",
+      "is_a": "class_",
       "domain": "Group",
-      "slot_uri": "https://w3id.org/lmodel/oscal/_class",
-      "alias": "_class",
+      "slot_uri": "https://w3id.org/lmodel/oscal/class_",
+      "alias": "class_",
       "owner": "Group",
       "domain_of": [
         "Group"
       ],
       "is_usage_slot": true,
-      "usage_slot_name": "_class",
+      "usage_slot_name": "class_",
       "range": "TokenType",
       "@type": "SlotDefinition"
     },
@@ -9840,20 +9846,23 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "Control__class",
-      "definition_uri": "https://w3id.org/lmodel/oscal/_class",
+      "name": "Control_class_",
+      "definition_uri": "https://w3id.org/lmodel/oscal/class_",
       "description": "A textual label that provides a sub-type or characterization of the control.",
+      "comments": [
+        "OSCAL's key is `class`. A slot or alias named `class` makes the generated dataclasses invalid Python, and gen-doc names a page after the slot, so `_class` hid its page from the site. `class_` is the spelling the generated Pydantic model gives a slot named `class`."
+      ],
       "from_schema": "https://w3id.org/lmodel/oscal/oscal_catalog",
-      "is_a": "_class",
+      "is_a": "class_",
       "domain": "Control",
-      "slot_uri": "https://w3id.org/lmodel/oscal/_class",
-      "alias": "_class",
+      "slot_uri": "https://w3id.org/lmodel/oscal/class_",
+      "alias": "class_",
       "owner": "Control",
       "domain_of": [
         "Control"
       ],
       "is_usage_slot": true,
-      "usage_slot_name": "_class",
+      "usage_slot_name": "class_",
       "range": "TokenType",
       "@type": "SlotDefinition"
     },
@@ -10659,20 +10668,23 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "Property__class",
-      "definition_uri": "https://w3id.org/lmodel/oscal/_class",
+      "name": "Property_class_",
+      "definition_uri": "https://w3id.org/lmodel/oscal/class_",
       "description": "A textual label that provides a sub-type or characterization of the property's name.",
+      "comments": [
+        "OSCAL's key is `class`. A slot or alias named `class` makes the generated dataclasses invalid Python, and gen-doc names a page after the slot, so `_class` hid its page from the site. `class_` is the spelling the generated Pydantic model gives a slot named `class`."
+      ],
       "from_schema": "https://w3id.org/lmodel/oscal/oscal_catalog",
-      "is_a": "_class",
+      "is_a": "class_",
       "domain": "Property",
-      "slot_uri": "https://w3id.org/lmodel/oscal/_class",
-      "alias": "_class",
+      "slot_uri": "https://w3id.org/lmodel/oscal/class_",
+      "alias": "class_",
       "owner": "Property",
       "domain_of": [
         "Property"
       ],
       "is_usage_slot": true,
-      "usage_slot_name": "_class",
+      "usage_slot_name": "class_",
       "range": "TokenType",
       "@type": "SlotDefinition"
     },
@@ -10763,20 +10775,23 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "LocationProperty__class",
-      "definition_uri": "https://w3id.org/lmodel/oscal/_class",
+      "name": "LocationProperty_class_",
+      "definition_uri": "https://w3id.org/lmodel/oscal/class_",
       "description": "A textual label that provides a sub-type or characterization.",
+      "comments": [
+        "OSCAL's key is `class`. A slot or alias named `class` makes the generated dataclasses invalid Python, and gen-doc names a page after the slot, so `_class` hid its page from the site. `class_` is the spelling the generated Pydantic model gives a slot named `class`."
+      ],
       "from_schema": "https://w3id.org/lmodel/oscal/oscal_catalog",
-      "is_a": "Property__class",
+      "is_a": "Property_class_",
       "domain": "LocationProperty",
-      "slot_uri": "https://w3id.org/lmodel/oscal/_class",
-      "alias": "_class",
+      "slot_uri": "https://w3id.org/lmodel/oscal/class_",
+      "alias": "class_",
       "owner": "LocationProperty",
       "domain_of": [
         "LocationProperty"
       ],
       "is_usage_slot": true,
-      "usage_slot_name": "_class",
+      "usage_slot_name": "class_",
       "range": "TokenType",
       "any_of": [
         {
@@ -11183,20 +11198,23 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "Part__class",
-      "definition_uri": "https://w3id.org/lmodel/oscal/_class",
+      "name": "Part_class_",
+      "definition_uri": "https://w3id.org/lmodel/oscal/class_",
       "description": "An optional textual providing a sub-type or characterization of the part's name, or a category to which the part belongs.",
+      "comments": [
+        "OSCAL's key is `class`. A slot or alias named `class` makes the generated dataclasses invalid Python, and gen-doc names a page after the slot, so `_class` hid its page from the site. `class_` is the spelling the generated Pydantic model gives a slot named `class`."
+      ],
       "from_schema": "https://w3id.org/lmodel/oscal/oscal_catalog",
-      "is_a": "_class",
+      "is_a": "class_",
       "domain": "Part",
-      "slot_uri": "https://w3id.org/lmodel/oscal/_class",
-      "alias": "_class",
+      "slot_uri": "https://w3id.org/lmodel/oscal/class_",
+      "alias": "class_",
       "owner": "Part",
       "domain_of": [
         "Part"
       ],
       "is_usage_slot": true,
-      "usage_slot_name": "_class",
+      "usage_slot_name": "class_",
       "range": "TokenType",
       "@type": "SlotDefinition"
     },
@@ -11277,20 +11295,23 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "Parameter__class",
-      "definition_uri": "https://w3id.org/lmodel/oscal/_class",
+      "name": "Parameter_class_",
+      "definition_uri": "https://w3id.org/lmodel/oscal/class_",
       "description": "A textual label that provides a characterization of the type, purpose, use or scope of the parameter.",
+      "comments": [
+        "OSCAL's key is `class`. A slot or alias named `class` makes the generated dataclasses invalid Python, and gen-doc names a page after the slot, so `_class` hid its page from the site. `class_` is the spelling the generated Pydantic model gives a slot named `class`."
+      ],
       "from_schema": "https://w3id.org/lmodel/oscal/oscal_catalog",
-      "is_a": "_class",
+      "is_a": "class_",
       "domain": "Parameter",
-      "slot_uri": "https://w3id.org/lmodel/oscal/_class",
-      "alias": "_class",
+      "slot_uri": "https://w3id.org/lmodel/oscal/class_",
+      "alias": "class_",
       "owner": "Parameter",
       "domain_of": [
         "Parameter"
       ],
       "is_usage_slot": true,
-      "usage_slot_name": "_class",
+      "usage_slot_name": "class_",
       "range": "TokenType",
       "@type": "SlotDefinition"
     },
@@ -18225,7 +18246,7 @@
       ],
       "slots": [
         "Group_id",
-        "Group__class",
+        "Group_class_",
         "Group_title",
         "params",
         "parts",
@@ -18251,7 +18272,7 @@
       ],
       "slots": [
         "Control_id",
-        "Control__class",
+        "Control_class_",
         "Control_title",
         "params",
         "parts",
@@ -18619,7 +18640,7 @@
         "Property_uuid",
         "Property_ns",
         "Property_value",
-        "Property__class",
+        "Property_class_",
         "remarks",
         "group"
       ],
@@ -18640,7 +18661,7 @@
         "Property_uuid",
         "Property_ns",
         "Property_value",
-        "Property__class",
+        "Property_class_",
         "remarks",
         "group",
         "MetadataProperty_name"
@@ -18662,7 +18683,7 @@
         "Property_uuid",
         "Property_ns",
         "Property_value",
-        "Property__class",
+        "Property_class_",
         "remarks",
         "group",
         "RevisionProperty_name"
@@ -18687,7 +18708,7 @@
         "group",
         "LocationProperty_name",
         "LocationProperty_value",
-        "LocationProperty__class"
+        "LocationProperty_class_"
       ],
       "slot_usage": {},
       "class_uri": "https://w3id.org/lmodel/oscal/LocationProperty",
@@ -18706,7 +18727,7 @@
         "Property_uuid",
         "Property_ns",
         "Property_value",
-        "Property__class",
+        "Property_class_",
         "remarks",
         "group",
         "PartyProperty_name"
@@ -18727,7 +18748,7 @@
       "slots": [
         "Property_uuid",
         "Property_ns",
-        "Property__class",
+        "Property_class_",
         "remarks",
         "group",
         "ResourceProperty_name",
@@ -18750,7 +18771,7 @@
         "Property_uuid",
         "Property_ns",
         "Property_value",
-        "Property__class",
+        "Property_class_",
         "remarks",
         "group",
         "PartProperty_name"
@@ -18772,7 +18793,7 @@
         "Property_uuid",
         "Property_ns",
         "Property_value",
-        "Property__class",
+        "Property_class_",
         "remarks",
         "group",
         "ParameterProperty_name"
@@ -18924,7 +18945,7 @@
         "Part_id",
         "Part_name",
         "Part_ns",
-        "Part__class",
+        "Part_class_",
         "Part_title",
         "Part_prose",
         "parts",
@@ -18948,7 +18969,7 @@
       ],
       "slots": [
         "Parameter_id",
-        "Parameter__class",
+        "Parameter_class_",
         "depends_on",
         "label",
         "usage",
@@ -19251,7 +19272,7 @@
       ],
       "slots": [
         "id",
-        "_class",
+        "class_",
         "ProfileGroup_title",
         "params",
         "parts",
@@ -19294,7 +19315,7 @@
       ],
       "slots": [
         "ParameterSetting_param_id",
-        "_class",
+        "class_",
         "depends_on",
         "label",
         "usage",
@@ -19380,7 +19401,7 @@
         "Property_uuid",
         "Property_ns",
         "Property_value",
-        "Property__class",
+        "Property_class_",
         "remarks",
         "group",
         "ProfileAlterationProperty_name"
@@ -19952,7 +19973,7 @@
       "slots": [
         "Property_uuid",
         "Property_ns",
-        "Property__class",
+        "Property_class_",
         "remarks",
         "group",
         "SspSystemCharacteristicsProp_name",
@@ -19974,7 +19995,7 @@
       "slots": [
         "Property_uuid",
         "Property_ns",
-        "Property__class",
+        "Property_class_",
         "remarks",
         "group",
         "SspSystemInformationProp_name",
@@ -19996,7 +20017,7 @@
       "slots": [
         "Property_uuid",
         "Property_ns",
-        "Property__class",
+        "Property_class_",
         "remarks",
         "group",
         "SspControlOriginationProp_name",
@@ -20018,7 +20039,7 @@
       "slots": [
         "Property_uuid",
         "Property_ns",
-        "Property__class",
+        "Property_class_",
         "remarks",
         "group",
         "SspAllowsAuthenticatedScanProp_name",
@@ -20833,7 +20854,7 @@
         "uuid",
         "AssessmentPart_name",
         "ns",
-        "_class",
+        "class_",
         "title",
         "prose",
         "AssessmentPart_parts",
@@ -20856,7 +20877,7 @@
       "slots": [
         "uuid",
         "ns",
-        "_class",
+        "class_",
         "title",
         "prose",
         "props",
@@ -20883,7 +20904,7 @@
         "id",
         "ControlPart_name",
         "ns",
-        "_class",
+        "class_",
         "title",
         "prose",
         "ControlPart_parts",
@@ -21127,7 +21148,7 @@
       "slots": [
         "Property_uuid",
         "Property_ns",
-        "Property__class",
+        "Property_class_",
         "remarks",
         "group",
         "ImplementationCommonProperty_name",
@@ -22401,7 +22422,7 @@
   "source_file": "oscal.yaml",
   "source_file_date": "2026-10-28T23:09:03",
   "source_file_size": 2432,
-  "generation_date": "2026-10-28T23:59:00",
+  "generation_date": "2026-10-29T00:11:55",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/oscal.context.jsonld",

@@ -579,7 +579,7 @@
             "additionalProperties": false,
             "description": "A partition of an assessment plan or results or a child of another part.",
             "properties": {
-                "_class": {
+                "class_": {
                     "description": "A textual label that provides a sub-type or characterization.",
                     "type": [
                         "string",
@@ -2066,7 +2066,7 @@
             "additionalProperties": false,
             "description": "A structured object representing a requirement or guideline, which when implemented will reduce an aspect of risk related to an information system and its information.",
             "properties": {
-                "_class": {
+                "class_": {
                     "description": "A textual label that provides a sub-type or characterization of the control.",
                     "type": [
                         "string",
@@ -2353,7 +2353,7 @@
             "additionalProperties": false,
             "description": "An annotated, markup-based textual element of a control's or catalog group's definition, or a child of another part.",
             "properties": {
-                "_class": {
+                "class_": {
                     "description": "A textual label that provides a sub-type or characterization.",
                     "type": [
                         "string",
@@ -3297,7 +3297,7 @@
             "additionalProperties": false,
             "description": "A group of controls, or of groups of controls.",
             "properties": {
-                "_class": {
+                "class_": {
                     "description": "A textual label that provides a sub-type or characterization of the group.",
                     "type": [
                         "string",
@@ -3661,7 +3661,7 @@
             "additionalProperties": false,
             "description": "Implementation-common scoped OSCAL property.",
             "properties": {
-                "_class": {
+                "class_": {
                     "description": "A textual label that provides a sub-type or characterization of the property's name.",
                     "type": [
                         "string",
@@ -5055,7 +5055,7 @@
             "additionalProperties": false,
             "description": "Location-scoped OSCAL property.",
             "properties": {
-                "_class": {
+                "class_": {
                     "anyOf": [
                         {
                             "$ref": "#/$defs/LocationDataCenterClassEnum"
@@ -5928,7 +5928,7 @@
             "additionalProperties": false,
             "description": "Metadata-scoped OSCAL property.",
             "properties": {
-                "_class": {
+                "class_": {
                     "description": "A textual label that provides a sub-type or characterization of the property's name.",
                     "type": [
                         "string",
@@ -7182,7 +7182,7 @@
             ],
             "description": "Parameters provide a mechanism for the dynamic assignment of value(s) in a control.",
             "properties": {
-                "_class": {
+                "class_": {
                     "description": "A textual label that provides a characterization of the type, purpose, use or scope of the parameter.",
                     "type": [
                         "string",
@@ -7353,7 +7353,7 @@
             "additionalProperties": false,
             "description": "Control-common parameter-scoped OSCAL property.",
             "properties": {
-                "_class": {
+                "class_": {
                     "description": "A textual label that provides a sub-type or characterization of the property's name.",
                     "type": [
                         "string",
@@ -7439,7 +7439,7 @@
             "additionalProperties": false,
             "description": "A parameter setting to be propagated to points of insertion in a resolved profile.",
             "properties": {
-                "_class": {
+                "class_": {
                     "description": "A textual label that provides a sub-type or characterization.",
                     "type": [
                         "string",
@@ -7543,7 +7543,7 @@
             "additionalProperties": false,
             "description": "An annotated, markup-based textual element of a control's or catalog group's definition, or a child of another part.",
             "properties": {
-                "_class": {
+                "class_": {
                     "description": "An optional textual providing a sub-type or characterization of the part's name, or a category to which the part belongs.",
                     "type": [
                         "string",
@@ -7633,7 +7633,7 @@
             "additionalProperties": false,
             "description": "Control-common part-scoped OSCAL property.",
             "properties": {
-                "_class": {
+                "class_": {
                     "description": "A textual label that provides a sub-type or characterization of the property's name.",
                     "type": [
                         "string",
@@ -7914,7 +7914,7 @@
             "additionalProperties": false,
             "description": "Party-scoped OSCAL property.",
             "properties": {
-                "_class": {
+                "class_": {
                     "description": "A textual label that provides a sub-type or characterization of the property's name.",
                     "type": [
                         "string",
@@ -8354,7 +8354,7 @@
             "additionalProperties": false,
             "description": "OSCAL property entries allowed in profile modify additions.",
             "properties": {
-                "_class": {
+                "class_": {
                     "description": "A textual label that provides a sub-type or characterization of the property's name.",
                     "type": [
                         "string",
@@ -8425,7 +8425,7 @@
             "additionalProperties": false,
             "description": "A group of (selected) controls or of groups of controls within a profile custom merge structure.",
             "properties": {
-                "_class": {
+                "class_": {
                     "description": "A textual label that provides a sub-type or characterization.",
                     "type": [
                         "string",
@@ -8643,7 +8643,7 @@
             "additionalProperties": false,
             "description": "An attribute, characteristic, or quality of the containing object expressed as a namespace qualified name/value pair.",
             "properties": {
-                "_class": {
+                "class_": {
                     "description": "A textual label that provides a sub-type or characterization of the property's name.",
                     "type": [
                         "string",
@@ -9319,7 +9319,7 @@
             "additionalProperties": false,
             "description": "Back-matter resource-scoped OSCAL property.",
             "properties": {
-                "_class": {
+                "class_": {
                     "description": "A textual label that provides a sub-type or characterization of the property's name.",
                     "type": [
                         "string",
@@ -9936,7 +9936,7 @@
             "additionalProperties": false,
             "description": "Revision-scoped OSCAL property.",
             "properties": {
-                "_class": {
+                "class_": {
                     "description": "A textual label that provides a sub-type or characterization of the property's name.",
                     "type": [
                         "string",
@@ -10638,7 +10638,7 @@
             "additionalProperties": false,
             "description": "SSP-scoped property used for component and inventory allows-authenticated-scan.",
             "properties": {
-                "_class": {
+                "class_": {
                     "description": "A textual label that provides a sub-type or characterization of the property's name.",
                     "type": [
                         "string",
@@ -10839,7 +10839,7 @@
             "additionalProperties": false,
             "description": "SSP-scoped property used in implemented requirement and by-component contexts.",
             "properties": {
-                "_class": {
+                "class_": {
                     "description": "A textual label that provides a sub-type or characterization of the property's name.",
                     "type": [
                         "string",
@@ -11297,7 +11297,7 @@
             "additionalProperties": false,
             "description": "SSP-scoped property used in system characteristics.",
             "properties": {
-                "_class": {
+                "class_": {
                     "description": "A textual label that provides a sub-type or characterization of the property's name.",
                     "type": [
                         "string",
@@ -11575,7 +11575,7 @@
             "additionalProperties": false,
             "description": "SSP-scoped property used in system information.",
             "properties": {
-                "_class": {
+                "class_": {
                     "description": "A textual label that provides a sub-type or characterization of the property's name.",
                     "type": [
                         "string",
@@ -12579,7 +12579,7 @@
             "additionalProperties": false,
             "description": "A terms-and-conditions scoped assessment part.",
             "properties": {
-                "_class": {
+                "class_": {
                     "description": "A textual label that provides a sub-type or characterization.",
                     "type": [
                         "string",

@@ -20,14 +20,14 @@
 -- # Class: Group Description: A group of controls, or of groups of controls.
 --     * Slot: uid
 --     * Slot: id Description: Identifies the group for the purpose of cross-linking within the defining instance or from other instances that reference the catalog.
---     * Slot: _class Description: A textual label that provides a sub-type or characterization of the group.
+--     * Slot: class_ Description: A textual label that provides a sub-type or characterization of the group.
 --     * Slot: title Description: A name given to the group, which may be used by a tool for display and navigation.
 --     * Slot: Catalog_id Description: Autocreated FK slot
 --     * Slot: Group_uid Description: Autocreated FK slot
 -- # Class: Control Description: A structured object representing a requirement or guideline, which when implemented will reduce an aspect of risk related to an information system and its information.
 --     * Slot: uid
 --     * Slot: id Description: Identifies a control such that it can be referenced in the defining catalog and other OSCAL instances (e.g., profiles).
---     * Slot: _class Description: A textual label that provides a sub-type or characterization of the control.
+--     * Slot: class_ Description: A textual label that provides a sub-type or characterization of the control.
 --     * Slot: title Description: A name given to the control, which may be used by a tool for display and navigation.
 --     * Slot: Catalog_id Description: Autocreated FK slot
 --     * Slot: Group_uid Description: Autocreated FK slot
@@ -138,7 +138,7 @@
 --     * Slot: uuid Description: A unique identifier for a property.
 --     * Slot: ns Description: A namespace qualifying the property's name. This allows different organizations to associate distinct semantics with the same name.
 --     * Slot: value Description: Indicates the value of the attribute, characteristic, or quality.
---     * Slot: _class Description: A textual label that provides a sub-type or characterization of the property's name.
+--     * Slot: class_ Description: A textual label that provides a sub-type or characterization of the property's name.
 --     * Slot: remarks Description: Additional commentary about the containing object.
 --     * Slot: group Description: An identifier for relating distinct sets of properties.
 --     * Slot: HasPropsAndLinks_id Description: Autocreated FK slot
@@ -221,7 +221,7 @@
 --     * Slot: uuid Description: A unique identifier for a property.
 --     * Slot: ns Description: A namespace qualifying the property's name. This allows different organizations to associate distinct semantics with the same name.
 --     * Slot: value Description: Indicates the value of the attribute, characteristic, or quality.
---     * Slot: _class Description: A textual label that provides a sub-type or characterization of the property's name.
+--     * Slot: class_ Description: A textual label that provides a sub-type or characterization of the property's name.
 --     * Slot: remarks Description: Additional commentary about the containing object.
 --     * Slot: group Description: An identifier for relating distinct sets of properties.
 --     * Slot: Metadata_id Description: Autocreated FK slot
@@ -231,7 +231,7 @@
 --     * Slot: uuid Description: A unique identifier for a property.
 --     * Slot: ns Description: A namespace qualifying the property's name. This allows different organizations to associate distinct semantics with the same name.
 --     * Slot: value Description: Indicates the value of the attribute, characteristic, or quality.
---     * Slot: _class Description: A textual label that provides a sub-type or characterization of the property's name.
+--     * Slot: class_ Description: A textual label that provides a sub-type or characterization of the property's name.
 --     * Slot: remarks Description: Additional commentary about the containing object.
 --     * Slot: group Description: An identifier for relating distinct sets of properties.
 --     * Slot: Revision_id Description: Autocreated FK slot
@@ -241,7 +241,7 @@
 --     * Slot: uuid Description: A unique identifier for a property.
 --     * Slot: ns Description: A namespace qualifying the property's name. This allows different organizations to associate distinct semantics with the same name.
 --     * Slot: value Description: Indicates the value of the attribute, characteristic, or quality.
---     * Slot: _class Description: A textual label that provides a sub-type or characterization of the property's name.
+--     * Slot: class_ Description: A textual label that provides a sub-type or characterization of the property's name.
 --     * Slot: remarks Description: Additional commentary about the containing object.
 --     * Slot: group Description: An identifier for relating distinct sets of properties.
 --     * Slot: Location_id Description: Autocreated FK slot
@@ -251,7 +251,7 @@
 --     * Slot: uuid Description: A unique identifier for a property.
 --     * Slot: ns Description: A namespace qualifying the property's name. This allows different organizations to associate distinct semantics with the same name.
 --     * Slot: value Description: Indicates the value of the attribute, characteristic, or quality.
---     * Slot: _class Description: A textual label that provides a sub-type or characterization of the property's name.
+--     * Slot: class_ Description: A textual label that provides a sub-type or characterization of the property's name.
 --     * Slot: remarks Description: Additional commentary about the containing object.
 --     * Slot: group Description: An identifier for relating distinct sets of properties.
 --     * Slot: Party_id Description: Autocreated FK slot
@@ -261,7 +261,7 @@
 --     * Slot: uuid Description: A unique identifier for a property.
 --     * Slot: ns Description: A namespace qualifying the property's name. This allows different organizations to associate distinct semantics with the same name.
 --     * Slot: value Description: Indicates the value of the attribute, characteristic, or quality.
---     * Slot: _class Description: A textual label that provides a sub-type or characterization of the property's name.
+--     * Slot: class_ Description: A textual label that provides a sub-type or characterization of the property's name.
 --     * Slot: remarks Description: Additional commentary about the containing object.
 --     * Slot: group Description: An identifier for relating distinct sets of properties.
 --     * Slot: Resource_id Description: Autocreated FK slot
@@ -271,7 +271,7 @@
 --     * Slot: uuid Description: A unique identifier for a property.
 --     * Slot: ns Description: A namespace qualifying the property's name. This allows different organizations to associate distinct semantics with the same name.
 --     * Slot: value Description: Indicates the value of the attribute, characteristic, or quality.
---     * Slot: _class Description: A textual label that provides a sub-type or characterization of the property's name.
+--     * Slot: class_ Description: A textual label that provides a sub-type or characterization of the property's name.
 --     * Slot: remarks Description: Additional commentary about the containing object.
 --     * Slot: group Description: An identifier for relating distinct sets of properties.
 --     * Slot: Part_uid Description: Autocreated FK slot
@@ -281,7 +281,7 @@
 --     * Slot: uuid Description: A unique identifier for a property.
 --     * Slot: ns Description: A namespace qualifying the property's name. This allows different organizations to associate distinct semantics with the same name.
 --     * Slot: value Description: Indicates the value of the attribute, characteristic, or quality.
---     * Slot: _class Description: A textual label that provides a sub-type or characterization of the property's name.
+--     * Slot: class_ Description: A textual label that provides a sub-type or characterization of the property's name.
 --     * Slot: remarks Description: Additional commentary about the containing object.
 --     * Slot: group Description: An identifier for relating distinct sets of properties.
 --     * Slot: Parameter_uid Description: Autocreated FK slot
@@ -408,7 +408,7 @@
 --     * Slot: id Description: A unique identifier for the part.
 --     * Slot: name Description: A textual label that uniquely identifies the part's semantic type, which exists in a value space qualified by the ns.
 --     * Slot: ns Description: An optional namespace qualifying the part's name. This allows different organizations to associate distinct semantics with the same name.
---     * Slot: _class Description: An optional textual providing a sub-type or characterization of the part's name, or a category to which the part belongs.
+--     * Slot: class_ Description: An optional textual providing a sub-type or characterization of the part's name, or a category to which the part belongs.
 --     * Slot: title Description: An optional name given to the part, which may be used by a tool for display and navigation.
 --     * Slot: prose Description: Permits multiple paragraphs, lists, tables etc.
 --     * Slot: Group_uid Description: Autocreated FK slot
@@ -419,7 +419,7 @@
 -- # Class: Parameter Description: Parameters provide a mechanism for the dynamic assignment of value(s) in a control.
 --     * Slot: uid
 --     * Slot: id Description: A unique identifier for the parameter.
---     * Slot: _class Description: A textual label that provides a characterization of the type, purpose, use or scope of the parameter.
+--     * Slot: class_ Description: A textual label that provides a characterization of the type, purpose, use or scope of the parameter.
 --     * Slot: depends_on Description: (deprecated) Another parameter invoking this one. This construct has been deprecated and should not be used.
 --     * Slot: label Description: A short, placeholder name for the parameter, which can be used as a substitute for a value if no value is assigned.
 --     * Slot: usage Description: Describes the purpose and use of a parameter.
@@ -492,7 +492,7 @@
 -- # Class: ProfileGroup Description: A group of (selected) controls or of groups of controls within a profile custom merge structure.
 --     * Slot: uid
 --     * Slot: id Description: A unique human-oriented identifier within a particular context.
---     * Slot: _class Description: A textual label that provides a sub-type or characterization.
+--     * Slot: class_ Description: A textual label that provides a sub-type or characterization.
 --     * Slot: title Description: A human-readable name or title.
 --     * Slot: remarks Description: Additional commentary about the containing object.
 --     * Slot: MergeCustom_id Description: Autocreated FK slot
@@ -502,7 +502,7 @@
 -- # Class: ParameterSetting Description: A parameter setting to be propagated to points of insertion in a resolved profile.
 --     * Slot: id
 --     * Slot: param_id Description: The identifier for the parameter being set or referenced.
---     * Slot: _class Description: A textual label that provides a sub-type or characterization.
+--     * Slot: class_ Description: A textual label that provides a sub-type or characterization.
 --     * Slot: depends_on Description: (deprecated) Another parameter invoking this one. This construct has been deprecated and should not be used.
 --     * Slot: label Description: A short, placeholder name for the parameter, which can be used as a substitute for a value if no value is assigned.
 --     * Slot: usage Description: Describes the purpose and use of a parameter.
@@ -533,7 +533,7 @@
 --     * Slot: uuid Description: A unique identifier for a property.
 --     * Slot: ns Description: A namespace qualifying the property's name. This allows different organizations to associate distinct semantics with the same name.
 --     * Slot: value Description: Indicates the value of the attribute, characteristic, or quality.
---     * Slot: _class Description: A textual label that provides a sub-type or characterization of the property's name.
+--     * Slot: class_ Description: A textual label that provides a sub-type or characterization of the property's name.
 --     * Slot: remarks Description: Additional commentary about the containing object.
 --     * Slot: group Description: An identifier for relating distinct sets of properties.
 --     * Slot: Addition_id Description: Autocreated FK slot
@@ -715,7 +715,7 @@
 --     * Slot: uuid Description: A machine-oriented, globally unique identifier with a cross-instance scope.
 --     * Slot: name Description: A textual label that uniquely identifies an attribute or semantic type.
 --     * Slot: ns Description: An optional namespace qualifying a name. Allows different organizations to associate distinct semantics with the same name.
---     * Slot: _class Description: A textual label that provides a sub-type or characterization.
+--     * Slot: class_ Description: A textual label that provides a sub-type or characterization.
 --     * Slot: title Description: A human-readable name or title.
 --     * Slot: prose Description: Permits multiple paragraphs, lists, tables etc.
 --     * Slot: AssessmentPart_id Description: Autocreated FK slot
@@ -725,7 +725,7 @@
 --     * Slot: uuid Description: A machine-oriented, globally unique identifier with a cross-instance scope.
 --     * Slot: name Description: A textual label that uniquely identifies an attribute or semantic type.
 --     * Slot: ns Description: An optional namespace qualifying a name. Allows different organizations to associate distinct semantics with the same name.
---     * Slot: _class Description: A textual label that provides a sub-type or characterization.
+--     * Slot: class_ Description: A textual label that provides a sub-type or characterization.
 --     * Slot: title Description: A human-readable name or title.
 --     * Slot: prose Description: Permits multiple paragraphs, lists, tables etc.
 --     * Slot: TermsAndConditions_id Description: Autocreated FK slot
@@ -735,7 +735,7 @@
 --     * Slot: id Description: A unique human-oriented identifier within a particular context.
 --     * Slot: name Description: A textual label that uniquely identifies an attribute or semantic type.
 --     * Slot: ns Description: An optional namespace qualifying a name. Allows different organizations to associate distinct semantics with the same name.
---     * Slot: _class Description: A textual label that provides a sub-type or characterization.
+--     * Slot: class_ Description: A textual label that provides a sub-type or characterization.
 --     * Slot: title Description: A human-readable name or title.
 --     * Slot: prose Description: Permits multiple paragraphs, lists, tables etc.
 --     * Slot: LocalObjective_id Description: Autocreated FK slot
@@ -825,7 +825,7 @@
 --     * Slot: uuid Description: A unique identifier for a property.
 --     * Slot: ns Description: A namespace qualifying the property's name. This allows different organizations to associate distinct semantics with the same name.
 --     * Slot: value Description: Indicates the value of the attribute, characteristic, or quality.
---     * Slot: _class Description: A textual label that provides a sub-type or characterization of the property's name.
+--     * Slot: class_ Description: A textual label that provides a sub-type or characterization of the property's name.
 --     * Slot: remarks Description: Additional commentary about the containing object.
 --     * Slot: group Description: An identifier for relating distinct sets of properties.
 --     * Slot: SystemComponent_id Description: Autocreated FK slot
@@ -1160,7 +1160,7 @@
 --     * Slot: uuid Description: A unique identifier for a property.
 --     * Slot: ns Description: A namespace qualifying the property's name. This allows different organizations to associate distinct semantics with the same name.
 --     * Slot: value Description: Indicates the value of the attribute, characteristic, or quality.
---     * Slot: _class Description: A textual label that provides a sub-type or characterization of the property's name.
+--     * Slot: class_ Description: A textual label that provides a sub-type or characterization of the property's name.
 --     * Slot: remarks Description: Additional commentary about the containing object.
 --     * Slot: group Description: An identifier for relating distinct sets of properties.
 --     * Slot: SystemCharacteristics_id Description: Autocreated FK slot
@@ -1170,7 +1170,7 @@
 --     * Slot: uuid Description: A unique identifier for a property.
 --     * Slot: ns Description: A namespace qualifying the property's name. This allows different organizations to associate distinct semantics with the same name.
 --     * Slot: value Description: Indicates the value of the attribute, characteristic, or quality.
---     * Slot: _class Description: A textual label that provides a sub-type or characterization of the property's name.
+--     * Slot: class_ Description: A textual label that provides a sub-type or characterization of the property's name.
 --     * Slot: remarks Description: Additional commentary about the containing object.
 --     * Slot: group Description: An identifier for relating distinct sets of properties.
 --     * Slot: SystemInformation_id Description: Autocreated FK slot
@@ -1180,7 +1180,7 @@
 --     * Slot: uuid Description: A unique identifier for a property.
 --     * Slot: ns Description: A namespace qualifying the property's name. This allows different organizations to associate distinct semantics with the same name.
 --     * Slot: value Description: Indicates the value of the attribute, characteristic, or quality.
---     * Slot: _class Description: A textual label that provides a sub-type or characterization of the property's name.
+--     * Slot: class_ Description: A textual label that provides a sub-type or characterization of the property's name.
 --     * Slot: remarks Description: Additional commentary about the containing object.
 --     * Slot: group Description: An identifier for relating distinct sets of properties.
 --     * Slot: SspImplementedRequirement_id Description: Autocreated FK slot
@@ -1192,7 +1192,7 @@
 --     * Slot: uuid Description: A unique identifier for a property.
 --     * Slot: ns Description: A namespace qualifying the property's name. This allows different organizations to associate distinct semantics with the same name.
 --     * Slot: value Description: Indicates the value of the attribute, characteristic, or quality.
---     * Slot: _class Description: A textual label that provides a sub-type or characterization of the property's name.
+--     * Slot: class_ Description: A textual label that provides a sub-type or characterization of the property's name.
 --     * Slot: remarks Description: Additional commentary about the containing object.
 --     * Slot: group Description: An identifier for relating distinct sets of properties.
 --     * Slot: SspSystemComponent_id Description: Autocreated FK slot
@@ -1968,7 +1968,7 @@ CREATE TABLE "MetadataProperty" (
 	uuid TEXT,
 	ns TEXT,
 	value TEXT NOT NULL,
-	_class TEXT,
+	class_ TEXT,
 	remarks TEXT,
 	"group" TEXT,
 	"Metadata_id" INTEGER,
@@ -2009,7 +2009,7 @@ CREATE INDEX "ix_ProfileMerge_id" ON "ProfileMerge" (id);
 CREATE TABLE "ProfileGroup" (
 	uid INTEGER NOT NULL,
 	id TEXT,
-	_class TEXT,
+	class_ TEXT,
 	title TEXT NOT NULL,
 	remarks TEXT,
 	"MergeCustom_id" INTEGER,
@@ -2023,7 +2023,7 @@ CREATE INDEX "ix_ProfileGroup_uid" ON "ProfileGroup" (uid);
 CREATE TABLE "ParameterSetting" (
 	id INTEGER NOT NULL,
 	param_id TEXT NOT NULL,
-	_class TEXT,
+	class_ TEXT,
 	depends_on TEXT,
 	label TEXT,
 	usage TEXT,
@@ -2156,7 +2156,7 @@ CREATE TABLE "TermsAndConditionsPart" (
 	uuid TEXT,
 	name VARCHAR(21) NOT NULL,
 	ns TEXT,
-	_class TEXT,
+	class_ TEXT,
 	title TEXT,
 	prose TEXT,
 	"TermsAndConditions_id" INTEGER,
@@ -2307,7 +2307,7 @@ CREATE TABLE "SspSystemInformationProp" (
 	uuid TEXT,
 	ns TEXT,
 	value VARCHAR(3) NOT NULL,
-	_class TEXT,
+	class_ TEXT,
 	remarks TEXT,
 	"group" TEXT,
 	"SystemInformation_id" INTEGER,
@@ -2434,8 +2434,8 @@ CREATE TABLE "ParameterSelection_choice" (
 	PRIMARY KEY ("ParameterSelection_id", choice),
 	FOREIGN KEY("ParameterSelection_id") REFERENCES "ParameterSelection" (id)
 );
-CREATE INDEX "ix_ParameterSelection_choice_choice" ON "ParameterSelection_choice" (choice);
 CREATE INDEX "ix_ParameterSelection_choice_ParameterSelection_id" ON "ParameterSelection_choice" ("ParameterSelection_id");
+CREATE INDEX "ix_ParameterSelection_choice_choice" ON "ParameterSelection_choice" (choice);
 
 CREATE TABLE "CatalogDocument" (
 	id INTEGER NOT NULL,
@@ -2448,7 +2448,7 @@ CREATE INDEX "ix_CatalogDocument_id" ON "CatalogDocument" (id);
 CREATE TABLE "Group" (
 	uid INTEGER NOT NULL,
 	id TEXT,
-	_class TEXT,
+	class_ TEXT,
 	title TEXT NOT NULL,
 	"Catalog_id" INTEGER,
 	"Group_uid" INTEGER,
@@ -2489,7 +2489,7 @@ CREATE TABLE "RevisionProperty" (
 	uuid TEXT,
 	ns TEXT,
 	value TEXT NOT NULL,
-	_class TEXT,
+	class_ TEXT,
 	remarks TEXT,
 	"group" TEXT,
 	"Revision_id" INTEGER,
@@ -2504,7 +2504,7 @@ CREATE TABLE "PartyProperty" (
 	uuid TEXT,
 	ns TEXT,
 	value TEXT NOT NULL,
-	_class TEXT,
+	class_ TEXT,
 	remarks TEXT,
 	"group" TEXT,
 	"Party_id" INTEGER,
@@ -2519,7 +2519,7 @@ CREATE TABLE "ResourceProperty" (
 	uuid TEXT,
 	ns TEXT,
 	value TEXT NOT NULL,
-	_class TEXT,
+	class_ TEXT,
 	remarks TEXT,
 	"group" TEXT,
 	"Resource_id" INTEGER,
@@ -2657,7 +2657,7 @@ CREATE TABLE "ControlPart" (
 	id TEXT,
 	name TEXT NOT NULL,
 	ns TEXT,
-	_class TEXT,
+	class_ TEXT,
 	title TEXT,
 	prose TEXT,
 	"LocalObjective_id" INTEGER,
@@ -2800,7 +2800,7 @@ CREATE TABLE "SspSystemCharacteristicsProp" (
 	uuid TEXT,
 	ns TEXT,
 	value TEXT NOT NULL,
-	_class TEXT,
+	class_ TEXT,
 	remarks TEXT,
 	"group" TEXT,
 	"SystemCharacteristics_id" INTEGER,
@@ -2815,7 +2815,7 @@ CREATE TABLE "SspAllowsAuthenticatedScanProp" (
 	uuid TEXT,
 	ns TEXT,
 	value VARCHAR(3) NOT NULL,
-	_class TEXT,
+	class_ TEXT,
 	remarks TEXT,
 	"group" TEXT,
 	"SspSystemComponent_id" INTEGER,
@@ -2953,8 +2953,8 @@ CREATE TABLE "Party_email_addresses" (
 	PRIMARY KEY ("Party_id", email_addresses),
 	FOREIGN KEY("Party_id") REFERENCES "Party" (id)
 );
-CREATE INDEX "ix_Party_email_addresses_email_addresses" ON "Party_email_addresses" (email_addresses);
 CREATE INDEX "ix_Party_email_addresses_Party_id" ON "Party_email_addresses" ("Party_id");
+CREATE INDEX "ix_Party_email_addresses_email_addresses" ON "Party_email_addresses" (email_addresses);
 
 CREATE TABLE "Party_location_uuids" (
 	"Party_id" INTEGER,
@@ -2962,8 +2962,8 @@ CREATE TABLE "Party_location_uuids" (
 	PRIMARY KEY ("Party_id", location_uuids),
 	FOREIGN KEY("Party_id") REFERENCES "Party" (id)
 );
-CREATE INDEX "ix_Party_location_uuids_Party_id" ON "Party_location_uuids" ("Party_id");
 CREATE INDEX "ix_Party_location_uuids_location_uuids" ON "Party_location_uuids" (location_uuids);
+CREATE INDEX "ix_Party_location_uuids_Party_id" ON "Party_location_uuids" ("Party_id");
 
 CREATE TABLE "Party_member_of_organizations" (
 	"Party_id" INTEGER,
@@ -2971,8 +2971,8 @@ CREATE TABLE "Party_member_of_organizations" (
 	PRIMARY KEY ("Party_id", member_of_organizations),
 	FOREIGN KEY("Party_id") REFERENCES "Party" (id)
 );
-CREATE INDEX "ix_Party_member_of_organizations_member_of_organizations" ON "Party_member_of_organizations" (member_of_organizations);
 CREATE INDEX "ix_Party_member_of_organizations_Party_id" ON "Party_member_of_organizations" ("Party_id");
+CREATE INDEX "ix_Party_member_of_organizations_member_of_organizations" ON "Party_member_of_organizations" (member_of_organizations);
 
 CREATE TABLE "ParameterSetting_values" (
 	"ParameterSetting_id" INTEGER,
@@ -2980,13 +2980,13 @@ CREATE TABLE "ParameterSetting_values" (
 	PRIMARY KEY ("ParameterSetting_id", "values"),
 	FOREIGN KEY("ParameterSetting_id") REFERENCES "ParameterSetting" (id)
 );
-CREATE INDEX "ix_ParameterSetting_values_ParameterSetting_id" ON "ParameterSetting_values" ("ParameterSetting_id");
 CREATE INDEX "ix_ParameterSetting_values_values" ON "ParameterSetting_values" ("values");
+CREATE INDEX "ix_ParameterSetting_values_ParameterSetting_id" ON "ParameterSetting_values" ("ParameterSetting_id");
 
 CREATE TABLE "Control" (
 	uid INTEGER NOT NULL,
 	id TEXT NOT NULL,
-	_class TEXT,
+	class_ TEXT,
 	title TEXT NOT NULL,
 	"Catalog_id" INTEGER,
 	"Group_uid" INTEGER,
@@ -3046,7 +3046,7 @@ CREATE TABLE "ProfileAlterationProperty" (
 	uuid TEXT,
 	ns TEXT,
 	value TEXT NOT NULL,
-	_class TEXT,
+	class_ TEXT,
 	remarks TEXT,
 	"group" TEXT,
 	"Addition_id" INTEGER,
@@ -3230,8 +3230,8 @@ CREATE TABLE "Address_addr_lines" (
 	PRIMARY KEY ("Address_id", addr_lines),
 	FOREIGN KEY("Address_id") REFERENCES "Address" (id)
 );
-CREATE INDEX "ix_Address_addr_lines_Address_id" ON "Address_addr_lines" ("Address_id");
 CREATE INDEX "ix_Address_addr_lines_addr_lines" ON "Address_addr_lines" (addr_lines);
+CREATE INDEX "ix_Address_addr_lines_Address_id" ON "Address_addr_lines" ("Address_id");
 
 CREATE TABLE "AssessmentSelectControlById_statement_ids" (
 	"AssessmentSelectControlById_id" INTEGER,
@@ -3266,8 +3266,8 @@ CREATE TABLE "SspSystemCharacteristicsResponsibleParty_party_uuids" (
 	PRIMARY KEY ("SspSystemCharacteristicsResponsibleParty_id", party_uuids),
 	FOREIGN KEY("SspSystemCharacteristicsResponsibleParty_id") REFERENCES "SspSystemCharacteristicsResponsibleParty" (id)
 );
-CREATE INDEX "ix_SspSystemCharacteristicsResponsibleParty_party_uuids_party_uuids" ON "SspSystemCharacteristicsResponsibleParty_party_uuids" (party_uuids);
 CREATE INDEX "ix_SspSystemCharacteristicsResponsibleParty_party_uuids_SspSystemCharacteristicsResponsibleParty_id" ON "SspSystemCharacteristicsResponsibleParty_party_uuids" ("SspSystemCharacteristicsResponsibleParty_id");
+CREATE INDEX "ix_SspSystemCharacteristicsResponsibleParty_party_uuids_party_uuids" ON "SspSystemCharacteristicsResponsibleParty_party_uuids" (party_uuids);
 
 CREATE TABLE "TelephoneNumber" (
 	id INTEGER NOT NULL,
@@ -3287,7 +3287,7 @@ CREATE TABLE "LocationProperty" (
 	uuid TEXT,
 	ns TEXT,
 	value TEXT NOT NULL,
-	_class TEXT,
+	class_ TEXT,
 	remarks TEXT,
 	"group" TEXT,
 	"Location_id" INTEGER,
@@ -3301,7 +3301,7 @@ CREATE TABLE "Part" (
 	id TEXT,
 	name TEXT NOT NULL,
 	ns TEXT,
-	_class TEXT,
+	class_ TEXT,
 	title TEXT,
 	prose TEXT,
 	"Group_uid" INTEGER,
@@ -3321,7 +3321,7 @@ CREATE INDEX "ix_Part_uid" ON "Part" (uid);
 CREATE TABLE "Parameter" (
 	uid INTEGER NOT NULL,
 	id TEXT NOT NULL,
-	_class TEXT,
+	class_ TEXT,
 	depends_on TEXT,
 	label TEXT,
 	usage TEXT,
@@ -3360,7 +3360,7 @@ CREATE TABLE "AssessmentPart" (
 	uuid TEXT,
 	name TEXT NOT NULL,
 	ns TEXT,
-	_class TEXT,
+	class_ TEXT,
 	title TEXT,
 	prose TEXT,
 	"AssessmentPart_id" INTEGER,
@@ -3389,7 +3389,7 @@ CREATE TABLE "ImplementationCommonProperty" (
 	uuid TEXT,
 	ns TEXT,
 	value TEXT NOT NULL,
-	_class TEXT,
+	class_ TEXT,
 	remarks TEXT,
 	"group" TEXT,
 	"SystemComponent_id" INTEGER,
@@ -3522,7 +3522,7 @@ CREATE TABLE "SspControlOriginationProp" (
 	uuid TEXT,
 	ns TEXT,
 	value VARCHAR(19) NOT NULL,
-	_class TEXT,
+	class_ TEXT,
 	remarks TEXT,
 	"group" TEXT,
 	"SspImplementedRequirement_id" INTEGER,
@@ -3621,8 +3621,8 @@ CREATE TABLE "AuthorizedPrivilege_functions_performed" (
 	PRIMARY KEY ("AuthorizedPrivilege_id", functions_performed),
 	FOREIGN KEY("AuthorizedPrivilege_id") REFERENCES "AuthorizedPrivilege" (id)
 );
-CREATE INDEX "ix_AuthorizedPrivilege_functions_performed_AuthorizedPrivilege_id" ON "AuthorizedPrivilege_functions_performed" ("AuthorizedPrivilege_id");
 CREATE INDEX "ix_AuthorizedPrivilege_functions_performed_functions_performed" ON "AuthorizedPrivilege_functions_performed" (functions_performed);
+CREATE INDEX "ix_AuthorizedPrivilege_functions_performed_AuthorizedPrivilege_id" ON "AuthorizedPrivilege_functions_performed" ("AuthorizedPrivilege_id");
 
 CREATE TABLE "ImplementationResponsibleRole_party_uuids" (
 	"ImplementationResponsibleRole_id" INTEGER,
@@ -3648,7 +3648,7 @@ CREATE TABLE "PartProperty" (
 	uuid TEXT,
 	ns TEXT,
 	value TEXT NOT NULL,
-	_class TEXT,
+	class_ TEXT,
 	remarks TEXT,
 	"group" TEXT,
 	"Part_uid" INTEGER,
@@ -3663,7 +3663,7 @@ CREATE TABLE "ParameterProperty" (
 	uuid TEXT,
 	ns TEXT,
 	value TEXT NOT NULL,
-	_class TEXT,
+	class_ TEXT,
 	remarks TEXT,
 	"group" TEXT,
 	"Parameter_uid" INTEGER,
@@ -3893,8 +3893,8 @@ CREATE TABLE "ImplementationResponsibleParty_party_uuids" (
 	PRIMARY KEY ("ImplementationResponsibleParty_id", party_uuids),
 	FOREIGN KEY("ImplementationResponsibleParty_id") REFERENCES "ImplementationResponsibleParty" (id)
 );
-CREATE INDEX "ix_ImplementationResponsibleParty_party_uuids_party_uuids" ON "ImplementationResponsibleParty_party_uuids" (party_uuids);
 CREATE INDEX "ix_ImplementationResponsibleParty_party_uuids_ImplementationResponsibleParty_id" ON "ImplementationResponsibleParty_party_uuids" ("ImplementationResponsibleParty_id");
+CREATE INDEX "ix_ImplementationResponsibleParty_party_uuids_party_uuids" ON "ImplementationResponsibleParty_party_uuids" (party_uuids);
 
 CREATE TABLE "Observation_methods" (
 	"Observation_id" INTEGER,
@@ -3911,8 +3911,8 @@ CREATE TABLE "Observation_types" (
 	PRIMARY KEY ("Observation_id", types),
 	FOREIGN KEY("Observation_id") REFERENCES "Observation" (id)
 );
-CREATE INDEX "ix_Observation_types_Observation_id" ON "Observation_types" ("Observation_id");
 CREATE INDEX "ix_Observation_types_types" ON "Observation_types" (types);
+CREATE INDEX "ix_Observation_types_Observation_id" ON "Observation_types" ("Observation_id");
 
 CREATE TABLE "ConstraintTest" (
 	id INTEGER NOT NULL,
@@ -3979,8 +3979,8 @@ CREATE TABLE "SetParameter_values" (
 	PRIMARY KEY ("SetParameter_id", "values"),
 	FOREIGN KEY("SetParameter_id") REFERENCES "SetParameter" (id)
 );
-CREATE INDEX "ix_SetParameter_values_values" ON "SetParameter_values" ("values");
 CREATE INDEX "ix_SetParameter_values_SetParameter_id" ON "SetParameter_values" ("SetParameter_id");
+CREATE INDEX "ix_SetParameter_values_values" ON "SetParameter_values" ("values");
 
 CREATE TABLE "SspByComponentResponsibleRole_party_uuids" (
 	"SspByComponentResponsibleRole_id" INTEGER,
@@ -3988,8 +3988,8 @@ CREATE TABLE "SspByComponentResponsibleRole_party_uuids" (
 	PRIMARY KEY ("SspByComponentResponsibleRole_id", party_uuids),
 	FOREIGN KEY("SspByComponentResponsibleRole_id") REFERENCES "SspByComponentResponsibleRole" (id)
 );
-CREATE INDEX "ix_SspByComponentResponsibleRole_party_uuids_SspByComponentResponsibleRole_id" ON "SspByComponentResponsibleRole_party_uuids" ("SspByComponentResponsibleRole_id");
 CREATE INDEX "ix_SspByComponentResponsibleRole_party_uuids_party_uuids" ON "SspByComponentResponsibleRole_party_uuids" (party_uuids);
+CREATE INDEX "ix_SspByComponentResponsibleRole_party_uuids_SspByComponentResponsibleRole_id" ON "SspByComponentResponsibleRole_party_uuids" ("SspByComponentResponsibleRole_id");
 
 CREATE TABLE "SubjectReference" (
 	id INTEGER NOT NULL,
@@ -4160,8 +4160,8 @@ CREATE TABLE "ResponsibleParty_party_uuids" (
 	PRIMARY KEY ("ResponsibleParty_id", party_uuids),
 	FOREIGN KEY("ResponsibleParty_id") REFERENCES "ResponsibleParty" (id)
 );
-CREATE INDEX "ix_ResponsibleParty_party_uuids_party_uuids" ON "ResponsibleParty_party_uuids" (party_uuids);
 CREATE INDEX "ix_ResponsibleParty_party_uuids_ResponsibleParty_id" ON "ResponsibleParty_party_uuids" ("ResponsibleParty_id");
+CREATE INDEX "ix_ResponsibleParty_party_uuids_party_uuids" ON "ResponsibleParty_party_uuids" (party_uuids);
 
 CREATE TABLE "ResponsibleRole_party_uuids" (
 	"ResponsibleRole_id" INTEGER,
@@ -4178,7 +4178,7 @@ CREATE TABLE "Property" (
 	uuid TEXT,
 	ns TEXT,
 	value TEXT NOT NULL,
-	_class TEXT,
+	class_ TEXT,
 	remarks TEXT,
 	"group" TEXT,
 	"HasPropsAndLinks_id" INTEGER,

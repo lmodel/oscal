@@ -2134,7 +2134,7 @@ classes:
       - uuid
       - name
       - ns
-      - _class
+      - class_
       - title
       - prose
       - parts
@@ -2171,7 +2171,7 @@ classes:
       - id
       - name
       - ns
-      - _class
+      - class_
       - title
       - prose
       - parts

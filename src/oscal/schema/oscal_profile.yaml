@@ -298,7 +298,7 @@ classes:
       - OscalCommon
     slots:
       - id
-      - _class
+      - class_
       - title
       - params
       - parts
@@ -333,7 +333,7 @@ classes:
       - HasPropsAndLinks
     slots:
       - param-id
-      - _class
+      - class_
       - depends-on
       - label
       - usage
