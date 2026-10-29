@@ -12,7 +12,7 @@ The `v0.0.0` tag is a baseline, not a release: it marks where versioning starts 
 - **A copy of OSCAL's metaschema sources at v1.2.3 and a weekly upstream watch.** Each of the schema's 155 enums names the allowed-values lists it renders, and a test holds it to them.
 - **`.lokf/oscal.yaml`, the schema's `lokf adapt` copy, rooted on the eight models**, which the knowledge release attaches as `schema-<tag>-oscal.yaml`. Tests hold its names apart from `lokf.yaml` and pin the seven keys it shares with slsa's and github-actions' copies.
 - **An example of each model and a counter-example for each one's required content**, held to the validator by `just test`.
-- **The repository's KTL knowledge bundle and its sidecar automation**, from the KTL v0.58.0 templates with the lokf floor at 0.9.0, and a knowledge website that replaces the mkdocs site.
+- **The repository's KTL knowledge bundle and its sidecar automation**, from the KTL v0.58.0 templates with the lokf floor at 0.9.0, and a knowledge website that replaces the mkdocs site. The librarian's skills pin, which those templates leave at v0.57.0, moves at the first weekly sync.
 
 ### Changed
 

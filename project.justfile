@@ -275,7 +275,7 @@ gen-merged-schema:
   uv run gen-linkml --mergeimports -o {{dest}}/linkml/{{schema_name}}.merged.linkml.yaml {{source_schema_path}}
 
 # gen-yaml CLI hits the linkml-runtime 1.11.0 RepresenterError (JsonObj missing SafeDumper representer).
-# Use the same patched script as _gen-yaml until linkml-runtime > 1.11.0 lands.
+# Use the patched script until linkml-runtime > 1.11.0 lands.
 # Generate resolved YAML schema (patched yamlgen)
 [group('model development - extended')]
 gen-yaml-artifact:

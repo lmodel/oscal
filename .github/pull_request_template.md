@@ -12,7 +12,7 @@ Closes #
 ## Checklist
 
 - [ ] `just test` passes locally
-- [ ] Generated files were regenerated with `just gen-project`, `just gen-doc`, `just gen-merged` and `just lokf-adapt`, not edited by hand
+- [ ] Generated files were regenerated with `just gen-project`, `just gen-doc`, `just gen-merged-schema` and `just lokf-adapt`, not edited by hand
 - [ ] Each new or changed element renders the OSCAL definition it names, at the pinned release
 - [ ] `src/oscal/schema/metaschema/` is unchanged, or replaced whole from one OSCAL release with the pins updated
 - [ ] If `.lokf/` changed, `cd .lokf && just lokf-validate` passes

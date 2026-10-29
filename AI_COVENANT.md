@@ -38,7 +38,7 @@ AI review tools (Claude, Copilot, CodeRabbit, etc.) provide **automated quality 
 
 ## AI-Assisted Discussions
 
-AI tools can be helpful **thinking aids** when preparing to participate in [issues](https://github.com/lmodel/github-actions/issues).
+AI tools can be helpful **thinking aids** when preparing to participate in [issues](https://github.com/lmodel/oscal/issues).
 
 They may be used to:
 
