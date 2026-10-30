@@ -1,5 +1,4 @@
 # Auto generated from oscal.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-10-29T00:13:03
 # Schema: oscal
 #
 # id: https://w3id.org/lmodel/oscal
@@ -56,10 +55,10 @@ from rdflib import (
     URIRef
 )
 
-from linkml_runtime.linkml_model.types import Boolean, Float, String
+from linkml_runtime.linkml_model.types import Boolean, Float, Integer, String
 from linkml_runtime.utils.metamodelcore import Bool
 
-metamodel_version = "1.11.0"
+metamodel_version = "1.12.0"
 version = "1.2.3"
 
 # Namespaces
@@ -126,14 +125,6 @@ class TokenType(str):
     type_model_uri = OSCAL.TokenType
 
 
-class Base64Type(str):
-    """ Binary data encoded using Base64 as defined by RFC4648. """
-    type_class_uri = XSD["base64Binary"]
-    type_class_curie = "xsd:base64Binary"
-    type_name = "Base64Type"
-    type_model_uri = OSCAL.Base64Type
-
-
 class EmailAddressType(str):
     """ An email address string formatted according to RFC 6531. """
     type_class_uri = XSD["string"]
@@ -142,7 +133,15 @@ class EmailAddressType(str):
     type_model_uri = OSCAL.EmailAddressType
 
 
-class NonNegativeIntegerType(int):
+class Base64Type(String):
+    """ Binary data encoded using Base64 as defined by RFC4648. """
+    type_class_uri = XSD["base64Binary"]
+    type_class_curie = "xsd:base64Binary"
+    type_name = "Base64Type"
+    type_model_uri = OSCAL.Base64Type
+
+
+class NonNegativeIntegerType(Integer):
     """ A non-negative integer value (>= 0), as used for port range boundaries. OSCAL 1.2.2 restored this minimum in its JSON datatype. Each slot with this range repeats it, because the generated Pydantic model reads a minimum from the slot and not from the type. """
     type_class_uri = XSD["nonNegativeInteger"]
     type_class_curie = "xsd:nonNegativeInteger"
@@ -150,7 +149,7 @@ class NonNegativeIntegerType(int):
     type_model_uri = OSCAL.NonNegativeIntegerType
 
 
-class PositiveIntegerType(int):
+class PositiveIntegerType(Integer):
     """ A positive integer value (>= 1), as used for task recurrence periods. OSCAL 1.2.2 restored this minimum in its JSON datatype. Each slot with this range repeats it, because the generated Pydantic model reads a minimum from the slot and not from the type. """
     type_class_uri = XSD["positiveInteger"]
     type_class_curie = "xsd:positiveInteger"
@@ -566,7 +565,7 @@ class DocumentId(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = OSCAL.DocumentId
 
     identifier: str = None
-    scheme: Optional[str] = None
+    scheme: Optional[Union[str, "DocumentIdSchemeEnum"]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.identifier):
@@ -574,8 +573,16 @@ class DocumentId(YAMLRoot):
         if not isinstance(self.identifier, str):
             self.identifier = str(self.identifier)
 
-        if self.scheme is not None and not isinstance(self.scheme, str):
-            self.scheme = str(self.scheme)
+        if self.scheme is not None and not isinstance(self.scheme, (DocumentIdSchemeEnum, str)):
+            value = self.scheme
+            for _coerce in (lambda: DocumentIdSchemeEnum(value), lambda: str(value)):
+                try:
+                    self.scheme = _coerce()
+                    break
+                except (ValueError, TypeError):
+                    continue
+            else:
+                raise ValueError(f"None of the candidate types Union[DocumentIdSchemeEnum, str] could be constructed from {value!r} for slot scheme")
 
         super().__post_init__(**kwargs)
 
@@ -757,14 +764,22 @@ class PartyExternalId(YAMLRoot):
     class_name: ClassVar[str] = "PartyExternalId"
     class_model_uri: ClassVar[URIRef] = OSCAL.PartyExternalId
 
-    scheme: str = None
+    scheme: Union[str, "PartyExternalIdSchemeEnum"] = None
     id: str = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.scheme):
             self.MissingRequiredField("scheme")
-        if not isinstance(self.scheme, str):
-            self.scheme = str(self.scheme)
+        if not isinstance(self.scheme, (PartyExternalIdSchemeEnum, str)):
+            value = self.scheme
+            for _coerce in (lambda: PartyExternalIdSchemeEnum(value), lambda: str(value)):
+                try:
+                    self.scheme = _coerce()
+                    break
+                except (ValueError, TypeError):
+                    continue
+            else:
+                raise ValueError(f"None of the candidate types Union[PartyExternalIdSchemeEnum, str] could be constructed from {value!r} for slot scheme")
 
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
@@ -787,15 +802,23 @@ class ResponsibleParty(YAMLRoot):
     class_name: ClassVar[str] = "ResponsibleParty"
     class_model_uri: ClassVar[URIRef] = OSCAL.ResponsibleParty
 
-    role_id: str = None
+    role_id: Union[str, "MetadataResponsiblePartyRoleIdEnum"] = None
     party_uuids: Union[str, list[str]] = None
     remarks: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.role_id):
             self.MissingRequiredField("role_id")
-        if not isinstance(self.role_id, str):
-            self.role_id = str(self.role_id)
+        if not isinstance(self.role_id, (MetadataResponsiblePartyRoleIdEnum, str)):
+            value = self.role_id
+            for _coerce in (lambda: MetadataResponsiblePartyRoleIdEnum(value), lambda: str(value)):
+                try:
+                    self.role_id = _coerce()
+                    break
+                except (ValueError, TypeError):
+                    continue
+            else:
+                raise ValueError(f"None of the candidate types Union[MetadataResponsiblePartyRoleIdEnum, str] could be constructed from {value!r} for slot role_id")
 
         if self._is_empty(self.party_uuids):
             self.MissingRequiredField("party_uuids")
@@ -856,7 +879,7 @@ class Action(YAMLRoot):
 
     uuid: str = None
     type: Union[str, "ActionTypeEnum"] = None
-    system: str = None
+    system: Union[str, "ActionSystemEnum"] = None
     date: Optional[str] = None
     remarks: Optional[str] = None
     responsible_parties: Optional[Union[Union[dict, ResponsibleParty], list[Union[dict, ResponsibleParty]]]] = empty_list()
@@ -874,8 +897,16 @@ class Action(YAMLRoot):
 
         if self._is_empty(self.system):
             self.MissingRequiredField("system")
-        if not isinstance(self.system, str):
-            self.system = str(self.system)
+        if not isinstance(self.system, (ActionSystemEnum, str)):
+            value = self.system
+            for _coerce in (lambda: ActionSystemEnum(value), lambda: str(value)):
+                try:
+                    self.system = _coerce()
+                    break
+                except (ValueError, TypeError):
+                    continue
+            else:
+                raise ValueError(f"None of the candidate types Union[ActionSystemEnum, str] could be constructed from {value!r} for slot system")
 
         if self.date is not None and not isinstance(self.date, str):
             self.date = str(self.date)
@@ -901,7 +932,7 @@ class TelephoneNumber(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = OSCAL.TelephoneNumber
 
     number: str = None
-    type: Optional[str] = None
+    type: Optional[Union[str, "PhoneTypeEnum"]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.number):
@@ -909,8 +940,16 @@ class TelephoneNumber(YAMLRoot):
         if not isinstance(self.number, str):
             self.number = str(self.number)
 
-        if self.type is not None and not isinstance(self.type, str):
-            self.type = str(self.type)
+        if self.type is not None and not isinstance(self.type, (PhoneTypeEnum, str)):
+            value = self.type
+            for _coerce in (lambda: PhoneTypeEnum(value), lambda: str(value)):
+                try:
+                    self.type = _coerce()
+                    break
+                except (ValueError, TypeError):
+                    continue
+            else:
+                raise ValueError(f"None of the candidate types Union[PhoneTypeEnum, str] could be constructed from {value!r} for slot type")
 
         super().__post_init__(**kwargs)
 
@@ -927,7 +966,7 @@ class Address(YAMLRoot):
     class_name: ClassVar[str] = "Address"
     class_model_uri: ClassVar[URIRef] = OSCAL.Address
 
-    type: Optional[str] = None
+    type: Optional[Union[str, "AddressTypeEnum"]] = None
     addr_lines: Optional[Union[str, list[str]]] = empty_list()
     city: Optional[str] = None
     state: Optional[str] = None
@@ -935,8 +974,16 @@ class Address(YAMLRoot):
     country: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self.type is not None and not isinstance(self.type, str):
-            self.type = str(self.type)
+        if self.type is not None and not isinstance(self.type, (AddressTypeEnum, str)):
+            value = self.type
+            for _coerce in (lambda: AddressTypeEnum(value), lambda: str(value)):
+                try:
+                    self.type = _coerce()
+                    break
+                except (ValueError, TypeError):
+                    continue
+            else:
+                raise ValueError(f"None of the candidate types Union[AddressTypeEnum, str] could be constructed from {value!r} for slot type")
 
         if not isinstance(self.addr_lines, list):
             self.addr_lines = [self.addr_lines] if self.addr_lines is not None else []
@@ -970,7 +1017,7 @@ class Hash(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = OSCAL.Hash
 
     value: str = None
-    algorithm: str = None
+    algorithm: Union[str, "HashAlgorithmEnum"] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.value):
@@ -980,8 +1027,16 @@ class Hash(YAMLRoot):
 
         if self._is_empty(self.algorithm):
             self.MissingRequiredField("algorithm")
-        if not isinstance(self.algorithm, str):
-            self.algorithm = str(self.algorithm)
+        if not isinstance(self.algorithm, (HashAlgorithmEnum, str)):
+            value = self.algorithm
+            for _coerce in (lambda: HashAlgorithmEnum(value), lambda: str(value)):
+                try:
+                    self.algorithm = _coerce()
+                    break
+                except (ValueError, TypeError):
+                    continue
+            else:
+                raise ValueError(f"None of the candidate types Union[HashAlgorithmEnum, str] could be constructed from {value!r} for slot algorithm")
 
         super().__post_init__(**kwargs)
 
@@ -1097,8 +1152,8 @@ class LocationProperty(Property):
     class_model_uri: ClassVar[URIRef] = OSCAL.LocationProperty
 
     name: Union[str, "LocationPropNameEnum"] = None
-    value: str = None
-    class_: Optional[str] = None
+    value: Union[str, "LocationPropTypeEnum"] = None
+    class_: Optional[Union[str, "LocationDataCenterClassEnum"]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.name):
@@ -1108,11 +1163,27 @@ class LocationProperty(Property):
 
         if self._is_empty(self.value):
             self.MissingRequiredField("value")
-        if not isinstance(self.value, str):
-            self.value = str(self.value)
+        if not isinstance(self.value, (LocationPropTypeEnum, str)):
+            value = self.value
+            for _coerce in (lambda: LocationPropTypeEnum(value), lambda: str(value)):
+                try:
+                    self.value = _coerce()
+                    break
+                except (ValueError, TypeError):
+                    continue
+            else:
+                raise ValueError(f"None of the candidate types Union[LocationPropTypeEnum, str] could be constructed from {value!r} for slot value")
 
-        if self.class_ is not None and not isinstance(self.class_, str):
-            self.class_ = str(self.class_)
+        if self.class_ is not None and not isinstance(self.class_, (LocationDataCenterClassEnum, str)):
+            value = self.class_
+            for _coerce in (lambda: LocationDataCenterClassEnum(value), lambda: str(value)):
+                try:
+                    self.class_ = _coerce()
+                    break
+                except (ValueError, TypeError):
+                    continue
+            else:
+                raise ValueError(f"None of the candidate types Union[LocationDataCenterClassEnum, str] could be constructed from {value!r} for slot class_")
 
         super().__post_init__(**kwargs)
 
@@ -1154,7 +1225,7 @@ class ResourceProperty(Property):
     class_model_uri: ClassVar[URIRef] = OSCAL.ResourceProperty
 
     name: Union[str, "ResourcePropNameEnum"] = None
-    value: str = None
+    value: Union[str, "ResourcePropTypeEnum"] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.name):
@@ -1164,8 +1235,16 @@ class ResourceProperty(Property):
 
         if self._is_empty(self.value):
             self.MissingRequiredField("value")
-        if not isinstance(self.value, str):
-            self.value = str(self.value)
+        if not isinstance(self.value, (ResourcePropTypeEnum, str)):
+            value = self.value
+            for _coerce in (lambda: ResourcePropTypeEnum(value), lambda: str(value)):
+                try:
+                    self.value = _coerce()
+                    break
+                except (ValueError, TypeError):
+                    continue
+            else:
+                raise ValueError(f"None of the candidate types Union[ResourcePropTypeEnum, str] could be constructed from {value!r} for slot value")
 
         super().__post_init__(**kwargs)
 
@@ -1207,13 +1286,21 @@ class ParameterProperty(Property):
     class_model_uri: ClassVar[URIRef] = OSCAL.ParameterProperty
 
     value: str = None
-    name: str = None
+    name: Union[str, "ParameterPropNameEnum", "RmfParameterPropNameEnum"] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.name):
             self.MissingRequiredField("name")
-        if not isinstance(self.name, str):
-            self.name = str(self.name)
+        if not isinstance(self.name, (ParameterPropNameEnum, RmfParameterPropNameEnum)):
+            value = self.name
+            for _coerce in (lambda: ParameterPropNameEnum(value), lambda: RmfParameterPropNameEnum(value)):
+                try:
+                    self.name = _coerce()
+                    break
+                except (ValueError, TypeError):
+                    continue
+            else:
+                raise ValueError(f"None of the candidate types Union[ParameterPropNameEnum, RmfParameterPropNameEnum] could be constructed from {value!r} for slot name")
 
         super().__post_init__(**kwargs)
 
@@ -1230,7 +1317,7 @@ class MetadataPartyExternalId(PartyExternalId):
     class_name: ClassVar[str] = "MetadataPartyExternalId"
     class_model_uri: ClassVar[URIRef] = OSCAL.MetadataPartyExternalId
 
-    scheme: str = None
+    scheme: Union[str, "PartyExternalIdSchemeEnum"] = None
     id: str = None
 
 @dataclass(repr=False)
@@ -1246,7 +1333,7 @@ class Link(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = OSCAL.Link
 
     href: str = None
-    rel: Optional[str] = None
+    rel: Optional[Union[str, "MetadataLinkRelEnum"]] = None
     resource_fragment: Optional[str] = None
     media_type: Optional[str] = None
     text: Optional[str] = None
@@ -1257,8 +1344,16 @@ class Link(YAMLRoot):
         if not isinstance(self.href, str):
             self.href = str(self.href)
 
-        if self.rel is not None and not isinstance(self.rel, str):
-            self.rel = str(self.rel)
+        if self.rel is not None and not isinstance(self.rel, (MetadataLinkRelEnum, str)):
+            value = self.rel
+            for _coerce in (lambda: MetadataLinkRelEnum(value), lambda: str(value)):
+                try:
+                    self.rel = _coerce()
+                    break
+                except (ValueError, TypeError):
+                    continue
+            else:
+                raise ValueError(f"None of the candidate types Union[MetadataLinkRelEnum, str] could be constructed from {value!r} for slot rel")
 
         if self.resource_fragment is not None and not isinstance(self.resource_fragment, str):
             self.resource_fragment = str(self.resource_fragment)
@@ -1416,15 +1511,15 @@ class Base64Resource(YAMLRoot):
     class_name: ClassVar[str] = "Base64Resource"
     class_model_uri: ClassVar[URIRef] = OSCAL.Base64Resource
 
-    value: str = None
+    value: Union[str, Base64Type] = None
     media_type: Optional[str] = None
     filename: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.value):
             self.MissingRequiredField("value")
-        if not isinstance(self.value, str):
-            self.value = str(self.value)
+        if not isinstance(self.value, Base64Type):
+            self.value = Base64Type(self.value)
 
         if self.media_type is not None and not isinstance(self.media_type, str):
             self.media_type = str(self.media_type)
@@ -2519,14 +2614,22 @@ class InformationTypeCategorization(YAMLRoot):
     class_name: ClassVar[str] = "InformationTypeCategorization"
     class_model_uri: ClassVar[URIRef] = OSCAL.InformationTypeCategorization
 
-    system: str = None
+    system: Union[str, "InformationTypeCategorizationSystemEnum"] = None
     information_type_ids: Optional[Union[str, list[str]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.system):
             self.MissingRequiredField("system")
-        if not isinstance(self.system, str):
-            self.system = str(self.system)
+        if not isinstance(self.system, (InformationTypeCategorizationSystemEnum, str)):
+            value = self.system
+            for _coerce in (lambda: InformationTypeCategorizationSystemEnum(value), lambda: str(value)):
+                try:
+                    self.system = _coerce()
+                    break
+                except (ValueError, TypeError):
+                    continue
+            else:
+                raise ValueError(f"None of the candidate types Union[InformationTypeCategorizationSystemEnum, str] could be constructed from {value!r} for slot system")
 
         if not isinstance(self.information_type_ids, list):
             self.information_type_ids = [self.information_type_ids] if self.information_type_ids is not None else []
@@ -2548,24 +2651,40 @@ class ImpactLevel(YAMLRoot):
     class_name: ClassVar[str] = "ImpactLevel"
     class_model_uri: ClassVar[URIRef] = OSCAL.ImpactLevel
 
-    base: str = None
+    base: Union[str, "Fips199ImpactLevelEnum"] = None
     props: Optional[Union[Union[dict, Property], list[Union[dict, Property]]]] = empty_list()
     links: Optional[Union[Union[dict, Link], list[Union[dict, Link]]]] = empty_list()
-    selected: Optional[str] = None
+    selected: Optional[Union[str, "Fips199ImpactLevelEnum"]] = None
     adjustment_justification: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.base):
             self.MissingRequiredField("base")
-        if not isinstance(self.base, str):
-            self.base = str(self.base)
+        if not isinstance(self.base, (Fips199ImpactLevelEnum, str)):
+            value = self.base
+            for _coerce in (lambda: Fips199ImpactLevelEnum(value), lambda: str(value)):
+                try:
+                    self.base = _coerce()
+                    break
+                except (ValueError, TypeError):
+                    continue
+            else:
+                raise ValueError(f"None of the candidate types Union[Fips199ImpactLevelEnum, str] could be constructed from {value!r} for slot base")
 
         self._normalize_inlined_as_list(slot_name="props", slot_type=Property, key_name="name", keyed=False)
 
         self._normalize_inlined_as_list(slot_name="links", slot_type=Link, key_name="href", keyed=False)
 
-        if self.selected is not None and not isinstance(self.selected, str):
-            self.selected = str(self.selected)
+        if self.selected is not None and not isinstance(self.selected, (Fips199ImpactLevelEnum, str)):
+            value = self.selected
+            for _coerce in (lambda: Fips199ImpactLevelEnum(value), lambda: str(value)):
+                try:
+                    self.selected = _coerce()
+                    break
+                except (ValueError, TypeError):
+                    continue
+            else:
+                raise ValueError(f"None of the candidate types Union[Fips199ImpactLevelEnum, str] could be constructed from {value!r} for slot selected")
 
         if self.adjustment_justification is not None and not isinstance(self.adjustment_justification, str):
             self.adjustment_justification = str(self.adjustment_justification)
@@ -3300,7 +3419,7 @@ class SspSystemCharacteristicsProp(Property):
     class_model_uri: ClassVar[URIRef] = OSCAL.SspSystemCharacteristicsProp
 
     name: Union[str, "SystemCharacteristicsPropNameEnum"] = None
-    value: str = None
+    value: Union[str, "AssuranceLevelValueEnum", "CloudDeploymentModelEnum", "CloudServiceModelEnum"] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.name):
@@ -3310,8 +3429,16 @@ class SspSystemCharacteristicsProp(Property):
 
         if self._is_empty(self.value):
             self.MissingRequiredField("value")
-        if not isinstance(self.value, str):
-            self.value = str(self.value)
+        if not isinstance(self.value, (AssuranceLevelValueEnum, CloudDeploymentModelEnum, CloudServiceModelEnum, str)):
+            value = self.value
+            for _coerce in (lambda: AssuranceLevelValueEnum(value), lambda: CloudDeploymentModelEnum(value), lambda: CloudServiceModelEnum(value), lambda: str(value)):
+                try:
+                    self.value = _coerce()
+                    break
+                except (ValueError, TypeError):
+                    continue
+            else:
+                raise ValueError(f"None of the candidate types Union[AssuranceLevelValueEnum, CloudDeploymentModelEnum, CloudServiceModelEnum, str] could be constructed from {value!r} for slot value")
 
         super().__post_init__(**kwargs)
 
@@ -3416,11 +3543,19 @@ class SspSystemInformationLink(Link):
     class_model_uri: ClassVar[URIRef] = OSCAL.SspSystemInformationLink
 
     href: str = None
-    rel: Optional[str] = None
+    rel: Optional[Union[str, "SystemInformationLinkRelEnum"]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self.rel is not None and not isinstance(self.rel, str):
-            self.rel = str(self.rel)
+        if self.rel is not None and not isinstance(self.rel, (SystemInformationLinkRelEnum, str)):
+            value = self.rel
+            for _coerce in (lambda: SystemInformationLinkRelEnum(value), lambda: str(value)):
+                try:
+                    self.rel = _coerce()
+                    break
+                except (ValueError, TypeError):
+                    continue
+            else:
+                raise ValueError(f"None of the candidate types Union[SystemInformationLinkRelEnum, str] could be constructed from {value!r} for slot rel")
 
         super().__post_init__(**kwargs)
 
@@ -3438,11 +3573,19 @@ class SspDiagramLink(Link):
     class_model_uri: ClassVar[URIRef] = OSCAL.SspDiagramLink
 
     href: str = None
-    rel: Optional[str] = None
+    rel: Optional[Union[str, "DiagramLinkRelEnum"]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self.rel is not None and not isinstance(self.rel, str):
-            self.rel = str(self.rel)
+        if self.rel is not None and not isinstance(self.rel, (DiagramLinkRelEnum, str)):
+            value = self.rel
+            for _coerce in (lambda: DiagramLinkRelEnum(value), lambda: str(value)):
+                try:
+                    self.rel = _coerce()
+                    break
+                except (ValueError, TypeError):
+                    continue
+            else:
+                raise ValueError(f"None of the candidate types Union[DiagramLinkRelEnum, str] could be constructed from {value!r} for slot rel")
 
         super().__post_init__(**kwargs)
 
@@ -3460,11 +3603,19 @@ class SspLeveragedAuthorizationLink(Link):
     class_model_uri: ClassVar[URIRef] = OSCAL.SspLeveragedAuthorizationLink
 
     href: str = None
-    rel: Optional[str] = None
+    rel: Optional[Union[str, "LeveragedAuthorizationLinkRelEnum"]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self.rel is not None and not isinstance(self.rel, str):
-            self.rel = str(self.rel)
+        if self.rel is not None and not isinstance(self.rel, (LeveragedAuthorizationLinkRelEnum, str)):
+            value = self.rel
+            for _coerce in (lambda: LeveragedAuthorizationLinkRelEnum(value), lambda: str(value)):
+                try:
+                    self.rel = _coerce()
+                    break
+                except (ValueError, TypeError):
+                    continue
+            else:
+                raise ValueError(f"None of the candidate types Union[LeveragedAuthorizationLinkRelEnum, str] could be constructed from {value!r} for slot rel")
 
         super().__post_init__(**kwargs)
 
@@ -3482,11 +3633,19 @@ class SspByComponentLink(Link):
     class_model_uri: ClassVar[URIRef] = OSCAL.SspByComponentLink
 
     href: str = None
-    rel: Optional[str] = None
+    rel: Optional[Union[str, "ByComponentLinkRelEnum"]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self.rel is not None and not isinstance(self.rel, str):
-            self.rel = str(self.rel)
+        if self.rel is not None and not isinstance(self.rel, (ByComponentLinkRelEnum, str)):
+            value = self.rel
+            for _coerce in (lambda: ByComponentLinkRelEnum(value), lambda: str(value)):
+                try:
+                    self.rel = _coerce()
+                    break
+                except (ValueError, TypeError):
+                    continue
+            else:
+                raise ValueError(f"None of the candidate types Union[ByComponentLinkRelEnum, str] could be constructed from {value!r} for slot rel")
 
         super().__post_init__(**kwargs)
 
@@ -3504,13 +3663,21 @@ class SspSystemCharacteristicsResponsibleParty(ResponsibleParty):
     class_model_uri: ClassVar[URIRef] = OSCAL.SspSystemCharacteristicsResponsibleParty
 
     party_uuids: Union[str, list[str]] = None
-    role_id: str = None
+    role_id: Union[str, "SystemCharacteristicsResponsibleRoleIdEnum"] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.role_id):
             self.MissingRequiredField("role_id")
-        if not isinstance(self.role_id, str):
-            self.role_id = str(self.role_id)
+        if not isinstance(self.role_id, (SystemCharacteristicsResponsibleRoleIdEnum, str)):
+            value = self.role_id
+            for _coerce in (lambda: SystemCharacteristicsResponsibleRoleIdEnum(value), lambda: str(value)):
+                try:
+                    self.role_id = _coerce()
+                    break
+                except (ValueError, TypeError):
+                    continue
+            else:
+                raise ValueError(f"None of the candidate types Union[SystemCharacteristicsResponsibleRoleIdEnum, str] could be constructed from {value!r} for slot role_id")
 
         super().__post_init__(**kwargs)
 
@@ -3527,13 +3694,21 @@ class SspImplementedRequirementResponsibleRole(ResponsibleRole):
     class_name: ClassVar[str] = "SspImplementedRequirementResponsibleRole"
     class_model_uri: ClassVar[URIRef] = OSCAL.SspImplementedRequirementResponsibleRole
 
-    role_id: str = None
+    role_id: Union[str, "ImplementedRequirementResponsibleRoleIdEnum"] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.role_id):
             self.MissingRequiredField("role_id")
-        if not isinstance(self.role_id, str):
-            self.role_id = str(self.role_id)
+        if not isinstance(self.role_id, (ImplementedRequirementResponsibleRoleIdEnum, str)):
+            value = self.role_id
+            for _coerce in (lambda: ImplementedRequirementResponsibleRoleIdEnum(value), lambda: str(value)):
+                try:
+                    self.role_id = _coerce()
+                    break
+                except (ValueError, TypeError):
+                    continue
+            else:
+                raise ValueError(f"None of the candidate types Union[ImplementedRequirementResponsibleRoleIdEnum, str] could be constructed from {value!r} for slot role_id")
 
         super().__post_init__(**kwargs)
 
@@ -3550,13 +3725,21 @@ class SspByComponentResponsibleRole(ResponsibleRole):
     class_name: ClassVar[str] = "SspByComponentResponsibleRole"
     class_model_uri: ClassVar[URIRef] = OSCAL.SspByComponentResponsibleRole
 
-    role_id: str = None
+    role_id: Union[str, "ByComponentResponsibleRoleIdEnum"] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.role_id):
             self.MissingRequiredField("role_id")
-        if not isinstance(self.role_id, str):
-            self.role_id = str(self.role_id)
+        if not isinstance(self.role_id, (ByComponentResponsibleRoleIdEnum, str)):
+            value = self.role_id
+            for _coerce in (lambda: ByComponentResponsibleRoleIdEnum(value), lambda: str(value)):
+                try:
+                    self.role_id = _coerce()
+                    break
+                except (ValueError, TypeError):
+                    continue
+            else:
+                raise ValueError(f"None of the candidate types Union[ByComponentResponsibleRoleIdEnum, str] could be constructed from {value!r} for slot role_id")
 
         super().__post_init__(**kwargs)
 
@@ -3905,7 +4088,7 @@ class AssessmentSubject(YAMLRoot):
     class_name: ClassVar[str] = "AssessmentSubject"
     class_model_uri: ClassVar[URIRef] = OSCAL.AssessmentSubject
 
-    type: str = None
+    type: Union[str, "AssessmentSubjectTypeEnum"] = None
     description: Optional[str] = None
     include_all: Optional[Union[dict, IncludeAll]] = None
     include_subjects: Optional[Union[Union[dict, "SelectSubjectById"], list[Union[dict, "SelectSubjectById"]]]] = empty_list()
@@ -3915,8 +4098,16 @@ class AssessmentSubject(YAMLRoot):
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.type):
             self.MissingRequiredField("type")
-        if not isinstance(self.type, str):
-            self.type = str(self.type)
+        if not isinstance(self.type, (AssessmentSubjectTypeEnum, str)):
+            value = self.type
+            for _coerce in (lambda: AssessmentSubjectTypeEnum(value), lambda: str(value)):
+                try:
+                    self.type = _coerce()
+                    break
+                except (ValueError, TypeError):
+                    continue
+            else:
+                raise ValueError(f"None of the candidate types Union[AssessmentSubjectTypeEnum, str] could be constructed from {value!r} for slot type")
 
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
@@ -3947,7 +4138,7 @@ class SelectSubjectById(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = OSCAL.SelectSubjectById
 
     subject_uuid: str = None
-    type: str = None
+    type: Union[str, "SelectSubjectTypeEnum"] = None
     remarks: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
@@ -3958,8 +4149,16 @@ class SelectSubjectById(YAMLRoot):
 
         if self._is_empty(self.type):
             self.MissingRequiredField("type")
-        if not isinstance(self.type, str):
-            self.type = str(self.type)
+        if not isinstance(self.type, (SelectSubjectTypeEnum, str)):
+            value = self.type
+            for _coerce in (lambda: SelectSubjectTypeEnum(value), lambda: str(value)):
+                try:
+                    self.type = _coerce()
+                    break
+                except (ValueError, TypeError):
+                    continue
+            else:
+                raise ValueError(f"None of the candidate types Union[SelectSubjectTypeEnum, str] could be constructed from {value!r} for slot type")
 
         if self.remarks is not None and not isinstance(self.remarks, str):
             self.remarks = str(self.remarks)
@@ -3981,7 +4180,7 @@ class SubjectReference(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = OSCAL.SubjectReference
 
     subject_uuid: str = None
-    type: str = None
+    type: Union[str, "SelectSubjectTypeEnum"] = None
     title: Optional[str] = None
     remarks: Optional[str] = None
 
@@ -3993,8 +4192,16 @@ class SubjectReference(YAMLRoot):
 
         if self._is_empty(self.type):
             self.MissingRequiredField("type")
-        if not isinstance(self.type, str):
-            self.type = str(self.type)
+        if not isinstance(self.type, (SelectSubjectTypeEnum, str)):
+            value = self.type
+            for _coerce in (lambda: SelectSubjectTypeEnum(value), lambda: str(value)):
+                try:
+                    self.type = _coerce()
+                    break
+                except (ValueError, TypeError):
+                    continue
+            else:
+                raise ValueError(f"None of the candidate types Union[SelectSubjectTypeEnum, str] could be constructed from {value!r} for slot type")
 
         if self.title is not None and not isinstance(self.title, str):
             self.title = str(self.title)
@@ -4337,7 +4544,7 @@ class Task(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = OSCAL.Task
 
     uuid: str = None
-    type: str = None
+    type: Union[str, "TaskTypeEnum"] = None
     title: str = None
     description: Optional[str] = None
     timing: Optional[Union[dict, "EventTiming"]] = None
@@ -4356,8 +4563,16 @@ class Task(YAMLRoot):
 
         if self._is_empty(self.type):
             self.MissingRequiredField("type")
-        if not isinstance(self.type, str):
-            self.type = str(self.type)
+        if not isinstance(self.type, (TaskTypeEnum, str)):
+            value = self.type
+            for _coerce in (lambda: TaskTypeEnum(value), lambda: str(value)):
+                try:
+                    self.type = _coerce()
+                    break
+                except (ValueError, TypeError):
+                    continue
+            else:
+                raise ValueError(f"None of the candidate types Union[TaskTypeEnum, str] could be constructed from {value!r} for slot type")
 
         if self._is_empty(self.title):
             self.MissingRequiredField("title")
@@ -4487,15 +4702,15 @@ class AtFrequency(YAMLRoot):
     class_name: ClassVar[str] = "AtFrequency"
     class_model_uri: ClassVar[URIRef] = OSCAL.AtFrequency
 
-    period: int = None
+    period: Union[int, PositiveIntegerType] = None
     unit: Union[str, "TimingUnitEnum"] = None
     remarks: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.period):
             self.MissingRequiredField("period")
-        if not isinstance(self.period, int):
-            self.period = int(self.period)
+        if not isinstance(self.period, PositiveIntegerType):
+            self.period = PositiveIntegerType(self.period)
 
         if self._is_empty(self.unit):
             self.MissingRequiredField("unit")
@@ -4582,7 +4797,7 @@ class AssessmentPart(YAMLRoot):
     class_name: ClassVar[str] = "AssessmentPart"
     class_model_uri: ClassVar[URIRef] = OSCAL.AssessmentPart
 
-    name: str = None
+    name: Union[str, "AssessmentPartNameEnum"] = None
     uuid: Optional[str] = None
     ns: Optional[str] = None
     class_: Optional[str] = None
@@ -4595,8 +4810,16 @@ class AssessmentPart(YAMLRoot):
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.name):
             self.MissingRequiredField("name")
-        if not isinstance(self.name, str):
-            self.name = str(self.name)
+        if not isinstance(self.name, (AssessmentPartNameEnum, str)):
+            value = self.name
+            for _coerce in (lambda: AssessmentPartNameEnum(value), lambda: str(value)):
+                try:
+                    self.name = _coerce()
+                    break
+                except (ValueError, TypeError):
+                    continue
+            else:
+                raise ValueError(f"None of the candidate types Union[AssessmentPartNameEnum, str] could be constructed from {value!r} for slot name")
 
         if self.uuid is not None and not isinstance(self.uuid, str):
             self.uuid = str(self.uuid)
@@ -4748,7 +4971,7 @@ class SystemComponent(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = OSCAL.SystemComponent
 
     uuid: str = None
-    type: str = None
+    type: Union[str, "ComponentTypeEnum"] = None
     title: str = None
     description: str = None
     status: Union[dict, "ComponentStatus"] = None
@@ -4767,8 +4990,16 @@ class SystemComponent(YAMLRoot):
 
         if self._is_empty(self.type):
             self.MissingRequiredField("type")
-        if not isinstance(self.type, str):
-            self.type = str(self.type)
+        if not isinstance(self.type, (ComponentTypeEnum, str)):
+            value = self.type
+            for _coerce in (lambda: ComponentTypeEnum(value), lambda: str(value)):
+                try:
+                    self.type = _coerce()
+                    break
+                except (ValueError, TypeError):
+                    continue
+            else:
+                raise ValueError(f"None of the candidate types Union[ComponentTypeEnum, str] could be constructed from {value!r} for slot type")
 
         if self._is_empty(self.title):
             self.MissingRequiredField("title")
@@ -4817,7 +5048,7 @@ class SspSystemComponent(SystemComponent):
     class_model_uri: ClassVar[URIRef] = OSCAL.SspSystemComponent
 
     uuid: str = None
-    type: str = None
+    type: Union[str, "ComponentTypeEnum"] = None
     title: str = None
     description: str = None
     status: Union[dict, "ComponentStatus"] = None
@@ -4902,17 +5133,17 @@ class PortRange(YAMLRoot):
     class_name: ClassVar[str] = "PortRange"
     class_model_uri: ClassVar[URIRef] = OSCAL.PortRange
 
-    start: Optional[int] = None
-    end: Optional[int] = None
+    start: Optional[Union[int, NonNegativeIntegerType]] = None
+    end: Optional[Union[int, NonNegativeIntegerType]] = None
     transport: Optional[Union[str, "TransportEnum"]] = None
     remarks: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self.start is not None and not isinstance(self.start, int):
-            self.start = int(self.start)
+        if self.start is not None and not isinstance(self.start, NonNegativeIntegerType):
+            self.start = NonNegativeIntegerType(self.start)
 
-        if self.end is not None and not isinstance(self.end, int):
-            self.end = int(self.end)
+        if self.end is not None and not isinstance(self.end, NonNegativeIntegerType):
+            self.end = NonNegativeIntegerType(self.end)
 
         if self.transport is not None and not isinstance(self.transport, TransportEnum):
             self.transport = TransportEnum(self.transport)
@@ -4935,14 +5166,22 @@ class ImplementationStatus(YAMLRoot):
     class_name: ClassVar[str] = "ImplementationStatus"
     class_model_uri: ClassVar[URIRef] = OSCAL.ImplementationStatus
 
-    state: str = None
+    state: Union[str, "ImplementationStatusStateEnum"] = None
     remarks: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.state):
             self.MissingRequiredField("state")
-        if not isinstance(self.state, str):
-            self.state = str(self.state)
+        if not isinstance(self.state, (ImplementationStatusStateEnum, str)):
+            value = self.state
+            for _coerce in (lambda: ImplementationStatusStateEnum(value), lambda: str(value)):
+                try:
+                    self.state = _coerce()
+                    break
+                except (ValueError, TypeError):
+                    continue
+            else:
+                raise ValueError(f"None of the candidate types Union[ImplementationStatusStateEnum, str] could be constructed from {value!r} for slot state")
 
         if self.remarks is not None and not isinstance(self.remarks, str):
             self.remarks = str(self.remarks)
@@ -5154,7 +5393,7 @@ class SystemId(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = OSCAL.SystemId
 
     id: str = None
-    identifier_type: Optional[str] = None
+    identifier_type: Optional[Union[str, "SystemIdentifierTypeEnum"]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -5162,8 +5401,16 @@ class SystemId(YAMLRoot):
         if not isinstance(self.id, str):
             self.id = str(self.id)
 
-        if self.identifier_type is not None and not isinstance(self.identifier_type, str):
-            self.identifier_type = str(self.identifier_type)
+        if self.identifier_type is not None and not isinstance(self.identifier_type, (SystemIdentifierTypeEnum, str)):
+            value = self.identifier_type
+            for _coerce in (lambda: SystemIdentifierTypeEnum(value), lambda: str(value)):
+                try:
+                    self.identifier_type = _coerce()
+                    break
+                except (ValueError, TypeError):
+                    continue
+            else:
+                raise ValueError(f"None of the candidate types Union[SystemIdentifierTypeEnum, str] could be constructed from {value!r} for slot identifier_type")
 
         super().__post_init__(**kwargs)
 
@@ -5181,7 +5428,7 @@ class ImplementationCommonProperty(Property):
     class_model_uri: ClassVar[URIRef] = OSCAL.ImplementationCommonProperty
 
     name: Union[str, "ImplementationPropNameEnum"] = None
-    value: str = None
+    value: Union[str, "ImplementationYesNoEnum", "ImplementationAssetTypeEnum", "ImplementationPointEnum", "ImplementationIpAddressClassEnum", "ImplementationDirectionEnum", "UserTypeEnum", "UserPrivilegeLevelEnum"] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.name):
@@ -5191,8 +5438,16 @@ class ImplementationCommonProperty(Property):
 
         if self._is_empty(self.value):
             self.MissingRequiredField("value")
-        if not isinstance(self.value, str):
-            self.value = str(self.value)
+        if not isinstance(self.value, (ImplementationYesNoEnum, ImplementationAssetTypeEnum, ImplementationPointEnum, ImplementationIpAddressClassEnum, ImplementationDirectionEnum, UserTypeEnum, UserPrivilegeLevelEnum, str)):
+            value = self.value
+            for _coerce in (lambda: ImplementationYesNoEnum(value), lambda: ImplementationAssetTypeEnum(value), lambda: ImplementationPointEnum(value), lambda: ImplementationIpAddressClassEnum(value), lambda: ImplementationDirectionEnum(value), lambda: UserTypeEnum(value), lambda: UserPrivilegeLevelEnum(value), lambda: str(value)):
+                try:
+                    self.value = _coerce()
+                    break
+                except (ValueError, TypeError):
+                    continue
+            else:
+                raise ValueError(f"None of the candidate types Union[ImplementationYesNoEnum, ImplementationAssetTypeEnum, ImplementationPointEnum, ImplementationIpAddressClassEnum, ImplementationDirectionEnum, UserTypeEnum, UserPrivilegeLevelEnum, str] could be constructed from {value!r} for slot value")
 
         super().__post_init__(**kwargs)
 
@@ -5210,11 +5465,19 @@ class ImplementationCommonLink(Link):
     class_model_uri: ClassVar[URIRef] = OSCAL.ImplementationCommonLink
 
     href: str = None
-    rel: Optional[str] = None
+    rel: Optional[Union[str, "ImplementationLinkRelEnum"]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self.rel is not None and not isinstance(self.rel, str):
-            self.rel = str(self.rel)
+        if self.rel is not None and not isinstance(self.rel, (ImplementationLinkRelEnum, str)):
+            value = self.rel
+            for _coerce in (lambda: ImplementationLinkRelEnum(value), lambda: str(value)):
+                try:
+                    self.rel = _coerce()
+                    break
+                except (ValueError, TypeError):
+                    continue
+            else:
+                raise ValueError(f"None of the candidate types Union[ImplementationLinkRelEnum, str] could be constructed from {value!r} for slot rel")
 
         super().__post_init__(**kwargs)
 
@@ -5231,13 +5494,21 @@ class ImplementationResponsibleRole(ResponsibleRole):
     class_name: ClassVar[str] = "ImplementationResponsibleRole"
     class_model_uri: ClassVar[URIRef] = OSCAL.ImplementationResponsibleRole
 
-    role_id: str = None
+    role_id: Union[str, "ImplementationResponsibleRoleIdEnum"] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.role_id):
             self.MissingRequiredField("role_id")
-        if not isinstance(self.role_id, str):
-            self.role_id = str(self.role_id)
+        if not isinstance(self.role_id, (ImplementationResponsibleRoleIdEnum, str)):
+            value = self.role_id
+            for _coerce in (lambda: ImplementationResponsibleRoleIdEnum(value), lambda: str(value)):
+                try:
+                    self.role_id = _coerce()
+                    break
+                except (ValueError, TypeError):
+                    continue
+            else:
+                raise ValueError(f"None of the candidate types Union[ImplementationResponsibleRoleIdEnum, str] could be constructed from {value!r} for slot role_id")
 
         super().__post_init__(**kwargs)
 
@@ -5255,13 +5526,21 @@ class ImplementationResponsibleParty(ResponsibleParty):
     class_model_uri: ClassVar[URIRef] = OSCAL.ImplementationResponsibleParty
 
     party_uuids: Union[str, list[str]] = None
-    role_id: str = None
+    role_id: Union[str, "ImplementationResponsibleRoleIdEnum"] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.role_id):
             self.MissingRequiredField("role_id")
-        if not isinstance(self.role_id, str):
-            self.role_id = str(self.role_id)
+        if not isinstance(self.role_id, (ImplementationResponsibleRoleIdEnum, str)):
+            value = self.role_id
+            for _coerce in (lambda: ImplementationResponsibleRoleIdEnum(value), lambda: str(value)):
+                try:
+                    self.role_id = _coerce()
+                    break
+                except (ValueError, TypeError):
+                    continue
+            else:
+                raise ValueError(f"None of the candidate types Union[ImplementationResponsibleRoleIdEnum, str] could be constructed from {value!r} for slot role_id")
 
         super().__post_init__(**kwargs)
 
@@ -5620,7 +5899,7 @@ class ObjectiveStatus(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = OSCAL.ObjectiveStatus
 
     state: Union[str, "ObjectiveStatusStateEnum"] = None
-    reason: Optional[str] = None
+    reason: Optional[Union[str, "ObjectiveStatusReasonEnum"]] = None
     remarks: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
@@ -5629,8 +5908,16 @@ class ObjectiveStatus(YAMLRoot):
         if not isinstance(self.state, ObjectiveStatusStateEnum):
             self.state = ObjectiveStatusStateEnum(self.state)
 
-        if self.reason is not None and not isinstance(self.reason, str):
-            self.reason = str(self.reason)
+        if self.reason is not None and not isinstance(self.reason, (ObjectiveStatusReasonEnum, str)):
+            value = self.reason
+            for _coerce in (lambda: ObjectiveStatusReasonEnum(value), lambda: str(value)):
+                try:
+                    self.reason = _coerce()
+                    break
+                except (ValueError, TypeError):
+                    continue
+            else:
+                raise ValueError(f"None of the candidate types Union[ObjectiveStatusReasonEnum, str] could be constructed from {value!r} for slot reason")
 
         if self.remarks is not None and not isinstance(self.remarks, str):
             self.remarks = str(self.remarks)
@@ -5708,7 +5995,7 @@ class Risk(YAMLRoot):
     title: str = None
     description: str = None
     statement: str = None
-    status: str = None
+    status: Union[str, "RiskStatusEnum"] = None
     origins: Optional[Union[Union[dict, Origin], list[Union[dict, Origin]]]] = empty_list()
     threat_ids: Optional[Union[Union[dict, "ThreatId"], list[Union[dict, "ThreatId"]]]] = empty_list()
     characterizations: Optional[Union[Union[dict, "Characterization"], list[Union[dict, "Characterization"]]]] = empty_list()
@@ -5743,8 +6030,16 @@ class Risk(YAMLRoot):
 
         if self._is_empty(self.status):
             self.MissingRequiredField("status")
-        if not isinstance(self.status, str):
-            self.status = str(self.status)
+        if not isinstance(self.status, (RiskStatusEnum, str)):
+            value = self.status
+            for _coerce in (lambda: RiskStatusEnum(value), lambda: str(value)):
+                try:
+                    self.status = _coerce()
+                    break
+                except (ValueError, TypeError):
+                    continue
+            else:
+                raise ValueError(f"None of the candidate types Union[RiskStatusEnum, str] could be constructed from {value!r} for slot status")
 
         if not isinstance(self.origins, list):
             self.origins = [self.origins] if self.origins is not None else []
@@ -5938,7 +6233,7 @@ class Response(YAMLRoot):
     uuid: str = None
     title: str = None
     description: str = None
-    lifecycle: str = None
+    lifecycle: Union[str, "ResponseLifecycleEnum"] = None
     origins: Optional[Union[Union[dict, Origin], list[Union[dict, Origin]]]] = empty_list()
     required_assets: Optional[Union[Union[dict, "RequiredAsset"], list[Union[dict, "RequiredAsset"]]]] = empty_list()
     tasks: Optional[Union[Union[dict, Task], list[Union[dict, Task]]]] = empty_list()
@@ -5962,8 +6257,16 @@ class Response(YAMLRoot):
 
         if self._is_empty(self.lifecycle):
             self.MissingRequiredField("lifecycle")
-        if not isinstance(self.lifecycle, str):
-            self.lifecycle = str(self.lifecycle)
+        if not isinstance(self.lifecycle, (ResponseLifecycleEnum, str)):
+            value = self.lifecycle
+            for _coerce in (lambda: ResponseLifecycleEnum(value), lambda: str(value)):
+                try:
+                    self.lifecycle = _coerce()
+                    break
+                except (ValueError, TypeError):
+                    continue
+            else:
+                raise ValueError(f"None of the candidate types Union[ResponseLifecycleEnum, str] could be constructed from {value!r} for slot lifecycle")
 
         if not isinstance(self.origins, list):
             self.origins = [self.origins] if self.origins is not None else []
@@ -6059,7 +6362,7 @@ class RiskLogEntry(YAMLRoot):
     description: Optional[str] = None
     end: Optional[str] = None
     logged_by: Optional[Union[Union[dict, "LoggedBy"], list[Union[dict, "LoggedBy"]]]] = empty_list()
-    status_change: Optional[str] = None
+    status_change: Optional[Union[str, "RiskStatusEnum"]] = None
     related_responses: Optional[Union[Union[dict, "RiskResponseReference"], list[Union[dict, "RiskResponseReference"]]]] = empty_list()
     remarks: Optional[str] = None
 
@@ -6085,8 +6388,16 @@ class RiskLogEntry(YAMLRoot):
 
         self._normalize_inlined_as_list(slot_name="logged_by", slot_type=LoggedBy, key_name="party-uuid", keyed=False)
 
-        if self.status_change is not None and not isinstance(self.status_change, str):
-            self.status_change = str(self.status_change)
+        if self.status_change is not None and not isinstance(self.status_change, (RiskStatusEnum, str)):
+            value = self.status_change
+            for _coerce in (lambda: RiskStatusEnum(value), lambda: str(value)):
+                try:
+                    self.status_change = _coerce()
+                    break
+                except (ValueError, TypeError):
+                    continue
+            else:
+                raise ValueError(f"None of the candidate types Union[RiskStatusEnum, str] could be constructed from {value!r} for slot status_change")
 
         self._normalize_inlined_as_list(slot_name="related_responses", slot_type=RiskResponseReference, key_name="response-uuid", keyed=False)
 
@@ -7083,7 +7394,7 @@ class Map(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = OSCAL.Map
 
     uuid: str = None
-    relationship: str = None
+    relationship: Union[str, "RelationshipEnum"] = None
     sources: Union[Union[dict, "MappingItem"], list[Union[dict, "MappingItem"]]] = None
     targets: Union[Union[dict, "MappingItem"], list[Union[dict, "MappingItem"]]] = None
     ns: Optional[str] = None
@@ -7101,8 +7412,16 @@ class Map(YAMLRoot):
 
         if self._is_empty(self.relationship):
             self.MissingRequiredField("relationship")
-        if not isinstance(self.relationship, str):
-            self.relationship = str(self.relationship)
+        if not isinstance(self.relationship, (RelationshipEnum, str)):
+            value = self.relationship
+            for _coerce in (lambda: RelationshipEnum(value), lambda: str(value)):
+                try:
+                    self.relationship = _coerce()
+                    break
+                except (ValueError, TypeError):
+                    continue
+            else:
+                raise ValueError(f"None of the candidate types Union[RelationshipEnum, str] could be constructed from {value!r} for slot relationship")
 
         if self._is_empty(self.sources):
             self.MissingRequiredField("sources")
@@ -7177,7 +7496,7 @@ class MappingResourceReference(YAMLRoot):
     class_name: ClassVar[str] = "MappingResourceReference"
     class_model_uri: ClassVar[URIRef] = OSCAL.MappingResourceReference
 
-    type: str = None
+    type: Union[str, "MappingResourceTypeEnum"] = None
     href: str = None
     ns: Optional[str] = None
     remarks: Optional[str] = None
@@ -7185,8 +7504,16 @@ class MappingResourceReference(YAMLRoot):
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.type):
             self.MissingRequiredField("type")
-        if not isinstance(self.type, str):
-            self.type = str(self.type)
+        if not isinstance(self.type, (MappingResourceTypeEnum, str)):
+            value = self.type
+            for _coerce in (lambda: MappingResourceTypeEnum(value), lambda: str(value)):
+                try:
+                    self.type = _coerce()
+                    break
+                except (ValueError, TypeError):
+                    continue
+            else:
+                raise ValueError(f"None of the candidate types Union[MappingResourceTypeEnum, str] could be constructed from {value!r} for slot type")
 
         if self._is_empty(self.href):
             self.MissingRequiredField("href")
@@ -7289,12 +7616,20 @@ class ConfidenceScore(YAMLRoot):
     class_name: ClassVar[str] = "ConfidenceScore"
     class_model_uri: ClassVar[URIRef] = OSCAL.ConfidenceScore
 
-    category: Optional[str] = None
+    category: Optional[Union[str, "ConfidenceCategoryEnum"]] = None
     percentage: Optional[float] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self.category is not None and not isinstance(self.category, str):
-            self.category = str(self.category)
+        if self.category is not None and not isinstance(self.category, (ConfidenceCategoryEnum, str)):
+            value = self.category
+            for _coerce in (lambda: ConfidenceCategoryEnum(value), lambda: str(value)):
+                try:
+                    self.category = _coerce()
+                    break
+                except (ValueError, TypeError):
+                    continue
+            else:
+                raise ValueError(f"None of the candidate types Union[ConfidenceCategoryEnum, str] could be constructed from {value!r} for slot category")
 
         if self.percentage is not None and not isinstance(self.percentage, float):
             self.percentage = float(self.percentage)
@@ -7315,7 +7650,7 @@ class Coverage(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = OSCAL.Coverage
 
     target_coverage: float = None
-    generation_method: Optional[str] = None
+    generation_method: Optional[Union[str, "CoverageGenerationMethodEnum"]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.target_coverage):
@@ -7323,8 +7658,16 @@ class Coverage(YAMLRoot):
         if not isinstance(self.target_coverage, float):
             self.target_coverage = float(self.target_coverage)
 
-        if self.generation_method is not None and not isinstance(self.generation_method, str):
-            self.generation_method = str(self.generation_method)
+        if self.generation_method is not None and not isinstance(self.generation_method, (CoverageGenerationMethodEnum, str)):
+            value = self.generation_method
+            for _coerce in (lambda: CoverageGenerationMethodEnum(value), lambda: str(value)):
+                try:
+                    self.generation_method = _coerce()
+                    break
+                except (ValueError, TypeError):
+                    continue
+            else:
+                raise ValueError(f"None of the candidate types Union[CoverageGenerationMethodEnum, str] could be constructed from {value!r} for slot generation_method")
 
         super().__post_init__(**kwargs)
 
@@ -10448,7 +10791,7 @@ slots.country = Slot(uri=OSCAL.country, name="country", curie=OSCAL.curie('count
                    model_uri=OSCAL.country, domain=None, range=Optional[str])
 
 slots.algorithm = Slot(uri=OSCAL.algorithm, name="algorithm", curie=OSCAL.curie('algorithm'),
-                   model_uri=OSCAL.algorithm, domain=None, range=Optional[str])
+                   model_uri=OSCAL.algorithm, domain=None, range=Optional[Union[str, "HashAlgorithmEnum"]])
 
 slots.group = Slot(uri=OSCAL.group, name="group", curie=OSCAL.curie('group'),
                    model_uri=OSCAL.group, domain=None, range=Optional[str])
@@ -10826,7 +11169,7 @@ slots.at_frequency = Slot(uri=OSCAL.at_frequency, name="at-frequency", curie=OSC
                    model_uri=OSCAL.at_frequency, domain=None, range=Optional[Union[dict, AtFrequency]])
 
 slots.period = Slot(uri=OSCAL.period, name="period", curie=OSCAL.curie('period'),
-                   model_uri=OSCAL.period, domain=None, range=Optional[int])
+                   model_uri=OSCAL.period, domain=None, range=Optional[Union[int, PositiveIntegerType]])
 
 slots.unit = Slot(uri=OSCAL.unit, name="unit", curie=OSCAL.curie('unit'),
                    model_uri=OSCAL.unit, domain=None, range=Optional[Union[str, "TimingUnitEnum"]])
@@ -10856,7 +11199,7 @@ slots.implemented_components = Slot(uri=OSCAL.implemented_components, name="impl
                    model_uri=OSCAL.implemented_components, domain=None, range=Optional[Union[Union[dict, ImplementedComponent], list[Union[dict, ImplementedComponent]]]])
 
 slots.identifier_type = Slot(uri=OSCAL.identifier_type, name="identifier-type", curie=OSCAL.curie('identifier_type'),
-                   model_uri=OSCAL.identifier_type, domain=None, range=Optional[str])
+                   model_uri=OSCAL.identifier_type, domain=None, range=Optional[Union[str, "SystemIdentifierTypeEnum"]])
 
 slots.actors = Slot(uri=OSCAL.actors, name="actors", curie=OSCAL.curie('actors'),
                    model_uri=OSCAL.actors, domain=None, range=Optional[Union[Union[dict, OriginActor], list[Union[dict, OriginActor]]]])
@@ -10901,7 +11244,7 @@ slots.implementation_status = Slot(uri=OSCAL.implementation_status, name="implem
                    model_uri=OSCAL.implementation_status, domain=None, range=Optional[Union[dict, ImplementationStatus]])
 
 slots.reason = Slot(uri=OSCAL.reason, name="reason", curie=OSCAL.curie('reason'),
-                   model_uri=OSCAL.reason, domain=None, range=Optional[str])
+                   model_uri=OSCAL.reason, domain=None, range=Optional[Union[str, "ObjectiveStatusReasonEnum"]])
 
 slots.observation_uuid = Slot(uri=OSCAL.observation_uuid, name="observation-uuid", curie=OSCAL.curie('observation_uuid'),
                    model_uri=OSCAL.observation_uuid, domain=None, range=Optional[str])
@@ -10940,7 +11283,7 @@ slots.implementation_uuid = Slot(uri=OSCAL.implementation_uuid, name="implementa
                    model_uri=OSCAL.implementation_uuid, domain=None, range=Optional[str])
 
 slots.lifecycle = Slot(uri=OSCAL.lifecycle, name="lifecycle", curie=OSCAL.curie('lifecycle'),
-                   model_uri=OSCAL.lifecycle, domain=None, range=Optional[str])
+                   model_uri=OSCAL.lifecycle, domain=None, range=Optional[Union[str, "ResponseLifecycleEnum"]])
 
 slots.required_assets = Slot(uri=OSCAL.required_assets, name="required-assets", curie=OSCAL.curie('required_assets'),
                    model_uri=OSCAL.required_assets, domain=None, range=Optional[Union[Union[dict, RequiredAsset], list[Union[dict, RequiredAsset]]]])
@@ -10952,7 +11295,7 @@ slots.logged_by = Slot(uri=OSCAL.logged_by, name="logged-by", curie=OSCAL.curie(
                    model_uri=OSCAL.logged_by, domain=None, range=Optional[Union[Union[dict, LoggedBy], list[Union[dict, LoggedBy]]]])
 
 slots.status_change = Slot(uri=OSCAL.status_change, name="status-change", curie=OSCAL.curie('status_change'),
-                   model_uri=OSCAL.status_change, domain=None, range=Optional[str])
+                   model_uri=OSCAL.status_change, domain=None, range=Optional[Union[str, "RiskStatusEnum"]])
 
 slots.related_responses = Slot(uri=OSCAL.related_responses, name="related-responses", curie=OSCAL.curie('related_responses'),
                    model_uri=OSCAL.related_responses, domain=None, range=Optional[Union[Union[dict, RiskResponseReference], list[Union[dict, RiskResponseReference]]]])
@@ -11033,7 +11376,7 @@ slots.coverage = Slot(uri=OSCAL.coverage, name="coverage", curie=OSCAL.curie('co
                    model_uri=OSCAL.coverage, domain=None, range=Optional[Union[dict, Coverage]])
 
 slots.relationship = Slot(uri=OSCAL.relationship, name="relationship", curie=OSCAL.curie('relationship'),
-                   model_uri=OSCAL.relationship, domain=None, range=Optional[str])
+                   model_uri=OSCAL.relationship, domain=None, range=Optional[Union[str, "RelationshipEnum"]])
 
 slots.targets = Slot(uri=OSCAL.targets, name="targets", curie=OSCAL.curie('targets'),
                    model_uri=OSCAL.targets, domain=None, range=Optional[Union[Union[dict, MappingItem], list[Union[dict, MappingItem]]]])
@@ -11060,7 +11403,7 @@ slots.percentage = Slot(uri=OSCAL.percentage, name="percentage", curie=OSCAL.cur
                    model_uri=OSCAL.percentage, domain=None, range=Optional[float])
 
 slots.generation_method = Slot(uri=OSCAL.generation_method, name="generation-method", curie=OSCAL.curie('generation_method'),
-                   model_uri=OSCAL.generation_method, domain=None, range=Optional[str])
+                   model_uri=OSCAL.generation_method, domain=None, range=Optional[Union[str, "CoverageGenerationMethodEnum"]])
 
 slots.target_coverage = Slot(uri=OSCAL.target_coverage, name="target-coverage", curie=OSCAL.curie('target_coverage'),
                    model_uri=OSCAL.target_coverage, domain=None, range=Optional[float])
@@ -11081,7 +11424,7 @@ slots.finding_uuid = Slot(uri=OSCAL.finding_uuid, name="finding-uuid", curie=OSC
                    model_uri=OSCAL.finding_uuid, domain=None, range=Optional[str])
 
 slots.informationTypeCategorization__system = Slot(uri=OSCAL.system, name="informationTypeCategorization__system", curie=OSCAL.curie('system'),
-                   model_uri=OSCAL.informationTypeCategorization__system, domain=None, range=str)
+                   model_uri=OSCAL.informationTypeCategorization__system, domain=None, range=Union[str, "InformationTypeCategorizationSystemEnum"])
 
 slots.informationTypeCategorization__information_type_ids = Slot(uri=OSCAL.information_type_ids, name="informationTypeCategorization__information_type_ids", curie=OSCAL.curie('information_type_ids'),
                    model_uri=OSCAL.informationTypeCategorization__information_type_ids, domain=None, range=Optional[Union[str, list[str]]])
@@ -11144,7 +11487,7 @@ slots.Revision_links = Slot(uri=OSCAL.links, name="Revision_links", curie=OSCAL.
                    model_uri=OSCAL.Revision_links, domain=Revision, range=Optional[Union[Union[dict, "Link"], list[Union[dict, "Link"]]]])
 
 slots.DocumentId_scheme = Slot(uri=OSCAL.scheme, name="DocumentId_scheme", curie=OSCAL.curie('scheme'),
-                   model_uri=OSCAL.DocumentId_scheme, domain=DocumentId, range=Optional[str])
+                   model_uri=OSCAL.DocumentId_scheme, domain=DocumentId, range=Optional[Union[str, "DocumentIdSchemeEnum"]])
 
 slots.DocumentId_identifier = Slot(uri=OSCAL.identifier, name="DocumentId_identifier", curie=OSCAL.curie('identifier'),
                    model_uri=OSCAL.DocumentId_identifier, domain=DocumentId, range=str)
@@ -11177,13 +11520,13 @@ slots.Party_external_ids = Slot(uri=OSCAL.external_ids, name="Party_external-ids
                    model_uri=OSCAL.Party_external_ids, domain=Party, range=Optional[Union[Union[dict, "MetadataPartyExternalId"], list[Union[dict, "MetadataPartyExternalId"]]]])
 
 slots.PartyExternalId_scheme = Slot(uri=OSCAL.scheme, name="PartyExternalId_scheme", curie=OSCAL.curie('scheme'),
-                   model_uri=OSCAL.PartyExternalId_scheme, domain=PartyExternalId, range=str)
+                   model_uri=OSCAL.PartyExternalId_scheme, domain=PartyExternalId, range=Union[str, "PartyExternalIdSchemeEnum"])
 
 slots.PartyExternalId_id = Slot(uri=OSCAL.id, name="PartyExternalId_id", curie=OSCAL.curie('id'),
                    model_uri=OSCAL.PartyExternalId_id, domain=PartyExternalId, range=str)
 
 slots.ResponsibleParty_role_id = Slot(uri=OSCAL.role_id, name="ResponsibleParty_role-id", curie=OSCAL.curie('role_id'),
-                   model_uri=OSCAL.ResponsibleParty_role_id, domain=ResponsibleParty, range=str)
+                   model_uri=OSCAL.ResponsibleParty_role_id, domain=ResponsibleParty, range=Union[str, "MetadataResponsiblePartyRoleIdEnum"])
 
 slots.ResponsibleParty_party_uuids = Slot(uri=OSCAL.party_uuids, name="ResponsibleParty_party-uuids", curie=OSCAL.curie('party_uuids'),
                    model_uri=OSCAL.ResponsibleParty_party_uuids, domain=ResponsibleParty, range=Union[str, list[str]])
@@ -11198,22 +11541,22 @@ slots.Action_type = Slot(uri=OSCAL.type, name="Action_type", curie=OSCAL.curie('
                    model_uri=OSCAL.Action_type, domain=Action, range=Union[str, "ActionTypeEnum"])
 
 slots.Action_system = Slot(uri=OSCAL.system, name="Action_system", curie=OSCAL.curie('system'),
-                   model_uri=OSCAL.Action_system, domain=Action, range=str)
+                   model_uri=OSCAL.Action_system, domain=Action, range=Union[str, "ActionSystemEnum"])
 
 slots.TelephoneNumber_type = Slot(uri=OSCAL.type, name="TelephoneNumber_type", curie=OSCAL.curie('type'),
-                   model_uri=OSCAL.TelephoneNumber_type, domain=TelephoneNumber, range=Optional[str])
+                   model_uri=OSCAL.TelephoneNumber_type, domain=TelephoneNumber, range=Optional[Union[str, "PhoneTypeEnum"]])
 
 slots.TelephoneNumber_number = Slot(uri=OSCAL.number, name="TelephoneNumber_number", curie=OSCAL.curie('number'),
                    model_uri=OSCAL.TelephoneNumber_number, domain=TelephoneNumber, range=str)
 
 slots.Address_type = Slot(uri=OSCAL.type, name="Address_type", curie=OSCAL.curie('type'),
-                   model_uri=OSCAL.Address_type, domain=Address, range=Optional[str])
+                   model_uri=OSCAL.Address_type, domain=Address, range=Optional[Union[str, "AddressTypeEnum"]])
 
 slots.Hash_value = Slot(uri=OSCAL.value, name="Hash_value", curie=OSCAL.curie('value'),
                    model_uri=OSCAL.Hash_value, domain=Hash, range=str)
 
 slots.Hash_algorithm = Slot(uri=OSCAL.algorithm, name="Hash_algorithm", curie=OSCAL.curie('algorithm'),
-                   model_uri=OSCAL.Hash_algorithm, domain=Hash, range=str)
+                   model_uri=OSCAL.Hash_algorithm, domain=Hash, range=Union[str, "HashAlgorithmEnum"])
 
 slots.Property_name = Slot(uri=OSCAL.name, name="Property_name", curie=OSCAL.curie('name'),
                    model_uri=OSCAL.Property_name, domain=Property, range=str)
@@ -11240,10 +11583,10 @@ slots.LocationProperty_name = Slot(uri=OSCAL.name, name="LocationProperty_name",
                    model_uri=OSCAL.LocationProperty_name, domain=LocationProperty, range=Union[str, "LocationPropNameEnum"])
 
 slots.LocationProperty_value = Slot(uri=OSCAL.value, name="LocationProperty_value", curie=OSCAL.curie('value'),
-                   model_uri=OSCAL.LocationProperty_value, domain=LocationProperty, range=str)
+                   model_uri=OSCAL.LocationProperty_value, domain=LocationProperty, range=Union[str, "LocationPropTypeEnum"])
 
 slots.LocationProperty_class_ = Slot(uri=OSCAL.class_, name="LocationProperty_class_", curie=OSCAL.curie('class_'),
-                   model_uri=OSCAL.LocationProperty_class_, domain=LocationProperty, range=Optional[str])
+                   model_uri=OSCAL.LocationProperty_class_, domain=LocationProperty, range=Optional[Union[str, "LocationDataCenterClassEnum"]])
 
 slots.PartyProperty_name = Slot(uri=OSCAL.name, name="PartyProperty_name", curie=OSCAL.curie('name'),
                    model_uri=OSCAL.PartyProperty_name, domain=PartyProperty, range=Union[str, "PartyPropNameEnum"])
@@ -11252,19 +11595,19 @@ slots.ResourceProperty_name = Slot(uri=OSCAL.name, name="ResourceProperty_name",
                    model_uri=OSCAL.ResourceProperty_name, domain=ResourceProperty, range=Union[str, "ResourcePropNameEnum"])
 
 slots.ResourceProperty_value = Slot(uri=OSCAL.value, name="ResourceProperty_value", curie=OSCAL.curie('value'),
-                   model_uri=OSCAL.ResourceProperty_value, domain=ResourceProperty, range=str)
+                   model_uri=OSCAL.ResourceProperty_value, domain=ResourceProperty, range=Union[str, "ResourcePropTypeEnum"])
 
 slots.PartProperty_name = Slot(uri=OSCAL.name, name="PartProperty_name", curie=OSCAL.curie('name'),
                    model_uri=OSCAL.PartProperty_name, domain=PartProperty, range=Union[str, "PartPropNameEnum"])
 
 slots.ParameterProperty_name = Slot(uri=OSCAL.name, name="ParameterProperty_name", curie=OSCAL.curie('name'),
-                   model_uri=OSCAL.ParameterProperty_name, domain=ParameterProperty, range=str)
+                   model_uri=OSCAL.ParameterProperty_name, domain=ParameterProperty, range=Union[str, "ParameterPropNameEnum", "RmfParameterPropNameEnum"])
 
 slots.Link_href = Slot(uri=OSCAL.href, name="Link_href", curie=OSCAL.curie('href'),
                    model_uri=OSCAL.Link_href, domain=Link, range=str)
 
 slots.Link_rel = Slot(uri=OSCAL.rel, name="Link_rel", curie=OSCAL.curie('rel'),
-                   model_uri=OSCAL.Link_rel, domain=Link, range=Optional[str])
+                   model_uri=OSCAL.Link_rel, domain=Link, range=Optional[Union[str, "MetadataLinkRelEnum"]])
 
 slots.Resource_uuid = Slot(uri=OSCAL.uuid, name="Resource_uuid", curie=OSCAL.curie('uuid'),
                    model_uri=OSCAL.Resource_uuid, domain=Resource, range=str)
@@ -11291,7 +11634,7 @@ slots.ResourceLink_href = Slot(uri=OSCAL.href, name="ResourceLink_href", curie=O
                    model_uri=OSCAL.ResourceLink_href, domain=ResourceLink, range=str)
 
 slots.Base64Resource_value = Slot(uri=OSCAL.value, name="Base64Resource_value", curie=OSCAL.curie('value'),
-                   model_uri=OSCAL.Base64Resource_value, domain=Base64Resource, range=str)
+                   model_uri=OSCAL.Base64Resource_value, domain=Base64Resource, range=Union[str, Base64Type])
 
 slots.Part_id = Slot(uri=OSCAL.id, name="Part_id", curie=OSCAL.curie('id'),
                    model_uri=OSCAL.Part_id, domain=Part, range=Optional[str])
@@ -11450,10 +11793,10 @@ slots.InformationType_description = Slot(uri=OSCAL.description, name="Informatio
                    model_uri=OSCAL.InformationType_description, domain=InformationType, range=str)
 
 slots.ImpactLevel_base = Slot(uri=OSCAL.base, name="ImpactLevel_base", curie=OSCAL.curie('base'),
-                   model_uri=OSCAL.ImpactLevel_base, domain=ImpactLevel, range=str)
+                   model_uri=OSCAL.ImpactLevel_base, domain=ImpactLevel, range=Union[str, "Fips199ImpactLevelEnum"])
 
 slots.ImpactLevel_selected = Slot(uri=OSCAL.selected, name="ImpactLevel_selected", curie=OSCAL.curie('selected'),
-                   model_uri=OSCAL.ImpactLevel_selected, domain=ImpactLevel, range=Optional[str])
+                   model_uri=OSCAL.ImpactLevel_selected, domain=ImpactLevel, range=Optional[Union[str, "Fips199ImpactLevelEnum"]])
 
 slots.SecurityImpactLevel_security_objective_confidentiality = Slot(uri=OSCAL.security_objective_confidentiality, name="SecurityImpactLevel_security-objective-confidentiality", curie=OSCAL.curie('security_objective_confidentiality'),
                    model_uri=OSCAL.SecurityImpactLevel_security_objective_confidentiality, domain=SecurityImpactLevel, range=str)
@@ -11600,7 +11943,7 @@ slots.SspSystemCharacteristicsProp_name = Slot(uri=OSCAL.name, name="SspSystemCh
                    model_uri=OSCAL.SspSystemCharacteristicsProp_name, domain=SspSystemCharacteristicsProp, range=Union[str, "SystemCharacteristicsPropNameEnum"])
 
 slots.SspSystemCharacteristicsProp_value = Slot(uri=OSCAL.value, name="SspSystemCharacteristicsProp_value", curie=OSCAL.curie('value'),
-                   model_uri=OSCAL.SspSystemCharacteristicsProp_value, domain=SspSystemCharacteristicsProp, range=str)
+                   model_uri=OSCAL.SspSystemCharacteristicsProp_value, domain=SspSystemCharacteristicsProp, range=Union[str, "AssuranceLevelValueEnum", "CloudDeploymentModelEnum", "CloudServiceModelEnum"])
 
 slots.SspSystemInformationProp_name = Slot(uri=OSCAL.name, name="SspSystemInformationProp_name", curie=OSCAL.curie('name'),
                    model_uri=OSCAL.SspSystemInformationProp_name, domain=SspSystemInformationProp, range=Union[str, "SystemInformationPropNameEnum"])
@@ -11621,25 +11964,25 @@ slots.SspAllowsAuthenticatedScanProp_value = Slot(uri=OSCAL.value, name="SspAllo
                    model_uri=OSCAL.SspAllowsAuthenticatedScanProp_value, domain=SspAllowsAuthenticatedScanProp, range=Union[str, "AllowsAuthenticatedScanEnum"])
 
 slots.SspSystemInformationLink_rel = Slot(uri=OSCAL.rel, name="SspSystemInformationLink_rel", curie=OSCAL.curie('rel'),
-                   model_uri=OSCAL.SspSystemInformationLink_rel, domain=SspSystemInformationLink, range=Optional[str])
+                   model_uri=OSCAL.SspSystemInformationLink_rel, domain=SspSystemInformationLink, range=Optional[Union[str, "SystemInformationLinkRelEnum"]])
 
 slots.SspDiagramLink_rel = Slot(uri=OSCAL.rel, name="SspDiagramLink_rel", curie=OSCAL.curie('rel'),
-                   model_uri=OSCAL.SspDiagramLink_rel, domain=SspDiagramLink, range=Optional[str])
+                   model_uri=OSCAL.SspDiagramLink_rel, domain=SspDiagramLink, range=Optional[Union[str, "DiagramLinkRelEnum"]])
 
 slots.SspLeveragedAuthorizationLink_rel = Slot(uri=OSCAL.rel, name="SspLeveragedAuthorizationLink_rel", curie=OSCAL.curie('rel'),
-                   model_uri=OSCAL.SspLeveragedAuthorizationLink_rel, domain=SspLeveragedAuthorizationLink, range=Optional[str])
+                   model_uri=OSCAL.SspLeveragedAuthorizationLink_rel, domain=SspLeveragedAuthorizationLink, range=Optional[Union[str, "LeveragedAuthorizationLinkRelEnum"]])
 
 slots.SspByComponentLink_rel = Slot(uri=OSCAL.rel, name="SspByComponentLink_rel", curie=OSCAL.curie('rel'),
-                   model_uri=OSCAL.SspByComponentLink_rel, domain=SspByComponentLink, range=Optional[str])
+                   model_uri=OSCAL.SspByComponentLink_rel, domain=SspByComponentLink, range=Optional[Union[str, "ByComponentLinkRelEnum"]])
 
 slots.SspSystemCharacteristicsResponsibleParty_role_id = Slot(uri=OSCAL.role_id, name="SspSystemCharacteristicsResponsibleParty_role-id", curie=OSCAL.curie('role_id'),
-                   model_uri=OSCAL.SspSystemCharacteristicsResponsibleParty_role_id, domain=SspSystemCharacteristicsResponsibleParty, range=str)
+                   model_uri=OSCAL.SspSystemCharacteristicsResponsibleParty_role_id, domain=SspSystemCharacteristicsResponsibleParty, range=Union[str, "SystemCharacteristicsResponsibleRoleIdEnum"])
 
 slots.SspImplementedRequirementResponsibleRole_role_id = Slot(uri=OSCAL.role_id, name="SspImplementedRequirementResponsibleRole_role-id", curie=OSCAL.curie('role_id'),
-                   model_uri=OSCAL.SspImplementedRequirementResponsibleRole_role_id, domain=SspImplementedRequirementResponsibleRole, range=str)
+                   model_uri=OSCAL.SspImplementedRequirementResponsibleRole_role_id, domain=SspImplementedRequirementResponsibleRole, range=Union[str, "ImplementedRequirementResponsibleRoleIdEnum"])
 
 slots.SspByComponentResponsibleRole_role_id = Slot(uri=OSCAL.role_id, name="SspByComponentResponsibleRole_role-id", curie=OSCAL.curie('role_id'),
-                   model_uri=OSCAL.SspByComponentResponsibleRole_role_id, domain=SspByComponentResponsibleRole, range=str)
+                   model_uri=OSCAL.SspByComponentResponsibleRole_role_id, domain=SspByComponentResponsibleRole, range=Union[str, "ByComponentResponsibleRoleIdEnum"])
 
 slots.SspSystemComponent_props = Slot(uri=OSCAL.props, name="SspSystemComponent_props", curie=OSCAL.curie('props'),
                    model_uri=OSCAL.SspSystemComponent_props, domain=SspSystemComponent, range=Optional[Union[Union[dict, SspAllowsAuthenticatedScanProp], list[Union[dict, SspAllowsAuthenticatedScanProp]]]])
@@ -11684,19 +12027,19 @@ slots.SelectObjectiveById_objective_id = Slot(uri=OSCAL.objective_id, name="Sele
                    model_uri=OSCAL.SelectObjectiveById_objective_id, domain=SelectObjectiveById, range=str)
 
 slots.AssessmentSubject_type = Slot(uri=OSCAL.type, name="AssessmentSubject_type", curie=OSCAL.curie('type'),
-                   model_uri=OSCAL.AssessmentSubject_type, domain=AssessmentSubject, range=str)
+                   model_uri=OSCAL.AssessmentSubject_type, domain=AssessmentSubject, range=Union[str, "AssessmentSubjectTypeEnum"])
 
 slots.SelectSubjectById_subject_uuid = Slot(uri=OSCAL.subject_uuid, name="SelectSubjectById_subject-uuid", curie=OSCAL.curie('subject_uuid'),
                    model_uri=OSCAL.SelectSubjectById_subject_uuid, domain=SelectSubjectById, range=str)
 
 slots.SelectSubjectById_type = Slot(uri=OSCAL.type, name="SelectSubjectById_type", curie=OSCAL.curie('type'),
-                   model_uri=OSCAL.SelectSubjectById_type, domain=SelectSubjectById, range=str)
+                   model_uri=OSCAL.SelectSubjectById_type, domain=SelectSubjectById, range=Union[str, "SelectSubjectTypeEnum"])
 
 slots.SubjectReference_subject_uuid = Slot(uri=OSCAL.subject_uuid, name="SubjectReference_subject-uuid", curie=OSCAL.curie('subject_uuid'),
                    model_uri=OSCAL.SubjectReference_subject_uuid, domain=SubjectReference, range=str)
 
 slots.SubjectReference_type = Slot(uri=OSCAL.type, name="SubjectReference_type", curie=OSCAL.curie('type'),
-                   model_uri=OSCAL.SubjectReference_type, domain=SubjectReference, range=str)
+                   model_uri=OSCAL.SubjectReference_type, domain=SubjectReference, range=Union[str, "SelectSubjectTypeEnum"])
 
 slots.AssessmentSubjectPlaceholder_uuid = Slot(uri=OSCAL.uuid, name="AssessmentSubjectPlaceholder_uuid", curie=OSCAL.curie('uuid'),
                    model_uri=OSCAL.AssessmentSubjectPlaceholder_uuid, domain=AssessmentSubjectPlaceholder, range=str)
@@ -11744,7 +12087,7 @@ slots.Task_uuid = Slot(uri=OSCAL.uuid, name="Task_uuid", curie=OSCAL.curie('uuid
                    model_uri=OSCAL.Task_uuid, domain=Task, range=str)
 
 slots.Task_type = Slot(uri=OSCAL.type, name="Task_type", curie=OSCAL.curie('type'),
-                   model_uri=OSCAL.Task_type, domain=Task, range=str)
+                   model_uri=OSCAL.Task_type, domain=Task, range=Union[str, "TaskTypeEnum"])
 
 slots.Task_title = Slot(uri=OSCAL.title, name="Task_title", curie=OSCAL.curie('title'),
                    model_uri=OSCAL.Task_title, domain=Task, range=str)
@@ -11762,7 +12105,7 @@ slots.WithinDateRange_end = Slot(uri=OSCAL.end, name="WithinDateRange_end", curi
                    model_uri=OSCAL.WithinDateRange_end, domain=WithinDateRange, range=str)
 
 slots.AtFrequency_period = Slot(uri=OSCAL.period, name="AtFrequency_period", curie=OSCAL.curie('period'),
-                   model_uri=OSCAL.AtFrequency_period, domain=AtFrequency, range=int)
+                   model_uri=OSCAL.AtFrequency_period, domain=AtFrequency, range=Union[int, PositiveIntegerType])
 
 slots.AtFrequency_unit = Slot(uri=OSCAL.unit, name="AtFrequency_unit", curie=OSCAL.curie('unit'),
                    model_uri=OSCAL.AtFrequency_unit, domain=AtFrequency, range=Union[str, "TimingUnitEnum"])
@@ -11777,7 +12120,7 @@ slots.AssociatedActivity_subjects = Slot(uri=OSCAL.subjects, name="AssociatedAct
                    model_uri=OSCAL.AssociatedActivity_subjects, domain=AssociatedActivity, range=Union[Union[dict, AssessmentSubject], list[Union[dict, AssessmentSubject]]])
 
 slots.AssessmentPart_name = Slot(uri=OSCAL.name, name="AssessmentPart_name", curie=OSCAL.curie('name'),
-                   model_uri=OSCAL.AssessmentPart_name, domain=AssessmentPart, range=str)
+                   model_uri=OSCAL.AssessmentPart_name, domain=AssessmentPart, range=Union[str, "AssessmentPartNameEnum"])
 
 slots.AssessmentPart_parts = Slot(uri=OSCAL.parts, name="AssessmentPart_parts", curie=OSCAL.curie('parts'),
                    model_uri=OSCAL.AssessmentPart_parts, domain=AssessmentPart, range=Optional[Union[Union[dict, "AssessmentPart"], list[Union[dict, "AssessmentPart"]]]])
@@ -11804,7 +12147,7 @@ slots.SystemComponent_uuid = Slot(uri=OSCAL.uuid, name="SystemComponent_uuid", c
                    model_uri=OSCAL.SystemComponent_uuid, domain=SystemComponent, range=str)
 
 slots.SystemComponent_type = Slot(uri=OSCAL.type, name="SystemComponent_type", curie=OSCAL.curie('type'),
-                   model_uri=OSCAL.SystemComponent_type, domain=SystemComponent, range=str)
+                   model_uri=OSCAL.SystemComponent_type, domain=SystemComponent, range=Union[str, "ComponentTypeEnum"])
 
 slots.SystemComponent_title = Slot(uri=OSCAL.title, name="SystemComponent_title", curie=OSCAL.curie('title'),
                    model_uri=OSCAL.SystemComponent_title, domain=SystemComponent, range=str)
@@ -11831,13 +12174,13 @@ slots.Protocol_name = Slot(uri=OSCAL.name, name="Protocol_name", curie=OSCAL.cur
                    model_uri=OSCAL.Protocol_name, domain=Protocol, range=Optional[str])
 
 slots.PortRange_start = Slot(uri=OSCAL.start, name="PortRange_start", curie=OSCAL.curie('start'),
-                   model_uri=OSCAL.PortRange_start, domain=PortRange, range=Optional[int])
+                   model_uri=OSCAL.PortRange_start, domain=PortRange, range=Optional[Union[int, NonNegativeIntegerType]])
 
 slots.PortRange_end = Slot(uri=OSCAL.end, name="PortRange_end", curie=OSCAL.curie('end'),
-                   model_uri=OSCAL.PortRange_end, domain=PortRange, range=Optional[int])
+                   model_uri=OSCAL.PortRange_end, domain=PortRange, range=Optional[Union[int, NonNegativeIntegerType]])
 
 slots.ImplementationStatus_state = Slot(uri=OSCAL.state, name="ImplementationStatus_state", curie=OSCAL.curie('state'),
-                   model_uri=OSCAL.ImplementationStatus_state, domain=ImplementationStatus, range=str)
+                   model_uri=OSCAL.ImplementationStatus_state, domain=ImplementationStatus, range=Union[str, "ImplementationStatusStateEnum"])
 
 slots.SystemUser_uuid = Slot(uri=OSCAL.uuid, name="SystemUser_uuid", curie=OSCAL.curie('uuid'),
                    model_uri=OSCAL.SystemUser_uuid, domain=SystemUser, range=str)
@@ -11885,22 +12228,22 @@ slots.SystemId_id = Slot(uri=OSCAL.id, name="SystemId_id", curie=OSCAL.curie('id
                    model_uri=OSCAL.SystemId_id, domain=SystemId, range=str)
 
 slots.SystemId_identifier_type = Slot(uri=OSCAL.identifier_type, name="SystemId_identifier-type", curie=OSCAL.curie('identifier_type'),
-                   model_uri=OSCAL.SystemId_identifier_type, domain=SystemId, range=Optional[str])
+                   model_uri=OSCAL.SystemId_identifier_type, domain=SystemId, range=Optional[Union[str, "SystemIdentifierTypeEnum"]])
 
 slots.ImplementationCommonProperty_name = Slot(uri=OSCAL.name, name="ImplementationCommonProperty_name", curie=OSCAL.curie('name'),
                    model_uri=OSCAL.ImplementationCommonProperty_name, domain=ImplementationCommonProperty, range=Union[str, "ImplementationPropNameEnum"])
 
 slots.ImplementationCommonProperty_value = Slot(uri=OSCAL.value, name="ImplementationCommonProperty_value", curie=OSCAL.curie('value'),
-                   model_uri=OSCAL.ImplementationCommonProperty_value, domain=ImplementationCommonProperty, range=str)
+                   model_uri=OSCAL.ImplementationCommonProperty_value, domain=ImplementationCommonProperty, range=Union[str, "ImplementationYesNoEnum", "ImplementationAssetTypeEnum", "ImplementationPointEnum", "ImplementationIpAddressClassEnum", "ImplementationDirectionEnum", "UserTypeEnum", "UserPrivilegeLevelEnum"])
 
 slots.ImplementationCommonLink_rel = Slot(uri=OSCAL.rel, name="ImplementationCommonLink_rel", curie=OSCAL.curie('rel'),
-                   model_uri=OSCAL.ImplementationCommonLink_rel, domain=ImplementationCommonLink, range=Optional[str])
+                   model_uri=OSCAL.ImplementationCommonLink_rel, domain=ImplementationCommonLink, range=Optional[Union[str, "ImplementationLinkRelEnum"]])
 
 slots.ImplementationResponsibleRole_role_id = Slot(uri=OSCAL.role_id, name="ImplementationResponsibleRole_role-id", curie=OSCAL.curie('role_id'),
-                   model_uri=OSCAL.ImplementationResponsibleRole_role_id, domain=ImplementationResponsibleRole, range=str)
+                   model_uri=OSCAL.ImplementationResponsibleRole_role_id, domain=ImplementationResponsibleRole, range=Union[str, "ImplementationResponsibleRoleIdEnum"])
 
 slots.ImplementationResponsibleParty_role_id = Slot(uri=OSCAL.role_id, name="ImplementationResponsibleParty_role-id", curie=OSCAL.curie('role_id'),
-                   model_uri=OSCAL.ImplementationResponsibleParty_role_id, domain=ImplementationResponsibleParty, range=str)
+                   model_uri=OSCAL.ImplementationResponsibleParty_role_id, domain=ImplementationResponsibleParty, range=Union[str, "ImplementationResponsibleRoleIdEnum"])
 
 slots.Origin_actors = Slot(uri=OSCAL.actors, name="Origin_actors", curie=OSCAL.curie('actors'),
                    model_uri=OSCAL.Origin_actors, domain=Origin, range=Union[Union[dict, "OriginActor"], list[Union[dict, "OriginActor"]]])
@@ -11984,7 +12327,7 @@ slots.Risk_statement = Slot(uri=OSCAL.statement, name="Risk_statement", curie=OS
                    model_uri=OSCAL.Risk_statement, domain=Risk, range=str)
 
 slots.Risk_status = Slot(uri=OSCAL.status, name="Risk_status", curie=OSCAL.curie('status'),
-                   model_uri=OSCAL.Risk_status, domain=Risk, range=str)
+                   model_uri=OSCAL.Risk_status, domain=Risk, range=Union[str, "RiskStatusEnum"])
 
 slots.ThreatId_system = Slot(uri=OSCAL.system, name="ThreatId_system", curie=OSCAL.curie('system'),
                    model_uri=OSCAL.ThreatId_system, domain=ThreatId, range=str)
@@ -12026,7 +12369,7 @@ slots.Response_description = Slot(uri=OSCAL.description, name="Response_descript
                    model_uri=OSCAL.Response_description, domain=Response, range=str)
 
 slots.Response_lifecycle = Slot(uri=OSCAL.lifecycle, name="Response_lifecycle", curie=OSCAL.curie('lifecycle'),
-                   model_uri=OSCAL.Response_lifecycle, domain=Response, range=str)
+                   model_uri=OSCAL.Response_lifecycle, domain=Response, range=Union[str, "ResponseLifecycleEnum"])
 
 slots.RequiredAsset_uuid = Slot(uri=OSCAL.uuid, name="RequiredAsset_uuid", curie=OSCAL.curie('uuid'),
                    model_uri=OSCAL.RequiredAsset_uuid, domain=RequiredAsset, range=str)
@@ -12236,7 +12579,7 @@ slots.Map_uuid = Slot(uri=OSCAL.uuid, name="Map_uuid", curie=OSCAL.curie('uuid')
                    model_uri=OSCAL.Map_uuid, domain=Map, range=str)
 
 slots.Map_relationship = Slot(uri=OSCAL.relationship, name="Map_relationship", curie=OSCAL.curie('relationship'),
-                   model_uri=OSCAL.Map_relationship, domain=Map, range=str)
+                   model_uri=OSCAL.Map_relationship, domain=Map, range=Union[str, "RelationshipEnum"])
 
 slots.Map_sources = Slot(uri=OSCAL.sources, name="Map_sources", curie=OSCAL.curie('sources'),
                    model_uri=OSCAL.Map_sources, domain=Map, range=Union[Union[dict, "MappingItem"], list[Union[dict, "MappingItem"]]])
@@ -12251,7 +12594,7 @@ slots.MappingItem_id_ref = Slot(uri=OSCAL.id_ref, name="MappingItem_id-ref", cur
                    model_uri=OSCAL.MappingItem_id_ref, domain=MappingItem, range=str)
 
 slots.MappingResourceReference_type = Slot(uri=OSCAL.type, name="MappingResourceReference_type", curie=OSCAL.curie('type'),
-                   model_uri=OSCAL.MappingResourceReference_type, domain=MappingResourceReference, range=str)
+                   model_uri=OSCAL.MappingResourceReference_type, domain=MappingResourceReference, range=Union[str, "MappingResourceTypeEnum"])
 
 slots.MappingResourceReference_href = Slot(uri=OSCAL.href, name="MappingResourceReference_href", curie=OSCAL.curie('href'),
                    model_uri=OSCAL.MappingResourceReference_href, domain=MappingResourceReference, range=str)
@@ -12275,7 +12618,7 @@ slots.GapSummary_unmapped_controls = Slot(uri=OSCAL.unmapped_controls, name="Gap
                    model_uri=OSCAL.GapSummary_unmapped_controls, domain=GapSummary, range=Union[Union[dict, SelectControlById], list[Union[dict, SelectControlById]]])
 
 slots.ConfidenceScore_category = Slot(uri=OSCAL.category, name="ConfidenceScore_category", curie=OSCAL.curie('category'),
-                   model_uri=OSCAL.ConfidenceScore_category, domain=ConfidenceScore, range=Optional[str])
+                   model_uri=OSCAL.ConfidenceScore_category, domain=ConfidenceScore, range=Optional[Union[str, "ConfidenceCategoryEnum"]])
 
 slots.Coverage_target_coverage = Slot(uri=OSCAL.target_coverage, name="Coverage_target-coverage", curie=OSCAL.curie('target_coverage'),
                    model_uri=OSCAL.Coverage_target_coverage, domain=Coverage, range=float)

@@ -1,6 +1,6 @@
-package None;
+package example;
 
-/* metamodel_version: 1.11.0 */
+/* metamodel_version: 1.12.0 */
 /* version: 1.2.3 */
 import java.net.URI;
 import java.time.LocalDate;
@@ -16,8 +16,8 @@ import lombok.*;
 @EqualsAndHashCode(callSuper=false)
 public class PortRange  {
 
-  private String start;
-  private String end;
+  private Integer start;
+  private Integer end;
   private String transport;
   private String remarks;
 

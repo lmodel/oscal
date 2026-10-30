@@ -224,7 +224,14 @@
                     ]
                 },
                 "position": {
-                    "$ref": "#/$defs/AdditionPositionEnum",
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/AdditionPositionEnum"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
                     "description": "Where to add new content relative to the targeted element."
                 },
                 "props": {
@@ -313,8 +320,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Indicates the type of address. Recommended values: home, work. Other values are permitted (OSCAL allow-other=\"yes\").",
-                    "type": "string"
+                    "description": "Indicates the type of address. Recommended values: home, work. Other values are permitted (OSCAL allow-other=\"yes\")."
                 }
             },
             "title": "Address",
@@ -1053,8 +1059,7 @@
                             "type": "string"
                         }
                     ],
-                    "description": "Indicates the nature or kind of the containing object.",
-                    "type": "string"
+                    "description": "Indicates the nature or kind of the containing object."
                 }
             },
             "required": [
@@ -1856,7 +1861,14 @@
             "description": "Defines how to resolve duplicate instances of the same control (e.g., controls with the same ID) encountered in a profile merge.",
             "properties": {
                 "method": {
-                    "$ref": "#/$defs/CombinationMethodEnum",
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/CombinationMethodEnum"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
                     "description": "Method indicator used by the containing OSCAL context. Allowed values are constrained by class-level slot_usage."
                 }
             },
@@ -2024,8 +2036,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Confidence category label or qualifier category value.",
-                    "type": "string"
+                    "description": "Confidence category label or qualifier category value."
                 },
                 "percentage": {
                     "description": "A decimal percentage value in the range 0 to 1.",
@@ -2655,8 +2666,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Method used to determine the coverage value. Recommended values are in CoverageGenerationMethodEnum; other values are permitted.",
-                    "type": "string"
+                    "description": "Method used to determine the coverage value. Recommended values are in CoverageGenerationMethodEnum; other values are permitted."
                 },
                 "target_coverage": {
                     "description": "Percentage coverage of targets by sources.",
@@ -3468,8 +3478,7 @@
                             "type": "string"
                         }
                     ],
-                    "description": "The digest method by which a hash is derived. Recommended values are in HashAlgorithmEnum; other values are permitted (OSCAL allow-other=\"yes\").",
-                    "type": "string"
+                    "description": "The digest method by which a hash is derived. Recommended values are in HashAlgorithmEnum; other values are permitted (OSCAL allow-other=\"yes\")."
                 },
                 "value": {
                     "description": "The value associated with the containing object.",
@@ -3542,8 +3551,7 @@
                             "type": "string"
                         }
                     ],
-                    "description": "The prescribed base (Confidentiality, Integrity, or Availability) security impact level.",
-                    "type": "string"
+                    "description": "The prescribed base (Confidentiality, Integrity, or Availability) security impact level."
                 },
                 "links": {
                     "description": "A list of links.",
@@ -3577,8 +3585,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The selected (Confidentiality, Integrity, or Availability) security impact level.",
-                    "type": "string"
+                    "description": "The selected (Confidentiality, Integrity, or Availability) security impact level."
                 }
             },
             "required": [
@@ -3728,8 +3735,7 @@
                             "type": "string"
                         }
                     ],
-                    "description": "Indicates the value of the attribute, characteristic, or quality.",
-                    "type": "string"
+                    "description": "Indicates the value of the attribute, characteristic, or quality."
                 }
             },
             "required": [
@@ -3992,8 +3998,7 @@
                             "type": "string"
                         }
                     ],
-                    "description": "Identifies the implementation status of the control or control objective. Recommended values are in ImplementationStatusStateEnum; other values are permitted (OSCAL allow-other=\"yes\").",
-                    "type": "string"
+                    "description": "Identifies the implementation status of the control or control objective. Recommended values are in ImplementationStatusStateEnum; other values are permitted (OSCAL allow-other=\"yes\")."
                 }
             },
             "required": [
@@ -4465,8 +4470,7 @@
                             "type": "string"
                         }
                     ],
-                    "description": "Specifies the information type identification system used. Recommended values are in InformationTypeCategorizationSystemEnum; other values are permitted (OSCAL allow-other=\"yes\").",
-                    "type": "string"
+                    "description": "Specifies the information type identification system used. Recommended values are in InformationTypeCategorizationSystemEnum; other values are permitted (OSCAL allow-other=\"yes\")."
                 }
             },
             "required": [
@@ -4585,7 +4589,14 @@
                     ]
                 },
                 "order": {
-                    "$ref": "#/$defs/InsertOrderEnum",
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/InsertOrderEnum"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
                     "description": "A designation of how a selection of controls is to be ordered."
                 }
             },
@@ -5112,8 +5123,7 @@
                             "type": "string"
                         }
                     ],
-                    "description": "Indicates the value of the attribute, characteristic, or quality.",
-                    "type": "string"
+                    "description": "Indicates the value of the attribute, characteristic, or quality."
                 }
             },
             "required": [
@@ -5190,7 +5200,14 @@
                     ]
                 },
                 "matching_rationale": {
-                    "$ref": "#/$defs/MatchingRationaleEnum",
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/MatchingRationaleEnum"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
                     "description": "The rationale method used to relate mapped items."
                 },
                 "ns": {
@@ -5229,8 +5246,7 @@
                             "type": "string"
                         }
                     ],
-                    "description": "Relationship type for a mapping entry. OSCAL namespace values are defined by RelationshipEnum.",
-                    "type": "string"
+                    "description": "Relationship type for a mapping entry. OSCAL namespace values are defined by RelationshipEnum."
                 },
                 "remarks": {
                     "description": "Additional commentary about the containing object.",
@@ -5319,11 +5335,25 @@
                     "type": "array"
                 },
                 "matching_rationale": {
-                    "$ref": "#/$defs/MatchingRationaleEnum",
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/MatchingRationaleEnum"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
                     "description": "The rationale method used to relate mapped items."
                 },
                 "method": {
-                    "$ref": "#/$defs/MappingMethodEnum",
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/MappingMethodEnum"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
                     "description": "Method indicator used by the containing OSCAL context. Allowed values are constrained by class-level slot_usage."
                 },
                 "props": {
@@ -5359,7 +5389,14 @@
                     "description": "Reference to the mapping source resource."
                 },
                 "status": {
-                    "$ref": "#/$defs/MappingStatusEnum",
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/MappingStatusEnum"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
                     "description": "Status indicator used by the containing OSCAL context. Allowed values are constrained by class-level slot_usage."
                 },
                 "target_gap_summary": {
@@ -5649,8 +5686,7 @@
                             "type": "string"
                         }
                     ],
-                    "description": "The semantic type of the referenced resource. OSCAL defines catalog and profile, while locally defined values are also permitted.",
-                    "type": "string"
+                    "description": "The semantic type of the referenced resource. OSCAL defines catalog and profile, while locally defined values are also permitted."
                 }
             },
             "required": [
@@ -6119,8 +6155,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The reason the objective was given its status. Recommended values are in ObjectiveStatusReasonEnum; other values are permitted (OSCAL allow-other=\"yes\").",
-                    "type": "string"
+                    "description": "The reason the objective was given its status. Recommended values are in ObjectiveStatusReasonEnum; other values are permitted (OSCAL allow-other=\"yes\")."
                 },
                 "remarks": {
                     "description": "Additional commentary about the containing object.",
@@ -6200,8 +6235,7 @@
                             {
                                 "type": "string"
                             }
-                        ],
-                        "type": "string"
+                        ]
                     },
                     "type": "array"
                 },
@@ -6269,8 +6303,7 @@
                             {
                                 "type": "string"
                             }
-                        ],
-                        "type": "string"
+                        ]
                     },
                     "type": [
                         "array",
@@ -7428,7 +7461,14 @@
                     ]
                 },
                 "how_many": {
-                    "$ref": "#/$defs/ParameterCardinalityEnum",
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/ParameterCardinalityEnum"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
                     "description": "Describes the number of selections that must occur. Without this setting, only one value should be assumed to be permitted."
                 }
             },
@@ -8272,7 +8312,14 @@
                     ]
                 },
                 "transport": {
-                    "$ref": "#/$defs/TransportEnum",
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/TransportEnum"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
                     "description": "Indicates the transport type."
                 }
             },
@@ -9060,7 +9107,14 @@
                     ]
                 },
                 "by_item_name": {
-                    "$ref": "#/$defs/ByItemNameEnum",
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/ByItemNameEnum"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
                     "description": "Identify items to remove by the item's information object type name."
                 },
                 "by_name": {
@@ -9368,8 +9422,7 @@
                             "type": "string"
                         }
                     ],
-                    "description": "Indicates the value of the attribute, characteristic, or quality.",
-                    "type": "string"
+                    "description": "Indicates the value of the attribute, characteristic, or quality."
                 }
             },
             "required": [
@@ -9396,8 +9449,7 @@
                             "type": "string"
                         }
                     ],
-                    "description": "Identifies whether this is a recommendation or an actual plan. Recommended values are in ResponseLifecycleEnum; other values are permitted (OSCAL allow-other=\"yes\").",
-                    "type": "string"
+                    "description": "Identifies whether this is a recommendation or an actual plan. Recommended values are in ResponseLifecycleEnum; other values are permitted (OSCAL allow-other=\"yes\")."
                 },
                 "links": {
                     "description": "A list of links.",
@@ -10098,8 +10150,7 @@
                             "type": "string"
                         }
                     ],
-                    "description": "Status indicator used by the containing OSCAL context. Allowed values are constrained by class-level slot_usage.",
-                    "type": "string"
+                    "description": "Status indicator used by the containing OSCAL context. Allowed values are constrained by class-level slot_usage."
                 },
                 "threat_ids": {
                     "description": "The referenced threat identifiers.",
@@ -10232,8 +10283,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Identifies the risk change that prompted the log entry. Recommended values are in RiskStatusEnum; other values are permitted (OSCAL allow-other=\"yes\").",
-                    "type": "string"
+                    "description": "Identifies the risk change that prompted the log entry. Recommended values are in RiskStatusEnum; other values are permitted (OSCAL allow-other=\"yes\")."
                 },
                 "title": {
                     "description": "A human-readable name or title.",
@@ -10496,7 +10546,14 @@
                     ]
                 },
                 "with_child_controls": {
-                    "$ref": "#/$defs/WithChildControlsEnum",
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/WithChildControlsEnum"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
                     "description": "When a control is included, whether its child (dependent) controls are also included."
                 },
                 "with_ids": {
@@ -10580,8 +10637,7 @@
                             "type": "string"
                         }
                     ],
-                    "description": "Indicates the nature or kind of the containing object.",
-                    "type": "string"
+                    "description": "Indicates the nature or kind of the containing object."
                 }
             },
             "required": [
@@ -11352,8 +11408,7 @@
                             "type": "string"
                         }
                     ],
-                    "description": "Indicates the value of the attribute, characteristic, or quality.",
-                    "type": "string"
+                    "description": "Indicates the value of the attribute, characteristic, or quality."
                 }
             },
             "required": [
@@ -11501,8 +11556,7 @@
                             "type": "string"
                         }
                     ],
-                    "description": "Indicates the nature or kind of the containing object.",
-                    "type": "string"
+                    "description": "Indicates the nature or kind of the containing object."
                 },
                 "uuid": {
                     "description": "A machine-oriented, globally unique identifier with a cross-instance scope.",
@@ -11755,8 +11809,7 @@
                             "type": "string"
                         }
                     ],
-                    "description": "Indicates the nature or kind of the containing object.",
-                    "type": "string"
+                    "description": "Indicates the nature or kind of the containing object."
                 }
             },
             "required": [
@@ -12006,8 +12059,7 @@
                             "type": "string"
                         }
                     ],
-                    "description": "Indicates the nature or kind of the containing object.",
-                    "type": "string"
+                    "description": "Indicates the nature or kind of the containing object."
                 },
                 "uuid": {
                     "description": "A machine-oriented, globally unique identifier with a cross-instance scope.",
@@ -12045,8 +12097,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "A human-readable label for a specific identifier scheme. Recommended values are in SystemIdentifierTypeEnum; other URI values are permitted (OSCAL allow-other=\"yes\").",
-                    "type": "string"
+                    "description": "A human-readable label for a specific identifier scheme. Recommended values are in SystemIdentifierTypeEnum; other URI values are permitted (OSCAL allow-other=\"yes\")."
                 }
             },
             "required": [
@@ -12478,8 +12529,7 @@
                             "type": "string"
                         }
                     ],
-                    "description": "Indicates the nature or kind of the containing object.",
-                    "type": "string"
+                    "description": "Indicates the nature or kind of the containing object."
                 },
                 "uuid": {
                     "description": "A machine-oriented, globally unique identifier with a cross-instance scope.",
@@ -12547,8 +12597,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "Indicates the type of phone number. Recommended values: home, office, mobile. Other values are permitted (OSCAL allow-other=\"yes\").",
-                    "type": "string"
+                    "description": "Indicates the type of phone number. Recommended values: home, office, mobile. Other values are permitted (OSCAL allow-other=\"yes\")."
                 }
             },
             "required": [
@@ -12841,9 +12890,9 @@
     },
     "$id": "https://w3id.org/lmodel/oscal",
     "$schema": "https://json-schema.org/draft/2019-09/schema",
-    "additionalProperties": true,
+    "additionalProperties": false,
     "description": "A root wrapper for an OSCAL document, which may be of any OSCAL document type (e.g. Catalog, Profile, Assessment Plan, SSP).",
-    "metamodel_version": "1.11.0",
+    "metamodel_version": "1.12.0",
     "title": "oscal",
     "type": "object",
     "version": "1.2.3"

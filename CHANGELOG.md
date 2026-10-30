@@ -6,6 +6,10 @@ The `v0.0.0` tag is a baseline, not a release: it marks where versioning starts 
 
 ## [Unreleased]
 
+### Changed
+
+- **linkml and linkml-runtime are locked at 1.12.1, up from 1.11.1.** The generated artefacts, the Python models and `docs/schema/oscal.yaml` are regenerated with it.
+
 ### Fixed
 
 - **`Base64Type`, `NonNegativeIntegerType` and `PositiveIntegerType` name the type they refine.** Each now says `typeof: string` or `typeof: integer` beside its own `uri`, so the Java generator maps them; under 1.11.1 it wrote `period`, `start` and `end` as `String`, and 1.12.1 stops on them.
