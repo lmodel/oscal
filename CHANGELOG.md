@@ -6,6 +6,10 @@ The `v0.0.0` tag is a baseline, not a release: it marks where versioning starts 
 
 ## [Unreleased]
 
+### Fixed
+
+- **`Base64Type`, `NonNegativeIntegerType` and `PositiveIntegerType` name the type they refine.** Each now says `typeof: string` or `typeof: integer` beside its own `uri`, so the Java generator maps them; under 1.11.1 it wrote `period`, `start` and `end` as `String`, and 1.12.1 stops on them.
+
 ## [0.1.1] - 2026-10-29
 
 ### Security

@@ -81,6 +81,7 @@ types:
       A non-colonized XML NCName token.
 
   Base64Type:
+    typeof: string
     uri: xsd:base64Binary
     base: str
     description: >-
