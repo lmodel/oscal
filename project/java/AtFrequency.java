@@ -1,6 +1,6 @@
-package None;
+package example;
 
-/* metamodel_version: 1.11.0 */
+/* metamodel_version: 1.12.0 */
 /* version: 1.2.3 */
 import java.net.URI;
 import java.time.LocalDate;
@@ -16,7 +16,7 @@ import lombok.*;
 @EqualsAndHashCode(callSuper=false)
 public class AtFrequency  {
 
-  private String period;
+  private Integer period;
   private String unit;
   private String remarks;
 

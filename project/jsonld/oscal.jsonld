@@ -535,6 +535,7 @@
       "definition_uri": "https://w3id.org/lmodel/oscal/Base64Type",
       "description": "Binary data encoded using Base64 as defined by RFC4648.",
       "from_schema": "https://w3id.org/lmodel/oscal/oscal_catalog",
+      "typeof": "string",
       "base": "str",
       "uri": "http://www.w3.org/2001/XMLSchema#base64Binary",
       "@type": "TypeDefinition"
@@ -554,6 +555,7 @@
       "definition_uri": "https://w3id.org/lmodel/oscal/NonNegativeIntegerType",
       "description": "A non-negative integer value (>= 0), as used for port range boundaries. OSCAL 1.2.2 restored this minimum in its JSON datatype. Each slot with this range repeats it, because the generated Pydantic model reads a minimum from the slot and not from the type.",
       "from_schema": "https://w3id.org/lmodel/oscal/oscal_assessment_plan",
+      "typeof": "integer",
       "base": "int",
       "uri": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
       "minimum_value": 0,
@@ -564,6 +566,7 @@
       "definition_uri": "https://w3id.org/lmodel/oscal/PositiveIntegerType",
       "description": "A positive integer value (>= 1), as used for task recurrence periods. OSCAL 1.2.2 restored this minimum in its JSON datatype. Each slot with this range repeats it, because the generated Pydantic model reads a minimum from the slot and not from the type.",
       "from_schema": "https://w3id.org/lmodel/oscal/oscal_assessment_plan",
+      "typeof": "integer",
       "base": "int",
       "uri": "http://www.w3.org/2001/XMLSchema#positiveInteger",
       "minimum_value": 1,
@@ -22418,11 +22421,10 @@
       "@type": "ClassDefinition"
     }
   ],
-  "metamodel_version": "1.11.0",
+  "metamodel_version": "1.12.0",
   "source_file": "oscal.yaml",
-  "source_file_date": "2026-10-28T23:09:03",
+  "source_file_date": "2026-10-29T02:02:40",
   "source_file_size": 2432,
-  "generation_date": "2026-10-29T00:11:55",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/oscal.context.jsonld",

@@ -6182,6 +6182,7 @@ types:
     base: str
     description: A non-colonized XML NCName token.
   Base64Type:
+    typeof: string
     uri: xsd:base64Binary
     base: str
     description: Binary data encoded using Base64 as defined by RFC4648.
@@ -6191,6 +6192,7 @@ types:
     description: An email address string formatted according to RFC 6531.
     pattern: ^.+@.+$
   NonNegativeIntegerType:
+    typeof: integer
     uri: xsd:nonNegativeInteger
     base: int
     minimum_value: 0
@@ -6198,6 +6200,7 @@ types:
       this minimum in its JSON datatype. Each slot with this range repeats it, because the generated Pydantic
       model reads a minimum from the slot and not from the type.
   PositiveIntegerType:
+    typeof: integer
     uri: xsd:positiveInteger
     base: int
     minimum_value: 1

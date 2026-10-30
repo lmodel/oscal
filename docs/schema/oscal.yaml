@@ -468,6 +468,7 @@ types:
     definition_uri: https://w3id.org/lmodel/oscal/Base64Type
     description: Binary data encoded using Base64 as defined by RFC4648.
     from_schema: https://w3id.org/lmodel/oscal/oscal_catalog
+    typeof: string
     base: str
     uri: xsd:base64Binary
   EmailAddressType:
@@ -486,6 +487,7 @@ types:
       range repeats it, because the generated Pydantic model reads a minimum from
       the slot and not from the type.
     from_schema: https://w3id.org/lmodel/oscal/oscal_assessment_plan
+    typeof: integer
     base: int
     uri: xsd:nonNegativeInteger
     minimum_value: 0
@@ -497,6 +499,7 @@ types:
       range repeats it, because the generated Pydantic model reads a minimum from
       the slot and not from the type.
     from_schema: https://w3id.org/lmodel/oscal/oscal_assessment_plan
+    typeof: integer
     base: int
     uri: xsd:positiveInteger
     minimum_value: 1
@@ -19426,9 +19429,8 @@ classes:
         name: finding-uuid
         required: true
     class_uri: oscal:RelatedFinding
-metamodel_version: 1.11.0
+metamodel_version: 1.12.0
 source_file: oscal.yaml
-source_file_date: '2026-10-28T23:09:03'
+source_file_date: '2026-10-29T02:02:40'
 source_file_size: 2432
-generation_date: '2026-10-29T00:12:25'
 

@@ -32,6 +32,7 @@ imports:
 
 types:
   NonNegativeIntegerType:
+    typeof: integer
     uri: xsd:nonNegativeInteger
     base: int
     minimum_value: 0
@@ -42,6 +43,7 @@ types:
       minimum from the slot and not from the type.
 
   PositiveIntegerType:
+    typeof: integer
     uri: xsd:positiveInteger
     base: int
     minimum_value: 1

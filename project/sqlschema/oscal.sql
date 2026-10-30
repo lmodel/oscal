@@ -2434,8 +2434,8 @@ CREATE TABLE "ParameterSelection_choice" (
 	PRIMARY KEY ("ParameterSelection_id", choice),
 	FOREIGN KEY("ParameterSelection_id") REFERENCES "ParameterSelection" (id)
 );
-CREATE INDEX "ix_ParameterSelection_choice_ParameterSelection_id" ON "ParameterSelection_choice" ("ParameterSelection_id");
 CREATE INDEX "ix_ParameterSelection_choice_choice" ON "ParameterSelection_choice" (choice);
+CREATE INDEX "ix_ParameterSelection_choice_ParameterSelection_id" ON "ParameterSelection_choice" ("ParameterSelection_id");
 
 CREATE TABLE "CatalogDocument" (
 	id INTEGER NOT NULL,
@@ -2953,8 +2953,8 @@ CREATE TABLE "Party_email_addresses" (
 	PRIMARY KEY ("Party_id", email_addresses),
 	FOREIGN KEY("Party_id") REFERENCES "Party" (id)
 );
-CREATE INDEX "ix_Party_email_addresses_Party_id" ON "Party_email_addresses" ("Party_id");
 CREATE INDEX "ix_Party_email_addresses_email_addresses" ON "Party_email_addresses" (email_addresses);
+CREATE INDEX "ix_Party_email_addresses_Party_id" ON "Party_email_addresses" ("Party_id");
 
 CREATE TABLE "Party_location_uuids" (
 	"Party_id" INTEGER,
@@ -2962,8 +2962,8 @@ CREATE TABLE "Party_location_uuids" (
 	PRIMARY KEY ("Party_id", location_uuids),
 	FOREIGN KEY("Party_id") REFERENCES "Party" (id)
 );
-CREATE INDEX "ix_Party_location_uuids_location_uuids" ON "Party_location_uuids" (location_uuids);
 CREATE INDEX "ix_Party_location_uuids_Party_id" ON "Party_location_uuids" ("Party_id");
+CREATE INDEX "ix_Party_location_uuids_location_uuids" ON "Party_location_uuids" (location_uuids);
 
 CREATE TABLE "Party_member_of_organizations" (
 	"Party_id" INTEGER,
@@ -2971,8 +2971,8 @@ CREATE TABLE "Party_member_of_organizations" (
 	PRIMARY KEY ("Party_id", member_of_organizations),
 	FOREIGN KEY("Party_id") REFERENCES "Party" (id)
 );
-CREATE INDEX "ix_Party_member_of_organizations_Party_id" ON "Party_member_of_organizations" ("Party_id");
 CREATE INDEX "ix_Party_member_of_organizations_member_of_organizations" ON "Party_member_of_organizations" (member_of_organizations);
+CREATE INDEX "ix_Party_member_of_organizations_Party_id" ON "Party_member_of_organizations" ("Party_id");
 
 CREATE TABLE "ParameterSetting_values" (
 	"ParameterSetting_id" INTEGER,
@@ -3230,8 +3230,8 @@ CREATE TABLE "Address_addr_lines" (
 	PRIMARY KEY ("Address_id", addr_lines),
 	FOREIGN KEY("Address_id") REFERENCES "Address" (id)
 );
-CREATE INDEX "ix_Address_addr_lines_addr_lines" ON "Address_addr_lines" (addr_lines);
 CREATE INDEX "ix_Address_addr_lines_Address_id" ON "Address_addr_lines" ("Address_id");
+CREATE INDEX "ix_Address_addr_lines_addr_lines" ON "Address_addr_lines" (addr_lines);
 
 CREATE TABLE "AssessmentSelectControlById_statement_ids" (
 	"AssessmentSelectControlById_id" INTEGER,
@@ -4160,8 +4160,8 @@ CREATE TABLE "ResponsibleParty_party_uuids" (
 	PRIMARY KEY ("ResponsibleParty_id", party_uuids),
 	FOREIGN KEY("ResponsibleParty_id") REFERENCES "ResponsibleParty" (id)
 );
-CREATE INDEX "ix_ResponsibleParty_party_uuids_ResponsibleParty_id" ON "ResponsibleParty_party_uuids" ("ResponsibleParty_id");
 CREATE INDEX "ix_ResponsibleParty_party_uuids_party_uuids" ON "ResponsibleParty_party_uuids" (party_uuids);
+CREATE INDEX "ix_ResponsibleParty_party_uuids_ResponsibleParty_id" ON "ResponsibleParty_party_uuids" ("ResponsibleParty_id");
 
 CREATE TABLE "ResponsibleRole_party_uuids" (
 	"ResponsibleRole_id" INTEGER,
