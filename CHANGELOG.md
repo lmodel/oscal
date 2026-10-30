@@ -6,6 +6,8 @@ The `v0.0.0` tag is a baseline, not a release: it marks where versioning starts 
 
 ## [Unreleased]
 
+## [0.1.2] - 2026-10-30
+
 ### Changed
 
 - **linkml and linkml-runtime are locked at 1.12.1, up from 1.11.1.** The generated artefacts, the Python models and `docs/schema/oscal.yaml` are regenerated with it.
