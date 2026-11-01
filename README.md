@@ -14,25 +14,13 @@ Open Security Controls Assessment Language (LinkML)
 
 ## What it models
 
-NIST's [Open Security Controls Assessment Language](https://pages.nist.gov/OSCAL/) (OSCAL) 1.2.3, one module for each of its models:
+The schema models NIST's [Open Security Controls Assessment Language](https://pages.nist.gov/OSCAL/) (OSCAL) 1.2.3. It has one module for each of OSCAL's models: the catalog, the profile, the component definition, the system security plan, the assessment plan and results, the plan of action and milestones, and the mapping collection. Every model shares OSCAL's metadata and back matter, which the catalog module defines.
 
-* **Catalog** (`Catalog`): controls, their groups, parameters and parts.
-* **Profile** (`Profile`): a selection of controls from catalogs, and how it alters them.
-* **Component definition** (`ComponentDefinition`): components and the controls each implements.
-* **System security plan** (`SystemSecurityPlan`): a system's characteristics, its implementation and how it implements a profile's controls.
-* **Assessment plan** (`AssessmentPlan`) and **assessment results** (`AssessmentResults`): what an assessment covers, and what it observed and found.
-* **Plan of action and milestones** (`PlanOfActionAndMilestones`): the risks a system still carries and how they are tracked.
-* **Mapping collection** (`MappingCollection`): how the controls of one catalog relate to another's.
-
-Every model shares OSCAL's metadata and back matter, which the catalog module defines. The schema header's `version` is OSCAL's release, 1.2.3, and its annotations pin the release's tag and commit. [src/oscal/schema/metaschema/](src/oscal/schema/metaschema) holds that commit's metaschema sources, and each enum names the allowed-values lists it renders there, which `tests/test_schema_rules.py` checks. A weekly workflow opens an issue when NIST releases a newer OSCAL or the copy drifts. Release tags number the schema's versions.
-
-## Influences
-
-None beyond OSCAL itself: the schema renders one specification, and its module layout, release asset and governance files follow [lmodel/slsa](https://github.com/lmodel/slsa).
+The schema header pins OSCAL's release tag and commit, and [src/oscal/schema/metaschema/](src/oscal/schema/metaschema) holds that commit's metaschema sources. Each enum names the allowed-values lists it renders there, which `tests/test_schema_rules.py` checks. A weekly workflow opens an issue when NIST releases a newer OSCAL or the copy drifts.
 
 ## Mappings
 
-None yet: no element names a term of another vocabulary.
+None yet.
 
 ## Not modelled here
 
@@ -55,9 +43,9 @@ Run `just` to list the project's [just](https://github.com/casey/just/) recipes.
 
 ## Knowledge Trust Ladder (KTL)
 
-`.lokf/` holds this project's [KTL](https://w3id.org/ktl/) knowledge bundle. Its domain schema is `.lokf/oscal.yaml`, which `lokf adapt` writes from `src/oscal/schema/oscal.yaml`. Edit the source, never the copy. A release carries the copy as `schema-<tag>-oscal.yaml`, on the terms [CONTRIBUTING.md](CONTRIBUTING.md#releasing-maintainers) gives.
+`.lokf/` holds this project's [KTL](https://w3id.org/ktl/) knowledge bundle. Its domain schema, `.lokf/oscal.yaml`, is the copy `just lokf-adapt` writes from `src/oscal/schema/oscal.yaml`, and `just lokf-adapt-check` says when it is stale. Edit the source, never the copy. A release carries the copy as `schema-<tag>-oscal.yaml`, on the terms [CONTRIBUTING.md](CONTRIBUTING.md#releasing-maintainers) gives.
 
-`just lokf-adapt` rewrites the copy, and `just lokf-adapt-check` says when it is stale. `project.justfile` names the classes the copy roots on `Concept`, and a concept may name any of them, or a subclass, as its `type`. In Obsidian, add these classes to the KTL Registrar and KTL Curator plugins' *Known LOKF types* setting:
+The copy roots these classes on `Concept`, so a concept may name any of them, or a subclass, as its `type`. In Obsidian, add them to the *Known LOKF types* setting of the KTL Registrar and KTL Curator plugins:
 
 ```text
 Catalog, Profile, ComponentDefinition, SystemSecurityPlan, AssessmentPlan, AssessmentResults, PlanOfActionAndMilestones, MappingCollection
@@ -65,17 +53,11 @@ Catalog, Profile, ComponentDefinition, SystemSecurityPlan, AssessmentPlan, Asses
 
 OSCAL gives none of these classes an identifier slot, so a concept keeps each one's required `uuid` and `metadata`, and its `id` names it beside them.
 
-A host imports the copy beside `lokf.yaml`, and LinkML merges the two into one namespace, where the last definition of a name wins silently. So the copy renames what LOKF defines: the classes `Role`, `Parameter`, `Citation` and `Revision` take an `Oscal` prefix, and seventeen keys, such as `title`, `version` and `last-modified`, an `oscal_` one. The copy also writes OSCAL's hyphenated keys with underscores, so `oscal-version` becomes `oscal_oscal_version`.
-
-Seven keys are OSCAL's and also slsa's or github-actions' under another IRI: `attestations`, `dependencies`, `parties`, `provenance`, `subject` and `value` in slsa's copy, and `actions` in github-actions'. A host that imports this copy beside either projects each of those keys under one vocabulary's IRI. `tests/test_schema_rules.py` checks the copy against all three schemas and fails on a new shared key.
+The copy renames what LOKF defines: the classes `Role`, `Parameter`, `Citation` and `Revision` take an `Oscal` prefix, and seventeen keys, such as `title`, `version` and `last-modified`, an `oscal_` one. It writes OSCAL's hyphenated keys with underscores, so `oscal-version` becomes `oscal_oscal_version`. Seven keys are also slsa's or github-actions' under another IRI, and `tests/test_schema_rules.py` lists them and fails on a new shared key.
 
 ## License
 
-The schema and the code are under the Apache License 2.0 ([LICENSE](LICENSE)).
-
-OSCAL's metaschema in [src/oscal/schema/metaschema/](src/oscal/schema/metaschema) is NIST's work, in the public domain, and keeps NIST's licence beside it; the third-party test documents keep their own: see [NOTICE](NOTICE).
-
-This is not an official NIST project, and its use implies no endorsement by NIST.
+The schema and the code are under the Apache License 2.0 ([LICENSE](LICENSE)). OSCAL's metaschema is NIST's work, in the public domain, and keeps NIST's licence beside it, and the third-party test documents keep their own: see [NOTICE](NOTICE). This is not an official NIST project, and its use implies no endorsement by NIST.
 
 ## Contributing and security
 
