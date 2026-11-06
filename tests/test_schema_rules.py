@@ -164,8 +164,8 @@ def test_enums_render_the_pinned_metaschema():
 # by the sidecar, and the adapt copies other lmodel repositories release, each
 # the schema asset of a release checked against its .sha256 and attestation:
 # slsa v0.7.0 and github-actions v0.1.0.
-COPY = ROOT / ".lokf" / "oscal.yaml"
-LOKF = ROOT / ".lokf" / "lokf.yaml"
+COPY = ROOT / ".lokf" / "schema" / "oscal.yaml"
+LOKF = ROOT / ".lokf" / "schema" / "lokf.yaml"
 NEIGHBOURS = (
     ROOT / "tests" / "neighbours" / "slsa.yaml",
     ROOT / "tests" / "neighbours" / "github-actions.yaml",
