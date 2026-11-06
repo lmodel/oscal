@@ -3,7 +3,7 @@ type: Dataset
 id: https://w3id.org/lmodel/oscal/knowledge/datasets/generated-artefacts
 genre: reference
 title: Generated artefacts
-description: "Files generated from the OSCAL schema and never edited by hand: project/ (what just gen-project writes, such as JSON Schema, JSON-LD, OWL, SHACL, ShEx, SQL, GraphQL, protobuf, Excel and TypeScript, and the further formats of just gen-project-extended), the dataclass and Pydantic models in src/oscal/datamodel/, docs/schema/oscal.yaml, the gen-doc pages in docs/elements/ and the domain schema copy .lokf/oscal.yaml."
+description: "Files generated from the OSCAL schema and never edited by hand: project/ (what just gen-project writes, such as JSON Schema, JSON-LD, OWL, SHACL, ShEx, SQL, GraphQL, protobuf, Excel and TypeScript, and the further formats of just gen-project-extended), the dataclass and Pydantic models in src/oscal/datamodel/, docs/schema/oscal.yaml, the gen-doc pages in docs/elements/ and the domain schema copy .lokf/schema/oscal.yaml."
 resource: project
 derivedFrom:
   - https://w3id.org/lmodel/oscal/knowledge/datasets/oscal-schema
@@ -37,13 +37,13 @@ sources:
     title: the docs/elements and tmp rules
 generated:
   by: process:ktl-librarian
-  at: "2026-10-29T20:52:57Z"
+  at: "2026-11-06T21:24:30Z"
 status: draft
 ---
 
 # Generated artefacts
 
-CONTRIBUTING.md lists `src/oscal/datamodel/`, `project/` and `docs/schema/` as artefacts generated from the schema.[^contributing.md] It asks that a schema edit be followed by `just gen-project`, `just gen-doc` and `just lokf-adapt`, and that their output be committed, since `project/`, `src/oscal/datamodel/`, `docs/schema/` and `.lokf/oscal.yaml` are generated. The README says not to edit the files in `project/`.[^readme.md] The pre-commit configuration excludes all four, so that no hook rewrites what the next run would rewrite back.
+CONTRIBUTING.md lists `src/oscal/datamodel/`, `project/` and `docs/schema/` as artefacts generated from the schema.[^contributing.md] It asks that a schema edit be followed by `just gen-project`, `just gen-doc` and `just lokf-adapt`, and that their output be committed, since `project/`, `src/oscal/datamodel/`, `docs/schema/` and `.lokf/schema/oscal.yaml` are generated. The README says not to edit the files in `project/`.[^readme.md] The pre-commit configuration excludes all four, so that no hook rewrites what the next run would rewrite back.
 
 ## project/
 
@@ -63,7 +63,7 @@ CONTRIBUTING.md lists `src/oscal/datamodel/`, `project/` and `docs/schema/` as a
 
 ## The domain schema copy
 
-`just lokf-adapt` writes `.lokf/oscal.yaml`, the bundle's domain schema, and `just lokf-adapt-check` fails when it is stale against the schema or `.lokf/lokf.yaml`. [OSCAL Schema (top-level)](oscal-schema.md) says what the copy is, and [Element names and the shared namespace](../explanations/element-names.md) says what it renames.
+`just lokf-adapt` writes `.lokf/schema/oscal.yaml`, the bundle's domain schema, and `just lokf-adapt-check` fails when it is stale against the schema or `.lokf/schema/lokf.yaml`. [OSCAL Schema (top-level)](oscal-schema.md) says what the copy is, and [Element names and the shared namespace](../explanations/element-names.md) says what it renames.
 
 [^contributing.md]: CONTRIBUTING.md, the table of paths and the first item of Before opening a pull request
 [^readme.md]: README.md, the Repository Structure section

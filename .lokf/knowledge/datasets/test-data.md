@@ -39,8 +39,7 @@ sources:
     title: the rule on example data
 generated:
   by: process:ktl-librarian
-  at: "2026-10-29T00:56:26Z"
-  revision: 57a6e461e82c2896a6fceb786029f75b32ec8668
+  at: "2026-11-06T21:24:30Z"
 status: draft
 ---
 
@@ -78,7 +77,7 @@ Its seven tests check that the schema agrees with the OSCAL release it is pinned
 - every module carries the umbrella's `version`, and each module's `source` is that release's JSON schema;
 - every module's id lies under the umbrella's namespace, and every module's default prefix is `oscal:`;
 - each enum names its metaschema lists in `oscal_allowed_values`, and holds exactly their values: see [OSCAL metaschema copy](metaschema-copy.md);
-- no class, enum, type or subset name of `.lokf/oscal.yaml` is LOKF's, and a slot name the two share carries LOKF's IRI;
+- no class, enum, type or subset name of `.lokf/schema/oscal.yaml` is LOKF's, and a slot name the two share carries LOKF's IRI;
 - no such name is shared with `tests/neighbours/slsa.yaml` or `tests/neighbours/github-actions.yaml`, and the only keys shared with them under another IRI are the seven listed: see [Element names and the shared namespace](../explanations/element-names.md).
 
 A comment says that the two neighbours are adapt copies that other lmodel repositories release, each the schema asset of a release checked against its `.sha256` and attestation: slsa v0.7.0 and github-actions v0.1.0.
