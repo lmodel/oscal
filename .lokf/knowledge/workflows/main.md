@@ -3,7 +3,7 @@ type: Service
 id: https://w3id.org/lmodel/oscal/knowledge/workflows/main
 genre: reference
 title: Build and test (main.yaml)
-description: "The Build and test workflow, .github/workflows/main.yaml: on a push to main and on every pull request, its test job runs just test on Python 3.10 to 3.14, and on 3.13 also just lint and just lokf-adapt-check, the check that .lokf/oscal.yaml is current."
+description: "The Build and test workflow, .github/workflows/main.yaml: on a push to main and on every pull request, its test job runs just test on Python 3.10 to 3.14, and on 3.13 also just lint and just lokf-adapt-check, the check that .lokf/schema/oscal.yaml is current."
 resource: .github/workflows/main.yaml
 relatedTo:
   - https://w3id.org/lmodel/oscal/knowledge/datasets/test-data
@@ -14,8 +14,7 @@ sources:
     title: the on key, the concurrency group and the test job
 generated:
   by: process:ktl-librarian
-  at: "2026-10-29T00:48:58Z"
-  revision: 3d2fe54c16b683d245e50f5a3c95087554bd641e
+  at: "2026-11-06T21:24:30Z"
 status: draft
 ---
 
@@ -29,7 +28,7 @@ The `test` job runs on `ubuntu-latest` once for each Python version from 3.10 to
 
 - `just lint`, on Python 3.13 only, which reports errors only;
 - `just test`, on every version;
-- `uv sync --locked --project .lokf` and `just lokf-adapt-check`, on Python 3.13 only. A comment says that `.lokf/oscal.yaml` is the copy the knowledge bundle validates against and the release attaches, so it must match the schema and `lokf.yaml`.
+- `uv sync --locked --project .lokf` and `just lokf-adapt-check`, on Python 3.13 only. A comment says that `.lokf/schema/oscal.yaml` is the copy the knowledge bundle validates against and the release attaches, so it must match the schema and `lokf.yaml`.
 
 [Regenerate and test the schema](../playbooks/regenerate-and-test.md) says what each recipe runs, and [Test data and schema tests](../datasets/test-data.md) what `just test` checks.
 

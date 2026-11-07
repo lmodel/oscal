@@ -14,7 +14,7 @@ sources:
   - resource: src/oscal/schema/metaschema
   - resource: src/oscal/datamodel
   - resource: project.justfile
-  - resource: .lokf/oscal.yaml
+  - resource: .lokf/schema/oscal.yaml
   - resource: .lokf/justfile
   - resource: NOTICE
   - resource: LICENSE
@@ -59,7 +59,7 @@ sources:
   - resource: knowledge_bundle
 generated:
   by: process:ktl-librarian
-  at: "2026-10-29T20:52:57Z"
+  at: "2026-11-06T21:24:30Z"
 verified:
   - by: process:ktl-librarian
     at: "2026-10-29T01:19:01Z"
@@ -75,7 +75,7 @@ Each concept derived from a file or folder of this repository names it by its pa
 | --- | --- | --- |
 | `src/oscal/schema/oscal.yaml`, `src/oscal/schema/README.md`, `config.public.mk` | `datasets/oscal-schema` | re-read the header's `version`, `source`, annotations, `see_also` and comment, and the imports |
 | the eight `src/oscal/schema/oscal_*.yaml` modules | the eight module concepts in `datasets/` | re-read each header's `id`, title, `version`, `source`, imports and `see_also`, each subset, and the required slots of each model class and its document class |
-| `project.justfile` (the knowledge bundle recipes), `.lokf/oscal.yaml`, `.lokf/justfile`, the README's Knowledge Trust Ladder (KTL) section | the domain schema section of `datasets/oscal-schema`, `explanations/element-names` | re-read the `--root` list, the `LOKF_CMD` note, the copy's header and last note, the `schema :=` line, the renamed classes and keys and the seven shared keys |
+| `project.justfile` (the knowledge bundle recipes), `.lokf/schema/oscal.yaml`, `.lokf/justfile`, the README's Knowledge Trust Ladder (KTL) section | the domain schema section of `datasets/oscal-schema`, `explanations/element-names` | re-read the `--root` list, the `LOKF_CMD` note, the copy's header and last note, the `schema :=` line, the renamed classes and keys and the seven shared keys |
 | `README.md` (What it models, Influences, Mappings, Not modelled here), `docs/about.md`, `.linkmllint.yaml`, the `class_` comment in `oscal_catalog.yaml` | `explanations/scope-and-influences`, `explanations/element-names`, `references/nist-oscal` | re-read each section and comment |
 | `src/oscal/schema/metaschema/`, the OSCAL metaschema section of `NOTICE` | `datasets/metaschema-copy` | re-read the commit and release NOTICE names, and list the folder; the upstream watch compares the blobs weekly |
 | `scripts/check_upstream_release.py`, `.github/scripts/report-issue.sh` | `playbooks/update-upstream-pins`, `workflows/upstream-watch` | re-read `PINNED_TAG`, `PINNED_COMMIT`, `PINNED_PATH`, `ELSEWHERE`, the report's instructions and the issue title |

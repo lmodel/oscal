@@ -39,7 +39,7 @@ npx skills add noelmcloughlin/knowledge-trust-ladder --skill ktl-curator --yes  
 
 ## Before opening a pull request
 
-- **Edit the schema, then regenerate.** Edit `src/oscal/schema/`, run `just gen-project`, `just gen-doc` and `just lokf-adapt`, and commit the output; `project/`, `src/oscal/datamodel/`, `docs/schema/` and `.lokf/oscal.yaml` are generated.
+- **Edit the schema, then regenerate.** Edit `src/oscal/schema/`, run `just gen-project`, `just gen-doc` and `just lokf-adapt`, and commit the output; `project/`, `src/oscal/datamodel/`, `docs/schema/` and `.lokf/schema/oscal.yaml` are generated.
 - **Render what OSCAL defines.** Name the metaschema definition an element renders in the pull request, and give each enum the lists it renders in `oscal_allowed_values`; [AI_COVENANT.md](AI_COVENANT.md) says why. `tests/test_schema_rules.py` holds each enum to its lists.
 - **Leave `src/oscal/schema/metaschema/` as upstream wrote it.** Replace it whole from one OSCAL release instead and move the pins in `scripts/check_upstream_release.py` and the schema header; `upstream-watch.yaml` checks the copy.
 - **Keep names apart from LOKF's, slsa's and github-actions'**: a host imports the copies together, so a shared name carries the same IRI. `tests/test_schema_rules.py` checks, and lists the keys OSCAL shares.

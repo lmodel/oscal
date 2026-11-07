@@ -2,7 +2,7 @@
 type: Dataset
 id: https://w3id.org/lmodel/oscal/knowledge/datasets/oscal-schema
 title: OSCAL Schema (top-level)
-description: "The umbrella LinkML schema of OSCAL 1.2.3, `src/oscal/schema/oscal.yaml` (schema id `https://w3id.org/lmodel/oscal`, prefix `oscal:`): it imports the eight model modules, pins OSCAL's tag v1.2.3 and commit e061961 in its annotations, and its `lokf adapt` copy `.lokf/oscal.yaml`, rooted on the eight models, is this bundle's domain schema."
+description: "The umbrella LinkML schema of OSCAL 1.2.3, `src/oscal/schema/oscal.yaml` (schema id `https://w3id.org/lmodel/oscal`, prefix `oscal:`): it imports the eight model modules, pins OSCAL's tag v1.2.3 and commit e061961 in its annotations, and its `lokf adapt` copy `.lokf/schema/oscal.yaml`, rooted on the eight models, is this bundle's domain schema."
 version: 1.2.3
 resource: src/oscal/schema/oscal.yaml
 license: https://www.apache.org/licenses/LICENSE-2.0
@@ -50,14 +50,13 @@ sources:
     resource: project.justfile
     title: the knowledge bundle recipes and their roots
   - id: lokf-oscal.yaml
-    resource: .lokf/oscal.yaml
+    resource: .lokf/schema/oscal.yaml
     title: the header and the last note
   - resource: src/oscal/schema/README.md
     title: the list of modules
 generated:
   by: process:ktl-librarian
-  at: "2026-10-29T00:53:56Z"
-  revision: 9682284a2e351227aebe66a0fe34180d933ad8f8
+  at: "2026-11-06T21:24:30Z"
 ---
 
 # OSCAL Schema (top-level)
@@ -101,7 +100,7 @@ The README lists the eight models and their classes:
 
 ## As the bundle's domain schema
 
-The README says that this bundle's domain schema is `.lokf/oscal.yaml`, which `lokf adapt` writes from `src/oscal/schema/oscal.yaml`, and that the source is edited, never the copy. `just lokf-adapt` rewrites the copy, and `just lokf-adapt-check` says when it is stale. The `schema :=` line of `.lokf/justfile` names `oscal.yaml`, so `just lokf-validate` and `just lokf-check-refs` pass the copy to the validator.[^lokf-justfile]
+The README says that this bundle's domain schema is `.lokf/schema/oscal.yaml`, which `lokf adapt` writes from `src/oscal/schema/oscal.yaml`, and that the source is edited, never the copy. `just lokf-adapt` rewrites the copy, and `just lokf-adapt-check` says when it is stale. The `schema :=` line of `.lokf/justfile` names `oscal.yaml`, so `just lokf-validate` and `just lokf-check-refs` pass the copy to the validator.[^lokf-justfile]
 
 `project.justfile` passes eight roots to `lokf adapt`: `Catalog`, `Profile`, `ComponentDefinition`, `SystemSecurityPlan`, `AssessmentPlan`, `AssessmentResults`, `PlanOfActionAndMilestones` and `MappingCollection`.[^project.justfile] Its comment says that these are the classes a knowledge concept may use as its `type`, and that OSCAL gives none of them an identifier slot, so each keeps its required `uuid` and `metadata`, and a concept's `id` names it beside them. The recipes run the `lokf` that the sidecar's floor pins, 0.9.0 or later, unless `LOKF_CMD` names another. The copy's header says that it was generated from `oscal.yaml` (oscal 1.2.3), with the id `https://w3id.org/lmodel/oscal-lokf`, and its last note lists the eight classes it re-rooted on `lokf:Concept` and the names it changed.[^lokf-oscal.yaml] [Element names and the shared namespace](../explanations/element-names.md) explains those renames.
 
@@ -114,4 +113,4 @@ The README lists the eight classes for Obsidian users to add to the *Known LOKF 
 [^changelog.md]: CHANGELOG.md, the Added and Changed items of the Unreleased section
 [^lokf-justfile]: .lokf/justfile, the schema line
 [^project.justfile]: project.justfile, the comment above lokf_cmd and the lokf_adapt_roots line
-[^lokf-oscal.yaml]: .lokf/oscal.yaml, the header and the last note
+[^lokf-oscal.yaml]: .lokf/schema/oscal.yaml, the header and the last note
