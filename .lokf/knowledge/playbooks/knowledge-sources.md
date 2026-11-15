@@ -59,7 +59,7 @@ sources:
   - resource: knowledge_bundle
 generated:
   by: process:ktl-librarian
-  at: "2026-11-06T21:24:30Z"
+  at: "2026-11-15T02:47:22Z"
 verified:
   - by: process:ktl-librarian
     at: "2026-10-29T01:19:01Z"
@@ -84,8 +84,8 @@ Each concept derived from a file or folder of this repository names it by its pa
 | `CONTRIBUTING.md`, `.copier-answers.yml`, the `update`, `test` and `lint` recipes of `justfile` | `playbooks/regenerate-and-test` | confirm the setup, the checklist and the recipes |
 | `.releaserc.json`, `.github/scripts/changelog-release.mjs`, `CHANGELOG.md`, `pyproject.toml`, the Releasing section of `CONTRIBUTING.md` | `playbooks/release` | re-read the release rules, the commands, the baseline paragraph and the versioning settings |
 | the nine files in `.github/workflows/` | the nine `workflows/` concepts | re-read each file's `on` key and top-level `permissions`, and each job's id, `name`, `runs-on`, `permissions` and `environment` |
-| `website/`, `lychee.toml`, `.markdownlint-cli2.jsonc` | `services/documentation-site`, `workflows/lint-and-docs` | re-read `site.config.mjs`, `website/README.md` and the link check's exclusions |
-| `NOTICE`, `LICENSE`, `website/NOTICE`, the licence files of the metaschema copy and the Luigi Carpio fixture, the License sections of `README.md` and `CONTRIBUTING.md` | `policies/license-and-attribution` | re-read each third-party entry |
+| `website/`, `lychee.toml`, `.markdownlint-cli2.jsonc` | `services/documentation-site`, `workflows/lint-and-docs` | re-read `site.toml`, `website/README.md` and the link check's exclusions |
+| `NOTICE`, `LICENSE`, the licence files of the metaschema copy and the Luigi Carpio fixture, the License sections of `README.md` and `CONTRIBUTING.md` | `policies/license-and-attribution` | re-read each third-party entry |
 | `SECURITY.md`, `.github/dependabot.yml` | `policies/security-policy` | re-read the table of surfaces and the settings not yet in force |
 | `AI_COVENANT.md` | `policies/ai-covenant` | re-read the project note and the section on agent automation |
 | `.copier-answers.yml`, `pyproject.toml`, `uv.lock` | `org/lmodel`, `references/linkml` | re-read `github_org`, the authors, the dependencies and the locked LinkML versions |
