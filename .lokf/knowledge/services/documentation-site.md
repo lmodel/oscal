@@ -3,7 +3,7 @@ type: Service
 id: https://w3id.org/lmodel/oscal/knowledge/services/documentation-site
 genre: reference
 title: oscal documentation site
-description: The Hugo site in website/, built from the README, docs/, the schema's gen-doc pages, the changelog and the knowledge bundle by the Knowledge website workflow, which deploys it to GitHub Pages at lmodel.github.io/oscal once KNOWLEDGE_WEBSITE_ENABLED is true; it replaced the mkdocs site, and its REDIRECTS send the mkdocs addresses on to the new pages.
+description: The Hugo site in website/, built from the README, docs/, the schema's gen-doc pages, the changelog and the knowledge bundle by the Knowledge website workflow, which deploys it to GitHub Pages at lmodel.github.io/oscal once KNOWLEDGE_WEBSITE_ENABLED is true; it replaced the mkdocs site, and the schema's pages keep the mkdocs addresses under /elements/.
 resource: website
 dependsOn:
   - https://w3id.org/lmodel/oscal/knowledge/workflows/knowledge-website
@@ -30,7 +30,7 @@ sources:
     title: the Knowledge bundle section
 generated:
   by: process:ktl-librarian
-  at: "2026-11-15T02:47:22Z"
+  at: "2026-11-15T03:08:14Z"
 status: draft
 ---
 
@@ -44,16 +44,16 @@ status: draft
 
 `website/README.md` says that every page comes from a file the repository already holds, so a change to the site is a change to that file:
 
-- each concept in `.lokf/knowledge/` becomes a page under `knowledge/`, with its trust label from `knowledge-report.sh`, its sources and its typed relations both ways, and the four files `lokf export` writes are served beside them;
-- the README becomes the home page, and each page under `docs/` a page under `docs/`, except `docs/templates-linkml/`, which `site.toml` leaves out;
-- `CHANGELOG.md` becomes a page per release under `changelog/`, which `site.toml` shows once the file holds a released version;
-- the schema's pages, which `gen-doc` writes into `docs/elements/`, become a page each under `schema/`, with their class diagrams drawn in the browser. The folder is not committed, so the sync runs the command that builds it when it is missing.
+- each concept in `.lokf/knowledge/` becomes a page under `knowledge/`, with its trust label from `knowledge-report.sh`, its sources and its relations both ways, and the four files `lokf export` writes are served beside them;
+- the README becomes the home page, and each page under `docs/` a page under `docs/`;
+- `CHANGELOG.md` becomes a page per release under `changelog/`, which search leaves out;
+- `src/oscal/schema/oscal.yaml` becomes the Schema part: a page per class, slot, enumeration and type, written by LinkML's `gen-doc`, each also at `elements/<Name>/`, where the schema's w3id rules point. The home page then leads with the schema.
 
-`site.toml` shows no data pages, since `BROWSE` is `null`. Its `REDIRECTS` send the addresses that the mkdocs site gave its pages on to the new ones: `/elements` and each `/elements/<name>` to `/schema/`, and `/about` to `/docs/about/`.
+`site.toml` names no `browse` folder, so the site serves no data. Its redirects send `/about` to `docs/about.md`.
 
 ## Previewing it
 
-Previewing needs Node.js 22.12 or later and uv. In `website/`, run `npm ci --ignore-scripts`, then `npm run dev` for a local server, or `npm run build`, which writes `dist/` and then checks every link between its pages. Both run `npm run sync` first, which runs `lokf export` from the sidecar's environment in `.lokf/` and writes the generated pages. Nothing the sync writes is committed. From the repository root, `just testdoc` runs `just gen-doc` and then the same local server.[^justfile]
+Previewing needs bash, git and uv. Hugo and Pagefind come from PyPI, at the versions `website/pyproject.toml` names and the hashes `website/uv.lock` holds. In `website/`, `scripts/build.sh` writes `dist/` with the search index and then checks every link between its pages. `scripts/build.sh serve` serves the site at `http://localhost:1313/oscal/` and rebuilds it as you edit. `scripts/build.sh preview` serves the site as it will be published, at `http://localhost:1313/`.[^website-readme.md] From the repository root, `just testdoc` runs `just gen-doc` and then the Hugo server, `website/scripts/build.sh serve`.[^justfile]
 
 ## Publishing it
 
@@ -61,7 +61,7 @@ Previewing needs Node.js 22.12 or later and uv. In `website/`, run `npm ci --ign
 
 ## Editing it
 
-Change a page's words in the file it comes from: the README, a page under `docs/`, the schema, or a concept, which goes through the librarian and the curator like any other change to the bundle. Change the site's values and options in `site.toml`, and its look in `src/styles/custom.css`, which is this repository's own.
+Change a page's words in the file it comes from: the README, a page under `docs/`, the schema, or a concept, which goes through the librarian and the curator like any other change to the bundle. Change the site's own values in `site.toml`, and its look in `assets/css/custom.css`, which is this repository's own.
 
 [^readme.md]: README.md, Documentation Website and the website item of Repository Structure
 [^changelog.md]: CHANGELOG.md, the last item under Added
