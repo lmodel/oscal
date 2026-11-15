@@ -66,7 +66,7 @@ skip = [
   "tests/data/luigi_carpio/*",
   "tests/neighbours/*",
   ".lokf/scripts/*",
-  "website/package-lock.json",
+  "website/uv.lock",
 ]
 
 # Reminder: words have to be lowercased for the ignore-words-list
@@ -94,5 +94,5 @@ extend-exclude = [
   "tests/data/luigi_carpio/*",
   "tests/neighbours/*",
   ".lokf/scripts/*",
-  "website/package-lock.json",
+  "website/uv.lock",
 ]

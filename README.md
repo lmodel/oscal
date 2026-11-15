@@ -28,14 +28,14 @@ OSCAL's metaschema states constraints that the schema does not check: the keys a
 
 ## Repository Structure
 
-* [docs/](docs/): the website's pages, with the generated schema pages in [elements/](docs/elements/)
+* [docs/](docs/): the website's pages, with the generated schema pages in `docs/elements/`
 * [examples/](examples/): usage examples
 * [project/](project/): generated project files (do not edit them)
 * [scripts/](scripts/): the upstream watch
 * [src/oscal/schema/](src/oscal/schema): the LinkML schema, `oscal.yaml` and the modules it imports (edit these), and the metaschema copy
 * [src/oscal/datamodel/](src/oscal/datamodel): the generated Python datamodel
 * [tests/](tests/): Python tests, with example data and third-party OSCAL documents in [data/](tests/data)
-* [website/](website/): the Astro Starlight site built from the README, `docs/`, the schema's pages and the knowledge bundle
+* [website/](website/): the Hugo site built from the README, `docs/`, the schema's pages and the knowledge bundle
 
 ## Developer Tools
 
