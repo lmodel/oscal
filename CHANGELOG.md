@@ -16,6 +16,7 @@ The `v0.0.0` tag is a baseline, not a release: it marks where versioning starts 
 
 - **The bundle's schema files sit in `.lokf/schema/`**: `lokf.yaml` and the `lokf adapt` copy `oscal.yaml`, as KTL v0.62.0 lays them out.
 - **The knowledge website is built with Hugo from the ktl-website templates**, set by `website/site.toml`, in place of the Astro site.
+- **The release job installs semantic-release with `npm ci` from `.github/release/package-lock.json`**, which pins every package it pulls in by hash.
 
 ### Security
 
