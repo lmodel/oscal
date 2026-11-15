@@ -3,7 +3,7 @@ type: Playbook
 id: https://w3id.org/lmodel/oscal/knowledge/playbooks/regenerate-and-test
 genre: how-to
 title: Regenerate and test the schema
-description: "How to change the OSCAL schema: set up with uv and just, edit src/oscal/schema/ but never the metaschema copy, give each enum its oscal_allowed_values, regenerate with just gen-project, gen-doc and lokf-adapt, add examples, then run just test, just lint, just lokf-adapt-check and the pre-commit hooks, as the Build and test workflow does on Python 3.10 to 3.14."
+description: "How to change the OSCAL schema: set up with uv and just, edit src/oscal/schema/ but never the metaschema copy, give each enum its oscal_allowed_values, regenerate with just gen-project, gen-doc and lokf-adapt, add examples, then run just test, just lint, just lokf-adapt-check and the pre-commit hooks, as the Build and test workflow does on Python 3.11 to 3.14."
 resource: CONTRIBUTING.md
 about:
   - https://w3id.org/lmodel/oscal/knowledge/datasets/oscal-schema
@@ -30,7 +30,7 @@ sources:
     title: the exclude list
 generated:
   by: process:ktl-librarian
-  at: "2026-11-06T21:24:30Z"
+  at: "2026-11-15T10:37:41Z"
 status: draft
 ---
 
@@ -38,7 +38,7 @@ status: draft
 
 ## Set up
 
-CONTRIBUTING.md asks for Python 3.10 or later, uv and just.[^contributing.md] Clone `https://github.com/lmodel/oscal.git`, run `uv sync --group dev` in it, and list the recipes with `just --list`. On WSL2, run `export JUST_TEMPDIR=/tmp` first, because the justfile's shebang recipes otherwise fail with permission errors.[^justfile] `.copier-answers.yml` records that the project was made from `https://github.com/linkml/linkml-project-copier` at `v0.5.0`.[^copier-answers.yml] `just update` runs `copier update` and upgrades `linkml` and `linkml-runtime` in `uv.lock`.
+CONTRIBUTING.md asks for Python 3.11 or later, uv and just.[^contributing.md] Clone `https://github.com/lmodel/oscal.git`, run `uv sync --group dev` in it, and list the recipes with `just --list`. On WSL2, run `export JUST_TEMPDIR=/tmp` first, because the justfile's shebang recipes otherwise fail with permission errors.[^justfile] `.copier-answers.yml` records that the project was made from `https://github.com/linkml/linkml-project-copier` at `v0.5.0`.[^copier-answers.yml] `just update` runs `copier update` and upgrades `linkml` and `linkml-runtime` in `uv.lock`.
 
 ## Change the schema
 
@@ -58,7 +58,7 @@ CONTRIBUTING.md asks for Python 3.10 or later, uv and just.[^contributing.md] Cl
 - Update `uv.lock`, or `.lokf/uv.lock`, in the same change as a dependency edit, because CI installs with `uv sync --locked` and fails otherwise.
 - Run `cd .lokf && just lokf-validate` after a change to the knowledge bundle.
 
-[Build and test](../workflows/main.md) runs `just test` on Python 3.10 to 3.14, and `just lint` and `just lokf-adapt-check` on Python 3.13 only.[^main.yaml] CONTRIBUTING.md says that [Lint & docs](../workflows/lint-and-docs.md) is easy to trip locally: it runs ShellCheck, actionlint, markdownlint, link checking and codespell over every Markdown file.
+[Build and test](../workflows/main.md) runs `just test` on Python 3.11 to 3.14, and `just lint` and `just lokf-adapt-check` on Python 3.13 only.[^main.yaml] CONTRIBUTING.md says that [Lint & docs](../workflows/lint-and-docs.md) is easy to trip locally: it runs ShellCheck, actionlint, markdownlint, link checking and codespell over every Markdown file.
 
 [^contributing.md]: CONTRIBUTING.md, Development setup and Before opening a pull request
 [^justfile]: justfile, the `_wsl2_compat_check`, update, test and lint recipes
