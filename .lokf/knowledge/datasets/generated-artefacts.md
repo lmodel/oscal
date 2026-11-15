@@ -37,7 +37,7 @@ sources:
     title: the docs/elements and tmp rules
 generated:
   by: process:ktl-librarian
-  at: "2026-11-06T21:24:30Z"
+  at: "2026-11-15T03:09:20Z"
 status: draft
 ---
 
@@ -59,7 +59,7 @@ CONTRIBUTING.md lists `src/oscal/datamodel/`, `project/` and `docs/schema/` as a
 
 ## docs/schema/ and docs/elements/
 
-`just gen-doc` writes `docs/schema/oscal.yaml` with `gen-yaml`, and the schema's Markdown pages into `docs/elements/` with `gen-doc`. Git ignores the pages in `docs/elements/`, and the [documentation site](../services/documentation-site.md) builds them when it needs them.
+`just gen-doc` writes `docs/schema/oscal.yaml` with `gen-yaml`, and the schema's Markdown pages into `docs/elements/` with `gen-doc`. Git ignores the pages in `docs/elements/`. The [documentation site](../services/documentation-site.md) writes its own schema pages with `gen-doc`.
 
 ## The domain schema copy
 
